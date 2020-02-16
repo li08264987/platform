@@ -2,33 +2,22 @@
   <div :class="classObj" class="app-wrapper">
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <div :class="{'fixed-header':fixedHeader}">
-      <navbar ref="refNavbar" :on-update="getTabId" />
+      <navbar />
       <tags-view v-if="needTagsView" />
     </div>
     <div :class="{hasTagsView:needTagsView}" class="main-container">
-      <!--:is实现多个组件实现同一个挂载点-->
-      <component :is="currentView" />
+      <sidebar class="sidebar-container" />
+      <app-main />
+      <right-panel v-if="showSettings">
+        <settings />
+      </right-panel>
     </div>
   </div>
 </template>
 
 <script>
 import RightPanel from '@/components/RightPanel'
-import {
-  AppMain,
-  Navbar,
-  Settings,
-  Sidebar,
-  TagsView,
-  Main,
-  Monitor,
-  Energy,
-  ReportTable,
-  Diagnosis,
-  Device,
-  Smart,
-  PlatSetting
-} from './components'
+import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 import { mapState } from 'vuex'
 
@@ -40,20 +29,7 @@ export default {
     RightPanel,
     Settings,
     Sidebar,
-    TagsView,
-    Main,
-    Monitor,
-    Energy,
-    ReportTable,
-    Diagnosis,
-    Device,
-    Smart,
-    PlatSetting
-  },
-  data() {
-    return {
-      currentView: 'Main'
-    }
+    TagsView
   },
   mixins: [ResizeMixin],
   computed: {
@@ -76,38 +52,6 @@ export default {
   methods: {
     handleClickOutside() {
       this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
-    },
-    getTabId(data) {
-      console.log('获得了子组件的ID：' + data)
-      switch (data) {
-        case 'Main':
-          this.currentView = 'Main'
-          break
-        case 'Monitor':
-          this.currentView = 'Monitor'
-          break
-        case 'Energy':
-          this.currentView = 'Energy'
-          break
-        case 'ReportTable':
-          this.currentView = 'ReportTable'
-          break
-        case 'Diagnosis':
-          this.currentView = 'Diagnosis'
-          break
-        case 'Device':
-          this.currentView = 'Device'
-          break
-        case 'Smart':
-          this.currentView = 'Smart'
-          break
-        case 'PlatSetting':
-          this.currentView = 'PlatSetting'
-          break
-        default:
-          this.currentView = 'Main'
-          break
-      }
     }
   }
 }

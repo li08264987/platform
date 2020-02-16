@@ -5,55 +5,38 @@
       <navbar ref="refNavbar" :on-update="getTabId" />
       <tags-view v-if="needTagsView" />
     </div>
-    <div :class="{hasTagsView:needTagsView}" class="main-container">
-      <!--:is实现多个组件实现同一个挂载点-->
-      <component :is="currentView" />
-    </div>
+    <!--:is实现多个组件实现同一个挂载点-->
+    <component :is="currentView" />
+    <!-- <div :class="{hasTagsView:needTagsView}" class="main-container">
+      <sidebar class="sidebar-container" />
+      <app-main />
+      <right-panel v-if="showSettings">
+        <settings />
+      </right-panel>
+    </div>-->
   </div>
 </template>
 
 <script>
-import RightPanel from '@/components/RightPanel'
-import {
-  AppMain,
-  Navbar,
-  Settings,
-  Sidebar,
-  TagsView,
-  Main,
-  Monitor,
-  Energy,
-  ReportTable,
-  Diagnosis,
-  Device,
-  Smart,
-  PlatSetting
-} from './components'
-import ResizeMixin from './mixin/ResizeHandler'
-import { mapState } from 'vuex'
+import RightPanel from "@/components/RightPanel";
+import { AppMain, Navbar, Settings, Sidebar, TagsView } from "./components";
+import ResizeMixin from "./mixin/ResizeHandler";
+import { mapState } from "vuex";
 
 export default {
-  name: 'Layout',
+  name: "Layout",
   components: {
     AppMain,
     Navbar,
     RightPanel,
     Settings,
     Sidebar,
-    TagsView,
-    Main,
-    Monitor,
-    Energy,
-    ReportTable,
-    Diagnosis,
-    Device,
-    Smart,
-    PlatSetting
+    TagsView
   },
   data() {
     return {
-      currentView: 'Main'
-    }
+      currentView: "Main"
+    };
   },
   mixins: [ResizeMixin],
   computed: {
@@ -69,48 +52,19 @@ export default {
         hideSidebar: !this.sidebar.opened,
         openSidebar: this.sidebar.opened,
         withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
+        mobile: this.device === "mobile"
+      };
     }
   },
   methods: {
     handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+      this.$store.dispatch("app/closeSideBar", { withoutAnimation: false });
     },
     getTabId(data) {
-      console.log('获得了子组件的ID：' + data)
-      switch (data) {
-        case 'Main':
-          this.currentView = 'Main'
-          break
-        case 'Monitor':
-          this.currentView = 'Monitor'
-          break
-        case 'Energy':
-          this.currentView = 'Energy'
-          break
-        case 'ReportTable':
-          this.currentView = 'ReportTable'
-          break
-        case 'Diagnosis':
-          this.currentView = 'Diagnosis'
-          break
-        case 'Device':
-          this.currentView = 'Device'
-          break
-        case 'Smart':
-          this.currentView = 'Smart'
-          break
-        case 'PlatSetting':
-          this.currentView = 'PlatSetting'
-          break
-        default:
-          this.currentView = 'Main'
-          break
-      }
+      console.log("获得了子组件的ID：" + data);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
