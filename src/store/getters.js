@@ -1,5 +1,6 @@
 const getters = {
   sidebar: state => state.app.sidebar,
+  energySidebar: state => state.app.sidebar,
   size: state => state.app.size,
   device: state => state.app.device,
   visitedViews: state => state.tagsView.visitedViews,
@@ -10,6 +11,7 @@ const getters = {
   introduction: state => state.user.introduction,
   roles: state => state.user.roles,
   permission_routes: state => state.permission.routes,
+  energy_routes: state => state.permission.energyRoutes,
   errorLogs: state => state.errorLog.logs
 }
 export default getters

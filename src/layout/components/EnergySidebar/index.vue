@@ -1,6 +1,5 @@
 <template>
-  <div :class="{'has-logo':showLogo}">
-    <logo v-if="showLogo" :collapse="isCollapse" />
+  <div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
@@ -8,11 +7,12 @@
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
         :unique-opened="false"
+        :default-openeds="['/energySystem','/energyChejian']"
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in energy_routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -20,15 +20,16 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Logo from './Logo'
-import SidebarItem from './SidebarItem'
+import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
 import variables from '@/styles/variables.scss'
 
 export default {
-  components: { SidebarItem, Logo },
+  components: {
+    SidebarItem
+  },
   computed: {
     ...mapGetters([
-      'permission_routes',
+      'energy_routes',
       'sidebar'
     ]),
     activeMenu() {
@@ -40,14 +41,10 @@ export default {
       }
       return path
     },
-    showLogo() {
-      return this.$store.state.settings.sidebarLogo
-    },
     variables() {
       return variables
     },
     isCollapse() {
-      console.log(this)
       return !this.sidebar.opened
     }
   }

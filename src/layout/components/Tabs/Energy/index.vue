@@ -1,25 +1,59 @@
 <!--  -->
 <template>
   <div>
-    <p>这里是能耗管理界面</p>
+    <sidebar class="sidebar-container" />
+    <hamburger
+      id="hamburger-container"
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
+    <app-main />
   </div>
 </template>
 
 <script>
+import Hamburger from '@/components/Hamburger'
+import AppMain from '@/layout/components/AppMain'
+import Sidebar from '@/layout/components/EnergySidebar'
+import { mapGetters } from 'vuex'
 export default {
-  components: {},
+  components: {
+    Hamburger,
+    AppMain,
+    Sidebar
+  },
   data() {
     return {
     }
   },
 
-  computed: {},
+  computed: {
+    ...mapGetters(['sidebar', 'energySidebar'])
+  },
 
   mounted: {},
 
-  methods: {}
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    }
+  }
 }
 
 </script>
 <style lang='scss' scoped>
+.hamburger-container {
+  line-height: 50px;
+  height: 50px;
+  z-index: 1005;
+  position: absolute;
+  cursor: pointer;
+  transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.025);
+  }
+}
 </style>
