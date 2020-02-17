@@ -13,13 +13,8 @@
 </template>
 
 <script>
-import RightPanel from '@/components/RightPanel'
 import {
-  AppMain,
   Navbar,
-  Settings,
-  Sidebar,
-  TagsView,
   Main,
   Monitor,
   Energy,
@@ -35,12 +30,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'Layout',
   components: {
-    AppMain,
     Navbar,
-    RightPanel,
-    Settings,
-    Sidebar,
-    TagsView,
     Main,
     Monitor,
     Energy,
@@ -50,12 +40,12 @@ export default {
     Smart,
     PlatSetting
   },
+  mixins: [ResizeMixin],
   data() {
     return {
       currentView: 'Main'
     }
   },
-  mixins: [ResizeMixin],
   computed: {
     ...mapState({
       sidebar: state => state.app.sidebar,
@@ -114,8 +104,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~@/styles/mixin.scss";
-@import "~@/styles/variables.scss";
+@import '~@/styles/mixin.scss';
+@import '~@/styles/variables.scss';
 
 .app-wrapper {
   @include clearfix;

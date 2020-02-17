@@ -219,7 +219,7 @@ export default {
     float: right;
     height: 100%;
     line-height: 50px;
-    z-index: 100002;
+    z-index: 1000;
     &:focus {
       outline: none;
     }

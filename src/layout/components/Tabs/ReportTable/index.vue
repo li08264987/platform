@@ -1,25 +1,34 @@
 <!--  -->
 <template>
-  <div>
-    <p>这里是报表管理界面</p>
+  <div class="report-contaiter">
+    <sidebar class="sidebar-container" />
+    <app-main />
   </div>
 </template>
 
 <script>
+import { AppMain, Sidebar } from '../../../components'
+
 export default {
-  components: {},
+  components: { AppMain, Sidebar },
   data() {
-    return {
-    }
+    return {}
   },
 
-  computed: {},
+  computed: {
+
+  },
 
   mounted: {},
 
   methods: {}
 }
-
 </script>
 <style lang='scss' scoped>
+.report-contaiter {
+  widows: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
 </style>
