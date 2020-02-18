@@ -79,7 +79,6 @@ export default {
           this.currentView = 'Monitor'
           break
         case 'Energy':
-          this.$router.push({ path: '/energySystem' })
           this.currentView = 'Energy'
           break
         case 'ReportTable':
