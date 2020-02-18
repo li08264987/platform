@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang='scss'>
 .el-input--suffix .el-input__inner {
     padding-right: 30px;
     background-color: transparent;
@@ -55,11 +55,11 @@ export default {
     font-size: 16px;
 }
 
-.el-tabs{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-}
+// .el-tabs{
+//   position: relative;
+//   display: flex;
+//   flex-direction: row;
+// }
 .el-radio-group{
     position: relative;
     display: flex;
