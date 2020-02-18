@@ -70,7 +70,6 @@ export default {
       this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
     },
     getTabId(data) {
-      console.log('获得了子组件的ID：' + data)
       switch (data) {
         case 'Main':
           this.currentView = 'Main'
@@ -79,7 +78,6 @@ export default {
           this.currentView = 'Monitor'
           break
         case 'Energy':
-          this.$router.push({ path: '/energySystem' })
           this.currentView = 'Energy'
           break
         case 'ReportTable':
