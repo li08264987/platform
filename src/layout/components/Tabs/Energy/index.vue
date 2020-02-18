@@ -19,12 +19,17 @@ export default {
     return {
     }
   },
-
+  beforeCreate() {
+    this.$router.push({ path: '/energySystem' })
+  },
   computed: {
     ...mapGetters(['sidebar', 'energySidebar'])
   },
 
   mounted: {},
+  destroyed() {
+    this.$router.push({ path: '/' })
+  },
 
   methods: {
     toggleSideBar() {

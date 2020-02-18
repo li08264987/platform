@@ -15,6 +15,7 @@
 <script>
 import {
   Navbar,
+  TagsView,
   Main,
   Monitor,
   Energy,
@@ -31,6 +32,7 @@ export default {
   name: 'Layout',
   components: {
     Navbar,
+    TagsView,
     Main,
     Monitor,
     Energy,
