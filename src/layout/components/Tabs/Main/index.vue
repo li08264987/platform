@@ -55,11 +55,11 @@ export default {
     font-size: 16px;
 }
 
-.el-tabs{
+/* .el-tabs{
   position: relative;
   display: flex;
   flex-direction: row;
-}
+} */
 .el-radio-group{
     position: relative;
     display: flex;
