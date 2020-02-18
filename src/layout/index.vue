@@ -50,12 +50,12 @@ export default {
     Smart,
     PlatSetting
   },
+  mixins: [ResizeMixin],
   data() {
     return {
       currentView: 'Main'
     }
   },
-  mixins: [ResizeMixin],
   computed: {
     ...mapState({
       sidebar: state => state.app.sidebar,
@@ -87,6 +87,7 @@ export default {
           this.currentView = 'Monitor'
           break
         case 'Energy':
+          this.$router.push('/energySystem')
           this.currentView = 'Energy'
           break
         case 'ReportTable':

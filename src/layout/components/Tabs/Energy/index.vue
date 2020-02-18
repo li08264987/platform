@@ -1,13 +1,16 @@
 <!--  -->
 <template>
   <div>
-    <p>这里是能耗管理界面</p>
+    <sidebar class="sidebar-container" />
+    <app-main />
   </div>
 </template>
 
 <script>
+import AppMain from '@/layout/components/AppMain'
+import Sidebar from '@/layout/components/EnergySidebar/index'
 export default {
-  components: {},
+  components: { AppMain, Sidebar },
   data() {
     return {
     }
