@@ -138,20 +138,20 @@ export default {
 .logo {
   position: absolute;
   top: 10px;
-  left: 50px;
+  left: 20px;
 }
 .tittle-cn {
   font-size: 2.4ex;
   font-weight: bold;
   width: 300px;
-  left: 90px;
+  left: 60px;
   position: absolute;
   top: -12px;
 }
 .tittle-en {
   font-size: 0.4ex;
   width: 300px;
-  left: 90px;
+  left: 60px;
   position: absolute;
   top: 20px;
 }
