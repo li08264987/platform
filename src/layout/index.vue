@@ -5,7 +5,7 @@
       <navbar ref="refNavbar" :on-update="getTabId" />
       <tags-view v-if="needTagsView" />
     </div>
-    <div :class="{hasTagsView:needTagsView,'sidebar-hide':sidebarHide}" class="main-container">
+    <div :class="{hasTagsView:needTagsView}" class="main-container">
       <!--:is实现多个组件实现同一个挂载点-->
       <component :is="currentView" />
     </div>
@@ -50,13 +50,12 @@ export default {
     Smart,
     PlatSetting
   },
-  mixins: [ResizeMixin],
   data() {
     return {
-      currentView: 'Main',
-      sidebarHide: true
+      currentView: 'Main'
     }
   },
+  mixins: [ResizeMixin],
   computed: {
     ...mapState({
       sidebar: state => state.app.sidebar,
@@ -83,51 +82,36 @@ export default {
       switch (data) {
         case 'Main':
           this.currentView = 'Main'
-          this.sidebarHide = true
           break
         case 'Monitor':
           this.currentView = 'Monitor'
-          this.sidebarHide = false
           break
         case 'Energy':
           this.currentView = 'Energy'
-          this.sidebarHide = false
           break
         case 'ReportTable':
           this.currentView = 'ReportTable'
-          this.sidebarHide = false
           break
         case 'Diagnosis':
           this.currentView = 'Diagnosis'
-          this.sidebarHide = false
           break
         case 'Device':
           this.currentView = 'Device'
-          this.sidebarHide = false
           break
         case 'Smart':
           this.currentView = 'Smart'
-          this.sidebarHide = false
           break
         case 'PlatSetting':
           this.currentView = 'PlatSetting'
-          this.sidebarHide = false
           break
         default:
           this.currentView = 'Main'
-          this.sidebarHide = true
           break
       }
     }
   }
 }
 </script>
-
-<style>
-#app .sidebar-hide {
-  margin-left: 0 !important;
-}
-</style>
 
 <style lang="scss" scoped>
 @import "~@/styles/mixin.scss";
