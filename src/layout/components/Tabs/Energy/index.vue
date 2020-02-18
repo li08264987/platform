@@ -27,6 +27,9 @@ export default {
   },
 
   mounted: {},
+  destroyed() {
+    this.$router.push({ path: '/' })
+  },
 
   methods: {
     toggleSideBar() {
