@@ -16,11 +16,11 @@
 
 <script>
 import backgroud from './backgroud.js'
-import DutyArrangement from '@/components/Tabs/Main/DutyArrangement'
-import EnergyStatus from '@/components/Tabs/Main/EnergyStatus'
-import OperationWatch from '@/components/Tabs/Main/OperationWatch'
-import FaultWarning from '@/components/Tabs/Main/FaultWarning'
-import ElectricRank from '@/components/Tabs/Main/ElectricRank'
+import DutyArrangement from './dutyArrangement'
+import EnergyStatus from './energyStatus'
+import OperationWatch from './operationWatch'
+import FaultWarning from './faultWarning'
+import ElectricRank from './electricRank'
 export default {
   name: 'Main',
   components: {
