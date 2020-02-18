@@ -19,7 +19,9 @@ export default {
     return {
     }
   },
-
+  beforeCreate() {
+    this.$router.push({ path: '/energySystem' })
+  },
   computed: {
     ...mapGetters(['sidebar', 'energySidebar'])
   },
