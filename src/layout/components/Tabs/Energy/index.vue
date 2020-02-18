@@ -2,24 +2,16 @@
 <template>
   <div>
     <sidebar class="sidebar-container" />
-    <hamburger
-      id="hamburger-container"
-      :is-active="sidebar.opened"
-      class="hamburger-container"
-      @toggleClick="toggleSideBar"
-    />
     <app-main />
   </div>
 </template>
 
 <script>
-import Hamburger from '@/components/Hamburger'
 import AppMain from '@/layout/components/AppMain'
 import Sidebar from '@/layout/components/EnergySidebar'
 import { mapGetters } from 'vuex'
 export default {
   components: {
-    Hamburger,
     AppMain,
     Sidebar
   },
