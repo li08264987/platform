@@ -8,7 +8,7 @@
 
 <script>
 import AppMain from '@/layout/components/AppMain'
-import Sidebar from '@/layout/components/EnergySidebar'
+import Sidebar from './EnergySidebar/index'
 import { mapGetters } from 'vuex'
 export default {
   components: {
