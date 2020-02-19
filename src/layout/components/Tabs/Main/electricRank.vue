@@ -49,6 +49,37 @@ export default {
 }
 </script>
 
+<style lang='scss'>
+#right-container {
+  .dianli-group{
+    .el-radio-group{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    /* top: 715px;
+    left: 30px;*/
+    border: unset;
+    }
+    .el-radio-button__inner{
+      background-color: rgba(0,0,0,0);
+      border-top: 1px solid #243B9E;
+      border-bottom: 1px solid #243B9E;
+      border-right:1px solid #243B9E;
+      height: 32px;
+      width: 64px;
+      line-height: 10px;
+    }
+    .el-radio-button:first-child .el-radio-button__inner{
+      border-left:1px solid #243B9E;
+    }
+    .el-radio-button__orig-radio:checked+.el-radio-button__inner{
+      background-image: linear-gradient(132deg, #602FE9, #2F54EB);
+      background-color: transparent;
+    }
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 #right-container .dianli-consumer{
   position: relative;
