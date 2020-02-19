@@ -5,22 +5,14 @@
         <router-view :key="key" />
       </keep-alive>
     </transition>
-    <hamburger
-      id="hamburger-container"
-      :is-active="sidebar.opened"
-      class="hamburger-container"
-      @toggleClick="toggleSideBar"
-    />
   </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import Hamburger from '@/components/Hamburger'
 export default {
   name: 'AppMain',
   components: {
-    Hamburger
   },
   computed: {
     cachedViews() {
@@ -30,11 +22,6 @@ export default {
       return this.$route.path
     },
     ...mapGetters(['sidebar', 'energySidebar'])
-  },
-  methods: {
-    toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
-    }
   }
 }
 </script>
@@ -69,20 +56,6 @@ export default {
 .el-popup-parent--hidden {
   .fixed-header {
     padding-right: 15px;
-  }
-}
-.hamburger-container {
-  line-height: 50px;
-  height: 50px;
-  z-index: 1005;
-  position: absolute;
-  top: 0;
-  cursor: pointer;
-  transition: background 0.3s;
-  -webkit-tap-highlight-color: transparent;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.025);
   }
 }
 </style>

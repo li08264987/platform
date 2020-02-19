@@ -1,6 +1,12 @@
 <template>
   <div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
+      <hamburger
+        id="hamburger-energy-container"
+        :is-active="sidebar.opened"
+        class="hamburger-container"
+        @toggleClick="toggleSideBar"
+      />
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
@@ -21,10 +27,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
-import variables from '@/styles/variables.scss'
+import variables from './sidbar.scss'
+import Hamburger from '@/components/Hamburger'
 
 export default {
   components: {
+    Hamburger,
     SidebarItem
   },
   computed: {
@@ -47,6 +55,44 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
+  },
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .sidebar-container {
+    text-shadow: 0 0 0;
+  }
+  .sidebar-container .is-active>.el-submenu__title {
+    color: '#304156';
+  }
+  .sidebar-container .submenu-title-noDropdown:hover,
+  .sidebar-container .el-submenu__title:hover {
+    background-color: rgba(40, 87, 255, 0.1) !important;
+  }
+  .sidebar-container .nest-menu .el-submenu>.el-submenu__title,
+  .sidebar-container .el-submenu .el-menu-item {
+    background-color: #fff;
+  }
+  .sidebar-container .submenu-title-noDropdown:hover,
+  .sidebar-container .el-submenu__title:hover {
+    background-color: rgba(40, 87, 255, 0.1) !important;
+  }
+
+  .hamburger-container {
+    line-height: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.025);
+    }
+  }
+</style>
