@@ -78,8 +78,22 @@ export default {
 }
 
 </script>
-<style lang='scss' scoped>
 
+<style lang='scss'>
+#left-container .duty-select{
+    .el-input{
+      width: 77px;
+    }
+    .el-input--suffix .el-input__inner {
+    padding-right: 30px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    }
+  }
+</style>
+<style lang='scss' scoped>
 #left-container .duty-select{
   position: relative;
   top: 60px;

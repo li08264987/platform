@@ -44,13 +44,28 @@ export default {
 }
 
 </script>
+
+<style lang='scss'>
+#left-container .energy-select{
+  .el-input{
+      width: 70px;
+    }
+    .el-input--suffix .el-input__inner {
+    padding-right: 30px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    }
+}
+</style>
 <style lang='scss' scoped>
 #left-container .energy-state{
     position: relative;
     top: 257px;
 }
 #left-container .energy-select {
-    left: 357px;
+    left: 360px;
     width: 65px;
 }
 </style>
