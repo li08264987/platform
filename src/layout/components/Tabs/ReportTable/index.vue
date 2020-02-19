@@ -7,7 +7,9 @@
 </template>
 
 <script>
-import { AppMain, Sidebar } from '../../../components'
+import { AppMain } from '../../../components'
+import Sidebar from '@/layout/components/Tabs/ReportTable/reportSildebar.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: { AppMain, Sidebar },
@@ -16,12 +18,23 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['sidebar', 'reportSildebar'])
+  },
 
+  beforeCreate() {
+    this.$router.push({ path: '/reportTable' })
   },
 
   mounted: {},
+  destroyed() {
+    this.$router.push({ path: '/' })
+  },
 
-  methods: {}
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    }
+  }
 }
 </script>
 <style lang='scss' scoped>
