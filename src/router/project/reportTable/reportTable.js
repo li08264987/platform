@@ -1,6 +1,6 @@
 import Layout from '@/layout'
 
-const reportTableRouter = [{
+const reportTableRouters = [{
   path: '/reportTable',
   redirect: '/reportTable/kongYa', // 重定向地址，在面包屑中点击会重定向去的地址
   component: Layout,
@@ -139,4 +139,4 @@ const reportTableRouter = [{
   ]
 }]
 
-export default reportTableRouter
+export default reportTableRouters

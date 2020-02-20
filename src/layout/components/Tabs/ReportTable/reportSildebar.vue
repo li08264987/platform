@@ -9,10 +9,15 @@
         :unique-opened="false"
         :default-openeds="['/reportTable','/reportTableChejian']"
         :active-text-color="variables.menuActiveText"
-        :collapse-transition="false"
+        :collapse-transition="true"
         mode="vertical"
       >
-        <sidebar-item v-for="route in energy_routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item
+          v-for="route in reportTable_routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -21,17 +26,14 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
-import variables from '@/styles/variables.scss'
+import variables from '../Style/sidbar.scss'
 
 export default {
   components: {
     SidebarItem
   },
   computed: {
-    ...mapGetters([
-      'energy_routes',
-      'sidebar'
-    ]),
+    ...mapGetters(['reportTable_routes', 'sidebar']),
     activeMenu() {
       const route = this.$route
       const { meta, path } = route
@@ -50,3 +52,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.el-menu-item {
+  color: black;
+}
+</style>

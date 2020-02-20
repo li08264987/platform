@@ -27,7 +27,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
-import variables from './sidbar.scss'
+// import variables from './sidbar.scss'
+import variables from '../../Style/sidbar.scss'
 import Hamburger from '@/components/Hamburger'
 
 export default {
@@ -69,7 +70,7 @@ export default {
     text-shadow: 0 0 0;
   }
   .sidebar-container .is-active>.el-submenu__title {
-    color: '#304156';
+    color: black;
   }
   .sidebar-container .submenu-title-noDropdown:hover,
   .sidebar-container .el-submenu__title:hover {
