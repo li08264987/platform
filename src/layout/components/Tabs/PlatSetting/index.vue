@@ -1,25 +1,47 @@
 <!--  -->
 <template>
-  <div>
-    <p>这里是平台设置界面</p>
+  <div class="report-contaiter">
+    <sidebar class="sidebar-container" />
+    <app-main />
   </div>
 </template>
 
 <script>
+import { AppMain } from '../../../components'
+import Sidebar from '@/layout/components/Tabs/PlatSetting/settingSildebar.vue'
+import { mapGetters } from 'vuex'
+
 export default {
-  components: {},
+  components: { AppMain, Sidebar },
   data() {
-    return {
-    }
+    return {}
   },
 
-  computed: {},
+  computed: {
+    ...mapGetters(['sidebar', 'settingSildebar'])
+  },
+
+  beforeCreate() {
+    this.$router.push({ path: '/platSetting' })
+  },
 
   mounted: {},
+  destroyed() {
+    this.$router.push({ path: '/' })
+  },
 
-  methods: {}
+  methods: {
+    toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    }
+  }
 }
-
 </script>
 <style lang='scss' scoped>
+.report-contaiter {
+  widows: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
 </style>

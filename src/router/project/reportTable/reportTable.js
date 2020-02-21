@@ -23,7 +23,7 @@ const reportTableRouters = [{
       }
     },
     {
-      path: 'kongYa',
+      path: 'lengShui',
       component: () => import('@/views/project/reportTable/kongYa'),
       name: 'reportTablekongYa',
       meta: {
@@ -34,7 +34,7 @@ const reportTableRouters = [{
       }
     },
     {
-      path: 'qingdan',
+      path: 'danQi',
       component: () => import('@/views/icons/index'),
       name: 'reportTableQingdan',
       meta: {
@@ -43,7 +43,7 @@ const reportTableRouters = [{
         icon: 'documentation'
       }
     }, {
-      path: 'zhenkong',
+      path: 'qingQi',
       component: () => import('@/views/project/reportTable/kongYa'),
       name: 'reportTableZhenkong',
       meta: {

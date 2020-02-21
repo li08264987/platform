@@ -18,7 +18,12 @@
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in energy_routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item
+          v-for="route in energy_routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -37,10 +42,7 @@ export default {
     SidebarItem
   },
   computed: {
-    ...mapGetters([
-      'energy_routes',
-      'sidebar'
-    ]),
+    ...mapGetters(['energy_routes', 'sidebar']),
     activeMenu() {
       const route = this.$route
       const { meta, path } = route
@@ -57,6 +59,7 @@ export default {
       return !this.sidebar.opened
     }
   },
+  mounted() {},
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
@@ -66,34 +69,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .sidebar-container {
-    text-shadow: 0 0 0;
-  }
-  .sidebar-container .is-active>.el-submenu__title {
-    color: black;
-  }
-  .sidebar-container .submenu-title-noDropdown:hover,
-  .sidebar-container .el-submenu__title:hover {
-    background-color: rgba(40, 87, 255, 0.1) !important;
-  }
-  .sidebar-container .nest-menu .el-submenu>.el-submenu__title,
-  .sidebar-container .el-submenu .el-menu-item {
-    background-color: #fff;
-  }
-  .sidebar-container .submenu-title-noDropdown:hover,
-  .sidebar-container .el-submenu__title:hover {
-    background-color: rgba(40, 87, 255, 0.1) !important;
-  }
+.sidebar-container {
+  text-shadow: 0 0 0;
+}
+.sidebar-container .is-active > .el-submenu__title {
+  color: black;
+}
+.sidebar-container .submenu-title-noDropdown:hover,
+.sidebar-container .el-submenu__title:hover {
+  background-color: rgba(40, 87, 255, 0.1) !important;
+}
+.sidebar-container .nest-menu .el-submenu > .el-submenu__title,
+.sidebar-container .el-submenu .el-menu-item {
+  background-color: #fff;
+}
+.sidebar-container .submenu-title-noDropdown:hover,
+.sidebar-container .el-submenu__title:hover {
+  background-color: rgba(40, 87, 255, 0.1) !important;
+}
 
-  .hamburger-container {
-    line-height: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: background 0.3s;
-    -webkit-tap-highlight-color: transparent;
+.hamburger-container {
+  line-height: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
 
-    &:hover {
-      background: rgba(0, 0, 0, 0.025);
-    }
+  &:hover {
+    background: rgba(0, 0, 0, 0.025);
   }
+}
 </style>

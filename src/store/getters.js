@@ -13,6 +13,7 @@ const getters = {
   permission_routes: state => state.permission.routes,
   energy_routes: state => state.permission.energyRoutes,
   reportTable_routes: state => state.permission.reportTableRoutes,
+  platSetting_routes: state => state.permission.platformSettingRoutes,
   errorLogs: state => state.errorLog.logs
 }
 export default getters
