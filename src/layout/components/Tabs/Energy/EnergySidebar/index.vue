@@ -18,16 +18,19 @@
         :collapse-transition="false"
         mode="vertical"
       >
-<<<<<<< HEAD
+        <<<<<<< HEAD
         <sidebar-item
           v-for="route in energy_routes"
           :key="route.path"
           :item="route"
           :base-path="route.path"
-        />
-=======
-        <sidebar-item v-for="route in monitor_routes" :key="route.path" :item="route" :base-path="route.path" />
->>>>>>> 06e8a5671ce9aa20d19b6f16d3b10636de194e73
+        />=======
+        <sidebar-item
+          v-for="route in monitor_routes"
+          :key="route.path"
+          :item="route"
+          :base-path="route.path"
+        />>>>>>>> 06e8a5671ce9aa20d19b6f16d3b10636de194e73
       </el-menu>
     </el-scrollbar>
   </div>
@@ -46,14 +49,8 @@ export default {
     SidebarItem
   },
   computed: {
-<<<<<<< HEAD
     ...mapGetters(['energy_routes', 'sidebar']),
-=======
-    ...mapGetters([
-      'monitor_routes',
-      'sidebar'
-    ]),
->>>>>>> 06e8a5671ce9aa20d19b6f16d3b10636de194e73
+
     activeMenu() {
       const route = this.$route
       const { meta, path } = route

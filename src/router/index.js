@@ -398,11 +398,7 @@ export const asyncRoutes = [
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-<<<<<<< HEAD
-  routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters)
-=======
-  routes: constantRoutes.concat(energyRouters, reportTableRouters).concat(monitorRouters)
->>>>>>> 06e8a5671ce9aa20d19b6f16d3b10636de194e73
+  routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters, monitorRouters)
 })
 
 const router = createRouter()

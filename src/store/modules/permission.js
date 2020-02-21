@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import { asyncRoutes, constantRoutes, energyRouters, reportTableRouters, platSettingRouters } from '@/router'
-=======
-import { asyncRoutes, constantRoutes, energyRouters,monitorRouters, reportTableRouters } from '@/router'
->>>>>>> 06e8a5671ce9aa20d19b6f16d3b10636de194e73
+
+import { asyncRoutes, constantRoutes, energyRouters, reportTableRouters, platSettingRouters,monitorRouters } from '@/router'
 
 /**
  * Use meta.role to determine if the current user has permission
