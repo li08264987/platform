@@ -1,5 +1,5 @@
 <template>
-  <div style="height:99%;">
+  <div class="kongYaMain">
     <div class="tools">
       <el-select v-model="selectvalue" placeholder="自定义">
         <el-option
@@ -36,14 +36,29 @@
             <i class="el-icon-platform-eleme" />
             <span @click="showParamPanel">{{ showParamName }}</span>
             <i class="el-icon-s-tools" />
-            <span>数据设置</span>
+            <el-select
+              class="selectbtn"
+              v-model="value2"
+              multiple
+              collapse-tags
+              placeholder="参数设置">
+              <el-option
+                v-for="item in paramOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
             <i class="el-icon-s-custom" />
             <span>值班显示</span>
             <el-button style="float:right;margin-right:20px;">下一页<i class="el-icon-arrow-right el-icon--right" /></el-button>
           </div>
           <div v-show="showNeibu" style="height:99%">
-            <svg id="backgroud" viewBox="-150 -20 1800 920" version="1.1" xmlns="http://www.w3.org/2000/svg" v-html="html"></svg>
-            </svg id="backgroud" viewbox="-150></div>
+            <svg id="backgroud" viewBox="-150 -20 1800 920" 
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            v-html="html"></svg>
+          </div>
           <div v-show="showParam" class="rightparam">
             <div style="height:6%;display:flex;align-items:center;justify-content:center;font-weight:bold">ZH-10000+离心机通讯参数</div>
             <div class="righttop">
@@ -142,18 +157,29 @@
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="空压机" name="second" />
-      <el-tab-pane label="高心空压机" name="third" />
+      <el-tab-pane label="空压机组" name="second">
+         
+      </el-tab-pane>
+      <el-tab-pane label="高心空压机" name="third">
+        <div v-show="showNeibu" style="height:99%">
+          <svg id="backgroud" viewBox="-150 -20 1800 920" 
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          v-html="kongyaji"></svg>
+        </div>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 <script>
-import svg from '../../../../../src/api/beibu'
+import svg from '@/api/monitor/neibu'
+import kongyaji from '@/api/monitor/kongyaji'
 export default {
-  name: 'MonitorView',
+  name: 'monitorView',
   data() {
     return {
       html: svg,
+      kongyaji:kongyaji,
       activeName: 'first',
       options: [{
         value: 'year',
@@ -165,6 +191,20 @@ export default {
         value: 'day',
         label: '日'
       }],
+      paramOptions: [{
+        value: 'temp',
+        label: '温度'
+      }, {
+        value: 'press',
+        label: '压力'
+      }, {
+        value: 'flow',
+        label: '流量'
+      }, {
+        value: 'power',
+        label: '功率'
+      }],
+      value2: [],
       dateinput: '',
       typeinput: '',
       selectvalue: '',
@@ -172,7 +212,7 @@ export default {
       showVideo: false,
       showParam: false,
       showHis: false,
-      showParamName: '隐藏参数',
+      showParamName: '隐藏数据',
       params: [{
         name: '马达绕组U温度',
         value: '40.8℃'
@@ -300,30 +340,52 @@ export default {
     showParamPanel() {
       if (this.showParam) {
         this.showParam = false
-        this.showParamName = '隐藏参数'
+        this.showParamName = '隐藏数据'
       } else {
         this.showParam = true
-        this.showParamName = '显示参数'
+        this.showParamName = '显示数据'
       }
     }
   }
 }
 </script>
 <style lang="scss">
-  .tabs{
-    height: 99%;
-    .el-tabs__header{
-      width: 250px;
-    }
-    .el-tab-pane{
+  .kongYaMain{
+    height:99%;
+    margin-left:50px;
+    .tabs{
       height: 99%;
+      .el-tabs__header{
+        width: 270px;
+      }
+      .el-tab-pane{
+        height: 99%;
+      }
+      .el-tabs__content{
+        height: 99%;
+      }
     }
-    .el-tabs__content{
-      height: 99%;
+    .el-input{
+      width: 200px;
     }
-  }
-  .el-input{
-    width: 200px;
+    .selectbtn{
+      .el-input{
+        width: 120px;
+      }
+      input::-webkit-input-placeholder {
+        color: #000000;
+      }
+      input::-moz-input-placeholder {
+        color: #000000;
+      }
+      input::-ms-input-placeholder {
+        color: #000000;
+      }
+      .el-input--suffix .el-input__inner{
+        width: 100px;
+        padding-left: 0px;
+      }
+    }
   }
 </style>
 <style scoped lang="scss">
@@ -332,8 +394,11 @@ export default {
     right: 9px;
     margin-top: 5px;
   }
+  .selectbtn{
+    width: 100px;
+  }
   .rightparam{
-  height:93%;
+  height:91%;
   width:400px;
   position: absolute;
   right: 0px;
@@ -445,7 +510,7 @@ export default {
         margin-top: 5px;
         .leftdiv{
           float: left;
-          width: 78%;
+          width: 77%;
           height:100%;
           border:0px;
           span{

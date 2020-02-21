@@ -1,10 +1,10 @@
 import Layout from '@/layout'
 
-const energyRouter = [{
-  path: '/energySystem',
-  redirect: '/energySystem/kongya', // 重定向地址，在面包屑中点击会重定向去的地址
+const monitorRouter = [{
+  path: '/monitorSystem',
+  redirect: '/monitorSystem/kongya', // 重定向地址，在面包屑中点击会重定向去的地址
   component: Layout,
-  name: 'EnergySystem',
+  name: 'MonitorSystem',
   meta: {
     title: '功能系统',
     icon: 'example',
@@ -13,8 +13,8 @@ const energyRouter = [{
   children: [
     {
       path: 'kongya',
-      component: () => import('@/views/energy/kongya/index'),
-      name: 'EnergyKongya',
+      component: () => import('@/views/project/monitor/kongya/index'),
+      name: 'MonitorKongya',
       meta: {
         title: '空压系统',
         roles: ['admin'],
@@ -23,8 +23,8 @@ const energyRouter = [{
       }
     }, {
       path: 'qingdan',
-      component: () => import('@/views/icons/index'),
-      name: 'EnergyQingdan',
+      component: () => import('@/views/project/monitor/kongya/index'),
+      name: 'MonitorQingdan',
       meta: {
         title: '氢氮系统',
         roles: ['admin'],
@@ -32,8 +32,8 @@ const energyRouter = [{
       }
     }, {
       path: 'zhenkong',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyZhenkong',
+      component: () => import('@/views/project/monitor/kongya/index'),
+      name: 'MonitorZhenkong',
       meta: {
         title: '真空系统',
         roles: ['admin'],
@@ -41,24 +41,24 @@ const energyRouter = [{
       }
     }, {
       path: 'dianli',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyDianli',
+      component: () => import('@/views/project/monitor/kongya/index'),
+      name: 'MonitorDianli',
       meta: {
         title: '电力系统',
         icon: 'documentation'
       }
     }, {
       path: 'lengshui',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyLengshui',
+      component: () => import('@/views/project/monitor/kongya/index'),
+      name: 'MonitorLengshui',
       meta: {
         title: '冷水系统',
         icon: 'documentation'
       }
     }, {
       path: 'reshui',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyReshui',
+      component: () => import('@/views/project/monitor/kongya/index'),
+      name: 'MonitorReshui',
       meta: {
         title: '热水系统',
         icon: 'documentation'
@@ -66,10 +66,10 @@ const energyRouter = [{
     }
   ]
 }, {
-  path: '/energyChejian',
-  redirect: '/energyChejian/first', // 重定向地址，在面包屑中点击会重定向去的地址
+  path: '/monitorChejian',
+  redirect: '/monitorChejian/first', // 重定向地址，在面包屑中点击会重定向去的地址
   component: Layout,
-  name: 'EnergySystem',
+  name: 'MonitorSystem',
   meta: {
     title: '用能车间',
     icon: 'example'
@@ -77,48 +77,48 @@ const energyRouter = [{
   children: [
     {
       path: 'first',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyFirst',
+      component: () => import('@/views/project/monitor/firstShop'),
+      name: 'MonitorFirst',
       meta: {
         title: '一号车间',
         icon: 'documentation'
       }
     }, {
       path: 'second',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergySecond',
+      component: () => import('@/views/project/monitor/firstShop'),
+      name: 'MonitorSecond',
       meta: {
         title: '二号车间',
         icon: 'documentation'
       }
     }, {
       path: 'third',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyThird',
+      component: () => import('@/views/project/monitor/firstShop'),
+      name: 'MonitorThird',
       meta: {
         title: '三号车间',
         icon: 'documentation'
       }
     }, {
       path: 'fouth',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyFouth',
+      component: () => import('@/views/project/monitor/firstShop'),
+      name: 'MonitorFouth',
       meta: {
         title: '四号车间',
         icon: 'documentation'
       }
     }, {
       path: 'jiaoshui',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyJiaoshui',
+      component: () => import('@/views/project/monitor/useEnergy'),
+      name: 'MonitorJiaoshui',
       meta: {
         title: '胶水厂区',
         icon: 'documentation'
       }
     }, {
       path: 'dongli',
-      component: () => import('@/views/energy/qingdan'),
-      name: 'EnergyDongli',
+      component: () => import('@/views/project/monitor/useEnergy'),
+      name: 'MonitorDongli',
       meta: {
         title: '动力车间',
         icon: 'documentation'
@@ -127,4 +127,4 @@ const energyRouter = [{
   ]
 }]
 
-export default energyRouter
+export default monitorRouter

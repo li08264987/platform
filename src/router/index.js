@@ -12,6 +12,7 @@ import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 import energyRouter from './project/energy/energy'
+import monitorRouter from './project/monitor/monitor'
 import reportTableRouter from './project/reportTable/reportTable'
 import platformSettingRouter from './project/platSetting/platSetting'
 
@@ -128,6 +129,7 @@ export const constantRoutes = [
 ]
 
 export const energyRouters = energyRouter
+export const monitorRouters = monitorRouter
 export const reportTableRouters = reportTableRouter
 export const platSettingRouters = platformSettingRouter
 /**
@@ -396,7 +398,11 @@ export const asyncRoutes = [
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
+<<<<<<< HEAD
   routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters)
+=======
+  routes: constantRoutes.concat(energyRouters, reportTableRouters).concat(monitorRouters)
+>>>>>>> 06e8a5671ce9aa20d19b6f16d3b10636de194e73
 })
 
 const router = createRouter()
