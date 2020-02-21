@@ -6,7 +6,17 @@
         <div v-else class="tabItemWithDropdown">
           {{ item.title }}/{{ item.children[tabIndex1].title }}
           <i v-show="index==0" class="el-icon-caret-bottom" />
-          <div v-show="showDownPanel" class="tabDownPanel" @click="dropdownClick(item.children[1-tabIndex1].name)">{{ item.title }}/{{ item.children[1-tabIndex1].title }}</div>
+          <div v-show="showDownPanel" class="tabDownPanel">
+            <div
+              v-for="(childItem,cIndex) in item.children"
+              v-show="cIndex!=tabIndex1"
+              :key="cIndex"
+              class="tabDownPanelItem"
+              @click="dropdownClick(cIndex, childItem.name)"
+            >
+              {{ childItem.title }}
+            </div>
+          </div>
         </div>
       </li>
     </ul>
@@ -22,6 +32,8 @@ import energyDimensions from './components/EnergyDimensions'
 import energySort from './components/EnergySort'
 import energyStandard from './components/EnergyStandard'
 import energyCompare from './components/EnergyCompare'
+import energyRealtime from './components/EnergyRealtime'
+import energyOrigin from './components/EnergyOrigin'
 
 export default {
   name: 'EnergyKY',
@@ -30,7 +42,9 @@ export default {
     energyDimensions,
     energySort,
     energyStandard,
-    energyCompare
+    energyCompare,
+    energyRealtime,
+    energyOrigin
   },
   data() {
     return {
@@ -43,6 +57,12 @@ export default {
         }, {
           name: 'energyDimensions',
           title: '多维统计'
+        }, {
+          name: 'energyRealtime',
+          title: '逐时报表'
+        }, {
+          name: 'energyOrigin',
+          title: '能源报表'
         }]
       }, {
         name: 'energySort',
@@ -79,8 +99,8 @@ export default {
         }
       }
     },
-    dropdownClick(cname) {
-      this.tabIndex1 = 1 - this.tabIndex1
+    dropdownClick(cIndex, cname) {
+      this.tabIndex1 = cIndex
       this.currentView = cname
     }
   }
@@ -120,6 +140,6 @@ ul.tabBar {
   width: 100%;
   background-color: white;
   box-shadow: 3px 3px 8px 0 rgba(197,202,213,0.4);
-  bottom: -52px;
+  top: 52px;
 }
 </style>
