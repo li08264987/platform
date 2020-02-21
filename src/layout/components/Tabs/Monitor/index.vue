@@ -1,27 +1,24 @@
 <template>
   <div style="height:90%;">
     <div :class="{hasTagsView:needTagsView}" style="height:100%;margin-left:10px;">
-      <sidebar class="sidebar-container" />
-      <!-- <app-main /> -->
-      <!-- <right-panel v-if="showSettings">
-        <settings />
-      </right-panel> -->
-      <MonitorView />
+      <monitorSideBar class="sidebar-container" />
+      <app-main style="height:98%;"/>
     </div>
   </div>
 </template>
 
 <script>
-import MonitorView from './MonitorView'
-import { Sidebar } from '../../../components'
+import AppMain from '@/layout/components/AppMain'
+import monitorSideBar  from './monitorSideBar'
 export default {
   name: 'Monitor',
   components: {
-    MonitorView,
-    Sidebar
+    AppMain,
+    monitorSideBar
   },
   data() {
     return {
+      needTagsView:'Main'
     }
   }
 }

@@ -7,12 +7,12 @@
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
         :unique-opened="false"
-        :default-openeds="['/energySystem','/energyChejian']"
+        :default-openeds="['/monitorSystem','/monitorChejian']"
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in monitor_routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in energy_routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -24,12 +24,13 @@ import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
 import variables from '@/styles/variables.scss'
 
 export default {
+  name: 'monitorSideBar',
   components: {
     SidebarItem
   },
   computed: {
     ...mapGetters([
-      'monitor_routes',
+      'energy_routes',
       'sidebar'
     ]),
     activeMenu() {
