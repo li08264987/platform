@@ -423,8 +423,8 @@ var back = '\n' +
 '                <text id="529复制-8" font-family="Bebas" font-size="24" font-weight="normal" line-spacing="22" fill="#D6E4FF">\n' +
 '                    <tspan x="0" y="577.840942">529</tspan>\n' +
 '                </text>\n' +
-'                <text id="运行监视" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="18" font-weight="500" line-spacing="16" fill="#C8D6FE">\n' +
-'                    <tspan x="16" y="698">运行监视</tspan>\n' +
+'                <text id="运行监测" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="18" font-weight="500" line-spacing="16" fill="#C8D6FE">\n' +
+'                    <tspan x="16" y="698">运行监测</tspan>\n' +
 '                </text>\n' +
 '            </g>\n' +
 '        </g>\n' +
