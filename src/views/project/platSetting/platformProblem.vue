@@ -1,7 +1,7 @@
 <!--  -->
 <template>
-  <div>
-      <p>这是报表管理左侧第一个界面</p>
+    <div>
+    <p>这是报表管理问题反馈一个界面</p>
   </div>
 </template>
 
@@ -14,6 +14,8 @@ export default {
   },
 
   computed: {},
+
+  mounted: {},
 
   methods: {}
 }

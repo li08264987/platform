@@ -25,10 +25,13 @@ export default {
   computed: {
     ...mapGetters(['sidebar', 'energySidebar'])
   },
-
+  created() {
+    if (!this.sidebar.opened) this.$store.dispatch('app/toggleSideBar')
+  },
   mounted: {},
   destroyed() {
     this.$router.push({ path: '/' })
+    this.$store.dispatch('tagsView/delAllViews')
   },
 
   methods: {

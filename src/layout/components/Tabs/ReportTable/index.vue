@@ -25,11 +25,9 @@ export default {
     this.$router.push({ path: '/reportTable' })
   },
 
-  mounted: {},
   destroyed() {
     this.$router.push({ path: '/' })
   },
-
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')

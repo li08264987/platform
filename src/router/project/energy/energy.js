@@ -2,7 +2,7 @@ import Layout from '@/layout'
 
 const energyRouter = [{
   path: '/energySystem',
-  redirect: '/energySystem/kongya', // 重定向地址，在面包屑中点击会重定向去的地址
+  redirect: '/energySystem/energyKongya', // 重定向地址，在面包屑中点击会重定向去的地址
   component: Layout,
   name: 'EnergySystem',
   meta: {
@@ -12,14 +12,13 @@ const energyRouter = [{
   },
   children: [
     {
-      path: 'kongya',
+      path: 'energyKongya',
       component: () => import('@/views/project/energy/kongya/index'),
       name: 'EnergyKongya',
       meta: {
         title: '空压系统',
         roles: ['admin'],
-        icon: 'documentation',
-        affix: true
+        icon: 'documentation'
       }
     }, {
       path: 'qingdan',
@@ -69,7 +68,7 @@ const energyRouter = [{
   path: '/energyChejian',
   redirect: '/energyChejian/first', // 重定向地址，在面包屑中点击会重定向去的地址
   component: Layout,
-  name: 'EnergySystem',
+  name: 'EnergyChejian',
   meta: {
     title: '用能车间',
     icon: 'example'

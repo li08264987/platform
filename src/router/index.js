@@ -14,6 +14,7 @@ import nestedRouter from './modules/nested'
 import energyRouter from './project/energy/energy'
 import monitorRouter from './project/monitor/monitor'
 import reportTableRouter from './project/reportTable/reportTable'
+import platformSettingRouter from './project/platSetting/platSetting'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -130,6 +131,7 @@ export const constantRoutes = [
 export const energyRouters = energyRouter
 export const monitorRouters = monitorRouter
 export const reportTableRouters = reportTableRouter
+export const platSettingRouters = platformSettingRouter
 /**
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
@@ -396,7 +398,7 @@ export const asyncRoutes = [
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes.concat(energyRouters, reportTableRouters).concat(monitorRouters)
+  routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters, monitorRouters)
 })
 
 const router = createRouter()
