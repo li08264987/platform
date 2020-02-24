@@ -158,7 +158,6 @@
         </div>
       </el-tab-pane>
       <el-tab-pane label="空压机组" name="second">
-         
       </el-tab-pane>
       <el-tab-pane label="高心空压机" name="third">
         <div v-show="showNeibu" style="height:99%">

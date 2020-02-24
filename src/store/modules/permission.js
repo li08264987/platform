@@ -44,7 +44,7 @@ const mutations = {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
     state.energyRoutes = energyRouters
-    state.energyRoutes = monitorRouters
+    state.monitorRoutes = monitorRouters
     state.reportTableRoutes = reportTableRouters
   }
 }

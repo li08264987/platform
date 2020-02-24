@@ -12,7 +12,7 @@
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in energy_routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in monitor_routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -21,7 +21,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
-import variables from '@/styles/variables.scss'
+import variables from '../Style/sidbar.scss'
 
 export default {
   name: 'monitorSideBar',
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'energy_routes',
+      'monitor_routes',
       'sidebar'
     ]),
     activeMenu() {

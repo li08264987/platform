@@ -41,6 +41,8 @@
     data() {
       return {
         html:svg,
+        dateinput: '',
+        typeinput: '',
         activeName: 'first',
         Floors:[
           {
