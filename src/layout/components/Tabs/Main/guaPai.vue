@@ -232,9 +232,6 @@ img {
     flex-grow: 1;
     height: 0;
     width: 100%;
-    .pic-donglizhan{
-      
-    }
     .line{
       height: 1px;
       width: 8vw;
