@@ -1,14 +1,13 @@
 <template>
   <div class="dianli-consumer">
-    <div class="first-row" style="display:flex;flex-direction:row;">
+    <div class="first-rows" style="display:flex;flex-direction:row;">
       <div class="title">
         <div class="logo" />
         <span>电力消耗排名</span>
       </div>
     </div>
 
-    <div class="container">
-      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
         <el-tab-pane label="系统" name="first">
           <div class="radio-container">
             <el-radio-group v-model="dianliConsumeDefault" class="dianli-group">
@@ -44,7 +43,6 @@
         </el-tab-pane>
 
       </el-tabs>
-    </div>
 
   </div>
 </template>
@@ -80,9 +78,9 @@ export default {
 #right-container {
   .dianli-consumer{
     .el-tabs__header{
-      width: 200px;
-      top: -48px;
-      left: 290px;
+      width: 10vw;
+      top: -1.5vw;
+      left: 15vw;
       border-bottom: unset;
     }
     .el-tabs__item.is-active{
@@ -92,12 +90,12 @@ export default {
       color: #5F60FF;
     }
     .el-tabs__content{
-      top: -43px;
+      top: -2vw;
     }
     .el-tabs__item{
-      padding: 0 10px;
+      padding: 0 0.5vw !important;
       font-family: MicrosoftYaHeiUI;
-      font-size: 16px;
+      font-size: 0.85vw;
       letter-spacing: 0;
     }
     .el-tabs--card>.el-tabs__header .el-tabs__nav{
@@ -113,7 +111,6 @@ export default {
 
   .el-radio-group{
     position: relative;
-    left: 30px;
     border: unset;
     }
   .dianli-group{
@@ -122,9 +119,9 @@ export default {
       border-top: 1px solid #243B9E;
       border-bottom: 1px solid #243B9E;
       border-right:1px solid #243B9E;
-      height: 32px;
-      width: 64px;
-      line-height: 10px;
+      height: 1.8vw;
+      width: 3.95vw;
+      line-height: 0.9vw;
     }
     .el-radio-button:first-child .el-radio-button__inner{
       border-left:1px solid #243B9E;
@@ -140,62 +137,76 @@ export default {
 <style lang="scss" scoped>
 .dianli-consumer{
   position: relative;
-  width: 421px;
-  height: 340px;
-  margin-top: 19px;
-  margin-left: 20px;
+  width: 100%;
+  height: 0;
+  flex-shrink: 1;
+  flex-grow: 1;
+  margin-top: 1vw;
   background: rgba(52,24,171,0.20);
   border: 1px solid #3418AB;
   box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
+  .first-rows{
+    display:flex;
+    flex-direction:row;
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 100%;
+    height: 2vw;
+  }
+
   .title{
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 100%;
     .logo{
-        width: 4px;
-        height: 18px;
+        width: 0.2vw;
+        height: 1vw;
         background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
-        margin-left: 21px;
-        margin-top: 13px;
-        margin-right: 10px;
+        margin-left: 1vw;
+        margin-top: 0.8vw;
+        margin-right: 0.5vw;
     }
     span {
-      margin-top: 13px;
+      margin-top: 0.9vw;
       font-family: MicrosoftYaHeiUISemibold;
-      font-size: 18px;
+      font-size: 0.98vw;
       color: #C8D6FE;
       letter-spacing: 0;
-      line-height: 16px;
+      line-height:0.8vw;
     }
   }
-  .container{
-    margin-left: 20px;
-    margin-top: 20px;
+  .el-tabs{
+    padding-left: 1vw;
+    flex-shrink: 1;
+    flex-grow: 1;
   }
   .sum-row{
-    margin-top: 20px;
+    margin-top: 1vw;
   }
 }
 
 .sum-row span{
   font-family: MicrosoftYaHeiUI;
   display: block;
-  height: 35px;
+  height: 2.2vw;
   border: 1px solid #385FFD;
-  width: 380px;
-  font-size: 16px;
+  width: 19.8vw;
+  font-size: 0.8vw;
   display: flex;
-  line-height: 35px;
+  line-height: 2vw;
 }
 
 #right-container .sum-row span>label{
   font-family: MicrosoftYaHeiUI;
-  margin-left: 14px;
-  margin-right: 22px;
+  margin-left: 0.8vw;
+  margin-right: 1vw;
   color: #9FA8DA;
 }
 #right-container .sum-row span>strong{
   font-family: MicrosoftYaHeiUI;
-  font-size: 20px;
+  font-size: 1vw;
   color: #D6E4FF
 }
 

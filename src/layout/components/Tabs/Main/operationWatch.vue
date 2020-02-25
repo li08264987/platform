@@ -139,31 +139,44 @@ export default {
 <style lang='scss'>
 .operation-watch {
   .first-row{
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 100%;
+    height: 1.9vw;
     .title{
       display: flex;
       flex-direction: row;
+      flex-grow: 1;
+      flex-shrink: 1;
+      height: 100%;
       .logo{
-          width: 4px;
-          height: 18px;
+          width: 0.2vw;
+          height: 1vw;
           background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
-          margin-left: 21px;
-          margin-top: 13px;
-          margin-right: 10px;
+          margin-left: 1vw;
+          margin-top: 0.8vw;
+          margin-right: 0.5vw;
       }
       span {
-        margin-top: 13px;
+        margin-top: 0.9vw;
         font-family: MicrosoftYaHeiUISemibold;
-        font-size: 18px;
+        font-size: 0.98vw;
         color: #C8D6FE;
         letter-spacing: 0;
-        line-height: 16px;
+        line-height:0.8vw;
       }
     }
   }
 
+  .radio-container{
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 100%;
+    height: 2.5vw;
+  }
   .operation-group{
-    margin-top: 23px;
-    margin-left: 22px;
+    margin-top: 1vw;
+    margin-left: 1vw;
     position: relative;
     border: unset;
     .el-radio-button__inner{
@@ -171,9 +184,9 @@ export default {
       border-top: 1px solid #243B9E;
       border-bottom: 1px solid #243B9E;
       border-right:1px solid #243B9E;
-      height: 32px;
-      width: 64px;
-      line-height: 10px;
+      height: 1.9vw;
+      width: 3.35vw;
+      line-height: 0.9vw;
     }
     .el-radio-button:first-child .el-radio-button__inner{
       border-left:1px solid #243B9E;
@@ -185,12 +198,16 @@ export default {
   }
 
   .operation-table{
-    margin-left: 22px;
+    margin-left: 1vw;
+    flex-shrink: 1;
+    flex-grow: 1;
+    width: 100%;
+    height: 0;
     .el-table{
         background-color:transparent;
-        width: 385px;
+        width: 20vw;
         border-color: #243B9E;
-        margin-top: 20px;
+        margin-top: 1vw;
       }
       .el-table--border::after, .el-table--group::after, .el-table::before{
         background-color:unset;
@@ -199,21 +216,21 @@ export default {
           border-color: #243B9E;
       }
       .el-table td{
-        padding: 6px 0;
-        height: 35px;
+        padding: 0.4vw 0;
+        height: 2.5vw;
         border-color: #243B9E;
       }
 
       .el-table tr, .el-table .el-table_1_column_1{
         background-color:rgba(47,84,235,0.16);
         color:  #9FA8DA;
-        font-size: 16px;
+        font-size: 0.85vw;
       }
       .el-table tbody tr td:last-child{
         border-color: #243B9E;
         background-color:transparent;
         color:  #fff;
-        font-size: 24px;
+        font-size: 1.2vw;
       }
 
       .el-table__body tr:hover > td {
@@ -231,9 +248,10 @@ export default {
     border: 1px solid #3418AB;
     box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
     border-radius: 4px;
-    width: 422px;
-    height: 270px;
-    margin-top: 20px;
-    margin-left: 19px;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 0;
+    margin-top: 1vw;
 }
 </style>

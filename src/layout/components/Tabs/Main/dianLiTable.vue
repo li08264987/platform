@@ -76,7 +76,7 @@ export default {
 <style lang="scss">
 #right-container{
     .table-demo{
-       width: 380px;
+       width: 19.8vw;
         .el-table{
             background-color:transparent;
             border-color: #243B9E;
@@ -85,8 +85,8 @@ export default {
             background-color:unset;
         }
         .el-table td,.el-table th{
-            padding: 6px 0;
-            height: 25px;
+            padding: 0.3vw 0;
+            height: 2.2vw;
             border-color: #243B9E;
 
         }
@@ -98,7 +98,7 @@ export default {
             border-color: #243B9E;
             background-color:transparent;
             color:  #9FA8DA;
-            font-size: 16px;
+            font-size: 0.8vw;
         }
 
         .el-table__body tr:hover > td {
