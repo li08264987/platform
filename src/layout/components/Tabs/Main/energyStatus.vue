@@ -1,6 +1,6 @@
 <template>
   <div class="energy-state">
-    <div class="first-row" style="display:flex;flex-direction:row;">
+    <div class="first-row">
       <div class="title">
         <div class="logo" />
         <span>能耗概况</span>
@@ -143,22 +143,25 @@ export default {
 <style lang='scss'>
 #left-container .energy-select{
   .el-input{
-      width: 70px;
+      width: 3vw;
     }
     .el-input--suffix .el-input__inner {
-    padding-right: 30px;
+    padding-right: 1vw;
     background-color: transparent;
     border: none;
     color: #C8D6FE;
-    font-size: 16px;
+    font-size: 0.85vw;
+    height: 2vw;
+      line-height: 2vw;
     }
     .el-select-dropdown{
       border: unset;
-      left: 15px !important;
+      left:0.5vw !important;
     }
     .el-select-dropdown__item{
-      height: 26px;
+      height: 1.5vw;
       color: #fff;
+      font-size: 0.8vw;
     }
     .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
       background-color: #5F3BFF;
@@ -171,81 +174,102 @@ export default {
 <style lang='scss' scoped>
 .energy-state{
     position: relative;
-    position: relative;
-    height: 356px;
-    margin-top: 20px;
-    margin-left: 19px;
+    margin-top: 1vw;
     background: rgba(52,24,171,0.20);
     border: 1px solid #3418AB;
     box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
     border-radius: 4px;
-    width: 422px;
-    .title{
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 19vw;
     display: flex;
-    flex-direction: row;
-    .logo{
-        width: 4px;
-        height: 18px;
-        background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
-        margin-left: 21px;
-        margin-top: 13px;
-        margin-right: 10px;
+    flex-direction: column;
+    .first-row{
+      flex-shrink: 0;
+      flex-grow: 0;
+      height: 2vw;
+      width: 100%;
+      display:flex;
+      flex-direction:row;
     }
-    span {
-      margin-top: 13px;
-      font-family: MicrosoftYaHeiUISemibold;
-      font-size: 18px;
-      color: #C8D6FE;
-      letter-spacing: 0;
-      line-height: 16px;
+    .title{
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      flex-shrink: 1;
+      height: 100%;
+      .logo{
+          width: 0.2vw;
+          height: 1vw;
+          background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
+          margin-left: 1vw;
+          margin-top: 0.8vw;
+          margin-right: 0.5vw;
+      }
+      span {
+        margin-top: 0.9vw;
+        font-family: MicrosoftYaHeiUISemibold;
+        font-size: 0.98vw;
+        color: #C8D6FE;
+        letter-spacing: 0;
+        line-height:0.8vw;
+      }
     }
-  }
   .energy-select{
     position: relative;
-    left: 225px;
-    top: 5px;
+    top: 0.2vw;
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 4vw;
   }
 
   .energy-container{
-    margin-top: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-    /* margin-bottom: 40px; */
+    padding-top: 1.5vw;
+    padding-left: 1vw;
     display: flex;
     flex-direction: column;
+    flex-shrink: 1;
+    flex-grow: 1;
+    height: 0;
+    width: 100%;
     .row{
       display: flex;
       flex-direction: row;
-      height: 43px;
-      margin-bottom: 57px;
+      margin-bottom: 2vw;
+      height: 3.4vw;
+      flex-shrink: 0;
+      flex-grow: 0;
+      width: 100%;
       .left{
-        margin-right: 55px;
+        margin-right: 3vw;
         display: flex;
         flex-direction: column;
         .number{
           display: flex;
           flex-direction: row;
-          margin-bottom: 10px;
+          margin-bottom: 0.3vw;
           .left-number{
-            width: 108px;
-            font-size: 24px;
+            width: 5.7vw;
+            font-size: 1.5vw;
             color: #D6E4FF;
             letter-spacing: 0;
-            line-height: 14px;
+            line-height: 0.8vw;
           }
           .right-number{
             display: flex;
             flex-direction: row;
             .number-logo{
-              width: 17px;
-              height: 23px;
+              width: 0.9vw;
+              height: 1vw;
+              background-repeat: no-repeat;
               background-image: url('../../../../assets/main/增长@1.png')
             }
             .percent{
-              font-size: 16px;
+              font-size: 0.9vw;
               color: #D6E4FF;
               letter-spacing: 0;
-              line-height: 22px;
+              line-height: 1vw;
             }
           }
         }
@@ -254,13 +278,13 @@ export default {
           flex-direction: row;
           .left-text, .right-text{
             font-family: MicrosoftYaHeiUI;
-            font-size: 12px;
+            font-size: 0.5vw;
             color: #9FA8DA;
             letter-spacing: 0;
-            line-height: 11px;
+            line-height: 0.9vw;
           }
           .left-text {
-            margin-right: 43px;
+            margin-right: 2.3vw;
           }
         }
       }
@@ -270,27 +294,28 @@ export default {
         .number{
           display: flex;
           flex-direction: row;
-          margin-bottom: 10px;
+          margin-bottom: 0.3vw;
           .left-number{
-            width: 112px;
-            font-size: 24px;
+            width: 5.7vw;
+            font-size: 1.5vw;
             color: #D6E4FF;
             letter-spacing: 0;
-            line-height: 22px;
+            line-height: 0.8vw;
           }
           .right-number{
             display: flex;
             flex-direction: row;
             .number-logo{
-              width: 17px;
-              height: 23px;
+              width: 0.9vw;
+              height: 1vw;
+              background-repeat: no-repeat;
               background-image: url('../../../../assets/main/增长@1.png')
             }
             .percent{
-              font-size: 16px;
+              font-size: 0.9vw;
               color: #D6E4FF;
               letter-spacing: 0;
-              line-height: 22px;
+              line-height: 1vw;
             }
           }
         }
@@ -299,13 +324,13 @@ export default {
           flex-direction: row;
           .left-text, .right-text{
             font-family: MicrosoftYaHeiUI;
-            font-size: 12px;
+            font-size: 0.5vw;
             color: #9FA8DA;
             letter-spacing: 0;
-            line-height: 11px;
+            line-height: 0.9vw;
           }
           .left-text {
-            margin-right: 43px;
+            margin-right: 2.3vw;
           }
         }
       }

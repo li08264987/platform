@@ -200,117 +200,132 @@ img {
 }
 .pic{
     &-donglizhan{
-        top: 220px;
-        left: 280px;
+        top: 12vw;
+        left: 15vw;
     }
     &-yidong{
-        top: 725px;
-    left: 260px;
+        top: 38vw;
+        left: 14vw;
     }
     &-erdong{
-        top: 575px;
-        left: 260px;
+        top: 30vw;
+        left: 15vw;
     }
     &-jiaoshuichang{
-        top: 330px;
-        left: 835px;
+        top: 17vw;
+        left: 44vw;
     }
     &-sandong{
-        top: 575px;
-        left: 700px;
+        top: 30vw;
+        left: 37vw;
     }
     &-sidong{
-        top: 453px;
-        left: 626px;
+        top: 23.2vw;
+        left: 34vw;
     }
 }
 
 .guapai-container{
     display: flex;
     flex-direction: row;
+    flex-shrink: 1;
+    flex-grow: 1;
+    height: 0;
+    width: 100%;
+    .pic-donglizhan{
+      
+    }
     .line{
       height: 1px;
-      width: 160px;
+      width: 8vw;
       background: linear-gradient(to right, rgba(61,59,234,0),rgba(61,59,234,0.5),rgba(47,84,235,1), rgba(78,223,255,1), rgba(61,59,234,1), rgba(61,59,234,1), rgba(61,59,234,0));
     }
     .guapai{
         background-color: rgba(1,7,54,0.60);
-        width: 160px;
-        height: 131px;
+        width: 8vw;
+        height: 7vw;
         .pai-donglizhan,.pai-yidong,.pai-erdong,.pai-sandong,.pai-sidong,.pai-jiaoshuichang{
-            margin-top: 10px;
-            margin-left: 9px;
+            margin-top: 0.5vw;
+            margin-left: 0.3vw;
         }
         .title{
             font-family: MicrosoftYaHeiUISemibold;
-            font-size: 16px;
+            font-size: 0.8vw;
             color: #F4F8FF;
             letter-spacing: 0;
-            margin-bottom: 12px;
+            margin-bottom: 0.65vw;
         }
         .text-value{
             display: flex;
             flex-direction: row;
-            margin-bottom: 8px;
+            margin-bottom: 0.4vw;
             .text,.value{
                 font-family: MicrosoftYaHeiUI;
-                font-size: 12px;
+                font-size: 0.6vw;
                 color: #D9DEFF;
                 letter-spacing: 0;
-                line-height: 11px;
+                line-height: 0.6vw;
             }
             .text{
-                width: 106px;
+                width: 6vw;
             }
         }
         .data-detail{
             font-family: MicrosoftYaHeiUI;
-            font-size: 10px;
+            font-size: 0.6vw;
             color: #DAD128;
             letter-spacing: 0;
-            line-height: 9px;
+            line-height: 0.55vw;
             text-align: right;
             position: relative;
-            margin-right: 10px;
-            margin-bottom: 7px;
+            margin-right: 0.5vw;
+            margin-bottom: 0.35vw;
         }
     }
     .guapai-left{
        display: flex;
        flex-direction: column;
+       flex-shrink: 0;
+        flex-grow: 0;
+        height: 100%;
+        width: 27vw;
        .donglizhan{
            position: relative;
-           top: 96px;
-           left: 120px;
+          top: 2vw;
+          left: 5.7vw;
        }
        .yidong{
            position: relative;
-           top: 470px;
-           left: 100px;
+           top: 21vw;
+            left: 4.7vw;
        }
        .erdong{
            position: relative;
-           top: 115px;
-           left: 100px;
+           top: 3vw;
+            left: 5.7vw;
        }
     }
     .guapai-right{
        display: flex;
        flex-direction: column;
+       flex-shrink: 1;
+        flex-grow: 1;
+        height: 100%;
+        width: 0;
        .jiaoshuichang{
            position: relative;
-           top: 177px;
-           left: 515px;
+           top: 6vw;
+            left: 7.7vw;
        }
        .sidong{
            position: relative;
-           top: 390px;
-           left: 680px;
+           top: 16.3vw;
+            left: 17vw;
        }
        .sandong{
            position: relative;
-           top: 400px;
-           left: 605px;
+           top: 17vw;
+          left: 12.5vw;
        }
     }
 }
