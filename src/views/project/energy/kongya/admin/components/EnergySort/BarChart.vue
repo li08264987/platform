@@ -5,7 +5,7 @@
 <script>
 import echarts from 'echarts'
 require('echarts/theme/macarons') // echarts theme
-import resize from './mixins/resize'
+import resize from './../mixins/resize'
 
 export default {
   mixins: [resize],
@@ -20,7 +20,7 @@ export default {
     },
     height: {
       type: String,
-      default: '350px'
+      default: '100%'
     },
     autoResize: {
       type: Boolean,
@@ -61,72 +61,87 @@ export default {
       this.chart = echarts.init(this.$el, 'macarons')
       this.setOptions(this.chartData)
     },
-    setOptions({ expectedData, actualData } = {}) {
+    setOptions({ data, xAxis, title } = {}) {
       this.chart.setOption({
-        xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-          boundaryGap: false,
-          axisTick: {
-            show: false
-          }
+        title: {
+          show: true,
+          text: title,
+          textStyle: {
+            color: '#41475D',
+            fontSize: 16,
+            fontWeight: 'bold'
+          },
+          left: 20,
+          top: 20
         },
         grid: {
           left: 10,
           right: 10,
           bottom: 20,
-          top: 30,
+          top: 60,
           containLabel: true
         },
         tooltip: {
           trigger: 'axis',
-          axisPointer: {
-            type: 'cross'
-          },
           padding: [5, 10]
+        },
+        xAxis: {
+          data: xAxis,
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            color: '#858B9C'
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#E2E4EA'
+            }
+          }
         },
         yAxis: {
           axisTick: {
             show: false
+          },
+          axisLine: {
+            show: false
+          },
+          axisLabel: {
+            color: '#858B9C'
+          },
+          splitLine: {
+            lineStyle: {
+              color: '#E2E4EA'
+            }
+          },
+          splitArea: {
+            show: false
           }
         },
         legend: {
-          data: ['expected', 'actual']
+          show: false
         },
         series: [{
-          name: 'expected', itemStyle: {
-            normal: {
-              color: '#FF005A',
-              lineStyle: {
-                color: '#FF005A',
-                width: 2
-              }
-            }
-          },
-          smooth: true,
-          type: 'line',
-          data: expectedData,
-          animationDuration: 2800,
-          animationEasing: 'cubicInOut'
-        },
-        {
-          name: 'actual',
-          smooth: true,
-          type: 'line',
+          name: '能耗',
           itemStyle: {
             normal: {
-              color: '#3888fa',
-              lineStyle: {
-                color: '#3888fa',
-                width: 2
-              },
-              areaStyle: {
-                color: '#f3f8ff'
-              }
+              color: '#778FBD'
             }
           },
-          data: actualData,
-          animationDuration: 2800,
-          animationEasing: 'quadraticOut'
+          type: 'bar',
+          barWidth: '50%',
+          data: data,
+          label: {
+            show: true,
+            color: '#778FBD',
+            position: 'top',
+            shadowBlur: 1,
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowColor: '#778FBD'
+          },
+          animationDuration: 2000,
+          animationEasing: 'cubicInOut'
         }]
       })
     }
