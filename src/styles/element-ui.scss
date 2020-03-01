@@ -1,5 +1,20 @@
 // cover some element-ui styles
 
+.el-tooltip__popper[x-placement^=top] .popper__arrow{
+  border-top-color: #3911E8 ;
+}
+.el-tooltip__popper[x-placement^=top] .popper__arrow:after {
+  border-top-color: #3911E8;
+}
+.test{
+  background: #3911E8 !important;
+}
+.el-tooltip__popper[x-placement^=bottom] .popper__arrow{
+  border-bottom-color: #3911E8 ;
+}
+.el-tooltip__popper[x-placement^=bottom] .popper__arrow:after {
+  border-bottom-color: #3911E8;
+}
 .el-breadcrumb__inner,
 .el-breadcrumb__inner a {
   font-weight: 400 !important;

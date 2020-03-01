@@ -24,15 +24,15 @@
     <div class="leader second-row">
       <div style="width:7vw">
         <div class="zhiban">值班领导</div>
-        <div class="leader-1"> {{ dutyLeader.index1 }}</div>
+        <div class="leader-1">{{ dutyLeader.index1 }}</div>
       </div>
       <div style="width:7vw">
         <div class="zhiban">值班领导</div>
-        <div class="leader-2"> {{ dutyLeader.index2 }}</div>
+        <div class="leader-2">{{ dutyLeader.index2 }}</div>
       </div>
       <div>
         <div class="zhiban">值班领导</div>
-        <div class="leader-3"> {{ dutyLeader.index3 }}</div>
+        <div class="leader-3">{{ dutyLeader.index3 }}</div>
       </div>
     </div>
 
@@ -41,12 +41,12 @@
         <div class="zhibanyuan">值班员</div>
         <div style="display:flex;">
           <div class="worker index1">
-            <div class="first-row">name1</div>
-            <div>name2</div>
+            <div class="first-row">柳林东</div>
+            <div>徐驰</div>
           </div>
           <div class="worker index2">
-            <div class="first-row">name3</div>
-            <div>name4</div>
+            <div class="first-row">周新宇</div>
+            <div>张三</div>
           </div>
         </div>
       </div>
@@ -116,9 +116,9 @@ export default {
         valueDuty: '空压'
       },
       dutyLeader: {
-        index1: '张三',
-        index2: '李四',
-        index3: '王五'
+        index1: '谭敏仪',
+        index2: '谭敏仪',
+        index3: '谭敏仪'
       }
     }
   },
@@ -274,7 +274,7 @@ export default {
     display: flex;
     flex-direction: row;
     position: relative;
-    font-family: MicrosoftYaHeiUI;
+    font-family: Bebas;
     font-size: 0.87vw;
     color: #FFFFFF;
     flex-shrink: 0;

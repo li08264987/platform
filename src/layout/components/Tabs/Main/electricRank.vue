@@ -8,41 +8,41 @@
     </div>
 
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane label="系统" name="first">
-          <div class="radio-container">
-            <el-radio-group v-model="dianliConsumeDefault" class="dianli-group">
-              <el-radio-button label="一栋">一栋</el-radio-button>
-              <el-radio-button label="二栋">二栋</el-radio-button>
-              <el-radio-button label="三栋">三栋</el-radio-button>
-              <el-radio-button label="四栋">四栋</el-radio-button>
-              <el-radio-button label="空压站">空压站</el-radio-button>
-            </el-radio-group>
-          </div>
+      <el-tab-pane label="系统" name="first">
+        <div class="radio-container">
+          <el-radio-group v-model="dianliConsumeDefault" class="dianli-group">
+            <el-radio-button label="一栋">一栋</el-radio-button>
+            <el-radio-button label="二栋">二栋</el-radio-button>
+            <el-radio-button label="三栋">三栋</el-radio-button>
+            <el-radio-button label="四栋">四栋</el-radio-button>
+            <el-radio-button label="空压站">空压站</el-radio-button>
+          </el-radio-group>
+        </div>
 
-          <div class="sum-row">
-            <span><label>总能耗(kwh)：</label><strong>9800.6</strong></span>
-          </div>
-          <dianLiTable />
-        </el-tab-pane>
+        <div class="sum-row">
+          <span><label>总能耗(kwh)：</label><strong>9800.6</strong></span>
+        </div>
+        <dianLiTable />
+      </el-tab-pane>
 
-        <el-tab-pane label="区域" name="second">
-          <div class="radio-container">
-            <el-radio-group v-model="dianliConsumeDefault" class="dianli-group">
-              <el-radio-button label="一栋">一栋</el-radio-button>
-              <el-radio-button label="二栋">二栋</el-radio-button>
-              <el-radio-button label="三栋">三栋</el-radio-button>
-              <el-radio-button label="四栋">四栋</el-radio-button>
-              <el-radio-button label="空压站">空压站</el-radio-button>
-            </el-radio-group>
-          </div>
+      <el-tab-pane label="区域" name="second">
+        <div class="radio-container">
+          <el-radio-group v-model="dianliConsumeDefault" class="dianli-group">
+            <el-radio-button label="一栋">一栋</el-radio-button>
+            <el-radio-button label="二栋">二栋</el-radio-button>
+            <el-radio-button label="三栋">三栋</el-radio-button>
+            <el-radio-button label="四栋">四栋</el-radio-button>
+            <el-radio-button label="空压站">空压站</el-radio-button>
+          </el-radio-group>
+        </div>
 
-          <div class="sum-row">
-            <span><label>总能耗(kwh)：</label><strong>9800.6</strong></span>
-          </div>
-          <dianLiTable />
-        </el-tab-pane>
+        <div class="sum-row">
+          <span><label>总能耗(kwh)：</label><strong>9800.6</strong></span>
+        </div>
+        <dianLiTable />
+      </el-tab-pane>
 
-      </el-tabs>
+    </el-tabs>
 
   </div>
 </template>
@@ -119,9 +119,9 @@ export default {
       border-top: 1px solid #243B9E;
       border-bottom: 1px solid #243B9E;
       border-right:1px solid #243B9E;
-      height: 1.8vw;
+      height: 2vw;
       width: 3.95vw;
-      line-height: 0.9vw;
+      line-height: 0.8vw;
     }
     .el-radio-button:first-child .el-radio-button__inner{
       border-left:1px solid #243B9E;
@@ -205,7 +205,7 @@ export default {
   color: #9FA8DA;
 }
 #right-container .sum-row span>strong{
-  font-family: MicrosoftYaHeiUI;
+  font-family: Bebas;
   font-size: 1vw;
   color: #D6E4FF
 }

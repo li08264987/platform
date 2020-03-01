@@ -2,17 +2,23 @@
   <div class="table-demo">
     <el-table
       :data="tableData"
-      :header-cell-style="{background:'#DCDFE6'}"
+      :header-cell-style="headerStyle"
       border
       style="width: 100%"
+      tooltip-effect="dark"
     >
-      <el-table-column prop="rank" label="排名" width="60" align="center" />
-      <el-table-column prop="floor" label="楼层" width="60" align="center" />
-      <el-table-column prop="progress" label="能耗评分" width="142" align="center">
+      <el-table-column prop="rank" label="排名" min-width="30" align="center" />
+      <el-table-column prop="floor" label="楼层" min-width="30" align="center" />
+      <el-table-column prop="progress" label="能耗评分" min-width="82" align="center" show-overflow-tooltip>
+        <template slot="header">
+          <el-tooltip class="item" content="注：与历史同期能耗情况对比" placement="bottom-start" popper-class="test">
+            <span>能耗评分</span>
+          </el-tooltip>
+        </template>
         <template slot-scope="scope">
           <el-progress
             type="line"
-            stroke-linecap="round"
+            stroke-linecap="square"
             :text-inside="false"
             :percentage="scope.row.progress"
             :color="scope.row.color"
@@ -20,7 +26,7 @@
           />
         </template>
       </el-table-column>
-      <el-table-column prop="value" label="能耗值(kwh)" width="117" align="center" />
+      <el-table-column prop="value" label="能耗值(kwh)" min-width="58" align="center" />
     </el-table>
   </div>
 </template>
@@ -62,18 +68,28 @@ export default {
       ]
     }
   },
+  created() {
+  },
   mounted() {},
   methods: {
     handleCurrentChange(val) {
     },
     progressFormat(percentage) {
       return percentage + '分'
+    },
+    headerStyle({ row, column, rowIndex, columnIndex }) {
+      let str = 'background:#DCDFE6;'
+      if (columnIndex === 2) {
+        str += 'color: #fff'
+      }
+      return str
     }
   }
 }
 </script>
 
 <style lang="scss">
+
 #right-container{
     .table-demo{
        width: 19.8vw;

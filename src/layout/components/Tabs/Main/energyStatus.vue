@@ -20,27 +20,35 @@
         <div class="left">
           <div class="number">
             <div class="left-number">529</div>
-            <div class="right-number">
-              <div class="number-logo" />
-              <div class="percent">10%</div>
-            </div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+              <div class="right-number">
+                <div class="number-logo" />
+                <div class="percent">10%</div>
+              </div>
+            </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text">电耗(万kwh)</div>
-            <div class="right-text">同比增长</div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+              <div class="right-text">同比增长</div>
+            </el-tooltip>
           </div>
         </div>
         <div class="right">
           <div class="number">
             <div class="left-number">529</div>
-            <div class="right-number">
-              <div class="number-logo" />
-              <div class="percent">10%</div>
-            </div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+              <div class="right-number">
+                <div class="number-logo" />
+                <div class="percent">10%</div>
+              </div>
+            </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text">真空量(万m³)</div>
-            <div class="right-text">同比增长</div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+              <div class="right-text">同比增长</div>
+            </el-tooltip>
           </div>
         </div>
       </div>
@@ -49,27 +57,35 @@
         <div class="left">
           <div class="number">
             <div class="left-number">529</div>
-            <div class="right-number">
-              <div class="number-logo" />
-              <div class="percent">10%</div>
-            </div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+              <div class="right-number">
+                <div class="number-logo" />
+                <div class="percent">10%</div>
+              </div>
+            </el-tooltip>
           </div>
           <div class="text">
-            <div class="left-text" style="margin-right:15px">压缩空气量(万m³)</div>
-            <div class="right-text">同比增长</div>
+            <div class="left-text" style="margin-right:0.8vw">压缩空气量(万m³)</div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+              <div class="right-text">同比增长</div>
+            </el-tooltip>
           </div>
         </div>
         <div class="right">
           <div class="number">
             <div class="left-number">529</div>
-            <div class="right-number">
-              <div class="number-logo" />
-              <div class="percent">10%</div>
-            </div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+              <div class="right-number">
+                <div class="number-logo" />
+                <div class="percent">10%</div>
+              </div>
+            </el-tooltip>
           </div>
           <div class="text">
-            <div class="left-text" style="margin-right:52px">冷量(万GJ)</div>
-            <div class="right-text">同比增长</div>
+            <div class="left-text" style="margin-right:2.7vw">冷量(万GJ)</div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+              <div class="right-text">同比增长</div>
+            </el-tooltip>
           </div>
         </div>
       </div>
@@ -78,27 +94,35 @@
         <div class="left">
           <div class="number">
             <div class="left-number">529</div>
-            <div class="right-number">
-              <div class="number-logo" />
-              <div class="percent">10%</div>
-            </div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+              <div class="right-number">
+                <div class="number-logo" />
+                <div class="percent">10%</div>
+              </div>
+            </el-tooltip>
           </div>
           <div class="text">
-            <div class="left-text" style="margin-right:27px">氢氮气量(万m³)</div>
-            <div class="right-text">同比增长</div>
+            <div class="left-text" style="margin-right:1.5vw">氢氮气量(万m³)</div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+              <div class="right-text">同比增长</div>
+            </el-tooltip>
           </div>
         </div>
         <div class="right">
           <div class="number">
             <div class="left-number">529</div>
-            <div class="right-number">
-              <div class="number-logo" />
-              <div class="percent">10%</div>
-            </div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+              <div class="right-number">
+                <div class="number-logo" />
+                <div class="percent">10%</div>
+              </div>
+            </el-tooltip>
           </div>
           <div class="text">
-            <div class="left-text" style="margin-right:52px">热量(万GJ)</div>
-            <div class="right-text">同比增长</div>
+            <div class="left-text" style="margin-right:2.7vw">热量(万GJ)</div>
+            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+              <div class="right-text">同比增长</div>
+            </el-tooltip>
           </div>
         </div>
       </div>
@@ -141,6 +165,7 @@ export default {
 </script>
 
 <style lang='scss'>
+
 #left-container .energy-select{
   .el-input{
       width: 3vw;
@@ -172,6 +197,7 @@ export default {
 }
 </style>
 <style lang='scss' scoped>
+
 .energy-state{
     position: relative;
     margin-top: 1vw;
@@ -185,6 +211,7 @@ export default {
     height: 19vw;
     display: flex;
     flex-direction: column;
+    font-family: Bebas;
     .first-row{
       flex-shrink: 0;
       flex-grow: 0;
@@ -248,7 +275,7 @@ export default {
         .number{
           display: flex;
           flex-direction: row;
-          margin-bottom: 0.3vw;
+          margin-bottom: 0.7vw;
           .left-number{
             width: 5.7vw;
             font-size: 1.5vw;
@@ -269,7 +296,7 @@ export default {
               font-size: 0.9vw;
               color: #D6E4FF;
               letter-spacing: 0;
-              line-height: 1vw;
+              line-height: 1.2vw;
             }
           }
         }
@@ -294,7 +321,7 @@ export default {
         .number{
           display: flex;
           flex-direction: row;
-          margin-bottom: 0.3vw;
+          margin-bottom: 0.7vw;
           .left-number{
             width: 5.7vw;
             font-size: 1.5vw;
@@ -315,7 +342,7 @@ export default {
               font-size: 0.9vw;
               color: #D6E4FF;
               letter-spacing: 0;
-              line-height: 1vw;
+              line-height: 1.2vw;
             }
           }
         }
@@ -330,7 +357,7 @@ export default {
             line-height: 0.9vw;
           }
           .left-text {
-            margin-right: 2.3vw;
+            margin-right: 2vw;
           }
         }
       }

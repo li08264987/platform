@@ -16,11 +16,12 @@
           安全运行<span>234</span>天
           <div class="line" />
         </div>
+
         <gua-pai />
       </div>
 
       <div id="right-container">
-        <fault-warning />
+        <fault-warning ref="faultWarning" :cursor="cursor" />
         <electric-rank />
       </div>
     </div>
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+/* import backgroud from './backgroud' */
 import DutyArrangement from './dutyArrangement'
 import EnergyStatus from './energyStatus'
 import OperationWatch from './operationWatch'
@@ -46,7 +48,8 @@ export default {
   },
   data() {
     return {
-      /* html: backgroud */
+      /* html: backgroud, */
+      cursor: this.getFontSizeCursor()
     }
   },
   computed: {
@@ -75,21 +78,41 @@ export default {
     }
   },
   mounted() {
-    /* var width = this.getFontSizeCursor() */
-    /* console.log(this.$refs.main.offsetHeight)
-    console.log(this.$refs.main.offsetWidth) */
-    /* console.log(document.documentElement.clientWidth)
-    console.log(document.documentElement.clientHeight) */
-    this.fontSizeResize()
+    const that = this
+    window.onresize = () => {
+      that.fontSizeResize()
+      this.$refs.faultWarning.resizeCharts()
+    }
   },
   methods: {
     handleClick(tab, event) {
 
     },
     getFontSizeCursor() {
-      return this.$refs.main.offsetWidth
+      return document.documentElement.clientWidth / 1920
     },
     fontSizeResize() {
+      var totalWidth = document.documentElement.clientWidth
+      var totalHeight = document.documentElement.clientHeight
+
+      var newHeight = totalHeight - 84
+      var newWidth = totalWidth
+
+      var newCursor = newHeight / newWidth
+
+      if (newCursor > 0.5625) {
+        const newHeight1 = newWidth * 0.5625
+        const translateY = (newHeight - newHeight1) * 0.5
+        const scale = newHeight / newHeight1
+        this.$refs.main.style.transform = 'translateY(' + translateY + 'px) scale(1,' + scale + ')'
+      } else if (newCursor < 0.5625) {
+        const newHeight1 = newWidth * 0.5625
+        const scale = newHeight / newHeight1
+        const translateY = (newHeight1 - newHeight) * (-0.5)
+        this.$refs.main.style.transform = 'translateY(' + translateY + 'px) scale(1,' + scale + ')'
+      } else {
+        this.$refs.main.style.transform = 'scale(1,1) translateX(0) translateY(0)'
+      }
     }
   }
 }
@@ -104,7 +127,7 @@ export default {
   height: 56.25vw;
   user-select: none;
   display: flex;
-  background-image: url('../../../../assets/main/运营看板bg-3.png');
+  background-image: url('../../../../assets/main/运营看板bg-2.png');
   background-color: #020A31;
   background-size: contain;
   background-repeat: no-repeat;

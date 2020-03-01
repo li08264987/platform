@@ -49,6 +49,8 @@ import echarts from 'echarts'
 export default {
   name: 'FaultWarning',
   components: {},
+  // eslint-disable-next-line vue/require-prop-types
+  props: ['cursor'],
   data() {
     return {
       optionPie: {
@@ -61,7 +63,17 @@ export default {
           textStyle: {
             color: '#D6E4FF',
             fontStyle: 'normal',
-            fontSize: 36
+            fontSize: 36,
+            fontFamily: 'Bebas'
+          },
+          subtextStyle: {
+            color: '#D6E4FF',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: 14,
+            lineHieght: 18,
+            align: 'center',
+            letterSpacing: 0
           }
         },
         tooltip: {
@@ -97,7 +109,7 @@ export default {
       optionBar: {
         grid: {
           top: '2%',
-          bottom: '9%',
+          bottom: '12%',
           left: '10%'
         },
         legend: {
@@ -193,9 +205,44 @@ export default {
     }
   },
   computed: {},
+  /* watch: {
+    change: {
+      handler() {
+        console.log(this.change)
+      }
+    }
+  }, */
   mounted() {
+    this.optionPie.title.left = this.cursor * 43 + '%'
+    this.optionPie.title.top = this.cursor * 37 + '%'
+    this.optionPie.title.textStyle.fontSize = this.cursor * 36
+    this.optionPie.series.radius = [this.cursor * 55 + '%', this.cursor * 70 + '%']
+    this.optionPie.series.center = [this.cursor * 45 + '%', this.cursor * 50 + '%']
+    this.optionPie.series.right = this.cursor * 11 + '%'
+    this.optionPie.series.top = this.cursor * 15 + '%'
     this.drawPie('warning-pie', this.optionPie)
+
+    this.optionBar.grid = {
+      left: this.cursor * 15 + '%',
+      right: this.cursor * 5 + '%',
+      top: this.cursor * 2 + '%',
+      bottom: this.cursor * 12 + '%'
+    }
+    this.optionBar.legend.right = this.cursor * 10
+    this.optionBar.legend.itemWidth = this.cursor * 10
+    this.optionBar.legend.itemHeight = this.cursor * 15
     this.drawBar('warning-bar', this.optionBar)
+
+    /* window.onresize = () => {
+      var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
+      if (chartsPie) {
+        chartsPie.resize()
+      }
+      var chartsBar = echarts.getInstanceByDom(document.getElementById('warning-bar'))
+      if (chartsBar) {
+        chartsBar.resize()
+      }
+    } */
   },
   methods: {
     drawPie(id, optionPie) {
@@ -216,6 +263,16 @@ export default {
         temp.series.data[1].value = 92 */
         this.drawPie('warning-pie2', this.optionPie)
         this.drawBar('warning-bar2', this.optionBar)
+      }
+    },
+    resizeCharts() {
+      var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
+      if (chartsPie) {
+        chartsPie.resize()
+      }
+      var chartsBar = echarts.getInstanceByDom(document.getElementById('warning-bar'))
+      if (chartsBar) {
+        chartsBar.resize()
       }
     }
   }
@@ -273,6 +330,7 @@ export default {
   flex-shrink: 0;
   flex-grow: 0;
   height: 32vw;
+  font-family: Bebas;
   .first-rows{
     flex-shrink: 0;
     flex-grow: 0;
@@ -318,7 +376,7 @@ export default {
         color: #D6E4FF;
         letter-spacing: 0;
         line-height: 0.7vw;
-        margin-bottom: 0.5vw;
+        margin-bottom: 0.7vw;
       }
       .number{
         font-family: Bebas;
@@ -336,7 +394,7 @@ export default {
         color: #D6E4FF;
         letter-spacing: 0;
         line-height: 0.7vw;
-        margin-bottom: 0.5vw;
+        margin-bottom: 0.7vw;
       }
       .number{
         font-family: Bebas;
