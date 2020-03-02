@@ -24,7 +24,7 @@ import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
 import variables from '../Style/sidbar.scss'
 
 export default {
-  name: 'monitorSideBar',
+  name: 'MonitorSideBar',
   components: {
     SidebarItem
   },

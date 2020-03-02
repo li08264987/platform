@@ -127,7 +127,7 @@ export default {
   height: 56.25vw;
   user-select: none;
   display: flex;
-  background-image: url('../../../../assets/main/运营看板bg-2.png');
+  background-image: url('../../../../assets/main/运营看板bg-3.png');
   background-color: #020A31;
   background-size: contain;
   background-repeat: no-repeat;
