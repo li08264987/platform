@@ -3,6 +3,7 @@
     <el-table
       :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
       height="calc(100% - 40px)"
+      header-row-class-name="table-header"
       style="width: 100%; overflow-y: auto;"
     >
       <el-table-column
@@ -188,3 +189,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .table-header,
+  .table-header th {
+    background-color: #F1F4FD !important;
+  }
+</style>

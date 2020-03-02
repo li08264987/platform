@@ -3,6 +3,7 @@
     <el-table
       :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
       height="calc(100% - 40px)"
+      header-row-class-name="table-header"
       style="width: 100%; overflow-y: auto;"
     >
       <el-table-column

@@ -70,8 +70,8 @@
 import energyTree from './components/EnergyTree'
 import energyDimensions from './components/Dimensions/index'
 import energySort from './components/EnergySort/index'
-import energyStandard from './components/EnergyStandard'
-import energyCompare from './components/EnergyCompare'
+import energyStandard from './components/EnergyStandard/index'
+import energyCompare from './components/EnergyCompare/index'
 import energyRealtime from './components/EnergyRealtime'
 import energyOrigin from './components/EnergyOrigin'
 

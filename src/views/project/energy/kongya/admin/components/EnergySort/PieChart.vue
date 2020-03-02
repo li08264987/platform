@@ -63,6 +63,7 @@ export default {
     },
     setOptions({ data, title } = {}) {
       this.chart.setOption({
+        color: ['#778FBD', '#5878B4', '#FF8B9A', '#A9FBF2', '#94AFF8'],
         title: {
           show: true,
           text: title,
