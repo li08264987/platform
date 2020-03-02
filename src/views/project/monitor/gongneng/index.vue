@@ -1,5 +1,7 @@
 <template>
   <div class="kongYaMain">
+    <runInfo ref="showRunInfo"/>
+    <infoScan ref="infoScan"/>
     <div class="tools">
       <el-select v-model="selectvalue" placeholder="自定义">
         <el-option
@@ -22,7 +24,7 @@
         prefix-icon="el-icon-search"
       />
       <el-button type="primary" icon="el-icon-search">搜索</el-button>
-      <el-button>导出</el-button>
+      <el-button>运行回放</el-button>
     </div>
     <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
       <el-tab-pane label="空压系统" name="first">
@@ -31,7 +33,7 @@
             <el-button icon="el-icon-arrow-left" style="float:left;margin-left:20px;">上一页</el-button>
             <i class="el-icon-camera-solid" />
             <span @click="showNeiBu">2D模式</span>
-            <i class="el-icon-camera-solid" />
+            <i class="el-icon-video-camera-solid" />
             <span @click="showVideos">视频监控</span>
             <i class="el-icon-platform-eleme" />
             <span @click="showParamPanel">{{ showParamName }}</span>
@@ -50,14 +52,17 @@
               </el-option>
             </el-select>
             <i class="el-icon-s-custom" />
-            <span>值班显示</span>
+            <span @click="showDutyPanel">{{showDutyName}}</span>
             <el-button style="float:right;margin-right:20px;">下一页<i class="el-icon-arrow-right el-icon--right" /></el-button>
           </div>
-          <div v-show="showNeibu" style="height:99%">
-            <svg id="backgroud" viewBox="-150 -20 1800 920" 
+          <div v-show="showNeibu" style="height:99%;position:relative">
+            <svg id="backgroud"
+            viewBox="-70 -20 1850 920"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            v-html="html"></svg>
+            v-html="kongYsSys"
+            @click="showKongYa($event)">
+            </svg>
           </div>
           <div v-show="showParam" class="rightparam">
             <div style="height:6%;display:flex;align-items:center;justify-content:center;font-weight:bold">ZH-10000+离心机通讯参数</div>
@@ -80,6 +85,27 @@
                   {{ element.name }}
                 </div>
               </div>
+            </div>
+          </div>
+          <div v-show="showDuty" class="leftduty">
+            <div class="dutytitle"><i class="el-icon-s-tools"></i>运行值班</div>
+            <div class="dutycontain">
+              <div>程志远</div>
+              <div>010-52886945</div>
+            </div>
+            <div class="dutycontain">
+              <div>程志远</div>
+              <div>010-52886945</div>
+            </div>
+            <div class="dutytitle"><i class="el-icon-s-open"></i>维修值班</div>
+            <div class="dutycontain">
+              <div>程志远</div>
+              <div>010-52886945</div>
+            </div>
+            <div class="dutytitle"><i class="el-icon-s-custom"></i>值班领导</div>
+            <div class="dutycontain">
+              <div>程志远</div>
+              <div>010-52886945</div>
             </div>
           </div>
           <div v-show="showVideo" class="content">
@@ -158,10 +184,19 @@
         </div>
       </el-tab-pane>
       <el-tab-pane label="空压机组" name="second">
+        <div v-show="showNeibu" style="height:99%">
+          <svg
+          viewBox="-50 -20 1800 920"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          v-html="kongyajizu">
+          </svg>
+        </div>
       </el-tab-pane>
       <el-tab-pane label="高心空压机" name="third">
         <div v-show="showNeibu" style="height:99%">
-          <svg id="backgroud" viewBox="-150 -20 1800 920" 
+          <svg
+          viewBox="-150 -20 1800 920"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           v-html="kongyaji"></svg>
@@ -171,14 +206,22 @@
   </div>
 </template>
 <script>
-import svg from '@/api/monitor/neibu'
+import kongYsSys from '@/api/monitor/kongYaSys'
 import kongyaji from '@/api/monitor/kongyaji'
+import kongyajizu from '@/api/monitor/kongyajizu'
+import runInfo from '@/views/project/monitor/runInfo'
+import infoScan from '@/views/project/monitor/infoScan'
 export default {
   name: 'monitorView',
+  components: {
+    runInfo,
+    infoScan
+  },
   data() {
     return {
-      html: svg,
+      kongYsSys: kongYsSys,
       kongyaji:kongyaji,
+      kongyajizu:kongyajizu,
       activeName: 'first',
       options: [{
         value: 'year',
@@ -210,8 +253,10 @@ export default {
       showNeibu: true,
       showVideo: false,
       showParam: false,
+      showDuty:false,
       showHis: false,
-      showParamName: '隐藏数据',
+      showParamName: '显示数据',
+      showDutyName:'值班显示',
       params: [{
         name: '马达绕组U温度',
         value: '40.8℃'
@@ -339,11 +384,46 @@ export default {
     showParamPanel() {
       if (this.showParam) {
         this.showParam = false
-        this.showParamName = '隐藏数据'
+        this.showParamName = '显示数据'
       } else {
         this.showParam = true
-        this.showParamName = '显示数据'
+        this.showParamName = '隐藏数据'
       }
+    },
+    showDutyPanel(){
+      if(!this.showDuty){
+        this.showDuty=true;
+        this.showDutyName='值班隐藏'
+      }else{
+        this.showDuty=false;
+        this.showDutyName='值班显示'
+      }
+    },
+    getParentId(target){
+      let self=this;
+      switch(target.id){
+        case "空压机":
+          self.$refs.showRunInfo.dialogTableVisible=true;
+          break;
+        case "储气罐":
+          self.$refs.showRunInfo.dialogTableVisible=true;
+          break;
+        case "干燥机":
+          self.$refs.showRunInfo.dialogTableVisible=true;
+          break;
+        default:
+          self.getParentId(target.parentElement);
+          break;
+      }
+    },
+    showKongYa(e){
+      var self=this;
+      var str=/\d/
+      if(((str.test(e.target.id))) || e.target.tagName=="tspan" || e.target.tagName=="text"){
+          self.$refs.infoScan.dialogTableVisible=true;
+          return;
+      }
+      this.getParentId(e.target);
     }
   }
 }
@@ -453,6 +533,27 @@ export default {
           line-height: 30px;
         }
       }
+    }
+  }
+  .leftduty{
+    width: 10%;
+    background-color: #F9FAFB;
+    height: 100%;
+    position: absolute;
+    top: 5%;
+    .dutytitle{
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      border-bottom: 1px dashed #E4E9F0;
+      font-size: 18px;
+      color: #879EC9;
+
+    }
+    .dutycontain{
+      text-align: center;
+      padding: 10px 0px;
+     border-bottom: 1px solid #E4E9F0;
     }
   }
   #intools:after{

@@ -16,11 +16,18 @@ export default {
     AppMain,
     monitorSideBar
   },
+  beforeCreate() {
+    this.$router.push({ path: '/monitorSystem' })
+  },
   data() {
     return {
       needTagsView:'Main'
     }
-  }
+  },
+  destroyed() {
+    this.$router.push({ path: '/' })
+    this.$store.dispatch('tagsView/delAllViews')
+  },
 }
 </script>
 
