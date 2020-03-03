@@ -290,7 +290,7 @@ export default {
               width: 0.9vw;
               height: 1vw;
               background-repeat: no-repeat;
-              background-image: url('../../../../assets/main/增长@1.png')
+              background-image: url('../../../assets/main/increaseArrow.png')
             }
             .percent{
               font-size: 0.9vw;
@@ -336,7 +336,7 @@ export default {
               width: 0.9vw;
               height: 1vw;
               background-repeat: no-repeat;
-              background-image: url('../../../../assets/main/增长@1.png')
+              background-image: url('../../../assets/main/increaseArrow.png')
             }
             .percent{
               font-size: 0.9vw;

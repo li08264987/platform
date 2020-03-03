@@ -1,12 +1,12 @@
 <template>
   <div class="guapai-container">
     <word-cloud-chart @fromSon="getMsgFormSon" />
-    <img v-show="showDongLiZhan()" src="@/assets/main/动力站.png" class="pic-donglizhan">
-    <img v-show="showYiDong()" src="@/assets/main/一栋.png" class="pic-yidong">
-    <img v-show="showErDong()" src="@/assets/main/二栋.png" class="pic-erdong">
-    <img v-show="showJiaoShuiChang()" src="@/assets/main/胶水厂.png" class="pic-jiaoshuichang">
-    <img v-show="showSanDong()" src="@/assets/main/三栋.png" class="pic-sandong">
-    <img v-show="showSiDong()" src="@/assets/main/四栋.png" class="pic-sidong">
+    <img v-show="showDongLiZhan()" src="@/assets/main/donglizhanLine.png" class="pic-donglizhan">
+    <img v-show="showYiDong()" src="@/assets/main/yidongLine.png" class="pic-yidong">
+    <img v-show="showErDong()" src="@/assets/main/erdongLine.png" class="pic-erdong">
+    <img v-show="showJiaoShuiChang()" src="@/assets/main/jiaoshuichangLine.png" class="pic-jiaoshuichang">
+    <img v-show="showSanDong()" src="@/assets/main/sandongLine.png" class="pic-sandong">
+    <img v-show="showSiDong()" src="@/assets/main/sidongLine.png" class="pic-sidong">
 
     <div class="guapai-system">
       <component :is="currentView" />

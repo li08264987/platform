@@ -30,12 +30,12 @@
 
 <script>
 /* import backgroud from './backgroud' */
-import DutyArrangement from './dutyArrangement'
-import EnergyStatus from './energyStatus'
-import OperationWatch from './operationWatch'
-import FaultWarning from './faultWarning'
-import ElectricRank from './electricRank'
-import GuaPai from './guaPai'
+import DutyArrangement from '@/views/project/main/dutyArrangement'
+import EnergyStatus from '@/views/project/main/energyStatus'
+import OperationWatch from '@/views/project/main/operationWatch'
+import FaultWarning from '@/views/project/main/faultWarning'
+import ElectricRank from '@/views/project/main/electricRank'
+import GuaPai from '@/views/project/main/guaPai'
 export default {
   name: 'Main',
   components: {
@@ -127,7 +127,7 @@ export default {
   height: 56.25vw;
   user-select: none;
   display: flex;
-  background-image: url('../../../../assets/main/运营看板bg-3.png');
+  background-image: url('../../../../assets/main/backgroundPic.png');
   background-color: #020A31;
   background-size: contain;
   background-repeat: no-repeat;
@@ -140,7 +140,7 @@ export default {
     display: flex;
     z-index: 1000;
     .top-pic{
-      background-image:url('../../../../assets/main/顶部xh.png');
+      background-image:url('../../../../assets/main/top.png');
       position: absolute;
       width: 100%;
       height: 100%;

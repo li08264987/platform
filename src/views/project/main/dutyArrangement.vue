@@ -235,7 +235,7 @@ export default {
       height: 100%;
       flex-shrink: 0;
       flex-grow: 0;
-      background-image: url('../../../../assets/main/早xh.png');
+      background-image: url('../../../assets/main/morning.png');
       background-repeat: no-repeat;
     }
     .noon{
@@ -247,7 +247,7 @@ export default {
       margin-right: 1.5vw;
       flex-shrink: 1;
       flex-grow: 1;
-      background-image: url('../../../../assets/main/午xh.png');
+      background-image: url('../../../assets/main/noon.png');
       background-repeat: no-repeat;
     }
     .evening {
@@ -258,7 +258,7 @@ export default {
       flex-shrink: 0;
       flex-grow: 0;
       margin-right: 1.3vw;
-      background-image: url('../../../../assets/main/晚xh.png');
+      background-image: url('../../../assets/main/evening.png');
       background-repeat: no-repeat;
     }
     span{
