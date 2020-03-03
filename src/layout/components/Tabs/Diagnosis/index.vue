@@ -1,7 +1,7 @@
 <!--  -->
 <template>
   <div>
-    <p>这里是诊断中心界面</p>
+    <p>这里是智能诊断界面</p>
   </div>
 </template>
 
@@ -12,10 +12,14 @@ export default {
     return {
     }
   },
+
   computed: {},
+
   mounted: {},
+
   methods: {}
 }
+
 </script>
 <style lang='scss' scoped>
 </style>
