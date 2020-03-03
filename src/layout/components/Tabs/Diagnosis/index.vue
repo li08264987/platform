@@ -1,25 +1,24 @@
-<!--  -->
 <template>
-  <div>
-    <p>这里是诊断中心界面</p>
-  </div>
+  <span ref="countup" />
 </template>
 
 <script>
+import CountUp from 'countup.js'
 export default {
-  components: {},
   data() {
     return {
+      numAnim: null
     }
   },
-
-  computed: {},
-
-  mounted: {},
-
-  methods: {}
+  mounted() {
+    this.initCountUp()
+  },
+  methods: {
+    initCountUp() {
+      console.log('hehe')
+      this.numAnim = new CountUp(this.$refs.countup, 0, 2017)
+      this.numAnim.start()
+    }
+  }
 }
-
 </script>
-<style lang='scss' scoped>
-</style>

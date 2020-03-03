@@ -14,7 +14,7 @@
         v-model="typeinput">
       </el-input>
       <el-button type="primary" icon="el-icon-search">搜索</el-button>
-      <el-button>导出</el-button>
+      <el-button>运行回放</el-button>
     </div>
     <div id="intools">
       <el-button icon="el-icon-arrow-left" style="float:left;margin-left:20px;">上一页</el-button>

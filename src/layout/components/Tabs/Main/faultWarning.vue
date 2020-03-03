@@ -1,6 +1,6 @@
 <template>
   <div class="failure-warning">
-    <div class="first-row" style="display:flex;flex-direction:row;">
+    <div class="first-rows" style="display:flex;flex-direction:row;">
       <div class="title">
         <div class="logo" />
         <span>故障报警</span>
@@ -9,7 +9,7 @@
 
     <el-tabs v-model="activeName" type="card" @tab-click="tabClick">
       <el-tab-pane label="系统" name="first">
-        <div id="warning-pie" :style="{width: '419px', height: '300px'}" />
+        <div id="warning-pie" :style="{width: '21vw', height: '16vw'}" />
         <div class="legend-container">
           <div class="dealing">
             <div class="text">待处理故障</div>
@@ -22,10 +22,10 @@
             </div>
           </div>
         </div>
-        <div id="warning-bar" :style="{width: '419px', height: '300px'}" />
+        <div id="warning-bar" :style="{width: '21vw', height: '16vw'}" />
       </el-tab-pane>
       <el-tab-pane label="区域" name="second">
-        <div id="warning-pie2" :style="{width: '419px', height: '300px'}" />
+        <div id="warning-pie2" :style="{width: '21vw', height: '16vw'}" />
         <div class="legend-container">
           <div class="dealing">
             <div class="text">待处理故障</div>
@@ -38,7 +38,7 @@
             </div>
           </div>
         </div>
-        <div id="warning-bar2" :style="{width: '419px', height: '300px'}" />
+        <div id="warning-bar2" :style="{width: '21vw', height: '16vw'}" />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -49,6 +49,8 @@ import echarts from 'echarts'
 export default {
   name: 'FaultWarning',
   components: {},
+  // eslint-disable-next-line vue/require-prop-types
+  props: ['cursor'],
   data() {
     return {
       optionPie: {
@@ -61,7 +63,17 @@ export default {
           textStyle: {
             color: '#D6E4FF',
             fontStyle: 'normal',
-            fontSize: 36
+            fontSize: 36,
+            fontFamily: 'Bebas'
+          },
+          subtextStyle: {
+            color: '#D6E4FF',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: 14,
+            lineHieght: 18,
+            align: 'center',
+            letterSpacing: 0
           }
         },
         tooltip: {
@@ -97,7 +109,7 @@ export default {
       optionBar: {
         grid: {
           top: '2%',
-          bottom: '9%',
+          bottom: '12%',
           left: '10%'
         },
         legend: {
@@ -193,9 +205,44 @@ export default {
     }
   },
   computed: {},
+  /* watch: {
+    change: {
+      handler() {
+        console.log(this.change)
+      }
+    }
+  }, */
   mounted() {
+    this.optionPie.title.left = this.cursor * 43 + '%'
+    this.optionPie.title.top = this.cursor * 37 + '%'
+    this.optionPie.title.textStyle.fontSize = this.cursor * 36
+    this.optionPie.series.radius = [this.cursor * 55 + '%', this.cursor * 70 + '%']
+    this.optionPie.series.center = [this.cursor * 45 + '%', this.cursor * 50 + '%']
+    this.optionPie.series.right = this.cursor * 11 + '%'
+    this.optionPie.series.top = this.cursor * 15 + '%'
     this.drawPie('warning-pie', this.optionPie)
+
+    this.optionBar.grid = {
+      left: this.cursor * 15 + '%',
+      right: this.cursor * 5 + '%',
+      top: this.cursor * 2 + '%',
+      bottom: this.cursor * 12 + '%'
+    }
+    this.optionBar.legend.right = this.cursor * 10
+    this.optionBar.legend.itemWidth = this.cursor * 10
+    this.optionBar.legend.itemHeight = this.cursor * 15
     this.drawBar('warning-bar', this.optionBar)
+
+    /* window.onresize = () => {
+      var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
+      if (chartsPie) {
+        chartsPie.resize()
+      }
+      var chartsBar = echarts.getInstanceByDom(document.getElementById('warning-bar'))
+      if (chartsBar) {
+        chartsBar.resize()
+      }
+    } */
   },
   methods: {
     drawPie(id, optionPie) {
@@ -217,6 +264,16 @@ export default {
         this.drawPie('warning-pie2', this.optionPie)
         this.drawBar('warning-bar2', this.optionBar)
       }
+    },
+    resizeCharts() {
+      var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
+      if (chartsPie) {
+        chartsPie.resize()
+      }
+      var chartsBar = echarts.getInstanceByDom(document.getElementById('warning-bar'))
+      if (chartsBar) {
+        chartsBar.resize()
+      }
     }
   }
 }
@@ -224,10 +281,15 @@ export default {
 
 <style lang="scss">
 .failure-warning{
+  .el-tabs{
+    flex-shrink: 1;
+    flex-grow: 1;
+    height: 0;
+  }
   .el-tabs__header{
-      width: 200px;
-      top: -26px;
-      left: 312px;
+      width: 10vw;
+      top: -1.5vw;
+      left: 16vw;
       border-bottom: unset;
     }
     .el-tabs__item.is-active{
@@ -237,12 +299,12 @@ export default {
       color: #5F60FF;
     }
     .el-tabs__content{
-      top: -95px;
+      top: -5vw;
     }
     .el-tabs__item{
-      padding: 0 10px !important;
+      padding: 0 0.5vw !important;
       font-family: MicrosoftYaHeiUI;
-      font-size: 16px;
+      font-size: 0.85vw;
       letter-spacing: 0;
     }
     .el-tabs--card>.el-tabs__header .el-tabs__nav{
@@ -261,76 +323,85 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-top: 53px;
-  margin-left: 20px;
   background: rgba(52,24,171,0.20);
   border: 1px solid #3418AB;
   box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
   border-radius: 4px;
-  height: 590px;
-  width: 421px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  height: 32vw;
+  font-family: Bebas;
+  .first-rows{
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 100%;
+    height: 1.9vw;
+  }
   .title{
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 100%;
     .logo{
-        width: 4px;
-        height: 18px;
+        width: 0.2vw;
+        height: 1vw;
         background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
-        margin-left: 21px;
-        margin-top: 13px;
-        margin-right: 10px;
+        margin-left: 1vw;
+        margin-top: 0.8vw;
+        margin-right: 0.5vw;
     }
     span {
-      margin-top: 13px;
+      margin-top: 0.9vw;
       font-family: MicrosoftYaHeiUISemibold;
-      font-size: 18px;
+      font-size: 0.98vw;
       color: #C8D6FE;
       letter-spacing: 0;
-      line-height: 16px;
+      line-height:0.8vw;
     }
   }
 
   .legend-container{
     display: flex;
     flex-direction: column;
-    width:200px;
+    width:4vw;
     position: absolute;
-    top: 87px;
-    left: 336px;
+    top: 4.5vw;
+    left: 17.2vw;
     .dealing{
-      margin-bottom: 37.5px;
+      margin-bottom: 1.7vw;
       .text{
         font-family: MicrosoftYaHeiUI;
-        font-size: 14px;
+        font-size: 0.75vw;
         color: #D6E4FF;
         letter-spacing: 0;
-        line-height: 12px;
-        margin-bottom: 12px;
+        line-height: 0.7vw;
+        margin-bottom: 0.7vw;
       }
       .number{
         font-family: Bebas;
-        font-size: 26px;
+        font-size: 1.5vw;
         color: #EB2E95;
         letter-spacing: 0;
-        line-height: 22px;
+        line-height: 1vw;
       }
     }
     .dealed{
-      margin-top: 37.5px;
+      margin-top: 2.1vw;
       .text{
         font-family: MicrosoftYaHeiUI;
-        font-size: 14px;
+        font-size: 0.75vw;
         color: #D6E4FF;
         letter-spacing: 0;
-        line-height: 12px;
-        margin-bottom: 12px;
+        line-height: 0.7vw;
+        margin-bottom: 0.7vw;
       }
       .number{
         font-family: Bebas;
-        font-size: 26px;
+        font-size: 1.5vw;
         color: #3D3BEA;
         letter-spacing: 0;
-        line-height: 22px;
+         line-height: 1vw;
       }
     }
   }

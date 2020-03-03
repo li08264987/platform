@@ -1,6 +1,6 @@
 <template>
   <div class="duty-arrange">
-    <div class="first-row" style="display:flex;flex-direction:row;">
+    <div class="first-rows">
       <div class="title">
         <div class="logo" />
         <span>值班安排</span>
@@ -22,17 +22,17 @@
     </div>
 
     <div class="leader second-row">
-      <div style="width:137px">
+      <div style="width:7vw">
         <div class="zhiban">值班领导</div>
-        <div class="leader-1"> {{ dutyLeader.index1 }}</div>
+        <div class="leader-1">{{ dutyLeader.index1 }}</div>
       </div>
-      <div style="width:137px">
+      <div style="width:7vw">
         <div class="zhiban">值班领导</div>
-        <div class="leader-2"> {{ dutyLeader.index2 }}</div>
+        <div class="leader-2">{{ dutyLeader.index2 }}</div>
       </div>
       <div>
         <div class="zhiban">值班领导</div>
-        <div class="leader-3"> {{ dutyLeader.index3 }}</div>
+        <div class="leader-3">{{ dutyLeader.index3 }}</div>
       </div>
     </div>
 
@@ -41,12 +41,12 @@
         <div class="zhibanyuan">值班员</div>
         <div style="display:flex;">
           <div class="worker index1">
-            <div class="first-row">name1</div>
-            <div>name2</div>
+            <div class="first-row">柳林东</div>
+            <div>徐驰</div>
           </div>
           <div class="worker index2">
-            <div class="first-row">name3</div>
-            <div>name4</div>
+            <div class="first-row">周新宇</div>
+            <div>张三</div>
           </div>
         </div>
       </div>
@@ -116,9 +116,9 @@ export default {
         valueDuty: '空压'
       },
       dutyLeader: {
-        index1: '张三',
-        index2: '李四',
-        index3: '王五'
+        index1: '谭敏仪',
+        index2: '谭敏仪',
+        index3: '谭敏仪'
       }
     }
   },
@@ -137,22 +137,25 @@ export default {
 <style lang='scss'>
 #left-container .duty-select{
     .el-input{
-      width: 77px;
+      width: 4vw;
     }
     .el-input--suffix .el-input__inner {
-    padding-right: 30px;
-    background-color: transparent;
-    border: none;
-    color:  #C8D6FE;
-    font-size: 16px;
+      padding-right: 1.2vw;
+      background-color: transparent;
+      border: none;
+      color:  #C8D6FE;
+      font-size: 0.85vw;
+      height: 2vw;
+      line-height: 2vw;
     }
     .el-select-dropdown{
       border: unset;
-      left: 12px !important;
+      left:0.5vw !important;
     }
     .el-select-dropdown__item{
-      height: 26px;
+      height: 1.5vw;
       color: #fff;
+      font-size: 0.8vw;
     }
     .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
       background-color: #5F3BFF;
@@ -165,72 +168,105 @@ export default {
 <style lang='scss' scoped>
 .duty-arrange {
   position: relative;
-  height: 285px;
-  margin-top: 50px;
-  margin-left: 19px;
+  height: 15vw;
   background: rgba(52,24,171,0.20);
   border: 1px solid #3418AB;
   box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
   border-radius: 4px;
-  width: 422px;
+  width: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  .first-rows{
+    display:flex;
+    flex-direction:row;
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 100%;
+    height: 1.9vw;
+  }
 
   .title{
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 100%;
     .logo{
-        width: 4px;
-        height: 18px;
+        width: 0.2vw;
+        height: 1vw;
         background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
-        margin-left: 21px;
-        margin-top: 13px;
-        margin-right: 10px;
+        margin-left: 1vw;
+        margin-top: 0.8vw;
+        margin-right: 0.5vw;
     }
     span {
-      margin-top: 13px;
+      margin-top: 0.9vw;
       font-family: MicrosoftYaHeiUISemibold;
-      font-size: 18px;
+      font-size: 0.98vw;
       color: #C8D6FE;
       letter-spacing: 0;
-      line-height: 16px;
+      line-height:0.8vw;
     }
   }
   .duty-select{
     position: relative;
-    left: 225px;
-    top: 5px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 100%;
+    width: 5vw;
+    margin-top: 0.3vw;
   }
 
   .time-container{
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+    padding-left: 1vw;
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 3vw;
     .morning{
       text-align: center;
-      line-height: 59px;
-      width: 106px;
-      height: 45px;
-      margin-left: 23px;
+      line-height: 3.1vw;
+      width: 5.5vw;
+      height: 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
       background-image: url('../../../../assets/main/早xh.png');
+      background-repeat: no-repeat;
     }
     .noon{
       text-align: center;
-      line-height: 59px;
-      width: 106px;
-      height: 45px;
-      margin-left: 30.5px;
+      line-height: 3.1vw;
+      width: 5.5vw;
+      height: 100%;
+      margin-left: 1.5vw;
+      margin-right: 1.5vw;
+      flex-shrink: 1;
+      flex-grow: 1;
       background-image: url('../../../../assets/main/午xh.png');
+      background-repeat: no-repeat;
     }
     .evening {
       text-align: center;
-      line-height: 59px;
-      width: 106px;
-      height: 45px;
-      margin-left: 30.5px;
+      line-height: 3.1vw;
+      width: 5.5vw;
+      height: 100%;
+      flex-shrink: 0;
+      flex-grow: 0;
+      margin-right: 1.3vw;
       background-image: url('../../../../assets/main/晚xh.png');
+      background-repeat: no-repeat;
     }
     span{
       margin-left: 35px;
+      font-family: MicrosoftYaHeiUI;
+      font-size: 0.98vw;
+      color: #E8EAF6;
+      line-height: 0vh;
     }
   }
 
@@ -238,15 +274,21 @@ export default {
     display: flex;
     flex-direction: row;
     position: relative;
-    left: 25px;
-    font-family: MicrosoftYaHeiUI;
+    font-family: Bebas;
+    font-size: 0.87vw;
+    color: #FFFFFF;
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 100%;
+    height: 4vw;
+    padding-left: 1vw;
     .zhiban{
       font-family: MicrosoftYaHeiUI;
       font-size: 12px;
       color: #9FA8DA;
       letter-spacing: 0;
-      line-height: 11px;
-      margin-bottom: 10px;
+      line-height: 1vh;
+      margin-bottom: 1vh;
     }
   }
 
@@ -254,15 +296,20 @@ export default {
     display: flex;
     flex-direction: row;
     position: relative;
-    top: 27px;
-    left: 25px;
+    padding-left: 1vw;
     font-family: MicrosoftYaHeiUI;
+    flex-shrink: 1;
+    flex-grow: 1;
+    height: 0;
     .worker-group{
       display: flex;
       flex-direction: column;
     }
     .worker{
-      width:60px;
+      width:3vw;
+      font-family: MicrosoftYaHeiUI;
+      font-size: 0.87vw;
+      color: #FFFFFF;
     }
     .first-row{
       margin-top: 10px;

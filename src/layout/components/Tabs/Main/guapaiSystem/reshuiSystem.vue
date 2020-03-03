@@ -1,6 +1,6 @@
 <template>
   <div>
-    能耗对比
+    热水系统
   </div>
 </template>
 
