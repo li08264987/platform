@@ -56,7 +56,12 @@
             <el-table-column property="time" label="报警时间" width="200" />
             <el-table-column property="operate" label="报警内容" />
           </el-table>
-          <el-pagination background layout="prev, pager, next" style="margin-top: 10px;margin-left: -10px;" :total="200" />
+          <el-pagination
+            background
+            layout="prev, pager, next"
+            style="margin-top: 10px;margin-left: -10px;"
+            :total="200"
+          />
         </el-tab-pane>
         <el-tab-pane label="设备百科" class="tab3">
           <div class="titlecon">

@@ -1,192 +1,369 @@
 <template>
-  <div class="kongYaMain">
-    <runInfo ref="showRunInfo" />
-    <infoScan ref="infoScan" />
-    <div class="tools">
-      <el-select v-model="selectvalue" placeholder="自定义">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
+  <div class="maindiv">
+    <div class="kongYaMain">
+      <runInfo ref="showRunInfo" />
+      <infoScan ref="infoScan" />
+      <div v-if="false" class="tools">
+        <el-select v-model="selectvalue" placeholder="自定义">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
+        <el-date-picker
+          v-model="dateinput"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
         />
-      </el-select>
-      <el-date-picker
-        v-model="dateinput"
-        type="daterange"
-        range-separator="至"
-        start-placeholder="开始日期"
-        end-placeholder="结束日期"
-      />
-      <el-input v-model="typeinput" placeholder="请输入内容" prefix-icon="el-icon-search" />
-      <el-button type="primary" icon="el-icon-search">搜索</el-button>
-      <el-button>运行回放</el-button>
-    </div>
-    <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
-      <el-tab-pane label="系统" name="first">
-        <div style="height:99%;">
-          <div id="intools">
-            <el-button icon="el-icon-arrow-left" style="float:left;margin-left:20px;">上一页</el-button>
-            <i class="el-icon-camera-solid" />
-            <span @click="showNeiBu">2D模式</span>
-            <i class="el-icon-video-camera-solid" />
-            <span @click="showVideos">视频监控</span>
-            <i class="el-icon-platform-eleme" />
-            <span @click="showParamPanel">{{ showParamName }}</span>
-            <i class="el-icon-s-tools" />
-            <el-select v-model="value2" class="selectbtn" multiple collapse-tags placeholder="参数设置">
-              <el-option v-for="item in paramOptions" :key="item.value" :label="item.label" :value="item.value" />
+        <el-input
+          v-model="typeinput"
+          placeholder="请输入内容"
+          prefix-icon="el-icon-search"
+        />
+        <el-button type="primary" icon="el-icon-search">搜索</el-button>
+        <el-button>运行回放</el-button>
+      </div>
+      <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
+        <el-tab-pane label="系统" name="first">
+          <div style="height:99%;text-align:center">
+            <el-select v-model="selectvalue">
+              <el-option
+                v-for="item in deviceoptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
             </el-select>
-            <i class="el-icon-s-custom" />
-            <span @click="showDutyPanel">{{ showDutyName }}</span>
-            <el-button style="float:right;margin-right:20px;">
-              下一页
-              <i class="el-icon-arrow-right el-icon--right" />
-            </el-button>
+            <div style="padding-top:10px">
+              <span>运行优化建议：</span>
+              <span>可关停1#螺杆空压机，只能用2#螺杆空样机进行供应，预计提升系统运行能效5%，节省能源费用2000元（运行模式对比）。</span>
+              <span>确认</span>
+            </div>
+            <div v-if="false" id="intools">
+              <el-button
+                icon="el-icon-arrow-left"
+                style="float:left;margin-left:20px;"
+              >上一页</el-button>
+              <i class="el-icon-camera-solid" />
+              <span @click="showNeiBu">2D模式</span>
+              <i class="el-icon-video-camera-solid" />
+              <span @click="showVideos">视频监控</span>
+              <i class="el-icon-platform-eleme" />
+              <span @click="showParamPanel">{{ showParamName }}</span>
+              <i class="el-icon-s-tools" />
+              <el-select
+                v-model="value2"
+                class="selectbtn"
+                multiple
+                collapse-tags
+                placeholder="参数设置"
+              >
+                <el-option
+                  v-for="item in paramOptions"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+              <i class="el-icon-s-custom" />
+              <span @click="showDutyPanel">{{ showDutyName }}</span>
+              <el-button style="float:right;margin-right:20px;">
+                下一页
+                <i class="el-icon-arrow-right el-icon--right" />
+              </el-button>
+            </div>
+            <div v-show="showNeibu" style="height:99%;position:relative">
+              <svg
+                id="backgroud"
+                viewBox="-70 -20 1850 920"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                @click="showKongYa($event)"
+                v-html="kongYsSys"
+              />
+            </div>
+            <div v-show="showParam" class="rightparam">
+              <div
+                style="height:6%;display:flex;align-items:center;justify-content:center;font-weight:bold"
+              >
+                ZH-10000+离心机通讯参数
+              </div>
+              <div class="righttop">
+                <div
+                  v-for="(element, index) in params"
+                  :key="index"
+                  class="itemdiv"
+                >
+                  <div class="valuediv">{{ element.value }}</div>
+                  <div class="namediv">{{ element.name }}</div>
+                </div>
+              </div>
+              <div class="rightbott">
+                <div
+                  v-for="(element, index) in params2"
+                  :key="index"
+                  class="itemdiv"
+                >
+                  <div class="valuediv">{{ element.value }}</div>
+                  <div class="namediv">{{ element.name }}</div>
+                </div>
+              </div>
+            </div>
+            <div v-show="showDuty" class="leftduty">
+              <div class="dutytitle"><i class="el-icon-s-tools" />运行值班</div>
+              <div class="dutycontain">
+                <div>程志远</div>
+                <div>010-52886945</div>
+              </div>
+              <div class="dutycontain">
+                <div>程志远</div>
+                <div>010-52886945</div>
+              </div>
+              <div class="dutytitle"><i class="el-icon-s-open" />维修值班</div>
+              <div class="dutycontain">
+                <div>程志远</div>
+                <div>010-52886945</div>
+              </div>
+              <div class="dutytitle"><i class="el-icon-s-custom" />值班领导</div>
+              <div class="dutycontain">
+                <div>程志远</div>
+                <div>010-52886945</div>
+              </div>
+            </div>
+            <div v-show="showVideo" class="content">
+              <div>
+                <div class="condiv Video_1" />
+                <div class="conbott">
+                  <div class="leftdiv">
+                    <span>一号摄像头</span>
+                    <label>2019/10/01至2020/20/29</label>
+                  </div>
+                  <el-button
+                    type="primary"
+                    @click="showHisVideo"
+                  >查看回放</el-button>
+                </div>
+              </div>
+              <div>
+                <div class="condiv Video_2" />
+                <div class="conbott">
+                  <div class="leftdiv">
+                    <span>一号摄像头</span>
+                    <label>2019/10/01至2020/20/29</label>
+                  </div>
+                  <el-button
+                    type="primary"
+                    @click="showHisVideo"
+                  >查看回放</el-button>
+                </div>
+              </div>
+              <div>
+                <div class="condiv Video_3" />
+                <div class="conbott">
+                  <div class="leftdiv">
+                    <span>一号摄像头</span>
+                    <label>2019/10/01至2020/20/29</label>
+                  </div>
+                  <el-button
+                    type="primary"
+                    @click="showHisVideo"
+                  >查看回放</el-button>
+                </div>
+              </div>
+              <div>
+                <div class="condiv Video_4" />
+                <div class="conbott">
+                  <div class="leftdiv">
+                    <span>一号摄像头</span>
+                    <label>2019/10/01至2020/20/29</label>
+                  </div>
+                  <el-button
+                    type="primary"
+                    @click="showHisVideo"
+                  >查看回放</el-button>
+                </div>
+              </div>
+              <div>
+                <div class="condiv Video_5" />
+                <div class="conbott">
+                  <div class="leftdiv">
+                    <span>一号摄像头</span>
+                    <label>2019/10/01至2020/20/29</label>
+                  </div>
+                  <el-button
+                    type="primary"
+                    @click="showHisVideo"
+                  >查看回放</el-button>
+                </div>
+              </div>
+              <div>
+                <div class="condiv Video_6" />
+                <div class="conbott">
+                  <div class="leftdiv">
+                    <span>一号摄像头</span>
+                    <label>2019/10/01至2020/20/29</label>
+                  </div>
+                  <el-button
+                    type="primary"
+                    @click="showHisVideo"
+                  >查看回放</el-button>
+                </div>
+              </div>
+            </div>
+            <div v-show="showHis" style="display:flex;height:92%">
+              <div class="videoPlay" />
+              <div style="flex:2;height:100%;overflow:auto;height:100%;">
+                <div
+                  class="Video_1"
+                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
+                />
+                <div
+                  class="Video_2"
+                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
+                />
+                <div
+                  class="Video_3"
+                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
+                />
+                <div
+                  class="Video_4"
+                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
+                />
+                <div
+                  class="Video_5"
+                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
+                />
+                <div
+                  class="Video_6"
+                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
+                />
+              </div>
+            </div>
           </div>
-          <div v-show="showNeibu" style="height:99%;position:relative">
-            <svg id="backgroud" viewBox="-70 -20 1850 920" version="1.1" xmlns="http://www.w3.org/2000/svg" @click="showKongYa($event)" v-html="kongYsSys" />
+        </el-tab-pane>
+        <el-tab-pane label="机组" name="second">
+          <div v-show="showNeibu" style="height:99%">
+            <svg
+              viewBox="-50 -20 1800 920"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              v-html="kongyajizu"
+            />
           </div>
-          <div v-show="showParam" class="rightparam">
-            <div
-              style="height:6%;display:flex;align-items:center;justify-content:center;font-weight:bold"
-            >ZH-10000+离心机通讯参数</div>
-            <div class="righttop">
-              <div v-for="(element,index) in params" :key="index" class="itemdiv">
+        </el-tab-pane>
+        <el-tab-pane label="设备" name="third">
+          <div v-show="showNeibu" style="height:99%">
+            <svg
+              viewBox="-150 -20 1800 920"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              v-html="kongyaji"
+            />
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+    <div class="rightparam">
+      <div class="rblock">
+        <div class="rtitle">当前值班</div>
+        <div style="text-align:left">王立志(运营),王立志(运营),王立志(运营)</div>
+      </div>
+      <div class="rblock">
+        <div class="rtitle">能效总览</div>
+        <div style="display:flex;justify-content: space-between">
+          <div class="xhdiv" style="color:#192EB6">
+            <div>气体产量</div>
+            <div style="padding-top: 5px;"><span style="font-weight:bold;font-size:20px;">1112</span><span>m³/h</span></div>
+          </div>
+          <div class="xhdiv" style="color:#005AFF">
+            <div>电力消耗</div>
+            <div style="padding-top: 5px;"><span style="font-weight:bold;font-size:20px;">1111</span><span>kWh</span></div>
+          </div>
+          <div class="xhdiv" style="color:#F56B35">
+            <div>单耗</div>
+            <div style="padding-top: 5px;"><span style="font-weight:bold;font-size:20px;">111</span><span>kWh/m³/h</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="rblock">
+        <div class="rtitle">能效评价</div>
+        <el-rate
+          v-model="pjvalue"
+          show-text
+          style="text-align: left;"
+        />
+      </div>
+      <div class="rblock">
+        <div class="rtitle">供应概览</div>
+        <el-tabs v-model="gyActiveName" @tab-click="handleClickGY">
+          <el-tab-pane label="1-2栋车间" name="first">
+            <div class="rightzl">
+              <div
+                v-for="(element, index) in paramss"
+                :key="index"
+                class="itemdiv"
+              >
                 <div class="valuediv">{{ element.value }}</div>
                 <div class="namediv">{{ element.name }}</div>
               </div>
             </div>
-            <div class="rightbott">
-              <div v-for="(element,index) in params2" :key="index" class="itemdiv">
+          </el-tab-pane>
+          <el-tab-pane label="3-4栋车间" name="second">
+            <div class="rightzl">
+              <div
+                v-for="(element, index) in paramss"
+                :key="index"
+                class="itemdiv"
+              >
                 <div class="valuediv">{{ element.value }}</div>
                 <div class="namediv">{{ element.name }}</div>
               </div>
             </div>
+          </el-tab-pane>
+          <el-tab-pane label="氢氮系统" name="third">
+            <div class="rightzl">
+              <div
+                v-for="(element, index) in paramss"
+                :key="index"
+                class="itemdiv"
+              >
+                <div class="valuediv">{{ element.value }}</div>
+                <div class="namediv">{{ element.name }}</div>
+              </div>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+      <div class="rblock">
+        <div class="rtitle">能耗概览</div>
+        <div style="display:flex">
+          <div style="flex:2;height:135px">
+            饼状图
           </div>
-          <div v-show="showDuty" class="leftduty">
-            <div class="dutytitle">
-              <i class="el-icon-s-tools" />运行值班
+          <div style="flex:3;height:135px">
+            <div class="rtitle2">
+              <span>空压机组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="dutycontain">
-              <div>程志远</div>
-              <div>010-52886945</div>
+            <div class="rtitle2">
+              <span>冷却塔组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="dutycontain">
-              <div>程志远</div>
-              <div>010-52886945</div>
+            <div class="rtitle2">
+              <span>空却泵组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="dutytitle">
-              <i class="el-icon-s-open" />维修值班
+            <div class="rtitle2">
+              <span>冷干机组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="dutycontain">
-              <div>程志远</div>
-              <div>010-52886945</div>
-            </div>
-            <div class="dutytitle">
-              <i class="el-icon-s-custom" />值班领导
-            </div>
-            <div class="dutycontain">
-              <div>程志远</div>
-              <div>010-52886945</div>
-            </div>
-          </div>
-          <div v-show="showVideo" class="content">
-            <div>
-              <div class="condiv Video_1" />
-              <div class="conbott">
-                <div class="leftdiv">
-                  <span>一号摄像头</span>
-                  <label>2019/10/01至2020/20/29</label>
-                </div>
-                <el-button type="primary" @click="showHisVideo">查看回放</el-button>
-              </div>
-            </div>
-            <div>
-              <div class="condiv Video_2" />
-              <div class="conbott">
-                <div class="leftdiv">
-                  <span>一号摄像头</span>
-                  <label>2019/10/01至2020/20/29</label>
-                </div>
-                <el-button type="primary" @click="showHisVideo">查看回放</el-button>
-              </div>
-            </div>
-            <div>
-              <div class="condiv Video_3" />
-              <div class="conbott">
-                <div class="leftdiv">
-                  <span>一号摄像头</span>
-                  <label>2019/10/01至2020/20/29</label>
-                </div>
-                <el-button type="primary" @click="showHisVideo">查看回放</el-button>
-              </div>
-            </div>
-            <div>
-              <div class="condiv Video_4" />
-              <div class="conbott">
-                <div class="leftdiv">
-                  <span>一号摄像头</span>
-                  <label>2019/10/01至2020/20/29</label>
-                </div>
-                <el-button type="primary" @click="showHisVideo">查看回放</el-button>
-              </div>
-            </div>
-            <div>
-              <div class="condiv Video_5" />
-              <div class="conbott">
-                <div class="leftdiv">
-                  <span>一号摄像头</span>
-                  <label>2019/10/01至2020/20/29</label>
-                </div>
-                <el-button type="primary" @click="showHisVideo">查看回放</el-button>
-              </div>
-            </div>
-            <div>
-              <div class="condiv Video_6" />
-              <div class="conbott">
-                <div class="leftdiv">
-                  <span>一号摄像头</span>
-                  <label>2019/10/01至2020/20/29</label>
-                </div>
-                <el-button type="primary" @click="showHisVideo">查看回放</el-button>
-              </div>
-            </div>
-          </div>
-          <div v-show="showHis" style="display:flex;height:92%">
-            <div class="videoPlay" />
-            <div style="flex:2;height:100%;overflow:auto;height:100%;">
-              <div class="Video_1" style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;" />
-              <div class="Video_2" style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;" />
-              <div class="Video_3" style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;" />
-              <div class="Video_4" style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;" />
-              <div class="Video_5" style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;" />
-              <div class="Video_6" style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;" />
+            <div class="rtitle2">
+              <span>其他</span><span>2300kWh</span><label>67%</label>
             </div>
           </div>
         </div>
-      </el-tab-pane>
-      <el-tab-pane label="机组" name="second">
-        <div v-show="showNeibu" style="height:99%">
-          <svg
-            viewBox="-50 -20 1800 920"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            v-html="kongyajizu"
-          />
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="设备" name="third">
-        <div v-show="showNeibu" style="height:99%">
-          <svg
-            viewBox="-150 -20 1800 920"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            v-html="kongyaji"
-          />
-        </div>
-      </el-tab-pane>
-    </el-tabs>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -207,6 +384,8 @@ export default {
       kongyaji: kongyaji,
       kongyajizu: kongyajizu,
       activeName: 'first',
+      gyActiveName: 'first',
+      pjvalue: '',
       options: [
         {
           value: 'year',
@@ -219,6 +398,20 @@ export default {
         {
           value: 'day',
           label: '日'
+        }
+      ],
+      deviceoptions: [
+        {
+          value: 'one',
+          label: '1#空压系统流程图'
+        },
+        {
+          value: 'two',
+          label: '2#空压系统流程图'
+        },
+        {
+          value: 'three',
+          label: '3#空压系统流程图'
         }
       ],
       paramOptions: [
@@ -242,7 +435,7 @@ export default {
       value2: [],
       dateinput: '',
       typeinput: '',
-      selectvalue: '',
+      selectvalue: 'one',
       showNeibu: true,
       showVideo: false,
       showParam: false,
@@ -250,6 +443,32 @@ export default {
       showHis: false,
       showParamName: '显示数据',
       showDutyName: '值班显示',
+      paramss: [
+        {
+          name: '马达绕组U温度',
+          value: '40.8℃'
+        },
+        {
+          name: '马达绕组V温度',
+          value: '40.8℃'
+        },
+        {
+          name: '马达绕组W温度',
+          value: '40.8℃'
+        },
+        {
+          name: '1级振动',
+          value: '40.8℃'
+        },
+        {
+          name: '轴承驱动温度',
+          value: '40.8℃'
+        },
+        {
+          name: '非轴承驱动温度',
+          value: '40.8℃'
+        }
+      ],
       params: [
         {
           name: '马达绕组U温度',
@@ -431,12 +650,9 @@ export default {
 .kongYaMain {
   height: 99%;
   // margin-left:50px;
-  width: 80%;
+  width: 77%;
   .tabs {
     height: 99%;
-    .el-tabs__header {
-      width: 166px;
-    }
     .el-tab-pane {
       height: 99%;
     }
@@ -466,6 +682,15 @@ export default {
     }
   }
 }
+.rblock{
+  .el-tabs__nav{
+    width: 100%;
+  }
+  .el-tabs__item{
+    width: 33.4%;
+    padding: 0px;
+  }
+}
 </style>
 <style scoped lang="scss">
 .tools {
@@ -478,10 +703,10 @@ export default {
 }
 .rightparam {
   height: 91%;
-  width: 400px;
+  width: 23%;
   position: absolute;
   right: 0px;
-  top: 5%;
+  top: 4.3%;
   background: white;
   border: 1px solid #e4e9f0;
   text-align: center;
@@ -490,24 +715,58 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
-    .itemdiv {
+  }
+  .rightzl {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+  }
+  .itemdiv {
       width: 31%;
       margin-left: 1%;
       border: 1px solid #bbc8f8;
       height: 70px;
       text-align: center;
-      .valuediv {
-        height: 40px;
-        line-height: 40px;
-        background: #f6f8fe;
-        font-size: 20px;
-        font-weight: bold;
+      margin-bottom: 1%;
+    }
+  .valuediv {
+    height: 40px;
+    line-height: 40px;
+    background: #f6f8fe;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .namediv {
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+  }
+  .rblock{
+    padding: 20px 10px 20px 20px;
+    border-bottom: 1px solid #E4E9F0;
+    .rtitle{
+      text-align: left;
+      border-left: 3px solid #2853FF;
+      color: #3E3E3E;
+      padding-left: 5px;
+      margin-bottom: 17px;
+    }
+    .rtitle2{
+      text-align: left;
+      border-left: 3px solid #2853FF;
+      color: #3E3E3E;
+      padding-left: 5px;
+      margin-bottom: 10px;
+      span{
+        width: 80px;
+        display: inline-block;
       }
-      .namediv {
-        height: 30px;
-        line-height: 30px;
-        font-size: 15px;
-      }
+    }
+    .xhdiv{
+      width: 30%;
+      border: 1px dashed;
+      text-align: left;
+      padding: 10px 0px 10px 5px;
     }
   }
   .rightbott {
@@ -557,7 +816,7 @@ export default {
 }
 #intools:after {
   display: block;
-  content: '';
+  content: "";
   clear: both;
   height: 0;
   overflow: hidden;
@@ -622,24 +881,24 @@ export default {
 .videoPlay {
   flex: 8;
   height: 100%;
-  background-image: url('../../../../assets/monitor/videoImg.png');
+  background-image: url("../../../../assets/monitor/videoImg.png");
 }
 .Video_1 {
-  background-image: url('../../../../assets/monitor/ved1.png');
+  background-image: url("../../../../assets/monitor/ved1.png");
 }
 .Video_2 {
-  background-image: url('../../../../assets/monitor/ved2.png');
+  background-image: url("../../../../assets/monitor/ved2.png");
 }
 .Video_3 {
-  background-image: url('../../../../assets/monitor/ved3.png');
+  background-image: url("../../../../assets/monitor/ved3.png");
 }
 .Video_4 {
-  background-image: url('../../../../assets/monitor/ved4.png');
+  background-image: url("../../../../assets/monitor/ved4.png");
 }
 .Video_5 {
-  background-image: url('../../../../assets/monitor/ved3.png');
+  background-image: url("../../../../assets/monitor/ved3.png");
 }
 .Video_6 {
-  background-image: url('../../../../assets/monitor/ved2.png');
+  background-image: url("../../../../assets/monitor/ved2.png");
 }
 </style>
