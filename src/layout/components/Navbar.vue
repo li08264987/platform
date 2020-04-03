@@ -2,8 +2,8 @@
   <div class="navbar">
     <img class="logo" src="@/assets/tittle/logo.png">
     <div>
-      <p class="tittle-cn">建筑能源系统运管平台</p>
-      <p class="tittle-en">Building Energy Management Platform</p>
+      <p class="tittle-cn">启慧AI+能源系统运管平台</p>
+      <p class="tittle-en">Smart AI+Energy System Management Platform</p>
     </div>
     <ul class="tab-ul">
       <li
@@ -12,11 +12,11 @@
         class="tab-ul tab-li"
         :class="{active:active==index}"
         @click="tabChange(index,tab.view)"
-      >{{ tab.type }}</li>
+      ><div :class=tab.view style="width:28px;height:28px;background-size: contain;"></div><div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div></li>
     </ul>
 
     <div class="right-menu">
-      <template v-if="device!=='mobile'">
+      <!-- <template v-if="device!=='mobile'">
         <search id="header-search" class="right-menu-item" />
 
         <error-log class="errLog-container right-menu-item hover-effect" />
@@ -50,7 +50,7 @@
             <span style="display:block;">退出</span>
           </el-dropdown-item>
         </el-dropdown-menu>
-      </el-dropdown>
+      </el-dropdown> -->
     </div>
   </div>
 </template>
@@ -78,36 +78,36 @@ export default {
       currentView: 'Main',
       tabs: [
         {
-          type: '运营看板',
-          view: 'Main'
+          type: '首页',
+          view: 'Main',
         },
         {
-          type: '监测管理',
-          view: 'Monitor'
+          type: '在线监测',
+          view: 'Monitor',
         },
         {
           type: '能耗管理',
-          view: 'Energy'
+          view: 'Energy',
         },
         {
           type: '报表管理',
-          view: 'ReportTable'
+          view: 'ReportTable',
         },
         {
           type: '诊断中心',
-          view: 'Diagnosis'
+          view: 'Diagnosis',
         },
         {
           type: '设备管理',
-          view: 'Device'
+          view: 'Device',
         },
         {
           type: '智慧中心',
-          view: 'Smart'
+          view: 'Smart',
         },
         {
           type: '平台设置',
-          view: 'PlatSetting'
+          view: 'PlatSetting',
         }
       ]
     }
@@ -144,16 +144,22 @@ export default {
   font-size: 2.4ex;
   font-weight: bold;
   width: 300px;
-  left: 60px;
+  left: 75px;
   position: absolute;
-  top: -12px;
+  top: -5px;
+  color: white;
+}
+.titleicon{
+  width: 30px;
+  height: 30px;
 }
 .tittle-en {
   font-size: 0.4ex;
   width: 300px;
-  left: 60px;
+  left: 75px;
   position: absolute;
-  top: 20px;
+  top: 30px;
+  color: white;
 }
 .tab-ul {
   width: 85%;
@@ -161,27 +167,58 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.Main{
+  background-image: url("../../assets/tittle/home.png");
+}
+.Monitor{
+  background-image: url("../../assets/tittle/monitor.png");
+}
+.Energy{
+  background-image: url("../../assets/tittle/energy.png");
+}
+.ReportTable{
+  background-image: url("../../assets/tittle/table.png");
+}
+.Diagnosis{
+  background-image: url("../../assets/tittle/diagnose.png");
+}
+.Device{
+  background-image: url("../../assets/tittle/device.png");
+}
+.Smart{
+  background-image: url("../../assets/tittle/smart.png");
+}
+.PlatSetting{
+  background-image: url("../../assets/tittle/setting.png");
+}
 .tab-ul .tab-li {
   width: 100px;
-  height: 40px;
-  background: #ccc;
+  height: 70px;
   display: inline-flex;
-  border-right: 1px solid #ddd;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: #fff;
+}
+.tab-li {
+  flex-wrap: wrap;
+  div{
+    padding: 0px 10px;
+  }
 }
 .tab-ul .tab-li.active {
-  background: red;
+  background: #05189E;
+  border-bottom:3px solid white;
 }
 
 .navbar {
   display: flex;
-  height: 50px;
+  height: 70px;
   overflow: hidden;
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  background-image: url("../../assets/tittle/back.png");
 
   .hamburger-container {
     line-height: 46px;
