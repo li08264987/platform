@@ -163,4 +163,7 @@ export default {
 .mobile .fixed-header {
   width: 100%;
 }
+.main-container{
+  height: calc(100% - 104px) !important;
+}
 </style>

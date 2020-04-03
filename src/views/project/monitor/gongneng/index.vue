@@ -34,30 +34,18 @@
             <i class="el-icon-platform-eleme" />
             <span @click="showParamPanel">{{ showParamName }}</span>
             <i class="el-icon-s-tools" />
-            <el-select class="selectbtn" v-model="value2" multiple collapse-tags placeholder="参数设置">
-              <el-option
-                v-for="item in paramOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+            <el-select v-model="value2" class="selectbtn" multiple collapse-tags placeholder="参数设置">
+              <el-option v-for="item in paramOptions" :key="item.value" :label="item.label" :value="item.value" />
             </el-select>
             <i class="el-icon-s-custom" />
-            <span @click="showDutyPanel">{{showDutyName}}</span>
+            <span @click="showDutyPanel">{{ showDutyName }}</span>
             <el-button style="float:right;margin-right:20px;">
               下一页
               <i class="el-icon-arrow-right el-icon--right" />
             </el-button>
           </div>
           <div v-show="showNeibu" style="height:99%;position:relative">
-            <svg
-              id="backgroud"
-              viewBox="-70 -20 1850 920"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              v-html="kongYsSys"
-              @click="showKongYa($event)"
-            />
+            <svg id="backgroud" viewBox="-70 -20 1850 920" version="1.1" xmlns="http://www.w3.org/2000/svg" @click="showKongYa($event)" v-html="kongYsSys" />
           </div>
           <div v-show="showParam" class="rightparam">
             <div
@@ -78,7 +66,7 @@
           </div>
           <div v-show="showDuty" class="leftduty">
             <div class="dutytitle">
-              <i class="el-icon-s-tools"></i>运行值班
+              <i class="el-icon-s-tools" />运行值班
             </div>
             <div class="dutycontain">
               <div>程志远</div>
@@ -89,14 +77,14 @@
               <div>010-52886945</div>
             </div>
             <div class="dutytitle">
-              <i class="el-icon-s-open"></i>维修值班
+              <i class="el-icon-s-open" />维修值班
             </div>
             <div class="dutycontain">
               <div>程志远</div>
               <div>010-52886945</div>
             </div>
             <div class="dutytitle">
-              <i class="el-icon-s-custom"></i>值班领导
+              <i class="el-icon-s-custom" />值班领导
             </div>
             <div class="dutycontain">
               <div>程志远</div>
@@ -208,7 +196,7 @@ import kongyajizu from '@/api/monitor/kongyajizu'
 import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
 export default {
-  name: 'monitorView',
+  name: 'MonitorView',
   components: {
     runInfo,
     infoScan
@@ -407,7 +395,7 @@ export default {
       }
     },
     getParentId(target) {
-      let self = this
+      const self = this
       switch (target.id) {
         case '空压机':
           self.$refs.showRunInfo.dialogTableVisible = true
@@ -424,12 +412,12 @@ export default {
       }
     },
     showKongYa(e) {
-      var self = this
+      const self = this
       var str = /\d/
       if (
         str.test(e.target.id) ||
-        e.target.tagName == 'tspan' ||
-        e.target.tagName == 'text'
+        e.target.tagName === 'tspan' ||
+        e.target.tagName === 'text'
       ) {
         self.$refs.infoScan.dialogTableVisible = true
         return

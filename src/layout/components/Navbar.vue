@@ -6,68 +6,20 @@
       <p class="tittle-en">Smart AI+Energy System Management Platform</p>
     </div>
     <ul class="tab-ul">
-      <li
-        v-for="(tab,index) in tabs"
-        :key="index"
-        class="tab-ul tab-li"
-        :class="{active:active==index}"
-        @click="tabChange(index,tab.view)"
-      ><div :class=tab.view style="width:28px;height:28px;background-size: contain;"></div><div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div></li>
+      <li v-for="(tab,index) in tabs" :key="index" class="tab-ul tab-li" :class="{active:active==index}" @click="tabChange(index,tab.view)">
+        <div :class="tab.view" style="width:28px;height:28px;background-size: contain;" />
+        <div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div>
+      </li>
     </ul>
-
-    <div class="right-menu">
-      <!-- <template v-if="device!=='mobile'">
-        <search id="header-search" class="right-menu-item" />
-
-        <error-log class="errLog-container right-menu-item hover-effect" />
-
-        <screenfull id="screenfull" class="right-menu-item hover-effect" />
-
-        <el-tooltip content="Global Size" effect="dark" placement="bottom">
-          <size-select id="size-select" class="right-menu-item hover-effect" />
-        </el-tooltip>
-      </template>
-
-      <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
-        <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
-        </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/profile/index">
-            <el-dropdown-item>概况</el-dropdown-item>
-          </router-link>
-          <router-link to="/">
-            <el-dropdown-item>首页</el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>文档</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">退出</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown> -->
-    </div>
+    <div class="right-menu" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import ErrorLog from '@/components/ErrorLog'
-import Screenfull from '@/components/Screenfull'
-import SizeSelect from '@/components/SizeSelect'
-import Search from '@/components/HeaderSearch'
 
 export default {
   components: {
-    ErrorLog,
-    Screenfull,
-    SizeSelect,
-    Search
   },
   props: {
     onUpdate: Function
@@ -79,35 +31,35 @@ export default {
       tabs: [
         {
           type: '首页',
-          view: 'Main',
+          view: 'Main'
         },
         {
           type: '在线监测',
-          view: 'Monitor',
+          view: 'Monitor'
         },
         {
           type: '能耗管理',
-          view: 'Energy',
+          view: 'Energy'
         },
         {
           type: '报表管理',
-          view: 'ReportTable',
+          view: 'ReportTable'
         },
         {
           type: '诊断中心',
-          view: 'Diagnosis',
+          view: 'Diagnosis'
         },
         {
           type: '设备管理',
-          view: 'Device',
+          view: 'Device'
         },
         {
           type: '智慧中心',
-          view: 'Smart',
+          view: 'Smart'
         },
         {
           type: '平台设置',
-          view: 'PlatSetting',
+          view: 'PlatSetting'
         }
       ]
     }
