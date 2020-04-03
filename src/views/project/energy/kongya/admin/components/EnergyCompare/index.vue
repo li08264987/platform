@@ -11,7 +11,20 @@
           <div class="compare-chart-container" style="padding: 15px;">
             <div class="title-bar">
               <span>能耗对比图</span>
-              <el-button class="btn">添加时间段</el-button>
+              <el-button class="btn" @click="dialogVisible = true">添加时间段</el-button>
+              <el-dialog
+                title="添加时间段"
+                :center="false"
+                :visible.sync="dialogVisible"
+                width="30%"
+                :before-close="handleClose"
+              >
+                <span>这是一段信息</span>
+                <span slot="footer" class="dialog-footer">
+                  <el-button @click="dialogVisible = false">取 消</el-button>
+                  <el-button type="primary" @click="dialogVisible = false">添 加</el-button>
+                </span>
+              </el-dialog>
             </div>
             <div class="chart-grid">
               <line-chart :chart-data="lineChartData" />
@@ -69,6 +82,7 @@ export default {
   },
   data() {
     return {
+      dialogVisible: false,
       chartData: {
         title: '能耗对比概览',
         xAxis: ['电力系统', '冷水系统', '热水系统', '空压系统', '真压系统'],
@@ -195,7 +209,13 @@ export default {
     }
   },
   methods: {
-
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+        .then(_ => {
+          done()
+        })
+        .catch(_ => {})
+    }
   }
 }
 </script>
