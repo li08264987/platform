@@ -12,7 +12,7 @@
         class="tab-ul tab-li"
         :class="{active:active==index}"
         @click="tabChange(index,tab.view)"
-      ><div :class=tab.view style="width:28px;height:28px;background-size: contain;"></div><div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div></li>
+      ><div :class="tab.view" style="width:28px;height:28px;background-size: contain;" /><div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div></li>
     </ul>
 
     <div class="right-menu">
@@ -79,35 +79,35 @@ export default {
       tabs: [
         {
           type: '首页',
-          view: 'Main',
+          view: 'Main'
         },
         {
           type: '在线监测',
-          view: 'Monitor',
+          view: 'Monitor'
         },
         {
           type: '能耗管理',
-          view: 'Energy',
+          view: 'Energy'
         },
         {
           type: '报表管理',
-          view: 'ReportTable',
+          view: 'ReportTable'
         },
         {
           type: '诊断中心',
-          view: 'Diagnosis',
+          view: 'Diagnosis'
         },
         {
           type: '设备管理',
-          view: 'Device',
+          view: 'Device'
         },
         {
           type: '智慧中心',
-          view: 'Smart',
+          view: 'Smart'
         },
         {
           type: '平台设置',
-          view: 'PlatSetting',
+          view: 'PlatSetting'
         }
       ]
     }
@@ -219,6 +219,7 @@ export default {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   background-image: url("../../assets/tittle/back.png");
+  background-size: cover;
 
   .hamburger-container {
     line-height: 46px;

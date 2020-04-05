@@ -38,10 +38,10 @@
                 :value="item.value"
               />
             </el-select>
-            <div style="padding-top:10px">
+            <div style="padding-top:10px;text-align: left;padding-left: 2%;">
               <span>运行优化建议：</span>
               <span>可关停1#螺杆空压机，只能用2#螺杆空样机进行供应，预计提升系统运行能效5%，节省能源费用2000元（运行模式对比）。</span>
-              <span>确认</span>
+              <span style="color:#23A8F2;text-decoration:underline">确认</span>
             </div>
             <div v-if="false" id="intools">
               <el-button
@@ -76,10 +76,10 @@
                 <i class="el-icon-arrow-right el-icon--right" />
               </el-button>
             </div>
-            <div v-show="showNeibu" style="height:99%;position:relative">
+            <div v-show="showNeibu" style="height:99%;position:relativeborder: 1px dashed #ccc;width: 96%;margin-left: 2%;margin-top: 2%;">
               <svg
                 id="backgroud"
-                viewBox="-70 -20 1850 920"
+                viewBox="-70 -20 1750 920"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 @click="showKongYa($event)"
@@ -307,8 +307,8 @@
                 :key="index"
                 class="itemdiv"
               >
-                <div class="valuediv">{{ element.value }}</div>
                 <div class="namediv">{{ element.name }}</div>
+                <div class="valuediv">{{ element.value }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
               </div>
             </div>
           </el-tab-pane>
@@ -320,7 +320,7 @@
                 class="itemdiv"
               >
                 <div class="valuediv">{{ element.value }}</div>
-                <div class="namediv">{{ element.name }}</div>
+                <div class="namediv">{{ element.name }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
               </div>
             </div>
           </el-tab-pane>
@@ -332,7 +332,7 @@
                 class="itemdiv"
               >
                 <div class="valuediv">{{ element.value }}</div>
-                <div class="namediv">{{ element.name }}</div>
+                <div class="namediv">{{ element.name }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
               </div>
             </div>
           </el-tab-pane>
@@ -341,23 +341,27 @@
       <div class="rblock">
         <div class="rtitle">能耗概览</div>
         <div style="display:flex">
-          <div style="flex:2;height:135px">
-            饼状图
+          <div style="flex:2;height:135px;position:relative">
+            <pie-chart :chart-data="piedata" />
+            <div style="position:absolute;left:50%;width:86px;height:42px;top:50%;margin-left:-43px;margin-top:-21px;margin-top:8px;">
+              <div style="font-size:18px;">3241kWh</div>
+              <div style="font-size:13px;">总电耗</div>
+            </div>
           </div>
-          <div style="flex:3;height:135px">
-            <div class="rtitle2">
+          <div style="flex:4;height:135px">
+            <div class="rtitle2" style="border-left-color:#2853FF">
               <span>空压机组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="rtitle2">
+            <div class="rtitle2" style="border-left-color:#BDF6B4">
               <span>冷却塔组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="rtitle2">
+            <div class="rtitle2" style="border-left-color:#B860F3">
               <span>空却泵组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="rtitle2">
+            <div class="rtitle2" style="border-left-color:#F588E3">
               <span>冷干机组</span><span>2300kWh</span><label>67%</label>
             </div>
-            <div class="rtitle2">
+            <div class="rtitle2" style="border-left-color:#5CF0F2">
               <span>其他</span><span>2300kWh</span><label>67%</label>
             </div>
           </div>
@@ -372,11 +376,13 @@ import kongyaji from '@/api/monitor/kongyaji'
 import kongyajizu from '@/api/monitor/kongyajizu'
 import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
+import pieChart from '@/views/project/monitor/pieChart'
 export default {
   name: 'MonitorView',
   components: {
     runInfo,
-    infoScan
+    infoScan,
+    pieChart
   },
   data() {
     return {
@@ -443,30 +449,45 @@ export default {
       showHis: false,
       showParamName: '显示数据',
       showDutyName: '值班显示',
+      piedata: {
+        data: [
+          { value: 335, name: '直接访问' },
+          { value: 310, name: '邮件营销' },
+          { value: 234, name: '联盟广告' },
+          { value: 135, name: '视频广告' },
+          { value: 1548, name: '搜索引擎' }
+        ]
+      },
       paramss: [
         {
-          name: '马达绕组U温度',
-          value: '40.8℃'
+          name: '常压流量',
+          value: '2000',
+          unit: 'm³/h'
         },
         {
-          name: '马达绕组V温度',
-          value: '40.8℃'
+          name: '常压压力',
+          value: '600',
+          unit: 'kPa'
         },
         {
-          name: '马达绕组W温度',
-          value: '40.8℃'
+          name: '常压露点温度',
+          value: '40.8',
+          unit: '℃'
         },
         {
-          name: '1级振动',
-          value: '40.8℃'
+          name: '高压流量',
+          value: '2000',
+          unit: 'm³/h'
         },
         {
-          name: '轴承驱动温度',
-          value: '40.8℃'
+          name: '高压压力',
+          value: '600',
+          unit: 'kPa'
         },
         {
-          name: '非轴承驱动温度',
-          value: '40.8℃'
+          name: '高压露点温度',
+          value: '40.8',
+          unit: '℃'
         }
       ],
       params: [
@@ -720,19 +741,19 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
+    padding: 1px;
   }
   .itemdiv {
-      width: 31%;
-      margin-left: 1%;
-      border: 1px solid #bbc8f8;
+      width: 33%;
+      border: 1px dashed #bbc8f8;
       height: 70px;
       text-align: center;
-      margin-bottom: 1%;
+      margin-left:-1px;
+      margin-bottom: -1px;
     }
   .valuediv {
     height: 40px;
     line-height: 40px;
-    background: #f6f8fe;
     font-size: 20px;
     font-weight: bold;
   }

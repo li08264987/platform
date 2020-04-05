@@ -3,7 +3,7 @@
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <div :class="{'fixed-header':fixedHeader}">
       <navbar ref="refNavbar" :on-update="getTabId" />
-      <tags-view v-if="needTagsView" />
+      <!-- <tags-view v-if="needTagsView" /> -->
     </div>
     <div :class="{hasTagsView:needTagsView,'sidebar-hide':sidebarHide}" class="main-container">
       <!--:is实现多个组件实现同一个挂载点-->
