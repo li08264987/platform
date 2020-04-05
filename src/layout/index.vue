@@ -3,7 +3,11 @@
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <div :class="{'fixed-header':fixedHeader}">
       <navbar ref="refNavbar" :on-update="getTabId" />
+<<<<<<< HEAD
+      <!-- <tags-view v-if="needTagsView" /> -->
+=======
       <tags-view v-if="needTagsView" ref="tags-view-container" />
+>>>>>>> 6a521f4c984f2d6ab3424f6707c155cb01e0601d
     </div>
     <div :class="{hasTagsView:needTagsView,'sidebar-hide':sidebarHide}" class="main-container">
       <!--:is实现多个组件实现同一个挂载点-->

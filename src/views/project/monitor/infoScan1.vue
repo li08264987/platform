@@ -1,127 +1,61 @@
 <template>
-<<<<<<< HEAD
-  <div class="rules">
-    <el-dialog title="1#螺杆空压机设备信息" :visible.sync="dialogTableVisible">
-      <div style="display:flex;">
-        <div style="width:50%;padding:10px;">
-          <div class="imgbig" style="height:70%;border: 1px dashed #ccc;" />
-          <div style="height:30%;display:flex;justify-content: space-evenly;margin-top: 20px;">
-            <div class="img1" />
-            <div class="img2" />
-            <div class="img3" />
-          </div>
-        </div>
-        <div style="width:50%;">
-          <div style="font-size: 18px;font-weight: bold;">1#螺杆空压机</div>
-          <div style="border-left:2px solid black;font-weight:bold;margin:10px 0px;padding-left:10px;">基本参数</div>
-          <div class="table">
-            <div><span>设备品牌</span><span>寿力</span></div>
-            <div><span>设备型号</span><span>ZH001</span></div>
-            <div><span>设备参数</span><span>140m³/min 740kw/kv</span></div>
-            <div><span>安装位置</span><span>空压组一层东侧</span></div>
-          </div>
-          <div style="border-left:2px solid black;font-weight:bold;margin:10px 0px;;padding-left:10px;">运行数据</div>
-          <div>
-            <div style="display:flex;padding:10px 0px;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc">
-              <div style="width:50%"><div>运行时间(h)</div><div>234</div></div>
-              <div style="width:50%"><div>当前能效</div><div>7.3kw/(m³/min)</div></div>
-            </div>
-            <div style="display:flex;padding:10px 0px;border-top:1px dashed #ccc;border-bottom:1px dashed #ccc;margin-top:-1px;">
-              <div style="width:50%"><div>故障次数</div><div>45</div></div>
-              <div style="width:50%"><div>距离下次维保</div><div>15天20小时</div></div>
-            </div>
-          </div>
-          <div style="margin-top:10px;display:flex">
-            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">查看说明书></span>
-            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">设备详情></span>
-            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">查看图纸></span>
-          </div>
-        </div>
-      </div>
-    </el-dialog>
-  </div>
-</template>
-<script>
-export default {
-  name: 'RunInfo',
-  data() {
-    return {
-      dialogTableVisible: false,
-      addRules: false,
-      formLabelWidth: '100px',
-      gridData: [{
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }, {
-        time: '2019-10-22 00:12:33',
-        code: '01',
-        operate: '手动启动2#空压机'
-      }]
-    }
-  },
-  methods: {
-    addNewRules() {
-      this.addRules = true
-=======
   <div class="infoScan">
     <rules ref="showRules" />
-    <el-dialog title="信息速览" :visible.sync="dialogTableVisible" @opened="initChart">
+    <el-dialog
+      title="信息速览"
+      :visible.sync="dialogTableVisible"
+      @opened="initChart"
+    >
       <div style="height:36px;line-height: 36px;">
         <el-select v-model="typeValue" style="width:150px;margin-right:10px;">
-          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
         </el-select>
-        <el-button v-show="typeValue=='alarm'" type="primary" icon="el-icon-s-tools" @click="showAlarmRules">报警设置</el-button>
+        <el-button v-show="typeValue==&quot;alarm&quot;" type="primary" icon="el-icon-s-tools" @click="showAlarmRules">报警设置</el-button>
         <el-button style="float:right;">导出</el-button>
         <el-button type="primary" style="float:right;">搜索</el-button>
-        <el-date-picker v-model="dateValue" type="daterange" range-separator="至" style="float:right;" start-placeholder="开始日期" end-placeholder="结束日期" />
+        <el-date-picker
+          v-model="dateValue"
+          type="daterange"
+          range-separator="至"
+          style="float:right;"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        />
       </div>
-      <div v-show="typeValue=='his'" id="chartdiv" style="height:500px;width:100%;" />
-      <div v-show="typeValue=='alarm'">
+      <div v-show="typeValue==&quot;his&quot;" id="chartdiv" style="height:500px;width:100%" />
+      <div v-show="typeValue==&quot;alarm&quot;">
         <div style="padding:15px 0px;background:#F4F5F8;margin-top:20px;">
           <span>事件类型</span>
           <el-select v-model="value" style="width:150px;margin-right:10px;" placeholder="请选择事件类型">
-            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
           <span>事件级别</span>
           <el-select v-model="value" style="width:150px;margin-right:10px;" placeholder="请选择事件级别">
-            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
           <span>处理状态</span>
           <el-select v-model="value" style="width:150px;margin-right:10px;" placeholder="请选择处理状态">
-            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
           </el-select>
           <span>关键字</span>
           <el-input v-model="input" style="width:150px;margin-right:10px;" placeholder="请输入关键字搜索" />
@@ -138,8 +72,8 @@ export default {
           </div>
         </div>
         <div style="display:flex">
-          <div style="background: #28AA91;height:16px;flex:2;" />
-          <div style="background: #FF7D41;height:16px;flex:1;" />
+          <div style="background: #28AA91;height:16px;flex:2" />
+          <div style="background: #FF7D41;height:16px;flex:1" />
         </div>
         <el-table :data="gridData">
           <el-table-column property="time" label="添加时间" width="200" />
@@ -160,7 +94,12 @@ export default {
             </template>
           </el-table-column>
         </el-table>
-        <el-pagination background layout="prev, pager, next" style="margin-top: 10px;margin-left: -10px;" :total="200" />
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          style="margin-top: 10px;margin-left: -10px;"
+          :total="200"
+        />
       </div>
     </el-dialog>
     <div class="secdialog">
@@ -450,114 +389,36 @@ export default {
           data: [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150]
         }]
       })
->>>>>>> 6a521f4c984f2d6ab3424f6707c155cb01e0601d
     }
   }
 }
 </script>
 <style lang="scss">
-  .rules{
-    .titlecon{
-      display: flex;
-      .contain{
-        width: 25%;
-        text-align: center;
-        padding: 15px 0px;
-        .convalue{
-          font-size: 20px;
-          font-weight: bold;
-          padding-left: 20px;
-        }
-      }
+  .infoScan{
+    .el-dialog__header{
+      background-color: #F9F9FB;
     }
-    .tab2{
-      .titlecon{
-        display: flex;
-        .contain{
-          width: 20%;
-          text-align: center;
-          padding: 15px 0px;
-          .convalue{
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            padding-top: 10px;
-            padding-left: 0px;
-          }
-        }
-      }
+    .el-input{
+      width: 150px !important;
     }
-    .tab3{
-      .titlecon{
-        display: flex;
-        flex-wrap: wrap;
-        .contain{
-          width: 33%;
-          text-align: center;
-          padding: 15px 0px;
-          span{
-            font-weight: bold;
-          }
-          .convalue{
-            font-size: 14px;
-            font-weight: normal;
-            text-align: center;
-            padding-top: 10px;
-            padding-left: 0px;
-          }
-        }
+    .el-table--medium th, .el-table--medium td{
+      padding:5px 0px;
+    }
+    .el-dialog__body{
+      padding-top: 20px;
+    }
+    .secdialog{
+      .el-dialog{
+        width: 20%;
+      }
+      .el-form-item__label{
+        text-align: left;
+      }
+      .el-input{
+        width: 88%;
       }
     }
   }
 </style>
 <style scoped lang="scss">
-<<<<<<< HEAD
-  .table{
-    span{
-      display: inline-block;
-      width: 50%;
-      border: 1px solid #EAECF0;
-      padding: 5px 10px;
-      margin-top: -1px;
-      margin-left: -1px;
-    }
-  }
-  .imgbig{
-    background-image: url("../../../assets/monitor/img1.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 100%;
-  }
-  .img1{
-    background-image: url("../../../assets/monitor/img1.png");
-    background-size: cover;
-    width: 30%;
-    height: 100%;
-  }
-  .img2{
-    background-image: url("../../../assets/monitor/img2.png");
-    background-size: cover;
-    width: 30%;
-    height: 100%;
-  }
-  .img3{
-    background-image: url("../../../assets/monitor/img3.png");
-    background-size: cover;
-    width: 30%;
-    height: 100%;
-  }
-  .title{
-    font-weight: bold;
-  }
-  .rightdetail{
-    float: right;
-    span{
-      text-decoration: underline
-    }
-    &:hover{
-      cursor: pointer;
-    }
-  }
-=======
->>>>>>> 6a521f4c984f2d6ab3424f6707c155cb01e0601d
 </style>

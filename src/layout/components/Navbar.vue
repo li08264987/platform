@@ -6,10 +6,20 @@
       <p class="tittle-en">Smart AI+Energy System Management Platform</p>
     </div>
     <ul class="tab-ul">
+<<<<<<< HEAD
+      <li
+        v-for="(tab,index) in tabs"
+        :key="index"
+        class="tab-ul tab-li"
+        :class="{active:active==index}"
+        @click="tabChange(index,tab.view)"
+      ><div :class="tab.view" style="width:28px;height:28px;background-size: contain;" /><div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div></li>
+=======
       <li v-for="(tab,index) in tabs" :key="index" class="tab-ul tab-li" :class="{active:active==index}" @click="tabChange(index,tab.view)">
         <div :class="tab.view" style="width:28px;height:28px;background-size: contain;" />
         <div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div>
       </li>
+>>>>>>> 6a521f4c984f2d6ab3424f6707c155cb01e0601d
     </ul>
     <div class="right-menu" />
   </div>
@@ -171,6 +181,7 @@ export default {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   background-image: url("../../assets/tittle/back.png");
+  background-size: cover;
 
   .hamburger-container {
     line-height: 46px;
