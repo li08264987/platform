@@ -652,7 +652,7 @@ export default {
       }
     },
     showKongYa(e) {
-      var self = this
+      const self = this
       var str = /\d/
       if (
         str.test(e.target.id) ||

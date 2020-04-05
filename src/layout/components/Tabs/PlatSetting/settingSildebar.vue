@@ -9,7 +9,7 @@
         :unique-opened="false"
         :default-openeds="['/platSetting','/newUser']"
         :active-text-color="variables.menuActiveText"
-        :collapse-transition="true"
+        :collapse-transition="false"
         mode="vertical"
       >
         <sidebar-item

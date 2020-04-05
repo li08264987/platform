@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <div class="report-contaiter">
+  <div class="platSetting-contaiter">
     <sidebar class="sidebar-container" />
     <app-main />
   </div>

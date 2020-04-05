@@ -2,7 +2,22 @@
   <div class="EnergyKY-main">
     <ul class="tabBar">
       <li v-for="(item,index) in tabItems" :key="index" :class="{active:index == tabIndex}" @click="tabChange(index)">
-        <div>{{ item.title }}</div>
+        <div v-if="index>0">{{ item.title }}</div>
+        <div v-else class="tabItemWithDropdown">
+          {{ item.title }}/{{ item.children[tabIndex1].title }}
+          <i v-show="index==0" class="el-icon-caret-bottom" />
+          <div v-show="showDownPanel" class="tabDownPanel">
+            <div
+              v-for="(childItem,cIndex) in item.children"
+              v-show="cIndex!=tabIndex1"
+              :key="cIndex"
+              class="tabDownPanelItem"
+              @click="dropdownClick(cIndex, childItem.name)"
+            >
+              {{ childItem.title }}
+            </div>
+          </div>
+        </div>
       </li>
       <el-form ref="form" :model="searchForm" label-width="120px">
         <el-form-item label="" :class="'noMargin'">
@@ -75,13 +90,29 @@ export default {
     return {
       tabItems: [{
         name: 'energyStatis',
-        title: '能耗总览'
+        title: '能耗统计',
+        children: [{
+          name: 'energyTree',
+          title: '能源树状图'
+        }, {
+          name: 'energyDimensions',
+          title: '多维统计'
+        }, {
+          name: 'energyRealtime',
+          title: '逐时报表'
+        }, {
+          name: 'energyOrigin',
+          title: '能源报表'
+        }]
       }, {
         name: 'energySort',
-        title: '能耗详情'
+        title: '能耗排序'
       }, {
         name: 'energyStandard',
-        title: '运行主机数据'
+        title: '能耗指标'
+      }, {
+        name: 'energyCompare',
+        title: '能耗对比'
       }],
       tabIndex: 0,
       tabIndex1: 0,

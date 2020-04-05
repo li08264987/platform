@@ -6,90 +6,81 @@
         type="daterange"
         range-separator="至"
         start-placeholder="开始日期"
-        end-placeholder="结束日期">
-      </el-date-picker>
-      <el-input
-        placeholder="请输入内容"
-        prefix-icon="el-icon-search"
-        v-model="typeinput">
-      </el-input>
+        end-placeholder="结束日期"
+      />
+      <el-input v-model="typeinput" placeholder="请输入内容" prefix-icon="el-icon-search" />
       <el-button type="primary" icon="el-icon-search">搜索</el-button>
       <el-button>运行回放</el-button>
     </div>
     <div id="intools">
       <el-button icon="el-icon-arrow-left" style="float:left;margin-left:20px;">上一页</el-button>
-      <el-button style="float:right;margin-right:20px;">下一页<i class="el-icon-arrow-right el-icon--right" ></i></el-button>
+      <el-button style="float:right;margin-right:20px;">下一页<i class="el-icon-arrow-right el-icon--right" /></el-button>
     </div>
-    <el-tabs class="tabs" v-model="activeName" @tab-click="handleClick">
+    <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
       <el-tab-pane v-for="(item,index) in Floors" :key="index" :label="item.label" :name="item.name">
         <div style="height: 95%;margin-top: 3%;">
-            <svg 
-              viewBox="-60 -20 1854 920"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              v-html="html">
-            </svg>
+          <svg viewBox="-60 -20 1854 920" version="1.1" xmlns="http://www.w3.org/2000/svg" v-html="html" />
         </div>
       </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 <script>
- import svg from '@/api/monitor/yiceng'
-  export default {
-    name:"UserEnergy",
-    data() {
-      return {
-        html:svg,
-        dateinput: '',
-        typeinput: '',
-        activeName: 'first',
-        Floors:[
-          {
-            name : "first",
-            label : "厂区一层"
-          },
-           {
-            name : "second",
-            label : "厂区二层"
-          },
-           {
-            name : "third",
-            label : "厂区三层"
-          },
-           {
-            name : "fourth",
-            label : "厂区四层"
-          },
-          {
-            name : "fifth",
-            label : "厂区五层"
-          },
-          {
-            name : "sixth",
-            label : "厂区屋面"
-          },
-          {
-            name : "seventh",
-            label : "角楼能源站"
-          },
-        ]
-      };
-    },
-    methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      },
-      showVedio(){
-        this.showNeibu=false;
-        this.showvedio=true;
-      },
-      showNeiBu(){
-        this.showNeibu=true;
-        this.showvedio=false;
-      },
+import svg from '@/api/monitor/yiceng'
+export default {
+  name: 'UserEnergy',
+  data() {
+    return {
+      html: svg,
+      dateinput: '',
+      typeinput: '',
+      activeName: 'first',
+      Floors: [
+        {
+          name: 'first',
+          label: '厂区一层'
+        },
+        {
+          name: 'second',
+          label: '厂区二层'
+        },
+        {
+          name: 'third',
+          label: '厂区三层'
+        },
+        {
+          name: 'fourth',
+          label: '厂区四层'
+        },
+        {
+          name: 'fifth',
+          label: '厂区五层'
+        },
+        {
+          name: 'sixth',
+          label: '厂区屋面'
+        },
+        {
+          name: 'seventh',
+          label: '角楼能源站'
+        }
+      ]
     }
-  };
+  },
+  methods: {
+    handleClick(tab, event) {
+      console.log(tab, event)
+    },
+    showVedio() {
+      this.showNeibu = false
+      this.showvedio = true
+    },
+    showNeiBu() {
+      this.showNeibu = true
+      this.showvedio = false
+    }
+  }
+}
 </script>
 <style lang="scss">
   .firstShopMain{
