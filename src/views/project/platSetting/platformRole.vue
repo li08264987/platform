@@ -217,7 +217,7 @@ export default {
 
       .el-dialog__body{
         background-color: #F9FAFB;
-        padding: 20px 20px 0 20px;
+        padding: 20px 0px 0 20px;
         .el-form{
           display: flex;
           flex-direction: column;
@@ -226,13 +226,16 @@ export default {
             flex-direction: row;
             justify-content: space-between;
             padding-left: 20px;
+            .el-form-item{
+              width: 100%;
+              margin-right: 20px;
+            }
             .el-form-item__label{
               line-height: 35px;
               font-size: 12px;
             }
           }
           .el-input{
-            width: 242px;
             height: 32px;
             .el-input__inner{
               background-color: #fff;
@@ -251,7 +254,7 @@ export default {
         text-align: center;
         .el-button--primary{
           text-align: center;
-          width: 100px;
+          width: 30%;
           height: 32px;
           background-color: #005aff;
           color: #FFFFFF;
@@ -264,7 +267,7 @@ export default {
         }
         .el-button--default{
           border: 1px solid #858A9C;
-          width: 100px;
+          width: 30%;
           height: 32px;
           line-height: 12px;
           text-decoration: none;

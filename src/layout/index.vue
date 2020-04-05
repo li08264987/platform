@@ -3,7 +3,7 @@
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <div :class="{'fixed-header':fixedHeader}">
       <navbar ref="refNavbar" :on-update="getTabId" />
-      <tags-view v-if="needTagsView" />
+      <tags-view v-if="needTagsView" ref="tags-view-container" />
     </div>
     <div :class="{hasTagsView:needTagsView,'sidebar-hide':sidebarHide}" class="main-container">
       <!--:is实现多个组件实现同一个挂载点-->
@@ -46,7 +46,8 @@ export default {
   data() {
     return {
       currentView: 'Main',
-      sidebarHide: true
+      sidebarHide: true,
+      needTagsView: false
     }
   },
   computed: {
@@ -54,7 +55,6 @@ export default {
       sidebar: state => state.app.sidebar,
       device: state => state.app.device,
       showSettings: state => state.settings.showSettings,
-      needTagsView: state => state.settings.tagsView,
       fixedHeader: state => state.settings.fixedHeader
     }),
     classObj() {
@@ -74,38 +74,47 @@ export default {
       switch (data) {
         case 'Main':
           this.currentView = 'Main'
+          this.needTagsView = false
           this.sidebarHide = true
           break
         case 'Monitor':
           this.currentView = 'Monitor'
+          this.needTagsView = true
           this.sidebarHide = false
           break
         case 'Energy':
           this.currentView = 'Energy'
+          this.needTagsView = true
           this.sidebarHide = false
           break
         case 'ReportTable':
           this.currentView = 'ReportTable'
+          this.needTagsView = true
           this.sidebarHide = false
           break
         case 'Diagnosis':
           this.currentView = 'Diagnosis'
+          this.needTagsView = true
           this.sidebarHide = false
           break
         case 'Device':
           this.currentView = 'Device'
+          this.needTagsView = true
           this.sidebarHide = false
           break
         case 'Smart':
           this.currentView = 'Smart'
+          this.needTagsView = true
           this.sidebarHide = false
           break
         case 'PlatSetting':
           this.currentView = 'PlatSetting'
+          this.needTagsView = true
           this.sidebarHide = false
           break
         default:
           this.currentView = 'Main'
+          this.needTagsView = true
           this.sidebarHide = true
           break
       }
