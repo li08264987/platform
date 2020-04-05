@@ -57,7 +57,7 @@ export default {
       var totalWidth = document.documentElement.clientWidth
       var totalHeight = document.documentElement.clientHeight
 
-      var newHeight = totalHeight - 84
+      var newHeight = totalHeight - 70
       var newWidth = totalWidth
 
       var newCursor = newHeight / newWidth
@@ -95,7 +95,7 @@ export default {
       var totalWidth = document.documentElement.clientWidth
       var totalHeight = document.documentElement.clientHeight
 
-      var newHeight = totalHeight - 84
+      var newHeight = totalHeight - 70
       var newWidth = totalWidth
 
       var newCursor = newHeight / newWidth

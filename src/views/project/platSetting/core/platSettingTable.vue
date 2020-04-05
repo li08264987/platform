@@ -30,7 +30,6 @@
       <el-table-column
         v-if="showOperation"
         label="操作"
-
         header-align="center"
         align="center"
       >
