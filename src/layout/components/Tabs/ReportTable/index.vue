@@ -26,7 +26,6 @@ export default {
   },
 
   destroyed() {
-    this.$router.push({ path: '/' })
   },
   methods: {
     toggleSideBar() {

@@ -2,32 +2,30 @@
   <div style="height:90%;">
     <div :class="{hasTagsView:needTagsView}" style="height:100%;margin-left:10px;">
       <monitorSideBar class="sidebar-container" />
-      <app-main style="height:98%;"/>
+      <app-main style="height:98%;" />
     </div>
   </div>
 </template>
 
 <script>
 import AppMain from '@/layout/components/AppMain'
-import monitorSideBar  from './monitorSideBar'
+import monitorSideBar from './monitorSideBar'
 export default {
   name: 'Monitor',
   components: {
     AppMain,
     monitorSideBar
   },
+  data() {
+    return {
+      needTagsView: 'Main'
+    }
+  },
   beforeCreate() {
     this.$router.push({ path: '/monitorSystem' })
   },
-  data() {
-    return {
-      needTagsView:'Main'
-    }
-  },
   destroyed() {
-    this.$router.push({ path: '/' })
-    this.$store.dispatch('tagsView/delAllViews')
-  },
+  }
 }
 </script>
 

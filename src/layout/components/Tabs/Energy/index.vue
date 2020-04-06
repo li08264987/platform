@@ -20,6 +20,7 @@ export default {
     }
   },
   beforeCreate() {
+    window.test = this
     this.$router.push({ path: '/energySystem' })
   },
   computed: {
@@ -30,10 +31,7 @@ export default {
   },
   mounted: {},
   destroyed() {
-    this.$router.push({ path: '/' })
-    this.$store.dispatch('tagsView/delAllViews')
   },
-
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
