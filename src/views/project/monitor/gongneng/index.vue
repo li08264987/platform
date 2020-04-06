@@ -343,7 +343,7 @@
         <div style="display:flex">
           <div style="flex:2;height:135px;position:relative">
             <pie-chart :chart-data="piedata" />
-            <div style="position:absolute;left:50%;width:86px;height:42px;top:50%;margin-left:-43px;margin-top:-21px;margin-top:8px;">
+            <div style="position:absolute;left:50%;width:86px;height:42px;top:50%;margin-left:-43px;margin-top:-21px;margin-top:-10px;">
               <div style="font-size:18px;">3241kWh</div>
               <div style="font-size:13px;">总电耗</div>
             </div>
