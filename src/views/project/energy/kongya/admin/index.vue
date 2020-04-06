@@ -52,26 +52,15 @@
 </template>
 
 <script>
-import energyTree from './components/EnergyTree'
 import energyStatis from './components/EnergyStatis'
-import energyDimensions from './components/Dimensions/index'
-import energySort from './components/EnergySort/index'
-import energyStandard from './components/EnergyStandard/index'
-import energyCompare from './components/EnergyCompare/index'
-import energyRealtime from './components/EnergyRealtime'
-import energyOrigin from './components/EnergyOrigin'
-
+import energyDetail from './components/EnergyDetail'
+import energyMain from './components/EnergyMain'
 export default {
   name: 'EnergyKY',
   components: {
-    energyTree,
     energyStatis,
-    energyDimensions,
-    energySort,
-    energyStandard,
-    energyCompare,
-    energyRealtime,
-    energyOrigin
+    energyDetail,
+    energyMain
   },
   data() {
     return {
@@ -79,10 +68,10 @@ export default {
         name: 'energyStatis',
         title: '能耗总览'
       }, {
-        name: 'energySort',
+        name: 'energyDetail',
         title: '能耗详情'
       }, {
-        name: 'energyStandard',
+        name: 'energyMain',
         title: '运行主机数据'
       }],
       tabIndex: 0,
