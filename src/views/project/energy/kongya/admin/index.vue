@@ -4,7 +4,7 @@
       <li v-for="(item,index) in tabItems" :key="index" :class="{active:index == tabIndex}" @click="tabChange(index)">
         <div>{{ item.title }}</div>
       </li>
-      <el-form ref="form" :model="searchForm" label-width="120px">
+      <el-form v-show="false" ref="form" :model="searchForm" label-width="120px">
         <el-form-item label="" :class="'noMargin'">
           <el-select v-model="searchForm.type" placeholder="选择类型" class="searchSelect">
             <el-option label="自定义" value="daterange" />
@@ -53,6 +53,7 @@
 
 <script>
 import energyTree from './components/EnergyTree'
+import energyStatis from './components/EnergyStatis'
 import energyDimensions from './components/Dimensions/index'
 import energySort from './components/EnergySort/index'
 import energyStandard from './components/EnergyStandard/index'
@@ -64,6 +65,7 @@ export default {
   name: 'EnergyKY',
   components: {
     energyTree,
+    energyStatis,
     energyDimensions,
     energySort,
     energyStandard,
@@ -86,7 +88,7 @@ export default {
       tabIndex: 0,
       tabIndex1: 0,
       showDownPanel: false,
-      currentView: 'energyTree',
+      currentView: 'energyStatis',
       searchForm: {
         type: 'daterange',
         date: '',
@@ -380,19 +382,7 @@ export default {
     tabChange(index) {
       if (this.tabIndex !== index) {
         this.tabIndex = index
-        if (index === 0) {
-          this.currentView = this.tabItems[index].children[this.tabIndex1].name
-        } else {
-          this.currentView = this.tabItems[index].name
-        }
-        if (this.showDownPanel) this.showDownPanel = false
-      } else {
-        if (index === 0) {
-          if (this.showDownPanel) this.showDownPanel = false
-          else this.showDownPanel = true
-        } else {
-          this.showDownPanel = false
-        }
+        this.currentView = this.tabItems[index].name
       }
     },
     dropdownClick(cIndex, cname) {
@@ -419,7 +409,7 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 84px);
+  height: calc(100vh - 70px);
   min-width: 1630px;
   overflow: auto;
 }

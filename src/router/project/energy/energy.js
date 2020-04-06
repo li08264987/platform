@@ -6,7 +6,7 @@ const energyRouter = [{
   component: Layout,
   name: 'EnergySystem',
   meta: {
-    title: '功能系统',
+    title: '供能系统',
     icon: 'example',
     roles: ['admin', 'editor']
   },
@@ -18,7 +18,8 @@ const energyRouter = [{
       meta: {
         title: '空压系统',
         roles: ['admin'],
-        icon: 'documentation'
+        icon: 'documentation',
+        affix: true
       }
     }, {
       path: 'qingdan',
