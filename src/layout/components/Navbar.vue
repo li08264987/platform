@@ -2,8 +2,8 @@
   <div class="navbar">
     <img class="logo" src="@/assets/tittle/logo.png">
     <div>
-      <p class="tittle-cn">启慧AI+能源系统运管平台</p>
-      <p class="tittle-en">Smart AI+Energy System Management Platform</p>
+      <p class="tittle-cn">能源系统运管平台</p>
+      <p class="tittle-en">Energy System Management Platform</p>
     </div>
     <ul class="tab-ul">
       <li
@@ -37,7 +37,7 @@ export default {
           view: 'Main'
         },
         {
-          type: '在线监测',
+          type: '实时监测',
           view: 'Monitor'
         },
         {
