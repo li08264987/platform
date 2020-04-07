@@ -2,8 +2,10 @@
   <div id="userManage">
     <!-- 顶部搜索栏 -->
     <div class="searchWord">
-      <el-button type="primary" icon="el-icon-circle-plus-outline" @click="handleAdd">添加用户</el-button>
-      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" />
+      <el-button type="primary" @click="handleAdd">添加用户</el-button>
+      <div class="search-condition">
+        <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" />
+      </div>
     </div>
 
     <!-- 表格 -->
@@ -27,7 +29,10 @@
             <el-input v-model="dataForm.userName" :disabled="false" auto-complete="请输入用户名" />
           </el-form-item>
           <el-form-item v-if="true" label="密码" prop="password">
-            <el-input v-model="dataForm.password" :disabled="false" auto-complete="请输入密码" />
+            <el-input ref="password" v-model="dataForm.password" :type="passwordType" :disabled="false" auto-complete="请输入密码" />
+            <span class="show-pwd" @click="showPwd">
+              <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            </span>
           </el-form-item>
           <el-form-item v-if="true" label="用户角色" prop="role">
             <el-select v-model="dataForm.role" placeholder="请选择用户角色" style="width: 100%;">
@@ -58,13 +63,13 @@
           <el-form-item v-if="true" label="电话号码" prop="phone">
             <el-input v-model="dataForm.phone" :disabled="false" auto-complete="请输入电话号码" />
           </el-form-item>
-          <el-form-item v-if="true" label="值班地点" prop="isLeader">
+          <el-form-item v-if="true" label="值班地点" prop="dutyAddress">
             <el-input v-model="dataForm.dutyAddress" :disabled="false" auto-complete="请输入值班地点" />
           </el-form-item>
         </div>
         <div class="row row-3">
           <el-form-item v-if="true" label="所在部门" prop="department">
-            <el-select v-model="dataForm.departmentCode" placeholder="请选择所在部门" style="width: 100%;">
+            <el-select v-model="dataForm.department" placeholder="请选择所在部门" style="width: 100%;">
               <el-option v-for="item in departments" :key="item.departmentCode" :label="item.departmentName" :value="item.departmentCode" />
             </el-select>
             <platSettingButton
@@ -73,8 +78,8 @@
               @click="showDialog('departmentEidtDialog')"
             />
           </el-form-item>
-          <el-form-item v-if="true" label="职位" prop="position">
-            <el-select v-model="dataForm.positionCode" placeholder="请选择职位" style="width: 100%;">
+          <el-form-item v-if="true" label="所属职位" prop="position">
+            <el-select v-model="dataForm.position" placeholder="请选择所属职位" style="width: 100%;">
               <el-option v-for="item in positions" :key="item.positionCode" :label="item.positionName" :value="item.positionCode" />
             </el-select>
             <platSettingButton
@@ -86,8 +91,8 @@
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button :size="size" :loading="editLoading" type="primary" @click.native="submitForm">提交</el-button>
-        <el-button :size="size" @click.native="dialogVisible = false">重置</el-button>
+        <el-button :size="size" :loading="editLoading" type="primary" @click.native="submitForm('dataForm')">提交</el-button>
+        <el-button :size="size" @click.native="resetForm('dataForm')">重置</el-button>
       </div>
     </el-dialog>
 
@@ -133,11 +138,42 @@ export default {
       dialogSecondVisible: false, // 部门与职位界面是否显示
       dialogEdit: '',
       editLoading: false,
+      passwordType: 'password',
       positions: [],
       departments: [],
       dataFormRules: {
-        name: [
+        userName: [
           { required: true, message: '请输入用户名', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' }
+        ],
+        role: [
+          { required: true, message: '请选择角色', trigger: 'change' }
+        ],
+        realName: [
+          { required: true, message: '请输入用户姓名', trigger: 'blur' }
+        ],
+        company: [
+          { required: true, message: '请选择所属公司', trigger: 'change' }
+        ],
+        isLeader: [
+          { required: true, message: '请选择是否为部门领导', trigger: 'change' }
+        ],
+        leaderName: [
+          { required: true, message: '请输入部门领导', trigger: 'blur' }
+        ],
+        phone: [
+          { required: true, message: '请输入电话号码', trigger: 'blur' }
+        ],
+        dutyAddress: [
+          { required: true, message: '请输入值班地点', trigger: 'blur' }
+        ],
+        department: [
+          { required: true, message: '请选择所在部门', trigger: 'change' }
+        ],
+        position: [
+          { required: true, message: '请选择所属职位', trigger: 'change' }
         ]
       },
       company: [{
@@ -152,9 +188,17 @@ export default {
       }],
       // 新增编辑界面数据
       dataForm: {
-
+        userName: 'lishanlei',
+        realName: '李闪磊',
+        phoneNumber: '12345678',
+        dutyArress: 'thtf',
+        company: 'thtf',
+        department: '',
+        position: '',
+        role: '集团公司计量处',
+        isLeader: '否',
+        leaderName: '李石磊'
       },
-      deptData: [],
       roles: [],
       tableData: [{
         userName: 'lishanlei',
@@ -294,11 +338,11 @@ export default {
       this.operation = false
       this.dataForm = Object.assign({}, params.row)
       // 这里应从数据库中取该条记录的所有字段值，从数据库取出的字段名称应该与表单中元素的名称相同，保证正确赋值表单
-      this.dataForm.role = '0'
-      this.dataForm.companyCode = '0'
-      this.dataForm.isLeader = '0'
-      this.dataForm.departmentCode = '0'
-      this.dataForm.positionCode = '0'
+      // this.dataForm.role = '0'
+      // this.dataForm.companyCode = '0'
+      // this.dataForm.isLeader = '0'
+      // this.dataForm.departmentName = '办公室'
+      // this.dataForm.positionName = '技术人员'
     },
     handleAdd: function() {
       this.dialogVisible = true
@@ -311,11 +355,33 @@ export default {
       // 这里暂时只操作界面上的数据，待连接数据库后，应从数据库中删除数据，再调用回调函数更新表格
       this.pageResult.content.splice(data.params, 1)
     },
-    submitForm: function() {
-      this.dialogVisible = false
+    submitForm: function(formName) {
+      console.log(this.$refs.dataForm)
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+          this.dialogVisible = false
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
     },
     closeDialog: function() {
       this.dialogSecondVisible = false
+    },
+    showPwd() {
+      if (this.passwordType === 'password') {
+        this.passwordType = ''
+      } else {
+        this.passwordType = 'password'
+      }
+      this.$nextTick(() => {
+        this.$refs.password.focus()
+      })
     }
   }
 }
@@ -331,7 +397,7 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 84px);
+    height: 100%;
 
     .searchWord{
       display: flex;
@@ -341,13 +407,14 @@ export default {
       justify-content: space-between;
       box-shadow: 0 2px 2px #e4e4e4;
       .el-button{
-          height: 36px;
-          background-color: #fff;
-          color: #005aff;
-          text-decoration: underline;
+          width:96px;
+          height:32px;
+          background-color: rgba(45,73,255,1);
+          color: #FFF;
           border: unset;
           font-size: 14px;
           cursor: pointer;
+          margin-left: 15px;
       }
       .el-input__inner{
         background: #F9F9FB;
@@ -358,7 +425,8 @@ export default {
     .table-container{
       width: 100%;
       height: 100%;
-      padding: 10px 15px;
+      padding: 20px 29px;
+      background: rgba(244,245,248,1);
     }
     .userDialog{
       .el-dialog__header{
@@ -394,6 +462,13 @@ export default {
             .el-form-item__label{
               line-height: 18px;
               font-size: 12px;
+            }
+            .show-pwd {
+              position: absolute;
+              right: 10px;
+              font-size: 16px;
+              cursor: pointer;
+              user-select: none;
             }
           }
           .row-3{

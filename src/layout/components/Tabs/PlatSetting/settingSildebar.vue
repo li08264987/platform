@@ -7,7 +7,7 @@
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
         :unique-opened="false"
-        :default-openeds="['/platSetting','/newUser']"
+        :default-openeds="['/platSetting','/platSettingOther']"
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         mode="vertical"

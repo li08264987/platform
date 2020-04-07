@@ -1,5 +1,5 @@
 <template>
-  <div id="main" ref="main" :style="{transform: transforChange}">
+  <div id="main" ref="main" :style="{transform: transforChange()}">
     <div class="dp-bottom-container">
       <!-- <svg id="backgroud" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" v-html="html" /> -->
       <div class="top-pic" />
@@ -53,11 +53,29 @@ export default {
     }
   },
   computed: {
+
+  },
+  mounted() {
+    const that = this
+    // that.transforChange()
+    window.onresize = () => {
+      that.fontSizeResize()
+      this.$refs.faultWarning.resizeCharts()
+    }
+  },
+  methods: {
     transforChange: function() {
       var totalWidth = document.documentElement.clientWidth
       var totalHeight = document.documentElement.clientHeight
 
-      var newHeight = totalHeight - 70
+      let navHeight = 0
+      if (document.getElementsByClassName('navbar')[0] !== undefined) {
+        navHeight = document.getElementsByClassName('navbar')[0].offsetHeight
+      } else {
+        return
+      }
+
+      var newHeight = totalHeight - navHeight
       var newWidth = totalWidth
 
       var newCursor = newHeight / newWidth
@@ -75,16 +93,7 @@ export default {
       } else {
         return 'scale(1,1) translateX(0) translateY(0)'
       }
-    }
-  },
-  mounted() {
-    const that = this
-    window.onresize = () => {
-      that.fontSizeResize()
-      this.$refs.faultWarning.resizeCharts()
-    }
-  },
-  methods: {
+    },
     handleClick(tab, event) {
 
     },

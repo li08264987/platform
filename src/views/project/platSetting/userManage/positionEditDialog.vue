@@ -18,15 +18,15 @@
 
     <!--新增编辑界面-->
     <el-dialog v-dialogDrag :title="operation?'新建职位名称':'编辑职位名称'" width="15%" :visible.sync="dialogVisible" :close-on-click-modal="false" append-to-body class="positionOperation">
-      <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top" :size="size">
+      <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top">
         <div class="row row-0">
-          <el-form-item v-if="true" label="职位名称" prop="userName">
+          <el-form-item v-if="true" label="职位名称" prop="positionName">
             <el-input v-model="dataForm.positionName" :disabled="false" auto-complete="请输入职位名称" />
           </el-form-item>
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button :size="size" :loading="editLoading" type="primary" @click.native="submitForm">提交</el-button>
+        <el-button :loading="editLoading" type="primary" @click.native="submitForm('dataForm')">提交</el-button>
       </div>
     </el-dialog>
   </div>
@@ -46,9 +46,15 @@ export default {
       pageResult: {},
       operation: false, // true:新增, false:编辑
       dialogVisible: false, // 编辑界面是否显示
+      editLoading: false,
       // 编辑界面数据
       dataForm: {
 
+      },
+      dataFormRules: {
+        positionName: [
+          { required: true, message: '请输入职位名称', trigger: 'blur' }
+        ]
       },
       tableData: []
     }
@@ -66,6 +72,17 @@ export default {
         { prop: 'positionName', label: '职位名称', minWidth: 90 }
       ]
       this.columns = JSON.parse(JSON.stringify(this.columns))
+    },
+    submitForm: function(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+          this.dialogVisible = false
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
     },
     findPage: function(data) {
       this.tableData = [{

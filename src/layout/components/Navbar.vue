@@ -61,7 +61,7 @@ export default {
           view: 'Smart'
         },
         {
-          type: '平台设置',
+          type: '平台管理',
           view: 'PlatSetting'
         }
       ]

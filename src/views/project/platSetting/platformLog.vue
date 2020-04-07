@@ -171,6 +171,7 @@ export default {
           border: unset;
           font-size: 14px;
           cursor: pointer;
+          margin-left: 15px;
       }
       .el-input__inner{
         background: #F9F9FB;
@@ -181,7 +182,8 @@ export default {
     .table-container{
       width: 100%;
       height: 100%;
-      padding: 10px 15px;
+      padding: 20px 29px;
+      background: rgba(244,245,248,1);
     }
   }
 

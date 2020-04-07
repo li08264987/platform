@@ -153,6 +153,6 @@ export default {
 #cloud{
   position: absolute;
   left: 35vw;
-  top: -2vw;
+  top: -0.1vw;
 }
 </style>

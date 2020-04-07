@@ -2,7 +2,7 @@
 <template>
   <div id="platformRole">
     <div class="searchWord">
-      <el-button type="primary" icon="el-icon-circle-plus-outline" @click="handleAdd">添加角色</el-button>
+      <el-button type="primary" @click="handleAdd">添加角色</el-button>
       <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" />
     </div>
     <div class="table-container">
@@ -18,7 +18,7 @@
 
     <!--新增编辑界面-->
     <el-dialog v-dialogDrag :title="operation?'新建角色':'修改角色名称'" width="20%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="roleDialog">
-      <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="right" :size="size">
+      <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="right">
         <div class="row row-0">
           <el-form-item v-if="true" label="角色名称" prop="roleName">
             <el-input v-model="dataForm.roleName" :disabled="false" auto-complete="请输入角色名称" />
@@ -31,8 +31,8 @@
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button :size="size" :loading="editLoading" type="primary" @click.native="submitForm">保存</el-button>
-        <el-button :size="size" @click.native="dialogVisible = false">取消</el-button>
+        <el-button :loading="editLoading" type="primary" @click.native="submitForm('dataForm')">保存</el-button>
+        <el-button @click.native="resetForm('dataForm')">取消</el-button>
       </div>
     </el-dialog>
   </div>
@@ -58,8 +58,8 @@ export default {
       dialogVisible: false, // 新增编辑界面是否显示
       editLoading: false,
       dataFormRules: {
-        name: [
-          { required: true, message: '请输入用户名', trigger: 'blur' }
+        roleName: [
+          { required: true, message: '请输入角色名称', trigger: 'blur' }
         ]
       },
       // 新增编辑界面数据
@@ -114,6 +114,20 @@ export default {
       ]
       this.filterColumns = JSON.parse(JSON.stringify(this.columns))
     },
+    submitForm: function(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+          this.dialogVisible = false
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
+    },
     // 获取分页数据
     findPage: function(data) {
       // if (data !== null) {
@@ -150,9 +164,6 @@ export default {
         userRoles.push(params.row.userRoles[i].roleId)
       }
       this.dataForm.userRoles = userRoles
-    },
-    submitForm: function() {
-      this.dialogVisible = false
     }
   }
 }
@@ -181,10 +192,14 @@ export default {
           height: 36px;
           background-color: #fff;
           color: #005aff;
-          text-decoration: underline;
+          width:96px;
+          height:32px;
+          background-color: rgba(45,73,255,1);
+          color: #FFF;
           border: unset;
           font-size: 14px;
           cursor: pointer;
+          margin-left: 15px;
       }
       .el-input__inner{
         background: #F9F9FB;
@@ -195,7 +210,8 @@ export default {
     .table-container{
       width: 100%;
       height: 100%;
-      padding: 10px 15px;
+      padding: 20px 29px;
+      background: rgba(244,245,248,1);
     }
     .roleDialog{
       .el-dialog__header{
@@ -217,7 +233,7 @@ export default {
 
       .el-dialog__body{
         background-color: #F9FAFB;
-        padding: 20px 0px 0 20px;
+        padding: 20px 2 0px 0 20px;
         .el-form{
           display: flex;
           flex-direction: column;

@@ -115,19 +115,19 @@ export default {
           value: '1',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '2',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '3',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '4',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '5',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '6',
           name: '下载文件'
         }],
         extend: 'thtf'
@@ -141,13 +141,13 @@ export default {
           value: '1',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '2',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '3',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '4',
           name: '下载文件'
         }],
         extend: 'thtf'
@@ -161,13 +161,13 @@ export default {
           value: '1',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '2',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '3',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '4',
           name: '下载文件'
         }],
         extend: 'thtf'
@@ -181,13 +181,13 @@ export default {
           value: '1',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '2',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '3',
           name: '下载文件'
         }, {
-          value: '1',
+          value: '4',
           name: '下载文件'
         }],
         extend: 'thtf'
@@ -201,6 +201,9 @@ export default {
     this.refreshPageRequest(1)
   },
   methods: {
+    alterAuthority: function(index, row) {
+      // this.$emit('handleEdit', { index: index, row: row })
+    },
     // 换页刷新
     refreshPageRequest: function(pageNum) {
       this.pageRequest.pageNum = pageNum
@@ -271,6 +274,7 @@ export default {
           border: unset;
           font-size: 14px;
           cursor: pointer;
+          margin-left: 15px;
       }
       .el-input__inner{
         background: #F9F9FB;
@@ -281,7 +285,8 @@ export default {
     .table-container{
       width: 100%;
       height: 100%;
-      padding: 10px 15px;
+      padding: 20px 29px;
+      background: rgba(244,245,248,1);
       .el-table__fixed-right{
         tbody td:last-child .el-button{
           background: #6C87EA;
