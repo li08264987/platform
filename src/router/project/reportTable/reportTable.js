@@ -39,7 +39,7 @@ const reportTableRouters = [{
     {
       path: 'danQi',
 
-      component: () => import('@/views/icons/index'),
+      component: () => import('@/views/project/reportTable/kongYa'),
       name: 'reportTableQingdan',
       meta: {
         title: '氮气系统',

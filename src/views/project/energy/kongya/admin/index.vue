@@ -466,6 +466,13 @@ form.el-form {
   max-height: 450px;
   overflow: auto;
 }
+.btn {
+  color: white;
+  height: 32px;
+  padding: 0 20px;
+  background:rgba(40,87,255,1);
+  border-radius:4px;
+}
 </style>
 
 <style lang="scss">

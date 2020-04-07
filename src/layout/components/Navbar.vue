@@ -45,7 +45,7 @@ export default {
           view: 'Energy'
         },
         {
-          type: '报表管理',
+          type: '数据管理',
           view: 'ReportTable'
         },
         {
