@@ -12,7 +12,7 @@
         :collapse-transition="false"
         mode="vertical"
       >
-        <sidebar-item v-for="route in monitor_routes" :key="route.path" :item="route" :base-path="route.path" />
+        <sidebar-item v-for="route in bitems" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -27,6 +27,12 @@ export default {
   name: 'MonitorSideBar',
   components: {
     SidebarItem
+  },
+  props: {
+    bitems: {
+      type: Array,
+      required: true
+    }
   },
   computed: {
     ...mapGetters([

@@ -68,6 +68,13 @@ export const constantRoutes = [
     path: '/404',
     component: () => import('@/views/error-page/404'),
     hidden: true
+    // redirect: '/monitorSystem/zhenkong',
+    // children: [
+    //   {
+    //     path: '/redirect/:path(.*)',
+    //     component: 'layout/components/Tabs/Main/index'
+    //   }
+    // ]
   },
   {
     path: '/401',
@@ -392,13 +399,13 @@ export const asyncRoutes = [
   },
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: '/', hidden: true }
 ]
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters, monitorRouters)
+  routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters)
 })
 
 const router = createRouter()

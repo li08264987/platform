@@ -26,6 +26,15 @@ export const constantRoutes = [
     path: '/404',
     component: 'views/error-page/404',
     hidden: true
+    // redirect: '/monitorSystem/zhenkong',
+    // children: [
+    //   {
+    //     path: '/redirect/:path(.*)',
+    //     component: 'layout/components/Tabs/Main/index',
+    //     name: 'Dashboard',
+    //     meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+    //   }
+    // ]
   },
   {
     path: '/401',
