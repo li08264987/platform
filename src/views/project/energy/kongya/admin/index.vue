@@ -55,6 +55,8 @@
 import energyStatis from './components/EnergyStatis'
 import energyDetail from './components/EnergyDetail'
 import energyMain from './components/EnergyMain'
+import { testAxios } from '@/api/energy/test'
+
 export default {
   name: 'EnergyKY',
   components: {
@@ -380,6 +382,9 @@ export default {
     },
     onSearch() {
       console.log(this.searchForm)
+      testAxios().then(response => {
+        console.log(response)
+      })
     },
     onExport() {
       console.log(this.searchForm)

@@ -29,7 +29,9 @@ export default {
   created() {
     if (!this.sidebar.opened) this.$store.dispatch('app/toggleSideBar')
   },
-  mounted: {},
+  mounted() {
+
+  },
   destroyed() {
   },
   methods: {

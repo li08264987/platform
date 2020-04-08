@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import { testAxios } from '@/api/energy/test'
 export default {
   data() {
     return {
@@ -209,6 +210,11 @@ export default {
     onSearch(type) {
       console.log(type)
       console.log(this.searchForm)
+      testAxios().then(response => {
+        console.log(response)
+      }).catch(err => {
+        console.log(err)
+      })
     },
     onExport() {
       console.log(this.searchForm)
