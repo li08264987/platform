@@ -20,7 +20,7 @@
           end-placeholder="结束日期"
         />
         <el-input
-          v-model="typeinput"
+          el-inputl="typeinput"
           placeholder="请输入内容"
           prefix-icon="el-icon-search"
         />
@@ -30,7 +30,7 @@
       <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
         <el-tab-pane label="系统" name="first">
           <div style="height:99%;text-align:center">
-            <el-select v-model="selectvalue">
+            <el-select v-model="selectvalue2">
               <el-option
                 v-for="item in deviceoptions"
                 :key="item.value"
@@ -299,7 +299,7 @@
       </div>
       <div class="rblock">
         <div class="rtitle">供应概览</div>
-        <el-tabs v-model="gyActiveName" @tab-click="handleClickGY">
+        <el-tabs v-model="gyActiveName">
           <el-tab-pane label="1-2栋车间" name="first">
             <div class="rightzl">
               <div
@@ -391,7 +391,7 @@ export default {
       kongyajizu: kongyajizu,
       activeName: 'first',
       gyActiveName: 'first',
-      pjvalue: '',
+      pjvalue: 3,
       options: [
         {
           value: 'year',
@@ -442,6 +442,7 @@ export default {
       dateinput: '',
       typeinput: '',
       selectvalue: 'one',
+      selectvalue2: 'one',
       showNeibu: true,
       showVideo: false,
       showParam: false,
@@ -681,6 +682,13 @@ export default {
       height: 99%;
     }
   }
+  .el-tabs__item{
+    width: 220px;
+    padding: 0px;
+    height: 50px;
+    text-align: center;
+    border-right: 1px solid #F0F2F5;
+  }
   .el-input {
     width: 200px;
   }
@@ -727,7 +735,7 @@ export default {
   width: 23%;
   position: absolute;
   right: 0px;
-  top: 4.3%;
+  top: 5.3%;
   background: white;
   border: 1px solid #e4e9f0;
   text-align: center;

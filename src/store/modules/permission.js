@@ -1,5 +1,6 @@
 
-import { asyncRoutes, constantRoutes, energyRouters, reportTableRouters, platSettingRouters, monitorRouters } from '@/router'
+// import { asyncRoutes, constantRoutes, energyRouters, reportTableRouters, platSettingRouters, monitorRouters } from '@/router'
+import { asyncRoutes, constantRoutes, energyRouters, reportTableRouters, platSettingRouters } from '@/router'
 
 /**
  * Use meta.role to determine if the current user has permission
@@ -45,7 +46,7 @@ const mutations = {
     state.addRoutes = routes
     state.routes = constantRoutes.concat(routes)
     state.energyRoutes = energyRouters
-    state.monitorRoutes = monitorRouters
+    // state.monitorRoutes = monitorRouters
     state.reportTableRoutes = reportTableRouters
     state.platformSettingRoutes = platSettingRouters
   }

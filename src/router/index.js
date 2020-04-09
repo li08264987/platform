@@ -12,7 +12,7 @@ import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
 import energyRouter from './project/energy/energy'
-import monitorRouter from './project/monitor/monitor'
+// import monitorRouter from './project/monitor/monitor'
 import reportTableRouter from './project/reportTable/reportTable'
 import platformSettingRouter from './project/platSetting/platSetting'
 
@@ -136,7 +136,7 @@ export const constantRoutes = [
 ]
 
 export const energyRouters = energyRouter
-export const monitorRouters = monitorRouter
+// export const monitorRouters = monitorRouter
 export const reportTableRouters = reportTableRouter
 export const platSettingRouters = platformSettingRouter
 /**
