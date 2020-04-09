@@ -552,4 +552,4 @@ radialIndicator.defaults = {
   onChange: function() {}
 }
 
-module.exports = radialIndicator
+export default radialIndicator
