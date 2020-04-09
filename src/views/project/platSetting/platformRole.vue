@@ -13,6 +13,7 @@
         :columns="filterColumns"
         @findPage="findPage"
         @handleEdit="handleEdit"
+        @handleDelete="handleDelete"
       />
     </div>
 
@@ -20,18 +21,18 @@
     <el-dialog v-dialogDrag :title="operation?'新建角色':'修改角色名称'" width="20%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="roleDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="right">
         <div class="row row-0">
-          <el-form-item v-if="true" label="角色名称" prop="roleName">
-            <el-input v-model="dataForm.roleName" :disabled="false" auto-complete="请输入角色名称" />
+          <el-form-item v-if="true" label="角色名称" prop="ROLE_NAME">
+            <el-input v-model="dataForm.ROLE_NAME" :disabled="false" auto-complete="请输入角色名称" />
           </el-form-item>
         </div>
         <div class="row row-1">
-          <el-form-item v-if="true" label="扩展信息" prop="extend">
-            <el-input v-model="dataForm.extend" :disabled="false" auto-complete="请输入扩展信息" />
+          <el-form-item v-if="true" label="扩展信息" prop="EXTENDS">
+            <el-input v-model="dataForm.EXTENDS" :disabled="false" auto-complete="请输入扩展信息" />
           </el-form-item>
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button :loading="editLoading" type="primary" @click.native="submitForm('dataForm')">保存</el-button>
+        <el-button :loading="editLoading" type="primary" @click="dialogStatus==='create'?createData():updateData('dataForm')">保存</el-button>
         <el-button @click.native="resetForm('dataForm')">取消</el-button>
       </div>
     </el-dialog>
@@ -40,6 +41,7 @@
 
 <script>
 import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
+import { getRoleList, updateRole, createRole, deleteRole } from '@/api/platSetting/RoleManage'
 export default {
   components: {
     platSettingTable
@@ -57,22 +59,17 @@ export default {
       operation: false, // true:新增, false:编辑
       dialogVisible: false, // 新增编辑界面是否显示
       editLoading: false,
+      dialogStatus: '',
       dataFormRules: {
-        roleName: [
+        ROLE_NAME: [
           { required: true, message: '请输入角色名称', trigger: 'blur' }
         ]
       },
       // 新增编辑界面数据
       dataForm: {
-        id: 0,
-        name: '',
-        password: '123456',
-        deptId: 1,
-        deptName: '',
-        email: 'test@qq.com',
-        mobile: '13889700023',
-        status: 1,
-        userRoles: []
+        ROLE_ID: 0,
+        ROLE_NAME: '',
+        EXTENDS: '123456'
       },
       deptData: [],
       deptTreeProps: {
@@ -81,21 +78,21 @@ export default {
       },
       roles: [],
       tableData: [{
-        roleCode: '1',
-        roleName: 'God',
-        extend: '这是一个角色'
+        ROLE_ID: '1',
+        ROLE_NAME: 'God',
+        EXTENDS: '这是一个角色'
       }, {
-        roleCode: '2',
-        roleName: '测试',
-        extend: '这是一个角色'
+        ROLE_ID: '2',
+        ROLE_NAME: '测试',
+        EXTENDS: '这是一个角色'
       }, {
-        roleCode: '3',
-        roleName: '员工',
-        extend: '这是一个角色'
+        ROLE_ID: '3',
+        ROLE_NAME: '员工',
+        EXTENDS: '这是一个角色'
       }, {
-        roleCode: '4',
-        roleName: '集团公司领导',
-        extend: '这是一个角色'
+        ROLE_ID: '4',
+        ROLE_NAME: '集团公司领导',
+        EXTENDS: '这是一个角色'
       }]
     }
   },
@@ -108,17 +105,48 @@ export default {
   methods: {
     initColumns: function() {
       this.columns = [
-        { prop: 'roleCode', label: '角色编号', minWidth: 50 },
-        { prop: 'roleName', label: '角色名称', minWidth: 50 },
-        { prop: 'extend', label: '扩展', minWidth: 50 }
+        { prop: 'ROLE_ID', label: '角色编号', minWidth: 50 },
+        { prop: 'ROLE_NAME', label: '角色名称', minWidth: 50 },
+        { prop: 'EXTENDS', label: '扩展', minWidth: 50 }
       ]
       this.filterColumns = JSON.parse(JSON.stringify(this.columns))
     },
-    submitForm: function(formName) {
+    createData() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          createRole(this.dataForm).then((res) => {
+            this.dataForm.ROLE_ID = res.newID
+            this.pageResult.content.unshift(this.dataForm)
+            this.pageResult.totalSize += 1
+            this.dialogVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Created Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      })
+    },
+    updateData: function(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
-          this.dialogVisible = false
+          updateRole(this.dataForm).then(res => {
+            const index = this.pageResult.content.findIndex(v => v.id === this.dataForm.id)
+            this.pageResult.content.splice(index, 1, this.dataForm)
+            this.dialogVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Update Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          }).catch(err => {
+            console.log(err)
+          })
         } else {
           console.log('error submit!!')
           return false
@@ -127,21 +155,19 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()
+      this.dialogVisible = false
     },
     // 获取分页数据
     findPage: function(data) {
-      // if (data !== null) {
-      //   this.pageRequest = data.pageRequest
-      // }
-      // this.pageRequest.columnFilters = { name: { name: 'name', value: this.filters.name }}
-      // this.$api.user.findPage(this.pageRequest).then((res) => {
-      //   this.pageResult = res.data
-      //   // this.findUserRoles()
-      // }).then(data != null ? data.callback : '')
-      // console.log(data)
-      this.pageResult.content = this.tableData
-      this.pageResult.totalSize = this.tableData.length
-      data.callback()
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      this.pageRequest['filterRoleName'] = this.filters.name
+      getRoleList(this.pageRequest).then(res => {
+        this.pageResult.content = res.roleList
+        this.pageResult.totalSize = res.roleListNumber
+        // this.findUserRoles()
+      }).then(data != null ? data.callback : '')
     },
     findUserRoles: function() {
       this.$api.role.findAll().then((res) => {
@@ -149,6 +175,7 @@ export default {
       })
     },
     handleAdd: function() {
+      this.dialogStatus = 'create'
       this.dialogVisible = true
       this.operation = true
       this.dataForm = {
@@ -156,14 +183,22 @@ export default {
       }
     },
     handleEdit: function(params) {
+      this.dialogStatus = 'edit'
       this.dialogVisible = true
       this.operation = false
       this.dataForm = Object.assign({}, params.row)
-      const userRoles = []
-      for (let i = 0, len = params.row.userRoles.length; i < len; i++) {
-        userRoles.push(params.row.userRoles[i].roleId)
-      }
-      this.dataForm.userRoles = userRoles
+      this.$nextTick(() => {
+        this.$refs['dataForm'].clearValidate()
+      })
+    },
+    handleDelete: function(params) {
+      deleteRole(params.rowInfor.row).then((res) => {
+        this.pageResult.content.splice(params.rowInfor.index, 1)
+        this.pageResult.totalSize -= 1
+        params.callback(res)
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }

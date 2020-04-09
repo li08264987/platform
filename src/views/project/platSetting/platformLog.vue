@@ -10,9 +10,8 @@
         :border="border"
         :show-operation="showOperation"
         :data="pageResult"
-        :columns="filterColumns"
+        :columns="columns"
         @findPage="findPage"
-        @handleEdit="handleEdit"
       />
     </div>
   </div>
@@ -20,6 +19,7 @@
 
 <script>
 import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
+import { getLogList } from '@/api/platSetting/logManage'
 export default {
   components: {
     platSettingTable
@@ -32,35 +32,25 @@ export default {
       },
       border: true,
       columns: [],
-      filterColumns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
       operation: false, // true:新增, false:编辑
       dialogVisible: false, // 新增编辑界面是否显示
-      editLoading: false,
-      dataFormRules: {
+      editLoading: false
+      /* dataFormRules: {
         name: [
           { required: true, message: '请输入用户名', trigger: 'blur' }
         ]
       },
       // 新增编辑界面数据
       dataForm: {
-        id: 0,
-        name: '',
-        password: '123456',
-        deptId: 1,
-        deptName: '',
-        email: 'test@qq.com',
-        mobile: '13889700023',
-        status: 1,
-        userRoles: []
+        USER_NAME: 0,
+        REAL_NAME: '',
+        TIME: '',
+        PHONE_TYPE: '',
+        ADDRESS: '',
+        INFOR: ''
       },
-      deptData: [],
-      deptTreeProps: {
-        label: 'name',
-        children: 'children'
-      },
-      roles: [],
       tableData: [{
         userName: 'lishanlei',
         realName: '李闪磊',
@@ -89,7 +79,7 @@ export default {
         platform: '',
         address: '',
         information: ''
-      }]
+      }] */
     }
   },
   computed: {
@@ -101,45 +91,39 @@ export default {
   methods: {
     initColumns: function() {
       this.columns = [
-        { prop: 'userName', label: '用户名', minWidth: 50 },
-        { prop: 'realName', label: '用户姓名', minWidth: 50 },
-        { prop: 'time', label: '时间', minWidth: 50, sortable: true },
-        { prop: 'platform', label: '操作平台', minWidth: 50 },
-        { prop: 'address', label: '地址', minWidth: 50 },
-        { prop: 'information', label: '信息', minWidth: 50 }
+        { prop: 'USER_NAME', label: '用户名', minWidth: 50 },
+        { prop: 'REAL_NAME', label: '用户姓名', minWidth: 50 },
+        { prop: 'TIME', label: '时间', minWidth: 50, sortable: true },
+        { prop: 'PHONE_TYPE', label: '操作平台', minWidth: 50 },
+        { prop: 'ADDRESS', label: '地址', minWidth: 50 },
+        { prop: 'INFOR', label: '信息', minWidth: 50 }
       ]
-      this.filterColumns = JSON.parse(JSON.stringify(this.columns))
     },
     // 获取分页数据
     findPage: function(data) {
-      // if (data !== null) {
-      //   this.pageRequest = data.pageRequest
-      // }
-      // this.pageRequest.columnFilters = { name: { name: 'name', value: this.filters.name }}
-      // this.$api.user.findPage(this.pageRequest).then((res) => {
-      //   this.pageResult = res.data
-      //   // this.findUserRoles()
-      // }).then(data != null ? data.callback : '')
-      // console.log(data)
-      this.pageResult.content = this.tableData
-      this.pageResult.totalSize = this.tableData.length
-      data.callback()
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      this.pageRequest['filterUserName'] = this.filters.name
+      getLogList(this.pageRequest).then((res) => {
+        this.pageResult.content = res.logList
+        this.pageResult.totalSize = res.logListNumber
+        // this.findUserRoles()
+      }).then(data != null ? data.callback : '')
     },
     findUserRoles: function() {
       this.$api.role.findAll().then((res) => {
         this.roles = res.data
       })
-    },
-    handleEdit: function(params) {
-      this.dialogVisible = true
-      this.operation = false
-      this.dataForm = Object.assign({}, params.row)
-      const userRoles = []
-      for (let i = 0, len = params.row.userRoles.length; i < len; i++) {
-        userRoles.push(params.row.userRoles[i].roleId)
-      }
-      this.dataForm.userRoles = userRoles
     }
+    // handleEdit: function(params) {
+    //   this.dialogVisible = true
+    //   this.operation = false
+    //   this.dataForm = Object.assign({}, params.row)
+    //   this.$nextTick(() => {
+    //     this.$refs['dataForm'].clearValidate()
+    //   })
+    // }
   }
 }
 </script>

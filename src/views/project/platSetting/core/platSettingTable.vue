@@ -59,7 +59,7 @@
         layout="total, prev, pager, next, jumper"
         :current-page="pageRequest.pageNum"
         :page-size="pageRequest.pageSize"
-        :total="data.totalSize"
+        :total.sync="data.totalSize"
         @current-change="refreshPageRequest"
       />
     </div>
@@ -164,21 +164,15 @@ export default {
     },
     // 删除
     handleDelete: function(index, row) {
-      this.delete(index)
+      this.delete({ index, row })
     },
-    delete: function(ids) {
+    delete: function(params) {
       this.$confirm('确认删除所选内容？', '提示', {
         type: 'warning'
       }).then(() => {
-        const params = []
-        const idArray = (ids + '').split(',')
-        for (let i = 0; i < idArray.length; i++) {
-          params.push({ 'id': idArray[i] })
-        }
-        this.loading = true
         const callback = res => {
           // eslint-disable-next-line eqeqeq
-          if (res.code == 200) {
+          if (res.state == 1) {
             this.$message({ message: '删除成功', type: 'success' })
             this.findPage()
           } else {
@@ -186,7 +180,7 @@ export default {
           }
           this.loading = false
         }
-        this.$emit('handleDelete', { params: ids, callback: callback })
+        this.$emit('handleDelete', { rowInfor: params, callback: callback })
         this.loading = false
       }).catch(() => {})
     }
