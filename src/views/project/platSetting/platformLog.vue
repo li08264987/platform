@@ -91,12 +91,12 @@ export default {
   methods: {
     initColumns: function() {
       this.columns = [
-        { prop: 'USER_NAME', label: '用户名', minWidth: 50 },
-        { prop: 'REAL_NAME', label: '用户姓名', minWidth: 50 },
-        { prop: 'TIME', label: '时间', minWidth: 50, sortable: true },
-        { prop: 'PHONE_TYPE', label: '操作平台', minWidth: 50 },
-        { prop: 'ADDRESS', label: '地址', minWidth: 50 },
-        { prop: 'INFOR', label: '信息', minWidth: 50 }
+        { prop: 'USER_NAME', label: '用户名', minWidth: 50, show: true },
+        { prop: 'REAL_NAME', label: '用户姓名', minWidth: 50, show: true },
+        { prop: 'TIME', label: '时间', minWidth: 50, sortable: true, show: true },
+        { prop: 'PHONE_TYPE', label: '操作平台', minWidth: 50, show: true },
+        { prop: 'ADDRESS', label: '地址', minWidth: 50, show: true },
+        { prop: 'INFOR', label: '信息', minWidth: 50, show: true }
       ]
     },
     // 获取分页数据

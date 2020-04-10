@@ -10,7 +10,7 @@
         :height="750"
         :border="border"
         :data="pageResult"
-        :columns="filterColumns"
+        :columns="columns"
         @findPage="findPage"
         @handleEdit="handleEdit"
         @handleDelete="handleDelete"
@@ -53,7 +53,6 @@ export default {
       },
       border: true,
       columns: [],
-      filterColumns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
       operation: false, // true:新增, false:编辑
@@ -67,33 +66,10 @@ export default {
       },
       // 新增编辑界面数据
       dataForm: {
-        ROLE_ID: 0,
+        ROLE_ID: null,
         ROLE_NAME: '',
-        EXTENDS: '123456'
-      },
-      deptData: [],
-      deptTreeProps: {
-        label: 'name',
-        children: 'children'
-      },
-      roles: [],
-      tableData: [{
-        ROLE_ID: '1',
-        ROLE_NAME: 'God',
-        EXTENDS: '这是一个角色'
-      }, {
-        ROLE_ID: '2',
-        ROLE_NAME: '测试',
-        EXTENDS: '这是一个角色'
-      }, {
-        ROLE_ID: '3',
-        ROLE_NAME: '员工',
-        EXTENDS: '这是一个角色'
-      }, {
-        ROLE_ID: '4',
-        ROLE_NAME: '集团公司领导',
-        EXTENDS: '这是一个角色'
-      }]
+        EXTENDS: ''
+      }
     }
   },
   computed: {
@@ -105,11 +81,10 @@ export default {
   methods: {
     initColumns: function() {
       this.columns = [
-        { prop: 'ROLE_ID', label: '角色编号', minWidth: 50 },
-        { prop: 'ROLE_NAME', label: '角色名称', minWidth: 50 },
-        { prop: 'EXTENDS', label: '扩展', minWidth: 50 }
+        { prop: 'ROLE_ID', label: '角色编号', minWidth: 50, show: true },
+        { prop: 'ROLE_NAME', label: '角色名称', minWidth: 50, show: true },
+        { prop: 'EXTENDS', label: '扩展', minWidth: 50, show: true }
       ]
-      this.filterColumns = JSON.parse(JSON.stringify(this.columns))
     },
     createData() {
       this.$refs['dataForm'].validate((valid) => {
