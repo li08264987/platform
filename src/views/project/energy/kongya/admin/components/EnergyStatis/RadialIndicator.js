@@ -284,7 +284,7 @@ Indicator.prototype = {
     var precision = indOption.precision !== null ? indOption.precision : 0
     var precisionNo = Math.pow(10, precision)
     var perVal = Math.round(((val - minVal) * precisionNo / (maxVal - minVal)) * 1000) / precisionNo / 10 // percentage value tp two decimal precision
-    var dispVal = indOption.displayTitle || (indOption.percentage ? perVal + '%' : this.formatter(val)) // formatted value
+    var dispVal = indOption.displayTitle === 0 ? 0 : (indOption.displayTitle || (indOption.percentage ? perVal + '%' : this.formatter(val))) // formatted value
 
     // save val on object
     this.current_value = val
