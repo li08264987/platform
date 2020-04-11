@@ -1,7 +1,6 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
-var webpack = require('webpack')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -45,16 +44,9 @@ module.exports = {
     name: name,
     resolve: {
       alias: {
-        '@': resolve('src'),
-        'jquery': 'jquery'
+        '@': resolve('src')
       }
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery'
-      })
-    ]
+    }
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test

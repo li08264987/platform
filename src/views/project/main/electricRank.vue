@@ -100,12 +100,16 @@ export default {
     }
     .el-tabs--card>.el-tabs__header .el-tabs__nav{
       border: unset;
+      .el-tabs__item{
+        color: #B5BFF6;
+      }
     }
     .el-tabs--card>.el-tabs__header .el-tabs__item{
       border-left: unset;
     }
     .el-tabs--card>.el-tabs__header .el-tabs__item.is-active{
       border-bottom-color: transparent;
+      color: #5F60FF;
     }
   }
 
@@ -115,6 +119,7 @@ export default {
     }
   .dianli-group{
     .el-radio-button__inner{
+      color: #B5BFF6;
       background-color: rgba(0,0,0,0);
       border-top: 1px solid #243B9E;
       border-bottom: 1px solid #243B9E;

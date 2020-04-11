@@ -16,17 +16,16 @@
       />
     </div>
 
-    <!--新增编辑界面-->
     <el-dialog v-dialogDrag :title="operation?'新建职位名称':'编辑职位名称'" width="15%" :visible.sync="dialogVisible" :close-on-click-modal="false" append-to-body class="positionOperation">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top">
         <div class="row row-0">
-          <el-form-item v-if="true" label="职位名称" prop="positionName">
-            <el-input v-model="dataForm.positionName" :disabled="false" auto-complete="请输入职位名称" />
+          <el-form-item v-if="true" label="职位名称" prop="POS_NAME">
+            <el-input v-model="dataForm.POS_NAME" :disabled="false" auto-complete="请输入职位名称" />
           </el-form-item>
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button :loading="editLoading" type="primary" @click.native="submitForm('dataForm')">提交</el-button>
+        <el-button :loading="editLoading" type="primary" @click.native="dialogStatus==='create'?createData():updateData('dataForm')">提交</el-button>
       </div>
     </el-dialog>
   </div>
@@ -34,6 +33,7 @@
 
 <script>
 import departmentTable from '@/views/project/platSetting/core/platSettingTable'
+import { getPositionList, createPosition, updatePosition, deletePosition } from '@/api/platSetting/userManage'
 export default {
   name: 'DepartmentEditDialog',
   components: {
@@ -47,12 +47,14 @@ export default {
       operation: false, // true:新增, false:编辑
       dialogVisible: false, // 编辑界面是否显示
       editLoading: false,
+      dialogStatus: '',
       // 编辑界面数据
       dataForm: {
-
+        CODE: '',
+        POS_NAME: ''
       },
       dataFormRules: {
-        positionName: [
+        POS_NAME: [
           { required: true, message: '请输入职位名称', trigger: 'blur' }
         ]
       },
@@ -68,16 +70,55 @@ export default {
   methods: {
     initColumns: function() {
       this.columns = [
-        { prop: 'positionCode', label: '职位编号', minWidth: 30, show: true },
-        { prop: 'positionName', label: '职位名称', minWidth: 90, show: true }
+        { prop: 'CODE', label: '职位编号', minWidth: 90, show: false },
+        { prop: 'POS_NAME', label: '职位名称', minWidth: 90, show: true }
       ]
-      this.columns = JSON.parse(JSON.stringify(this.columns))
     },
-    submitForm: function(formName) {
+    createData() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          createPosition(this.dataForm).then((res) => {
+            if (res.state === 1) {
+              this.dataForm.CODE = res.code
+              this.pageResult.content.unshift(this.dataForm)
+              this.pageResult.totalSize += 1
+              this.dialogVisible = false
+              this.$notify({
+                title: 'Success',
+                message: res.msg,
+                type: 'success',
+                duration: 2000
+              })
+            } else if (res.state === 2) {
+              this.$notify({
+                title: '警告',
+                message: res.msg,
+                type: 'warning',
+                duration: 2000
+              })
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      })
+    },
+    updateData: function(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
-          this.dialogVisible = false
+          updatePosition(this.dataForm).then(res => {
+            const index = this.pageResult.content.findIndex(v => v.CODE === this.dataForm.CODE)
+            this.pageResult.content.splice(index, 1, this.dataForm)
+            this.dialogVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Update Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          }).catch(err => {
+            console.log(err)
+          })
         } else {
           console.log('error submit!!')
           return false
@@ -85,36 +126,31 @@ export default {
       })
     },
     findPage: function(data) {
-      this.tableData = [{
-        positionCode: '0',
-        positionName: '分公司经理'
-      }, {
-        positionCode: '1',
-        positionName: '总经理'
-      }, {
-        positionCode: '2',
-        positionName: '经理'
-      }, {
-        positionCode: '3',
-        positionName: '总工'
-      }, {
-        positionCode: '4',
-        positionName: '副总工'
-      }]
-      this.pageResult.content = this.tableData
-      this.pageResult.totalSize = this.tableData.length
-      data.callback()
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      getPositionList(this.pageRequest).then(res => {
+        this.pageResult.content = res.positionList
+        this.pageResult.totalSize = res.positionListNumber
+      }).then(data != null ? data.callback : '')
     },
     handleEdit: function(params) {
+      this.dialogStatus = 'edit'
       this.dialogVisible = true
       this.operation = false
       this.dataForm = Object.assign({}, params.row)
     },
-    handleDelete: function(data) {
-      // 这里暂时只操作界面上的数据，待连接数据库后，应从数据库中删除数据，再调用回调函数更新表格
-      this.pageResult.content.splice(data.params, 1)
+    handleDelete: function(params) {
+      deletePosition(params.rowInfor.row).then((res) => {
+        this.pageResult.content.splice(params.rowInfor.index, 1)
+        this.pageResult.totalSize -= 1
+        params.callback(res)
+      }).catch(err => {
+        console.log(err)
+      })
     },
     handleAdd: function() {
+      this.dialogStatus = 'create'
       this.dialogVisible = true
       this.operation = true
       this.dataForm = {

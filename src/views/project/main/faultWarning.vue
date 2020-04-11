@@ -309,12 +309,16 @@ export default {
     }
     .el-tabs--card>.el-tabs__header .el-tabs__nav{
       border: unset;
+      .el-tabs__item{
+        color: #B5BFF6;
+      }
     }
     .el-tabs--card>.el-tabs__header .el-tabs__item{
       border-left: unset;
     }
     .el-tabs--card>.el-tabs__header .el-tabs__item.is-active{
       border-bottom-color: transparent;
+      color: #5F60FF;
     }
 }
 </style>

@@ -59,7 +59,7 @@ const platSettingRouters = [{
   component: Layout,
   name: 'platSettingOther',
   meta: {
-    title: '其他设置',
+    title: '值班设置',
     icon: 'example',
     roles: ['admin', 'editor']
   },

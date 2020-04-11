@@ -128,6 +128,9 @@ export default {
           height: 16px !important;
           position: relative;
         }
+        .el-progress__text{
+          color: #fff;
+        }
     }
 }
 </style>

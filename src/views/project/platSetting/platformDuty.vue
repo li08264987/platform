@@ -48,7 +48,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button :loading="editLoading" type="primary" @click="dialogStatus==='create'?createData():updateData('dataForm')">提交</el-button>
-        <el-button @click.native="resetForm('dataForm')">重置</el-button>
+        <el-button @click="resetForm('dataForm')">重置</el-button>
       </div>
     </el-dialog>
   </div>
