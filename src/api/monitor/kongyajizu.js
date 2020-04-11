@@ -1,4 +1,4 @@
-var svg=' <g id="设计图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n' +
+var svg = ' <g id="设计图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">\n' +
 '        <g id="监测管理_空压系统1.2-copy" transform="translate(-234.000000, -166.000000)">\n' +
 '            <g id="1#空压机组" transform="translate(234.000000, 166.000000)">\n' +
 '                <path d="M524,77 L510,77 L517,63 L524,77 Z M806,77 L792,77 L799,63 L806,77 Z M1087,77 L1073,77 L1080,63 L1087,77 Z M1369,77 L1355,77 L1362,63 L1369,77 Z M244,14 L230,7 L244,0 L244,14 Z M941,14 L927,7 L941,0 L941,14 Z M1222,14 L1208,7 L1222,0 L1222,14 Z" id="rjiantou" fill="#FF5B60" fill-rule="nonzero"></path>\n' +
@@ -1051,5 +1051,5 @@ var svg=' <g id="设计图" stroke="none" stroke-width="1" fill="none" fill-rule
 '                </g>\n' +
 '            </g>\n' +
 '        </g>\n' +
-'    </g>';
-export default svg;
+'    </g>'
+export default svg

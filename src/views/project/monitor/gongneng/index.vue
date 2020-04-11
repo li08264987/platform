@@ -1,6 +1,6 @@
 <template>
-  <div class="maindiv">
-    <div class="kongYaMain">
+  <div class="maindiv" style="height:100%;display:flex">
+    <div class="kongYaMain" style="flex:3">
       <runInfo ref="showRunInfo" />
       <infoScan ref="infoScan" />
       <div v-if="false" class="tools">
@@ -30,19 +30,11 @@
       <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
         <el-tab-pane label="系统" name="first">
           <div style="height:99%;text-align:center">
-            <el-select v-model="selectvalue2">
-              <el-option
-                v-for="item in deviceoptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
-            </el-select>
-            <div style="padding-top:10px;text-align: left;padding-left: 2%;">
+            <!-- <div style="padding-top:10px;text-align: left;padding-left: 2%;">
               <span>运行优化建议：</span>
               <span>可关停1#螺杆空压机，只能用2#螺杆空样机进行供应，预计提升系统运行能效5%，节省能源费用2000元（运行模式对比）。</span>
               <span style="color:#23A8F2;text-decoration:underline">确认</span>
-            </div>
+            </div> -->
             <div v-if="false" id="intools">
               <el-button
                 icon="el-icon-arrow-left"
@@ -76,7 +68,7 @@
                 <i class="el-icon-arrow-right el-icon--right" />
               </el-button>
             </div>
-            <div v-show="showNeibu" style="height:99%;position:relativeborder: 1px dashed #ccc;width: 96%;margin-left: 2%;margin-top: 2%;">
+            <div v-if="showNeibu && mainTabName==='first'" style="height:99%;position:relativeborder: 1px dashed #ccc;width: 96%;margin-left: 2%;margin-top: 2%;">
               <svg
                 id="backgroud"
                 viewBox="-70 -20 1750 920"
@@ -86,7 +78,7 @@
                 v-html="kongYsSys"
               />
             </div>
-            <div v-show="showParam" class="rightparam">
+            <div v-if="showParam" class="rightparam">
               <div
                 style="height:6%;display:flex;align-items:center;justify-content:center;font-weight:bold"
               >
@@ -113,7 +105,7 @@
                 </div>
               </div>
             </div>
-            <div v-show="showDuty" class="leftduty">
+            <div v-if="showDuty" class="leftduty">
               <div class="dutytitle"><i class="el-icon-s-tools" />运行值班</div>
               <div class="dutycontain">
                 <div>程志远</div>
@@ -134,7 +126,7 @@
                 <div>010-52886945</div>
               </div>
             </div>
-            <div v-show="showVideo" class="content">
+            <div v-if="showVideo" class="content">
               <div>
                 <div class="condiv Video_1" />
                 <div class="conbott">
@@ -214,7 +206,7 @@
                 </div>
               </div>
             </div>
-            <div v-show="showHis" style="display:flex;height:92%">
+            <div v-if="showHis" style="display:flex;height:92%">
               <div class="videoPlay" />
               <div style="flex:2;height:100%;overflow:auto;height:100%;">
                 <div
@@ -245,29 +237,65 @@
             </div>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="机组" name="second">
-          <div v-show="showNeibu" style="height:99%">
-            <svg
-              viewBox="-50 -20 1800 920"
+        <el-tab-pane label="机组" name="second" style="text-align:center">
+          <el-select v-model="selectvalue2">
+            <el-option
+              v-for="item in deviceoptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+          <!-- <div style="padding-top:10px;text-align: left;padding-left: 2%;">
+            <span>运行优化建议：</span>
+            <span>可关停1#螺杆空压机，只能用2#螺杆空样机进行供应，预计提升系统运行能效5%，节省能源费用2000元（运行模式对比）。</span>
+            <span style="color:#23A8F2;text-decoration:underline">确认</span>
+          </div> -->
+          <div v-if="showNeibu && mainTabName==='second'" style="height:92%">
+            <!-- <svg
+              width="99%"
+              height="99%"
+              viewBox="0 0 1600 950"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               v-html="kongyajizu"
-            />
+            /> -->
+            <groupone v-if="selectvalue2==='one'" style="height:92%;width:100%" />
+            <grouptwo v-if="selectvalue2==='two'" style="height:92%;width:100%" />
+            <groupthree v-if="selectvalue2==='three'" style="height:92%;width:100%" />
+            <groupfour v-if="selectvalue2==='four'" style="height:92%;width:100%" />
           </div>
         </el-tab-pane>
-        <el-tab-pane label="设备" name="third">
-          <div v-show="showNeibu" style="height:99%">
+        <el-tab-pane label="设备" name="third" style="text-align:center">
+          <el-select v-model="selectvalue3">
+            <el-option
+              v-for="item in kyjoptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+          <!-- <div style="padding-top:10px;text-align: left;padding-left: 2%;">
+            <span>运行优化建议：</span>
+            <span>可关停1#螺杆空压机，只能用2#螺杆空样机进行供应，预计提升系统运行能效5%，节省能源费用2000元（运行模式对比）。</span>
+            <span style="color:#23A8F2;text-decoration:underline">确认</span>
+          </div> -->
+          <!-- <div v-if="showNeibu" style="height:92%">
             <svg
-              viewBox="-150 -20 1800 920"
+              width="99%"
+              height="99%"
+              :viewBox="wh"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
               v-html="kongyaji"
             />
-          </div>
+          </div> -->
+          <kyj v-if="showNeibu && mainTabName==='third' && selectvalue3==='one'" style="height:92%;width:100%" />
+          <lgkyj v-if="showNeibu && mainTabName==='third' && selectvalue3==='two'" style="height:92%;width:100%" />
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div class="rightparam">
+    <div v-if=" mainTabName==='first'" class="rightparam" style="flex:1">
       <div class="rblock">
         <div class="rtitle">当前值班</div>
         <div style="text-align:left">王立志(运营),王立志(运营),王立志(运营)</div>
@@ -297,48 +325,165 @@
           style="text-align: left;"
         />
       </div>
-      <div class="rblock">
+      <div v-if="mainTabName!=='third'" class="rblock">
         <div class="rtitle">供应概览</div>
         <el-tabs v-model="gyActiveName">
-          <el-tab-pane label="1-2栋车间" name="first">
+          <el-tab-pane label="1、2栋车间" name="first">
             <div class="rightzl">
-              <div
+              <!-- <div
                 v-for="(element, index) in paramss"
                 :key="index"
                 class="itemdiv"
               >
                 <div class="namediv">{{ element.name }}</div>
                 <div class="valuediv">{{ element.value }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
+              </div> -->
+              <div class="itemdiv">
+                <div class="namediv">常压流量</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">常压压力</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">常压露点温度</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">℃</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压流量</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压压力</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压露点温度</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">℃</span></div>
               </div>
             </div>
           </el-tab-pane>
-          <el-tab-pane label="3-4栋车间" name="second">
+          <el-tab-pane label="3、4栋车间" name="second">
             <div class="rightzl">
-              <div
+              <!-- <div
                 v-for="(element, index) in paramss"
                 :key="index"
                 class="itemdiv"
               >
                 <div class="valuediv">{{ element.value }}</div>
                 <div class="namediv">{{ element.name }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
+              </div> -->
+              <div class="itemdiv">
+                <div class="namediv">常压流量</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">常压压力</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">常压露点温度</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">℃</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压流量</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压压力</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压露点温度</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">℃</span></div>
               </div>
             </div>
           </el-tab-pane>
           <el-tab-pane label="氢氮系统" name="third">
             <div class="rightzl">
-              <div
+              <!-- <div
                 v-for="(element, index) in paramss"
                 :key="index"
                 class="itemdiv"
               >
                 <div class="valuediv">{{ element.value }}</div>
                 <div class="namediv">{{ element.name }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
+              </div> -->
+              <div class="itemdiv">
+                <div class="namediv">常压流量</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">常压压力</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压流量</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">高压压力</div>
+                <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
               </div>
             </div>
           </el-tab-pane>
         </el-tabs>
       </div>
-      <div class="rblock">
+      <div v-if="mainTabName==='third'" class="rblock">
+        <div class="rtitle">空压机面板数据</div>
+        <div class="rightzl">
+          <div class="itemdiv">
+            <div class="namediv">累加载行时间</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">h</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">累计运行时间</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">h</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">级间温度T4</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">℃</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">空气过滤器压差</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">加载压差</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">空载压力</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">最高管线压力</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">最低管线压力</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">最低压力</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">挂起</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;" /></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">遥控</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;" /></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">运行状态</div>
+            <div class="valuediv">0<span style="font-weight:normal;font-size:14px;" /></div>
+          </div>
+        </div>
+      </div>
+      <div v-if="mainTabName!=='third'" class="rblock">
         <div class="rtitle">能耗概览</div>
         <div style="display:flex">
           <div style="flex:2;height:135px;position:relative">
@@ -373,16 +518,32 @@
 <script>
 import kongYsSys from '@/api/monitor/kongYaSys'
 import kongyaji from '@/api/monitor/kongyaji'
+import lxkongyaji from '@/api/monitor/lxkongyaji'
 import kongyajizu from '@/api/monitor/kongyajizu'
+// import $ from 'jquery'
+import '@/api/monitor/svgtool'
 import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
 import pieChart from '@/views/project/monitor/pieChart'
+import monitorapi from '@/api/monitor/monitor'
+import kyj from '@/views/project/monitor/gongneng/kongyaji'
+import lgkyj from '@/views/project/monitor/gongneng/lgkongyaji'
+import groupone from '@/views/project/monitor/gongneng/groupone'
+import grouptwo from '@/views/project/monitor/gongneng/grouptwo'
+import groupthree from '@/views/project/monitor/gongneng/groupthree'
+import groupfour from '@/views/project/monitor/gongneng/groupfour'
 export default {
   name: 'MonitorView',
   components: {
     runInfo,
     infoScan,
-    pieChart
+    pieChart,
+    kyj,
+    lgkyj,
+    groupone,
+    grouptwo,
+    groupthree,
+    groupfour
   },
   data() {
     return {
@@ -392,6 +553,9 @@ export default {
       activeName: 'first',
       gyActiveName: 'first',
       pjvalue: 3,
+      wh: '0 0 1600 850',
+      mainTabName: 'first',
+      nenghaoganlan: {},
       options: [
         {
           value: 'year',
@@ -409,15 +573,29 @@ export default {
       deviceoptions: [
         {
           value: 'one',
-          label: '1#空压系统流程图'
+          label: '1#空压机组流程图'
         },
         {
           value: 'two',
-          label: '2#空压系统流程图'
+          label: '2#空压机组流程图'
         },
         {
           value: 'three',
-          label: '3#空压系统流程图'
+          label: '3#空压机组流程图'
+        },
+        {
+          value: 'four',
+          label: '4#空压机组流程图'
+        }
+      ],
+      kyjoptions: [
+        {
+          value: 'one',
+          label: '离心空压机'
+        },
+        {
+          value: 'two',
+          label: '螺杆空压机'
         }
       ],
       paramOptions: [
@@ -443,6 +621,7 @@ export default {
       typeinput: '',
       selectvalue: 'one',
       selectvalue2: 'one',
+      selectvalue3: 'one',
       showNeibu: true,
       showVideo: false,
       showParam: false,
@@ -601,8 +780,23 @@ export default {
       ]
     }
   },
+  watch: {
+    selectvalue3(val) {
+      if (val === 'one') {
+        this.kongyaji = kongyaji
+        this.wh = '0 0 1600 850'
+      } else {
+        this.kongyaji = lxkongyaji
+        this.wh = '0 0 1266 773'
+      }
+    }
+  },
+  mounted() {
+    this.getNengHaoGaiLan()
+  },
   methods: {
     handleClick(tab, event) {
+      this.mainTabName = tab.name
       console.log(tab, event)
     },
     showVideos() {
@@ -616,6 +810,15 @@ export default {
     showNeiBu() {
       this.showNeibu = true
       this.showVideo = false
+    },
+    getNengHaoGaiLan() {
+      debugger
+      monitorapi.getNHGaiLan().then(res => {
+        debugger
+      }).catch(err => {
+        debugger
+        console.log(err)
+      })
     },
     showParamPanel() {
       if (this.showParam) {
@@ -676,7 +879,7 @@ export default {
   .tabs {
     height: 99%;
     .el-tab-pane {
-      height: 99%;
+      height: 95%;
     }
     .el-tabs__content {
       height: 99%;
@@ -731,11 +934,8 @@ export default {
   width: 100px;
 }
 .rightparam {
-  height: 91%;
-  width: 23%;
-  position: absolute;
-  right: 0px;
-  top: 5.3%;
+  margin-top: 48px;
+  border-top-width: 2px;
   background: white;
   border: 1px solid #e4e9f0;
   text-align: center;

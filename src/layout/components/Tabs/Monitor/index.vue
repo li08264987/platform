@@ -11,7 +11,7 @@
 import AppMain from '@/layout/components/AppMain'
 import monitorSideBar from './monitorSideBar'
 import Layout from '@/layout'
-import { getSideBar } from '@/api/monitor/monitor'
+import monitorapi from '@/api/monitor/monitor'
 const kongya = import('@/views/project/monitor/gongneng/index')
 const qingdan = import('@/views/project/monitor/gongneng/index')
 const zhenkong = import('@/views/project/monitor/gongneng/index')
@@ -28,19 +28,18 @@ export default {
       needTagsView: 'Main',
       monitorRouter: [{
         path: '/monitorSystem',
-        redirect: '/monitorSystem/kongya', // 重定向地址，在面包屑中点击会重定向去的地址
+        redirect: '/monitorSystem/kongya',
         component: Layout,
         name: 'MonitorSystem',
         meta: {
           title: '供能系统',
-          icon: 'example',
-          roles: ['admin', 'editor']
+          icon: 'example'
         },
         children: [
         ]
       }, {
         path: '/monitorChejian',
-        redirect: '/monitorChejian/first', // 重定向地址，在面包屑中点击会重定向去的地址
+        redirect: '/monitorChejian/first',
         component: Layout,
         name: 'MonitorSystem',
         meta: {
@@ -56,16 +55,16 @@ export default {
   beforeCreate() {
   },
   mounted() {
+    const self = this
     const routes = this.$router.options.routes
     routes.forEach(element => {
       if (element.path && (element.path === '/monitorSystem' || element.path === '/monitorChejian')) {
         return
       }
     })
-    debugger
-    getSideBar().then(res => {
-      // axios.post('/common/getSideBar').then(res => {
+    monitorapi.getSideBar().then(res => {
       debugger
+      // axios.post('/common/getSideBar').then(res => {
       if (res.state === 1) {
         const result = res.data
         const yn = result.yn
@@ -135,7 +134,6 @@ export default {
               )
               break
           }
-          this.$router.options.routes.push(this.monitorRouter[0])
         })
         yn.forEach(element => {
           const code = element.DEVICE_CODE
@@ -232,14 +230,46 @@ export default {
               )
               break
           }
-          this.$router.options.routes.push(this.monitorRouter[1])
         })
       }
+      this.$router.options.routes.push(this.monitorRouter[1])
+      this.$router.options.routes.push(this.monitorRouter[0])
       this.$router.addRoutes(this.$router.options.routes)
       this.$router.push({ path: '/monitorSystem/kongya' })
       this.showBar = true
     }).catch(err => {
       console.log(err)
+      self.monitorRouter[0].children.push(
+        {
+          path: 'kongya',
+          component: () => kongya,
+          name: 'MonitorKongya',
+          meta: {
+            title: '空压系统',
+            roles: ['admin'],
+            icon: 'documentation',
+            affix: true
+          }
+        }
+      )
+      self.monitorRouter[1].children.push(
+        {
+          path: 'cqyc',
+          component: () => import('@/views/project/monitor/yongneng/firstShop'),
+          name: 'MonitorThird',
+          meta: {
+            title: '1#动力站房',
+            roles: ['admin'],
+            icon: 'documentation',
+            affix: true
+          }
+        }
+      )
+      this.$router.options.routes.push(this.monitorRouter[0])
+      this.$router.options.routes.push(this.monitorRouter[1])
+      this.$router.addRoutes(this.$router.options.routes)
+      this.$router.push({ path: '/monitorSystem/kongya' })
+      this.showBar = true
     })
   },
   destroyed() {

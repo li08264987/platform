@@ -1,6 +1,6 @@
 <template>
   <div class="rules">
-    <el-dialog title="冷却器设备运行信息" :visible.sync="dialogTableVisible">
+    <el-dialog v-dialogDrag title="冷却器设备运行信息" :visible.sync="dialogTableVisible">
       <el-tabs type="border-card">
         <el-tab-pane label="运行参数">
           <div class="titlecon">
