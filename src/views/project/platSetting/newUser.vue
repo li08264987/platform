@@ -14,7 +14,7 @@
         :height="750"
         :border="border"
         :data="pageResult"
-        :columns="filterColumns"
+        :columns="columns"
         @findPage="findPage"
         @handleEdit="handleEdit"
         @handleDelete="handleDelete"
@@ -25,51 +25,51 @@
     <el-dialog v-dialogDrag :title="operation?'添加用户':'修改用户信息'" width="40%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="userDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top" :size="size">
         <div class="row row-0">
-          <el-form-item v-if="true" label="用户名" prop="userName">
-            <el-input v-model="dataForm.userName" :disabled="false" auto-complete="请输入用户名" />
+          <el-form-item v-if="true" label="用户名" prop="USER_NAME">
+            <el-input v-model="dataForm.USER_NAME" :disabled="false" auto-complete="请输入用户名" />
           </el-form-item>
-          <el-form-item v-if="true" label="密码" prop="password">
-            <el-input ref="password" v-model="dataForm.password" :type="passwordType" :disabled="false" auto-complete="请输入密码" />
+          <el-form-item v-if="true" label="密码" prop="PASSWORD">
+            <el-input ref="password" v-model="dataForm.PASSWORD" :type="passwordType" :disabled="false" auto-complete="请输入密码" />
             <span class="show-pwd" @click="showPwd">
               <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
             </span>
           </el-form-item>
-          <el-form-item v-if="true" label="用户角色" prop="role">
-            <el-select v-model="dataForm.role" placeholder="请选择用户角色" style="width: 100%;">
+          <el-form-item v-if="true" label="用户角色" prop="ROLE_NAME">
+            <el-select v-model="dataForm.ROLE_NAME" placeholder="请选择用户角色" style="width: 100%;" @change="roleSelectChange">
               <el-option v-for="item in roles" :key="item.value" :label="item.label" :value="item.value" />
             </el-select>
           </el-form-item>
         </div>
         <div class="row row-1">
-          <el-form-item v-if="true" label="用户姓名" prop="realName">
-            <el-input v-model="dataForm.realName" :disabled="false" auto-complete="请输入用户姓名" />
+          <el-form-item v-if="true" label="用户姓名" prop="REAL_NAME">
+            <el-input v-model="dataForm.REAL_NAME" :disabled="false" auto-complete="请输入用户姓名" />
           </el-form-item>
-          <el-form-item v-if="true" label="所属公司" prop="company">
-            <el-select v-model="dataForm.companyCode" placeholder="请选择所属分公司" style="width: 100%;">
+          <el-form-item v-if="true" label="所属公司" prop="COMPANY">
+            <el-select v-model="dataForm.COMPANY" placeholder="请选择所属分公司" style="width: 100%;" @change="companySelectChange">
               <el-option v-for="item in company" :key="item.companyCode" :label="item.companyName" :value="item.companyCode" />
             </el-select>
           </el-form-item>
-          <el-form-item v-if="true" label="是否为部门领导" prop="isLeader">
-            <el-select v-model="dataForm.isLeader" placeholder="请选择是否为部门领导" style="width: 100%;">
+          <el-form-item v-if="true" label="是否为部门领导" prop="IS_LEADER">
+            <el-select v-model="dataForm.IS_LEADER" placeholder="请选择是否为部门领导" style="width: 100%;" @change="isLeaderSelectChange">
               <el-option label="是" value="1" />
               <el-option label="否" value="0" />
             </el-select>
           </el-form-item>
         </div>
         <div class="row row-2">
-          <el-form-item v-if="true" label="部门领导" prop="leaderName">
-            <el-input v-model="dataForm.leaderName" :disabled="false" auto-complete="请输入部门领导" />
+          <el-form-item v-if="true" label="部门领导" prop="LEADER_NAME">
+            <el-input v-model="dataForm.LEADER_NAME" :disabled="false" auto-complete="请输入部门领导" />
           </el-form-item>
-          <el-form-item v-if="true" label="电话号码" prop="phone">
-            <el-input v-model="dataForm.phone" :disabled="false" auto-complete="请输入电话号码" />
+          <el-form-item v-if="true" label="电话号码" prop="TELEPHONE">
+            <el-input v-model="dataForm.TELEPHONE" :disabled="false" auto-complete="请输入电话号码" />
           </el-form-item>
-          <el-form-item v-if="true" label="值班地点" prop="dutyAddress">
-            <el-input v-model="dataForm.dutyAddress" :disabled="false" auto-complete="请输入值班地点" />
+          <el-form-item v-if="true" label="值班地点" prop="DUTY_ADDRESS">
+            <el-input v-model="dataForm.DUTY_ADDRESS" :disabled="false" auto-complete="请输入值班地点" />
           </el-form-item>
         </div>
         <div class="row row-3">
-          <el-form-item v-if="true" label="所在部门" prop="department">
-            <el-select v-model="dataForm.department" placeholder="请选择所在部门" style="width: 100%;">
+          <el-form-item v-if="true" label="所在部门" prop="DEPARTMENT">
+            <el-select v-model="dataForm.DEPARTMENT" placeholder="请选择所在部门" style="width: 100%;" @change="departmentSelectChange">
               <el-option v-for="item in departments" :key="item.departmentCode" :label="item.departmentName" :value="item.departmentCode" />
             </el-select>
             <platSettingButton
@@ -78,8 +78,8 @@
               @click="showDialog('departmentEidtDialog')"
             />
           </el-form-item>
-          <el-form-item v-if="true" label="所属职位" prop="position">
-            <el-select v-model="dataForm.position" placeholder="请选择所属职位" style="width: 100%;">
+          <el-form-item v-if="true" label="所属职位" prop="POSITION">
+            <el-select v-model="dataForm.POSITION" placeholder="请选择所属职位" style="width: 100%;" @change="positionSelectChange">
               <el-option v-for="item in positions" :key="item.positionCode" :label="item.positionName" :value="item.positionCode" />
             </el-select>
             <platSettingButton
@@ -114,6 +114,7 @@ import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
 import platSettingButton from '@/views/project/platSetting/core/platSettingButton'
 import departmentEidtDialog from '@/views/project/platSetting/userManage/departmentEditDialog'
 import positionEditDialog from '@/views/project/platSetting/userManage/positionEditDialog'
+import { getUserList, deleteUser } from '@/api/platSetting/userManage'
 export default {
   components: {
     platSettingTable,
@@ -129,8 +130,7 @@ export default {
       },
       border: true,
       columns: [],
-      filterColumns: [],
-      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageRequest: { pageNum: 1, pageSize: 15 },
       pageResult: {},
       operation: false, // true:新增, false:编辑
       operationEdit: true, // true:部门, false:职位
@@ -139,112 +139,65 @@ export default {
       dialogEdit: '',
       editLoading: false,
       passwordType: 'password',
-      positions: [],
-      departments: [],
       dataFormRules: {
-        userName: [
+        USER_NAME: [
           { required: true, message: '请输入用户名', trigger: 'blur' }
         ],
-        password: [
+        PASSWORD: [
           { required: true, message: '请输入密码', trigger: 'blur' }
         ],
-        role: [
+        ROLE_NAME: [
           { required: true, message: '请选择角色', trigger: 'change' }
         ],
-        realName: [
+        REAL_NAME: [
           { required: true, message: '请输入用户姓名', trigger: 'blur' }
         ],
-        company: [
+        COMPANY: [
           { required: true, message: '请选择所属公司', trigger: 'change' }
         ],
-        isLeader: [
+        IS_LEADER: [
           { required: true, message: '请选择是否为部门领导', trigger: 'change' }
         ],
-        leaderName: [
+        LEADER_NAME: [
           { required: true, message: '请输入部门领导', trigger: 'blur' }
         ],
-        phone: [
+        TELEPHONE: [
           { required: true, message: '请输入电话号码', trigger: 'blur' }
         ],
-        dutyAddress: [
+        DUTY_ADDRESS: [
           { required: true, message: '请输入值班地点', trigger: 'blur' }
         ],
-        department: [
+        DEPARTMENT: [
           { required: true, message: '请选择所在部门', trigger: 'change' }
         ],
-        position: [
+        POSITION: [
           { required: true, message: '请选择所属职位', trigger: 'change' }
         ]
       },
-      company: [{
-        companyCode: '0',
-        companyName: '公司1'
-      }, {
-        companyCode: '1',
-        companyName: '公司2'
-      }, {
-        companyCode: '2',
-        companyName: '公司3'
-      }],
       // 新增编辑界面数据
       dataForm: {
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        phoneNumber: '12345678',
-        dutyArress: 'thtf',
-        company: 'thtf',
-        department: '',
-        position: '',
-        role: '集团公司计量处',
-        isLeader: '否',
-        leaderName: '李石磊'
+        USER_NAME: '',
+        REAL_NAME: '',
+        TELEPHONE: '',
+        DUTY_ADDRESS: '',
+        DEPARTMENTCODE: '',
+        DEPARTMENT: '',
+        PASSWORD: '',
+        IS_LEADER: '',
+        IS_LEADER_CODE: '',
+        LEADER_USERNAME: '',
+        LEADER_NAME: '',
+        COM_CODE: '',
+        COMPANY: '',
+        POSITION_CODE: '',
+        POSITION: '',
+        ROLE_CODE: '',
+        ROLE_NAME: ''
       },
-      roles: [],
-      tableData: [{
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        phoneNumber: '12345678',
-        dutyArress: 'thtf',
-        company: 'thtf',
-        department: '',
-        position: '',
-        role: '集团公司计量处',
-        isLeader: '否',
-        leaderName: '李石磊'
-      }, {
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        phoneNumber: '12345678',
-        dutyArress: 'thtf',
-        company: 'thtf',
-        department: '',
-        position: '',
-        role: '电控部门负责人',
-        isLeader: '否',
-        leaderName: '李石磊'
-      }, {
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        phoneNumber: '12345678',
-        dutyArress: 'thtf',
-        company: 'thtf',
-        department: '',
-        position: '',
-        role: '太古分公司调度处',
-        isLeader: '否',
-        leaderName: '李石磊'
-      }, {
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        phoneNumber: '12345678',
-        dutyArress: 'thtf',
-        company: 'thtf',
-        department: '',
-        position: '',
-        role: '集团公司领导',
-        isLeader: '否',
-        leaderName: '李石磊'
-      }]
+      company: [],
+      positions: [],
+      departments: [],
+      roles: []
     }
   },
   computed: {
@@ -265,33 +218,35 @@ export default {
     },
     initColumns: function() {
       this.columns = [
-        { prop: 'userName', label: '用户名', minWidth: 50 },
-        { prop: 'realName', label: '用户姓名', minWidth: 50 },
-        { prop: 'phoneNumber', label: '电话号码', minWidth: 50 },
-        { prop: 'dutyArress', label: '值班地点', minWidth: 50 },
-        { prop: 'company', label: '所属公司', minWidth: 50 },
-        { prop: 'department', label: '所属部门', minWidth: 50 },
-        { prop: 'position', label: '职位', minWidth: 50 },
-        { prop: 'role', label: '角色', minWidth: 50 },
-        { prop: 'isLeader', label: '是否领导', minWidth: 50 },
-        { prop: 'leaderName', label: '领导姓名', minWidth: 50 }
+        { prop: 'USER_NAME', label: '用户名', minWidth: 50, show: true },
+        { prop: 'REAL_NAME', label: '用户姓名', minWidth: 50, show: true },
+        { prop: 'TELEPHONE', label: '电话号码', minWidth: 50, show: true },
+        { prop: 'DUTY_ADDRESS', label: '值班地点', minWidth: 50, show: true },
+        { prop: 'COMPANY', label: '所属公司', minWidth: 50, show: true },
+        { prop: 'COM_CODE', label: '所属公司Code', minWidth: 50, show: false },
+        { prop: 'DEPARTMENT', label: '所属部门', minWidth: 50, show: true },
+        { prop: 'DEPARTMENTCODE', label: '所属部门Code', minWidth: 50, show: false },
+        { prop: 'POSITION', label: '职位', minWidth: 50, show: true },
+        { prop: 'POSITIONCODE', label: '职位Code', minWidth: 50, show: false },
+        { prop: 'ROLE_NAME', label: '角色', minWidth: 50, show: true },
+        { prop: 'ROLE_CODE', label: '角色code', minWidth: 50, show: false },
+        { prop: 'IS_LEADER', label: '是否领导', minWidth: 50, show: true },
+        { prop: 'IS_LEADER_CODE', label: '是否领导', minWidth: 50, show: false },
+        { prop: 'LEADER_NAME', label: '领导姓名', minWidth: 50, show: true },
+        { prop: 'LEADER_USERNAME', label: '领导姓名', minWidth: 50, show: false }
       ]
-      this.filterColumns = JSON.parse(JSON.stringify(this.columns))
     },
     // 获取分页数据
     findPage: function(data) {
-      // if (data !== null) {
-      //   this.pageRequest = data.pageRequest
-      // }
-      // this.pageRequest.columnFilters = { name: { name: 'name', value: this.filters.name }}
-      // this.$api.user.findPage(this.pageRequest).then((res) => {
-      //   this.pageResult = res.data
-      //   // this.findUserRoles()
-      // }).then(data != null ? data.callback : '')
-      this.findUserRoles()
-      this.pageResult.content = this.tableData
-      this.pageResult.totalSize = this.tableData.length
-      data.callback()
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      this.pageRequest['filterUserName'] = this.filters.name
+      getUserList(this.pageRequest).then(res => {
+        this.pageResult.content = res.userList
+        this.pageResult.totalSize = res.userListNumber
+        // this.findUserRoles()
+      }).then(data != null ? data.callback : '')
     },
     findUserRoles: function() {
       // this.$api.role.findAll().then((res) => {
@@ -351,9 +306,14 @@ export default {
 
       }
     },
-    handleDelete: function(data) {
-      // 这里暂时只操作界面上的数据，待连接数据库后，应从数据库中删除数据，再调用回调函数更新表格
-      this.pageResult.content.splice(data.params, 1)
+    handleDelete: function(params) {
+      deleteUser(params.rowInfor.row).then((res) => {
+        this.pageResult.content.splice(params.rowInfor.index, 1)
+        this.pageResult.totalSize -= 1
+        params.callback(res)
+      }).catch(err => {
+        console.log(err)
+      })
     },
     submitForm: function(formName) {
       console.log(this.$refs.dataForm)
@@ -382,6 +342,31 @@ export default {
       this.$nextTick(() => {
         this.$refs.password.focus()
       })
+    },
+    roleSelectChange(params) {
+      const { value, label } = params
+      this.dataForm.ROLE_CODE = value
+      this.dataForm.ROLE_NAME = label
+    },
+    companySelectChange(params) {
+      const { value, label } = params
+      this.dataForm.COM_CODE = value
+      this.dataForm.COMPANY = label
+    },
+    isLeaderSelectChange(params) {
+      const { value, label } = params
+      this.dataForm.IS_LEADER_CODE = value
+      this.dataForm.IS_LEAdER = label
+    },
+    departmentSelectChange(params) {
+      const { value, label } = params
+      this.dataForm.DEPARTMENTCODE = value
+      this.dataForm.DEPARTMENT = label
+    },
+    positionSelectChange(params) {
+      const { value, label } = params
+      this.dataForm.POSITION_CODE = value
+      this.dataForm.DEPARTMENT = label
     }
   }
 }

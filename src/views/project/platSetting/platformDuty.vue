@@ -4,7 +4,7 @@
     <div class="searchWord">
       <el-button class="btn-new" type="primary" @click="handleAdd">新建值班</el-button>
       <div class="search-condition">
-        <el-date-picker v-model="searchForm.date" :type="searchForm.dateType" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" style="display: inline-block;" placeholder="选择时间" suffix-icon="el-icon-search" />
+        <el-date-picker v-model="searchForm.date" :type="searchForm.dateType" range-separator="至" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" start-placeholder="开始日期" end-placeholder="结束日期" style="display: inline-block;" placeholder="选择时间" suffix-icon="el-icon-search" />
         <el-button class="btn-query" type="primary" style="margin-right:10px" @click="dateSearch">查询</el-button>
         <el-input v-model="searchForm.searchText" placeholder="请输入值班人员姓名搜索" style="width:212px;" suffix-icon="el-icon-search" />
         <el-button class="btn-search" type="primary" @click="nameSearch">搜索</el-button>
@@ -17,9 +17,10 @@
         :border="border"
         :show-operation="showOperation"
         :data="pageResult"
-        :columns="filterColumns"
+        :columns="columns"
         @findPage="findPage"
         @handleEdit="handleEdit"
+        @handleDelete="handleDelete"
       />
     </div>
 
@@ -27,26 +28,26 @@
     <el-dialog v-dialogDrag :title="operation?'新建值班信息':'修改值班信息'" width="40%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="dutyDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top">
         <div class="row row-0">
-          <el-form-item v-if="true" label="值班领导" prop="dutyLeader">
-            <el-input v-model="dataForm.dutyLeader" :disabled="false" auto-complete="请输入值班领导" />
+          <el-form-item v-if="true" label="值班领导" prop="LEADER_USER">
+            <el-input v-model="dataForm.LEADER_USER" :disabled="false" auto-complete="请输入值班领导" />
           </el-form-item>
-          <el-form-item v-if="true" label="值班人员" prop="dutyMember">
-            <el-input v-model="dataForm.dutyMember" :disabled="false" auto-complete="请输入值班人员" />
+          <el-form-item v-if="true" label="值班人员" prop="DUTY_UER">
+            <el-input v-model="dataForm.DUTY_UER" :disabled="false" auto-complete="请输入值班人员" />
           </el-form-item>
-          <el-form-item v-if="true" label="值班类型" prop="dutyType">
-            <el-select v-model="dataForm.dutyType" placeholder="请选择值班类型" style="width: 100%;">
-              <el-option v-for="item in dutyTypes" :key="item.value" :label="item.label" :value="item.value" />
+          <el-form-item v-if="true" label="值班类型" prop="DUTY_TYPE">
+            <el-select v-model="dataForm.DUTY_TYPE_NAME" placeholder="请选择值班类型" style="width: 100%;" @change="selectChanged">
+              <el-option v-for="item in dutyTypes" :key="item.value" :label="item.label" :value="{value:item.value,label:item.label}" />
             </el-select>
           </el-form-item>
         </div>
         <div class="row row-1" style="width:100%">
-          <el-form-item v-if="true" label="值班内容" prop="dutyContent" style="width:100%">
-            <el-input v-model="dataForm.dutyContent" type="textarea" maxlength="100" show-word-limit :disabled="false" auto-complete="请输入值班内容" />
+          <el-form-item v-if="true" label="值班内容" prop="CONTENT" style="width:100%">
+            <el-input v-model="dataForm.CONTENT" type="textarea" maxlength="100" show-word-limit :disabled="false" auto-complete="请输入值班内容" />
           </el-form-item>
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button :loading="editLoading" type="primary" @click.native="submitForm('dataForm')">提交</el-button>
+        <el-button :loading="editLoading" type="primary" @click="dialogStatus==='create'?createData():updateData('dataForm')">提交</el-button>
         <el-button @click.native="resetForm('dataForm')">重置</el-button>
       </div>
     </el-dialog>
@@ -55,6 +56,8 @@
 
 <script>
 import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
+import { getDutyList, createDuty, updateDuty, deleteDuty } from '@/api/platSetting/dutyManage'
+import { parseTime } from '@/utils/index.js'
 export default {
   components: {
     platSettingTable
@@ -62,119 +65,41 @@ export default {
   data() {
     return {
       showOperation: true,
-      filters: {
-        name: ''
-      },
       border: true,
       columns: [],
-      filterColumns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
       operation: false, // true:新增, false:编辑
       dialogVisible: false, // 新增编辑界面是否显示
       editLoading: false,
+      dialogStatus: '',
       dataFormRules: {
-        dutyLeader: [
+        LEADER_USER: [
           { required: true, message: '请输入值班领导', trigger: 'blur' }
         ],
-        dutyMember: [
+        DUTY_UER: [
           { required: true, message: '请选择值班人员', trigger: 'change' }
         ],
-        dutyType: [
+        DUTY_TYPE: [
           { required: true, message: '请选择值班类型', trigger: 'change' }
         ]
       },
       searchForm: {
-        type: 'daterange',
         date: '',
-        dateType: 'daterange',
+        dateType: 'datetimerange',
         searchText: ''
       },
       // 新增编辑界面数据
       dataForm: {
-        dutyLeader: null,
-        dutyType: null,
-        dutyMember: null,
-        dutyContent: null,
-        dutyTime: null
+        CODE: null,
+        LEADER_USER: null,
+        DUTY_TYPE: null,
+        DUTY_TYPE_NAME: null,
+        DUTY_UER: null,
+        CONTENT: null,
+        SUMMIT_TIME: null
       },
-      tableData: [{
-        dutyLeader: 'lishanlei',
-        dutyType: '早班',
-        dutyMember: '',
-        dutyContent: '',
-        dutyTime: '2020-04-01 00:00:00'
-      }, {
-        dutyLeader: 'lishanlei',
-        dutyType: '早班',
-        dutyMember: '',
-        dutyContent: '',
-        dutyTime: '2020-04-01 00:00:00'
-      }, {
-        dutyLeader: 'lishanlei',
-        dutyType: '早班',
-        dutyMember: '',
-        dutyContent: '',
-        dutyTime: '2020-04-01 00:00:00'
-      }, {
-        dutyLeader: 'lishanlei',
-        dutyType: '早班',
-        dutyMember: '',
-        dutyContent: '',
-        dutyTime: '2020-04-01 00:00:00'
-      }],
-      dutyTypes: []
-    }
-  },
-  computed: {
-
-  },
-  mounted() {
-    this.initColumns()
-  },
-  methods: {
-    submitForm: function(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!')
-          this.dialogVisible = false
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields()
-    },
-    initColumns: function() {
-      this.columns = [
-        { prop: 'dutyLeader', label: '值班领导', minWidth: 50 },
-        { prop: 'dutyType', label: '值班类型', minWidth: 50 },
-        { prop: 'dutyMember', label: '值班人员', minWidth: 100 },
-        { prop: 'dutyContent', label: '值班内容', minWidth: 100 },
-        { prop: 'dutyTime', label: '值班时间', minWidth: 50 }
-      ]
-      this.filterColumns = JSON.parse(JSON.stringify(this.columns))
-    },
-    // 获取分页数据
-    findPage: function(data) {
-      // if (data !== null) {
-      //   this.pageRequest = data.pageRequest
-      // }
-      // this.pageRequest.columnFilters = { name: { name: 'name', value: this.filters.name }}
-      // this.$api.user.findPage(this.pageRequest).then((res) => {
-      //   this.pageResult = res.data
-      //   // this.findUserRoles()
-      // }).then(data != null ? data.callback : '')
-      // console.log(data)
-      this.findUserRoles()
-      this.pageResult.content = this.tableData
-      this.pageResult.totalSize = this.tableData.length
-      data.callback()
-    },
-    findUserRoles: function() {
-      this.dutyTypes = [{
+      dutyTypes: [{
         value: '0',
         label: '早班'
       }, {
@@ -184,13 +109,112 @@ export default {
         value: '2',
         label: '晚班'
       }]
+    }
+  },
+  computed: {
+
+  },
+  mounted() {
+    this.initColumns()
+  },
+  methods: {
+    selectChanged(params) {
+      const { value, label } = params
+      this.dataForm.DUTY_TYPE = value
+      this.dataForm.DUTY_TYPE_NAME = label
+    },
+    createData() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          const nowTime = parseTime(new Date())
+          this.dataForm.SUMMIT_TIME = nowTime
+          createDuty(this.dataForm).then((res) => {
+            this.dataForm.CODE = res.newID
+            this.pageResult.content.unshift(this.dataForm)
+            this.pageResult.totalSize += 1
+            this.dialogVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Created Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      })
+    },
+    updateData: function(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          const nowTime = parseTime(new Date())
+          this.dataForm.SUMMIT_TIME = nowTime
+          updateDuty(this.dataForm).then(res => {
+            const index = this.pageResult.content.findIndex(v => v.CODE === this.dataForm.CODE)
+            this.pageResult.content.splice(index, 1, this.dataForm)
+            this.dialogVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Update Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          console.log('error submit!!')
+          return false
+        }
+      })
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
+      this.dialogVisible = false
+    },
+    initColumns: function() {
+      this.columns = [
+        { prop: 'CODE', label: '编号', minWidth: 50, show: false },
+        { prop: 'LEADER_USER', label: '值班领导', minWidth: 50, show: true },
+        { prop: 'DUTY_TYPE', label: '值班类型', minWidth: 50, show: false },
+        { prop: 'DUTY_TYPE_NAME', label: '值班类型', minWidth: 50, show: true },
+        { prop: 'DUTY_UER', label: '值班人员', minWidth: 100, show: true },
+        { prop: 'CONTENT', label: '值班内容', minWidth: 100, show: true },
+        { prop: 'SUMMIT_TIME', label: '值班时间', minWidth: 50, show: true }
+      ]
+    },
+    // 获取分页数据
+    findPage: function(data) {
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      this.pageRequest['filterUserName'] = this.searchForm.searchText
+      this.pageRequest['startTime'] = this.searchForm.date[0]
+      this.pageRequest['endTime'] = this.searchForm.date[1]
+      getDutyList(this.pageRequest).then(res => {
+        this.pageResult.content = res.dutyList
+        this.pageResult.totalSize = res.dutyListNumber
+        // this.findUserRoles()
+      }).then(data != null ? data.callback : '')
     },
     handleAdd: function() {
+      this.dialogStatus = 'create'
       this.dialogVisible = true
       this.operation = true
       this.dataForm = {}
     },
+    handleDelete: function(params) {
+      deleteDuty(params.rowInfor.row).then((res) => {
+        this.pageResult.content.splice(params.rowInfor.index, 1)
+        this.pageResult.totalSize -= 1
+        params.callback(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     handleEdit: function(params) {
+      this.dialogStatus = 'edit'
       this.dialogVisible = true
       this.operation = false
       this.dataForm = Object.assign({}, params.row)

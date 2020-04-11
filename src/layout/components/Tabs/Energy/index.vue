@@ -19,12 +19,11 @@ export default {
     return {
     }
   },
-  beforeCreate() {
-    window.test = this
-    this.$router.push({ path: '/energySystem' })
-  },
   computed: {
     ...mapGetters(['sidebar', 'energySidebar'])
+  },
+  beforeCreate() {
+    this.$router.push({ path: '/energySystem' })
   },
   created() {
     if (!this.sidebar.opened) this.$store.dispatch('app/toggleSideBar')

@@ -6,54 +6,20 @@
           <div class="left-container">
             <div class="left-container-top">
               <div class="progress-charts-container">
-                <div class="progress-chart-container">
-                  <div class="progress-chart-title"><span> {{ progressData.nenghao.title }} </span></div>
+                <div v-for="(item, key) in progressData" :key="key" class="progress-chart-container">
+                  <div class="progress-chart-title"><span> {{ progressData[key].title }} </span></div>
                   <div class="progress-chart-bar nenghaojindu">
                     <div class="progress-label">
-                      <span class="progress-label-value">{{ progressData.nenghao.used }}</span>
+                      <span class="progress-label-value">{{ progressData[key].used }}</span>
                       <span class="progress-label-text">/</span>
-                      <span class="progress-label-total">{{ progressData.nenghao.total }}</span>
-                      <span class="progress-label-text">({{ progressData.nenghao.unit }})</span>
+                      <span class="progress-label-total">{{ progressData[key].total }}</span>
+                      <span class="progress-label-text">({{ progressData[key].unit }})</span>
                     </div>
                     <el-progress
-                      :percentage="Math.round(progressData.nenghao.used/progressData.nenghao.total*100)"
+                      :percentage="(progressData[key].total && progressData[key].total!==0)?Math.round(progressData[key].used/progressData[key].total*100):0"
                       :stroke-width="15"
                       :show-text="false"
-                      class="energy-statis-nenghao-pragress nenghao"
-                    />
-                  </div>
-                </div>
-                <div class="progress-chart-container">
-                  <div class="progress-chart-title"><span>{{ progressData.nengxiao.title }}</span></div>
-                  <div class="progress-chart-bar nengxiaojindu">
-                    <div class="progress-label">
-                      <span class="progress-label-value">{{ progressData.nengxiao.used }}</span>
-                      <span class="progress-label-text">/</span>
-                      <span class="progress-label-total">{{ progressData.nengxiao.total }}</span>
-                      <span class="progress-label-text">({{ progressData.nengxiao.unit }})</span>
-                    </div>
-                    <el-progress
-                      :percentage="Math.round(progressData.nengxiao.used/progressData.nengxiao.total*100)"
-                      :stroke-width="15"
-                      :show-text="false"
-                      class="energy-statis-nenghao-pragress nengxiao"
-                    />
-                  </div>
-                </div>
-                <div class="progress-chart-container">
-                  <div class="progress-chart-title"><span>{{ progressData.nengfei.title }}</span></div>
-                  <div class="progress-chart-bar nengfeijindu">
-                    <div class="progress-label">
-                      <span class="progress-label-value">{{ progressData.nengfei.used }}</span>
-                      <span class="progress-label-text">/</span>
-                      <span class="progress-label-total">{{ progressData.nengfei.total }}</span>
-                      <span class="progress-label-text">({{ progressData.nengfei.unit }})</span>
-                    </div>
-                    <el-progress
-                      :percentage="Math.round(progressData.nengfei.used/progressData.nengfei.total*100)"
-                      :stroke-width="15"
-                      :show-text="false"
-                      class="energy-statis-nenghao-pragress nengfei"
+                      :class="['energy-statis-nenghao-pragress', key]"
                     />
                   </div>
                 </div>
@@ -106,44 +72,14 @@
         <el-col :span="8" class="dash-boeder-el-col">
           <div class="right-container">
             <div class="neng-hao-charts">
-              <div class="neng-hao-chart">
-                <div class="chart-title"><span>耗电量</span></div>
-                <div id="elecGradChart" class="chart-main" />
+              <div v-for="(item, index) in energyCircleData" :key="index" class="neng-hao-chart">
+                <div class="chart-title"><span>{{ item.title }}</span></div>
+                <div :id="item.elemId" class="chart-main" />
                 <div class="chart-footer">
-                  <span class="chart-footer-image up" />
+                  <span :class="['chart-footer-image', item.increase?'up':'down']" />
                   <span class="chart-footer-text">较昨日</span>
-                  <span class="chart-footer-text">+252</span>
-                  <span class="chart-footer-text">kW·h</span>
-                </div>
-              </div>
-              <div class="neng-hao-chart">
-                <div class="chart-title"><span>产气量</span></div>
-                <div id="gasGradChart" class="chart-main" />
-                <div class="chart-footer">
-                  <span class="chart-footer-image up" />
-                  <span class="chart-footer-text">较昨日</span>
-                  <span class="chart-footer-text">+212</span>
-                  <span class="chart-footer-text">m³</span>
-                </div>
-              </div>
-              <div class="neng-hao-chart">
-                <div class="chart-title"><span>能效值</span></div>
-                <div id="nengxiaoGradChart" class="chart-main" />
-                <div class="chart-footer">
-                  <span class="chart-footer-image up" />
-                  <span class="chart-footer-text">较昨日</span>
-                  <span class="chart-footer-text">+0.12</span>
-                  <span class="chart-footer-text">kW·h/m³▪min</span>
-                </div>
-              </div>
-              <div class="neng-hao-chart">
-                <div class="chart-title"><span>电力计费</span></div>
-                <div id="feeGradChart" class="chart-main" />
-                <div class="chart-footer">
-                  <span class="chart-footer-image down" />
-                  <span class="chart-footer-text">较昨日</span>
-                  <span class="chart-footer-text">-30000</span>
-                  <span class="chart-footer-text">元</span>
+                  <span class="chart-footer-text">{{ (item.increase?'+':'-')+item.change }}</span>
+                  <span class="chart-footer-text">{{ item.unit }}</span>
                 </div>
               </div>
             </div>
@@ -194,6 +130,7 @@ import PieChart from './PieChart'
 import LineChart from './LineChart'
 import radialIndicator from './RadialIndicator'
 import FullPieChart from './FullPieChart'
+import { getProcessData, getCompareData, getEnergyCircleData } from '@/api/energy/statis'
 export default {
   components: {
     PieChart,
@@ -206,42 +143,83 @@ export default {
       progressData: {
         nenghao: {
           title: '能耗进度',
-          used: 40,
-          total: 250,
+          used: 0,
+          total: 0,
           unit: 'kW·h'
         },
         nengxiao: {
           title: '能效进度',
-          used: 0.8,
-          total: 1.4,
+          used: 0,
+          total: 0,
           unit: 'kW·h/m³▪min'
         },
         nengfei: {
           title: '能费进度',
-          used: 200000,
-          total: 600000,
+          used: 0,
+          total: 0,
           unit: '元'
         }
       },
       compareData: {
         data: [{
           name: '空压机组',
-          value: 460
+          value: 0
         }, {
           name: '冷却塔组',
-          value: 130
+          value: 0
         }, {
           name: '冷却泵组',
-          value: 120
+          value: 0
         }, {
           name: '冷干机组',
-          value: 140
+          value: 0
         }, {
           name: '其他',
-          value: 60
+          value: 0
         }],
         colors: ['#A26DFD', '#FAC400', '#10D178', '#F0725E', '#2853FF']
       },
+      energyCircleData: [{
+        title: '耗电量',
+        elemId: 'elecGradChart',
+        value: 0,
+        percent: 80,
+        change: 0,
+        unit: 'kW·h',
+        increase: true,
+        startColor: '#5779FF',
+        endColor: '#90A7FF'
+      }, {
+        title: '产气量',
+        elemId: 'gasGradChart',
+        value: 0,
+        percent: 80,
+        change: 0,
+        unit: 'm³',
+        increase: true,
+        startColor: '#4CC5FF',
+        endColor: '#8FDBFF'
+      }, {
+        title: '能效值',
+        elemId: 'nengxiaoGradChart',
+        value: 0,
+        percent: 80,
+        change: 0,
+        unit: 'kW·h/m³▪min',
+        increase: true,
+        startColor: '#A26DFD',
+        endColor: '#BE98FF'
+      }, {
+        title: '电力计费',
+        elemId: 'feeGradChart',
+        value: 0,
+        percent: 80,
+        change: 0,
+        unit: '万元',
+        increase: false,
+        startColor: '#FFA733',
+        endColor: '#FFC373'
+      }],
       dongliStationData: {
         data: [{
           name: '空压机组',
@@ -282,93 +260,9 @@ export default {
     }
   },
   mounted() {
-    radialIndicator('#elecGradChart', {
-      gradBarColor: {
-        0: '#5779FF',
-        1: '#90A7FF'
-      },
-      barBgColor: '#E4E9F0',
-      hasStartPoint: true,
-      displayNumber: true,
-      displayTitle: '3546',
-      displayNumberLineText: 'kW·h',
-      displayLetter: true,
-      displayNumberLine: true,
-      fontColor: '#40474d',
-      fontFamily: 'Bebas',
-      fontWeight: 'bold',
-      fontSize: 28,
-      autoRadius: true,
-      barWidth: 10,
-      initValue: 90,
-      roundCorner: true
-    })
-
-    radialIndicator('#gasGradChart', {
-      gradBarColor: {
-        0: '#4CC5FF',
-        1: '#8FDBFF'
-      },
-      barBgColor: '#E4E9F0',
-      hasStartPoint: true,
-      displayNumber: true,
-      displayTitle: '1026',
-      displayNumberLineText: 'm³',
-      displayLetter: true,
-      displayNumberLine: true,
-      fontColor: '#40474d',
-      fontFamily: 'Bebas',
-      fontWeight: 'bold',
-      fontSize: 28,
-      autoRadius: true,
-      barWidth: 10,
-      initValue: 60,
-      roundCorner: true
-    })
-
-    radialIndicator('#nengxiaoGradChart', {
-      gradBarColor: {
-        0: '#A26DFD',
-        1: '#BE98FF'
-      },
-      barBgColor: '#E4E9F0',
-      hasStartPoint: true,
-      displayNumber: true,
-      displayTitle: '3.46',
-      displayNumberLineText: 'kW·h/m³▪min',
-      displayLetter: true,
-      displayNumberLine: true,
-      fontColor: '#40474d',
-      fontFamily: 'Bebas',
-      fontWeight: 'bold',
-      fontSize: 28,
-      autoRadius: true,
-      barWidth: 10,
-      initValue: 35,
-      roundCorner: true
-    })
-
-    radialIndicator('#feeGradChart', {
-      gradBarColor: {
-        0: '#FFA733',
-        1: '#FFC373'
-      },
-      barBgColor: '#E4E9F0',
-      hasStartPoint: true,
-      displayNumber: true,
-      displayTitle: '20',
-      displayNumberLineText: '万元',
-      displayLetter: true,
-      displayNumberLine: true,
-      fontColor: '#40474d',
-      fontFamily: 'Bebas',
-      fontWeight: 'bold',
-      fontSize: 28,
-      autoRadius: true,
-      barWidth: 10,
-      initValue: 85,
-      roundCorner: true
-    })
+    this.setProgressData({ sys: this.$router.currentRoute.name })
+    this.setCompareData({ sys: this.$router.currentRoute.name })
+    this.setEnergyCircleData({ sys: this.$router.currentRoute.name })
   },
   methods: {
     handleClose(done) {
@@ -377,6 +271,73 @@ export default {
           done()
         })
         .catch(_ => {})
+    },
+    setProgressData(params) {
+      getProcessData(params).then(response => {
+        var data = response.data
+        for (var key in this.progressData) {
+          if (data[key]) {
+            this.progressData[key].used = data[key].used
+            this.progressData[key].total = data[key].total
+          }
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    setCompareData(params) {
+      getCompareData(params).then(response => {
+        var data = response.data
+        this.compareData.data = data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    initEnergyCircle() {
+      for (var i = 0; i < this.energyCircleData.length; i++) {
+        var item = this.energyCircleData[i]
+        radialIndicator('#' + item.elemId, {
+          gradBarColor: {
+            0: item.startColor,
+            1: item.endColor
+          },
+          barBgColor: '#E4E9F0',
+          hasStartPoint: true,
+          displayNumber: true,
+          displayTitle: item.value,
+          displayNumberLineText: item.unit,
+          displayLetter: true,
+          displayNumberLine: true,
+          fontColor: '#40474d',
+          fontFamily: 'Bebas',
+          fontWeight: 'bold',
+          fontSize: 28,
+          autoRadius: true,
+          barWidth: 10,
+          initValue: item.percent,
+          roundCorner: true
+        })
+      }
+    },
+    setEnergyCircleData(params) {
+      getEnergyCircleData(params).then(response => {
+        var data = response.data
+        for (var i = 0; i < this.energyCircleData.length; i++) {
+          for (var j = 0; j < data.length; j++) {
+            if (this.energyCircleData[i].elemId === data[j].elemId) {
+              this.energyCircleData[i].value = data[j].value
+              this.energyCircleData[i].change = data[j].change
+              this.energyCircleData[i].percent = data[j].percent
+              this.energyCircleData[i].increase = data[j].increase
+              break
+            }
+          }
+        }
+        this.initEnergyCircle()
+      }).catch(err => {
+        console.log(err)
+        this.initEnergyCircle()
+      })
     }
   }
 }

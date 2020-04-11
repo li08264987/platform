@@ -68,8 +68,8 @@ export default {
   methods: {
     initColumns: function() {
       this.columns = [
-        { prop: 'positionCode', label: '职位编号', minWidth: 30 },
-        { prop: 'positionName', label: '职位名称', minWidth: 90 }
+        { prop: 'positionCode', label: '职位编号', minWidth: 30, show: true },
+        { prop: 'positionName', label: '职位名称', minWidth: 90, show: true }
       ]
       this.columns = JSON.parse(JSON.stringify(this.columns))
     },

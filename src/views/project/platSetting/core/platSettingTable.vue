@@ -16,17 +16,19 @@
       @selection-change="selectionChange"
       @current-change="handleCurrentChange"
     >
-      <el-table-column
-        v-for="column in columns"
-        :key="column.prop"
-        :prop="column.prop"
-        :label="column.label"
-        :width="column.width"
-        :min-width="column.minWidth"
-        :sortable="column.sortable==null?false:column.sortable"
-        header-align="center"
-        align="center"
-      />
+      <template v-for="column in columns">
+        <el-table-column
+          v-if="column.show"
+          :key="column.prop"
+          :prop="column.prop"
+          :label="column.label"
+          :width="column.width"
+          :min-width="column.minWidth"
+          :sortable="column.sortable==null?false:column.sortable"
+          header-align="center"
+          align="center"
+        />
+      </template>
       <el-table-column
         v-if="showOperation"
         label="操作"
@@ -128,7 +130,7 @@ export default {
       // 分页信息
       pageRequest: {
         pageNum: 1,
-        pageSize: 10
+        pageSize: 15
       },
       loading: false,
       selections: []
