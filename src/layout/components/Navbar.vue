@@ -49,12 +49,12 @@ export default {
           view: 'ReportTable'
         },
         {
-          type: '诊断中心',
-          view: 'Diagnosis'
-        },
-        {
           type: '设备管理',
           view: 'Device'
+        },
+        {
+          type: '智能诊断',
+          view: 'Diagnosis'
         },
         {
           type: '智慧中心',
