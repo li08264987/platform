@@ -2,6 +2,7 @@
   <div class="infoScan">
     <rules ref="showRules" />
     <el-dialog
+      v-dialogDrag
       title="信息速览"
       :visible.sync="dialogTableVisible"
       @opened="initChart"
@@ -103,7 +104,7 @@
       </div>
     </el-dialog>
     <div class="secdialog">
-      <el-dialog title="添加报警规则" :visible.sync="addRules">
+      <el-dialog v-dialogDrag title="添加报警规则" :visible.sync="addRules">
         <el-form :model="form">
           <el-form-item label="项目名称" :label-width="formLabelWidth">
             <el-input v-model="form.name" autocomplete="off" />

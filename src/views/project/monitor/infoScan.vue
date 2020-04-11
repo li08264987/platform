@@ -1,6 +1,6 @@
 <template>
   <div class="rules">
-    <el-dialog title="1#螺杆空压机设备信息" :visible.sync="dialogTableVisible">
+    <el-dialog v-dialogDrag title="1#螺杆空压机设备信息" :visible.sync="dialogTableVisible">
       <div style="display:flex;">
         <div style="width:50%;padding:10px;">
           <div class="imgbig" style="height:70%;border: 1px dashed #ccc;" />
