@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
+var webpack = require('webpack')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -44,9 +45,16 @@ module.exports = {
     name: name,
     resolve: {
       alias: {
-        '@': resolve('src')
+        '@': resolve('src'),
+        'jquery': 'jquery'
       }
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      })
+    ]
   },
   chainWebpack(config) {
     config.plugins.delete('preload') // TODO: need test
@@ -83,7 +91,7 @@ module.exports = {
     config
       // https://webpack.js.org/configuration/devtool/#development
       .when(process.env.NODE_ENV === 'development',
-        config => config.devtool('cheap-source-map')
+        config => config.devtool('source-map')
       )
 
     config
