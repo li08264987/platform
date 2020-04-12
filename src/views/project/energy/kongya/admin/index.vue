@@ -1,10 +1,8 @@
 <template>
   <div class="EnergyKY-main">
-    <ul class="tabBar">
-      <li v-for="(item,index) in tabItems" :key="index" :class="{active:index == tabIndex}" @click="tabChange(index)">
-        <div>{{ item.title }}</div>
-      </li>
-    </ul>
+    <el-tabs v-model="currentView" type="card" class="tabBar" @tab-click="handleClick">
+      <el-tab-pane v-for="(item, index) in tabItems" :key="index" :label="item.title" :name="item.name" />
+    </el-tabs>
     <div class="tabCon">
       <component :is="currentView" />
     </div>
@@ -45,6 +43,9 @@ export default {
         this.tabIndex = index
         this.currentView = this.tabItems[index].name
       }
+    },
+    handleClick(tab, event) {
+      console.log(tab, event)
     }
   }
 }
@@ -61,23 +62,7 @@ export default {
   min-width: 1630px;
   overflow: auto;
 }
-ul.tabBar li{
-  list-style: none;
-  display: inline-block;
-  border-right: 1px solid #F0F2F5;
-  height: 50px;
-  line-height: 50px;
-  width: 220px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 16px;
-  color: #111934;
-}
-ul.tabBar li.active {
-    background-color: #E2E4EA;
-    text-shadow: 0 0 0;
-}
-ul.tabBar {
+.tabBar {
   padding: 0;
   margin: 0;
   background: #FFFFFF;
@@ -90,4 +75,25 @@ ul.tabBar {
     width: 100%;
     height:0;
 }
+</style>
+
+<style lang="scss">
+  .tabBar .el-tabs__header {
+    margin: 0;
+  }
+  .tabBar.el-tabs--card>.el-tabs__header .el-tabs__item {
+    font-size: 16px;
+    height: 50px;
+    line-height: 48px;
+    padding: 0 30px;
+  }
+  .tabBar.el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    border-bottom-color: #2D49FF;
+    border-bottom-width: 2px;
+  }
+  .tabBar .el-tabs__item:hover,
+  .tabBar .el-tabs__item.is-active {
+    color: #2D49FF;
+    text-shadow: 0 0 0;
+  }
 </style>

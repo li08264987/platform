@@ -73,6 +73,22 @@ const platSettingRouters = [{
         title: '值班设置',
         icon: 'duty'
       }
+    }, {
+      path: 'energyStrd',
+      component: () => import('@/views/project/platSetting/energyLuru/energyStrd'),
+      name: 'platformDuty',
+      meta: {
+        title: '能耗标准',
+        icon: 'duty'
+      }
+    }, {
+      path: 'priceStrd',
+      component: () => import('@/views/project/platSetting/energyLuru/priceStrd'),
+      name: 'platformDuty',
+      meta: {
+        title: '价格标准',
+        icon: 'duty'
+      }
     }
   ]
 }]

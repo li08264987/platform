@@ -2,7 +2,7 @@
   <el-container style="height: 100%;">
     <el-main style="height: 100%; padding: 0; background-color: white;">
       <el-row :gutter="0" :type="'flex'" style="height: 100%;">
-        <el-col :span="16" class="dash-boeder-el-col">
+        <el-col :span="16" class="right-dash-boeder-el-col">
           <div class="left-container">
             <div class="left-container-top">
               <div class="progress-charts-container">
@@ -26,7 +26,7 @@
               </div>
               <div class="percent-chart-container">
                 <div class="chart-container">
-                  <div class="chart-title"><span>能耗占比对比</span></div>
+                  <div class="chart-title"><span>机组电耗统计图</span></div>
                   <div class="chart-main">
                     <div class="chart-main-container">
                       <pie-chart :chart-data="compareData" />
@@ -43,7 +43,7 @@
             </div>
             <div class="left-container-bottom">
               <div class="chart-container">
-                <div class="chart-title"><span>能耗对比图</span></div>
+                <div class="chart-title"><span>电耗曲线图</span></div>
                 <div class="chart-main" style="flex-direction: column; position: relative; width: 100%;">
                   <div class="title-bar">
                     <el-button class="btn" @click="dialogVisible = true">添加时间段</el-button>
@@ -69,8 +69,14 @@
             </div>
           </div>
         </el-col>
-        <el-col :span="8" class="dash-boeder-el-col">
+        <el-col :span="8">
           <div class="right-container">
+            <div class="dong-li-zhan-chart">
+              <div class="chart-title"><span>机组能耗占比</span></div>
+              <div class="chart-main">
+                <full-pie-chart :chart-data="dongliStationData" />
+              </div>
+            </div>
             <div class="neng-hao-charts">
               <div v-for="(item, index) in energyCircleData" :key="index" class="neng-hao-chart">
                 <div class="chart-title"><span>{{ item.title }}</span></div>
@@ -81,41 +87,6 @@
                   <span class="chart-footer-text">{{ (item.increase?'+':'-')+item.change }}</span>
                   <span class="chart-footer-text">{{ item.unit }}</span>
                 </div>
-              </div>
-            </div>
-            <div class="dong-li-zhan-chart">
-              <div class="chart-title"><span>动力站能耗占比</span></div>
-              <div class="chart-main">
-                <full-pie-chart :chart-data="dongliStationData" />
-              </div>
-            </div>
-            <div class="dong-li-zhan-chart1">
-              <div class="chart-title"><span>账单点评</span></div>
-              <div class="chart-main" style="height:0;">
-                <el-table
-                  :data="dianpingData"
-                  :size="'mini'"
-                  header-row-class-name="energy-statis-dianping-table-header"
-                  cell-class-name="energy-statis-dianping-table-cell"
-                  style="width: 100%; overflow-y: auto;"
-                >
-                  <el-table-column
-                    prop="type"
-                    label="类型"
-                  />
-                  <el-table-column
-                    prop="compare"
-                    label="较昨日变化"
-                  />
-                  <el-table-column
-                    prop="main"
-                    label="主要变量来源"
-                  />
-                  <el-table-column
-                    prop="device"
-                    label="建议"
-                  />
-                </el-table>
               </div>
             </div>
           </div>
@@ -142,19 +113,19 @@ export default {
       dialogVisible: false,
       progressData: {
         nenghao: {
-          title: '能耗进度',
+          title: '电耗进度',
           used: 0,
           total: 0,
           unit: 'kW·h'
         },
         nengxiao: {
-          title: '能效进度',
+          title: '电耗能耗',
           used: 0,
           total: 0,
           unit: 'kW·h/m³▪min'
         },
         nengfei: {
-          title: '能费进度',
+          title: '电耗收费',
           used: 0,
           total: 0,
           unit: '元'
@@ -180,7 +151,7 @@ export default {
         colors: ['#A26DFD', '#FAC400', '#10D178', '#F0725E', '#2853FF']
       },
       energyCircleData: [{
-        title: '耗电量',
+        title: '今日耗电量',
         elemId: 'elecGradChart',
         value: 0,
         percent: 80,
@@ -190,7 +161,7 @@ export default {
         startColor: '#5779FF',
         endColor: '#90A7FF'
       }, {
-        title: '产气量',
+        title: '今日产气量',
         elemId: 'gasGradChart',
         value: 0,
         percent: 80,
@@ -200,7 +171,7 @@ export default {
         startColor: '#4CC5FF',
         endColor: '#8FDBFF'
       }, {
-        title: '能效值',
+        title: '今日能效值',
         elemId: 'nengxiaoGradChart',
         value: 0,
         percent: 80,
@@ -210,7 +181,7 @@ export default {
         startColor: '#A26DFD',
         endColor: '#BE98FF'
       }, {
-        title: '电力计费',
+        title: '今日电力计费',
         elemId: 'feeGradChart',
         value: 0,
         percent: 80,
@@ -245,17 +216,6 @@ export default {
       }, {
         name: '对比时间段',
         data: [{ name: '1:00', value: Math.round(Math.random() * 15) + 5 }, { name: '2:00', value: Math.round(Math.random() * 15) + 5 }, { name: '3:00', value: Math.round(Math.random() * 15) + 5 }, { name: '4:00', value: Math.round(Math.random() * 15) + 5 }, { name: '5:00', value: Math.round(Math.random() * 15) + 5 }, { name: '6:00', value: Math.round(Math.random() * 15) + 5 }, { name: '7:00', value: Math.round(Math.random() * 15) + 5 }, { name: '8:00', value: 11 }, { name: '9:00', value: Math.round(Math.random() * 15) + 5 }, { name: '10:00', value: Math.round(Math.random() * 15) + 5 }, { name: '11:00', value: Math.round(Math.random() * 15) + 5 }, { name: '12:00', value: 12 }, { name: '13:00', value: Math.round(Math.random() * 15) + 5 }, { name: '14:00', value: Math.round(Math.random() * 15) + 5 }, { name: '15:00', value: 12 }, { name: '16:00', value: Math.round(Math.random() * 15) + 5 }, { name: '17:00', value: Math.round(Math.random() * 15) + 5 }, { name: '18:00', value: Math.round(Math.random() * 15) + 5 }, { name: '19:00', value: Math.round(Math.random() * 15) + 5 }, { name: '20:00', value: Math.round(Math.random() * 15) + 5 }, { name: '21:00', value: Math.round(Math.random() * 15) + 5 }, { name: '22:00', value: Math.round(Math.random() * 15) + 5 }, { name: '23:00', value: Math.round(Math.random() * 15) + 5 }]
-      }],
-      dianpingData: [{
-        type: '能耗',
-        compare: '+364kW·h',
-        main: '冷却塔运行能耗增加',
-        device: '重点关注'
-      }, {
-        type: '产气量',
-        compare: '+25m³',
-        main: '胶水厂耗气量增加',
-        device: '重点关注'
       }]
     }
   },
@@ -349,6 +309,9 @@ export default {
   }
   .dash-boeder-el-col:last-child {
     border-left: none;
+  }
+  .right-dash-boeder-el-col {
+    border-right: dashed 1px #888;
   }
   .left-container,
   .right-container {
@@ -498,7 +461,7 @@ export default {
   }
   .neng-hao-charts {
     width: 100%;
-    height: 50%;
+    height: 55%;
     display: flex;
     flex-wrap: wrap;
     border-bottom: solid 1px #E4E9F0;
@@ -506,20 +469,11 @@ export default {
 
   .dong-li-zhan-chart {
     width: 100%;
-    height: 25%;
+    height: 45%;
     display: flex;
     flex-direction: column;
     padding: 15px 30px;
     border-bottom: solid 1px #E4E9F0;
-  }
-
-  .dong-li-zhan-chart1 {
-    display: flex;
-    flex-direction: column;
-    padding: 15px 30px;
-    width: 100%;
-    height: 25%;
-    overflow: auto;
   }
 
   .neng-hao-chart {
