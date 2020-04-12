@@ -180,6 +180,7 @@ export default {
     position: relative;
     border: unset;
     .el-radio-button__inner{
+      color: #B5BFF6;
       background-color: rgba(0,0,0,0);
       border-top: 1px solid #243B9E;
       border-bottom: 1px solid #243B9E;

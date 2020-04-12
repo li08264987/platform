@@ -1,6 +1,6 @@
 <template>
   <div class="rules">
-    <el-dialog title="报警规则" :visible.sync="dialogTableVisible">
+    <el-dialog v-dialogDrag title="报警规则" :visible.sync="dialogTableVisible">
       <div style="height:36px;line-height: 36px;">
         <span style="font-weight:bold;font-size:16px;">已有报警规则</span>
         <el-button type="primary" style="float:right;" @click="addNewRules">新建规则</el-button>
@@ -27,7 +27,7 @@
       />
     </el-dialog>
     <div class="secdialog">
-      <el-dialog title="添加报警规则" :visible.sync="addRules">
+      <el-dialog v-dialogDrag title="添加报警规则" :visible.sync="addRules">
         <el-form :model="form">
           <el-form-item label="项目名称" :label-width="formLabelWidth">
             <el-input v-model="form.name" autocomplete="off" />

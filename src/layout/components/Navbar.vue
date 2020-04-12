@@ -1,6 +1,9 @@
 <template>
   <div class="navbar">
-    <img class="logo" src="@/assets/tittle/logo.png">
+    <img
+      class="logo"
+      src="@/assets/tittle/logo.png"
+    >
     <div>
       <p class="tittle-cn">能源系统运管平台</p>
       <p class="tittle-en">Energy System Management Platform</p>
@@ -12,7 +15,13 @@
         class="tab-ul tab-li"
         :class="{active:active==index}"
         @click="tabChange(index,tab.view)"
-      ><div :class="tab.view" style="width:28px;height:28px;background-size: contain;" /><div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div></li>
+      >
+        <div
+          :class="tab.view"
+          style="width:28px;height:28px;background-size: contain;"
+        />
+        <div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div>
+      </li>
     </ul>
     <div class="right-menu" />
   </div>
@@ -49,12 +58,16 @@ export default {
           view: 'ReportTable'
         },
         {
-          type: '诊断中心',
-          view: 'Diagnosis'
+          type: '数据录入',
+          view: 'Maintenance'
         },
         {
           type: '设备管理',
           view: 'Device'
+        },
+        {
+          type: '智能诊断',
+          view: 'Diagnosis'
         },
         {
           type: '智慧中心',
@@ -145,6 +158,9 @@ export default {
 }
 .PlatSetting{
   background-image: url("../../assets/tittle/setting.png");
+}
+.Maintenance{
+  background-image: url("../../assets/tittle/maintenance.png");
 }
 .tab-ul .tab-li {
   width: 100px;

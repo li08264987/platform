@@ -36,7 +36,7 @@
           </el-form-item>
           <el-form-item v-if="true" label="用户角色" prop="ROLE_NAME">
             <el-select v-model="dataForm.ROLE_NAME" placeholder="请选择用户角色" style="width: 100%;" @change="roleSelectChange">
-              <el-option v-for="item in roles" :key="item.value" :label="item.label" :value="item.value" />
+              <el-option v-for="item in roles" :key="item.ROLE_CODE" :label="item.ROLE_NAME" :value="{value:item.ROLE_CODE, label:item.ROLE_NAME}" />
             </el-select>
           </el-form-item>
         </div>
@@ -46,19 +46,18 @@
           </el-form-item>
           <el-form-item v-if="true" label="所属公司" prop="COMPANY">
             <el-select v-model="dataForm.COMPANY" placeholder="请选择所属分公司" style="width: 100%;" @change="companySelectChange">
-              <el-option v-for="item in company" :key="item.companyCode" :label="item.companyName" :value="item.companyCode" />
+              <el-option v-for="item in company" :key="item.COM_CODE" :label="item.COMPANY" :value="{value:item.COM_CODE, label:item.COMPANY}" />
             </el-select>
           </el-form-item>
           <el-form-item v-if="true" label="是否为部门领导" prop="IS_LEADER">
             <el-select v-model="dataForm.IS_LEADER" placeholder="请选择是否为部门领导" style="width: 100%;" @change="isLeaderSelectChange">
-              <el-option label="是" value="1" />
-              <el-option label="否" value="0" />
+              <el-option v-for="item in isLeaderArray" :key="item.value" :label="item.label" :value="{value:item.value, label:item.label}" />
             </el-select>
           </el-form-item>
         </div>
         <div class="row row-2">
           <el-form-item v-if="true" label="部门领导" prop="LEADER_NAME">
-            <el-input v-model="dataForm.LEADER_NAME" :disabled="false" auto-complete="请输入部门领导" />
+            <el-autocomplete v-model="dataForm.LEADER_NAME" :disabled="false" :fetch-suggestions="querySearchAsync" :trigger-on-focus="false" auto-complete="请输入部门领导" @select="leaderSelect" />
           </el-form-item>
           <el-form-item v-if="true" label="电话号码" prop="TELEPHONE">
             <el-input v-model="dataForm.TELEPHONE" :disabled="false" auto-complete="请输入电话号码" />
@@ -70,7 +69,7 @@
         <div class="row row-3">
           <el-form-item v-if="true" label="所在部门" prop="DEPARTMENT">
             <el-select v-model="dataForm.DEPARTMENT" placeholder="请选择所在部门" style="width: 100%;" @change="departmentSelectChange">
-              <el-option v-for="item in departments" :key="item.departmentCode" :label="item.departmentName" :value="item.departmentCode" />
+              <el-option v-for="item in departments" :key="item.DEPARTMENTCODE" :label="item.DEPARTMENT" :value="{value:item.DEPARTMENTCODE, label:item.DEPARTMENT}" />
             </el-select>
             <platSettingButton
               icon="el-icon-edit"
@@ -80,7 +79,7 @@
           </el-form-item>
           <el-form-item v-if="true" label="所属职位" prop="POSITION">
             <el-select v-model="dataForm.POSITION" placeholder="请选择所属职位" style="width: 100%;" @change="positionSelectChange">
-              <el-option v-for="item in positions" :key="item.positionCode" :label="item.positionName" :value="item.positionCode" />
+              <el-option v-for="item in positions" :key="item.POSITION_CODE" :label="item.POSITION" :value="{value:item.POSITION_CODE,label:item.POSITION}" />
             </el-select>
             <platSettingButton
               icon="el-icon-edit"
@@ -91,13 +90,12 @@
         </div>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button :size="size" :loading="editLoading" type="primary" @click.native="submitForm('dataForm')">提交</el-button>
-        <el-button :size="size" @click.native="resetForm('dataForm')">重置</el-button>
+        <el-button :size="size" :loading="editLoading" type="primary" @click="dialogStatus==='create'?createData():updateData('dataForm')">提交</el-button>
+        <el-button :size="size" @click="resetForm('dataForm')">重置</el-button>
       </div>
     </el-dialog>
 
-    <!-- 部门与职位编辑页面 -->
-    <el-dialog :id="operationEdit?'departmentEidtDialog':'positionEditDialog'" v-dialogDrag :title="operationEdit?'所在部门编辑':'所在职位编辑'" width="40%" :visible.sync="dialogSecondVisible" :close-on-click-modal="false" :modal-append-to-body="false" append-to-body>
+    <el-dialog :id="operationEdit?'departmentEidtDialog':'positionEditDialog'" v-dialogDrag :title="operationEdit?'所在部门编辑':'所在职位编辑'" width="40%" :visible.sync="dialogSecondVisible" :close-on-click-modal="false" :modal-append-to-body="false" append-to-body @close="closeDialog">
       <template v-if="dialogEdit === 'departmentEidtDialog'">
         <departmentEidtDialog />
       </template>
@@ -114,7 +112,7 @@ import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
 import platSettingButton from '@/views/project/platSetting/core/platSettingButton'
 import departmentEidtDialog from '@/views/project/platSetting/userManage/departmentEditDialog'
 import positionEditDialog from '@/views/project/platSetting/userManage/positionEditDialog'
-import { getUserList, deleteUser } from '@/api/platSetting/userManage'
+import { getUserList, deleteUser, createUser, updateUser, fetchSelectData, searchLeader } from '@/api/platSetting/userManage'
 export default {
   components: {
     platSettingTable,
@@ -138,6 +136,7 @@ export default {
       dialogSecondVisible: false, // 部门与职位界面是否显示
       dialogEdit: '',
       editLoading: false,
+      dialogStatus: '',
       passwordType: 'password',
       dataFormRules: {
         USER_NAME: [
@@ -192,21 +191,45 @@ export default {
         POSITION_CODE: '',
         POSITION: '',
         ROLE_CODE: '',
-        ROLE_NAME: ''
+        ROLE_NAME: '',
+        CODE: ''
       },
       company: [],
       positions: [],
       departments: [],
-      roles: []
+      roles: [],
+      leaderSuggestion: [],
+      isLeaderArray: [
+        { value: 0, label: '否' },
+        { value: 1, label: '是' }
+      ],
+      timeout: null
     }
   },
   computed: {
 
   },
+  created() {
+  },
   mounted() {
     this.initColumns()
+    this.getSelectData()
+    this.searchInputLeader()
   },
   methods: {
+    closeDialog: function(params) {
+      this.getSelectData()
+    },
+    getSelectData: function() {
+      fetchSelectData().then((res) => {
+        this.roles = res.roleList
+        this.company = res.companyList
+        this.positions = res.positionList
+        this.departments = res.departmentList
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     showDialog: function(dialogEdit) {
       this.dialogSecondVisible = true
       this.dialogEdit = dialogEdit
@@ -233,7 +256,8 @@ export default {
         { prop: 'IS_LEADER', label: '是否领导', minWidth: 50, show: true },
         { prop: 'IS_LEADER_CODE', label: '是否领导', minWidth: 50, show: false },
         { prop: 'LEADER_NAME', label: '领导姓名', minWidth: 50, show: true },
-        { prop: 'LEADER_USERNAME', label: '领导姓名', minWidth: 50, show: false }
+        { prop: 'LEADER_USERNAME', label: '领导姓名', minWidth: 50, show: false },
+        { prop: 'CODE', label: '编号', minWidth: 50, show: false }
       ]
     },
     // 获取分页数据
@@ -245,61 +269,16 @@ export default {
       getUserList(this.pageRequest).then(res => {
         this.pageResult.content = res.userList
         this.pageResult.totalSize = res.userListNumber
-        // this.findUserRoles()
       }).then(data != null ? data.callback : '')
     },
-    findUserRoles: function() {
-      // this.$api.role.findAll().then((res) => {
-      //   this.roles = res.data
-      // })
-      this.roles = [{
-        value: '0',
-        label: '集团公司计量处'
-      }, {
-        value: '1',
-        label: '电控部门负责人'
-      }, {
-        value: '2',
-        label: '太古分公司调度室'
-      }, {
-        value: '3',
-        label: '集团公司领导'
-      }]
-
-      this.departments = [{
-        departmentCode: '0',
-        departmentName: '办公室'
-      }, {
-        departmentCode: '1',
-        departmentName: '电控所'
-      }, {
-        departmentCode: '2',
-        departmentName: '巡检所'
-      }]
-
-      this.positions = [{
-        positionCode: '0',
-        positionName: '技术人员'
-      }, {
-        positionCode: '1',
-        positionName: '分公司经理'
-      }, {
-        positionCode: '2',
-        positionName: '总工'
-      }]
-    },
     handleEdit: function(params) {
+      this.dialogStatus = 'edit'
       this.dialogVisible = true
       this.operation = false
       this.dataForm = Object.assign({}, params.row)
-      // 这里应从数据库中取该条记录的所有字段值，从数据库取出的字段名称应该与表单中元素的名称相同，保证正确赋值表单
-      // this.dataForm.role = '0'
-      // this.dataForm.companyCode = '0'
-      // this.dataForm.isLeader = '0'
-      // this.dataForm.departmentName = '办公室'
-      // this.dataForm.positionName = '技术人员'
     },
     handleAdd: function() {
+      this.dialogStatus = 'create'
       this.dialogVisible = true
       this.operation = true
       this.dataForm = {
@@ -315,23 +294,59 @@ export default {
         console.log(err)
       })
     },
-    submitForm: function(formName) {
-      console.log(this.$refs.dataForm)
+    updateData: function(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
-          this.dialogVisible = false
+          updateUser(this.dataForm).then(res => {
+            const index = this.pageResult.content.findIndex(v => v.USER_NAME === this.dataForm.USER_NAME)
+            this.pageResult.content.splice(index, 1, this.dataForm)
+            this.dialogVisible = false
+            this.$notify({
+              title: 'Success',
+              message: 'Update Successfully',
+              type: 'success',
+              duration: 2000
+            })
+          }).catch(err => {
+            console.log(err)
+          })
         } else {
           console.log('error submit!!')
           return false
         }
       })
     },
+    createData() {
+      this.$refs['dataForm'].validate((valid) => {
+        if (valid) {
+          createUser(this.dataForm).then((res) => {
+            if (res.state === 1) {
+              this.dataForm.CODE = res.code
+              this.pageResult.content.unshift(this.dataForm)
+              this.pageResult.totalSize += 1
+              this.dialogVisible = false
+              this.$notify({
+                title: 'Success',
+                message: res.msg,
+                type: 'success',
+                duration: 2000
+              })
+            } else if (res.state === 2) {
+              this.$notify({
+                title: '警告',
+                message: res.msg,
+                type: 'warning',
+                duration: 2000
+              })
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      })
+    },
     resetForm(formName) {
       this.$refs[formName].resetFields()
-    },
-    closeDialog: function() {
-      this.dialogSecondVisible = false
     },
     showPwd() {
       if (this.passwordType === 'password') {
@@ -366,7 +381,29 @@ export default {
     positionSelectChange(params) {
       const { value, label } = params
       this.dataForm.POSITION_CODE = value
-      this.dataForm.DEPARTMENT = label
+      this.dataForm.POSITION = label
+    },
+    searchInputLeader() {
+      searchLeader().then((res) => {
+        this.leaderSuggestion = res.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    querySearchAsync(queryString, cb) {
+      var leaderSuggestion = this.leaderSuggestion
+      // eslint-disable-next-line no-unused-vars
+      var result = queryString ? leaderSuggestion.filter(this.createStateFilter(queryString)) : leaderSuggestion
+      cb(result)
+    },
+    createStateFilter(queryString) {
+      return (state) => {
+        return (state.value.indexOf(queryString) === 0)
+      }
+    },
+    leaderSelect(item) {
+      this.dataForm.LEADER_USERNAME = item.USER_NAME
+      this.dataForm.LEADER_NAME = item.value
     }
   }
 }
@@ -454,6 +491,9 @@ export default {
               font-size: 16px;
               cursor: pointer;
               user-select: none;
+            }
+            .el-autocomplete{
+              width: 100%;
             }
           }
           .row-3{
