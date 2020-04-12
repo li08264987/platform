@@ -79,3 +79,35 @@ export function deletePosition(query) {
     params: query
   })
 }
+
+export function getDepartmentList(query) {
+  return request({
+    url: '/setting/userManage/getDepartmentList',
+    method: 'post',
+    params: query
+  })
+}
+
+export function updateDepartment(query) {
+  return request({
+    url: '/setting/userManage/updateDepartment',
+    method: 'post',
+    params: query
+  })
+}
+
+export function createDepartment(query) {
+  return request({
+    url: '/setting/userManage/createDepartment',
+    method: 'post',
+    params: query
+  })
+}
+
+export function deleteDepartment(query) {
+  return request({
+    url: '/setting/userManage/deleteDepartment',
+    method: 'post',
+    params: query
+  })
+}

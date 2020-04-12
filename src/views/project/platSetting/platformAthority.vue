@@ -2,7 +2,7 @@
   <div id="authorityManage">
     <!-- 顶部搜索栏 -->
     <div class="searchWord">
-      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" />
+      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" />
     </div>
 
     <!-- 表格 -->
@@ -87,6 +87,7 @@
 
 <script>
 import platSettingButton from '@/views/project/platSetting/core/platSettingButton'
+import { getAuthorityList } from '@/api/platSetting/userManage'
 export default {
   components: {
     platSettingButton
@@ -209,39 +210,15 @@ export default {
       this.pageRequest.pageNum = pageNum
       this.findPage()
     },
-    // 获取分页数据
     findPage: function(data) {
-      // if (data !== null) {
-      //   this.pageRequest = data.pageRequest
-      // }
-      // this.pageRequest.columnFilters = { name: { name: 'name', value: this.filters.name }}
-      // this.$api.user.findPage(this.pageRequest).then((res) => {
-      //   this.pageResult = res.data
-      //   // this.findUserRoles()
-      // }).then(data != null ? data.callback : '')
-      this.findUserRoles()
-      this.pageResult.content = this.tableData
-      this.pageResult.totalSize = this.tableData.length
-    },
-    findUserRoles: function() {
-      // this.$api.role.findAll().then((res) => {
-      //   this.roles = res.data
-      // })
-    },
-    handleEdit: function(params) {
-      this.dialogVisible = true
-      this.operation = false
-    },
-    handleAdd: function() {
-      this.dialogVisible = true
-      this.operation = true
-    },
-    handleDelete: function(data) {
-      // 这里暂时只操作界面上的数据，待连接数据库后，应从数据库中删除数据，再调用回调函数更新表格
-      this.pageResult.content.splice(data.params, 1)
-    },
-    submitForm: function() {
-      this.dialogVisible = false
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      this.pageRequest['filterUserName'] = this.filters.name
+      getAuthorityList(this.pageRequest).then(res => {
+        this.pageResult.content = res.authorityList
+        this.pageResult.totalSize = res.authorityListNumber
+      }).then(data != null ? data.callback : '')
     }
   }
 }
