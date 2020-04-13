@@ -3,7 +3,7 @@
     <div class="searchWord">
       <el-button type="primary" @click="handleAdd">添加用户</el-button>
       <div class="search-condition">
-        <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" />
+        <el-input v-model="filterUserName" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" @input="handleFilter" />
       </div>
     </div>
 
@@ -120,12 +120,13 @@ export default {
   data() {
     return {
       size: 'small',
-      filters: {
-        name: ''
-      },
+      filterUserName: '',
       border: true,
       columns: [],
-      pageRequest: { pageNum: 1, pageSize: 15 },
+      pageRequest: {
+        pageNum: 1,
+        pageSize: 15
+      },
       pageResult: {},
       operation: false,
       operationEdit: true,
@@ -260,7 +261,7 @@ export default {
       if (data !== null) {
         this.pageRequest = data.pageRequest
       }
-      this.pageRequest['filterUserName'] = this.filters.name
+      this.pageRequest['filterUserName'] = this.filterUserName
       getUserList(this.pageRequest).then(res => {
         this.pageResult.content = res.userList
         this.pageResult.totalSize = res.userListNumber
@@ -399,6 +400,14 @@ export default {
     leaderSelect(item) {
       this.dataForm.LEADER_USERNAME = item.USER_NAME
       this.dataForm.LEADER_NAME = item.value
+    },
+    handleFilter() {
+      this.pageRequest.pageNum = 1
+      this.loading = true
+      const callback = res => {
+        this.loading = false
+      }
+      this.findPage({ pageRequest: this.pageRequest, callback: callback })
     }
   }
 }
