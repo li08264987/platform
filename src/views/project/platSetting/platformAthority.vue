@@ -8,9 +8,10 @@
     <!-- 表格 -->
     <div class="table-container">
       <authorityTable
+        ref="child"
         :height="750"
         :border="border"
-        :data="pageResult"
+        :data.sync="pageResult"
         @findPage="findPage"
         @handleEdit="handleEdit"
       />
@@ -200,26 +201,17 @@ export default {
       }
       return contains
     },
-    closeDialog() {
-
+    closeDialog(params) {
+      this.$refs.child.refreshPageRequest(this.pageRequest.pageNum)
     },
     handleCheck(data, params) {
       var checkedKeys = params.checkedKeys
       var halfCheckedKeys = params.halfCheckedKeys
       var resultKeys = checkedKeys.concat(halfCheckedKeys)
-      this.clickRecord.row.authority = resultKeys.join()
-      updataAuthorityOfRole(this.clickRecord.row).then(res => {
-        /* this.loading = true
-        const callback = res => {
-          this.loading = false
-        }
-        this.findPage({ pageRequest: this.pageRequest, callback: callback }) */
-        this.$notify({
-          title: 'Success',
-          message: 'Update Successfully',
-          type: 'success',
-          duration: 2000
-        })
+      var rowParam = JSON.parse(JSON.stringify(this.clickRecord.row))
+      rowParam.AUTHORITY = resultKeys.join()
+      updataAuthorityOfRole(rowParam).then(res => {
+
       }).catch(err => {
         console.log(err)
       })

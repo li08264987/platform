@@ -3,7 +3,7 @@
     <el-table
       v-loading="loading"
       style="width:100%;font-size: 14px"
-      :data="data.content"
+      :data.sync="data.content"
       :highlight-current-row="highlightCurrentRow"
       :border="border"
       :stripe="stripe"
