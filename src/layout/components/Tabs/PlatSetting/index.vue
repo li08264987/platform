@@ -24,8 +24,7 @@ export default {
   beforeCreate() {
     this.$router.push({ path: '/platSetting' })
   },
-
-  mounted: {},
+  mounted() {},
   destroyed() {
   },
 

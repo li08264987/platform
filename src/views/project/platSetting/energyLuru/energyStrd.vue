@@ -1,53 +1,154 @@
 <template>
   <div class="table-page">
     <div class="table-toobar">
-      <el-form ref="form" :model="searchForm" label-width="120px">
+      <el-button type="primary" class="blue-btn add-strd" @click="onStrdAdd()">添加</el-button>
+      <el-form ref="form" :model="searchForm" label-width="120px" class="search-form">
         <el-form-item label="" :class="'noMargin'">
-          <el-date-picker v-model="searchForm.date" :type="searchForm.dateType" placeholder="选择时间" />
-          <el-button type="primary" class="blue-btn" @click="onSearch('date')">查询</el-button>
           <el-input v-model="searchForm.searchText" placeholder="输入搜索内容" />
-          <el-button class="blue-btn" type="primary" @click="onSearch('text')">搜索</el-button>
-          <el-button class="white-btn" @click="onExport">导出</el-button>
+          <el-button class="blue-btn" type="primary" @click="onSearch()">搜索</el-button>
         </el-form-item>
       </el-form>
     </div>
     <div class="table-container">
-      <div class="table-title">空压系统分级统计概览</div>
       <el-table
         :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
-        height="calc(100% - 75px)"
+        height="calc(100% - 35px)"
         header-row-class-name="table-header"
         style="width: 100%; overflow-y: auto;"
+        cell-class-name="strd-table-full-cell"
       >
+        <el-table-column label="序号" width="80" header-align="center">
+          <template slot-scope="{$index}">
+            <span>{{ $index + 1 }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
-          prop="code"
-          label="序号"
-          width="180"
-        />
+          prop="company"
+          label="所属公司"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-select v-if="row.edit" v-model="row.company" class="edit-cell" placeholder="请选择所属公司">
+              <el-option
+                v-for="item in companys"
+                :key="item.code"
+                :label="item.name"
+                :value="item.code"
+              />
+            </el-select>
+            <span v-if="!row.edit">{{ getCompanyName(row.company) }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
-          prop="date"
-          label="日期"
-          width="180"
-        />
+          prop="sysName"
+          label="系统名称"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-select v-if="row.edit" v-model="row.sysName" class="edit-cell" placeholder="请选择系统名称">
+              <el-option
+                v-for="item in systems"
+                :key="item.code"
+                :label="item.name"
+                :value="item.code"
+              />
+            </el-select>
+            <span v-if="!row.edit">{{ getSystemName(row.sysName) }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
-          prop="sumValue"
-          label="累计读数（kW·h）"
-          width="180"
-        />
+          prop="time"
+          label="能耗时间"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-date-picker
+              v-if="row.edit"
+              v-model="row.time"
+              value-format="yyyy-MM"
+              type="month"
+              class="edit-cell"
+              placeholder="选择能耗时间"
+            />
+            <span v-if="!row.edit">{{ row.time }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
-          prop="onceValue"
-          label="瞬时读数（kW·h）"
-          width="180"
-        />
+          prop="value"
+          label="能耗值"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-input v-if="row.edit" v-model="row.value" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.value }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
-          prop="remarks"
-          label="备注"
-        />
+          prop="area"
+          label="加权面积"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-input v-if="row.edit" v-model="row.area" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.area }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          fixed="right"
+          label="操作"
+          width="100"
+          header-align="center"
+        >
+          <template slot-scope="{row}">
+            <el-button
+              v-show="row.edit"
+              type="text"
+              size="small"
+              style="margin-left: 10px;"
+              class="control-btn"
+              @click="handleUpdate($index, row)"
+            >
+              更新
+            </el-button>
+            <el-button
+              v-show="row.edit"
+              type="text"
+              size="small"
+              class="control-btn"
+              @click="handleCancel($index, row)"
+            >
+              取消
+            </el-button>
+            <el-button
+              v-show="!row.edit"
+              type="text"
+              size="small"
+              class="control-btn"
+              @click="handleEdit($index, row)"
+            >
+              编辑
+            </el-button>
+            <el-button
+              v-show="!row.edit"
+              type="text"
+              size="small"
+              class="control-btn red-word-btn"
+              @click="handleDelete($index, row)"
+            >
+              删除
+            </el-button>
+          </template>
+        </el-table-column>
       </el-table>
 
       <el-pagination
         :current-page="currentPage"
-        :page-sizes="[10, 14, 20, 25, 30]"
+        :page-sizes="[10, 15, 20, 25, 30]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="count"
@@ -55,169 +156,248 @@
         @current-change="handleCurrentChange"
       />
     </div>
+    <el-dialog
+      v-dialogDrag="true"
+      title="添加能耗标准"
+      :center="false"
+      :visible.sync="dialogVisible"
+      width="360px"
+      :before-close="handleClose"
+      class="energy-strd-add-dialog"
+    >
+      <el-form ref="addEnergyForm" :model="addData" :inline="false" label-width="80px">
+        <el-form-item label="所属公司">
+          <el-select v-model="addData.company" placeholder="请选择所属公司">
+            <el-option
+              v-for="item in companys"
+              :key="item.code"
+              :label="item.name"
+              :value="item.code"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="系统名称">
+          <el-select v-model="addData.sysName" placeholder="请选择系统名称">
+            <el-option
+              v-for="item in systems"
+              :key="item.code"
+              :label="item.name"
+              :value="item.code"
+            />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="能耗时间">
+          <el-date-picker
+            v-model="addData.time"
+            value-format="yyyy-MM"
+            type="month"
+            placeholder="选择能耗时间"
+          />
+        </el-form-item>
+        <el-form-item label="能耗值">
+          <el-input v-model="addData.value" type="number" placeholder="请输入能耗值" />
+        </el-form-item>
+        <el-form-item label="加权面积">
+          <el-input v-model="addData.area" type="number" placeholder="请输入加权面积" />
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="handleClose">取 消</el-button>
+        <el-button type="primary" @click="handleAdd">添 加</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { testAxios } from '@/api/energy/test'
 export default {
   data() {
     return {
+      dialogVisible: false,
       searchForm: {
-        type: 'daterange',
-        date: '',
-        dateType: 'daterange',
         searchText: ''
       },
-      // 当前页
       currentPage: 1,
-      // 每页多少条
-      pageSize: 14,
-      // 总数
-      count: 20,
+      pageSize: 15,
+      count: 2,
+      companys: [{
+        code: 'MLS',
+        name: '木林森'
+      }],
+      systems: [{
+        code: 'ky',
+        name: '空压系统'
+      }, {
+        code: 'zk',
+        name: '真空系统'
+      }, {
+        code: 'dl',
+        name: '电力系统'
+      }, {
+        code: 'qd',
+        name: '氢氮系统'
+      }],
+      addData: {
+        company: '',
+        sysName: '',
+        time: '',
+        value: '',
+        area: '',
+        edit: false,
+        editData: {}
+      },
       tableData: [{
-        code: 1,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: 'Ant Design是一个服务于企业级产品的设计体系，基于『确定』和『自然』的设计价值观和模块化的解决方案，让设计者专注于更好的用户体验。'
+        company: 'MLS',
+        sysName: 'ky',
+        time: '2020-03',
+        value: 80,
+        area: 2000000,
+        edit: false,
+        editData: {}
       }, {
-        code: 2,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 3,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 4,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 5,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 6,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 7,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 8,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 9,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 10,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 11,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: 'Ant Design是一个服务于企业级产品的设计体系，基于『确定』和『自然』的设计价值观和模块化的解决方案，让设计者专注于更好的用户体验。'
-      }, {
-        code: 12,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 13,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 14,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 15,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 16,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 17,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 18,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 19,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 20,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
+        company: 'MLS',
+        sysName: 'ky',
+        time: '2020-04',
+        value: 80,
+        area: 2000000,
+        edit: false,
+        editData: {}
       }]
     }
   },
+  mounted() {
+
+  },
   methods: {
-    // 每页多少条
     handleSizeChange(val) {
       this.pageSize = val
     },
-    // 当前页
     handleCurrentChange(val) {
       this.currentPage = val
     },
-    onSearch(type) {
-      console.log(type)
-      console.log(this.searchForm)
-      testAxios().then(response => {
-        console.log(response)
-      }).catch(err => {
-        console.log(err)
-      })
+    onStrdAdd() {
+      this.dialogVisible = true
     },
-    onExport() {
+    handleClose() {
+      this.$confirm('确认取消添加能耗标准？')
+        .then(_ => {
+          this.exitAddDialog()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    exitAddDialog() {
+      this.addData = {
+        company: '',
+        sysName: '',
+        time: '',
+        value: '',
+        area: '',
+        edit: false,
+        editData: {}
+      }
+      this.dialogVisible = false
+    },
+    checkAddData(data) {
+      var flag = true
+      var msg = '验证成功'
+      if (data.company === '') {
+        flag = false
+        msg = '请选择所属公司'
+      } else if (data.sysName === '') {
+        flag = false
+        msg = '请选择系统名称'
+      } else if (data.time === '') {
+        flag = false
+        msg = '请选择能耗时间'
+      } else if (data.value === '') {
+        flag = false
+        msg = '请输入能耗值'
+      } else if (data.area === '') {
+        flag = false
+        msg = '请输入加权面积'
+      }
+      return { flag: flag, msg: msg }
+    },
+    handleAdd() {
+      if (this.checkAddData(this.addData).flag) {
+        this.$confirm('确认添加？')
+          .then(_ => {
+            this.tableData.unshift(this.addData)
+            this.count++
+            this.exitAddDialog()
+          })
+          .catch(err => {
+            this.$message({
+              type: 'error',
+              duration: 2000,
+              message: err
+            })
+          })
+      } else {
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: this.checkAddData(this.addData).msg
+        })
+      }
+    },
+    onSearch() {
       console.log(this.searchForm)
+    },
+    handleEdit(index, row) {
+      row.edit = true
+      row.editData = JSON.parse(JSON.stringify(row))
+    },
+    handleCancel(index, row) {
+      var raw = JSON.parse(JSON.stringify(row.editData))
+      for (var key in raw) {
+        row[key] = raw[key]
+      }
+      row.edit = false
+    },
+    handleUpdate(index, row) {
+      if (this.checkAddData(row).flag) {
+        row.editData = {}
+        row.edit = false
+      } else {
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: this.checkAddData(row).msg
+        })
+      }
+    },
+    handleDelete(index, row) {
+      this.$confirm('确认删除？')
+        .then(_ => {
+          this.tableData.splice(index, 1)
+          this.count--
+        })
+        .catch(_ => {
+          console.log('cancel')
+        })
+    },
+    getCompanyName(code) {
+      var name = ''
+      for (var i = 0; i < this.companys.length; i++) {
+        if (this.companys[i].code + '' === code + '') {
+          name = this.companys[i].name
+          break
+        }
+      }
+      return name
+    },
+    getSystemName(code) {
+      var name = ''
+      for (var i = 0; i < this.systems.length; i++) {
+        if (this.systems[i].code + '' === code + '') {
+          name = this.systems[i].name
+          break
+        }
+      }
+      return name
     }
   }
 }
@@ -241,24 +421,26 @@ export default {
     width: 100%;
     height: 50px;
     background-color: white;
+    position: relative;
   }
-  form.el-form {
+  form.el-form.search-form {
     display: flex;
     position: absolute;
-    top: 10px;
-    left: 20px;
-    height: 50px;
+    bottom: 0;
+    right: 20px;
     justify-content: center;
     align-items: center;
   }
-  .el-form-item {
+  .add-strd{
+    position: absolute;
+    bottom: 0;
+    margin-left:20px;
+  }
+  form.el-form.search-form .el-form-item {
     margin-bottom: 0;
   }
-  .el-input {
-    width: 160px;
-  }
-  .el-button+.el-button {
-    margin-left: 0;
+  form.el-form.search-form .el-input {
+    width: 260px;
   }
   .treeCheck-container {
     max-height: 450px;
@@ -271,19 +453,25 @@ export default {
     background:rgba(40,87,255,1);
     border-radius:4px;
   }
-  .white-btn {
-    height: 32px;
-    padding: 0 20px;
+  .edit-cell {
+    width: 100%;
+    height:100%;
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+    border: none;
+    background: #f9f9f9;
+    padding: 0 10px;
   }
-  .table-title {
-    height: 42px;
-    background: rgba(249,249,251,1);
-    border: 1px solid rgba(233,233,235,1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: bold;
+  .red-word-btn {
+    color: #F5222D;
+  }
+  .control-btn:hover {
+    text-decoration: underline;
+  }
+  .energy-strd-add-dialog .el-input,
+  .energy-strd-add-dialog .el-select{
+    width: 220px;
   }
 </style>
 <style lang="scss">
@@ -291,10 +479,42 @@ export default {
   .table-header th {
     background-color: #F1F4FD !important;
   }
-  .el-date-editor--daterange.el-input__inner {
+  form.el-form.search-form .el-date-editor--daterange.el-input__inner {
     width: 260px;
   }
   .noMargin .el-form-item__content {
     margin: 0 !important;
+  }
+  .strd-table-full-cell {
+    padding: 0 !important;
+  }
+  .strd-table-full-cell>.cell {
+    height: 38px;
+    line-height:38px;
+    padding: 0;
+  }
+  .strd-table-full-cell>.cell>span {
+    padding: 10px;
+    cursor: default;
+  }
+  .energy-strd-add-dialog .el-dialog__header {
+    padding: 15px 20px;
+    background-color: #2857ff;
+    color: white;
+  }
+  .energy-strd-add-dialog .el-dialog__title {
+    color: white;
+  }
+  .energy-strd-add-dialog .el-dialog__headerbtn {
+    top: 15px;
+    font-size: 20px;
+  }
+  .energy-strd-add-dialog .el-dialog__headerbtn .el-dialog__close {
+    color: white;
+  }
+  .energy-strd-add-dialog .el-dialog__headerbtn:focus .el-dialog__close,
+  .energy-strd-add-dialog .el-dialog__headerbtn:hover .el-dialog__close {
+    color: white;
+    text-shadow: 0 0 0;
   }
 </style>

@@ -206,11 +206,6 @@ export default {
       timeout: null
     }
   },
-  computed: {
-
-  },
-  created() {
-  },
   mounted() {
     this.initColumns()
     this.getSelectData()
