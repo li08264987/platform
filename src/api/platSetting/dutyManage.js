@@ -31,3 +31,11 @@ export function deleteDuty(query) {
     params: query
   })
 }
+
+export function searchDutyUser(query) {
+  return request({
+    url: '/setting/dutyManage/searchDutyUser',
+    method: 'post',
+    params: query
+  })
+}

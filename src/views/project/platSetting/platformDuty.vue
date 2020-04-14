@@ -13,6 +13,7 @@
     </div>
     <div class="table-container">
       <platSettingTable
+        ref="dutyTable"
         :height="750"
         :border="border"
         :show-operation="showOperation"
@@ -28,11 +29,11 @@
     <el-dialog v-dialogDrag :title="operation?'新建值班信息':'修改值班信息'" width="40%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="dutyDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top">
         <div class="row row-0">
-          <el-form-item v-if="true" label="值班领导" prop="LEADER_USER">
-            <el-input v-model="dataForm.LEADER_USER" :disabled="false" auto-complete="请输入值班领导" />
+          <el-form-item v-if="true" label="值班领导" prop="LEADER_USER_NAME">
+            <el-autocomplete v-model="dataForm.LEADER_USER_NAME" :disabled="false" :fetch-suggestions="queryLeaderSearchAsync" :trigger-on-focus="false" auto-complete="请输入值班领导" @select="leaderSelect" />
           </el-form-item>
-          <el-form-item v-if="true" label="值班人员" prop="DUTY_UER">
-            <el-input v-model="dataForm.DUTY_UER" :disabled="false" auto-complete="请输入值班人员" />
+          <el-form-item v-if="true" label="值班人员" prop="DUTY_UER_NAME">
+            <el-autocomplete v-model="dataForm.DUTY_UER_NAME" :disabled="false" :fetch-suggestions="queryDutyMemberSearchAsync" :trigger-on-focus="false" auto-complete="请输入值班人员" @select="dutyMemberSelect" />
           </el-form-item>
           <el-form-item v-if="true" label="值班类型" prop="DUTY_TYPE">
             <el-select v-model="dataForm.DUTY_TYPE_NAME" placeholder="请选择值班类型" style="width: 100%;" @change="selectChanged">
@@ -56,7 +57,7 @@
 
 <script>
 import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
-import { getDutyList, createDuty, updateDuty, deleteDuty } from '@/api/platSetting/dutyManage'
+import { getDutyList, createDuty, updateDuty, deleteDuty, searchDutyUser } from '@/api/platSetting/dutyManage'
 import { parseTime } from '@/utils/index.js'
 export default {
   components: {
@@ -74,10 +75,10 @@ export default {
       editLoading: false,
       dialogStatus: '',
       dataFormRules: {
-        LEADER_USER: [
+        LEADER_USER_NAME: [
           { required: true, message: '请输入值班领导', trigger: 'blur' }
         ],
-        DUTY_UER: [
+        DUTY_UER_NAME: [
           { required: true, message: '请选择值班人员', trigger: 'change' }
         ],
         DUTY_TYPE: [
@@ -93,9 +94,11 @@ export default {
       dataForm: {
         CODE: null,
         LEADER_USER: null,
+        LEADER_USER_NAME: null,
         DUTY_TYPE: null,
         DUTY_TYPE_NAME: null,
         DUTY_UER: null,
+        DUTY_UER_NAME: null,
         CONTENT: null,
         SUMMIT_TIME: null
       },
@@ -108,7 +111,8 @@ export default {
       }, {
         value: '2',
         label: '晚班'
-      }]
+      }],
+      dutyUserSuggestion: []
     }
   },
   computed: {
@@ -116,8 +120,41 @@ export default {
   },
   mounted() {
     this.initColumns()
+    this.searchInputLeader()
   },
   methods: {
+    searchInputLeader() {
+      searchDutyUser().then((res) => {
+        this.dutyUserSuggestion = res.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    leaderSelect(item) {
+      this.dataForm.LEADER_USER = item.USER_NAME
+      this.dataForm.LEADER_USER_NAME = item.value
+    },
+    queryLeaderSearchAsync(queryString, cb) {
+      var dutyUserSuggestion = this.dutyUserSuggestion
+      // eslint-disable-next-line no-unused-vars
+      var result = queryString ? dutyUserSuggestion.filter(this.createStateFilter(queryString)) : dutyUserSuggestion
+      cb(result)
+    },
+    dutyMemberSelect(item) {
+      this.dataForm.DUTY_UER = item.USER_NAME
+      this.dataForm.DUTY_UER_NAME = item.value
+    },
+    queryDutyMemberSearchAsync(queryString, cb) {
+      var dutyUserSuggestion = this.dutyUserSuggestion
+      // eslint-disable-next-line no-unused-vars
+      var result = queryString ? dutyUserSuggestion.filter(this.createStateFilter(queryString)) : dutyUserSuggestion
+      cb(result)
+    },
+    createStateFilter(queryString) {
+      return (state) => {
+        return (state.value.indexOf(queryString) === 0)
+      }
+    },
     selectChanged(params) {
       const { value, label } = params
       this.dataForm.DUTY_TYPE = value
@@ -176,10 +213,12 @@ export default {
     initColumns: function() {
       this.columns = [
         { prop: 'CODE', label: '编号', minWidth: 50, show: false },
-        { prop: 'LEADER_USER', label: '值班领导', minWidth: 50, show: true },
+        { prop: 'LEADER_USER', label: '值班领导', minWidth: 50, show: false },
+        { prop: 'LEADER_USER_NAME', label: '值班领导', minWidth: 50, show: true },
         { prop: 'DUTY_TYPE', label: '值班类型', minWidth: 50, show: false },
         { prop: 'DUTY_TYPE_NAME', label: '值班类型', minWidth: 50, show: true },
-        { prop: 'DUTY_UER', label: '值班人员', minWidth: 100, show: true },
+        { prop: 'DUTY_UER', label: '值班人员', minWidth: 100, show: false },
+        { prop: 'DUTY_UER_NAME', label: '值班人员', minWidth: 100, show: true },
         { prop: 'CONTENT', label: '值班内容', minWidth: 100, show: true },
         { prop: 'SUMMIT_TIME', label: '值班时间', minWidth: 50, show: true }
       ]
@@ -190,8 +229,8 @@ export default {
         this.pageRequest = data.pageRequest
       }
       this.pageRequest['filterUserName'] = this.searchForm.searchText
-      this.pageRequest['startTime'] = this.searchForm.date[0]
-      this.pageRequest['endTime'] = this.searchForm.date[1]
+      this.pageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
+      this.pageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
       getDutyList(this.pageRequest).then(res => {
         this.pageResult.content = res.dutyList
         this.pageResult.totalSize = res.dutyListNumber
@@ -220,10 +259,10 @@ export default {
       this.dataForm = Object.assign({}, params.row)
     },
     dateSearch: function() {
-
+      this.$refs.dutyTable.refreshPageRequest(this.pageRequest.pageNum)
     },
     nameSearch: function() {
-
+      this.$refs.dutyTable.refreshPageRequest(this.pageRequest.pageNum)
     },
     onExport: function() {
 

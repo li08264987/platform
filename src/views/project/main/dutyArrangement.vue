@@ -137,7 +137,7 @@ export default {
 <style lang='scss'>
 #left-container .duty-select{
     .el-input{
-      width: 4vw;
+      width: vw;
     }
     .el-input--suffix .el-input__inner {
       padding-right: 1.2vw;
@@ -215,7 +215,7 @@ export default {
     flex-shrink: 0;
     flex-grow: 0;
     height: 100%;
-    width: 5vw;
+    width: 4vw;
     margin-top: 0.3vw;
   }
 

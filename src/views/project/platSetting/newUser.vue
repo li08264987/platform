@@ -9,6 +9,7 @@
 
     <div class="table-container">
       <platSettingTable
+        ref="userTable"
         :height="750"
         :border="border"
         :data="pageResult"
@@ -397,12 +398,7 @@ export default {
       this.dataForm.LEADER_NAME = item.value
     },
     handleFilter() {
-      this.pageRequest.pageNum = 1
-      this.loading = true
-      const callback = res => {
-        this.loading = false
-      }
-      this.findPage({ pageRequest: this.pageRequest, callback: callback })
+      this.$refs.userTable.refreshPageRequest(this.pageRequest.pageNum)
     }
   }
 }

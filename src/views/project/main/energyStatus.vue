@@ -139,17 +139,17 @@ export default {
       energySelect: {
         energyTypes: [{
           value: 'day',
-          label: '日'
+          label: '按日查'
         },
         {
           value: 'week',
-          label: '周'
+          label: '按周查'
         },
         {
           value: 'month',
-          label: '月'
+          label: '按月查'
         }],
-        valueEnergy: '日'
+        valueEnergy: '按日查'
       }
     }
   },
@@ -168,7 +168,7 @@ export default {
 
 #left-container .energy-select{
   .el-input{
-      width: 3vw;
+      width: 5vw;
     }
     .el-input--suffix .el-input__inner {
     padding-right: 1vw;
@@ -248,7 +248,7 @@ export default {
     top: 0.2vw;
     flex-shrink: 0;
     flex-grow: 0;
-    width: 4vw;
+    width: 5vw;
   }
 
   .energy-container{

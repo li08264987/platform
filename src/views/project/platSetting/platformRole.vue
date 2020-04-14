@@ -3,10 +3,11 @@
   <div id="platformRole">
     <div class="searchWord">
       <el-button type="primary" @click="handleAdd">添加角色</el-button>
-      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" />
+      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" @input="handleFilter" />
     </div>
     <div class="table-container">
       <platSettingTable
+        ref="roleTable"
         :height="750"
         :border="border"
         :data="pageResult"
@@ -174,6 +175,9 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    handleFilter() {
+      this.$refs.roleTable.refreshPageRequest(this.pageRequest.pageNum)
     }
   }
 }

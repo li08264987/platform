@@ -2,7 +2,7 @@
   <div id="authorityManage">
     <!-- 顶部搜索栏 -->
     <div class="searchWord">
-      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" />
+      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" @input="handleFilter" />
     </div>
 
     <!-- 表格 -->
@@ -215,6 +215,9 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    handleFilter() {
+      this.$refs.child.refreshPageRequest(this.pageRequest.pageNum)
     }
   }
 }
