@@ -188,7 +188,7 @@ export default {
     flex-grow: 1;
   }
   .sum-row{
-    margin-top: 1vw;
+    margin-top: 0;
   }
 }
 

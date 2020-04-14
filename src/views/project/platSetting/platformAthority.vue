@@ -2,94 +2,45 @@
   <div id="authorityManage">
     <!-- 顶部搜索栏 -->
     <div class="searchWord">
-      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" />
+      <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" />
     </div>
 
     <!-- 表格 -->
     <div class="table-container">
-      <el-table
-        v-loading="loading"
-        style="width:100%;font-size: 14px"
-        :data="pageResult.content"
-        :highlight-current-row="true"
-        :border="true"
-        :stripe="true"
-        :show-overflow-tooltip="true"
-        :max-height="800"
+      <authorityTable
         :height="750"
-        :size="size"
-        align="left"
-        :header-cell-style="{background:'#F1F4FD'}"
-      >
-        <el-table-column
-          prop="roleCode"
-          label="角色编号"
-          min-width="50"
-          header-align="center"
-          align="center"
-        />
-        <el-table-column
-          prop="roleName"
-          label="角色名称"
-          min-width="50"
-          header-align="center"
-          align="center"
-        />
-        <el-table-column
-          prop="authority"
-          label="权限"
-          header-align="center"
-          align="center"
-        >
-          <template slot-scope="scope">
-            <div class="tag-container">
-              <el-tag v-for="item in scope.row.authority" :key="item.value" size="medium" class="table-tag">{{ item.name }}</el-tag>
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column
-          prop="extend"
-          label="扩展"
-          min-width="50"
-          header-align="center"
-          align="center"
-        />
-        <el-table-column
-          label="操作"
-          fixed="right"
-          header-align="center"
-          align="center"
-        >
-          <template slot-scope="scope">
-            <platSettingButton
-              label="修改权限"
-              :size="size"
-              @click="alterAuthority(scope.$index, scope.row)"
-            />
-          </template>
-        </el-table-column>
-      </el-table>
+        :border="border"
+        :data="pageResult"
+        @findPage="findPage"
+        @handleEdit="handleEdit"
+      />
+    </div>
 
-      <!--分页栏-->
-      <div class="toolbar">
-        <el-pagination
-          layout="total, prev, pager, next, jumper"
-          :current-page="pageRequest.pageNum"
-          :page-size="pageRequest.pageSize"
-          :total="pageResult.totalSize"
-          @current-change="refreshPageRequest"
+    <div class="tree-dialog-container">
+      <el-dialog v-dialogDrag title="修改权限" width="40%" :visible.sync="dialogVisible" class="tree-dialog" @close="closeDialog">
+        <el-tree
+          ref="tree"
+          :check-strictly="checkStrictly"
+          :data="routes"
+          :props="defaultProps"
+          :default-checked-keys="defaultCheckedKeys"
+          :node-key="nodeKey"
+          show-checkbox
+          class="authority-tree"
+          @check="handleCheck"
         />
-      </div>
+      </el-dialog>
     </div>
 
   </div>
 </template>
 
 <script>
-import platSettingButton from '@/views/project/platSetting/core/platSettingButton'
+import authorityTable from '@/views/project/platSetting/authority/authorityTable'
+import { getAuthorityList, updataAuthorityOfRole } from '@/api/platSetting/authorityManage'
 export default {
   components: {
-    platSettingButton
+    authorityTable
   },
   data() {
     return {
@@ -101,147 +52,177 @@ export default {
       border: true,
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
-      operation: false, // true:新增, false:编辑
-      dialogVisible: false, // 新增编辑界面是否显示
+      authorityList: [],
+      operation: false,
+      dialogVisible: false,
       dialogEdit: '',
       editLoading: false,
-      tableData: [{
-        roleCode: '0',
-        roleName: '集团计划处',
-        authority: [{
-          value: '0',
-          name: '上传文件'
-        }, {
-          value: '1',
-          name: '下载文件'
-        }, {
-          value: '2',
-          name: '下载文件'
-        }, {
-          value: '3',
-          name: '下载文件'
-        }, {
-          value: '4',
-          name: '下载文件'
-        }, {
-          value: '5',
-          name: '下载文件'
-        }, {
-          value: '6',
-          name: '下载文件'
-        }],
-        extend: 'thtf'
-      }, {
-        roleCode: '1',
-        roleName: 'God',
-        authority: [{
-          value: '0',
-          name: '上传文件'
-        }, {
-          value: '1',
-          name: '下载文件'
-        }, {
-          value: '2',
-          name: '下载文件'
-        }, {
-          value: '3',
-          name: '下载文件'
-        }, {
-          value: '4',
-          name: '下载文件'
-        }],
-        extend: 'thtf'
-      }, {
-        roleCode: '2',
-        roleName: '员工',
-        authority: [{
-          value: '0',
-          name: '上传文件'
-        }, {
-          value: '1',
-          name: '下载文件'
-        }, {
-          value: '2',
-          name: '下载文件'
-        }, {
-          value: '3',
-          name: '下载文件'
-        }, {
-          value: '4',
-          name: '下载文件'
-        }],
-        extend: 'thtf'
-      }, {
-        roleCode: '3',
-        roleName: '测试',
-        authority: [{
-          value: '0',
-          name: '上传文件'
-        }, {
-          value: '1',
-          name: '下载文件'
-        }, {
-          value: '2',
-          name: '下载文件'
-        }, {
-          value: '3',
-          name: '下载文件'
-        }, {
-          value: '4',
-          name: '下载文件'
-        }],
-        extend: 'thtf'
-      }]
+      checkStrictly: false,
+      defaultProps: {
+        children: 'children',
+        label: 'name'
+      },
+      nodeKey: 'value',
+      routes: [],
+      defaultCheckedKeys: [],
+      clickRecord: {}
     }
   },
   computed: {
 
   },
   mounted() {
-    this.refreshPageRequest(1)
   },
   methods: {
-    alterAuthority: function(index, row) {
-      // this.$emit('handleEdit', { index: index, row: row })
-    },
-    // 换页刷新
-    refreshPageRequest: function(pageNum) {
-      this.pageRequest.pageNum = pageNum
-      this.findPage()
-    },
-    // 获取分页数据
     findPage: function(data) {
-      // if (data !== null) {
-      //   this.pageRequest = data.pageRequest
-      // }
-      // this.pageRequest.columnFilters = { name: { name: 'name', value: this.filters.name }}
-      // this.$api.user.findPage(this.pageRequest).then((res) => {
-      //   this.pageResult = res.data
-      //   // this.findUserRoles()
-      // }).then(data != null ? data.callback : '')
-      this.findUserRoles()
-      this.pageResult.content = this.tableData
-      this.pageResult.totalSize = this.tableData.length
-    },
-    findUserRoles: function() {
-      // this.$api.role.findAll().then((res) => {
-      //   this.roles = res.data
-      // })
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      this.pageRequest['filterRoleName'] = this.filters.name
+      getAuthorityList(this.pageRequest).then(res => {
+        this.pageResult.content = res.roleList
+        this.pageResult.totalSize = res.roleListCount
+        this.authorityList = res.authorityList
+      }).then(data != null ? data.callback : '')
     },
     handleEdit: function(params) {
       this.dialogVisible = true
-      this.operation = false
+      this.checkStrictly = true
+      this.clickRecord = params
+      this.$nextTick(() => {
+        var routes = this.getRootDatas(params)
+        this.routes = routes
+        // var temp = this.generateArr(routes)
+        // this.$refs.tree.setCheckedNodes(temp)
+        this.defaultCheckedKeys = []
+        this.generateArr(routes, this.defaultCheckedKeys)
+        this.checkStrictly = false
+      })
     },
-    handleAdd: function() {
-      this.dialogVisible = true
-      this.operation = true
+    generateArr(routes, defaultCheckedKeys) {
+      routes.forEach(route => {
+        if (route.checked === true) {
+          defaultCheckedKeys.push(route.value)
+        }
+
+        if (route.children) {
+          this.generateArr(route.children, defaultCheckedKeys)
+        }
+      })
     },
-    handleDelete: function(data) {
-      // 这里暂时只操作界面上的数据，待连接数据库后，应从数据库中删除数据，再调用回调函数更新表格
-      this.pageResult.content.splice(data.params, 1)
+    getRootDatas(params) {
+      var formData = []
+      var roleAuthList = params.row.authority
+      var authors = JSON.parse(JSON.stringify(this.authorityList))
+      if (typeof authors !== 'undefined') {
+        if (roleAuthList.length > 0) {
+          for (let i = 0; i < roleAuthList.length; i++) {
+            formData[roleAuthList[i].value] = roleAuthList[i].name
+          }
+        }
+      }
+      var rootNodesData = []
+      var noRootNodesData = []
+      for (let i = 0; i < authors.length; i++) {
+        if (authors[i].PARENT_ID === null || authors[i].PARENT_ID === authors[i].AUTH_ID || !this.authContains(authors[i].PARENT_ID, authors)) {
+          let checked = false
+          if (formData[authors[i].AUTH_ID] !== undefined) {
+            checked = true
+          }
+          rootNodesData.push({
+            name: authors[i].NAME,
+            value: authors[i].AUTH_ID,
+            checked: checked
+          })
+        } else {
+          noRootNodesData.push(authors[i])
+        }
+      }
+
+      while (noRootNodesData.length > 0) {
+        var noRootNodesData1 = JSON.parse(JSON.stringify(noRootNodesData))
+        for (let i = 0; i < rootNodesData.length; i++) {
+          goToLast(rootNodesData[i])
+        }
+        // eslint-disable-next-line no-inner-declarations
+        function goToLast(node) {
+          if (node.children) {
+            for (let tt = 0; tt < node.children.length; tt++) {
+              goToLast(node.children[tt])
+            }
+          } else {
+            var fff = true
+            for (let ttt = 0; ttt < noRootNodesData.length; ttt++) {
+              if (noRootNodesData[ttt].PARENT_ID === node.value) {
+                node.isParent = true
+                var checked = false
+                if (formData[noRootNodesData[ttt].AUTH_ID] !== undefined) {
+                  checked = true
+                }
+                if (node.children) {
+                  node.children.push({
+                    name: noRootNodesData[ttt].NAME,
+                    value: noRootNodesData[ttt].AUTH_ID,
+                    checked: checked
+                  })
+                } else {
+                  node.children = [{
+                    name: noRootNodesData[ttt].NAME,
+                    value: noRootNodesData[ttt].AUTH_ID,
+                    checked: checked
+                  }]
+                }
+                fff = false
+                for (var tttt = 0; tttt < noRootNodesData1.length; tttt++) {
+                  if (noRootNodesData1[tttt].AUTH_ID === noRootNodesData[ttt].AUTH_ID) {
+                    noRootNodesData1.splice(tttt, 1)
+                    break
+                  }
+                }
+              }
+            }
+            if (fff) {
+              node.isParent = false
+              node.children = []
+            }
+          }
+        }
+        noRootNodesData = noRootNodesData1
+      }
+      return rootNodesData
     },
-    submitForm: function() {
-      this.dialogVisible = false
+    authContains(pid, authors) {
+      var contains = false
+      for (var k = 0; k < authors.length; k++) {
+        if (authors[k].AUTH_ID === pid) {
+          contains = true
+        }
+      }
+      return contains
+    },
+    closeDialog() {
+
+    },
+    handleCheck(data, params) {
+      var checkedKeys = params.checkedKeys
+      var halfCheckedKeys = params.halfCheckedKeys
+      var resultKeys = checkedKeys.concat(halfCheckedKeys)
+      this.clickRecord.row.authority = resultKeys.join()
+      updataAuthorityOfRole(this.clickRecord.row).then(res => {
+        /* this.loading = true
+        const callback = res => {
+          this.loading = false
+        }
+        this.findPage({ pageRequest: this.pageRequest, callback: callback }) */
+        this.$notify({
+          title: 'Success',
+          message: 'Update Successfully',
+          type: 'success',
+          duration: 2000
+        })
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
@@ -312,7 +293,7 @@ export default {
         }
       }
     }
-    .userDialog{
+    .tree-dialog{
       .el-dialog__header{
         background-color: #005aff;
         height: 42px;
@@ -330,8 +311,13 @@ export default {
       }
 
       .el-dialog__body{
-        background-color: #F9FAFB;
+        background-color: #FFF;
         padding: 20px 20px 0 20px;
+        overflow-y: auto;
+        height: 555px;
+        .el-tree{
+          height: 100%;
+        }
         .el-form{
           display: flex;
           flex-direction: column;

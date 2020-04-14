@@ -26,7 +26,7 @@
           />
         </template>
       </el-table-column>
-      <el-table-column prop="value" label="能耗值(kwh)" min-width="58" align="center" />
+      <el-table-column prop="value" label="电耗值(kwh)" min-width="58" align="center" />
     </el-table>
   </div>
 </template>
@@ -38,28 +38,28 @@ export default {
       page: 1,
       tableData: [
         {
-          rank: '一',
+          rank: '1',
           floor: '4F',
           value: 2000,
           progress: 50,
           color: '#11BEBE'
         },
         {
-          rank: '二',
+          rank: '2',
           floor: '1F',
           value: 2000,
           progress: 60,
           color: '#11BEBE'
         },
         {
-          rank: '三',
+          rank: '3',
           floor: '2F',
           value: 3000,
           progress: 70,
           color: '#DAD128'
         },
         {
-          rank: '四',
+          rank: '4',
           floor: '3F',
           value: 4000,
           progress: 80,

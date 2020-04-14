@@ -1,14 +1,12 @@
 <template>
   <div id="userManage">
-    <!-- 顶部搜索栏 -->
     <div class="searchWord">
       <el-button type="primary" @click="handleAdd">添加用户</el-button>
       <div class="search-condition">
-        <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" />
+        <el-input v-model="filterUserName" style="display: inline-block;width: 212px" placeholder="请输入用户名搜索" suffix-icon="el-icon-search" @input="handleFilter" />
       </div>
     </div>
 
-    <!-- 表格 -->
     <div class="table-container">
       <platSettingTable
         :height="750"
@@ -21,7 +19,6 @@
       />
     </div>
 
-    <!--新增编辑界面-->
     <el-dialog v-dialogDrag :title="operation?'添加用户':'修改用户信息'" width="40%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="userDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top" :size="size">
         <div class="row row-0">
@@ -123,17 +120,18 @@ export default {
   data() {
     return {
       size: 'small',
-      filters: {
-        name: ''
-      },
+      filterUserName: '',
       border: true,
       columns: [],
-      pageRequest: { pageNum: 1, pageSize: 15 },
+      pageRequest: {
+        pageNum: 1,
+        pageSize: 15
+      },
       pageResult: {},
-      operation: false, // true:新增, false:编辑
-      operationEdit: true, // true:部门, false:职位
-      dialogVisible: false, // 新增编辑界面是否显示
-      dialogSecondVisible: false, // 部门与职位界面是否显示
+      operation: false,
+      operationEdit: true,
+      dialogVisible: false,
+      dialogSecondVisible: false,
       dialogEdit: '',
       editLoading: false,
       dialogStatus: '',
@@ -173,7 +171,6 @@ export default {
           { required: true, message: '请选择所属职位', trigger: 'change' }
         ]
       },
-      // 新增编辑界面数据
       dataForm: {
         USER_NAME: '',
         REAL_NAME: '',
@@ -255,12 +252,11 @@ export default {
         { prop: 'CODE', label: '编号', minWidth: 50, show: false }
       ]
     },
-    // 获取分页数据
     findPage: function(data) {
       if (data !== null) {
         this.pageRequest = data.pageRequest
       }
-      this.pageRequest['filterUserName'] = this.filters.name
+      this.pageRequest['filterUserName'] = this.filterUserName
       getUserList(this.pageRequest).then(res => {
         this.pageResult.content = res.userList
         this.pageResult.totalSize = res.userListNumber
@@ -399,6 +395,14 @@ export default {
     leaderSelect(item) {
       this.dataForm.LEADER_USERNAME = item.USER_NAME
       this.dataForm.LEADER_NAME = item.value
+    },
+    handleFilter() {
+      this.pageRequest.pageNum = 1
+      this.loading = true
+      const callback = res => {
+        this.loading = false
+      }
+      this.findPage({ pageRequest: this.pageRequest, callback: callback })
     }
   }
 }
