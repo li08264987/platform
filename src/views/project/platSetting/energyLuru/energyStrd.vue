@@ -4,7 +4,7 @@
       <el-button type="primary" class="blue-btn add-strd" @click="onStrdAdd()">添加</el-button>
       <el-form ref="form" :model="searchForm" label-width="120px" class="search-form">
         <el-form-item label="" :class="'noMargin'">
-          <el-input v-model="searchForm.searchText" placeholder="输入搜索内容" />
+          <el-input v-model="searchForm.searchFormText" placeholder="输入搜索内容" />
           <el-button class="blue-btn" type="primary" @click="onSearch()">搜索</el-button>
         </el-form-item>
       </el-form>
@@ -111,7 +111,7 @@
               size="small"
               style="margin-left: 10px;"
               class="control-btn"
-              @click="handleUpdate($index, row)"
+              @click="handleUpdate(row)"
             >
               更新
             </el-button>
@@ -120,7 +120,7 @@
               type="text"
               size="small"
               class="control-btn"
-              @click="handleCancel($index, row)"
+              @click="handleCancel(row)"
             >
               取消
             </el-button>
@@ -129,7 +129,7 @@
               type="text"
               size="small"
               class="control-btn"
-              @click="handleEdit($index, row)"
+              @click="handleEdit(row)"
             >
               编辑
             </el-button>
@@ -138,7 +138,7 @@
               type="text"
               size="small"
               class="control-btn red-word-btn"
-              @click="handleDelete($index, row)"
+              @click="handleDelete(row)"
             >
               删除
             </el-button>
@@ -210,34 +210,27 @@
 </template>
 
 <script>
+import {
+  getEnergyStrdList,
+  insertEnergyStrd,
+  deleteEnergyStrdByCode,
+  updateEnergyStrd
+} from '@/api/platSetting/energyStrd'
 export default {
   data() {
     return {
       dialogVisible: false,
       searchForm: {
-        searchText: ''
+        searchText: '',
+        searchFormText: ''
       },
       currentPage: 1,
       pageSize: 15,
-      count: 2,
-      companys: [{
-        code: 'MLS',
-        name: '木林森'
-      }],
-      systems: [{
-        code: 'ky',
-        name: '空压系统'
-      }, {
-        code: 'zk',
-        name: '真空系统'
-      }, {
-        code: 'dl',
-        name: '电力系统'
-      }, {
-        code: 'qd',
-        name: '氢氮系统'
-      }],
+      count: 0,
+      companys: [],
+      systems: [],
       addData: {
+        code: '',
         company: '',
         sysName: '',
         time: '',
@@ -246,34 +239,21 @@ export default {
         edit: false,
         editData: {}
       },
-      tableData: [{
-        company: 'MLS',
-        sysName: 'ky',
-        time: '2020-03',
-        value: 80,
-        area: 2000000,
-        edit: false,
-        editData: {}
-      }, {
-        company: 'MLS',
-        sysName: 'ky',
-        time: '2020-04',
-        value: 80,
-        area: 2000000,
-        edit: false,
-        editData: {}
-      }]
+      tableData: []
     }
   },
   mounted() {
-
+    this.searchForm.searchText = ''
+    this.initEnergyTable()
   },
   methods: {
     handleSizeChange(val) {
       this.pageSize = val
+      this.initEnergyTable()
     },
     handleCurrentChange(val) {
       this.currentPage = val
+      this.initEnergyTable()
     },
     onStrdAdd() {
       this.dialogVisible = true
@@ -289,6 +269,7 @@ export default {
     },
     exitAddDialog() {
       this.addData = {
+        code: '',
         company: '',
         sysName: '',
         time: '',
@@ -298,6 +279,29 @@ export default {
         editData: {}
       }
       this.dialogVisible = false
+    },
+    checkUpdateData(data) {
+      var flag = true
+      var msg = '数据未更改'
+      if (data.editData) {
+        if (data.company !== data.editData.company) {
+          flag = false
+          msg = '数据已更改'
+        } else if (data.sysName !== data.editData.sysName) {
+          flag = false
+          msg = '数据已更改'
+        } else if (data.time !== data.editData.time) {
+          flag = false
+          msg = '数据已更改'
+        } else if (data.value !== data.editData.value) {
+          flag = false
+          msg = '数据已更改'
+        } else if (data.area !== data.editData.area) {
+          flag = false
+          msg = '数据已更改'
+        }
+      }
+      return { flag: flag, msg: msg }
     },
     checkAddData(data) {
       var flag = true
@@ -324,16 +328,17 @@ export default {
       if (this.checkAddData(this.addData).flag) {
         this.$confirm('确认添加？')
           .then(_ => {
-            this.tableData.unshift(this.addData)
-            this.count++
+            this.addEnergyStrdData(this.addData)
             this.exitAddDialog()
           })
           .catch(err => {
-            this.$message({
-              type: 'error',
-              duration: 2000,
-              message: err
-            })
+            if (err !== 'cancel') {
+              this.$message({
+                type: 'error',
+                duration: 2000,
+                message: err
+              })
+            }
           })
       } else {
         this.$message({
@@ -344,23 +349,44 @@ export default {
       }
     },
     onSearch() {
-      console.log(this.searchForm)
+      this.searchForm.searchText = this.searchForm.searchFormText
+      this.initEnergyTable()
     },
-    handleEdit(index, row) {
+    handleEdit(row) {
       row.edit = true
       row.editData = JSON.parse(JSON.stringify(row))
     },
-    handleCancel(index, row) {
+    handleCancel(row) {
       var raw = JSON.parse(JSON.stringify(row.editData))
       for (var key in raw) {
         row[key] = raw[key]
       }
       row.edit = false
     },
-    handleUpdate(index, row) {
+    handleUpdate(row) {
       if (this.checkAddData(row).flag) {
-        row.editData = {}
-        row.edit = false
+        if (this.checkUpdateData(row).flag) {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: this.checkUpdateData(row).msg
+          })
+        } else {
+          this.$confirm('确认更新？')
+            .then(_ => {
+              this.updateEnergyStrdData(row)
+            })
+            .catch(err => {
+              if (err !== 'cancel') {
+                this.$message({
+                  type: 'error',
+                  duration: 2000,
+                  message: err
+                })
+                this.handleCancel(row)
+              }
+            })
+        }
       } else {
         this.$message({
           type: 'warning',
@@ -369,14 +395,19 @@ export default {
         })
       }
     },
-    handleDelete(index, row) {
+    handleDelete(row) {
       this.$confirm('确认删除？')
         .then(_ => {
-          this.tableData.splice(index, 1)
-          this.count--
+          this.deleteEnergyData({ code: row.code })
         })
-        .catch(_ => {
-          console.log('cancel')
+        .catch(err => {
+          if (err !== 'cancel') {
+            this.$message({
+              type: 'error',
+              duration: 2000,
+              message: err
+            })
+          }
         })
     },
     getCompanyName(code) {
@@ -398,6 +429,84 @@ export default {
         }
       }
       return name
+    },
+    initEnergyTable() {
+      this.setEnergyStrdData({
+        size: this.pageSize,
+        page: this.currentPage,
+        searchText: this.searchForm.searchText
+      })
+    },
+    setEnergyStrdData(params) {
+      getEnergyStrdList(params).then(response => {
+        var data = response.data
+        for (var i = 0; i < data.data.length; i++) {
+          data.data[i].edit = false
+          data.data[i].editData = {}
+        }
+        this.count = data.count
+        this.tableData = data.data
+        this.companys = data.companys
+        this.systems = data.systemList
+      }).catch(err => {
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    addEnergyStrdData(params) {
+      insertEnergyStrd(params).then(response => {
+        this.$message({
+          type: 'success',
+          duration: 2000,
+          message: response.msg
+        })
+        this.initEnergyTable()
+      }).catch(err => {
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    deleteEnergyData(params) {
+      deleteEnergyStrdByCode(params).then(response => {
+        this.$message({
+          type: 'success',
+          duration: 2000,
+          message: response.msg
+        })
+        this.initEnergyTable()
+      }).catch(err => {
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    updateEnergyStrdData(params) {
+      updateEnergyStrd(params).then(response => {
+        this.$message({
+          type: 'success',
+          duration: 2000,
+          message: response.msg
+        })
+        params.editData = {}
+        params.edit = false
+        this.initEnergyTable()
+      }).catch(err => {
+        params.editData = {}
+        params.edit = false
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
     }
   }
 }
