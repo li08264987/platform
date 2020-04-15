@@ -18,7 +18,7 @@ const platSettingRouters = [{
       meta: {
         title: '用户管理',
         roles: ['admin', 'editor'],
-        icon: 'user',
+        icon: 'userSetting',
         affix: true
       }
     },
@@ -29,7 +29,7 @@ const platSettingRouters = [{
       meta: {
         title: '角色管理',
         roles: ['admin', 'editor'],
-        icon: 'role'
+        icon: 'roleSetting'
       }
     },
     {
@@ -39,7 +39,7 @@ const platSettingRouters = [{
       meta: {
         title: '权限管理',
         roles: ['admin', 'editor'],
-        icon: 'authority'
+        icon: 'authoritySetting'
       }
     },
     {
@@ -49,7 +49,7 @@ const platSettingRouters = [{
       meta: {
         title: '日志管理',
         roles: ['admin', 'editor'],
-        icon: 'log'
+        icon: 'logSetting'
       }
     }
   ]
@@ -59,7 +59,7 @@ const platSettingRouters = [{
   component: Layout,
   name: 'platSettingOther',
   meta: {
-    title: '值班设置',
+    title: '其他设置',
     icon: 'example',
     roles: ['admin', 'editor']
   },
@@ -79,7 +79,7 @@ const platSettingRouters = [{
       name: 'platformDuty',
       meta: {
         title: '能耗标准',
-        icon: 'duty'
+        icon: 'energyStrd'
       }
     }, {
       path: 'priceStrd',
@@ -87,7 +87,7 @@ const platSettingRouters = [{
       name: 'platformDuty',
       meta: {
         title: '价格标准',
-        icon: 'duty'
+        icon: 'price'
       }
     }
   ]
