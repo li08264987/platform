@@ -113,7 +113,7 @@ export default {
 
 .user-bio {
   margin-top: 20px;
-  color: #606266;
+  color: #f9f9fb;
 
   span {
     padding-left: 4px;
