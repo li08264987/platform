@@ -345,3 +345,20 @@ export function removeClass(ele, cls) {
     ele.className = ele.className.replace(reg, ' ')
   }
 }
+
+/**
+ * Check if PC or mobile
+ * @returns {boolean}
+ */
+export function isPC() {
+  var userAgentInfo = navigator.userAgent
+  var Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPod', 'iPad']
+  var flag = 1
+  for (var i = 0; i < Agents.length; i++) {
+    if (userAgentInfo.indexOf(Agents[i]) > 0) {
+      flag = 0
+      break
+    }
+  }
+  return flag
+}
