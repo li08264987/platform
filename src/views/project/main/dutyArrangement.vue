@@ -5,12 +5,12 @@
         <div class="logo" />
         <span>值班安排</span>
       </div>
-      <el-select v-model="dutySelect.valueDuty" :popper-append-to-body="false" placeholder="请选择" class="duty-select" @change="changeMethod">
+      <el-select v-model="dutySelect.systemName" :popper-append-to-body="false" placeholder="请选择" class="duty-select" @change="changeMethod">
         <el-option
-          v-for="item in dutySelect.dutyTypes"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
+          v-for="item in dutySelect.systems"
+          :key="item.systemCode"
+          :label="item.systemName"
+          :value="{value: item.systemCode, label: item.systemName}"
         />
       </el-select>
     </div>
@@ -22,113 +22,128 @@
     </div>
 
     <div class="leader second-row">
-      <div style="width:7vw">
+      <div class="morning" style="width: 7vw;">
         <div class="zhiban">值班领导</div>
-        <div class="leader-1">{{ dutyLeader.index1 }}</div>
+        <div class="zhiban-leader">
+          <div v-for="item in dutyMember.morningLeader" :key="item.userName" class="leader-1">{{ item.realName }}</div>
+        </div>
       </div>
-      <div style="width:7vw">
+
+      <div class="noon" style="width: 7vw;">
         <div class="zhiban">值班领导</div>
-        <div class="leader-2">{{ dutyLeader.index2 }}</div>
+        <div class="zhiban-leader">
+          <div v-for="item in dutyMember.noonLeader" :key="item.userName" class="leader-1">{{ item.realName }}</div>
+        </div>
       </div>
-      <div>
+
+      <div class="evening" style="width: 7vw;">
         <div class="zhiban">值班领导</div>
-        <div class="leader-3">{{ dutyLeader.index3 }}</div>
+        <div class="zhiban-leader">
+          <div v-for="item in dutyMember.eveningLeader" :key="item.userName" class="leader-1">{{ item.realName }}</div>
+        </div>
       </div>
     </div>
 
     <div class="worker-container third-row">
-      <div class="worker-group" style="width:137px">
+      <div class="worker-group" style="width:7vw">
         <div class="zhibanyuan">值班员</div>
-        <div style="display:flex;">
-          <div class="worker index1">
-            <div class="first-row">柳林东</div>
-            <div>徐驰</div>
-          </div>
-          <div class="worker index2">
-            <div class="first-row">周新宇</div>
-            <div>张三</div>
-          </div>
+        <div style="display:flex;" class="dutymember-container">
+          <span v-for="item in dutyMember.morningMember" :key="item.userName" class="duty-member">{{ item.realName }}</span>
         </div>
       </div>
 
-      <div class="worker-group" style="width:137px">
+      <div class="worker-group" style="width:7vw">
         <div class="zhibanyuan">值班员</div>
-        <div style="display:flex;">
-          <div class="worker index1">
-            <div class="first-row">name1</div>
-            <div>name2</div>
-          </div>
-          <div class="worker index2">
-            <div class="first-row">name3</div>
-            <div>name4</div>
-          </div>
+        <div style="display:flex;" class="dutymember-container">
+          <span v-for="item in dutyMember.noonMember" :key="item.userName" class="duty-member">{{ item.realName }}</span>
         </div>
       </div>
 
-      <div class="worker-group" style="width:137px">
+      <div class="worker-group" style="width:7vw">
         <div class="zhibanyuan">值班员</div>
-        <div style="display:flex;">
-          <div class="worker index1">
-            <div class="first-row">name1</div>
-            <div>name2</div>
-          </div>
-          <div class="worker index2">
-            <div class="first-row">name3</div>
-            <div>name4</div>
-          </div>
+        <div style="display:flex;" class="dutymember-container">
+          <span v-for="item in dutyMember.eveningMember" :key="item.userName" class="duty-member">{{ item.realName }}</span>
         </div>
       </div>
+
     </div>
   </div>
 </template>
 
 <script>
+import { fetchDutyMembers, fetchSystem } from '@/api/main/dutyArrangement'
 export default {
   name: 'DutyArrangement',
   components: {},
   data() {
     return {
       dutySelect: {
-        dutyTypes: [{
-          value: 'kongya',
-          label: '空压'
-        },
-        {
-          value: 'qingdan',
-          label: '氢氮'
-        },
-        {
-          value: 'zhenkong',
-          label: '真空'
-        },
-        {
-          value: 'dian',
-          label: '电'
-        },
-        {
-          value: 'leng',
-          label: '冷'
-        },
-        {
-          value: 're',
-          label: '热'
-        }],
-        valueDuty: '空压'
+        systems: [],
+        systemName: '空压系统',
+        systemCode: 'ky'
       },
-      dutyLeader: {
-        index1: '谭敏仪',
-        index2: '谭敏仪',
-        index3: '谭敏仪'
+      dutyMember: {
+        morningLeader: null,
+        noonLeader: null,
+        eveningLeader: null,
+        morningMember: null,
+        noonMember: null,
+        eveningMember: null
       }
     }
   },
 
   computed: {},
+  created() {
 
+  },
   mounted() {
+    this.initDutyArrangementData()
   },
   methods: {
-    changeMethod: function(value) {}
+    changeMethod: function(params) {
+      const { value, label } = params
+      this.dutySelect.systemName = label
+      this.dutySelect.systemCode = value
+      this.getDutyMembers({ systemName: this.dutySelect.systemName, systemCode: this.dutySelect.systemCode })
+    },
+    initDutyArrangementData: function() {
+      this.getSystem()
+      var param = { systemName: this.dutySelect.systemName, systemCode: this.dutySelect.systemCode }
+      this.getDutyMembers(param)
+    },
+    getSystem: function() {
+      fetchSystem().then((res) => {
+        this.dutySelect.systems = res.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getDutyMembers: function(param) {
+      fetchDutyMembers(param).then((res) => {
+        if (res.data.length > 0) {
+          res.data.forEach(element => {
+            const dutyType = element.dutyType
+            switch (dutyType) {
+              case 0:
+                this.dutyMember.morningLeader = element.leaders
+                this.dutyMember.morningMember = element.members
+                break
+              case 1:
+                this.dutyMember.noonLeader = element.leaders
+                this.dutyMember.noonMember = element.members
+                break
+              case 2:
+                this.dutyMember.eveningLeader = element.leaders
+                this.dutyMember.eveningMember = element.members
+                break
+            }
+          })
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    }
   }
 }
 
@@ -215,7 +230,7 @@ export default {
     flex-shrink: 0;
     flex-grow: 0;
     height: 100%;
-    width: 4vw;
+    width: 6vw;
     margin-top: 0.3vw;
   }
 
@@ -284,11 +299,19 @@ export default {
     padding-left: 1vw;
     .zhiban{
       font-family: MicrosoftYaHeiUI;
-      font-size: 12px;
+      font-size: 0.7vw;
       color: #9FA8DA;
       letter-spacing: 0;
       line-height: 1vh;
       margin-bottom: 1vh;
+    }
+    .zhiban-leader{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .leader-1{
+        margin: 0 0.5vw 0.5vw 0;
+      }
     }
   }
 
@@ -304,23 +327,24 @@ export default {
     .worker-group{
       display: flex;
       flex-direction: column;
-    }
-    .worker{
-      width:3vw;
-      font-family: MicrosoftYaHeiUI;
-      font-size: 0.87vw;
-      color: #FFFFFF;
-    }
-    .first-row{
-      margin-top: 10px;
-      margin-bottom: 10px;
+      .dutymember-container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        color: #fff;
+        margin-top: 0.75vw;
+        font-size: 0.87vw;
+        .duty-member{
+          margin: 0 0.5vw 0.5vw 0;
+        }
+      }
     }
     .zhibanyuan {
       font-family: MicrosoftYaHeiUI;
-      font-size: 12px;
+      font-size: 0.7vw;
       color: #9FA8DA;
       letter-spacing: 0;
-      line-height: 11px;
+      line-height: 1vh;
     }
   }
 
