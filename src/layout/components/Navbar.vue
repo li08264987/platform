@@ -37,7 +37,7 @@
       <div class="avatar"><img
         src="../../assets/tittle/avatar.png"
         alt=""
-      ></div>
+      > <p class="login-txt">登录</p></div>
     </div>
   </div>
 </template>
@@ -118,6 +118,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.login-txt{
+  color: whitesmoke;
+  font-weight: bold;
+  margin-left: 0.3em;
+}
 .count-txt{
   color: white;
 }
@@ -136,7 +141,7 @@ export default {
 .tittle-right{
   display: flex;
   flex-direction:row;
-  width: 8%;;
+  width: 10%;;
 }
 .message{
   display: flex;
