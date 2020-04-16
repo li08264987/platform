@@ -1,9 +1,24 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
+    <img
+      class="img-bg1"
+      src="../../assets/login/bg1.png"
+    >
+    <img
+      class="img-bg2"
+      src="../../assets/login/bg2.png"
+    >
+    <el-form
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      class="login-form"
+      autocomplete="on"
+      label-position="left"
+    >
 
       <div class="title-container">
-        <h3 class="title">能源系统运管平台</h3>
+        <h3 class="title">启慧AI+能源系统运管平台</h3>
       </div>
 
       <el-form-item prop="username">
@@ -21,7 +36,12 @@
         />
       </el-form-item>
 
-      <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
+      <el-tooltip
+        v-model="capsTooltip"
+        content="Caps lock is On"
+        placement="right"
+        manual
+      >
         <el-form-item prop="password">
           <span class="svg-container">
             <svg-icon icon-class="password" />
@@ -39,31 +59,47 @@
             @blur="capsTooltip = false"
             @keyup.enter.native="handleLogin"
           />
-          <span class="show-pwd" @click="showPwd">
+          <span
+            class="show-pwd"
+            @click="showPwd"
+          >
             <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
           </span>
         </el-form-item>
       </el-tooltip>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
+      <el-button
+        :loading="loading"
+        type="primary"
+        style="width:100%;margin-bottom:30px;heigh:50px;font-size: 20px;"
+        @click.native.prevent="handleLogin"
+      >登录</el-button>
 
-      <div style="position:relative;margin-top: 20px;">
-        <div class="tips">
-          <span>如果要修改密码？点击此处...</span>
-          <!-- <span>Password : any</span> -->
-        </div>
+      <div style="position:relative;margin-top: 30px;">
         <!-- <div class="tips">
           <span style="margin-right:18px;">Username : editor</span>
           <span>Password : any</span>
         </div> -->
-
-        <el-button class="thirdparty-button" type="primary" @click="showDialog=true">
-          修改密码
-        </el-button>
+        <p
+          class="thirdparty-button"
+          type="primary"
+          @click="showDialog=true"
+        >
+          修改密码>
+        </p>
+      </div>
+      <div class="version">
+        <p class="version-txt">启慧AI+能源 V1.0.0</p>
+      </div>
+      <div class="copyright">
+        <img src="../../assets/login/copyright.png">
       </div>
     </el-form>
 
-    <el-dialog title="Or connect with" :visible.sync="showDialog">
+    <el-dialog
+      title="Or connect with"
+      :visible.sync="showDialog"
+    >
       Can not be simulated on local, so please combine you own business simulation! ! !
       <br>
       <br>
@@ -204,9 +240,9 @@ export default {
 /* 修复input 背景不协调 和光标变色 */
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
-$bg:#283443;
-$light_gray:#fff;
-$cursor: #fff;
+$bg:#e5e5e5;
+$light_gray:black;
+$cursor:black;
 
 @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
   .login-container .el-input input {
@@ -242,7 +278,7 @@ $cursor: #fff;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    color: #454545;
+    color: black;
   }
 }
 </style>
@@ -252,19 +288,57 @@ $bg:#2d3a4b;
 $dark_gray:#889aa4;
 $light_gray:#eee;
 
+.copyright{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.version{
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.version-txt{
+  font-size: 15px;
+  color: #666c83;
+}
+.img-bg1{
+  position: absolute;
+  width: 35em;
+  margin-left: 490px;
+  margin-top: 400px;
+}
+.img-bg2{
+  position: absolute;
+   width: 25em;
+    margin-left: 80px;
+    margin-top: 90px;
+}
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  // background-color: $bg;
+  background-image:url(../../assets/login/bg0.png);
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  -moz-background-size:100% 100%;
   overflow: hidden;
 
   .login-form {
     position: relative;
-    width: 520px;
+    width: 500px;
+    height: 540px;
     max-width: 100%;
     padding: 160px 35px 0;
     margin: 0 auto;
     overflow: hidden;
+    background: white;
+    border-radius: 10px;
+    margin-top: 240px;
+    margin-right: 120px;
   }
 
   .tips {
@@ -289,10 +363,10 @@ $light_gray:#eee;
 
   .title-container {
     position: relative;
-
+    margin-top: -100px;
     .title {
-      font-size: 26px;
-      color: $light_gray;
+      font-size: 36px;
+      color: #2d49ff;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
@@ -313,6 +387,10 @@ $light_gray:#eee;
     position: absolute;
     right: 0;
     bottom: 6px;
+    color: #1890ff;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 15px;
   }
 
   @media only screen and (max-width: 470px) {
