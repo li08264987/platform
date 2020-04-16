@@ -20,7 +20,7 @@
       />
     </div>
 
-    <el-dialog v-dialogDrag :title="operation?'添加用户':'修改用户信息'" width="40%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="userDialog">
+    <el-dialog v-dialogDrag :title="operation?'添加用户':'修改用户信息'" width="40%" :visible.sync="dialogVisible" :modal="false" :close-on-click-modal="false" class="userDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top" :size="size">
         <div class="row row-0">
           <el-form-item v-if="true" label="用户名" prop="USER_NAME">
@@ -294,8 +294,8 @@ export default {
             this.pageResult.content.splice(index, 1, this.dataForm)
             this.dialogVisible = false
             this.$notify({
-              title: 'Success',
-              message: 'Update Successfully',
+              title: '成功',
+              message: '更新用户成功',
               type: 'success',
               duration: 2000
             })
@@ -318,7 +318,7 @@ export default {
               this.pageResult.totalSize += 1
               this.dialogVisible = false
               this.$notify({
-                title: 'Success',
+                title: '成功',
                 message: res.msg,
                 type: 'success',
                 duration: 2000
@@ -384,7 +384,6 @@ export default {
     },
     querySearchAsync(queryString, cb) {
       var leaderSuggestion = this.leaderSuggestion
-      // eslint-disable-next-line no-unused-vars
       var result = queryString ? leaderSuggestion.filter(this.createStateFilter(queryString)) : leaderSuggestion
       cb(result)
     },

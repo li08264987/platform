@@ -1,11 +1,9 @@
 <template>
   <div id="authorityManage">
-    <!-- 顶部搜索栏 -->
     <div class="searchWord">
       <el-input v-model="filters.name" style="display: inline-block;width: 212px" placeholder="请输入角色名搜索" suffix-icon="el-icon-search" @input="handleFilter" />
     </div>
 
-    <!-- 表格 -->
     <div class="table-container">
       <authorityTable
         ref="child"
@@ -93,8 +91,6 @@ export default {
       this.$nextTick(() => {
         var routes = this.getRootDatas(params)
         this.routes = routes
-        // var temp = this.generateArr(routes)
-        // this.$refs.tree.setCheckedNodes(temp)
         this.defaultCheckedKeys = []
         this.generateArr(routes, this.defaultCheckedKeys)
         this.checkStrictly = false

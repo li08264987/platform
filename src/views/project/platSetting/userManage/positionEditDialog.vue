@@ -44,11 +44,10 @@ export default {
       border: true,
       columns: [],
       pageResult: {},
-      operation: false, // true:新增, false:编辑
-      dialogVisible: false, // 编辑界面是否显示
+      operation: false,
+      dialogVisible: false,
       editLoading: false,
       dialogStatus: '',
-      // 编辑界面数据
       dataForm: {
         CODE: '',
         POS_NAME: ''
@@ -84,7 +83,7 @@ export default {
               this.pageResult.totalSize += 1
               this.dialogVisible = false
               this.$notify({
-                title: 'Success',
+                title: '成功',
                 message: res.msg,
                 type: 'success',
                 duration: 2000
@@ -111,8 +110,8 @@ export default {
             this.pageResult.content.splice(index, 1, this.dataForm)
             this.dialogVisible = false
             this.$notify({
-              title: 'Success',
-              message: 'Update Successfully',
+              title: '成功',
+              message: '更新职位成功！',
               type: 'success',
               duration: 2000
             })
@@ -168,8 +167,6 @@ export default {
       width: 100%;
       height: 36px;
       background-color: #FFFFFF;
-      /* margin-left: 29px; */
-      /* margin-right: 29px; */
       border: 1px dashed #C5CAD5;
       color: #858B9C;
     }
