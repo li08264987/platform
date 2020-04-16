@@ -1,4 +1,4 @@
-<!--  -->
+
 <template>
   <div id="logMange">
     <div class="searchWord">
@@ -34,52 +34,9 @@ export default {
       columns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
-      operation: false, // true:新增, false:编辑
-      dialogVisible: false, // 新增编辑界面是否显示
+      operation: false,
+      dialogVisible: false,
       editLoading: false
-      /* dataFormRules: {
-        name: [
-          { required: true, message: '请输入用户名', trigger: 'blur' }
-        ]
-      },
-      // 新增编辑界面数据
-      dataForm: {
-        USER_NAME: 0,
-        REAL_NAME: '',
-        TIME: '',
-        PHONE_TYPE: '',
-        ADDRESS: '',
-        INFOR: ''
-      },
-      tableData: [{
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        time: '2020-04-01 00:00:00',
-        platform: '',
-        address: '',
-        information: ''
-      }, {
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        time: '2020-03-01 00:00:00',
-        platform: '',
-        address: '',
-        information: ''
-      }, {
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        time: '2020-02-01 00:00:00',
-        platform: '',
-        address: '',
-        information: ''
-      }, {
-        userName: 'lishanlei',
-        realName: '李闪磊',
-        time: '2020-01-01 00:00:00',
-        platform: '',
-        address: '',
-        information: ''
-      }] */
     }
   },
   computed: {
@@ -99,7 +56,6 @@ export default {
         { prop: 'INFOR', label: '信息', minWidth: 50, show: true }
       ]
     },
-    // 获取分页数据
     findPage: function(data) {
       if (data !== null) {
         this.pageRequest = data.pageRequest
@@ -108,7 +64,6 @@ export default {
       getLogList(this.pageRequest).then((res) => {
         this.pageResult.content = res.logList
         this.pageResult.totalSize = res.logListNumber
-        // this.findUserRoles()
       }).then(data != null ? data.callback : '')
     },
     findUserRoles: function() {
@@ -116,14 +71,6 @@ export default {
         this.roles = res.data
       })
     }
-    // handleEdit: function(params) {
-    //   this.dialogVisible = true
-    //   this.operation = false
-    //   this.dataForm = Object.assign({}, params.row)
-    //   this.$nextTick(() => {
-    //     this.$refs['dataForm'].clearValidate()
-    //   })
-    // }
   }
 }
 </script>

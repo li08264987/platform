@@ -1,4 +1,4 @@
-<!--  -->
+
 <template>
   <div id="platformRole">
     <div class="searchWord">
@@ -18,7 +18,6 @@
       />
     </div>
 
-    <!--新增编辑界面-->
     <el-dialog v-dialogDrag :title="operation?'新建角色':'修改角色名称'" width="20%" :visible.sync="dialogVisible" :close-on-click-modal="false" class="roleDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="right">
         <div class="row row-0">
@@ -56,8 +55,8 @@ export default {
       columns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
-      operation: false, // true:新增, false:编辑
-      dialogVisible: false, // 新增编辑界面是否显示
+      operation: false,
+      dialogVisible: false,
       editLoading: false,
       dialogStatus: '',
       dataFormRules: {
@@ -65,7 +64,6 @@ export default {
           { required: true, message: '请输入角色名称', trigger: 'blur' }
         ]
       },
-      // 新增编辑界面数据
       dataForm: {
         ROLE_ID: null,
         ROLE_NAME: '',
@@ -115,8 +113,8 @@ export default {
             this.pageResult.content.splice(index, 1, this.dataForm)
             this.dialogVisible = false
             this.$notify({
-              title: 'Success',
-              message: 'Update Successfully',
+              title: '成功',
+              message: '更新角色成功！',
               type: 'success',
               duration: 2000
             })
@@ -133,7 +131,6 @@ export default {
       this.$refs[formName].resetFields()
       this.dialogVisible = false
     },
-    // 获取分页数据
     findPage: function(data) {
       if (data !== null) {
         this.pageRequest = data.pageRequest
@@ -142,7 +139,6 @@ export default {
       getRoleList(this.pageRequest).then(res => {
         this.pageResult.content = res.roleList
         this.pageResult.totalSize = res.roleListNumber
-        // this.findUserRoles()
       }).then(data != null ? data.callback : '')
     },
     findUserRoles: function() {
@@ -155,7 +151,6 @@ export default {
       this.dialogVisible = true
       this.operation = true
       this.dataForm = {
-
       }
     },
     handleEdit: function(params) {
