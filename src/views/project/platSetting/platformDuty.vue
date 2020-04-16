@@ -40,6 +40,9 @@
               <el-option v-for="item in dutyTypes" :key="item.value" :label="item.label" :value="{value:item.value,label:item.label}" />
             </el-select>
           </el-form-item>
+          <el-form-item v-if="true" label="系统" prop="SYSTEMNAME">
+            <el-autocomplete v-model="dataForm.SYSTEMNAME" :disabled="false" :fetch-suggestions="querySystemSearchAsync" :trigger-on-focus="false" auto-complete="请选择系统" @select="systemSelect" />
+          </el-form-item>
         </div>
         <div class="row row-1" style="width:100%">
           <el-form-item v-if="true" label="值班内容" prop="CONTENT" style="width:100%">
@@ -57,7 +60,7 @@
 
 <script>
 import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
-import { getDutyList, createDuty, updateDuty, deleteDuty, searchDutyUser } from '@/api/platSetting/dutyManage'
+import { getDutyList, createDuty, updateDuty, deleteDuty, searchDutyUser, searchSystem } from '@/api/platSetting/dutyManage'
 import { parseTime } from '@/utils/index.js'
 export default {
   components: {
@@ -100,6 +103,8 @@ export default {
         DUTY_UER: null,
         DUTY_UER_NAME: null,
         CONTENT: null,
+        SYSTEMCODE: null,
+        SYSTEMNAME: null,
         SUMMIT_TIME: null
       },
       dutyTypes: [{
@@ -112,7 +117,8 @@ export default {
         value: '2',
         label: '晚班'
       }],
-      dutyUserSuggestion: []
+      dutyUserSuggestion: [],
+      systemSuggestion: []
     }
   },
   computed: {
@@ -121,11 +127,19 @@ export default {
   mounted() {
     this.initColumns()
     this.searchInputLeader()
+    this.searchInputSystem()
   },
   methods: {
     searchInputLeader() {
       searchDutyUser().then((res) => {
         this.dutyUserSuggestion = res.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    searchInputSystem() {
+      searchSystem().then((res) => {
+        this.systemSuggestion = res.data
       }).catch(err => {
         console.log(err)
       })
@@ -136,7 +150,6 @@ export default {
     },
     queryLeaderSearchAsync(queryString, cb) {
       var dutyUserSuggestion = this.dutyUserSuggestion
-      // eslint-disable-next-line no-unused-vars
       var result = queryString ? dutyUserSuggestion.filter(this.createStateFilter(queryString)) : dutyUserSuggestion
       cb(result)
     },
@@ -146,8 +159,16 @@ export default {
     },
     queryDutyMemberSearchAsync(queryString, cb) {
       var dutyUserSuggestion = this.dutyUserSuggestion
-      // eslint-disable-next-line no-unused-vars
       var result = queryString ? dutyUserSuggestion.filter(this.createStateFilter(queryString)) : dutyUserSuggestion
+      cb(result)
+    },
+    systemSelect(item) {
+      this.dataForm.SYSTEMCODE = item.DEVICE_CODE
+      this.data.SYSTEMNAME = item.value
+    },
+    querySystemSearchAsync(queryString, cb) {
+      var systemSuggestion = this.systemSuggestion
+      var result = queryString ? systemSuggestion.filter(this.createStateFilter(queryString)) : systemSuggestion
       cb(result)
     },
     createStateFilter(queryString) {
@@ -220,6 +241,7 @@ export default {
         { prop: 'DUTY_UER', label: '值班人员', minWidth: 100, show: false },
         { prop: 'DUTY_UER_NAME', label: '值班人员', minWidth: 100, show: true },
         { prop: 'CONTENT', label: '值班内容', minWidth: 100, show: true },
+        { prop: 'SYSTEMNAME', label: '值班系统', minWidth: 100, show: true },
         { prop: 'SUMMIT_TIME', label: '值班时间', minWidth: 50, show: true }
       ]
     },

@@ -39,3 +39,11 @@ export function searchDutyUser(query) {
     params: query
   })
 }
+
+export function searchSystem(query) {
+  return request({
+    url: '/setting/dutyManage/searchSystem',
+    method: 'post',
+    params: query
+  })
+}

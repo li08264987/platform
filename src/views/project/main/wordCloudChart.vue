@@ -43,7 +43,6 @@ export default {
         speedY = this.speedY
         speedX *= 0.98
         speedY *= 0.98
-      // eslint-disable-next-line no-empty
       } else {
         speedX = Math.PI / 360
         speedY = 0
@@ -124,16 +123,9 @@ export default {
       }
     },
     listener(event) {
-      /* var x = event.clientX - this.CX
-      var y = event.clientY - this.CY
-      this.speedX = x * 0.0001 > 0 ? Math.min(this.RADIUS * 0.00002, x * 0.0001) : Math.max(-this.RADIUS * 0.00002, x * 0.0001)
-      this.speedY = y * 0.0001 > 0 ? Math.min(this.RADIUS * 0.00002, y * 0.0001) : Math.max(-this.RADIUS * 0.00002, y * 0.0001) */
+
     },
     itemClick(index, type) {
-      /* const param = {
-        index: index,
-        type: type
-      } */
       this.clickIndex = index
       this.clickType = type
 
