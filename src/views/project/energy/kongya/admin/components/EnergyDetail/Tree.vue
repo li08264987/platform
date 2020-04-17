@@ -1,6 +1,34 @@
 <template>
   <div :class="'org-chart-container'">
-    <organization-chart :datasource="ds" :zoom="zoom" :pan="pan" @node-click="nodeClick" />
+    <organization-chart
+      :datasource="ds"
+      :zoom="zoom"
+      :pan="pan"
+      @node-click="nodeClick"
+    />
+    <div
+      v-show="detailData.show"
+      class="org-chart-node-detail"
+      :style="{top: detailData.style.top+'px', left: detailData.style.left+'px', transform: detailData.style.transform}"
+    >
+      <div
+        class="org-chart-node-detail-title"
+        @mousedown="onMouseDown"
+        @mouseup="onMouseUp"
+        @mousemove="onMouseMove"
+      >
+        {{ detailData.title }}
+        <i class="el-icon-close" @click="handleClose" />
+      </div>
+      <div
+        v-for="(item, index) in detailData.data"
+        :key="index"
+        class="org-chart-node-detail-item"
+      >
+        <span class="org-chart-node-detail-name">{{ item.name }}</span>
+        <span class="org-chart-node-detail-value">{{ item.value }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -555,6 +583,13 @@ export default {
       },
       detailData: {
         title: '',
+        show: false,
+        style: {
+          preNode: null,
+          dragging: false,
+          top: 0,
+          left: 0
+        },
         data: [{
           name: '耗电量',
           value: '3983.2 kW·h'
@@ -582,35 +617,33 @@ export default {
   },
   methods: {
     nodeClick: function(nodeData) {
+      // 添加后台查询
       this.detailData.title = nodeData.name
-      var predom = document.querySelector('.org-chart-node-detail')
-      if (predom) predom.remove()
+      this.detailData.show = true
+      this.detailData.style.dragging = false
       var dom = document.querySelector('#' + nodeData.id + '.node')
-      if (dom) dom.innerHTML += this.createDetailHtml()
-      var closeDom = document.querySelector('.org-chart-node-detail-title i.el-icon-close')
-      if (closeDom) {
-        closeDom.onclick = function(evt) {
-          setTimeout(function() {
-            var predom1 = document.querySelector('.org-chart-node-detail')
-            if (predom1) {
-              predom1.remove()
-            }
-          }, 200)
-        }
+      if (this.detailData.style.preNode) this.detailData.style.preNode.classList.remove('active')
+      this.detailData.style.preNode = document.querySelector('#' + nodeData.id + '.node .title')
+      this.detailData.style.preNode.classList.add('active')
+      this.detailData.style.top = dom.offsetTop
+      this.detailData.style.left = dom.offsetLeft + dom.offsetWidth
+    },
+    onMouseDown: function(evt) {
+      this.detailData.style.dragging = true
+    },
+    onMouseUp: function(evt) {
+      this.detailData.style.dragging = false
+    },
+    onMouseMove: function(evt) {
+      if (this.detailData.style.dragging && (evt.movementX !== 0 || evt.movementY !== 0)) {
+        this.detailData.style.top += evt.movementY
+        this.detailData.style.left += evt.movementX
       }
     },
-    createDetailHtml: function() {
-      var html = '<div class="org-chart-node-detail">'
-      html += ('<div class="org-chart-node-detail-title">' + this.detailData.title + '能源数据<i class="el-icon-close" ></i></div>')
-      for (var i = 0; i < this.detailData.data.length; i++) {
-        html += ('<div class="org-chart-node-detail-item">' +
-          '<span class="org-chart-node-detail-name">' + this.detailData.data[i].name + '</span>' +
-          '<span class="org-chart-node-detail-value">' + this.detailData.data[i].value + '</span>' +
-        '</div>')
-      }
-      html += '</div>'
-
-      return html
+    handleClose: function() {
+      this.detailData.show = false
+      if (this.detailData.style.preNode) this.detailData.style.preNode.classList.remove('active')
+      this.detailData.style.preNode = null
     }
   }
 }
@@ -622,8 +655,8 @@ export default {
     height: 100%;
   }
   .orgchart-container {
-    height: 100%;
-    width: 100%;
+    height: unset;
+    width: unset;
     border: none;
   }
   .orgchart {
@@ -670,7 +703,10 @@ export default {
     background-color: rgba(0,0,0,0) !important;
     cursor: pointer;
   }
-  .orgchart .node .title:hover {
+  .orgchart .node .title.active,
+  .orgchart .node .title:hover,
+  .orgchart .node .title:active,
+  .orgchart .node .title:focus {
     color: rgba(17, 26, 52, 1);
     border-color: #2857FF;
     background-color: rgba(138, 159, 244, 0.3);
@@ -678,8 +714,6 @@ export default {
 
   .org-chart-node-detail {
     position: absolute;
-    top: 0;
-    left: calc(100% + 10px);
     min-width: 200px;
     text-align: left;
     display: flex;
@@ -699,6 +733,7 @@ export default {
     white-space: nowrap;
     text-overflow: ellipsis;
     border-bottom: 1px solid rgba(228,233,240,1);
+    cursor: move;
   }
 
   .org-chart-node-detail-item {
