@@ -264,6 +264,7 @@ export default {
       }).then(data != null ? data.callback : '')
     },
     handleEdit: function(params) {
+      this.passwordType = 'password'
       this.dialogStatus = 'edit'
       this.dialogVisible = true
       this.operation = false
