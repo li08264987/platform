@@ -11,7 +11,7 @@
     </div>
     <div class="table-container">
       <el-table
-        :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+        :data="tableData"
         height="calc(100% - 35px)"
         header-row-class-name="table-header"
         style="width: 100%; overflow-y: auto;"
@@ -20,6 +20,24 @@
         <el-table-column label="序号" width="80" header-align="center">
           <template slot-scope="{$index}">
             <span>{{ $index + 1 }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="type"
+          label="标准类型"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-select v-if="row.edit" v-model="row.type" class="edit-cell" placeholder="请选择标准类型">
+              <el-option
+                v-for="item in strdTypes"
+                :key="item.code"
+                :label="item.name"
+                :value="item.code"
+              />
+            </el-select>
+            <span v-if="!row.edit">{{ getTypeName(row.type) }}</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -85,6 +103,28 @@
           <template slot-scope="{row}">
             <el-input v-if="row.edit" v-model="row.value" class="edit-cell" type="number" />
             <span v-if="!row.edit">{{ row.value }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="charge"
+          label="收费标准"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-input v-if="row.edit" v-model="row.charge" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.charge }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="efficiency"
+          label="能效标准"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-input v-if="row.edit" v-model="row.efficiency" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.efficiency }}</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -176,6 +216,16 @@
             />
           </el-select>
         </el-form-item>
+        <el-form-item label="标准类型">
+          <el-select v-model="addData.type" placeholder="请选择标准类型">
+            <el-option
+              v-for="item in strdTypes"
+              :key="item.code"
+              :label="item.name"
+              :value="item.code"
+            />
+          </el-select>
+        </el-form-item>
         <el-form-item label="系统名称">
           <el-select v-model="addData.sysName" placeholder="请选择系统名称">
             <el-option
@@ -196,6 +246,12 @@
         </el-form-item>
         <el-form-item label="能耗值">
           <el-input v-model="addData.value" type="number" placeholder="请输入能耗值" />
+        </el-form-item>
+        <el-form-item label="收费标准">
+          <el-input v-model="addData.charge" type="number" placeholder="请输入收费标准" />
+        </el-form-item>
+        <el-form-item label="能效标准">
+          <el-input v-model="addData.efficiency" type="number" placeholder="请输入能效标准" />
         </el-form-item>
         <el-form-item label="加权面积">
           <el-input v-model="addData.area" type="number" placeholder="请输入加权面积" />
@@ -227,6 +283,7 @@ export default {
       currentPage: 1,
       pageSize: 15,
       count: 0,
+      strdTypes: [],
       companys: [],
       systems: [],
       addData: {
@@ -236,6 +293,9 @@ export default {
         time: '',
         value: '',
         area: '',
+        efficiency: '',
+        charge: '',
+        type: '',
         edit: false,
         editData: {}
       },
@@ -410,6 +470,16 @@ export default {
           }
         })
     },
+    getTypeName(code) {
+      var name = ''
+      for (var i = 0; i < this.strdTypes.length; i++) {
+        if (this.strdTypes[i].code + '' === code + '') {
+          name = this.strdTypes[i].name
+          break
+        }
+      }
+      return name
+    },
     getCompanyName(code) {
       var name = ''
       for (var i = 0; i < this.companys.length; i++) {
@@ -448,6 +518,7 @@ export default {
         this.tableData = data.data
         this.companys = data.companys
         this.systems = data.systemList
+        this.strdTypes = data.strdTypes
       }).catch(err => {
         this.$message({
           type: 'error',

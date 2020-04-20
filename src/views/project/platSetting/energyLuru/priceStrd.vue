@@ -11,12 +11,30 @@
     </div>
     <div class="table-container">
       <el-table
-        :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+        :data="tableData"
         height="calc(100% - 35px)"
         header-row-class-name="table-header"
         style="width: 100%; overflow-y: auto;"
         cell-class-name="strd-table-full-cell"
       >
+        <el-table-column
+          prop="type"
+          label="标准类型"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-select v-if="row.edit" v-model="row.type" class="edit-cell" placeholder="请选择标准类型">
+              <el-option
+                v-for="item in strdTypes"
+                :key="item.code"
+                :label="item.name"
+                :value="item.code"
+              />
+            </el-select>
+            <span v-if="!row.edit">{{ getTypeName(row.type) }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
           prop="price"
           label="价格（元）"
@@ -55,6 +73,27 @@
               />
             </el-select>
             <span v-if="!row.edit">{{ getFacName(row.facType) }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="startTime"
+          label="时间段"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-time-picker
+              v-if="row.edit"
+              v-model="row.times"
+              is-range
+              arrow-control
+              value-format="hh:mm:ss"
+              range-separator="至"
+              start-placeholder="开始时间"
+              end-placeholder="结束时间"
+              placeholder="选择时间范围"
+            />
+            <span v-if="!row.edit">{{ row.times.length===2 ? (row.times[0]+' - '+row.times[1]) : '' }}</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -198,6 +237,7 @@ export default {
       pageSize: 15,
       count: 0,
       facs: [],
+      strdTypes: [],
       addData: {
         code: '',
         price: '',
@@ -205,6 +245,10 @@ export default {
         facType: '',
         max: '',
         remarks: '',
+        type: '',
+        startTime: '',
+        endTime: '',
+        times: [],
         edit: false,
         editData: {}
       },
@@ -251,40 +295,72 @@ export default {
     checkAddData(data) {
       var flag = true
       var msg = '验证成功'
-      if (data.price === '') {
+      if (data.type === '') {
         flag = false
-        msg = '请输入价格'
-      } else if (data.level === '') {
-        flag = false
-        msg = '请输入级别'
-      } else if (data.facType === '') {
-        flag = false
-        msg = '请选择设备类型'
-      } else if (data.max === '') {
-        flag = false
-        msg = '请输入临界最大值'
+        msg = '请选择标准类型'
+      } else {
+        if (data.type === 0) {
+          if (data.price === '') {
+            flag = false
+            msg = '请输入价格'
+          } else if (data.level === '') {
+            flag = false
+            msg = '请输入级别'
+          } else if (data.facType === '') {
+            flag = false
+            msg = '请选择设备类型'
+          } else if (data.max === '') {
+            flag = false
+            msg = '请输入临界最大值'
+          }
+        } else {
+          if (data.price === '') {
+            flag = false
+            msg = '请输入价格'
+          } else if (data.times.length !== 2) {
+            flag = false
+            msg = '请选择时间段'
+          } else if (data.facType === '') {
+            flag = false
+            msg = '请选择设备类型'
+          }
+        }
       }
       return { flag: flag, msg: msg }
     },
     checkUpdateData(data) {
       var flag = true
       var msg = '数据未更改'
-      if (data.editData) {
-        if (data.price !== data.editData.price) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.level !== data.editData.level) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.facType !== data.editData.facType) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.max !== data.editData.max) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.remarks !== data.editData.remarks) {
-          flag = false
-          msg = '数据已更改'
+      if (data.type === '') {
+        flag = false
+        msg = '请选择标准类型'
+      } else {
+        if (data.editData) {
+          if (data.price !== data.editData.price) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.level !== data.editData.level) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.facType !== data.editData.facType) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.max !== data.editData.max) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.remarks !== data.editData.remarks) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.type !== data.editData.type) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.times[0] !== data.editData.times[0]) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.times[1] !== data.editData.times[1]) {
+            flag = false
+            msg = '数据已更改'
+          }
         }
       }
       return { flag: flag, msg: msg }
@@ -293,6 +369,8 @@ export default {
       if (this.checkAddData(this.addData).flag) {
         this.$confirm('确认添加？')
           .then(_ => {
+            this.addData.startTime = this.addData.times[0] || ''
+            this.addData.endTime = this.addData.times[1] || ''
             this.addPriceStrdData(this.addData)
             this.exitAddDialog()
           })
@@ -318,6 +396,7 @@ export default {
       this.initPriceTable()
     },
     handleEdit(row) {
+      row.times = [row.startTime || '', row.endTime || '']
       row.edit = true
       row.editData = JSON.parse(JSON.stringify(row))
     },
@@ -329,6 +408,8 @@ export default {
       row.edit = false
     },
     handleUpdate(row) {
+      row.startTime = row.times[0] || ''
+      row.endTime = row.times[1] || ''
       if (this.checkAddData(row).flag) {
         if (this.checkUpdateData(row).flag) {
           this.$message({
@@ -385,16 +466,28 @@ export default {
       }
       return name
     },
+    getTypeName(code) {
+      var name = ''
+      for (var i = 0; i < this.strdTypes.length; i++) {
+        if (this.strdTypes[i].code + '' === code + '') {
+          name = this.strdTypes[i].name
+          break
+        }
+      }
+      return name
+    },
     setPriceStrdData(params) {
       getPriceStrdList(params).then(response => {
         var data = response.data
         for (var i = 0; i < data.data.length; i++) {
+          data.data[i].times = [data.data[i].startTime, data.data[i].endTime]
           data.data[i].edit = false
           data.data[i].editData = {}
         }
         this.count = data.count
         this.tableData = data.data
         this.facs = data.facList
+        this.strdTypes = data.strdTypes
       }).catch(err => {
         this.$message({
           type: 'error',

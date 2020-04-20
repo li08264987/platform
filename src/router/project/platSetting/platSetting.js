@@ -59,7 +59,7 @@ const platSettingRouters = [{
   component: Layout,
   name: 'platSettingOther',
   meta: {
-    title: '其他设置',
+    title: '值班设置',
     icon: 'example',
     roles: ['admin', 'editor']
   },
@@ -73,7 +73,21 @@ const platSettingRouters = [{
         title: '值班设置',
         icon: 'duty'
       }
-    }, {
+    }
+  ]
+}, {
+  path: '/platSettingEnergy',
+  redirect: '/platSettingChejian/platSettingEnergy', // 重定向地址，在面包屑中点击会重定向去的地址
+  component: Layout,
+  name: 'platSettingEnergy',
+  meta: {
+    title: '标准录入',
+    icon: 'example',
+    roles: ['admin', 'editor']
+  },
+  alwaysShow: true,
+  children: [
+    {
       path: 'energyStrd',
       component: () => import('@/views/project/platSetting/energyLuru/energyStrd'),
       name: 'platformDuty',
