@@ -65,7 +65,7 @@ export default {
       this.chart.setOption({
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b}: {c} ({d}%)'
+          formatter: '{b}: {c} ({d}%)'
         },
         // legend: {
         //   orient: 'vertical',

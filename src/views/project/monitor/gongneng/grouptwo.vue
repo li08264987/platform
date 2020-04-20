@@ -1958,6 +1958,8 @@
   </svg>
 </template>
 <script>
+import $ from 'jquery'
+import '@/api/monitor/svgtool'
 export default {
   name: 'KongYaJi',
   components: {
@@ -1965,6 +1967,9 @@ export default {
   data() {
     return {
     }
+  },
+  mounted() {
+    $('svg').svgPanZoom()
   }
 }
 </script>

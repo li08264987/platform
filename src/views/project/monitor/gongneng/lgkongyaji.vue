@@ -529,13 +529,55 @@
   </svg>
 </template>
 <script>
+import monitorapi from '@/api/monitor/monitor'
+import $ from 'jquery'
+import '@/api/monitor/svgtool'
 export default {
   name: 'KongYaJi',
   components: {
   },
+  props: {
+    params: {
+      type: Array,
+      require: true,
+      default() {
+        return ['', '']
+      }
+    }
+  },
   data() {
     return {
+      datas: {}
     }
+  },
+  watch: {
+    params() {
+      const self = this
+      monitorapi.getKongYaJiData({
+        'kyjq': self.params[0],
+        'kyj': self.params[1]
+      }).then(res => {
+        if (res.state === 1) {
+          self.datas = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+  },
+  mounted() {
+    const self = this
+    monitorapi.getKongYaJiData({
+      'kyjq': self.params[0],
+      'kyj': self.params[1]
+    }).then(res => {
+      if (res.state === 1) {
+        self.datas = res.data
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+    $('svg').svgPanZoom()
   }
 }
 </script>

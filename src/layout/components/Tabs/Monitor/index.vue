@@ -63,7 +63,6 @@ export default {
       }
     })
     monitorapi.getSideBar().then(res => {
-      debugger
       // axios.post('/common/getSideBar').then(res => {
       if (res.state === 1) {
         const result = res.data
