@@ -9,13 +9,14 @@
 </template>
 
 <script>
+import { fetchSystem } from '@/api/main/guapai'
 export default {
   components: { },
   data() {
     return {
       width: 300,
       height: 300,
-      tagsNum: 18,
+      tagsNum: null,
       RADIUS: 85,
       speedX: Math.PI / 360,
       speedY: 0,
@@ -54,51 +55,46 @@ export default {
     }, 30)
   },
   created() {
-    const tags = []
-    for (let i = 0; i < this.tagsNum; i++) {
-      const tag = {}
-      const k = -1 + (2 * (i + 1) - 1) / this.tagsNum
-      const a = Math.acos(k)
-      const b = a * Math.sqrt(this.tagsNum * Math.PI)
-      const temp = i % 6
-      switch (temp) {
-        case 0:
-          tag.text = '空压系统'
-          tag.type = 'KongYaSystem'
-          tag.color = '#11BEBE'
-          break
-        case 1:
-          tag.text = '氢氮系统'
-          tag.type = 'QingDanSystem'
-          tag.color = '#DAD128'
-          break
-        case 2:
-          tag.text = '真空系统'
-          tag.type = 'ZhenKongSystem'
-          tag.color = '#EB2E95'
-          break
-        case 3:
-          tag.text = '电力系统'
-          tag.type = 'DianLiSystem'
-          tag.color = '#4483FF'
-          break
-        case 4:
-          tag.text = '冷水系统'
-          tag.type = 'LengShuiSystem'
-          tag.color = ' #FF7D41'
-          break
-        case 5:
-          tag.text = '热水系统'
-          tag.type = 'ReShuiSystem'
-          tag.color = '#FF5B60'
-          break
+    fetchSystem().then((res) => {
+      this.tagsNum = res.data.length * 3
+      const tags = []
+      for (let i = 0; i < this.tagsNum; i++) {
+        const tag = {}
+        const k = -1 + (2 * (i + 1) - 1) / this.tagsNum
+        const a = Math.acos(k)
+        const b = a * Math.sqrt(this.tagsNum * Math.PI)
+        const temp = i % res.data.length
+        tag.text = res.data[temp].systemName
+        tag.type = res.data[temp].systemCode
+        switch (temp) {
+          case 0:
+            tag.color = '#11BEBE'
+            break
+          case 1:
+            tag.color = '#DAD128'
+            break
+          case 2:
+            tag.color = '#EB2E95'
+            break
+          case 3:
+            tag.color = '#4483FF'
+            break
+          case 4:
+            tag.color = ' #FF7D41'
+            break
+          case 5:
+            tag.color = '#FF5B60'
+            break
+        }
+        tag.x = this.CX + this.RADIUS * Math.sin(a) * Math.cos(b)
+        tag.y = this.CY + this.RADIUS * Math.sin(a) * Math.sin(b)
+        tag.z = this.RADIUS * Math.cos(a)
+        tags.push(tag)
       }
-      tag.x = this.CX + this.RADIUS * Math.sin(a) * Math.cos(b)
-      tag.y = this.CY + this.RADIUS * Math.sin(a) * Math.sin(b)
-      tag.z = this.RADIUS * Math.cos(a)
-      tags.push(tag)
-    }
-    this.tags = tags
+      this.tags = tags
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   methods: {
@@ -129,7 +125,7 @@ export default {
       this.clickIndex = index
       this.clickType = type
 
-      this.$emit('fromSon', this.clickIndex, this.clickType)
+      this.$emit('fromSon', this.clickIndex, this.clickType, this.tagsNum / 3)
     },
     mouseOut() {
       this.active = false

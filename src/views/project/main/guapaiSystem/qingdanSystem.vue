@@ -222,7 +222,7 @@ export default {
        }
        .sidong{
            position: relative;
-           top: 24vw;
+           top: 23.3vw;
             left: 17vw;
        }
        .sandong{

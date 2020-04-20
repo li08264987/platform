@@ -8,13 +8,13 @@
     </div>
 
     <div class="radio-container">
-      <el-radio-group v-model="operationDefult" class="operation-group" @change="radioChange">
-        <el-radio-button label="kongya">空压</el-radio-button>
-        <el-radio-button label="danqi">氮气</el-radio-button>
-        <el-radio-button label="zhenkong">真空</el-radio-button>
-        <el-radio-button label="dian">电</el-radio-button>
-        <el-radio-button label="leng">冷</el-radio-button>
-        <el-radio-button label="re">热</el-radio-button>
+      <el-radio-group v-model="systems.defaultSystemName" class="operation-group" @change="radioChange">
+        <el-radio-button
+          v-for="item in systems.systemsRadio"
+          :key="item.systemCode"
+          :label="item.systemName"
+          :value="item.systemCode"
+        />
       </el-radio-group>
     </div>
 
@@ -29,12 +29,12 @@
 </template>
 
 <script>
+import { fetchSystem } from '@/api/main/operationWatch'
 export default {
   name: 'OperationWatch',
   components: {},
   data() {
     return {
-      operationDefult: 'kongya',
       showHeader: false,
       operation: {
         tableData: [{
@@ -53,6 +53,11 @@ export default {
           type: '冷却水温度',
           value: '39℃'
         }]
+      },
+      systems: {
+        systemsRadio: [],
+        defaultSystemCode: '',
+        defaultSystemName: ''
       }
     }
   },
@@ -60,12 +65,27 @@ export default {
   computed: {},
 
   mounted() {
+    this.initOperationWatchData()
   },
 
   methods: {
-    radioChange: function(value) {
-      switch (value) {
-        case 'kongya':
+    initOperationWatchData: function() {
+      this.getSystem()
+    },
+    getSystem: function() {
+      fetchSystem().then((res) => {
+        this.systems.systemsRadio = res.data
+        if (res.data.length > 0) {
+          this.systems.defaultSystemCode = res.data[0].systemCode
+          this.systems.defaultSystemName = res.data[0].systemName
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    radioChange: function(params) {
+      switch (params) {
+        case '空压系统':
           this.operation.tableData = [{
             type: '总流量',
             value: '39m³/h'
@@ -83,7 +103,7 @@ export default {
             value: '39℃'
           }]
           break
-        case 'danqi':
+        case '氢氮系统':
           this.operation.tableData = [{
             type: '总流量',
             value: '39m³/h'
@@ -101,7 +121,7 @@ export default {
             value: '39℃'
           }]
           break
-        case 'zhenkong':
+        case '真空系统':
           this.operation.tableData = [{
             type: '真空度',
             value: '39kPa'
@@ -111,7 +131,7 @@ export default {
             value: '39℃'
           }]
           break
-        case 'dian':
+        case '电力系统':
           this.operation.tableData = [{
             type: '总瞬时功率',
             value: '39kWh'
@@ -125,11 +145,6 @@ export default {
             value: '39kWh'
           }]
           break
-        case 'leng':
-          break
-        case 're':
-          break
-        default:
       }
     }
   }
@@ -186,7 +201,7 @@ export default {
       border-bottom: 1px solid #243B9E;
       border-right:1px solid #243B9E;
       height: 1.9vw;
-      width: 3.35vw;
+      /* width: 5vw; */
       line-height: 0.9vw;
     }
     .el-radio-button:first-child .el-radio-button__inner{
@@ -204,9 +219,10 @@ export default {
     flex-grow: 1;
     width: 100%;
     height: 0;
+    padding-right: 1.63vw;
     .el-table{
         background-color:transparent;
-        width: 20vw;
+        width: 100%;
         border-color: #243B9E;
       }
       .el-table--border::after, .el-table--group::after, .el-table::before{
