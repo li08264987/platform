@@ -48,7 +48,6 @@ export default {
   },
   data() {
     return {
-      /* html: backgroud, */
       cursor: this.getFontSizeCursor()
     }
   },

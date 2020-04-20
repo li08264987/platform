@@ -4,19 +4,37 @@
       <el-button type="primary" class="blue-btn add-strd" @click="onStrdAdd()">添加</el-button>
       <el-form ref="form" :model="searchForm" label-width="120px" class="search-form">
         <el-form-item label="" :class="'noMargin'">
-          <el-input v-model="searchForm.searchText" placeholder="输入搜索内容" />
+          <el-input v-model="searchForm.searchFormText" placeholder="输入搜索内容" />
           <el-button class="blue-btn" type="primary" @click="onSearch()">搜索</el-button>
         </el-form-item>
       </el-form>
     </div>
     <div class="table-container">
       <el-table
-        :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
+        :data="tableData"
         height="calc(100% - 35px)"
         header-row-class-name="table-header"
         style="width: 100%; overflow-y: auto;"
         cell-class-name="strd-table-full-cell"
       >
+        <el-table-column
+          prop="type"
+          label="标准类型"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-select v-if="row.edit" v-model="row.type" class="edit-cell" placeholder="请选择标准类型">
+              <el-option
+                v-for="item in strdTypes"
+                :key="item.code"
+                :label="item.name"
+                :value="item.code"
+              />
+            </el-select>
+            <span v-if="!row.edit">{{ getTypeName(row.type) }}</span>
+          </template>
+        </el-table-column>
         <el-table-column
           prop="price"
           label="价格（元）"
@@ -58,6 +76,27 @@
           </template>
         </el-table-column>
         <el-table-column
+          prop="startTime"
+          label="时间段"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-time-picker
+              v-if="row.edit"
+              v-model="row.times"
+              is-range
+              arrow-control
+              value-format="hh:mm:ss"
+              range-separator="至"
+              start-placeholder="开始时间"
+              end-placeholder="结束时间"
+              placeholder="选择时间范围"
+            />
+            <span v-if="!row.edit">{{ row.times.length===2 ? (row.times[0]+' - '+row.times[1]) : '' }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
           prop="max"
           label="临界最大值"
           header-align="center"
@@ -93,7 +132,7 @@
               size="small"
               style="margin-left: 10px;"
               class="control-btn"
-              @click="handleUpdate($index, row)"
+              @click="handleUpdate(row)"
             >
               更新
             </el-button>
@@ -102,7 +141,7 @@
               type="text"
               size="small"
               class="control-btn"
-              @click="handleCancel($index, row)"
+              @click="handleCancel(row)"
             >
               取消
             </el-button>
@@ -111,7 +150,7 @@
               type="text"
               size="small"
               class="control-btn"
-              @click="handleEdit($index, row)"
+              @click="handleEdit(row)"
             >
               编辑
             </el-button>
@@ -120,7 +159,7 @@
               type="text"
               size="small"
               class="control-btn red-word-btn"
-              @click="handleDelete($index, row)"
+              @click="handleDelete(row)"
             >
               删除
             </el-button>
@@ -180,69 +219,60 @@
 </template>
 
 <script>
+import {
+  getPriceStrdList,
+  insertPriceStrd,
+  deletePriceStrdByCode,
+  updatePriceStrd
+} from '@/api/platSetting/priceStrd'
 export default {
   data() {
     return {
       dialogVisible: false,
       searchForm: {
-        searchText: ''
+        searchText: '',
+        searchFormText: ''
       },
       currentPage: 1,
       pageSize: 15,
-      count: 2,
-      facs: [{
-        code: 'kylg1',
-        name: '1#螺杆空压机'
-      }, {
-        code: 'kylg2',
-        name: '2#螺杆空压机'
-      }, {
-        code: 'kylg3',
-        name: '3#螺杆空压机'
-      }],
+      count: 0,
+      facs: [],
+      strdTypes: [],
       addData: {
+        code: '',
         price: '',
         level: '',
         facType: '',
         max: '',
         remarks: '',
+        type: '',
+        startTime: '',
+        endTime: '',
+        times: [],
         edit: false,
         editData: {}
       },
-      tableData: [{
-        price: 20,
-        level: 1,
-        facType: 'kylg1',
-        max: 1000,
-        remarks: '这是一个备注',
-        edit: false,
-        editData: {}
-      }, {
-        price: 25,
-        level: 2,
-        facType: 'kylg1',
-        max: 3000,
-        remarks: '',
-        edit: false,
-        editData: {}
-      }]
+      tableData: []
     }
   },
   mounted() {
-
+    this.searchForm.searchText = ''
+    this.initPriceTable()
   },
   methods: {
     handleSizeChange(val) {
       this.pageSize = val
+      this.initPriceTable()
     },
     handleCurrentChange(val) {
       this.currentPage = val
+      this.initPriceTable()
     },
     onStrdAdd() {
       this.dialogVisible = true
     },
     handleClose() {
-      this.$confirm('确认取消添加能耗标准？')
+      this.$confirm('确认取消添加价格标准？')
         .then(_ => {
           this.exitAddDialog()
         })
@@ -265,18 +295,73 @@ export default {
     checkAddData(data) {
       var flag = true
       var msg = '验证成功'
-      if (data.price === '') {
+      if (data.type === '') {
         flag = false
-        msg = '请输入价格'
-      } else if (data.level === '') {
+        msg = '请选择标准类型'
+      } else {
+        if (data.type === 0) {
+          if (data.price === '') {
+            flag = false
+            msg = '请输入价格'
+          } else if (data.level === '') {
+            flag = false
+            msg = '请输入级别'
+          } else if (data.facType === '') {
+            flag = false
+            msg = '请选择设备类型'
+          } else if (data.max === '') {
+            flag = false
+            msg = '请输入临界最大值'
+          }
+        } else {
+          if (data.price === '') {
+            flag = false
+            msg = '请输入价格'
+          } else if (data.times.length !== 2) {
+            flag = false
+            msg = '请选择时间段'
+          } else if (data.facType === '') {
+            flag = false
+            msg = '请选择设备类型'
+          }
+        }
+      }
+      return { flag: flag, msg: msg }
+    },
+    checkUpdateData(data) {
+      var flag = true
+      var msg = '数据未更改'
+      if (data.type === '') {
         flag = false
-        msg = '请输入级别'
-      } else if (data.facType === '') {
-        flag = false
-        msg = '请选择设备类型'
-      } else if (data.max === '') {
-        flag = false
-        msg = '请输入临界最大值'
+        msg = '请选择标准类型'
+      } else {
+        if (data.editData) {
+          if (data.price !== data.editData.price) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.level !== data.editData.level) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.facType !== data.editData.facType) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.max !== data.editData.max) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.remarks !== data.editData.remarks) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.type !== data.editData.type) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.times[0] !== data.editData.times[0]) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.times[1] !== data.editData.times[1]) {
+            flag = false
+            msg = '数据已更改'
+          }
+        }
       }
       return { flag: flag, msg: msg }
     },
@@ -284,16 +369,19 @@ export default {
       if (this.checkAddData(this.addData).flag) {
         this.$confirm('确认添加？')
           .then(_ => {
-            this.tableData.push(this.addData)
-            this.count++
+            this.addData.startTime = this.addData.times[0] || ''
+            this.addData.endTime = this.addData.times[1] || ''
+            this.addPriceStrdData(this.addData)
             this.exitAddDialog()
           })
           .catch(err => {
-            this.$message({
-              type: 'error',
-              duration: 2000,
-              message: err
-            })
+            if (err !== 'cancel') {
+              this.$message({
+                type: 'error',
+                duration: 2000,
+                message: err
+              })
+            }
           })
       } else {
         this.$message({
@@ -304,23 +392,47 @@ export default {
       }
     },
     onSearch() {
-      console.log(this.searchForm)
+      this.searchForm.searchText = this.searchForm.searchFormText
+      this.initPriceTable()
     },
-    handleEdit(index, row) {
+    handleEdit(row) {
+      row.times = [row.startTime || '', row.endTime || '']
       row.edit = true
       row.editData = JSON.parse(JSON.stringify(row))
     },
-    handleCancel(index, row) {
+    handleCancel(row) {
       var raw = JSON.parse(JSON.stringify(row.editData))
       for (var key in raw) {
         row[key] = raw[key]
       }
       row.edit = false
     },
-    handleUpdate(index, row) {
+    handleUpdate(row) {
+      row.startTime = row.times[0] || ''
+      row.endTime = row.times[1] || ''
       if (this.checkAddData(row).flag) {
-        row.editData = {}
-        row.edit = false
+        if (this.checkUpdateData(row).flag) {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: this.checkUpdateData(row).msg
+          })
+        } else {
+          this.$confirm('确认更新？')
+            .then(_ => {
+              this.updatePriceStrdData(row)
+            })
+            .catch(err => {
+              if (err !== 'cancel') {
+                this.$message({
+                  type: 'error',
+                  duration: 2000,
+                  message: err
+                })
+                this.handleCancel(row)
+              }
+            })
+        }
       } else {
         this.$message({
           type: 'warning',
@@ -329,14 +441,19 @@ export default {
         })
       }
     },
-    handleDelete(index, row) {
+    handleDelete(row) {
       this.$confirm('确认删除？')
         .then(_ => {
-          this.tableData.splice(index, 1)
-          this.count--
+          this.deletePriceData({ code: row.code })
         })
-        .catch(_ => {
-          console.log('cancel')
+        .catch(err => {
+          if (err !== 'cancel') {
+            this.$message({
+              type: 'error',
+              duration: 2000,
+              message: err
+            })
+          }
         })
     },
     getFacName(code) {
@@ -348,6 +465,95 @@ export default {
         }
       }
       return name
+    },
+    getTypeName(code) {
+      var name = ''
+      for (var i = 0; i < this.strdTypes.length; i++) {
+        if (this.strdTypes[i].code + '' === code + '') {
+          name = this.strdTypes[i].name
+          break
+        }
+      }
+      return name
+    },
+    setPriceStrdData(params) {
+      getPriceStrdList(params).then(response => {
+        var data = response.data
+        for (var i = 0; i < data.data.length; i++) {
+          data.data[i].times = [data.data[i].startTime, data.data[i].endTime]
+          data.data[i].edit = false
+          data.data[i].editData = {}
+        }
+        this.count = data.count
+        this.tableData = data.data
+        this.facs = data.facList
+        this.strdTypes = data.strdTypes
+      }).catch(err => {
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    initPriceTable() {
+      this.setPriceStrdData({
+        size: this.pageSize,
+        page: this.currentPage,
+        searchText: this.searchForm.searchText
+      })
+    },
+    addPriceStrdData(params) {
+      insertPriceStrd(params).then(response => {
+        this.$message({
+          type: 'success',
+          duration: 2000,
+          message: response.msg
+        })
+        this.initPriceTable()
+      }).catch(err => {
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    deletePriceData(params) {
+      deletePriceStrdByCode(params).then(response => {
+        this.$message({
+          type: 'success',
+          duration: 2000,
+          message: response.msg
+        })
+        this.initPriceTable()
+      }).catch(err => {
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    updatePriceStrdData(params) {
+      updatePriceStrd(params).then(response => {
+        this.$message({
+          type: 'success',
+          duration: 2000,
+          message: response.msg
+        })
+        params.editData = {}
+        params.edit = false
+        this.initPriceTable()
+      }).catch(err => {
+        params.editData = {}
+        params.edit = false
+        this.$message({
+          type: 'error',
+          duration: 2000,
+          message: err
+        })
+      })
     }
   }
 }

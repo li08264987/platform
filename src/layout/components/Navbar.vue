@@ -5,8 +5,8 @@
       src="@/assets/tittle/logo.png"
     >
     <div>
-      <p class="tittle-cn">能源系统运管平台</p>
-      <p class="tittle-en">Energy System Management Platform</p>
+      <p class="tittle-cn">启慧AI+能源系统运管平台</p>
+      <p class="tittle-en">QiHui AI+Energy System Management Platform</p>
     </div>
     <ul class="tab-ul">
       <li
@@ -23,7 +23,22 @@
         <div style="width:100%;text-align:center;margin-top:-5px;">{{ tab.type }}</div>
       </li>
     </ul>
-    <div class="right-menu" />
+    <!-- <div class="right-menu" /> -->
+    <div class="tittle-right">
+      <div class="message">
+        <img
+          src="../../assets/tittle/message.png"
+          alt=""
+        >
+        <div class="msg-count">
+          <p class="count-txt">{{ 0 }}</p>
+        </div>
+      </div>
+      <div class="avatar"><img
+        src="../../assets/tittle/avatar.png"
+        alt=""
+      > <p class="login-txt">登录</p></div>
+    </div>
   </div>
 </template>
 
@@ -103,6 +118,47 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.login-txt{
+  color: whitesmoke;
+  font-weight: bold;
+  margin-left: 0.3em;
+}
+.count-txt{
+  color: white;
+}
+.msg-count{
+  display: flex;
+  flex-direction: column;
+  width: 1.2rem;
+  height: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  background: red;
+  border-radius: 1rem;
+  margin-left: -0.8rem;
+  margin-top: -1.2rem;
+}
+.tittle-right{
+  display: flex;
+  flex-direction:row;
+  width: 10%;;
+}
+.message{
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.avatar{
+  display: flex;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+   cursor: pointer;
+}
 .logo {
   position: absolute;
   top: 10px;
@@ -130,7 +186,7 @@ export default {
   color: white;
 }
 .tab-ul {
-  width: 85%;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;

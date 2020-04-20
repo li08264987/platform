@@ -109,7 +109,7 @@ export default {
 <style>
 .radio-label {
   font-size: 14px;
-  color: #606266;
+  color: #666060;
   line-height: 40px;
   padding: 0 12px 0 30px;
 }

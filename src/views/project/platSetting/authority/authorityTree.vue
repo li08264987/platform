@@ -16,8 +16,10 @@
 export default {
   name: 'AuthorityTree',
   props: {
-    // eslint-disable-next-line vue/require-default-prop
-    data: Object,
+    data: {
+      type: Object,
+      default: null
+    },
     nodeKey: {
       type: String,
       default: 'AUTH_ID'

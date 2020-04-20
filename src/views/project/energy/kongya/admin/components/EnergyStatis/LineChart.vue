@@ -123,7 +123,7 @@ export default {
             left: 10,
             right: 10,
             bottom: 20,
-            top: 60,
+            top: 10,
             containLabel: true
           },
           tooltip: {
@@ -150,8 +150,7 @@ export default {
             }
           },
           legend: {
-            data: legendData,
-            top: 20
+            show: false
           },
           series: series
         })

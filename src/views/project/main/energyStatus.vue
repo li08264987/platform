@@ -5,12 +5,12 @@
         <div class="logo" />
         <span>能耗概况</span>
       </div>
-      <el-select v-model="energySelect.valueEnergy" :popper-append-to-body="false" placeholder="请选择" class="energy-select">
+      <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
-          v-for="item in energySelect.energyTypes"
+          v-for="item in energySelect.energyTimeTypes"
           :key="item.value"
           :label="item.label"
-          :value="item.value"
+          :value="{value: item.value, label: item.label}"
         />
       </el-select>
     </div>
@@ -19,35 +19,35 @@
       <div class="row row-1">
         <div class="left">
           <div class="number">
-            <div class="left-number">529</div>
+            <div class="left-number">{{ energy.dian.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div class="number-logo" />
-                <div class="percent">10%</div>
+                <div :class="numberLogo" />
+                <div class="percent">{{ energy.dian.changeNumber }}</div>
               </div>
             </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text">电耗(万kwh)</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">同比增长</div>
+              <div class="right-text">{{ energy.dian.changeText }}</div>
             </el-tooltip>
           </div>
         </div>
         <div class="right">
           <div class="number">
-            <div class="left-number">529</div>
+            <div class="left-number">{{ energy.zhenkong.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div class="number-logo" />
-                <div class="percent">10%</div>
+                <div :class="numberLogo" />
+                <div class="percent">{{ energy.zhenkong.changeNumber }}</div>
               </div>
             </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text">真空量(万m³)</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">同比增长</div>
+              <div class="right-text">{{ energy.zhenkong.changeText }}</div>
             </el-tooltip>
           </div>
         </div>
@@ -56,35 +56,35 @@
       <div class="row row-2">
         <div class="left">
           <div class="number">
-            <div class="left-number">529</div>
+            <div class="left-number">{{ energy.yasuokongqi.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div class="number-logo" />
-                <div class="percent">10%</div>
+                <div :class="numberLogo" />
+                <div class="percent">{{ energy.yasuokongqi.changeNumber }}</div>
               </div>
             </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text" style="margin-right:0.8vw">压缩空气量(万m³)</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">同比增长</div>
+              <div class="right-text">{{ energy.yasuokongqi.changeText }}</div>
             </el-tooltip>
           </div>
         </div>
         <div class="right">
           <div class="number">
-            <div class="left-number">529</div>
+            <div class="left-number">{{ energy.leng.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div class="number-logo" />
-                <div class="percent">10%</div>
+                <div :class="numberLogo" />
+                <div class="percent">{{ energy.leng.changeNumber }}</div>
               </div>
             </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text" style="margin-right:2.7vw">冷量(万GJ)</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">同比增长</div>
+              <div class="right-text">{{ energy.leng.changeText }}</div>
             </el-tooltip>
           </div>
         </div>
@@ -93,35 +93,35 @@
       <div class="row row-3">
         <div class="left">
           <div class="number">
-            <div class="left-number">529</div>
+            <div class="left-number">{{ energy.qingdan.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div class="number-logo" />
-                <div class="percent">10%</div>
+                <div :class="numberLogo" />
+                <div class="percent">{{ energy.qingdan.changeNumber }}</div>
               </div>
             </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text" style="margin-right:1.5vw">氢氮气量(万m³)</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">同比增长</div>
+              <div class="right-text">{{ energy.qingdan.changeText }}</div>
             </el-tooltip>
           </div>
         </div>
         <div class="right">
           <div class="number">
-            <div class="left-number">529</div>
+            <div class="left-number">{{ energy.re.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div class="number-logo" />
-                <div class="percent">10%</div>
+                <div :class="numberLogo" />
+                <div class="percent">{{ energy.re.changeNumber }}</div>
               </div>
             </el-tooltip>
           </div>
           <div class="text">
             <div class="left-text" style="margin-right:2.7vw">热量(万GJ)</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">同比增长</div>
+              <div class="right-text">{{ energy.re.changeText }}</div>
             </el-tooltip>
           </div>
         </div>
@@ -131,13 +131,14 @@
 </template>
 
 <script>
+import { getDianHao } from '@/api/main/energyStatus'
 export default {
   name: 'EnerguStatus',
   components: {},
   data() {
     return {
       energySelect: {
-        energyTypes: [{
+        energyTimeTypes: [{
           value: 'day',
           label: '按日查'
         },
@@ -149,17 +150,85 @@ export default {
           value: 'month',
           label: '按月查'
         }],
-        valueEnergy: '按日查'
-      }
+        selectedTime: {
+          value: 'day',
+          label: '按日查'
+        }
+      },
+      energy: {
+        dian: {
+          xiaohao: 529,
+          changeNumber: '10%',
+          changeText: '同比增长',
+          sign: 1
+        },
+        zhenkong: {
+          xiaohao: 529,
+          changeNumber: '10%',
+          changeText: '同比增长',
+          sign: 1
+        },
+        yasuokongqi: {
+          xiaohao: 529,
+          changeNumber: '10%',
+          changeText: '同比增长',
+          sign: 1
+        },
+        leng: {
+          xiaohao: 529,
+          changeNumber: '10%',
+          changeText: '同比增长',
+          sign: 1
+        },
+        qingdan: {
+          xiaohao: 529,
+          changeNumber: '10%',
+          changeText: '同比增长',
+          sign: 1
+        },
+        re: {
+          xiaohao: 529,
+          changeNumber: '10%',
+          changeText: '同比增长',
+          sign: 1
+        }
+      },
+      numberLogo: 'increaseLogo'
     }
   },
 
   computed: {},
 
   mounted() {
+    this.initEnergyStatusData()
   },
 
-  methods: {}
+  methods: {
+    initEnergyStatusData: function() {
+      this.getDianHao()
+    },
+    getDianHao: function() {
+      getDianHao(this.energySelect.selectedTime).then((res) => {
+        this.energy.dian = res.data
+        switch (res.data.sign) {
+          case 1:
+            this.numberLogo = 'increaseLogo'
+            break
+          case 0:
+            this.numberLogo = 'decreaseLogo'
+            break
+        }
+      }).catch(errr => {
+        console.log(errr)
+      })
+    },
+    changeMethod: function(params) {
+      const { value, label } = params
+      this.energySelect.selectedTime.label = label
+      this.energySelect.selectedTime.value = value
+      this.getDianHao()
+    }
+  }
 }
 
 </script>
@@ -286,9 +355,15 @@ export default {
           .right-number{
             display: flex;
             flex-direction: row;
-            .number-logo{
+            .decreaseLogo{
               width: 0.9vw;
-              height: 1vw;
+              height: 1.2vw;
+              background-repeat: no-repeat;
+              background-image: url('../../../assets/main/jienengArrow.png')
+            }
+            .increaseLogo{
+              width: 0.9vw;
+              height: 1.2vw;
               background-repeat: no-repeat;
               background-image: url('../../../assets/main/increaseArrow.png')
             }
@@ -332,9 +407,15 @@ export default {
           .right-number{
             display: flex;
             flex-direction: row;
-            .number-logo{
+            .decreaseLogo{
               width: 0.9vw;
-              height: 1vw;
+              height: 1.2vw;
+              background-repeat: no-repeat;
+              background-image: url('../../../assets/main/jienengArrow.png')
+            }
+            .increaseLogo{
+              width: 0.9vw;
+              height: 1.2vw;
               background-repeat: no-repeat;
               background-image: url('../../../assets/main/increaseArrow.png')
             }

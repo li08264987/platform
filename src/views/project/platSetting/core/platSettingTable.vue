@@ -40,14 +40,12 @@
             icon="el-icon-edit"
             label="编辑"
             :size="size"
-            :perms="permsedit"
             @click="handleEdit(scope.$index, scope.row)"
           />
           <platSettingButton
             icon="el-icon-delete"
             label="删除"
             :size="size"
-            :perms="permsdelete"
             type="danger"
             @click="handleDelete(scope.$index, scope.row)"
           />
@@ -55,7 +53,6 @@
       </el-table-column>
     </el-table>
 
-    <!--分页栏-->
     <div class="toolbar">
       <el-pagination
         layout="total, prev, pager, next, jumper"
@@ -76,15 +73,15 @@ export default {
     platSettingButton
   },
   props: {
-    // eslint-disable-next-line vue/require-default-prop
-    columns: Array,
-    // eslint-disable-next-line vue/require-default-prop
-    data: Object,
-    // eslint-disable-next-line vue/require-default-prop
-    permsedit: String, // 编辑权限标识
-    // eslint-disable-next-line vue/require-default-prop
-    permsdelete: String, // 删除权限标识
-    size: { // 尺寸样式
+    columns: {
+      type: Array,
+      default: null
+    },
+    data: {
+      type: Object,
+      default: null
+    },
+    size: {
       type: String,
       default: 'mini'
     },
@@ -127,7 +124,7 @@ export default {
   },
   data() {
     return {
-      // 分页信息
+
       pageRequest: {
         pageNum: 1,
         pageSize: 15
@@ -140,7 +137,6 @@ export default {
     this.refreshPageRequest(1)
   },
   methods: {
-    // 换页刷新
     refreshPageRequest: function(pageNum) {
       this.pageRequest.pageNum = pageNum
       this.findPage()
@@ -152,7 +148,6 @@ export default {
       }
       this.$emit('findPage', { pageRequest: this.pageRequest, callback: callback })
     },
-    // 选择切换
     selectionChange: function(selections) {
       this.selections = selections
       this.$emit('selectionChange', { selections: selections })
@@ -160,11 +155,9 @@ export default {
     handleCurrentChange: function(val) {
       this.$emit('handleCurrentChange', { val: val })
     },
-    // 编辑
     handleEdit: function(index, row) {
       this.$emit('handleEdit', { index: index, row: row })
     },
-    // 删除
     handleDelete: function(index, row) {
       this.delete({ index, row })
     },
@@ -173,8 +166,7 @@ export default {
         type: 'warning'
       }).then(() => {
         const callback = res => {
-          // eslint-disable-next-line eqeqeq
-          if (res.state == 1) {
+          if (res.state === 1) {
             this.$message({ message: '删除成功', type: 'success' })
             this.findPage()
           } else {

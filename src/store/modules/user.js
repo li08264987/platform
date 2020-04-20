@@ -1,6 +1,7 @@
 import { userlogin, logout } from '@/api/login/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
+import { isPC } from '@/utils/index'
 
 const state = {
   token: getToken(),
@@ -33,7 +34,8 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      userlogin({ username: username.trim(), password: password }).then(response => {
+      var isPCflag = isPC()
+      userlogin({ username: username.trim(), password: password, USER_TYPE: isPCflag }).then(response => {
         commit('SET_TOKEN', 'admin-token')
         setToken('admin-token')
         resolve()

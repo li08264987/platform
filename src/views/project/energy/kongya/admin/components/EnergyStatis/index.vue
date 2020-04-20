@@ -46,20 +46,20 @@
                 <div class="chart-title"><span>电耗曲线图</span></div>
                 <div class="chart-main" style="flex-direction: column; position: relative; width: 100%;">
                   <div class="title-bar">
-                    <el-button class="btn" @click="dialogVisible = true">添加时间段</el-button>
-                    <el-dialog
-                      title="添加时间段"
-                      :center="false"
-                      :visible.sync="dialogVisible"
-                      width="30%"
-                      :before-close="handleClose"
-                    >
-                      <span>这是一段信息</span>
-                      <span slot="footer" class="dialog-footer">
-                        <el-button @click="dialogVisible = false">取 消</el-button>
-                        <el-button type="primary" @click="dialogVisible = false">添 加</el-button>
-                      </span>
-                    </el-dialog>
+                    <el-form ref="form" :model="lineChartSearchForm" label-width="120px" class="search-form">
+                      <el-form-item label="选择时间段">
+                        <el-date-picker
+                          v-model="lineChartSearchForm.value"
+                          type="datetimerange"
+                          format="yyyy-MM-dd hh:mm:ss"
+                          value-format="yyyy-MM-dd hh:mm:ss"
+                          range-separator="至"
+                          start-placeholder="开始日期"
+                          end-placeholder="结束日期"
+                        />
+                        <el-button class="btn blue-btn" type="primary" @click="onSearch()">搜索</el-button>
+                      </el-form-item>
+                    </el-form>
                   </div>
                   <div class="chart-grid" style="position: relative;">
                     <line-chart :chart-data="lineChartData" />
@@ -110,7 +110,9 @@ export default {
   },
   data() {
     return {
-      dialogVisible: false,
+      lineChartSearchForm: {
+        value: ['', '']
+      },
       progressData: {
         nenghao: {
           title: '电耗进度',
@@ -211,10 +213,7 @@ export default {
         colors: ['#A26DFD', '#FAC400', '#10D178', '#F0725E', '#2853FF']
       },
       lineChartData: [{
-        name: '选择时间段',
-        data: [{ name: '1:00', value: 15 }, { name: '2:00', value: 10 }, { name: '3:00', value: 13 }, { name: '4:00', value: 18 }, { name: '5:00', value: 15 }, { name: '6:00', value: 16 }, { name: '7:00', value: 12 }, { name: '8:00', value: 11 }, { name: '9:00', value: 6 }, { name: '10:00', value: 8 }, { name: '11:00', value: 8 }, { name: '12:00', value: 12 }, { name: '13:00', value: 14 }, { name: '14:00', value: 15 }, { name: '15:00', value: 12 }, { name: '16:00', value: 10 }, { name: '17:00', value: 9 }, { name: '18:00', value: 11 }, { name: '19:00', value: 13 }, { name: '20:00', value: 14 }, { name: '21:00', value: 14 }, { name: '22:00', value: 12 }, { name: '23:00', value: 10 }]
-      }, {
-        name: '对比时间段',
+        name: '时间段',
         data: [{ name: '1:00', value: Math.round(Math.random() * 15) + 5 }, { name: '2:00', value: Math.round(Math.random() * 15) + 5 }, { name: '3:00', value: Math.round(Math.random() * 15) + 5 }, { name: '4:00', value: Math.round(Math.random() * 15) + 5 }, { name: '5:00', value: Math.round(Math.random() * 15) + 5 }, { name: '6:00', value: Math.round(Math.random() * 15) + 5 }, { name: '7:00', value: Math.round(Math.random() * 15) + 5 }, { name: '8:00', value: 11 }, { name: '9:00', value: Math.round(Math.random() * 15) + 5 }, { name: '10:00', value: Math.round(Math.random() * 15) + 5 }, { name: '11:00', value: Math.round(Math.random() * 15) + 5 }, { name: '12:00', value: 12 }, { name: '13:00', value: Math.round(Math.random() * 15) + 5 }, { name: '14:00', value: Math.round(Math.random() * 15) + 5 }, { name: '15:00', value: 12 }, { name: '16:00', value: Math.round(Math.random() * 15) + 5 }, { name: '17:00', value: Math.round(Math.random() * 15) + 5 }, { name: '18:00', value: Math.round(Math.random() * 15) + 5 }, { name: '19:00', value: Math.round(Math.random() * 15) + 5 }, { name: '20:00', value: Math.round(Math.random() * 15) + 5 }, { name: '21:00', value: Math.round(Math.random() * 15) + 5 }, { name: '22:00', value: Math.round(Math.random() * 15) + 5 }, { name: '23:00', value: Math.round(Math.random() * 15) + 5 }]
       }]
     }
@@ -225,13 +224,6 @@ export default {
     this.setEnergyCircleData({ sys: this.$router.currentRoute.name })
   },
   methods: {
-    handleClose(done) {
-      this.$confirm('确认关闭？')
-        .then(_ => {
-          done()
-        })
-        .catch(_ => {})
-    },
     setProgressData(params) {
       getProcessData(params).then(response => {
         var data = response.data
@@ -298,6 +290,9 @@ export default {
         console.log(err)
         this.initEnergyCircle()
       })
+    },
+    onSearch() {
+      console.log(this.lineChartSearchForm.value)
     }
   }
 }
@@ -448,13 +443,16 @@ export default {
   }
   .title-bar .btn {
     background-color: #586CB4;
-    border-radius:4px;
+    border-radius: 4px;
+    border: none;
     color: white;
-    padding: 6px;
+    padding: 0 25px;
     float: right;
+    height: 36px;
+    margin-left: 8px;
   }
   .title-bar {
-    height: 28px;
+    height: 38px;
   }
   .chart-grid {
     height: calc(100% - 28px);
@@ -513,6 +511,9 @@ export default {
   }
   span.chart-footer-image.down {
     background-image: url("../../../../../../../assets/energy/arrow_down.png");
+  }
+  .search-form {
+    float: right;
   }
 </style>
 <style lang="scss">

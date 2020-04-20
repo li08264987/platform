@@ -18,7 +18,7 @@ const platSettingRouters = [{
       meta: {
         title: '用户管理',
         roles: ['admin', 'editor'],
-        icon: 'user',
+        icon: 'userSetting',
         affix: true
       }
     },
@@ -29,7 +29,7 @@ const platSettingRouters = [{
       meta: {
         title: '角色管理',
         roles: ['admin', 'editor'],
-        icon: 'role'
+        icon: 'roleSetting'
       }
     },
     {
@@ -39,7 +39,7 @@ const platSettingRouters = [{
       meta: {
         title: '权限管理',
         roles: ['admin', 'editor'],
-        icon: 'authority'
+        icon: 'authoritySetting'
       }
     },
     {
@@ -49,7 +49,7 @@ const platSettingRouters = [{
       meta: {
         title: '日志管理',
         roles: ['admin', 'editor'],
-        icon: 'log'
+        icon: 'logSetting'
       }
     }
   ]
@@ -73,13 +73,27 @@ const platSettingRouters = [{
         title: '值班设置',
         icon: 'duty'
       }
-    }, {
+    }
+  ]
+}, {
+  path: '/platSettingEnergy',
+  redirect: '/platSettingChejian/platSettingEnergy', // 重定向地址，在面包屑中点击会重定向去的地址
+  component: Layout,
+  name: 'platSettingEnergy',
+  meta: {
+    title: '标准录入',
+    icon: 'example',
+    roles: ['admin', 'editor']
+  },
+  alwaysShow: true,
+  children: [
+    {
       path: 'energyStrd',
       component: () => import('@/views/project/platSetting/energyLuru/energyStrd'),
       name: 'platformDuty',
       meta: {
         title: '能耗标准',
-        icon: 'duty'
+        icon: 'energyStrd'
       }
     }, {
       path: 'priceStrd',
@@ -87,7 +101,7 @@ const platSettingRouters = [{
       name: 'platformDuty',
       meta: {
         title: '价格标准',
-        icon: 'duty'
+        icon: 'price'
       }
     }
   ]

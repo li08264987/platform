@@ -172,7 +172,7 @@ export default {
     flex-grow: 0;
     flex-shrink: 0;
     width: 100%;
-    height: 2.5vw;
+    height: 2.9vw;
   }
   .operation-group{
     margin-top: 1vw;
@@ -208,7 +208,6 @@ export default {
         background-color:transparent;
         width: 20vw;
         border-color: #243B9E;
-        margin-top: 1vw;
       }
       .el-table--border::after, .el-table--group::after, .el-table::before{
         background-color:unset;

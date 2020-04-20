@@ -85,12 +85,11 @@ export default {
     platSettingButton
   },
   props: {
-    // eslint-disable-next-line vue/require-default-prop
-    data: Object,
-    // eslint-disable-next-line vue/require-default-prop
-    permsedit: String, // 编辑权限标识
-    // eslint-disable-next-line vue/require-default-prop
-    size: { // 尺寸样式
+    data: {
+      type: Object,
+      default: null
+    },
+    size: {
       type: String,
       default: 'mini'
     },
@@ -133,7 +132,6 @@ export default {
   },
   data() {
     return {
-      // 分页信息
       pageRequest: {
         pageNum: 1,
         pageSize: 15
@@ -149,7 +147,6 @@ export default {
     alterAuthority: function(index, row) {
       this.$emit('handleEdit', { index: index, row: row })
     },
-    // 换页刷新
     refreshPageRequest: function(pageNum) {
       this.pageRequest.pageNum = pageNum
       this.findPage()
@@ -161,7 +158,6 @@ export default {
       }
       this.$emit('findPage', { pageRequest: this.pageRequest, callback: callback })
     },
-    // 选择切换
     selectionChange: function(selections) {
       this.selections = selections
       this.$emit('selectionChange', { selections: selections })
@@ -169,11 +165,9 @@ export default {
     handleCurrentChange: function(val) {
       this.$emit('handleCurrentChange', { val: val })
     },
-    // 编辑
     handleEdit: function(index, row) {
       this.$emit('handleEdit', { index: index, row: row })
     },
-    // 删除
     handleDelete: function(index, row) {
       this.delete({ index, row })
     },
@@ -182,8 +176,7 @@ export default {
         type: 'warning'
       }).then(() => {
         const callback = res => {
-          // eslint-disable-next-line eqeqeq
-          if (res.state == 1) {
+          if (res.state === 1) {
             this.$message({ message: '删除成功', type: 'success' })
             this.findPage()
           } else {

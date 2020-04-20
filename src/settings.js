@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Vue Element Admin',
+  title: '启慧AI+能源系统运管平台',
 
   /**
    * @type {boolean} true | false

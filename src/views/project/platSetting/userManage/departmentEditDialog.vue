@@ -81,8 +81,8 @@ export default {
             this.pageResult.content.splice(index, 1, this.dataForm)
             this.dialogVisible = false
             this.$notify({
-              title: 'Success',
-              message: 'Update Successfully',
+              title: '成功',
+              message: '更新部门成功！',
               type: 'success',
               duration: 2000
             })
@@ -114,7 +114,7 @@ export default {
               this.pageResult.totalSize += 1
               this.dialogVisible = false
               this.$notify({
-                title: 'Success',
+                title: '成功',
                 message: res.msg,
                 type: 'success',
                 duration: 2000
