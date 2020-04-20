@@ -353,10 +353,10 @@ export function removeClass(ele, cls) {
 export function isPC() {
   var userAgentInfo = navigator.userAgent
   var Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPod', 'iPad']
-  var flag = 1
+  var flag = 0
   for (var i = 0; i < Agents.length; i++) {
     if (userAgentInfo.indexOf(Agents[i]) > 0) {
-      flag = 0
+      flag = 1
       break
     }
   }
