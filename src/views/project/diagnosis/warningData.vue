@@ -5,9 +5,9 @@
       <div class="search-condition">
         <el-date-picker v-model="searchForm.date" :type="searchForm.dateType" range-separator="至" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" start-placeholder="开始日期" end-placeholder="结束日期" style="display: inline-block;" placeholder="选择时间" suffix-icon="el-icon-search" />
         <el-button class="btn-query" type="primary" style="margin-right:10px" @click="dateSearch">查询</el-button>
-        <el-input v-model="searchForm.searchText" placeholder="请输入值班人员姓名搜索" style="width:212px;" suffix-icon="el-icon-search" />
+        <el-input v-model="searchForm.searchText" placeholder="请输入系统名称搜索" style="width:212px;" suffix-icon="el-icon-search" />
         <el-button class="btn-search" type="primary" @click="nameSearch">搜索</el-button>
-        <el-button class="btn-export" @click="onExport">导出</el-button>
+        <el-button :loading="downloadLoading" class="btn-export" @click="onExport">导出</el-button>
       </div>
     </div>
     <div class="table-container">
@@ -28,7 +28,7 @@
 
 <script>
 import Table from '@/views/project/diagnosis/core/table'
-import { getWarningDataList } from '@/api/diagnose/warningData'
+import { getWarningDataList, updateWarningState, deleteWarningData, fetchAllData } from '@/api/diagnose/warningData'
 export default {
   components: {
     Table
@@ -44,30 +44,20 @@ export default {
       border: true,
       columns: [],
       pageRequest: { pageNum: 1, pageSize: 10 },
-      pageResult: {}
+      pageResult: {},
+      dataForm: {},
+      downloadLoading: false,
+      allPagesData: null
     }
   },
 
   computed: {},
 
   mounted() {
-    this.initColumns()
+
   },
 
   methods: {
-    initColumns: function() {
-      this.columns = [
-        { prop: 'sheBeiVaribleName', label: '设备变量名称', minWidth: 50, show: true },
-        { prop: 'alarmValue', label: '设定报警值', minWidth: 50, show: true },
-        { prop: 'state', label: '处理状态', minWidth: 50, show: true },
-        { prop: 'alarmTime', label: '报警时间', minWidth: 50, show: true },
-        { prop: 'sheBeiName', label: '设备名称', minWidth: 50, show: true },
-        { prop: 'alarmLevel', label: '报警级别', minWidth: 50, show: true },
-        { prop: 'currentValue', label: '实际值', minWidth: 50, show: true },
-        { prop: 'alarmUnit', label: '数据单位', minWidth: 50, show: true },
-        { prop: 'code', label: '唯一标识码', minWidth: 50, show: false }
-      ]
-    },
     findPage: function(data) {
       if (data !== null) {
         this.pageRequest = data.pageRequest
@@ -80,20 +70,74 @@ export default {
         this.pageResult.totalSize = res.warningDataListNumber
       }).then(data != null ? data.callback : '')
     },
-    dateSearch: function() {
-      this.$refs.dutyTable.refreshPageRequest(this.pageRequest.pageNum)
-    },
-    nameSearch: function() {
-      this.$refs.dutyTable.refreshPageRequest(this.pageRequest.pageNum)
-    },
-    onExport: function() {
-
-    },
     handleDelete: function(params) {
-
+      deleteWarningData(params.row).then((res) => {
+        this.pageResult.content.splice(params.index, 1)
+        this.pageResult.totalSize -= 1
+        params.callback(res)
+      }).catch(err => {
+        console.log(err)
+      })
     },
     handleEdit: function(params) {
-
+      this.dataForm = params.row
+      updateWarningState(params.row).then((res) => {
+        const index = this.pageResult.content.findIndex(v => v.code === this.dataForm.code)
+        this.dataForm.state = '已处理'
+        this.dataForm.stateCode = 1
+        this.pageResult.content.splice(index, 1, this.dataForm)
+        this.$notify({
+          title: '成功',
+          message: res.msg,
+          type: 'success',
+          duration: 2000
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    dateSearch: function() {
+      this.$refs.warningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+    },
+    nameSearch: function() {
+      this.$refs.warningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+    },
+    onExport: function() {
+      const param = {
+        filterUserName: this.searchForm.searchText,
+        startTime: this.searchForm.date === null ? null : this.searchForm.date[0],
+        endTime: this.searchForm.date === null ? null : this.searchForm.date[1]
+      }
+      fetchAllData(param).then((res) => {
+        this.downloadLoading = true
+        this.allPagesData = res.warningDataList
+        import('@/vendor/Export2Excel').then(excel => {
+          const tHeader = [
+            '设备变量名称',
+            '设定报警值',
+            '处理状态',
+            '报警时间',
+            '设备名称',
+            '报警级别',
+            '实际值',
+            '数据单位']
+          const filterVal = ['sheBeiVaribleName', 'alarmValue', 'state', 'alarmTime', 'sheBeiName', 'alarmLevel', 'currentValue', 'alarmUnit']
+          const data = this.formatJson(filterVal)
+          excel.export_json_to_excel({
+            header: tHeader,
+            data,
+            filename: '报警数据表'
+          })
+          this.downloadLoading = false
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    formatJson(filterVal) {
+      return this.allPagesData.map(v => filterVal.map(j => {
+        return v[j]
+      }))
     }
   }
 }

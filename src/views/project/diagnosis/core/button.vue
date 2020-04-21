@@ -4,7 +4,7 @@
     :type="type"
     :icon="icon"
     :loading="loading"
-    :disabled="perms"
+    :disabled="disabled"
     @click="handleClick"
   >
     {{ label }}
@@ -37,10 +37,10 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: true
+      default: false
     },
     perms: {
-      type: String,
+      type: Boolean,
       default: null
     }
   },

@@ -16,19 +16,91 @@
       @selection-change="selectionChange"
       @current-change="handleCurrentChange"
     >
-      <template v-for="column in columns">
-        <el-table-column
-          v-if="column.show"
-          :key="column.prop"
-          :prop="column.prop"
-          :label="column.label"
-          :width="column.width"
-          :min-width="column.minWidth"
-          :sortable="column.sortable==null?false:column.sortable"
-          header-align="center"
-          align="center"
-        />
-      </template>
+      <el-table-column
+        v-if="true"
+        prop="sheBeiVaribleName"
+        label="设备变量名称"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmValue"
+        label="设定报警值"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="state"
+        label="处理状态"
+        min-width="50"
+        header-align="center"
+        align="center"
+      >
+        <template slot-scope="{row}">
+          <span :style="row.stateCode ===0 ?'color:#F5222D;':'color:#606266;'">{{ row.state }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        v-if="false"
+        prop="stateCode"
+        label="处理状态码"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmTime"
+        label="报警时间"
+        min-width="50"
+        :sortable="true"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="sheBeiName"
+        label="设备名称"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmLevel"
+        label="报警级别"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="currentValue"
+        label="实际值"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmUnit"
+        label="数据单位"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="false"
+        prop="code"
+        label="唯一标识码"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
       <el-table-column
         v-if="showOperation"
         label="操作"
@@ -37,16 +109,16 @@
       >
         <template slot-scope="scope">
           <Button
-            icon="el-icon-edit"
-            label="编辑"
+            label="已处理"
             :size="size"
-            @click="handleEdit(scope.$index, scope.row)"
+            :type="buttonType.success"
+            :disabled="scope.row.stateCode === 1?true:false"
+            @click="handleDealing(scope.$index, scope.row)"
           />
           <Button
-            icon="el-icon-delete"
             label="删除"
             :size="size"
-            type="danger"
+            :type="buttonType.warning"
             @click="handleDelete(scope.$index, scope.row)"
           />
         </template>
@@ -129,7 +201,11 @@ export default {
         pageSize: 15
       },
       loading: false,
-      selections: []
+      selections: [],
+      buttonType: {
+        success: 'success',
+        warning: 'warning'
+      }
     }
   },
   mounted() {
@@ -154,14 +230,14 @@ export default {
     handleCurrentChange: function(val) {
       this.$emit('handleCurrentChange', { val: val })
     },
-    handleEdit: function(index, row) {
+    handleDealing: function(index, row) {
       this.$emit('handleEdit', { index: index, row: row })
     },
     handleDelete: function(index, row) {
       this.delete({ index, row })
     },
     delete: function(params) {
-      this.$confirm('确认删除所选内容？', '提示', {
+      this.$confirm('确认屏蔽所选内容？', '提示', {
         type: 'warning'
       }).then(() => {
         const callback = res => {

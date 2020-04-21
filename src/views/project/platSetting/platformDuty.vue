@@ -61,7 +61,7 @@
 
 <script>
 import platSettingTable from '@/views/project/platSetting/core/platSettingTable'
-import { getDutyList, createDuty, updateDuty, deleteDuty, searchDutyUser, searchSystem } from '@/api/platSetting/dutyManage'
+import { getDutyList, createDuty, updateDuty, deleteDuty, searchDutyUser, searchSystem, fetchAllData } from '@/api/platSetting/dutyManage'
 import { parseTime } from '@/utils/index.js'
 export default {
   components: {
@@ -119,7 +119,9 @@ export default {
         label: '晚班'
       }],
       dutyUserSuggestion: [],
-      systemSuggestion: []
+      systemSuggestion: [],
+      downloadLoading: false,
+      allPagesData: null
     }
   },
   computed: {
@@ -281,7 +283,39 @@ export default {
       this.$refs.dutyTable.refreshPageRequest(this.pageRequest.pageNum)
     },
     onExport: function() {
-
+      const param = {
+        filterUserName: this.searchForm.searchText,
+        startTime: this.searchForm.date === null ? null : this.searchForm.date[0],
+        endTime: this.searchForm.date === null ? null : this.searchForm.date[1]
+      }
+      fetchAllData(param).then((res) => {
+        this.downloadLoading = true
+        this.allPagesData = res.dutyList
+        import('@/vendor/Export2Excel').then(excel => {
+          const tHeader = [
+            '值班领导',
+            '值班类型',
+            '值班人员',
+            '值班内容',
+            '值班系统',
+            '值班时间']
+          const filterVal = ['LEADER_USER_NAME', 'DUTY_TYPE_NAME', 'DUTY_UER_NAME', 'CONTENT', 'SYSTEMNAME', 'SUMMIT_TIME']
+          const data = this.formatJson(filterVal)
+          excel.export_json_to_excel({
+            header: tHeader,
+            data,
+            filename: '值班数据表'
+          })
+          this.downloadLoading = false
+        })
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    formatJson(filterVal) {
+      return this.allPagesData.map(v => filterVal.map(j => {
+        return v[j]
+      }))
     }
   }
 }
