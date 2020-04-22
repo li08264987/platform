@@ -60,45 +60,39 @@ export default {
     initChart() {
       this.chart = echarts.init(this.$el, 'macarons')
       var xAxis = []
-      for (let i = 0; i < this.chartData.data.systems.length; i++) {
-        xAxis.push(this.chartData.data.systems[i].systemName)
+      for (let i = 0; i < this.chartData.systems.length; i++) {
+        xAxis.push(this.chartData.systems[i].systemName)
       }
-      const param = { dealedData: this.chartData.data.dealedList, dealingData: this.chartData.data.dealingList, xAxis: xAxis }
+      const param = { dealedData: this.chartData.dealedList, dealingData: this.chartData.dealingList, xAxis: xAxis }
       this.setOptions(param)
     },
     setOptions({ dealedData, dealingData, xAxis } = {}) {
       this.chart.setOption({
         grid: {
-          left: 10,
-          right: 10,
-          bottom: 20,
-          top: 60,
-          containLabel: true
+          top: '15%',
+          bottom: '7%',
+          left: '15%',
+          right: '2%'
+        },
+        legend: {
+          right: '1%',
+          top: '5%',
+          textStyle: {
+            color: '#9FA8DA'
+          },
+          itemWidth: 10,
+          itemHeight: 15
         },
         tooltip: {
           trigger: 'axis',
           padding: [5, 10]
         },
         xAxis: {
+          type: 'category',
           data: xAxis,
-          axisTick: {
-            show: false
-          },
           splitLine: {
             show: false
           },
-          axisLabel: {
-            color: '#858B9C'
-          },
-          axisLine: {
-            lineStyle: {
-              color: '#E2E4EA'
-            }
-          }
-        },
-        yAxis: {
-          type: 'value',
-          name: '(件)',
           axisLine: {
             lineStyle: {
               type: 'solid',
@@ -109,16 +103,28 @@ export default {
             textStyle: {
               color: ' #9FA8DA'
             }
-          },
+          }
+        },
+        yAxis: {
+          type: 'value',
+          name: '(件)',
           splitLine: {
             show: false
           },
           nameTextStyle: {
             color: '#9FA8DA'
+          },
+          axisLine: {
+            lineStyle: {
+              type: 'solid',
+              color: '#2642BB'
+            }
+          },
+          axisLabel: {
+            textStyle: {
+              color: ' #9FA8DA'
+            }
           }
-        },
-        legend: {
-          show: false
         },
         series: [{
           name: '已处理故障',

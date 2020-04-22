@@ -53,9 +53,7 @@ export default {
       pieChartData: {
         data: null
       },
-      barChartData: {
-        data: null
-      },
+      barChartData: null,
       dealStatus: {
         dealing: null,
         dealed: null,
@@ -105,7 +103,7 @@ export default {
     getFaultWarningDataSystem() {
       getFaultWarningData().then((res) => {
         this.pieChartData.data = res.data.pieChartData
-        this.barChartData.data = res.data.barChartData
+        this.barChartData = res.data.barChartData
         this.dealStatus = res.data.dealStatus
       }).catch(err => {
         console.log(err)
