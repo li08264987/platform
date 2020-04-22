@@ -48,7 +48,7 @@ export default {
 
   mounted() {
     fetchSystem().then((res) => {
-      this.viewList = res.data
+      // this.viewList = res.data
       this.currentView = 'KongYaSystem'
     }).catch(err => {
       console.log(err)
