@@ -157,43 +157,43 @@ export default {
       },
       energy: {
         dian: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
           sign: 1,
           numberLogo: 'increaseLogo'
         },
         zhenkong: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
           sign: 1,
           numberLogo: 'increaseLogo'
         },
         yasuokongqi: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
           sign: 1,
           numberLogo: 'increaseLogo'
         },
         leng: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
           sign: 1,
           numberLogo: 'increaseLogo'
         },
         qingdan: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
           sign: 1,
           numberLogo: 'increaseLogo'
         },
         re: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
           sign: 1,
           numberLogo: 'increaseLogo'

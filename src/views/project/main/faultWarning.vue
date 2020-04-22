@@ -8,212 +8,65 @@
     </div>
 
     <el-tabs v-model="activeName" type="card" @tab-click="tabClick">
-      <el-tab-pane label="系统" name="first">
-        <div id="warning-pie" :style="{width: '21vw', height: '16vw'}" />
+      <el-tab-pane label="" name="system">
+        <div id="warningPie-System" :style="{width: '16vw', height: '15vw', paddingLeft: '2.5vw'}">
+          <pie-chart :chart-data="pieChartData" :sum="dealStatus.sum" />
+        </div>
         <div class="legend-container">
           <div class="dealing">
             <div class="text">待处理故障</div>
-            <div class="number">24</div>
+            <div class="number">{{ dealStatus.dealing }}</div>
           </div>
           <div class="dealed">
             <div class="dealing">
               <div class="text">已处理故障</div>
-              <div class="number">529</div>
+              <div class="number">{{ dealStatus.dealed }}</div>
             </div>
           </div>
         </div>
-        <div id="warning-bar" :style="{width: '21vw', height: '16vw'}" />
-      </el-tab-pane>
-      <el-tab-pane label="区域" name="second">
-        <div id="warning-pie2" :style="{width: '21vw', height: '16vw'}" />
-        <div class="legend-container">
-          <div class="dealing">
-            <div class="text">待处理故障</div>
-            <div class="number">42</div>
-          </div>
-          <div class="dealed">
-            <div class="dealing">
-              <div class="text">已处理故障</div>
-              <div class="number">925</div>
-            </div>
-          </div>
+        <div id="warningBar-System" :style="{width: '21vw', height: '16vw'}">
+          <bar-chart :chart-data="barChartData" />
         </div>
-        <div id="warning-bar2" :style="{width: '21vw', height: '16vw'}" />
       </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 
 <script>
-import echarts from 'echarts'
+import BarChart from './echart/BarChart'
+import PieChart from './echart/PieChart'
+import { getFaultWarningData } from '@/api/main/faultWarning'
 export default {
   name: 'FaultWarning',
-  components: {},
-  // eslint-disable-next-line vue/require-prop-types
-  props: ['cursor'],
+  components: {
+    PieChart,
+    BarChart
+  },
+  props: {
+    cursor: {
+      type: Number,
+      default: 1
+    }
+  },
   data() {
     return {
-      optionPie: {
-        title: {
-          text: 529,
-          left: '43%',
-          top: '37%',
-          subtext: '故障报警总数\n（件）',
-          textAlign: 'center',
-          textStyle: {
-            color: '#D6E4FF',
-            fontStyle: 'normal',
-            fontSize: 36,
-            fontFamily: 'Bebas'
-          },
-          subtextStyle: {
-            color: '#D6E4FF',
-            fontStyle: 'normal',
-            fontWeight: 'normal',
-            fontSize: 14,
-            lineHieght: 18,
-            align: 'center',
-            letterSpacing: 0
-          }
-        },
-        tooltip: {
-          trigger: 'item'
-        },
-        legend: {
-          show: false
-        },
-        series: {
-          color: ['#EB2E95', '#3D3BEA'],
-          type: 'pie',
-          radius: ['55%', '70%'],
-          center: ['45%', '50%'],
-          avoidLabelOverlap: false,
-          right: '11%',
-          top: '15%',
-          label: {
-            show: false
-          },
-          labelLine: {
-            show: false
-          },
-          data: [{
-            value: 24,
-            name: '待处理故障'
-          },
-          {
-            value: 529,
-            name: '已处理故障'
-          }]
-        }
+      pieChartData: {
+        data: null
       },
-      optionBar: {
-        grid: {
-          top: '2%',
-          bottom: '12%',
-          left: '10%'
-        },
-        legend: {
-          right: '9%',
-          textStyle: {
-            color: '#9FA8DA'
-          },
-          itemWidth: 10,
-          itemHeight: 15
-        },
-        tooltip: {
-
-        },
-        xAxis: {
-          type: 'category',
-          data: ['热水', '冷水', '氮气', '氢气', '压缩'],
-          splitLine: {
-            show: false
-          },
-          axisLine: {
-            lineStyle: {
-              type: 'solid',
-              color: '#2642BB'
-            }
-          },
-          axisLabel: {
-            textStyle: {
-              color: ' #9FA8DA'
-            }
-          }
-        },
-        yAxis: {
-          type: 'value',
-          name: '(件)',
-          splitLine: {
-            show: false
-          },
-          nameTextStyle: {
-            color: '#9FA8DA'
-          },
-          axisLine: {
-            lineStyle: {
-              type: 'solid',
-              color: '#2642BB'
-            }
-          },
-          axisLabel: {
-            textStyle: {
-              color: ' #9FA8DA'
-            }
-          }
-        },
-        series: [
-          {
-            name: '已处理故障',
-            type: 'bar',
-            data: [356, 356, 356, 356, 356],
-            itemStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                  offset: 0.18,
-                  color: '#2F54EB'
-                },
-                {
-                  offset: 1.0,
-                  color: 'rgba(61,59,234,0.00)'
-                }
-                ])
-              }
-            }
-          },
-          {
-            name: '未处理故障',
-            type: 'bar',
-            data: [87, 87, 87, 87, 87],
-            itemStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                  offset: 0.18,
-                  color: '#EB2E95'
-                },
-                {
-                  offset: 1.0,
-                  color: 'rgba(235,46,149,0.00)'
-                }
-                ])
-              }
-            }
-          }
-        ]
+      barChartData: {
+        data: null
       },
-      activeName: 'first'
+      dealStatus: {
+        dealing: null,
+        dealed: null,
+        sum: null
+      },
+      activeName: 'system'
     }
   },
   computed: {},
-  /* watch: {
-    change: {
-      handler() {
-        console.log(this.change)
-      }
-    }
-  }, */
   mounted() {
-    this.optionPie.title.left = this.cursor * 43 + '%'
+    /* this.optionPie.title.left = this.cursor * 43 + '%'
     this.optionPie.title.top = this.cursor * 37 + '%'
     this.optionPie.title.textStyle.fontSize = this.cursor * 36
     this.optionPie.series.radius = [this.cursor * 55 + '%', this.cursor * 70 + '%']
@@ -231,7 +84,7 @@ export default {
     this.optionBar.legend.right = this.cursor * 10
     this.optionBar.legend.itemWidth = this.cursor * 10
     this.optionBar.legend.itemHeight = this.cursor * 15
-    this.drawBar('warning-bar', this.optionBar)
+    this.drawBar('warning-bar', this.optionBar) */
 
     /* window.onresize = () => {
       var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
@@ -243,27 +96,28 @@ export default {
         chartsBar.resize()
       }
     } */
+    this.initFaultWarningData()
   },
   methods: {
-    drawPie(id, optionPie) {
+    initFaultWarningData() {
+      this.getFaultWarningDataSystem()
+    },
+    getFaultWarningDataSystem() {
+      getFaultWarningData().then((res) => {
+        this.pieChartData.data = res.data.pieChartData
+        this.barChartData.data = res.data.barChartData
+        this.dealStatus = res.data.dealStatus
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    /* drawPie(id, optionPie) {
       const chartmainline = echarts.init(document.getElementById(id))
       chartmainline.setOption(optionPie)
     },
     drawBar(id, optionBar) {
       const chartmainline = echarts.init(document.getElementById(id))
       chartmainline.setOption(optionBar)
-    },
-    tabClick(tab, event) {
-      if (tab.name === 'first') {
-        this.drawPie('warning-pie', this.optionPie)
-        this.drawBar('warning-bar', this.optionBar)
-      } else {
-        /* var temp = this.optionPie
-        temp.series.data[0].value = 42
-        temp.series.data[1].value = 92 */
-        this.drawPie('warning-pie2', this.optionPie)
-        this.drawBar('warning-bar2', this.optionBar)
-      }
     },
     resizeCharts() {
       var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
@@ -274,6 +128,8 @@ export default {
       if (chartsBar) {
         chartsBar.resize()
       }
+    }, */
+    tabClick(tab, event) {
     }
   }
 }
