@@ -53,7 +53,7 @@ export default {
       pieChartData: {
         data: null
       },
-      barChartData: null,
+      barChartData: {},
       dealStatus: {
         dealing: null,
         dealed: null,

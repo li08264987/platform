@@ -4,7 +4,7 @@
 
 <script>
 import echarts from 'echarts'
-require('echarts/theme/macarons') // echarts theme
+require('echarts/theme/roma')
 import resize from './../mixins/resize'
 
 export default {
@@ -40,7 +40,12 @@ export default {
     chartData: {
       deep: true,
       handler(val) {
-        this.setOptions(val)
+        var xAxis = []
+        for (let i = 0; i < val.systems.length; i++) {
+          xAxis.push(val.systems[i].systemName)
+        }
+        const param = { dealedData: val.dealedList, dealingData: val.dealingList, xAxis: xAxis }
+        this.setOptions(param)
       }
     }
   },
@@ -58,16 +63,18 @@ export default {
   },
   methods: {
     initChart() {
-      this.chart = echarts.init(this.$el, 'macarons')
+      this.chart = echarts.init(this.$el, 'roma')
       var xAxis = []
-      for (let i = 0; i < this.chartData.systems.length; i++) {
-        xAxis.push(this.chartData.systems[i].systemName)
+      if (this.chartData.systems !== undefined) {
+        for (let i = 0; i < this.chartData.systems.length; i++) {
+          xAxis.push(this.chartData.systems[i].systemName)
+        }
+        const param = { dealedData: this.chartData.dealedList, dealingData: this.chartData.dealingList, xAxis: xAxis }
+        this.setOptions(param)
       }
-      const param = { dealedData: this.chartData.dealedList, dealingData: this.chartData.dealingList, xAxis: xAxis }
-      this.setOptions(param)
     },
     setOptions({ dealedData, dealingData, xAxis } = {}) {
-      this.chart.setOption({
+      var option = {
         grid: {
           top: '15%',
           bottom: '7%',
@@ -101,7 +108,8 @@ export default {
           },
           axisLabel: {
             textStyle: {
-              color: ' #9FA8DA'
+              color: ' #9FA8DA',
+              fontSize: 16
             }
           }
         },
@@ -161,7 +169,8 @@ export default {
           type: 'bar',
           data: dealingData
         }]
-      })
+      }
+      this.chart.setOption(option)
     }
   }
 }
