@@ -7,3 +7,11 @@ export function fetchSystem(query) {
     params: query
   })
 }
+
+export function getTableDataBySystem(query) {
+  return request({
+    url: '/main/operationWatch/getTableDataBySystem',
+    method: 'post',
+    params: query
+  })
+}

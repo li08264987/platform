@@ -196,7 +196,7 @@ export default {
   font-family: MicrosoftYaHeiUI;
   display: block;
   height: 2.2vw;
-  border: 1px solid #385FFD;
+  border: 1px solid #243B9E;
   width: 19.8vw;
   font-size: 0.8vw;
   display: flex;

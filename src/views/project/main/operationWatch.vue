@@ -8,18 +8,19 @@
     </div>
 
     <div class="radio-container">
-      <el-radio-group v-model="systems.defaultSystemName" class="operation-group" @change="radioChange">
+      <el-radio-group v-model="systems.defaultSystemCode" class="operation-group" @change="radioChange">
         <el-radio-button
           v-for="item in systems.systemsRadio"
           :key="item.systemCode"
-          :label="item.systemName"
-          :value="item.systemCode"
-        />
+          :label="item.systemCode"
+        >
+          {{ item.systemName }}
+        </el-radio-button>
       </el-radio-group>
     </div>
 
     <div class="operation-table">
-      <el-table :show-header="showHeader" :data="operation.tableData" border>
+      <el-table :show-header="false" :data="operation.tableData" border>
         <el-table-column prop="type" label="" align="center" />
         <el-table-column prop="value" label="" align="center" />
       </el-table>
@@ -29,13 +30,12 @@
 </template>
 
 <script>
-import { fetchSystem } from '@/api/main/operationWatch'
+import { fetchSystem, getTableDataBySystem } from '@/api/main/operationWatch'
 export default {
   name: 'OperationWatch',
   components: {},
   data() {
     return {
-      showHeader: false,
       operation: {
         tableData: [{
           type: '总流量',
@@ -55,9 +55,20 @@ export default {
         }]
       },
       systems: {
-        systemsRadio: [],
-        defaultSystemCode: '',
-        defaultSystemName: ''
+        systemsRadio: [{
+          systemCode: 'ky',
+          systemName: '空压系统'
+        }, {
+          systemCode: 'qd',
+          systemName: '氢氮系统'
+        }, {
+          systemCode: 'zk',
+          systemName: '真空系统'
+        }, {
+          systemCode: 'dl',
+          systemName: '电力系统'
+        }],
+        defaultSystemCode: 'ky'
       }
     }
   },
@@ -78,74 +89,27 @@ export default {
         if (res.data.length > 0) {
           this.systems.defaultSystemCode = res.data[0].systemCode
           this.systems.defaultSystemName = res.data[0].systemName
+          this.getTableDataBySystem({ code: this.systems.defaultSystemCode })
         }
       }).catch(err => {
         console.log(err)
       })
     },
-    radioChange: function(params) {
-      switch (params) {
-        case '空压系统':
-          this.operation.tableData = [{
-            type: '总流量',
-            value: '39m³/h'
-          },
-          {
-            type: '总压力',
-            value: '3.4bar'
-          },
-          {
-            type: '平均温度',
-            value: '36℃'
-          },
-          {
-            type: '冷却水温度',
-            value: '39℃'
-          }]
-          break
-        case '氢氮系统':
-          this.operation.tableData = [{
-            type: '总流量',
-            value: '39m³/h'
-          },
-          {
-            type: '总压力',
-            value: '39bar'
-          },
-          {
-            type: '平均温度',
-            value: '39℃'
-          },
-          {
-            type: '冷却水温度',
-            value: '39℃'
-          }]
-          break
-        case '真空系统':
-          this.operation.tableData = [{
-            type: '真空度',
-            value: '39kPa'
-          },
-          {
-            type: '温度',
-            value: '39℃'
-          }]
-          break
-        case '电力系统':
-          this.operation.tableData = [{
-            type: '总瞬时功率',
-            value: '39kWh'
-          },
-          {
-            type: '有功功率',
-            value: '39kWh'
-          },
-          {
-            type: '无功功率',
-            value: '39kWh'
-          }]
-          break
-      }
+    getTableDataBySystem(param) {
+      getTableDataBySystem(param).then((res) => {
+        var data = []
+        for (var item in res.data) {
+          const type = item
+          const value = res.data[item]
+          data.push({ type: type, value: value })
+        }
+        this.operation.tableData = data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    radioChange: function(value) {
+      this.getTableDataBySystem({ code: value })
     }
   }
 }
@@ -191,7 +155,7 @@ export default {
   }
   .operation-group{
     margin-top: 1vw;
-    margin-left: 1vw;
+    margin-left: 0.8vw;
     position: relative;
     border: unset;
     .el-radio-button__inner{
@@ -214,7 +178,7 @@ export default {
   }
 
   .operation-table{
-    margin-left: 1vw;
+    margin-left: 0.8vw;
     flex-shrink: 1;
     flex-grow: 1;
     width: 100%;
@@ -223,7 +187,28 @@ export default {
     .el-table{
         background-color:transparent;
         width: 100%;
+        height: 85%;
         border-color: #243B9E;
+      }
+      .el-table__body-wrapper{
+        overflow: auto;
+        height: 110%;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar{
+        width: 3px;
+        background-color:  #243B9E;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar-thumb{
+        border-radius: 3px;
+        background-image: linear-gradient(180deg, #3656DD 0%, #243B9E 100%);
+        height: 50px;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 5px rgba($color: #000000, $alpha: 0.2);
+        border-radius: 3px;
+      }
+      .el-table--border{
+        border-left: none;
       }
       .el-table--border::after, .el-table--group::after, .el-table::before{
         background-color:unset;

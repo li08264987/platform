@@ -20,7 +20,7 @@
       />
     </div>
 
-    <el-dialog v-dialogDrag :title="operation?'添加用户':'修改用户信息'" width="40%" :visible.sync="dialogVisible" :modal="false" :close-on-click-modal="false" class="userDialog">
+    <el-dialog v-dialogDrag :title="operation?'添加用户':'修改用户信息'" width="40%" :visible.sync="dialogVisible" :modal="true" :close-on-click-modal="false" class="userDialog">
       <el-form ref="dataForm" :model="dataForm" label-width="auto" :rules="dataFormRules" label-position="top" :size="size">
         <div class="row row-0">
           <el-form-item v-if="true" label="用户名" prop="USER_NAME">
