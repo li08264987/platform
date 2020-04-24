@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" :style="{height:height,width:width}" />
+  <div :class="className" :cursor="cursor" :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -33,6 +33,10 @@ export default {
     sum: {
       type: Number,
       default: 0
+    },
+    cursor: {
+      type: Number,
+      default: 1
     }
   },
   data() {
@@ -62,6 +66,7 @@ export default {
   },
   methods: {
     initChart() {
+      console.log(this.cursor)
       this.chart = echarts.init(this.$el, 'roma')
       this.setOptions(this.chartData)
     },
@@ -76,14 +81,14 @@ export default {
           textStyle: {
             color: '#D6E4FF',
             fontStyle: 'normal',
-            fontSize: 36,
+            fontSize: this.cursor * 36,
             fontFamily: 'Bebas'
           },
           subtextStyle: {
             color: '#D6E4FF',
             fontStyle: 'normal',
             fontWeight: 'normal',
-            fontSize: 14,
+            fontSize: this.cursor * 14,
             lineHieght: 18,
             align: 'center',
             letterSpacing: 0

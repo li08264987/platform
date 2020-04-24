@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" :style="{height:height,width:width}" />
+  <div :class="className" :cursor="cursor" :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -29,6 +29,10 @@ export default {
     chartData: {
       type: Object,
       required: true
+    },
+    cursor: {
+      type: Number,
+      default: 1
     }
   },
   data() {
@@ -109,7 +113,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: ' #9FA8DA',
-              fontSize: 16
+              fontSize: this.cursor * 16
             }
           }
         },

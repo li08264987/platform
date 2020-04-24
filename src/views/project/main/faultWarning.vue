@@ -9,8 +9,8 @@
 
     <el-tabs v-model="activeName" type="card" @tab-click="tabClick">
       <el-tab-pane label="" name="system">
-        <div id="warningPie-System" :style="{width: '16vw', height: '15vw', paddingLeft: '2.5vw'}">
-          <pie-chart :chart-data="pieChartData" :sum="dealStatus.sum" />
+        <div id="warningPie" :style="{width: '16vw', height: '15vw', paddingLeft: '2.5vw'}">
+          <pie-chart id="warningPie-System" :chart-data="pieChartData" :cursor="cursor" :sum="dealStatus.sum" />
         </div>
         <div class="legend-container">
           <div class="dealing">
@@ -24,8 +24,8 @@
             </div>
           </div>
         </div>
-        <div id="warningBar-System" :style="{width: '21vw', height: '16vw'}">
-          <bar-chart :chart-data="barChartData" />
+        <div id="warningBar" :style="{width: '21vw', height: '16vw'}">
+          <bar-chart id="warningBar-System" :chart-data="barChartData" :cursor="cursor" />
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -85,11 +85,11 @@ export default {
     this.drawBar('warning-bar', this.optionBar) */
 
     /* window.onresize = () => {
-      var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
+      var chartsPie = echarts.getInstanceByDom(document.getElementById('warningPie-System'))
       if (chartsPie) {
         chartsPie.resize()
       }
-      var chartsBar = echarts.getInstanceByDom(document.getElementById('warning-bar'))
+      var chartsBar = echarts.getInstanceByDom(document.getElementById('warningBar-System'))
       if (chartsBar) {
         chartsBar.resize()
       }
@@ -116,13 +116,13 @@ export default {
     drawBar(id, optionBar) {
       const chartmainline = echarts.init(document.getElementById(id))
       chartmainline.setOption(optionBar)
-    },
-    resizeCharts() {
-      var chartsPie = echarts.getInstanceByDom(document.getElementById('warning-pie'))
+    },*/
+    /* resizeCharts() {
+      var chartsPie = echarts.getInstanceByDom(document.getElementById('warningPie-System'))
       if (chartsPie) {
         chartsPie.resize()
       }
-      var chartsBar = echarts.getInstanceByDom(document.getElementById('warning-bar'))
+      var chartsBar = echarts.getInstanceByDom(document.getElementById('warningBar-System'))
       if (chartsBar) {
         chartsBar.resize()
       }

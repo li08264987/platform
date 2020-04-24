@@ -56,7 +56,7 @@ export default {
     const that = this
     window.onresize = () => {
       that.fontSizeResize()
-      this.$refs.faultWarning.resizeCharts()
+      /* this.$refs.faultWarning.resizeCharts() */
     }
   },
   methods: {
@@ -100,7 +100,14 @@ export default {
       var totalWidth = document.documentElement.clientWidth
       var totalHeight = document.documentElement.clientHeight
 
-      var newHeight = totalHeight - 70
+      let navHeight = 0
+      if (document.getElementsByClassName('navbar')[0] !== undefined) {
+        navHeight = document.getElementsByClassName('navbar')[0].offsetHeight
+      } else {
+        return
+      }
+
+      var newHeight = totalHeight - navHeight
       var newWidth = totalWidth
 
       var newCursor = newHeight / newWidth

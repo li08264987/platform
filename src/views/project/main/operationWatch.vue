@@ -8,7 +8,7 @@
     </div>
 
     <div class="radio-container">
-      <el-radio-group v-model="systems.defaultSystemCode" class="operation-group" @change="radioChange">
+      <el-radio-group ref="operationGroup" v-model="systems.defaultSystemCode" class="operation-group" @change="radioChange">
         <el-radio-button
           v-for="item in systems.systemsRadio"
           :key="item.systemCode"
@@ -89,7 +89,7 @@ export default {
         if (res.data.length > 0) {
           this.systems.defaultSystemCode = res.data[0].systemCode
           this.systems.defaultSystemName = res.data[0].systemName
-          this.getTableDataBySystem({ code: this.systems.defaultSystemCode })
+          // this.getTableDataBySystem({ code: this.systems.defaultSystemCode })
         }
       }).catch(err => {
         console.log(err)
@@ -167,6 +167,8 @@ export default {
       height: 1.9vw;
       /* width: 5vw; */
       line-height: 0.9vw;
+      padding: 0.5vw 1vw;
+      font-size: 0.75vw;
     }
     .el-radio-button:first-child .el-radio-button__inner{
       border-left:1px solid #243B9E;
