@@ -1364,13 +1364,31 @@
   </svg>
 </template>
 <script>
+import monitorapi from '@/api/monitor/monitor'
+import $ from 'jquery'
+import '@/api/monitor/svgtool'
 export default {
   name: 'KongYaJi',
   components: {
   },
   data() {
     return {
+      datas: {}
     }
+  },
+  mounted() {
+    $('svg').svgPanZoom()
+    const self = this
+    monitorapi.getKongYaJiData({
+      'kyjq': 'kyjq1',
+      'kyj': ''
+    }).then(res => {
+      if (res.state === 1) {
+        self.datas = res.data
+      }
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }
 </script>

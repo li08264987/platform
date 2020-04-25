@@ -22,7 +22,7 @@
             <div class="left-number">{{ energy.dian.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div :class="numberLogo" />
+                <div :class="energy.dian.numberLogo" />
                 <div class="percent">{{ energy.dian.changeNumber }}</div>
               </div>
             </el-tooltip>
@@ -39,7 +39,7 @@
             <div class="left-number">{{ energy.zhenkong.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div :class="numberLogo" />
+                <div :class="energy.zhenkong.numberLogo" />
                 <div class="percent">{{ energy.zhenkong.changeNumber }}</div>
               </div>
             </el-tooltip>
@@ -59,7 +59,7 @@
             <div class="left-number">{{ energy.yasuokongqi.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div :class="numberLogo" />
+                <div :class="energy.yasuokongqi.numberLogo" />
                 <div class="percent">{{ energy.yasuokongqi.changeNumber }}</div>
               </div>
             </el-tooltip>
@@ -76,7 +76,7 @@
             <div class="left-number">{{ energy.leng.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div :class="numberLogo" />
+                <div :class="energy.leng.numberLogo" />
                 <div class="percent">{{ energy.leng.changeNumber }}</div>
               </div>
             </el-tooltip>
@@ -96,7 +96,7 @@
             <div class="left-number">{{ energy.qingdan.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div :class="numberLogo" />
+                <div :class="energy.qingdan.numberLogo" />
                 <div class="percent">{{ energy.qingdan.changeNumber }}</div>
               </div>
             </el-tooltip>
@@ -113,7 +113,7 @@
             <div class="left-number">{{ energy.re.xiaohao }}</div>
             <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
               <div class="right-number">
-                <div :class="numberLogo" />
+                <div :class="energy.re.numberLogo" />
                 <div class="percent">{{ energy.re.changeNumber }}</div>
               </div>
             </el-tooltip>
@@ -131,7 +131,7 @@
 </template>
 
 <script>
-import { getDianHao } from '@/api/main/energyStatus'
+import { getDianHao, getYaSuoKongQi, getQingDan } from '@/api/main/energyStatus'
 export default {
   name: 'EnerguStatus',
   components: {},
@@ -157,43 +157,48 @@ export default {
       },
       energy: {
         dian: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
-          sign: 1
+          sign: 1,
+          numberLogo: 'increaseLogo'
         },
         zhenkong: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
-          sign: 1
+          sign: 1,
+          numberLogo: 'increaseLogo'
         },
         yasuokongqi: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
-          sign: 1
+          sign: 1,
+          numberLogo: 'increaseLogo'
         },
         leng: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
-          sign: 1
+          sign: 1,
+          numberLogo: 'increaseLogo'
         },
         qingdan: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
-          sign: 1
+          sign: 1,
+          numberLogo: 'increaseLogo'
         },
         re: {
-          xiaohao: 529,
-          changeNumber: '10%',
+          xiaohao: '--',
+          changeNumber: '--',
           changeText: '同比增长',
-          sign: 1
+          sign: 1,
+          numberLogo: 'increaseLogo'
         }
-      },
-      numberLogo: 'increaseLogo'
+      }
     }
   },
 
@@ -206,18 +211,26 @@ export default {
   methods: {
     initEnergyStatusData: function() {
       this.getDianHao()
+      this.getYaSuoKongQi()
+      this.getQingDan()
     },
     getDianHao: function() {
       getDianHao(this.energySelect.selectedTime).then((res) => {
         this.energy.dian = res.data
-        switch (res.data.sign) {
-          case 1:
-            this.numberLogo = 'increaseLogo'
-            break
-          case 0:
-            this.numberLogo = 'decreaseLogo'
-            break
-        }
+      }).catch(errr => {
+        console.log(errr)
+      })
+    },
+    getYaSuoKongQi: function() {
+      getYaSuoKongQi(this.energySelect.selectedTime).then((res) => {
+        this.energy.yasuokongqi = res.data
+      }).catch(errr => {
+        console.log(errr)
+      })
+    },
+    getQingDan: function() {
+      getQingDan(this.energySelect.selectedTime).then((res) => {
+        this.energy.qingdan = res.data
       }).catch(errr => {
         console.log(errr)
       })
@@ -227,6 +240,8 @@ export default {
       this.energySelect.selectedTime.label = label
       this.energySelect.selectedTime.value = value
       this.getDianHao()
+      this.getYaSuoKongQi()
+      this.getQingDan()
     }
   }
 }

@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { fetchSystem } from '@/api/main/guapai'
 import WordCloudChart from './wordCloudChart'
 import KongYaSystem from './guapaiSystem/kongyaSystem'
 import QingDanSystem from './guapaiSystem/qingdanSystem'
@@ -35,15 +36,8 @@ export default {
   },
   data() {
     return {
-      currentView: 'KongYaSystem',
-      viewList: [
-        'KongYaSystem',
-        'QingDanSystem',
-        'ZhenKongSystem',
-        'DianLiSystem'/* ,
-        'LengShuiSystem',
-        'ReShuiSystem' */
-      ],
+      currentView: '',
+      viewList: ['KongYaSystem', 'QingDanSystem', 'ZhenKongSystem', 'DianLiSystem'],
       nowIndex: 0
     }
   },
@@ -53,11 +47,12 @@ export default {
   },
 
   mounted() {
-    /* for (let i = 0; i < this.viewList.length; i++) {
-      setTimeout(() => {
-        console.log(this.viewList[i])
-      }, 1000)
-    } */
+    fetchSystem().then((res) => {
+      // this.viewList = res.data
+      this.currentView = 'KongYaSystem'
+    }).catch(err => {
+      console.log(err)
+    })
   },
 
   methods: {
@@ -71,11 +66,25 @@ export default {
         this.currentView = this.viewList[this.nowIndex]
       }
     },
-    getMsgFormSon(index, type) {
-      const number = index % 6
+    getMsgFormSon(index, type, systemNumber) {
+      const number = index % systemNumber
       if (number !== 4 && number !== 5) {
-        this.currentView = type
-        this.nowIndex = index % 6
+        switch (type) {
+          case 'ky':
+            this.currentView = 'KongYaSystem'
+            break
+          case 'qd':
+            this.currentView = 'QingDanSystem'
+            break
+          case 'zk':
+            this.currentView = 'ZhenKongSystem'
+            break
+          case 'dl':
+            this.currentView = 'DianLiSystem'
+            break
+        }
+
+        this.nowIndex = index % systemNumber
       }
     },
     showDongLiZhan() {

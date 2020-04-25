@@ -1,7 +1,6 @@
 <template>
   <div id="main" ref="main" :style="{transform: transforChange()}">
     <div class="dp-bottom-container">
-      <!-- <svg id="backgroud" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" v-html="html" /> -->
       <div class="top-pic" />
       <div id="left-container">
         <duty-arrangement />
@@ -29,7 +28,6 @@
 </template>
 
 <script>
-/* import backgroud from './backgroud' */
 import DutyArrangement from '@/views/project/main/dutyArrangement'
 import EnergyStatus from '@/views/project/main/energyStatus'
 import OperationWatch from '@/views/project/main/operationWatch'
@@ -56,10 +54,9 @@ export default {
   },
   mounted() {
     const that = this
-    // that.transforChange()
     window.onresize = () => {
       that.fontSizeResize()
-      this.$refs.faultWarning.resizeCharts()
+      /* this.$refs.faultWarning.resizeCharts() */
     }
   },
   methods: {
@@ -103,7 +100,14 @@ export default {
       var totalWidth = document.documentElement.clientWidth
       var totalHeight = document.documentElement.clientHeight
 
-      var newHeight = totalHeight - 70
+      let navHeight = 0
+      if (document.getElementsByClassName('navbar')[0] !== undefined) {
+        navHeight = document.getElementsByClassName('navbar')[0].offsetHeight
+      } else {
+        return
+      }
+
+      var newHeight = totalHeight - navHeight
       var newWidth = totalWidth
 
       var newCursor = newHeight / newWidth
@@ -128,7 +132,6 @@ export default {
 
 <style lang='scss' scoped>
 #main{
- /*  transform: translateY(-81px) scale(1,0.84); */
   min-width: 1024px;
   min-height: 576px;
   position: relative;
@@ -226,20 +229,4 @@ export default {
 img{
   position: absolute;
 }
-/* #left-container{
-  position: relative;
-  color: white;
-  width: 24%;
-  display: flex;
-  flex-direction: column;
-}
-#right-container{
-  position: relative;
-  color: white;
-  width: 24%;
-}
-#middle-container{
-  position: relative;
-  width:52%;
-} */
 </style>

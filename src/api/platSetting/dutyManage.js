@@ -47,3 +47,11 @@ export function searchSystem(query) {
     params: query
   })
 }
+
+export function fetchAllData(query) {
+  return request({
+    url: '/setting/dutyManage/fetchAllData',
+    method: 'post',
+    params: query
+  })
+}

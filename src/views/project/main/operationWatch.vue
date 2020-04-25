@@ -8,18 +8,19 @@
     </div>
 
     <div class="radio-container">
-      <el-radio-group v-model="operationDefult" class="operation-group" @change="radioChange">
-        <el-radio-button label="kongya">空压</el-radio-button>
-        <el-radio-button label="danqi">氮气</el-radio-button>
-        <el-radio-button label="zhenkong">真空</el-radio-button>
-        <el-radio-button label="dian">电</el-radio-button>
-        <el-radio-button label="leng">冷</el-radio-button>
-        <el-radio-button label="re">热</el-radio-button>
+      <el-radio-group ref="operationGroup" v-model="systems.defaultSystemCode" class="operation-group" @change="radioChange">
+        <el-radio-button
+          v-for="item in systems.systemsRadio"
+          :key="item.systemCode"
+          :label="item.systemCode"
+        >
+          {{ item.systemName }}
+        </el-radio-button>
       </el-radio-group>
     </div>
 
     <div class="operation-table">
-      <el-table :show-header="showHeader" :data="operation.tableData" border>
+      <el-table :show-header="false" :data="operation.tableData" border>
         <el-table-column prop="type" label="" align="center" />
         <el-table-column prop="value" label="" align="center" />
       </el-table>
@@ -29,13 +30,12 @@
 </template>
 
 <script>
+import { fetchSystem, getTableDataBySystem } from '@/api/main/operationWatch'
 export default {
   name: 'OperationWatch',
   components: {},
   data() {
     return {
-      operationDefult: 'kongya',
-      showHeader: false,
       operation: {
         tableData: [{
           type: '总流量',
@@ -53,6 +53,22 @@ export default {
           type: '冷却水温度',
           value: '39℃'
         }]
+      },
+      systems: {
+        systemsRadio: [{
+          systemCode: 'ky',
+          systemName: '空压系统'
+        }, {
+          systemCode: 'qd',
+          systemName: '氢氮系统'
+        }, {
+          systemCode: 'zk',
+          systemName: '真空系统'
+        }, {
+          systemCode: 'dl',
+          systemName: '电力系统'
+        }],
+        defaultSystemCode: 'ky'
       }
     }
   },
@@ -60,77 +76,40 @@ export default {
   computed: {},
 
   mounted() {
+    this.initOperationWatchData()
   },
 
   methods: {
+    initOperationWatchData: function() {
+      this.getSystem()
+    },
+    getSystem: function() {
+      fetchSystem().then((res) => {
+        this.systems.systemsRadio = res.data
+        if (res.data.length > 0) {
+          this.systems.defaultSystemCode = res.data[0].systemCode
+          this.systems.defaultSystemName = res.data[0].systemName
+          // this.getTableDataBySystem({ code: this.systems.defaultSystemCode })
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getTableDataBySystem(param) {
+      getTableDataBySystem(param).then((res) => {
+        var data = []
+        for (var item in res.data) {
+          const type = item
+          const value = res.data[item]
+          data.push({ type: type, value: value })
+        }
+        this.operation.tableData = data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     radioChange: function(value) {
-      switch (value) {
-        case 'kongya':
-          this.operation.tableData = [{
-            type: '总流量',
-            value: '39m³/h'
-          },
-          {
-            type: '总压力',
-            value: '3.4bar'
-          },
-          {
-            type: '平均温度',
-            value: '36℃'
-          },
-          {
-            type: '冷却水温度',
-            value: '39℃'
-          }]
-          break
-        case 'danqi':
-          this.operation.tableData = [{
-            type: '总流量',
-            value: '39m³/h'
-          },
-          {
-            type: '总压力',
-            value: '39bar'
-          },
-          {
-            type: '平均温度',
-            value: '39℃'
-          },
-          {
-            type: '冷却水温度',
-            value: '39℃'
-          }]
-          break
-        case 'zhenkong':
-          this.operation.tableData = [{
-            type: '真空度',
-            value: '39kPa'
-          },
-          {
-            type: '温度',
-            value: '39℃'
-          }]
-          break
-        case 'dian':
-          this.operation.tableData = [{
-            type: '总瞬时功率',
-            value: '39kWh'
-          },
-          {
-            type: '有功功率',
-            value: '39kWh'
-          },
-          {
-            type: '无功功率',
-            value: '39kWh'
-          }]
-          break
-        case 'leng':
-          break
-        case 're':
-          break
-        default:
-      }
+      this.getTableDataBySystem({ code: value })
     }
   }
 }
@@ -176,7 +155,7 @@ export default {
   }
   .operation-group{
     margin-top: 1vw;
-    margin-left: 1vw;
+    margin-left: 0.8vw;
     position: relative;
     border: unset;
     .el-radio-button__inner{
@@ -186,8 +165,10 @@ export default {
       border-bottom: 1px solid #243B9E;
       border-right:1px solid #243B9E;
       height: 1.9vw;
-      width: 3.35vw;
+      /* width: 5vw; */
       line-height: 0.9vw;
+      padding: 0.5vw 1vw;
+      font-size: 0.75vw;
     }
     .el-radio-button:first-child .el-radio-button__inner{
       border-left:1px solid #243B9E;
@@ -199,15 +180,37 @@ export default {
   }
 
   .operation-table{
-    margin-left: 1vw;
+    margin-left: 0.8vw;
     flex-shrink: 1;
     flex-grow: 1;
     width: 100%;
     height: 0;
+    padding-right: 1.63vw;
     .el-table{
         background-color:transparent;
-        width: 20vw;
+        width: 100%;
+        height: 85%;
         border-color: #243B9E;
+      }
+      .el-table__body-wrapper{
+        overflow: auto;
+        height: 110%;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar{
+        width: 3px;
+        background-color:  #243B9E;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar-thumb{
+        border-radius: 3px;
+        background-image: linear-gradient(180deg, #3656DD 0%, #243B9E 100%);
+        height: 50px;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 5px rgba($color: #000000, $alpha: 0.2);
+        border-radius: 3px;
+      }
+      .el-table--border{
+        border-left: none;
       }
       .el-table--border::after, .el-table--group::after, .el-table::before{
         background-color:unset;

@@ -10,7 +10,7 @@ export function fetchDutyMembers(query) {
 
 export function fetchSystem(query) {
   return request({
-    url: '/main/dutyArrangement/fetchSystem',
+    url: '/common/fetchSystem',
     method: 'post',
     params: query
   })

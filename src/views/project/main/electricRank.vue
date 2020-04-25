@@ -8,36 +8,40 @@
     </div>
 
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-      <el-tab-pane label="系统" name="first">
+      <el-tab-pane label="系统" name="system">
         <div class="radio-container">
-          <el-radio-group v-model="dianliConsumeDefault" class="dianli-group">
-            <el-radio-button label="一栋">一栋</el-radio-button>
-            <el-radio-button label="二栋">二栋</el-radio-button>
-            <el-radio-button label="三栋">三栋</el-radio-button>
-            <el-radio-button label="四栋">四栋</el-radio-button>
-            <el-radio-button label="空压站">空压站</el-radio-button>
+          <el-radio-group v-model="radio.system.defaultSystemCode" class="dianli-group" @change="systemRadioChange">
+            <el-radio-button
+              v-for="item in radio.system.data"
+              :key="item.systemCode"
+              :label="item.systemCode"
+            >
+              {{ item.systemName }}
+            </el-radio-button>
           </el-radio-group>
         </div>
 
         <div class="sum-row">
-          <span><label>总能耗(kwh)：</label><strong>9800.6</strong></span>
+          <span><label>总能耗(kwh)：</label><strong>{{ radio.system.sumEnergy }}</strong></span>
         </div>
         <dianLiTable />
       </el-tab-pane>
 
-      <el-tab-pane label="区域" name="second">
+      <el-tab-pane label="区域" name="region">
         <div class="radio-container">
-          <el-radio-group v-model="dianliConsumeDefault" class="dianli-group">
-            <el-radio-button label="一栋">一栋</el-radio-button>
-            <el-radio-button label="二栋">二栋</el-radio-button>
-            <el-radio-button label="三栋">三栋</el-radio-button>
-            <el-radio-button label="四栋">四栋</el-radio-button>
-            <el-radio-button label="空压站">空压站</el-radio-button>
+          <el-radio-group v-model="radio.region.defaultRegionCode" class="dianli-group" @change="regionRadioChange">
+            <el-radio-button
+              v-for="item in radio.region.data"
+              :key="item.regionCode"
+              :label="item.regionCode"
+            >
+              {{ item.regionName }}
+            </el-radio-button>
           </el-radio-group>
         </div>
 
         <div class="sum-row">
-          <span><label>总能耗(kwh)：</label><strong>9800.6</strong></span>
+          <span><label>总能耗(kwh)：</label><strong>{{ radio.region.sumEnergy }}</strong></span>
         </div>
         <dianLiTable />
       </el-tab-pane>
@@ -49,6 +53,7 @@
 
 <script>
 import dianLiTable from './dianLiTable'
+import { fetchSystem, fetchRegion, getTableDataBySystem, getTableDataByRegion } from '@/api/main/electricRank'
 export default {
   name: 'ElectricRank',
   components: {
@@ -56,19 +61,130 @@ export default {
   },
   data() {
     return {
-      dianliConsumeDefault: '一栋',
-      activeName: 'first'
+      radio: {
+        system: {
+          data: [{
+            systemCode: 'ky',
+            systemName: '空压系统'
+          }, {
+            systemCode: 'qd',
+            systemName: '氢氮系统'
+          }, {
+            systemCode: 'zk',
+            systemName: '真空系统'
+          }, {
+            systemCode: 'dl',
+            systemName: '电力系统'
+          }],
+          defaultSystemCode: 'ky',
+          defaultSystemName: '空压系统',
+          sumEnergy: 0
+        },
+        region: {
+          data: [{
+            regionCode: 'dlzf1',
+            regionName: '1#动力站房'
+          }, {
+            regionCode: 'cj1',
+            regionName: '1栋车间'
+          }, {
+            regionCode: 'cj2',
+            regionName: '2栋车间'
+          }, {
+            regionCode: 'cj3',
+            regionName: '3栋车间'
+          }, {
+            regionCode: 'cj4',
+            regionName: '4栋车间'
+          }, {
+            regionCode: 'cj5',
+            regionName: '胶水厂区'
+          }],
+          defaultRegionCode: 'cj1',
+          defaultRegionName: '1栋车间',
+          sumEnergy: 0
+        }
+      },
+      activeName: 'system'
     }
   },
 
   computed: {},
 
   mounted() {
+    this.initOperationWatchData()
   },
 
   methods: {
+    initOperationWatchData: function() {
+      this.getSystem()
+    },
+    getSystem: function() {
+      fetchSystem().then((res) => {
+        this.radio.system.data = res.data
+        if (res.data.length > 0) {
+          this.radio.system.defaultSystemCode = res.data[0].systemCode
+          this.radio.system.defaultSystemName = res.data[0].systemName
+          // this.getTableDataBySystem({ code: this.radio.system.defaultSystemCode })
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getRegion: function() {
+      fetchRegion().then((res) => {
+        this.radio.system.data = res.data
+        if (res.data.length > 0) {
+          this.radio.region.defaultRegionCode = res.data[0].regionCode
+          this.radio.region.defaultRegionName = res.data[0].regionName
+          // this.getTableDataByRegion({ code: this.radio.system.defaultRegionCode })
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getTableDataBySystem(param) {
+      getTableDataBySystem(param).then((res) => {
+        var data = []
+        for (var item in res.data) {
+          const type = item
+          const value = res.data[item]
+          data.push({ type: type, value: value })
+        }
+        this.operation.tableData = data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getTableDataByRegion(param) {
+      getTableDataByRegion(param).then((res) => {
+        var data = []
+        for (var item in res.data) {
+          const type = item
+          const value = res.data[item]
+          data.push({ type: type, value: value })
+        }
+        this.operation.tableData = data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     handleClick(tab, event) {
-      console.log(tab, event)
+      var tabName = tab.paneName
+      switch (tabName) {
+        case 'system':
+          this.getSystem()
+          break
+        case 'region':
+          this.getRegion()
+          break
+      }
+    },
+    systemRadioChange: function(value) {
+      // this.getTableDataBySystem({ code: value })
+    },
+    regionRadioChange: function(value) {
+      // this.getTableDataByRegion({ code: value })
     }
   }
 }
@@ -77,6 +193,13 @@ export default {
 <style lang='scss'>
 #right-container {
   .dianli-consumer{
+      .el-tabs{
+        padding-left: 0.8vw;
+        padding-right: 0.8vw;
+        flex-shrink: 1;
+        flex-grow: 1;
+        width: 100%;
+      }
     .el-tabs__header{
       width: 10vw;
       top: -1.5vw;
@@ -91,6 +214,13 @@ export default {
     }
     .el-tabs__content{
       top: -2vw;
+      width: 100%;
+      .el-tab-pane{
+        width: 100%;
+        .radio-container{
+          width: 100%;
+        }
+      }
     }
     .el-tabs__item{
       padding: 0 0.5vw !important;
@@ -113,20 +243,21 @@ export default {
     }
   }
 
-  .el-radio-group{
+  #pane-system{
+    .dianli-group{
     position: relative;
     border: unset;
-    }
-  .dianli-group{
+    width: 100%;
     .el-radio-button__inner{
       color: #B5BFF6;
       background-color: rgba(0,0,0,0);
       border-top: 1px solid #243B9E;
       border-bottom: 1px solid #243B9E;
       border-right:1px solid #243B9E;
-      height: 2vw;
-      width: 3.95vw;
+      height: 1.9vw;
       line-height: 0.8vw;
+      padding: 0.5vw 1vw;
+      font-size: 0.75vw;
     }
     .el-radio-button:first-child .el-radio-button__inner{
       border-left:1px solid #243B9E;
@@ -134,6 +265,32 @@ export default {
     .el-radio-button__orig-radio:checked+.el-radio-button__inner{
       background-image: linear-gradient(132deg, #602FE9, #2F54EB);
       background-color: transparent;
+    }
+  }
+  }
+  #pane-region{
+    .dianli-group{
+      position: relative;
+      border: unset;
+      width: 100%;
+      .el-radio-button__inner{
+        color: #B5BFF6;
+        background-color: rgba(0,0,0,0);
+        border-top: 1px solid #243B9E;
+        border-bottom: 1px solid #243B9E;
+        border-right:1px solid #243B9E;
+        height: 1.9vw;
+        line-height: 0.8vw;
+        padding: 0.5vw 0.2vw;
+        font-size: 0.75vw;
+      }
+      .el-radio-button:first-child .el-radio-button__inner{
+        border-left:1px solid #243B9E;
+      }
+      .el-radio-button__orig-radio:checked+.el-radio-button__inner{
+        background-image: linear-gradient(132deg, #602FE9, #2F54EB);
+        background-color: transparent;
+      }
     }
   }
 }
@@ -182,11 +339,6 @@ export default {
       line-height:0.8vw;
     }
   }
-  .el-tabs{
-    padding-left: 1vw;
-    flex-shrink: 1;
-    flex-grow: 1;
-  }
   .sum-row{
     margin-top: 0;
   }
@@ -196,8 +348,8 @@ export default {
   font-family: MicrosoftYaHeiUI;
   display: block;
   height: 2.2vw;
-  border: 1px solid #385FFD;
-  width: 19.8vw;
+  border: 1px solid #243B9E;
+  width: 100%;
   font-size: 0.8vw;
   display: flex;
   line-height: 2vw;

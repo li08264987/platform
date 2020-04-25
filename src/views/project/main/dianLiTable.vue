@@ -92,7 +92,7 @@ export default {
 
 #right-container{
     .table-demo{
-       width: 19.8vw;
+       width: 99.6%;
         .el-table{
             background-color:transparent;
             border-color: #243B9E;

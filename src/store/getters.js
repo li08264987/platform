@@ -15,6 +15,7 @@ const getters = {
   monitor_routes: state => state.permission.monitorRoutes,
   reportTable_routes: state => state.permission.reportTableRoutes,
   platSetting_routes: state => state.permission.platformSettingRoutes,
+  smartDiagnose_routes: state => state.permission.smartDiagnoseRoutes,
   errorLogs: state => state.errorLog.logs
 }
 export default getters
