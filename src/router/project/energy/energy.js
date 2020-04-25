@@ -14,7 +14,7 @@ const energyRouter = [{
     {
       path: 'energyKongya',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyKongya',
+      name: 'ky',
       meta: {
         title: '空压系统',
         roles: ['admin'],
@@ -24,7 +24,7 @@ const energyRouter = [{
     }, {
       path: 'qingdan',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyQingdan',
+      name: 'qd',
       meta: {
         title: '氢氮系统',
         roles: ['admin'],
@@ -33,7 +33,7 @@ const energyRouter = [{
     }, {
       path: 'zhenkong',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyZhenkong',
+      name: 'zk',
       meta: {
         title: '真空系统',
         roles: ['admin'],
@@ -42,25 +42,9 @@ const energyRouter = [{
     }, {
       path: 'dianli',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyDianli',
+      name: 'dl',
       meta: {
         title: '电力系统',
-        icon: 'documentation'
-      }
-    }, {
-      path: 'lengshui',
-      component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyLengshui',
-      meta: {
-        title: '冷水系统',
-        icon: 'documentation'
-      }
-    }, {
-      path: 'reshui',
-      component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyReshui',
-      meta: {
-        title: '热水系统',
         icon: 'documentation'
       }
     }
@@ -78,7 +62,7 @@ const energyRouter = [{
     {
       path: 'first',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyFirst',
+      name: 'cj1',
       meta: {
         title: '一号车间',
         icon: 'documentation'
@@ -86,7 +70,7 @@ const energyRouter = [{
     }, {
       path: 'second',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergySecond',
+      name: 'cj2',
       meta: {
         title: '二号车间',
         icon: 'documentation'
@@ -94,7 +78,7 @@ const energyRouter = [{
     }, {
       path: 'third',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyThird',
+      name: 'cj3',
       meta: {
         title: '三号车间',
         icon: 'documentation'
@@ -102,7 +86,7 @@ const energyRouter = [{
     }, {
       path: 'fouth',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyFouth',
+      name: 'cj4',
       meta: {
         title: '四号车间',
         icon: 'documentation'
@@ -110,7 +94,7 @@ const energyRouter = [{
     }, {
       path: 'jiaoshui',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyJiaoshui',
+      name: 'cj5',
       meta: {
         title: '胶水厂区',
         icon: 'documentation'
@@ -118,7 +102,7 @@ const energyRouter = [{
     }, {
       path: 'dongli',
       component: () => import('@/views/project/energy/kongya/index'),
-      name: 'EnergyDongli',
+      name: 'dlzf1',
       meta: {
         title: '动力车间',
         icon: 'documentation'

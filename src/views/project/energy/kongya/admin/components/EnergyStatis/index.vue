@@ -234,7 +234,11 @@ export default {
           }
         }
       }).catch(err => {
-        console.log(err)
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
       })
     },
     setCompareData(params) {
@@ -242,7 +246,11 @@ export default {
         var data = response.data
         this.compareData.data = data
       }).catch(err => {
-        console.log(err)
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
       })
     },
     initEnergyCircle() {
@@ -287,7 +295,11 @@ export default {
         }
         this.initEnergyCircle()
       }).catch(err => {
-        console.log(err)
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
         this.initEnergyCircle()
       })
     },

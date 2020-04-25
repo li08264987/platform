@@ -53,7 +53,7 @@
           align="center"
         >
           <template slot-scope="{row}">
-            <el-input v-if="row.edit" v-model="row.level" class="edit-cell" type="number" />
+            <el-input v-if="row.edit" v-model="row.level" class="edit-cell" type="number" :disabled="row.type===1" />
             <span v-if="!row.edit">{{ row.level }}</span>
           </template>
         </el-table-column>
@@ -78,6 +78,7 @@
         <el-table-column
           prop="startTime"
           label="时间段"
+          width="380"
           header-align="center"
           align="center"
         >
@@ -87,11 +88,12 @@
               v-model="row.times"
               is-range
               arrow-control
-              value-format="hh:mm:ss"
+              value-format="HH:mm:ss"
               range-separator="至"
               start-placeholder="开始时间"
               end-placeholder="结束时间"
               placeholder="选择时间范围"
+              :disabled="row.type===0"
             />
             <span v-if="!row.edit">{{ row.times.length===2 ? (row.times[0]+' - '+row.times[1]) : '' }}</span>
           </template>
@@ -103,7 +105,7 @@
           align="center"
         >
           <template slot-scope="{row}">
-            <el-input v-if="row.edit" v-model="row.max" class="edit-cell" type="number" />
+            <el-input v-if="row.edit" v-model="row.max" class="edit-cell" type="number" :disabled="row.type===1" />
             <span v-if="!row.edit">{{ row.max }}</span>
           </template>
         </el-table-column>
@@ -182,16 +184,26 @@
       title="添加价格标准"
       :center="false"
       :visible.sync="dialogVisible"
-      width="360px"
+      width="500px"
       :before-close="handleClose"
-      class="energy-strd-add-dialog"
+      class="energy-price-strd-add-dialog"
     >
       <el-form ref="addEnergyForm" :model="addData" :inline="false" label-width="90px">
+        <el-form-item label="标准类型">
+          <el-select v-model="addData.type" placeholder="请选择标准类型">
+            <el-option
+              v-for="item in strdTypes"
+              :key="item.code"
+              :label="item.name"
+              :value="item.code"
+            />
+          </el-select>
+        </el-form-item>
         <el-form-item label="价格">
           <el-input v-model="addData.price" type="number" />
         </el-form-item>
         <el-form-item label="级别">
-          <el-input v-model="addData.level" type="number" />
+          <el-input v-model="addData.level" type="number" :disabled="addData.type===1" />
         </el-form-item>
         <el-form-item label="设备类型">
           <el-select v-model="addData.facType" placeholder="请选择设备类型">
@@ -203,8 +215,21 @@
             />
           </el-select>
         </el-form-item>
+        <el-form-item label="时间片段">
+          <el-time-picker
+            v-model="addData.times"
+            is-range
+            arrow-control
+            value-format="HH:mm:ss"
+            range-separator="至"
+            start-placeholder="开始时间"
+            end-placeholder="结束时间"
+            placeholder="选择时间范围"
+            :disabled="addData.type===0"
+          />
+        </el-form-item>
         <el-form-item label="临界最大值">
-          <el-input v-model="addData.max" type="number" placeholder="请输入临界最大值" />
+          <el-input v-model="addData.max" type="number" placeholder="请输入临界最大值" :disabled="addData.type===1" />
         </el-form-item>
         <el-form-item label="备注">
           <el-input v-model="addData.remarks" type="text" placeholder="请输入备注" />
@@ -253,6 +278,18 @@ export default {
         editData: {}
       },
       tableData: []
+    }
+  },
+  watch: {
+    'addData.type': function(newVal, oldValue) {
+      if (newVal === 0) {
+        this.addData.startTime = ''
+        this.addData.endTime = ''
+        this.addData.times = ['', '']
+      } else if (newVal === 1) {
+        this.addData.level = ''
+        this.addData.max = ''
+      }
     }
   },
   mounted() {
@@ -625,9 +662,9 @@ export default {
   .control-btn:hover {
     text-decoration: underline;
   }
-  .energy-strd-add-dialog .el-input,
-  .energy-strd-add-dialog .el-select{
-    width: 220px;
+  .energy-price-strd-add-dialog .el-input,
+  .energy-price-strd-add-dialog .el-select{
+    width: 350px;
   }
 </style>
 <style lang="scss">
@@ -653,23 +690,23 @@ export default {
     padding: 10px;
     cursor: default;
   }
-  .energy-strd-add-dialog .el-dialog__header {
+  .energy-price-strd-add-dialog .el-dialog__header {
     padding: 15px 20px;
     background-color: #2857ff;
     color: white;
   }
-  .energy-strd-add-dialog .el-dialog__title {
+  .energy-price-strd-add-dialog .el-dialog__title {
     color: white;
   }
-  .energy-strd-add-dialog .el-dialog__headerbtn {
+  .energy-price-strd-add-dialog .el-dialog__headerbtn {
     top: 15px;
     font-size: 20px;
   }
-  .energy-strd-add-dialog .el-dialog__headerbtn .el-dialog__close {
+  .energy-price-strd-add-dialog .el-dialog__headerbtn .el-dialog__close {
     color: white;
   }
-  .energy-strd-add-dialog .el-dialog__headerbtn:focus .el-dialog__close,
-  .energy-strd-add-dialog .el-dialog__headerbtn:hover .el-dialog__close {
+  .energy-price-strd-add-dialog .el-dialog__headerbtn:focus .el-dialog__close,
+  .energy-price-strd-add-dialog .el-dialog__headerbtn:hover .el-dialog__close {
     color: white;
     text-shadow: 0 0 0;
   }

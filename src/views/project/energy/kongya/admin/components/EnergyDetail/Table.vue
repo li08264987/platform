@@ -14,6 +14,7 @@
     <div class="table-container">
       <div class="table-title">空压系统分级统计概览</div>
       <el-table
+        v-loading="loading"
         :data="tableData.slice((currentPage-1)*pageSize,currentPage*pageSize)"
         height="calc(100% - 75px)"
         header-row-class-name="table-header"
@@ -31,23 +32,18 @@
         />
         <el-table-column
           prop="sumValue"
-          label="累计读数（kW·h）"
+          label="当前值"
           width="180"
         />
         <el-table-column
-          prop="onceValue"
-          label="瞬时读数（kW·h）"
-          width="180"
-        />
-        <el-table-column
-          prop="remarks"
+          prop="remark"
           label="备注"
         />
       </el-table>
 
       <el-pagination
         :current-page="currentPage"
-        :page-sizes="[10, 14, 20, 25, 30]"
+        :page-sizes="[10, 15, 20, 25, 30]"
         :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="count"
@@ -59,7 +55,7 @@
 </template>
 
 <script>
-import { testAxios } from '@/api/energy/test'
+import { getEnergyTreeTableData } from '@/api/energy/statis'
 export default {
   data() {
     return {
@@ -72,152 +68,60 @@ export default {
       // 当前页
       currentPage: 1,
       // 每页多少条
-      pageSize: 14,
+      pageSize: 15,
       // 总数
-      count: 20,
-      tableData: [{
-        code: 1,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: 'Ant Design是一个服务于企业级产品的设计体系，基于『确定』和『自然』的设计价值观和模块化的解决方案，让设计者专注于更好的用户体验。'
-      }, {
-        code: 2,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 3,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 4,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 5,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 6,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 7,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 8,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 9,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 10,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 11,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: 'Ant Design是一个服务于企业级产品的设计体系，基于『确定』和『自然』的设计价值观和模块化的解决方案，让设计者专注于更好的用户体验。'
-      }, {
-        code: 12,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 13,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 14,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 15,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 16,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 17,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 18,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 19,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }, {
-        code: 20,
-        date: '2020-02-25',
-        sumValue: 6540,
-        onceValue: 75.0,
-        remarks: '这是一个备注'
-      }]
+      count: 0,
+      tableData: [],
+      loading: true
     }
+  },
+  mounted() {
+    this.setEnergyTreeTableData({
+      sys: this.$router.currentRoute.name,
+      page: this.currentPage,
+      size: this.pageSize
+    })
   },
   methods: {
     // 每页多少条
     handleSizeChange(val) {
       this.pageSize = val
+      this.setEnergyTreeTableData({
+        sys: this.$router.currentRoute.name,
+        page: this.currentPage,
+        size: this.pageSize
+      })
     },
     // 当前页
     handleCurrentChange(val) {
       this.currentPage = val
+      this.setEnergyTreeTableData({
+        sys: this.$router.currentRoute.name,
+        page: this.currentPage,
+        size: this.pageSize
+      })
     },
     onSearch(type) {
       console.log(type)
       console.log(this.searchForm)
-      testAxios().then(response => {
-        console.log(response)
-      }).catch(err => {
-        console.log(err)
-      })
     },
     onExport() {
       console.log(this.searchForm)
+    },
+    setEnergyTreeTableData(params) {
+      getEnergyTreeTableData(params).then(response => {
+        var data = response.data
+        this.tableData = data
+        this.count = response.count
+        this.loading = false
+      }).catch(err => {
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
+        this.loading = false
+      })
     }
   }
 }

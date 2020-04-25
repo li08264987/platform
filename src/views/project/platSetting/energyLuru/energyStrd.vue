@@ -86,8 +86,8 @@
             <el-date-picker
               v-if="row.edit"
               v-model="row.time"
-              value-format="yyyy-MM"
-              type="month"
+              value-format="yyyy-MM-dd"
+              type="date"
               class="edit-cell"
               placeholder="选择能耗时间"
             />

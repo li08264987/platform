@@ -23,3 +23,19 @@ export function getEnergyCircleData(query) {
     params: query
   })
 }
+
+export function getEnergyTreeData(query) {
+  return request({
+    url: '/energy/statis/getEnergyTreeData',
+    method: 'post',
+    params: query
+  })
+}
+
+export function getEnergyTreeTableData(query) {
+  return request({
+    url: '/energy/statis/getEnergyTreeTableData',
+    method: 'post',
+    params: query
+  })
+}
