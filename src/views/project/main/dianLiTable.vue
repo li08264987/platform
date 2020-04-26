@@ -1,15 +1,16 @@
 <template>
   <div class="table-demo">
     <el-table
-      :data="tableData"
+      :data="dataList"
       :header-cell-style="headerStyle"
+      :span-method="arraySpanMethod"
       border
       style="width: 100%"
       tooltip-effect="dark"
     >
       <el-table-column prop="rank" label="排名" min-width="30" align="center" />
-      <el-table-column prop="floor" label="楼层" min-width="30" align="center" />
-      <el-table-column prop="progress" label="能耗评分" min-width="82" align="center" show-overflow-tooltip>
+      <el-table-column prop="cheJianName" label="车间名称" min-width="50" align="center" />
+      <!-- <el-table-column prop="progress" label="能耗评分" min-width="82" align="center" show-overflow-tooltip>
         <template slot="header">
           <el-tooltip class="item" content="注：与历史同期能耗情况对比" placement="bottom-start" popper-class="test">
             <span>能耗评分</span>
@@ -25,52 +26,37 @@
             :format="progressFormat"
           />
         </template>
+      </el-table-column> -->
+      <el-table-column prop="consumer" label="消耗量" min-width="30" align="center" />
+      <el-table-column prop="level" label="总能效值" min-width="50" align="center">
+        <template slot-scope="scope">
+          <div v-html="scope.row.levelValue" />
+          <div v-html="scope.row.levelName" />
+        </template>
       </el-table-column>
-      <el-table-column prop="value" label="电耗值(kwh)" min-width="58" align="center" />
     </el-table>
   </div>
 </template>
 <script>
 export default {
   name: 'DianLiTable',
+  // eslint-disable-next-line vue/require-prop-types
+  props: ['tableData'],
   data() {
     return {
       page: 1,
-      tableData: [
-        {
-          rank: '1',
-          floor: '4F',
-          value: 2000,
-          progress: 50,
-          color: '#11BEBE'
-        },
-        {
-          rank: '2',
-          floor: '1F',
-          value: 2000,
-          progress: 60,
-          color: '#11BEBE'
-        },
-        {
-          rank: '3',
-          floor: '2F',
-          value: 3000,
-          progress: 70,
-          color: '#DAD128'
-        },
-        {
-          rank: '4',
-          floor: '3F',
-          value: 4000,
-          progress: 80,
-          color: '#EB2E95'
-        }
-      ]
+      dataList: null
+    }
+  },
+  watch: {
+    tableData: function(newVal, oldValue) {
+      this.dataList = this.tableData
     }
   },
   created() {
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     handleCurrentChange(val) {
     },
@@ -82,7 +68,23 @@ export default {
       if (columnIndex === 2) {
         str += 'color: #fff'
       }
+      console.log(this.tableData)
       return str
+    },
+    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+      if (columnIndex === 3) {
+        if (rowIndex === 0) {
+          return {
+            rowspan: this.tableData.length,
+            colspan: 1
+          }
+        } else {
+          return {
+            rowspan: 0,
+            colspan: 0
+          }
+        }
+      }
     }
   }
 }

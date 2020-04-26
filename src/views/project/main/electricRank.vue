@@ -8,7 +8,7 @@
     </div>
 
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-      <el-tab-pane label="系统" name="system">
+      <el-tab-pane label="" name="system">
         <div class="radio-container">
           <el-radio-group v-model="radio.system.defaultSystemCode" class="dianli-group" @change="systemRadioChange">
             <el-radio-button
@@ -21,13 +21,32 @@
           </el-radio-group>
         </div>
 
-        <div class="sum-row">
+        <!-- <div class="sum-row">
           <span><label>总能耗(kwh)：</label><strong>{{ radio.system.sumEnergy }}</strong></span>
+        </div> -->
+        <div class="table-demo">
+          <el-table
+            :data="tableData"
+            :header-cell-style="headerStyle"
+            :span-method="arraySpanMethod"
+            border
+            style="width: 100%"
+            tooltip-effect="dark"
+          >
+            <el-table-column prop="rank" label="排名" min-width="20" align="center" />
+            <el-table-column prop="cheJianName" label="车间名称" min-width="40" align="center" />
+            <el-table-column prop="consumer" label="消耗量" min-width="30" align="center" />
+            <el-table-column prop="level" label="总能效值" min-width="40" align="center">
+              <template slot-scope="scope">
+                <div v-html="scope.row.levelValue" />
+                <div v-html="scope.row.levelName" />
+              </template>
+            </el-table-column>
+          </el-table>
         </div>
-        <dianLiTable />
       </el-tab-pane>
 
-      <el-tab-pane label="区域" name="region">
+      <!-- <el-tab-pane label="" name="region">
         <div class="radio-container">
           <el-radio-group v-model="radio.region.defaultRegionCode" class="dianli-group" @change="regionRadioChange">
             <el-radio-button
@@ -44,7 +63,7 @@
           <span><label>总能耗(kwh)：</label><strong>{{ radio.region.sumEnergy }}</strong></span>
         </div>
         <dianLiTable />
-      </el-tab-pane>
+      </el-tab-pane> -->
 
     </el-tabs>
 
@@ -52,13 +71,9 @@
 </template>
 
 <script>
-import dianLiTable from './dianLiTable'
-import { fetchSystem, fetchRegion, getTableDataBySystem, getTableDataByRegion } from '@/api/main/electricRank'
+import { fetchSystem, fetchRegion, getTableDataBySystem, getTableDataByRegion } from '@/api/main/energyConsumptionRank'
 export default {
   name: 'ElectricRank',
-  components: {
-    dianLiTable
-  },
   data() {
     return {
       radio: {
@@ -105,7 +120,8 @@ export default {
           sumEnergy: 0
         }
       },
-      activeName: 'system'
+      activeName: 'system',
+      tableData: null
     }
   },
 
@@ -125,7 +141,7 @@ export default {
         if (res.data.length > 0) {
           this.radio.system.defaultSystemCode = res.data[0].systemCode
           this.radio.system.defaultSystemName = res.data[0].systemName
-          // this.getTableDataBySystem({ code: this.radio.system.defaultSystemCode })
+          this.getTableDataBySystem({ code: this.radio.system.defaultSystemCode })
         }
       }).catch(err => {
         console.log(err)
@@ -145,13 +161,14 @@ export default {
     },
     getTableDataBySystem(param) {
       getTableDataBySystem(param).then((res) => {
-        var data = []
+        /* var data = []
         for (var item in res.data) {
           const type = item
           const value = res.data[item]
           data.push({ type: type, value: value })
-        }
-        this.operation.tableData = data
+        }*/
+        console.log(this.tableData)
+        this.tableData = res.data
       }).catch(err => {
         console.log(err)
       })
@@ -164,27 +181,40 @@ export default {
           const value = res.data[item]
           data.push({ type: type, value: value })
         }
-        this.operation.tableData = data
+        this.tableData = data
       }).catch(err => {
         console.log(err)
       })
     },
     handleClick(tab, event) {
-      var tabName = tab.paneName
-      switch (tabName) {
-        case 'system':
-          this.getSystem()
-          break
-        case 'region':
-          this.getRegion()
-          break
-      }
     },
     systemRadioChange: function(value) {
-      // this.getTableDataBySystem({ code: value })
+      this.getTableDataBySystem({ code: value })
     },
     regionRadioChange: function(value) {
       // this.getTableDataByRegion({ code: value })
+    },
+    headerStyle({ row, column, rowIndex, columnIndex }) {
+      let str = 'background:#DCDFE6;'
+      if (columnIndex === 2) {
+        str += 'color: #fff'
+      }
+      return str
+    },
+    arraySpanMethod({ row, column, rowIndex, columnIndex }) {
+      if (columnIndex === 3) {
+        if (rowIndex === 0) {
+          return {
+            rowspan: this.tableData.length,
+            colspan: 1
+          }
+        } else {
+          return {
+            rowspan: 0,
+            colspan: 0
+          }
+        }
+      }
     }
   }
 }
@@ -199,6 +229,7 @@ export default {
         flex-shrink: 1;
         flex-grow: 1;
         width: 100%;
+        height: 90%;
       }
     .el-tabs__header{
       width: 10vw;
@@ -215,6 +246,7 @@ export default {
     .el-tabs__content{
       top: -2vw;
       width: 100%;
+      height: 90%;
       .el-tab-pane{
         width: 100%;
         .radio-container{
@@ -243,6 +275,70 @@ export default {
     }
   }
 
+.table-demo{
+       width: 99.6%;
+       height: 14vw;
+       border-bottom: 1px solid #243B9E;
+        .el-table{
+            background-color:transparent;
+            border-color: #243B9E;
+            height: 100%;
+        }
+        .el-table--border::after, .el-table--group::after, .el-table::before{
+            background-color:unset;
+        }
+        .el-table td,.el-table th{
+            padding: 0.3vw 0;
+            height: 2.2vw;
+            border-color: #243B9E;
+
+        }
+        .el-table th{
+            background-color: rgba(47,84,235,0.16) !important;
+        }
+        .el-table th.gutter{
+          display: table-cell!important;
+        }
+
+        .el-table tr{
+            border-color: #243B9E;
+            background-color:transparent;
+            color:  #9FA8DA;
+            font-size: 0.8vw;
+        }
+
+        .el-table__body tr:hover > td {
+            background-color:unset !important;
+        }
+        .el-table--scrollable-x .el-table__body-wrapper{
+            overflow-x: hidden;
+        }
+        .el-progress-bar__outer{
+          background-color: transparent;
+          height: 16px !important;
+          position: relative;
+        }
+        .el-progress__text{
+          color: #fff;
+        }
+        .el-table__body-wrapper{
+          height: 12vw;
+          overflow-y: auto;
+        }
+        .el-table__body-wrapper::-webkit-scrollbar{
+          width: 3px;
+          background-color:  #243B9E;
+        }
+        .el-table__body-wrapper::-webkit-scrollbar-thumb{
+          border-radius: 3px;
+          background-image: linear-gradient(180deg, #3656DD 0%, #243B9E 100%);
+          height: 50px;
+        }
+        .el-table__body-wrapper::-webkit-scrollbar-track{
+          box-shadow: inset 0 0 5px rgba($color: #000000, $alpha: 0.2);
+          border-radius: 3px;
+        }
+    }
   #pane-system{
     .dianli-group{
     position: relative;
