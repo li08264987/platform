@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { fetchSystem, getTableDataBySystem } from '@/api/main/operationWatch'
 export default {
   name: 'OperationWatch',
@@ -68,13 +69,27 @@ export default {
           systemCode: 'dl',
           systemName: '电力系统'
         }],
-        defaultSystemCode: 'ky'
+        defaultSystemCode: 'ky',
+        defaultSystemName: '空压系统'
       }
     }
   },
 
-  computed: {},
-
+  computed: {
+    ...mapGetters([
+      'currentView'
+    ])
+  },
+  watch: {
+    currentView: function(params) {
+      if (params.value === 'dianli') {
+        params.value = 'dl'
+      }
+      this.systems.defaultSystemCode = params.value
+      this.systems.defaultSystemName = params.name
+      this.radioChange(params.value)
+    }
+  },
   mounted() {
     this.initOperationWatchData()
   },

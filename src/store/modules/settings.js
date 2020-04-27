@@ -8,7 +8,8 @@ const state = {
   showSettings: showSettings,
   tagsView: tagsView,
   fixedHeader: fixedHeader,
-  sidebarLogo: sidebarLogo
+  sidebarLogo: sidebarLogo,
+  currentView: { value: 'ky', name: '空压系统' }
 }
 
 const mutations = {

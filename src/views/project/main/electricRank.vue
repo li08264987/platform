@@ -26,6 +26,10 @@
         </div> -->
         <div class="table-demo">
           <el-table
+            v-loading="loading"
+            element-loading-text="拼命加载中"
+            element-loading-spinner="el-icon-loading"
+            element-loading-background="rgba(0, 0, 0, 0.5)"
             :data="tableData"
             :header-cell-style="headerStyle"
             :span-method="arraySpanMethod"
@@ -34,9 +38,9 @@
             tooltip-effect="dark"
           >
             <el-table-column prop="rank" label="排名" min-width="20" align="center" />
-            <el-table-column prop="cheJianName" label="车间名称" min-width="40" align="center" />
+            <el-table-column prop="cheJianName" label="车间名称" min-width="30" align="center" />
             <el-table-column prop="consumer" label="消耗量" min-width="30" align="center" />
-            <el-table-column prop="level" label="总能效值" min-width="40" align="center">
+            <el-table-column prop="level" label="总能效值" min-width="30" align="center">
               <template slot-scope="scope">
                 <div v-html="scope.row.levelValue" />
                 <div v-html="scope.row.levelName" />
@@ -71,6 +75,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { fetchSystem, fetchRegion, getTableDataBySystem, getTableDataByRegion } from '@/api/main/energyConsumptionRank'
 export default {
   name: 'ElectricRank',
@@ -121,18 +126,32 @@ export default {
         }
       },
       activeName: 'system',
-      tableData: null
+      tableData: null,
+      loading: true
     }
   },
 
-  computed: {},
-
+  computed: {
+    ...mapGetters([
+      'currentView'
+    ])
+  },
+  watch: {
+    currentView: function(params) {
+      if (params.value === 'dianli') {
+        params.value = 'dl'
+      }
+      this.radio.system.defaultSystemCode = params.value
+      this.radio.system.defaultSystemName = params.name
+      this.systemRadioChange(params.value)
+    }
+  },
   mounted() {
-    this.initOperationWatchData()
+    this.initElectricRankData()
   },
 
   methods: {
-    initOperationWatchData: function() {
+    initElectricRankData: function() {
       this.getSystem()
     },
     getSystem: function() {
@@ -167,8 +186,8 @@ export default {
           const value = res.data[item]
           data.push({ type: type, value: value })
         }*/
-        console.log(this.tableData)
         this.tableData = res.data
+        this.loading = false
       }).catch(err => {
         console.log(err)
       })
@@ -189,6 +208,7 @@ export default {
     handleClick(tab, event) {
     },
     systemRadioChange: function(value) {
+      this.loading = true
       this.getTableDataBySystem({ code: value })
     },
     regionRadioChange: function(value) {
@@ -277,7 +297,7 @@ export default {
 
 .table-demo{
        width: 99.6%;
-       height: 14vw;
+       height: 100%;
        border-bottom: 1px solid #243B9E;
         .el-table{
             background-color:transparent;
@@ -322,8 +342,14 @@ export default {
           color: #fff;
         }
         .el-table__body-wrapper{
-          height: 12vw;
+          height: 100%;
           overflow-y: auto;
+          .el-table__body{
+            height: 100%;
+            .el-table__empty-block{
+              border-right: 1px solid #243B9E;
+            }
+          }
         }
         .el-table__body-wrapper::-webkit-scrollbar{
           width: 3px;

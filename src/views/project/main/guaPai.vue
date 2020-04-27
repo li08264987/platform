@@ -15,33 +15,47 @@
 </template>
 
 <script>
+// import { mapGetters } from 'vuex'
 import { fetchSystem } from '@/api/main/guapai'
 import WordCloudChart from './wordCloudChart'
-import KongYaSystem from './guapaiSystem/kongyaSystem'
-import QingDanSystem from './guapaiSystem/qingdanSystem'
-import ZhenKongSystem from './guapaiSystem/zhenkongSystem'
-import DianLiSystem from './guapaiSystem/dianliSystem'
+import ky from './guapaiSystem/kongyaSystem'
+import qd from './guapaiSystem/qingdanSystem'
+import zk from './guapaiSystem/zhenkongSystem'
+import dianli from './guapaiSystem/dianliSystem'
 /* import LengShuiSystem from './guapaiSystem/lengshuiSystem'
 import ReShuiSystem from './guapaiSystem/reshuiSystem' */
 export default {
   name: 'GuaPai',
   components: {
     WordCloudChart,
-    KongYaSystem,
-    QingDanSystem,
-    ZhenKongSystem,
-    DianLiSystem/* ,
+    ky,
+    qd,
+    zk,
+    dianli/* ,
     LengShuiSystem,
     ReShuiSystem */
   },
   data() {
     return {
-      currentView: '',
-      viewList: ['KongYaSystem', 'QingDanSystem', 'ZhenKongSystem', 'DianLiSystem'],
-      nowIndex: 0
+      viewList: [{
+        value: 'ky',
+        name: '空压系统'
+      }, {
+        value: 'qd',
+        name: '氢氮系统'
+      }, {
+        value: 'zk',
+        name: '真空系统'
+      }, {
+        value: 'dianli',
+        name: '电力系统'
+      }],
+      nowIndex: 0,
+      currentView: null
     }
   },
-  computed: {},
+  computed: {
+  },
   created() {
     setInterval(this.guapaiChange, 300000)
   },
@@ -49,7 +63,7 @@ export default {
   mounted() {
     fetchSystem().then((res) => {
       // this.viewList = res.data
-      this.currentView = 'KongYaSystem'
+      this.currentView = this.$store.state.settings.currentView.value
     }).catch(err => {
       console.log(err)
     })
@@ -60,36 +74,35 @@ export default {
       const viewLength = this.viewList.length
       if (this.nowIndex === viewLength - 1) {
         this.nowIndex = 0
-        this.currentView = this.viewList[this.nowIndex]
+        this.currentView = this.viewList[this.nowIndex].value
+        this.$store.dispatch('settings/changeSetting', {
+          key: 'currentView',
+          value: this.viewList[this.nowIndex]
+        })
       } else {
         ++this.nowIndex
-        this.currentView = this.viewList[this.nowIndex]
+        this.currentView = this.viewList[this.nowIndex].value
+        this.$store.dispatch('settings/changeSetting', {
+          key: 'currentView',
+          value: this.viewList[this.nowIndex]
+        })
       }
     },
-    getMsgFormSon(index, type, systemNumber) {
+    getMsgFormSon(index, type, name, systemNumber) {
       const number = index % systemNumber
       if (number !== 4 && number !== 5) {
-        switch (type) {
-          case 'ky':
-            this.currentView = 'KongYaSystem'
-            break
-          case 'qd':
-            this.currentView = 'QingDanSystem'
-            break
-          case 'zk':
-            this.currentView = 'ZhenKongSystem'
-            break
-          case 'dl':
-            this.currentView = 'DianLiSystem'
-            break
-        }
+        this.currentView = type
 
         this.nowIndex = index % systemNumber
+        this.$store.dispatch('settings/changeSetting', {
+          key: 'currentView',
+          value: { value: type, name: name }
+        })
       }
     },
     showDongLiZhan() {
       const view = this.currentView
-      if (view === 'KongYaSystem' || view === 'ZhenKongSystem') {
+      if (view === 'ky' || view === 'zk') {
         return false
       } else {
         return true
@@ -103,7 +116,7 @@ export default {
     },
     showSanDong() {
       const view = this.currentView
-      if (view === 'ZhenKongSystem') {
+      if (view === 'zk') {
         return false
       } else {
         return true
@@ -111,7 +124,7 @@ export default {
     },
     showSiDong() {
       const view = this.currentView
-      if (view === 'ZhenKongSystem') {
+      if (view === 'zk') {
         return false
       } else {
         return true
@@ -119,7 +132,7 @@ export default {
     },
     showJiaoShuiChang() {
       const view = this.currentView
-      if (view === 'QingDanSystem') {
+      if (view === 'qd') {
         return false
       } else {
         return true

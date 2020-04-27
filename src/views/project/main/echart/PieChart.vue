@@ -66,7 +66,6 @@ export default {
   },
   methods: {
     initChart() {
-      console.log(this.cursor)
       this.chart = echarts.init(this.$el, 'roma')
       this.setOptions(this.chartData)
     },

@@ -1,7 +1,7 @@
 <template>
   <div id="cloud">
     <svg :width="width" :height="height" @mousemove="listener($event)" @mouseout="mouseOut" @mouseover="mouseOver">
-      <a v-for="(tag,index) in tags" :id="index" :key="index" :href="tag.href" @click="itemClick(index,tag.type)">
+      <a v-for="(tag,index) in tags" :id="index" :key="index" :href="tag.href" @click="itemClick(index,tag.type,tag.text)">
         <text :x="tag.x" :y="tag.y" :fill="tag.color" :font-size="17 * (300/(300-tag.z))" :fill-opacity="((200+tag.z)/300)">{{ tag.text }}</text>
       </a>
     </svg>
@@ -23,7 +23,8 @@ export default {
       active: false,
       tags: [],
       clickIndex: 0,
-      clickType: 'KongYaSystem'
+      clickType: 'ky',
+      clickName: '空压系统'
     }
   },
   computed: {
@@ -66,6 +67,9 @@ export default {
         const temp = i % res.data.length
         tag.text = res.data[temp].systemName
         tag.type = res.data[temp].systemCode
+        if (res.data[temp].systemCode === 'dl') {
+          tag.type = 'dianli'
+        }
         switch (temp) {
           case 0:
             tag.color = '#11BEBE'
@@ -121,11 +125,11 @@ export default {
     listener(event) {
 
     },
-    itemClick(index, type) {
+    itemClick(index, type, name) {
       this.clickIndex = index
       this.clickType = type
-
-      this.$emit('fromSon', this.clickIndex, this.clickType, this.tagsNum / 3)
+      this.clickName = name
+      this.$emit('fromSon', this.clickIndex, this.clickType, this.clickName, this.tagsNum / 3)
     },
     mouseOut() {
       this.active = false

@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { fetchDutyMembers, fetchSystem } from '@/api/main/dutyArrangement'
 export default {
   name: 'DutyArrangement',
@@ -93,7 +94,17 @@ export default {
     }
   },
 
-  computed: {},
+  computed: {
+    ...mapGetters([
+      'currentView'
+    ])
+  },
+  watch: {
+    currentView: function(values) {
+      var param = { value: values.value, label: values.name }
+      this.changeMethod(param)
+    }
+  },
   created() {
 
   },
