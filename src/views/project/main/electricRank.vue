@@ -10,7 +10,7 @@
     <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
       <el-tab-pane label="" name="system">
         <div class="radio-container">
-          <el-radio-group v-model="radio.system.defaultSystemCode" class="dianli-group" @change="systemRadioChange">
+          <el-radio-group v-model="radio.system.defaultSystemCode" class="dianli-group" :disabled="radioDisabled" @change="systemRadioChange">
             <el-radio-button
               v-for="item in radio.system.data"
               :key="item.systemCode"
@@ -127,7 +127,8 @@ export default {
       },
       activeName: 'system',
       tableData: null,
-      loading: true
+      loading: true,
+      radioDisabled: false
     }
   },
 
@@ -188,6 +189,7 @@ export default {
         }*/
         this.tableData = res.data
         this.loading = false
+        this.radioDisabled = false
       }).catch(err => {
         console.log(err)
       })
@@ -209,6 +211,7 @@ export default {
     },
     systemRadioChange: function(value) {
       this.loading = true
+      this.radioDisabled = true
       this.getTableDataBySystem({ code: value })
     },
     regionRadioChange: function(value) {
