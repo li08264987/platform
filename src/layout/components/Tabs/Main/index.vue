@@ -12,7 +12,7 @@
         <div class="project-name">木林森建筑能源系统运管平台驾驶舱</div>
         <div class="safe-day">
           <div class="line" />
-          安全运行<span>234</span>天
+          安全运行<span>{{ safeDays }}</span>天
           <div class="line" />
         </div>
 
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { fetchSafeDays } from '@/api/main/guapai'
 import DutyArrangement from '@/views/project/main/dutyArrangement'
 import EnergyStatus from '@/views/project/main/energyStatus'
 import OperationWatch from '@/views/project/main/operationWatch'
@@ -46,16 +47,17 @@ export default {
   },
   data() {
     return {
-      cursor: this.getFontSizeCursor()
+      cursor: this.getFontSizeCursor(),
+      safeDays: 0
     }
   },
   computed: {
 
   },
   mounted() {
-    const that = this
+    this.getSafeDays()
     window.onresize = () => {
-      that.fontSizeResize()
+      this.fontSizeResize()
       /* this.$refs.faultWarning.resizeCharts() */
     }
   },
@@ -125,6 +127,13 @@ export default {
       } else {
         this.$refs.main.style.transform = 'scale(1,1) translateX(0) translateY(0)'
       }
+    },
+    getSafeDays() {
+      fetchSafeDays().then((res) => {
+        this.safeDays = res.safeDays
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }

@@ -7,3 +7,10 @@ export function fetchSystem(query) {
     params: query
   })
 }
+
+export function fetchSafeDays() {
+  return request({
+    url: '/main/guapai/fetchSafeDays',
+    method: 'post'
+  })
+}

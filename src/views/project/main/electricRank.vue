@@ -5,72 +5,57 @@
         <div class="logo" />
         <span>电力消耗排名</span>
       </div>
+      <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
+        <el-option
+          v-for="item in energySelect.energyTimeTypes"
+          :key="item.value"
+          :label="item.label"
+          :value="{value: item.value, label: item.label}"
+        />
+      </el-select>
     </div>
 
-    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-      <el-tab-pane label="" name="system">
-        <div class="radio-container">
-          <el-radio-group v-model="radio.system.defaultSystemCode" class="dianli-group" :disabled="radioDisabled" @change="systemRadioChange">
-            <el-radio-button
-              v-for="item in radio.system.data"
-              :key="item.systemCode"
-              :label="item.systemCode"
-            >
-              {{ item.systemName }}
-            </el-radio-button>
-          </el-radio-group>
-        </div>
-
-        <!-- <div class="sum-row">
-          <span><label>总能耗(kwh)：</label><strong>{{ radio.system.sumEnergy }}</strong></span>
-        </div> -->
-        <div class="table-demo">
-          <el-table
-            v-loading="loading"
-            element-loading-text="拼命加载中"
-            element-loading-spinner="el-icon-loading"
-            element-loading-background="rgba(0, 0, 0, 0.5)"
-            :data="tableData"
-            :header-cell-style="headerStyle"
-            :span-method="arraySpanMethod"
-            border
-            style="width: 100%"
-            tooltip-effect="dark"
+    <div class="second-row">
+      <div class="radio-container">
+        <el-radio-group v-model="radio.system.defaultSystemCode" class="dianli-group" :disabled="radioDisabled" @change="systemRadioChange">
+          <el-radio-button
+            v-for="item in radio.system.data"
+            :key="item.systemCode"
+            :label="item.systemCode"
           >
-            <el-table-column prop="rank" label="排名" min-width="20" align="center" />
-            <el-table-column prop="cheJianName" label="车间名称" min-width="30" align="center" />
-            <el-table-column prop="consumer" label="消耗量" min-width="30" align="center" />
-            <el-table-column prop="level" label="总能效值" min-width="30" align="center">
-              <template slot-scope="scope">
-                <div v-html="scope.row.levelValue" />
-                <div v-html="scope.row.levelName" />
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-      </el-tab-pane>
+            {{ item.systemName }}
+          </el-radio-button>
+        </el-radio-group>
+      </div>
 
-      <!-- <el-tab-pane label="" name="region">
-        <div class="radio-container">
-          <el-radio-group v-model="radio.region.defaultRegionCode" class="dianli-group" @change="regionRadioChange">
-            <el-radio-button
-              v-for="item in radio.region.data"
-              :key="item.regionCode"
-              :label="item.regionCode"
-            >
-              {{ item.regionName }}
-            </el-radio-button>
-          </el-radio-group>
-        </div>
-
-        <div class="sum-row">
-          <span><label>总能耗(kwh)：</label><strong>{{ radio.region.sumEnergy }}</strong></span>
-        </div>
-        <dianLiTable />
-      </el-tab-pane> -->
-
-    </el-tabs>
-
+      <!-- <div class="sum-row">
+        <span><label>总能耗(kwh)：</label><strong>{{ radio.system.sumEnergy }}</strong></span>
+      </div> -->
+      <div class="table-demo">
+        <el-table
+          v-loading="loading"
+          element-loading-text="拼命加载中"
+          element-loading-spinner="el-icon-loading"
+          element-loading-background="rgba(0, 0, 0, 0.5)"
+          :data="tableData"
+          :header-cell-style="headerStyle"
+          :span-method="arraySpanMethod"
+          border
+          style="width: 100%"
+          tooltip-effect="dark"
+        >
+          <el-table-column prop="rank" label="排名" min-width="20" align="center" />
+          <el-table-column prop="cheJianName" label="车间名称" min-width="30" align="center" />
+          <el-table-column prop="consumer" label="消耗量" min-width="30" align="center" />
+          <el-table-column prop="level" label="总能效值" min-width="30" align="center">
+            <template slot-scope="scope">
+              <div v-html="scope.row.levelValue" />
+              <div v-html="scope.row.levelName" />
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -125,6 +110,24 @@ export default {
           sumEnergy: 0
         }
       },
+      energySelect: {
+        energyTimeTypes: [{
+          value: 'day',
+          label: '按日查'
+        },
+        {
+          value: 'week',
+          label: '按周查'
+        },
+        {
+          value: 'month',
+          label: '按月查'
+        }],
+        selectedTime: {
+          value: 'day',
+          label: '按日查'
+        }
+      },
       activeName: 'system',
       tableData: null,
       loading: true,
@@ -161,7 +164,7 @@ export default {
         if (res.data.length > 0) {
           this.radio.system.defaultSystemCode = res.data[0].systemCode
           this.radio.system.defaultSystemName = res.data[0].systemName
-          this.getTableDataBySystem({ code: this.radio.system.defaultSystemCode })
+          this.getTableDataBySystem({ systemCode: this.radio.system.defaultSystemCode, timeType: this.energySelect.selectedTime.value })
         }
       }).catch(err => {
         console.log(err)
@@ -212,7 +215,7 @@ export default {
     systemRadioChange: function(value) {
       this.loading = true
       this.radioDisabled = true
-      this.getTableDataBySystem({ code: value })
+      this.getTableDataBySystem({ systemCode: value, timeType: this.energySelect.selectedTime.value })
     },
     regionRadioChange: function(value) {
       // this.getTableDataByRegion({ code: value })
@@ -238,6 +241,14 @@ export default {
           }
         }
       }
+    },
+    changeMethod: function(params) {
+      const { value, label } = params
+      this.energySelect.selectedTime.label = label
+      this.energySelect.selectedTime.value = value
+      this.loading = true
+      this.radioDisabled = true
+      this.getTableDataBySystem({ systemCode: this.radio.system.defaultSystemCode, timeType: this.energySelect.selectedTime.value })
     }
   }
 }
@@ -245,155 +256,45 @@ export default {
 
 <style lang='scss'>
 #right-container {
-  .dianli-consumer{
-      .el-tabs{
-        padding-left: 0.8vw;
-        padding-right: 0.8vw;
-        flex-shrink: 1;
-        flex-grow: 1;
-        width: 100%;
-        height: 90%;
+  .first-rows{
+    .energy-select{
+      margin-top: 0.3vw;
+      .el-input{
+          width: 5vw;
       }
-    .el-tabs__header{
-      width: 10vw;
-      top: -1.5vw;
-      left: 15vw;
-      border-bottom: unset;
-    }
-    .el-tabs__item.is-active{
-      color: #5F60FF;
-    }
-    .el-tabs__item:hover{
-      color: #5F60FF;
-    }
-    .el-tabs__content{
-      top: -2vw;
-      width: 100%;
-      height: 90%;
-      .el-tab-pane{
-        width: 100%;
-        .radio-container{
-          width: 100%;
-        }
-      }
-    }
-    .el-tabs__item{
-      padding: 0 0.5vw !important;
-      font-family: MicrosoftYaHeiUI;
-      font-size: 0.85vw;
-      letter-spacing: 0;
-    }
-    .el-tabs--card>.el-tabs__header .el-tabs__nav{
-      border: unset;
-      .el-tabs__item{
-        color: #B5BFF6;
-      }
-    }
-    .el-tabs--card>.el-tabs__header .el-tabs__item{
-      border-left: unset;
-    }
-    .el-tabs--card>.el-tabs__header .el-tabs__item.is-active{
-      border-bottom-color: transparent;
-      color: #5F60FF;
-    }
-  }
-
-.table-demo{
-       width: 99.6%;
-       height: 100%;
-       border-bottom: 1px solid #243B9E;
-        .el-table{
-            background-color:transparent;
-            border-color: #243B9E;
-            height: 100%;
-        }
-        .el-table--border::after, .el-table--group::after, .el-table::before{
-            background-color:unset;
-        }
-        .el-table td,.el-table th{
-            padding: 0.3vw 0;
-            height: 2.2vw;
-            border-color: #243B9E;
-
-        }
-        .el-table th{
-            background-color: rgba(47,84,235,0.16) !important;
-        }
-        .el-table th.gutter{
-          display: table-cell!important;
-        }
-
-        .el-table tr{
-            border-color: #243B9E;
-            background-color:transparent;
-            color:  #9FA8DA;
-            font-size: 0.8vw;
-        }
-
-        .el-table__body tr:hover > td {
-            background-color:unset !important;
-        }
-        .el-table--scrollable-x .el-table__body-wrapper{
-            overflow-x: hidden;
-        }
-        .el-progress-bar__outer{
-          background-color: transparent;
-          height: 16px !important;
-          position: relative;
-        }
-        .el-progress__text{
-          color: #fff;
-        }
-        .el-table__body-wrapper{
-          height: 100%;
-          overflow-y: auto;
-          .el-table__body{
-            height: 100%;
-            .el-table__empty-block{
-              border-right: 1px solid #243B9E;
-            }
-          }
-        }
-        .el-table__body-wrapper::-webkit-scrollbar{
-          width: 3px;
-          background-color:  #243B9E;
-        }
-        .el-table__body-wrapper::-webkit-scrollbar-thumb{
-          border-radius: 3px;
-          background-image: linear-gradient(180deg, #3656DD 0%, #243B9E 100%);
-          height: 50px;
-        }
-        .el-table__body-wrapper::-webkit-scrollbar-track{
-          box-shadow: inset 0 0 5px rgba($color: #000000, $alpha: 0.2);
-          border-radius: 3px;
-        }
-    }
-  #pane-system{
-    .dianli-group{
-    position: relative;
-    border: unset;
-    width: 100%;
-    .el-radio-button__inner{
-      color: #B5BFF6;
-      background-color: rgba(0,0,0,0);
-      border-top: 1px solid #243B9E;
-      border-bottom: 1px solid #243B9E;
-      border-right:1px solid #243B9E;
-      height: 1.9vw;
-      line-height: 0.8vw;
-      padding: 0.5vw 1vw;
-      font-size: 0.75vw;
-    }
-    .el-radio-button:first-child .el-radio-button__inner{
-      border-left:1px solid #243B9E;
-    }
-    .el-radio-button__orig-radio:checked+.el-radio-button__inner{
-      background-image: linear-gradient(132deg, #602FE9, #2F54EB);
+      .el-input--suffix .el-input__inner {
+      padding-right: 1vw;
       background-color: transparent;
+      border: none;
+      color: #C8D6FE;
+      font-size: 0.85vw;
+      height: 2vw;
+        line-height: 2vw;
+      }
+      .el-select-dropdown{
+        border: unset;
+        left:0.5vw !important;
+      }
+      .el-select-dropdown__item{
+        height: 1.5vw;
+        color: #fff;
+        font-size: 0.8vw;
+      }
+      .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+        background-color: #5F3BFF;
+      }
+      .el-scrollbar{
+        background-color: #1A1272;
+      }
     }
   }
-  }
-  #pane-region{
+  .second-row{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 0 0.8vw;
+    margin-top: 1vw;
     .dianli-group{
       position: relative;
       border: unset;
@@ -406,7 +307,7 @@ export default {
         border-right:1px solid #243B9E;
         height: 1.9vw;
         line-height: 0.8vw;
-        padding: 0.5vw 0.2vw;
+        padding: 0.5vw 1vw;
         font-size: 0.75vw;
       }
       .el-radio-button:first-child .el-radio-button__inner{
@@ -415,6 +316,77 @@ export default {
       .el-radio-button__orig-radio:checked+.el-radio-button__inner{
         background-image: linear-gradient(132deg, #602FE9, #2F54EB);
         background-color: transparent;
+      }
+    }
+
+    .table-demo{
+      width: 99.6%;
+      height: 100%;
+      border-bottom: 1px solid #243B9E;
+      .el-table{
+          background-color:transparent;
+          border-color: #243B9E;
+          height: 100%;
+      }
+      .el-table--border::after, .el-table--group::after, .el-table::before{
+          background-color:unset;
+      }
+      .el-table td,.el-table th{
+          padding: 0.3vw 0;
+          height: 2.2vw;
+          border-color: #243B9E;
+
+      }
+      .el-table th{
+          background-color: rgba(47,84,235,0.16) !important;
+      }
+      .el-table th.gutter{
+        display: table-cell!important;
+      }
+
+      .el-table tr{
+          border-color: #243B9E;
+          background-color:transparent;
+          color:  #9FA8DA;
+          font-size: 0.8vw;
+      }
+
+      .el-table__body tr:hover > td {
+          background-color:unset !important;
+      }
+      .el-table--scrollable-x .el-table__body-wrapper{
+          overflow-x: hidden;
+      }
+      .el-progress-bar__outer{
+        background-color: transparent;
+        height: 16px !important;
+        position: relative;
+      }
+      .el-progress__text{
+        color: #fff;
+      }
+      .el-table__body-wrapper{
+        height: 100%;
+        overflow-y: auto;
+        .el-table__body{
+          height: 100%;
+          .el-table__empty-block{
+            border-right: 1px solid #243B9E;
+          }
+        }
+      }
+      .el-table__body-wrapper::-webkit-scrollbar{
+        width: 3px;
+        background-color:  #243B9E;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar-thumb{
+        border-radius: 3px;
+        background-image: linear-gradient(180deg, #3656DD 0%, #243B9E 100%);
+        height: 50px;
+      }
+      .el-table__body-wrapper::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 5px rgba($color: #000000, $alpha: 0.2);
+        border-radius: 3px;
       }
     }
   }
