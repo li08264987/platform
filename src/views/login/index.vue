@@ -9,6 +9,7 @@
       src="../../assets/login/bg2.png"
     >
     <el-form
+      v-show="isAlterPassword === false"
       ref="loginForm"
       :model="loginForm"
       :rules="loginRules"
@@ -16,9 +17,93 @@
       autocomplete="on"
       label-position="left"
     >
-
       <div class="title-container">
         <h3 class="title">启慧AI+能源系统运管平台</h3>
+      </div>
+      <el-form-item prop="username">
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
+        <el-input
+          ref="username"
+          v-model="loginForm.username"
+          placeholder="Username"
+          name="username"
+          type="text"
+          tabindex="1"
+          autocomplete="on"
+        />
+      </el-form-item>
+      <el-tooltip
+        v-model="capsTooltip"
+        content="Caps lock is On"
+        placement="right"
+        manual
+      >
+        <el-form-item prop="password">
+          <span class="svg-container">
+            <svg-icon icon-class="password" />
+          </span>
+          <el-input
+            :key="passwordType"
+            ref="password"
+            v-model="loginForm.password"
+            :type="passwordType"
+            placeholder="Password"
+            name="password"
+            tabindex="2"
+            autocomplete="on"
+            @keyup.native="checkCapslock"
+            @blur="capsTooltip = false"
+            @keyup.enter.native="handleLogin"
+          />
+          <span
+            class="show-pwd"
+            @click="showPwd"
+          >
+            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          </span>
+        </el-form-item>
+      </el-tooltip>
+      <el-button
+        :loading="loading"
+        type="primary"
+        style="width:100%;margin-bottom:30px;heigh:50px;font-size: 20px;"
+        @click.native.prevent="handleLogin"
+      >登录</el-button>
+      <div style="position:relative;margin-top: 30px;">
+        <div class="tips">
+          <span style="margin-right:18px;">Username : editor</span>
+          <span>Password : any</span>
+        </div>
+        <p
+          class="thirdparty-button"
+          type="primary"
+          @click="alterPassword"
+        >
+          修改密码>
+        </p>
+      </div>
+      <div class="version">
+        <p class="version-txt">启慧AI+能源 V1.0.0</p>
+      </div>
+      <div class="copyright">
+        <img src="../../assets/login/copyright.png">
+      </div>
+    </el-form>
+
+    <el-form
+      v-show="isAlterPassword === true"
+      ref="altPasswordForm"
+      :model="alterPasswordForm"
+      :rules="alterPasswordRules"
+      class="alter-password"
+      autocomplete="on"
+      label-position="left"
+    >
+
+      <div class="title-container">
+        <h3 class="title">修改密码</h3>
       </div>
 
       <el-form-item prop="username">
@@ -83,7 +168,7 @@
         <p
           class="thirdparty-button"
           type="primary"
-          @click="showDialog=true"
+          @click="alterPassword"
         >
           修改密码>
         </p>
@@ -96,7 +181,7 @@
       </div>
     </el-form>
 
-    <el-dialog
+    <!-- <el-dialog
       title="Or connect with"
       :visible.sync="showDialog"
     >
@@ -105,16 +190,16 @@
       <br>
       <br>
       <social-sign />
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
 <script>
 // import { validUsername } from '@/utils/validate'
-import SocialSign from './components/SocialSignin'
+// import SocialSign from './components/SocialSignin'
 export default {
   name: 'Login',
-  components: { SocialSign },
+  // components: { SocialSign },
   data() {
     /* const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
@@ -133,9 +218,17 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: '123456'
       },
       loginRules: {
+        username: [{ required: true, trigger: 'blur' }],
+        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+      },
+      alterPasswordForm: {
+        username: 'admin',
+        password: '123456'
+      },
+      alterPasswordRules: {
         username: [{ required: true, trigger: 'blur' }],
         password: [{ required: true, trigger: 'blur', validator: validatePassword }]
       },
@@ -144,7 +237,8 @@ export default {
       loading: false,
       showDialog: false,
       redirect: undefined,
-      otherQuery: {}
+      otherQuery: {},
+      isAlterPassword: false
     }
   },
   watch: {
@@ -173,6 +267,9 @@ export default {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
+    alterPassword(e) {
+      this.isAlterPassword = !this.isAlterPassword
+    },
     checkCapslock(e) {
       const { key } = e
       this.capsTooltip = key && key.length === 1 && (key >= 'A' && key <= 'Z')
@@ -327,7 +424,8 @@ $light_gray:#eee;
   -moz-background-size:100% 100%;
   overflow: hidden;
 
-  .login-form {
+  .login-form,
+  .alter-password {
     position: relative;
     width: 500px;
     height: 540px;
@@ -391,6 +489,7 @@ $light_gray:#eee;
     font-weight: bold;
     margin-top: 10px;
     font-size: 15px;
+    cursor: pointer;
   }
 
   @media only screen and (max-width: 470px) {
