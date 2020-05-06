@@ -28,13 +28,15 @@
                 <div class="chart-container">
                   <div class="chart-title"><span>机组电耗统计图</span></div>
                   <div class="chart-main">
-                    <div class="chart-main-container">
+                    <div v-loading="compareDataLoading" class="chart-main-container">
                       <pie-chart :chart-data="compareData" />
                     </div>
                     <div class="chart-main-lengend">
-                      <div v-for="(item,index) in compareData.data" :key="index" class="chart-main-lengend-item">
-                        <span class="chart-main-lengend-item-color" :style="{backgroundColor:compareData.colors[index]}" />
-                        <span class="chart-main-lengend-item-label">{{ item.name }}</span>
+                      <div style="width: 100%; overflow: auto;">
+                        <div v-for="(item,index) in compareData.data" :key="index" class="chart-main-lengend-item">
+                          <span class="chart-main-lengend-item-color" :style="{backgroundColor:compareData.colors[index]}" />
+                          <span class="chart-main-lengend-item-label">{{ item.name }}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -61,7 +63,7 @@
                       </el-form-item>
                     </el-form>
                   </div>
-                  <div class="chart-grid" style="position: relative;">
+                  <div v-loading="lineChartDataLoading" class="chart-grid" style="position: relative;">
                     <line-chart :chart-data="lineChartData" />
                   </div>
                 </div>
@@ -73,14 +75,14 @@
           <div class="right-container">
             <div class="dong-li-zhan-chart">
               <div class="chart-title"><span>机组能耗占比</span></div>
-              <div class="chart-main">
+              <div v-loading="dongliStationDataLoading" class="chart-main">
                 <full-pie-chart :chart-data="dongliStationData" />
               </div>
             </div>
             <div class="neng-hao-charts">
               <div v-for="(item, index) in energyCircleData" :key="index" class="neng-hao-chart">
                 <div class="chart-title"><span>{{ item.title }}</span></div>
-                <div :id="item.elemId" class="chart-main" />
+                <div :id="item.elemId" v-loading="energyCircleDataLoading" class="chart-main" />
                 <div class="chart-footer">
                   <span :class="['chart-footer-image', item.increase?'up':'down']" />
                   <span class="chart-footer-text">较昨日</span>
@@ -101,7 +103,7 @@ import PieChart from './PieChart'
 import LineChart from './LineChart'
 import radialIndicator from './RadialIndicator'
 import FullPieChart from './FullPieChart'
-import { getProcessData, getCompareData, getEnergyCircleData } from '@/api/energy/statis'
+import { getProcessData, getCompareData, getEnergyCircleData, getEffectCompareData, getElecLineChartDataData } from '@/api/energy/statis'
 export default {
   components: {
     PieChart,
@@ -133,25 +135,12 @@ export default {
           unit: '元'
         }
       },
+      compareDataLoading: true,
       compareData: {
-        data: [{
-          name: '空压机组',
-          value: 0
-        }, {
-          name: '冷却塔组',
-          value: 0
-        }, {
-          name: '冷却泵组',
-          value: 0
-        }, {
-          name: '冷干机组',
-          value: 0
-        }, {
-          name: '其他',
-          value: 0
-        }],
+        data: [],
         colors: ['#A26DFD', '#FAC400', '#10D178', '#F0725E', '#2853FF']
       },
+      energyCircleDataLoading: true,
       energyCircleData: [{
         title: '今日耗电量',
         elemId: 'elecGradChart',
@@ -193,35 +182,28 @@ export default {
         startColor: '#FFA733',
         endColor: '#FFC373'
       }],
+      dongliStationDataLoading: true,
       dongliStationData: {
-        data: [{
-          name: '空压机组',
-          value: 460
-        }, {
-          name: '冷却塔组',
-          value: 130
-        }, {
-          name: '冷却泵组',
-          value: 120
-        }, {
-          name: '冷干机组',
-          value: 140
-        }, {
-          name: '其他',
-          value: 60
-        }],
+        data: [],
         colors: ['#A26DFD', '#FAC400', '#10D178', '#F0725E', '#2853FF']
       },
+      lineChartDataLoading: true,
       lineChartData: [{
         name: '时间段',
-        data: [{ name: '1:00', value: Math.round(Math.random() * 15) + 5 }, { name: '2:00', value: Math.round(Math.random() * 15) + 5 }, { name: '3:00', value: Math.round(Math.random() * 15) + 5 }, { name: '4:00', value: Math.round(Math.random() * 15) + 5 }, { name: '5:00', value: Math.round(Math.random() * 15) + 5 }, { name: '6:00', value: Math.round(Math.random() * 15) + 5 }, { name: '7:00', value: Math.round(Math.random() * 15) + 5 }, { name: '8:00', value: 11 }, { name: '9:00', value: Math.round(Math.random() * 15) + 5 }, { name: '10:00', value: Math.round(Math.random() * 15) + 5 }, { name: '11:00', value: Math.round(Math.random() * 15) + 5 }, { name: '12:00', value: 12 }, { name: '13:00', value: Math.round(Math.random() * 15) + 5 }, { name: '14:00', value: Math.round(Math.random() * 15) + 5 }, { name: '15:00', value: 12 }, { name: '16:00', value: Math.round(Math.random() * 15) + 5 }, { name: '17:00', value: Math.round(Math.random() * 15) + 5 }, { name: '18:00', value: Math.round(Math.random() * 15) + 5 }, { name: '19:00', value: Math.round(Math.random() * 15) + 5 }, { name: '20:00', value: Math.round(Math.random() * 15) + 5 }, { name: '21:00', value: Math.round(Math.random() * 15) + 5 }, { name: '22:00', value: Math.round(Math.random() * 15) + 5 }, { name: '23:00', value: Math.round(Math.random() * 15) + 5 }]
+        data: []
       }]
     }
   },
   mounted() {
     this.setProgressData({ sys: this.$router.currentRoute.name })
     this.setCompareData({ sys: this.$router.currentRoute.name })
+    this.setEffectCompareData({ sys: this.$router.currentRoute.name })
     this.setEnergyCircleData({ sys: this.$router.currentRoute.name })
+    this.setElecLineChartDataData({
+      sys: this.$router.currentRoute.name,
+      startTime: this.lineChartSearchForm.value[0],
+      endTime: this.lineChartSearchForm.value[1]
+    })
   },
   methods: {
     setProgressData(params) {
@@ -245,6 +227,34 @@ export default {
       getCompareData(params).then(response => {
         var data = response.data
         this.compareData.data = data
+        this.compareDataLoading = false
+      }).catch(err => {
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    setEffectCompareData(params) {
+      getEffectCompareData(params).then(response => {
+        var data = response.data
+        this.dongliStationData.data = data
+        this.dongliStationDataLoading = false
+      }).catch(err => {
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
+    setElecLineChartDataData(params) {
+      this.lineChartDataLoading = true
+      getElecLineChartDataData(params).then(response => {
+        var data = response.data
+        this.lineChartData[0].data = data
+        this.lineChartDataLoading = false
       }).catch(err => {
         this.$message({
           type: 'warning',
@@ -294,6 +304,7 @@ export default {
           }
         }
         this.initEnergyCircle()
+        this.energyCircleDataLoading = false
       }).catch(err => {
         this.$message({
           type: 'warning',
@@ -304,7 +315,13 @@ export default {
       })
     },
     onSearch() {
-      console.log(this.lineChartSearchForm.value)
+      if (!this.lineChartDataLoading) {
+        this.setElecLineChartDataData({
+          sys: this.$router.currentRoute.name,
+          startTime: this.lineChartSearchForm.value[0],
+          endTime: this.lineChartSearchForm.value[1]
+        })
+      }
     }
   }
 }
@@ -418,6 +435,7 @@ export default {
     flex-grow: 1;
     flex-shrink: 1;
     display: flex;
+    height: 0;
   }
 
   .chart-main-container {
@@ -431,6 +449,7 @@ export default {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
+    overflow: auto;
   }
 
   .chart-main-lengend-item {

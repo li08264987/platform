@@ -239,8 +239,8 @@
         <el-form-item label="能耗时间">
           <el-date-picker
             v-model="addData.time"
-            value-format="yyyy-MM"
-            type="month"
+            value-format="yyyy-MM-dd"
+            type="date"
             placeholder="选择能耗时间"
           />
         </el-form-item>

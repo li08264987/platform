@@ -16,6 +16,22 @@ export function getCompareData(query) {
   })
 }
 
+export function getEffectCompareData(query) {
+  return request({
+    url: '/energy/statis/getEffectCompareData',
+    method: 'post',
+    params: query
+  })
+}
+
+export function getElecLineChartDataData(query) {
+  return request({
+    url: '/energy/statis/getElecLineChartDataData',
+    method: 'post',
+    params: query
+  })
+}
+
 export function getEnergyCircleData(query) {
   return request({
     url: '/energy/statis/getEnergyCircleData',
