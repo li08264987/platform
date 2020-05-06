@@ -182,7 +182,7 @@ export default {
   width: 300px;
   left: 75px;
   position: absolute;
-  top: 30px;
+  top: 40px;
   color: white;
 }
 .tab-ul {

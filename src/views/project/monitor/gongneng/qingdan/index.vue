@@ -28,7 +28,7 @@
         <el-button>运行回放</el-button>
       </div>
       <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
-        <el-tab-pane label="系统" name="first">
+        <el-tab-pane label="全系统" name="first">
           <div style="height:99%;text-align:center">
             <!-- <div style="padding-top:10px;text-align: left;padding-left: 2%;">
               <span>运行优化建议：</span>
@@ -69,14 +69,6 @@
               </el-button>
             </div>
             <div v-if="showNeibu && mainTabName==='first'" style="height:100%;position:relative;border: 1px dashed #ccc;width: 99%;margin-top:1%">
-              <!-- <svg
-                id="backgroud"
-                viewBox="-70 -20 1750 920"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                @click="showKongYa($event)"
-                v-html="kongYsSys"
-              /> -->
               <system style="height:96%;width:100%;margin-top:40px;" :gngldata="gngldata" />
               <i :class="rightbtn" @click="showHideRight" />
             </div>
@@ -239,7 +231,7 @@
             </div>
           </div>
         </el-tab-pane>
-        <el-tab-pane label="机组" name="second" style="text-align:center">
+        <el-tab-pane label="分系统" name="second" style="text-align:center">
           <el-select v-model="selectvalue2">
             <el-option
               v-for="item in deviceoptions"
@@ -248,27 +240,14 @@
               :value="item.CODE"
             />
           </el-select>
-          <!-- <div style="padding-top:10px;text-align: left;padding-left: 2%;">
-            <span>运行优化建议：</span>
-            <span>可关停1#螺杆空压机，只能用2#螺杆空样机进行供应，预计提升系统运行能效5%，节省能源费用2000元（运行模式对比）。</span>
-            <span style="color:#23A8F2;text-decoration:underline">确认</span>
-          </div> -->
           <div v-if="showNeibu && mainTabName==='second'" style="height:92%">
-            <!-- <svg
-              width="99%"
-              height="99%"
-              viewBox="0 0 1600 950"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              v-html="kongyajizu"
-            /> -->
-            <groupone v-if="selectvalue2===deviceoptions[0].CODE" style="height:92%;width:100%" />
-            <grouptwo v-if="selectvalue2===deviceoptions[1].CODE" style="height:92%;width:100%" />
-            <groupthree v-if="selectvalue2===deviceoptions[2].CODE" style="height:92%;width:100%" />
-            <groupfour v-if="selectvalue2===deviceoptions[3].CODE" style="height:92%;width:100%" />
+            <groupAone v-if="selectvalue2===deviceoptions[0].CODE" style="height:92%;width:100%" />
+            <groupAtwo v-if="selectvalue2===deviceoptions[1].CODE" style="height:92%;width:100%" />
+            <groupBone v-if="selectvalue2===deviceoptions[2].CODE" style="height:92%;width:100%" />
+            <groupBtwo v-if="selectvalue2===deviceoptions[3].CODE" style="height:92%;width:100%" />
           </div>
         </el-tab-pane>
-        <el-tab-pane label="设备" name="third" style="text-align:center">
+        <el-tab-pane v-if="false" label="设备" name="third" style="text-align:center">
           <el-select v-model="selectvalue3">
             <el-option
               v-for="item in kyjoptions"
@@ -508,19 +487,19 @@
           </div>
           <div style="flex:4;height:135px">
             <div class="rtitle2" style="border-left-color:#2853FF">
-              <span>空压机组</span><span><label>{{ piedata.data[0].value }}</label>kWh</span>同比<label>100</label>%
+              <span>空压机组</span><span><label>{{ piedata.data[0].value }}</label>kWh</span>同比<label>{{ tbky }}</label>%
             </div>
             <div class="rtitle2" style="border-left-color:#BDF6B4">
-              <span>冷却塔组</span><span><label>{{ piedata.data[1].value }}</label>kWh</span>同比<label>100</label>%
+              <span>冷却塔组</span><span><label>{{ piedata.data[1].value }}</label>kWh</span>同比<label>{{ tblt }}</label>%
             </div>
             <div class="rtitle2" style="border-left-color:#B860F3">
-              <span>冷却泵组</span><span><label>{{ piedata.data[2].value }}</label>kWh</span>同比<label>100</label>%
+              <span>冷却泵组</span><span><label>{{ piedata.data[2].value }}</label>kWh</span>同比<label>{{ tblqb }}</label>%
             </div>
             <div class="rtitle2" style="border-left-color:#F588E3">
-              <span>冷干机组</span><span><label>{{ piedata.data[3].value }}</label>kWh</span>同比<label>100</label>%
+              <span>冷干机组</span><span><label>{{ piedata.data[3].value }}</label>kWh</span>同比<label>{{ tblgj }}</label>%
             </div>
             <div class="rtitle2" style="border-left-color:#5CF0F2">
-              <span>其他</span><span><label>{{ piedata.data[4].value }}</label>kWh</span>同比<label>100</label>%
+              <span>其他</span><span><label>{{ piedata.data[4].value }}</label>kWh</span>同比<label>{{ tbqt }}</label>%
             </div>
           </div>
         </div>
@@ -537,13 +516,13 @@ import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
 import pieChart from '@/views/project/monitor/pieChart'
 import monitorapi from '@/api/monitor/monitor'
-import kyj from '@/views/project/monitor/gongneng/kongyaji'
-import lgkyj from '@/views/project/monitor/gongneng/lgkongyaji'
-import system from '@/views/project/monitor/gongneng/system'
-import groupone from '@/views/project/monitor/gongneng/groupone'
-import grouptwo from '@/views/project/monitor/gongneng/grouptwo'
-import groupthree from '@/views/project/monitor/gongneng/groupthree'
-import groupfour from '@/views/project/monitor/gongneng/groupfour'
+import kyj from '@/views/project/monitor/gongneng/kongya/kongyaji'
+import lgkyj from '@/views/project/monitor/gongneng/kongya/lgkongyaji'
+import system from '@/views/project/monitor/gongneng/qingdan/system'
+import groupAone from '@/views/project/monitor/gongneng/qingdan/groupAone'
+import groupAtwo from '@/views/project/monitor/gongneng/qingdan/groupAtwo'
+import groupBone from '@/views/project/monitor/gongneng/qingdan/groupBone'
+import groupBtwo from '@/views/project/monitor/gongneng/qingdan/groupBtwo'
 export default {
   name: 'MonitorView',
   components: {
@@ -552,10 +531,10 @@ export default {
     pieChart,
     kyj,
     lgkyj,
-    groupone,
-    grouptwo,
-    groupthree,
-    groupfour,
+    groupAone,
+    groupAtwo,
+    groupBone,
+    groupBtwo,
     system
   },
   data() {
@@ -681,6 +660,11 @@ export default {
         ]
       },
       sumdianhao: 0,
+      tbky: 0,
+      tblgj: 0,
+      tblqb: 0,
+      tblt: 0,
+      tbqt: 0,
       paramss: [
         {
           name: '常压流量',
@@ -844,11 +828,10 @@ export default {
   },
   mounted() {
     this.getNengHaoGaiLan()
-    this.getKongYaJiQun()
+    this.getQingDanJiQun()
     this.getDuty()
     this.getDianLi('kyjq', '')
     this.getDianHaoZhanBi()
-    // this.getZQiHao()
   },
   methods: {
     handleClick(tab, event) {
@@ -875,8 +858,8 @@ export default {
         console.log(err)
       })
     },
-    getKongYaJiQun() {
-      monitorapi.getKongYaJiQun().then(res => {
+    getQingDanJiQun() {
+      monitorapi.getQingDanJiQun().then(res => {
         if (res.state === 1) {
           this.deviceoptions = res.data
           this.selectvalue2 = this.deviceoptions[0].CODE
@@ -942,6 +925,11 @@ export default {
           this.piedata.data[3].value = res.lgjvalue
           this.piedata.data[4].value = res.qtvalue
           this.sumdianhao = res.sumvalue
+          this.tbky = res.tbky.toFixed(0)
+          this.tblgj = res.tblgj.toFixed(0)
+          this.tblqb = res.tblqb.toFixed(0)
+          this.tblt = res.tblt.toFixed(0)
+          this.tbqt = res.tbqt.toFixed(0)
         }
       }).catch(err => {
         console.log(err)
@@ -1279,24 +1267,24 @@ export default {
 .videoPlay {
   flex: 8;
   height: 100%;
-  background-image: url("../../../../assets/monitor/videoImg.png");
+  background-image: url("../../../../../assets/monitor/videoImg.png");
 }
 .Video_1 {
-  background-image: url("../../../../assets/monitor/ved1.png");
+  background-image: url("../../../../../assets/monitor/ved1.png");
 }
 .Video_2 {
-  background-image: url("../../../../assets/monitor/ved2.png");
+  background-image: url("../../../../../assets/monitor/ved2.png");
 }
 .Video_3 {
-  background-image: url("../../../../assets/monitor/ved3.png");
+  background-image: url("../../../../../assets/monitor/ved3.png");
 }
 .Video_4 {
-  background-image: url("../../../../assets/monitor/ved4.png");
+  background-image: url("../../../../../assets/monitor/ved4.png");
 }
 .Video_5 {
-  background-image: url("../../../../assets/monitor/ved3.png");
+  background-image: url("../../../../../assets/monitor/ved3.png");
 }
 .Video_6 {
-  background-image: url("../../../../assets/monitor/ved2.png");
+  background-image: url("../../../../../assets/monitor/ved2.png");
 }
 </style>

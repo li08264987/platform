@@ -4319,10 +4319,41 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 svg{
   &:hover{
     cursor: pointer;
   }
+}
+.gzclass{
+    -webkit-animation: twinkling 1s infinite ease-in-out
+}
+// .animated{
+//     -webkit-animation-duration: 1s;
+//     animation-duration: 1s;
+//     -webkit-animation-fill-mode: both;
+//     animation-fill-mode: both
+// }
+@-webkit-keyframes twinkling{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes twinkling{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.ggzclass{
+    -webkit-animation: twinkling 0.3s infinite ease-in-out
+}
+.noclass{
+    display: none;
 }
 </style>

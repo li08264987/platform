@@ -12,10 +12,10 @@ import AppMain from '@/layout/components/AppMain'
 import monitorSideBar from './monitorSideBar'
 import Layout from '@/layout'
 import monitorapi from '@/api/monitor/monitor'
-const kongya = import('@/views/project/monitor/gongneng/index')
-const qingdan = import('@/views/project/monitor/gongneng/index')
-const zhenkong = import('@/views/project/monitor/gongneng/index')
-const dianli = import('@/views/project/monitor/gongneng/index')
+const kongya = import('@/views/project/monitor/gongneng/kongya/index')
+const qingdan = import('@/views/project/monitor/gongneng/qingdan/index')
+const zhenkong = import('@/views/project/monitor/gongneng/kongya/index')
+const dianli = import('@/views/project/monitor/gongneng/kongya/index')
 // import axios from 'axios'
 export default {
   name: 'Monitor',
@@ -142,7 +142,7 @@ export default {
               this.monitorRouter[1].children.push(
                 {
                   path: code,
-                  component: () => import('@/views/project/monitor/yongneng/firstShop'),
+                  component: () => import('@/views/project/monitor/yongneng/shopOne/Shops'),
                   name: 'MonitorThird',
                   meta: {
                     title: name,
@@ -157,7 +157,7 @@ export default {
               this.monitorRouter[1].children.push(
                 {
                   path: code,
-                  component: () => import('@/views/project/monitor/yongneng/firstShop'),
+                  component: () => import('@/views/project/monitor/yongneng/shopOne/Shops'),
                   name: 'MonitorThird',
                   meta: {
                     title: name,
@@ -172,7 +172,7 @@ export default {
               this.monitorRouter[1].children.push(
                 {
                   path: code,
-                  component: () => import('@/views/project/monitor/yongneng/useEnergy'),
+                  component: () => import('@/views/project/monitor/yongneng/shopTwo/Shops'),
                   name: 'MonitorJiaoshui',
                   meta: {
                     title: name,
@@ -187,7 +187,7 @@ export default {
               this.monitorRouter[1].children.push(
                 {
                   path: code,
-                  component: () => import('@/views/project/monitor/yongneng/useEnergy'),
+                  component: () => import('@/views/project/monitor/yongneng/shopThree/Shops'),
                   name: 'MonitorJiaoshui',
                   meta: {
                     title: name,
@@ -202,7 +202,7 @@ export default {
               this.monitorRouter[1].children.push(
                 {
                   path: code,
-                  component: () => import('@/views/project/monitor/yongneng/useEnergy'),
+                  component: () => import('@/views/project/monitor/yongneng/shopFour/Shops'),
                   name: 'MonitorJiaoshui',
                   meta: {
                     title: name,
@@ -217,7 +217,7 @@ export default {
               this.monitorRouter[1].children.push(
                 {
                   path: code,
-                  component: () => import('@/views/project/monitor/yongneng/useEnergy'),
+                  component: () => import('@/views/project/monitor/yongneng/shopFive/Shops'),
                   name: 'MonitorJiaoshui',
                   meta: {
                     title: name,
@@ -254,7 +254,7 @@ export default {
       self.monitorRouter[1].children.push(
         {
           path: 'cqyc',
-          component: () => import('@/views/project/monitor/yongneng/firstShop'),
+          component: () => import('@/views/project/monitor/yongneng/shopOne/Shops'),
           name: 'MonitorThird',
           meta: {
             title: '1#动力站房',

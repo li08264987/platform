@@ -63,7 +63,7 @@ export default {
           if (newVal.indexOf('ssll') !== -1) {
             self.linedata.unit = 'm³/h'
             self.linedata.legendName = '流量'
-          } else if (newVal.indexOf('yxyl') !== -1) {
+          } else if (newVal.indexOf('yxyl') !== -1 || this.devcode.indexOf('pqyl') !== -1 || this.devcode.indexOf('csyl') !== -1) {
             self.linedata.unit = 'kpa'
             self.linedata.legendName = '压力'
           } else {
@@ -95,7 +95,7 @@ export default {
           if (this.devcode.indexOf('ssll') !== -1) {
             self.linedata.unit = 'm³/h'
             self.linedata.legendName = '流量'
-          } else if (this.devcode.indexOf('yxyl') !== -1) {
+          } else if (this.devcode.indexOf('yxyl') !== -1 || this.devcode.indexOf('pqyl') !== -1) {
             self.linedata.unit = 'kpa'
             self.linedata.legendName = '压力'
           } else {

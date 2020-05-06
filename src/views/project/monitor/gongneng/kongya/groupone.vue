@@ -1,5 +1,8 @@
 <template>
-  <svg width="1622px" height="857px" viewBox="0 0 1622 857" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg width="1607px" height="857px" viewBox="0 0 1607 857" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>1#空压机组</title>
+    <desc>Created with Sketch.</desc>
     <defs>
       <path id="path-1" d="M2.69502834,52 L2.69502834,58 L2.59913023,58 C2.59893128,58 2.59893128,58 2.59885057,52 L2.69502834,52 Z M2.59892563,58 L2.59885057,52 L480.13267,52 C482.341809,52 484.13267,53.790861 484.13267,56 L484.13267,158.36 C484.13267,160.569139 482.341809,162.36 480.13267,162.36 L445.0213,162.36 L445.0213,156.36 L476.13267,156.36 C477.23724,156.36 478.13267,155.464569 478.13267,154.36 L478.13267,60 C478.13267,58.8954305 477.23724,58 476.13267,58 L2.59892563,58 Z" />
       <filter id="filter-2" x="-0.3%" y="-1.4%" width="100.6%" height="102.7%" filterUnits="objectBoundingBox">
@@ -9,15 +12,15 @@
         <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1" />
         <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.444495933   0 0 0 0 0.812386775  0 0 0 0.806135271 0" type="matrix" in="shadowInnerInner1" />
       </filter>
-      <path id="path-3" d="M1339.11241,4 L1339.11241,83.5728757 L1333.11241,83.5728757 L1333.11241,8 C1333.11241,6.8954305 1332.21698,6 1331.11241,6 L1057.11241,6 L1057.11241,83.5728757 L1051.11241,83.5728757 L1051.11241,6 L776.112411,6 L776.112411,82.5728757 L770.112411,82.5728757 L770.112411,6 L494.112411,6 L494.112411,82.2148148 L488.112411,82.2148148 L488.112411,6 L444.029445,6 L444.029445,118 C444.029445,120.209139 442.238584,122 440.029445,122 L419.919739,122 L419.919739,116 L436.029445,116 C437.134014,116 438.029445,115.104569 438.029445,114 L438.029445,6 L8.32327049,6 C7.21870099,6 6.32327049,6.8954305 6.32327049,8 L6.32327049,114 C6.32327049,115.104569 7.21870099,116 8.32327049,116 L47.8379423,116 L47.8379423,122 L4.32327049,122 C2.11413149,122 0.323270489,120.209139 0.323270489,118 L0.323270489,4 C0.323270489,1.790861 2.11413149,-8.13066024e-14 4.32327049,-8.17124146e-14 L1335.11241,-9.28146449e-14 C1337.32155,-9.32204571e-14 1339.11241,1.790861 1339.11241,4 Z" />
-      <filter id="filter-4" x="-0.1%" y="-0.8%" width="100.1%" height="101.6%" filterUnits="objectBoundingBox">
+      <path id="path-3" d="M1339.11241,4 L1339.11241,39.5728757 L1333.11241,39.5728757 L1333.11241,8 C1333.11241,6.8954305 1332.21698,6 1331.11241,6 L1057.11241,6 L1057.11241,39.5728757 L1051.11241,39.5728757 L1051.11241,6 L776.112411,6 L776.112411,38.5728757 L770.112411,38.5728757 L770.112411,6 L494.112411,6 L494.112411,38.2148148 L488.112411,38.2148148 L488.112411,6 L444.029445,6 L444.029445,118 C444.029445,120.209139 442.238584,122 440.029445,122 L419.919739,122 L419.919739,116 L436.029445,116 C437.134014,116 438.029445,115.104569 438.029445,114 L438.029445,6 L8.32327049,6 C7.21870099,6 6.32327049,6.8954305 6.32327049,8 L6.32327049,114 C6.32327049,115.104569 7.21870099,116 8.32327049,116 L47.8379423,116 L47.8379423,122 L4.32327049,122 C2.11413149,122 0.323270489,120.209139 0.323270489,118 L0.323270489,4 C0.323270489,1.790861 2.11413149,-1.14001528e-12 4.32327049,-1.14042109e-12 L1335.11241,-1.2101431e-12 C1337.32155,-1.0849739e-12 1339.11241,1.790861 1339.11241,4 Z M488.32327,50 L494.32327,50 L494.32327,82 L488.32327,82 L488.32327,50 Z M770.32327,50 L776.32327,50 L776.32327,82 L770.32327,82 L770.32327,50 Z M1051.32327,50 L1057.32327,50 L1057.32327,82 L1051.32327,82 L1051.32327,50 Z M1333.32327,50 L1339.32327,50 L1339.32327,82 L1333.32327,82 L1333.32327,50 Z" />
+      <filter id="filter-4" x="-0.1%" y="-0.8%" width="100.2%" height="101.6%" filterUnits="objectBoundingBox">
         <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowSpreadInner1" />
         <feGaussianBlur stdDeviation="0.5" in="shadowSpreadInner1" result="shadowBlurInner1" />
         <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1" />
         <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1" />
         <feColorMatrix values="0 0 0 0 0.951200181   0 0 0 0 0.271947552   0 0 0 0 0.271947552  0 0 0 0.936052229 0" type="matrix" in="shadowInnerInner1" />
       </filter>
-      <path id="path-5" d="M1131.82327,6.2946122 L1131.82327,41 L1125.82327,41 L1125.82327,6.2946122 L850.82327,6.2946122 L850.82327,41 L844.82327,41 L844.82327,6.2946122 L568.82327,6.2946122 L568.82327,41 L562.82327,41 L562.82327,6.2946122 L473.32327,6.2946122 C472.218701,6.2946122 471.32327,7.1900427 471.32327,8.2946122 L471.32327,520.29092 C471.32327,522.500059 469.532409,524.29092 467.32327,524.29092 L40.3232705,524.29092 C38.1141315,524.29092 36.3232705,522.500059 36.3232705,520.29092 L36.3232705,408.67192 C36.3232705,406.462781 38.1141315,404.67192 40.3232705,404.67192 L60.3232705,404.67192 L60.3232705,410.67192 L44.3232705,410.67192 C43.218701,410.67192 42.3232705,411.56735 42.3232705,412.67192 L42.3232705,516.29092 C42.3232705,517.395489 43.218701,518.29092 44.3232705,518.29092 L181.32327,518.29092 L181.32327,408.29092 C181.32327,406.081781 183.114131,404.29092 185.32327,404.29092 L199.32327,404.29092 L199.32327,410.29092 L189.32327,410.29092 C188.218701,410.29092 187.32327,411.18635 187.32327,412.29092 L187.32327,518.29092 L319.32327,518.29092 L319.32327,408.29092 C319.32327,406.081781 321.114131,404.29092 323.32327,404.29092 L337.32327,404.29092 L337.32327,410.29092 L327.32327,410.29092 C326.218701,410.29092 325.32327,411.18635 325.32327,412.29092 L325.32327,518.29092 L463.32327,518.29092 C464.42784,518.29092 465.32327,517.395489 465.32327,516.29092 L465.32327,4.2946122 C465.32327,2.0854732 467.114131,0.294612201 469.32327,0.294612201 L1394.32327,0.294612201 C1396.53241,0.294612201 1398.32327,2.0854732 1398.32327,4.2946122 L1398.32327,40 L1392.32327,40 L1392.32327,8.2946122 C1392.32327,7.1900427 1391.42784,6.2946122 1390.32327,6.2946122 L1131.82327,6.2946122 Z" />
+      <path id="path-5" d="M1131.82327,6.2946122 L1131.82327,41 L1125.82327,41 L1125.82327,6.2946122 L850.82327,6.2946122 L850.82327,41 L844.82327,41 L844.82327,6.2946122 L568.82327,6.2946122 L568.82327,41 L562.82327,41 L562.82327,6.2946122 L473.32327,6.2946122 C472.218701,6.2946122 471.32327,7.1900427 471.32327,8.2946122 L471.32327,520.29092 C471.32327,522.500059 469.532409,524.29092 467.32327,524.29092 L40.3232705,524.29092 C38.1141315,524.29092 36.3232705,522.500059 36.3232705,520.29092 L36.3232705,408.67192 C36.3232705,406.462781 38.1141315,404.67192 40.3232705,404.67192 L60.3232705,404.67192 L60.3232705,410.67192 L44.3232705,410.67192 C43.218701,410.67192 42.3232705,411.56735 42.3232705,412.67192 L42.3232705,516.29092 C42.3232705,517.395489 43.218701,518.29092 44.3232705,518.29092 L187.32327,518.29092 L187.32327,408.29092 C187.32327,406.081781 189.114131,404.29092 191.32327,404.29092 L199.32327,404.29092 L199.32327,410.29092 L195.32327,410.29092 C194.218701,410.29092 193.32327,411.18635 193.32327,412.29092 L193.32327,518.29092 L325.32327,518.29092 L325.32327,408.29092 C325.32327,406.081781 327.114131,404.29092 329.32327,404.29092 L337.32327,404.29092 L337.32327,410.29092 L333.32327,410.29092 C332.218701,410.29092 331.32327,411.18635 331.32327,412.29092 L331.32327,518.29092 L463.32327,518.29092 C464.42784,518.29092 465.32327,517.395489 465.32327,516.29092 L465.32327,4.2946122 C465.32327,2.0854732 467.114131,0.294612201 469.32327,0.294612201 L1394.32327,0.294612201 C1396.53241,0.294612201 1398.32327,2.0854732 1398.32327,4.2946122 L1398.32327,40 L1392.32327,40 L1392.32327,8.2946122 C1392.32327,7.1900427 1391.42784,6.2946122 1390.32327,6.2946122 L1131.82327,6.2946122 Z" />
       <filter id="filter-6" x="-0.1%" y="-0.3%" width="100.2%" height="100.6%" filterUnits="objectBoundingBox">
         <feMorphology radius="1" operator="erode" in="SourceAlpha" result="shadowSpreadInner1" />
         <feGaussianBlur stdDeviation="1" in="shadowSpreadInner1" result="shadowBlurInner1" />
@@ -253,10 +256,88 @@
         <stop stop-color="#586CB4" stop-opacity="0.1" offset="0%" />
         <stop stop-color="#586CB4" stop-opacity="0.3" offset="100%" />
       </linearGradient>
+      <path id="path-70" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-71" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-72" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-73" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-74" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-75" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-76" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-77" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-78" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-79" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-80" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-81" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-82" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-83" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-84" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-85" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-86" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-87" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-88" d="M25.4940603,3.82845847 L40.8607159,29.1811095 C42.2348089,31.4481545 41.5109282,34.3998802 39.2438832,35.7739732 C38.493653,36.2287 37.6331486,36.469125 36.7558677,36.469125 L6.02255659,36.469125 C3.37158979,36.469125 1.22255659,34.3200918 1.22255659,31.669125 C1.22255659,30.791844 1.4629816,29.9313397 1.91770838,29.1811095 L17.2843639,3.82845847 C18.6584569,1.5614134 21.6101826,0.837532731 23.8772276,2.21162575 C24.5385443,2.61246058 25.0932255,3.16714179 25.4940603,3.82845847 Z" />
+      <filter id="filter-89" x="-10.0%" y="-5.4%" width="120.0%" height="126.0%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-90" d="M15.9889894,2.34896799 L25.6346427,18.103535 C26.4997756,19.5165853 26.0556007,21.3634177 24.6425504,22.2285505 C24.1710472,22.5172259 23.6289439,22.6699966 23.0760888,22.6699966 L3.78478224,22.6699966 C2.12792799,22.6699966 0.784782239,21.3268508 0.784782239,19.6699966 C0.784782239,19.1171415 0.937552911,18.5750382 1.22622833,18.103535 L10.8718816,2.34896799 C11.7370145,0.935917681 13.5838468,0.491742814 14.9968971,1.35687566 C15.4013627,1.60450765 15.7413574,1.9445024 15.9889894,2.34896799 Z" />
+      <filter id="filter-91" x="-10.1%" y="-7.0%" width="120.2%" height="126.8%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-92" d="M15.9889894,2.34896799 L25.6346427,18.103535 C26.4997756,19.5165853 26.0556007,21.3634177 24.6425504,22.2285505 C24.1710472,22.5172259 23.6289439,22.6699966 23.0760888,22.6699966 L3.78478224,22.6699966 C2.12792799,22.6699966 0.784782239,21.3268508 0.784782239,19.6699966 C0.784782239,19.1171415 0.937552911,18.5750382 1.22622833,18.103535 L10.8718816,2.34896799 C11.7370145,0.935917681 13.5838468,0.491742814 14.9968971,1.35687566 C15.4013627,1.60450765 15.7413574,1.9445024 15.9889894,2.34896799 Z" />
+      <filter id="filter-93" x="-10.1%" y="-7.0%" width="120.2%" height="126.8%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
+      <path id="path-94" d="M15.9889894,2.34896799 L25.6346427,18.103535 C26.4997756,19.5165853 26.0556007,21.3634177 24.6425504,22.2285505 C24.1710472,22.5172259 23.6289439,22.6699966 23.0760888,22.6699966 L3.78478224,22.6699966 C2.12792799,22.6699966 0.784782239,21.3268508 0.784782239,19.6699966 C0.784782239,19.1171415 0.937552911,18.5750382 1.22622833,18.103535 L10.8718816,2.34896799 C11.7370145,0.935917681 13.5838468,0.491742814 14.9968971,1.35687566 C15.4013627,1.60450765 15.7413574,1.9445024 15.9889894,2.34896799 Z" />
+      <filter id="filter-95" x="-10.1%" y="-7.0%" width="120.2%" height="126.8%" filterUnits="objectBoundingBox">
+        <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1" />
+        <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+        <feColorMatrix values="0 0 0 0 0.380392157   0 0 0 0 0.407843137   0 0 0 0 0.674509804  0 0 0 0.274776005 0" type="matrix" in="shadowBlurOuter1" />
+      </filter>
     </defs>
     <g id="工艺图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
       <g id="空压系统_1#空压机组" transform="translate(-238.000000, -167.000000)">
-        <g id="分组-4" transform="translate(238.000000, 167.000000)">
+        <g id="1#空压机组" transform="translate(238.000000, 167.000000)">
           <polygon id="路径" fill="#FFFFFF" fill-rule="nonzero" points="250 718.337457 254.178694 718.337457 254.178694 722.206415 250 722.206415" />
           <polygon id="路径" fill="#FFFFFF" fill-rule="nonzero" points="250 719.337457 254.178694 719.337457 254.178694 723.206415 250 723.206415" />
           <g id="bushui" fill-rule="nonzero">
@@ -279,6 +360,25 @@
               <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7" />
             </g>
           </g>
+          <rect
+            id="矩形"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="373.48"
+            y="205.48"
+            width="71.04"
+            height="22.04"
+            rx="1"
+          />
+          <text id="运行状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="310" y="223">运行状态</tspan>
+          </text>
+          <text id="运行状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="46" y="223">运行状态</tspan>
+          </text>
           <g id="合并形状" fill-rule="nonzero">
             <use fill="#ABBDFF" xlink:href="#path-9" />
             <use fill="black" fill-opacity="1" filter="url(#filter-10)" xlink:href="#path-9" />
@@ -304,7 +404,7 @@
             <use fill="black" fill-opacity="1" filter="url(#filter-20)" xlink:href="#path-19" />
           </g>
           <text id="自来水补水" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="16" font-weight="normal" letter-spacing="0.06153851" fill="#3D5278">
-            <tspan x="74" y="42">自来水补水</tspan>
+            <tspan x="37" y="42">自来水补水</tspan>
           </text>
           <text id="至2#空压机组储气罐" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="16" font-weight="normal" letter-spacing="0.06153851" fill="#3D5278">
             <tspan x="1455" y="631">至2#空压机组储气罐</tspan>
@@ -319,30 +419,37 @@
             <tspan x="0" y="842">至1栋2栋高压</tspan>
           </text>
           <text id="至3栋4栋高压" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="16" font-weight="normal" letter-spacing="0.06153851" fill="#3D5278">
-            <tspan x="1474" y="842">至3栋4栋高压</tspan>
+            <tspan x="1504" y="842">至3栋4栋高压</tspan>
           </text>
           <g id="空压机" transform="translate(507.000000, 83.000000)">
             <g id="4#螺杆空压机数据" transform="translate(115.000000, 0.000000)">
-              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="30.48" width="71.04" height="23.04" />
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="0.48" width="71.04" height="23.04" />
-              <text id="排气温度T2" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="49">排气温度T2</tspan>
+              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="66.48" y="30.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="66.48" y="0.48" width="71.04" height="23.04" />
+              <text id="排气温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="49">排气温度</tspan>
               </text>
               <text id="运行状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
-              <text id="36℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="104.872356" y="48">36℃</tspan>
+              <text id="908℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="84.0719951" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg1_pqwd }}℃</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="108.285509" y="17">ON</tspan>
+              <text id="on7" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="87.5056565" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_kylg1_yxzt) }}</tspan>
               </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="60.48" width="71.04" height="23.04" />
-              <text id="排气压力p1" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">排气压力P1</tspan>
+              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="66.48" y="60.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-38" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="66.48" y="90.48" width="71.04" height="23.04" />
+              <text id="排气压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="79">排气压力</tspan>
               </text>
-              <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="99.1177583" y="78">0.0kpa</tspan>
+              <text id="运行时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="109">运行时间</tspan>
+              </text>
+              <text id="0.32kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="78.7514797" y="78">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg1_jzpqyl }}kPa</tspan>
+              </text>
+              <text id="4-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="92.7668869" y="108">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg1_ljyxsj }}h</tspan>
               </text>
             </g>
             <g id="4#螺杆空压机">
@@ -376,56 +483,84 @@
                 <use fill="#586CB4" fill-rule="evenodd" xlink:href="#path-31" />
                 <use fill="black" fill-opacity="1" filter="url(#filter-32)" xlink:href="#path-31" />
               </g>
-              <path id="路径" d="M66.8304,60.650169 C66.8304,70.2637725 74.5950264,78.057138 84.1731784,78.057138 C93.7513305,78.057138 101.515957,70.2637725 101.515957,60.650169 C101.515957,51.0365655 93.7513305,43.2432 84.1731784,43.2432 C74.5950264,43.2432 66.8304,51.0365655 66.8304,60.650169 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="lgkyj4" d="M84.4019835,61.7310598 C84.8518443,65.3696447 82.7413109,68.8218971 79.3241453,69.7409129 C75.820541,70.6831756 72.1798868,68.6298704 70.8325796,65.0934809 L84.0690461,61.5336531 C80.6630299,60.1245438 78.7077906,56.5393253 79.6295056,53.086706 C80.5682935,49.5701338 84.1602776,47.4322176 87.8852406,48.0292915 L84.3272682,61.3569726 C87.2457147,59.1052575 91.3132608,59.1997748 93.8298592,61.7256879 C96.3946756,64.2999974 96.4433457,68.4912188 94.0656899,71.4305344 L84.4019835,61.7310598 L84.4019835,61.7310598 Z" fill="#586CB4" />
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg1_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(66.000000, 42.000000)" fill="#586CB4">
+                <g :class="datas.ky_nyzx_dlzf1_kyjq1_kylg1_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_kylg1_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_kylg1_yxzt'):''">
+                  <path id="路径" d="M-0.5,18 C-0.5,7.78273213 7.78273213,-0.5 18,-0.5 C28.2172679,-0.5 36.5,7.78273213 36.5,18 C36.5,28.2172679 28.2172679,36.5 18,36.5 C7.78273213,36.5 -0.5,28.2172679 -0.5,18 Z" stroke="#586CB4" fill-opacity="0.1" />
+                  <path id="形状结合" d="M18.4846366,18.2850328 L18.4846366,4 C22.4753073,4 25.710385,7.19781351 25.710385,11.1425164 C25.710385,15.0872193 22.4753073,18.2850328 18.4846366,18.2850328 Z M18.4846366,18.2850328 L5.96927325,25.4275492 C3.97393792,22.0113363 5.15805856,17.6430418 8.61408073,15.6706903 C12.0701029,13.6983389 16.4893013,14.8688199 18.4846366,18.2850328 Z M18.4846366,18.2850328 L31,25.4275492 C29.0046647,28.8437621 24.5854663,30.0142431 21.1294441,28.0418916 C17.6734219,26.0695402 16.4893013,21.7012457 18.4846366,18.2850328 Z" />
+                </g>
+              </g>
               <text id="螺杆" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="15.6" font-weight="normal" letter-spacing="-0.0974999845" fill="#586CB4">
                 <tspan x="69.41142" y="23.01744">螺杆</tspan>
               </text>
+              <text id="4#" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="15.6" font-weight="normal" letter-spacing="-0.0974999845" fill="#586CB4">
+                <tspan x="39.284414" y="22">4#</tspan>
+              </text>
             </g>
             <g id="3#螺杆空压机数据" transform="translate(397.000000, 0.000000)">
-              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="30.48" width="71.04" height="23.04" />
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="0.48" width="71.04" height="23.04" />
-              <text id="排气温度T2" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="49">排气温度T2</tspan>
+              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="30.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+              <text id="排气温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="49">排气温度</tspan>
               </text>
               <text id="运行状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
-              <text id="36℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="104.872356" y="48">36℃</tspan>
+              <text id="4327℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="79.2716345" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg2_pqwd }}℃</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="108.285509" y="17">ON</tspan>
+              <text id="on8" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="86.3723557" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_kylg2_yxzt) }}</tspan>
               </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="60.48" width="71.04" height="23.04" />
-              <text id="排气压力p1" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">排气压力P1</tspan>
+              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="60.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-39" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="92.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-40" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="346.48" y="92.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-41" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="628.48" y="92.48" width="71.04" height="23.04" />
+              <text id="排气压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="79">排气压力</tspan>
               </text>
-              <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="99.1177583" y="78">0.0kpa</tspan>
+              <text id="运行时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="111">运行时间</tspan>
+              </text>
+              <text id="运行时间复制" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="281" y="111">运行时间</tspan>
+              </text>
+              <text id="运行时间复制-2" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="563" y="111">运行时间</tspan>
+              </text>
+              <text id="0.4kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="81.5518403" y="78">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg2_jzpqyl }}kPa</tspan>
+              </text>
+              <text id="321-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="84.1661657" y="110">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg2_ljyxsj }}h</tspan>
+              </text>
+              <text id="902-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="365.166166" y="110">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg3_ljyxsj }}h</tspan>
+              </text>
+              <text id="564-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="647.166166" y="110">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg4_ljyxsj }}h</tspan>
               </text>
             </g>
             <g id="2#螺杆空压机数据" transform="translate(678.000000, 0.000000)">
-              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="30.48" width="71.04" height="23.04" />
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="0.48" width="71.04" height="23.04" />
-              <text id="排气温度T2" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="49">排气温度T2</tspan>
+              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="30.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+              <text id="排气温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="49">排气温度</tspan>
               </text>
               <text id="运行状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
-              <text id="36℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="104.872356" y="48">36℃</tspan>
+              <text id="564℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="83.0719951" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg3_pqwd }}℃</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="108.285509" y="17">ON</tspan>
+              <text id="on9" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="86.3518479" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_kylg3_yxzt) }}</tspan>
               </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="60.48" width="71.04" height="23.04" />
-              <text id="排气压力p1" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">排气压力P1</tspan>
+              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="60.48" width="71.04" height="23.04" />
+              <text id="排气压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="79">排气压力</tspan>
               </text>
-              <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="99.1177583" y="78">0.0kpa</tspan>
+              <text id="0.56kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="77.7514797" y="78">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg3_jzpqyl }}kPa</tspan>
               </text>
             </g>
             <g id="2#螺杆空压机" transform="translate(563.000000, 0.000000)">
@@ -459,8 +594,12 @@
                 <use fill="#586CB4" fill-rule="evenodd" xlink:href="#path-43" />
                 <use fill="black" fill-opacity="1" filter="url(#filter-44)" xlink:href="#path-43" />
               </g>
-              <path id="路径" d="M66.8304,60.650169 C66.8304,70.2637725 74.5950264,78.057138 84.1731784,78.057138 C93.7513305,78.057138 101.515957,70.2637725 101.515957,60.650169 C101.515957,51.0365655 93.7513305,43.2432 84.1731784,43.2432 C74.5950264,43.2432 66.8304,51.0365655 66.8304,60.650169 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="lgkyj2" d="M84.4019835,61.7310598 C84.8518443,65.3696447 82.7413109,68.8218971 79.3241453,69.7409129 C75.820541,70.6831756 72.1798868,68.6298704 70.8325796,65.0934809 L84.0690461,61.5336531 C80.6630299,60.1245438 78.7077906,56.5393253 79.6295056,53.086706 C80.5682935,49.5701338 84.1602776,47.4322176 87.8852406,48.0292915 L84.3272682,61.3569726 C87.2457147,59.1052575 91.3132608,59.1997748 93.8298592,61.7256879 C96.3946756,64.2999974 96.4433457,68.4912188 94.0656899,71.4305344 L84.4019835,61.7310598 L84.4019835,61.7310598 Z" fill="#586CB4" />
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg3_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(66.000000, 42.000000)" fill="#586CB4">
+                <g :class="datas.ky_nyzx_dlzf1_kyjq1_kylg3_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_kylg3_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_kylg3_yxzt'):''">
+                  <path id="路径" d="M-0.5,18 C-0.5,7.78273213 7.78273213,-0.5 18,-0.5 C28.2172679,-0.5 36.5,7.78273213 36.5,18 C36.5,28.2172679 28.2172679,36.5 18,36.5 C7.78273213,36.5 -0.5,28.2172679 -0.5,18 Z" stroke="#586CB4" fill-opacity="0.1" />
+                  <path id="形状结合" d="M18.4846366,18.2850328 L18.4846366,4 C22.4753073,4 25.710385,7.19781351 25.710385,11.1425164 C25.710385,15.0872193 22.4753073,18.2850328 18.4846366,18.2850328 Z M18.4846366,18.2850328 L5.96927325,25.4275492 C3.97393792,22.0113363 5.15805856,17.6430418 8.61408073,15.6706903 C12.0701029,13.6983389 16.4893013,14.8688199 18.4846366,18.2850328 Z M18.4846366,18.2850328 L31,25.4275492 C29.0046647,28.8437621 24.5854663,30.0142431 21.1294441,28.0418916 C17.6734219,26.0695402 16.4893013,21.7012457 18.4846366,18.2850328 Z" />
+                </g>
+              </g>
               <text id="2#" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="18.2" font-weight="normal" letter-spacing="-0.113749979" fill="#586CB4">
                 <tspan x="37.7924564" y="25.2312">2#</tspan>
               </text>
@@ -469,26 +608,26 @@
               </text>
             </g>
             <g id="1#螺杆空压机数据" transform="translate(960.000000, 0.000000)">
-              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="30.48" width="71.04" height="23.04" />
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="0.48" width="71.04" height="23.04" />
-              <text id="排气温度T2" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="49">排气温度T2</tspan>
+              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="30.48" width="71.04" height="23.04" />
+              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+              <text id="排气温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="49">排气温度</tspan>
               </text>
               <text id="运行状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
-              <text id="36℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="104.872356" y="48">36℃</tspan>
+              <text id="21℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="86.8723557" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg4_pqwd }}℃</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="108.285509" y="17">ON</tspan>
+              <text id="on10" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="83.5290263" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_kylg4_yxzt) }}</tspan>
               </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="83.48" y="60.48" width="71.04" height="23.04" />
-              <text id="排气压力p1" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">排气压力P1</tspan>
+              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="60.48" width="71.04" height="23.04" />
+              <text id="排气压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="79">排气压力</tspan>
               </text>
               <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="99.1177583" y="78">0.0kpa</tspan>
+                <tspan x="81.5518403" y="78">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg4_jzpqyl }}kPa</tspan>
               </text>
             </g>
             <g id="3#螺杆空压机" transform="translate(282.000000, 0.000000)">
@@ -522,8 +661,12 @@
                 <use fill="#586CB4" fill-rule="evenodd" xlink:href="#path-55" />
                 <use fill="black" fill-opacity="1" filter="url(#filter-56)" xlink:href="#path-55" />
               </g>
-              <path id="路径" d="M66.8304,60.650169 C66.8304,70.2637725 74.5950264,78.057138 84.1731784,78.057138 C93.7513305,78.057138 101.515957,70.2637725 101.515957,60.650169 C101.515957,51.0365655 93.7513305,43.2432 84.1731784,43.2432 C74.5950264,43.2432 66.8304,51.0365655 66.8304,60.650169 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="lgkyj3" d="M84.4019835,61.7310598 C84.8518443,65.3696447 82.7413109,68.8218971 79.3241453,69.7409129 C75.820541,70.6831756 72.1798868,68.6298704 70.8325796,65.0934809 L84.0690461,61.5336531 C80.6630299,60.1245438 78.7077906,56.5393253 79.6295056,53.086706 C80.5682935,49.5701338 84.1602776,47.4322176 87.8852406,48.0292915 L84.3272682,61.3569726 C87.2457147,59.1052575 91.3132608,59.1997748 93.8298592,61.7256879 C96.3946756,64.2999974 96.4433457,68.4912188 94.0656899,71.4305344 L84.4019835,61.7310598 L84.4019835,61.7310598 Z" fill="#586CB4" />
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg2_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(66.000000, 42.000000)" fill="#586CB4">
+                <g :class="datas.ky_nyzx_dlzf1_kyjq1_kylg2_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_kylg2_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_kylg2_yxzt'):''">
+                  <path id="路径" d="M-0.5,18 C-0.5,7.78273213 7.78273213,-0.5 18,-0.5 C28.2172679,-0.5 36.5,7.78273213 36.5,18 C36.5,28.2172679 28.2172679,36.5 18,36.5 C7.78273213,36.5 -0.5,28.2172679 -0.5,18 Z" stroke="#586CB4" fill-opacity="0.1" />
+                  <path id="形状结合" d="M18.4846366,18.2850328 L18.4846366,4 C22.4753073,4 25.710385,7.19781351 25.710385,11.1425164 C25.710385,15.0872193 22.4753073,18.2850328 18.4846366,18.2850328 Z M18.4846366,18.2850328 L5.96927325,25.4275492 C3.97393792,22.0113363 5.15805856,17.6430418 8.61408073,15.6706903 C12.0701029,13.6983389 16.4893013,14.8688199 18.4846366,18.2850328 Z M18.4846366,18.2850328 L31,25.4275492 C29.0046647,28.8437621 24.5854663,30.0142431 21.1294441,28.0418916 C17.6734219,26.0695402 16.4893013,21.7012457 18.4846366,18.2850328 Z" />
+                </g>
+              </g>
               <text id="3#" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="18.2" font-weight="normal" letter-spacing="-0.113749979" fill="#586CB4">
                 <tspan x="37.7924564" y="25.2312">3#</tspan>
               </text>
@@ -562,8 +705,12 @@
                 <use fill="#586CB4" fill-rule="evenodd" xlink:href="#path-67" />
                 <use fill="black" fill-opacity="1" filter="url(#filter-68)" xlink:href="#path-67" />
               </g>
-              <path id="路径" d="M66.8304,60.650169 C66.8304,70.2637725 74.5950264,78.057138 84.1731784,78.057138 C93.7513305,78.057138 101.515957,70.2637725 101.515957,60.650169 C101.515957,51.0365655 93.7513305,43.2432 84.1731784,43.2432 C74.5950264,43.2432 66.8304,51.0365655 66.8304,60.650169 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="lgkyj1" d="M84.4019835,61.7310598 C84.8518443,65.3696447 82.7413109,68.8218971 79.3241453,69.7409129 C75.820541,70.6831756 72.1798868,68.6298704 70.8325796,65.0934809 L84.0690461,61.5336531 C80.6630299,60.1245438 78.7077906,56.5393253 79.6295056,53.086706 C80.5682935,49.5701338 84.1602776,47.4322176 87.8852406,48.0292915 L84.3272682,61.3569726 C87.2457147,59.1052575 91.3132608,59.1997748 93.8298592,61.7256879 C96.3946756,64.2999974 96.4433457,68.4912188 94.0656899,71.4305344 L84.4019835,61.7310598 L84.4019835,61.7310598 Z" fill="#586CB4" />
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg4_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(66.000000, 42.000000)" fill="#586CB4">
+                <g :class="datas.ky_nyzx_dlzf1_kyjq1_kylg4_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_kylg4_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_kylg4_yxzt'):''">
+                  <path id="路径" d="M-0.5,18 C-0.5,7.78273213 7.78273213,-0.5 18,-0.5 C28.2172679,-0.5 36.5,7.78273213 36.5,18 C36.5,28.2172679 28.2172679,36.5 18,36.5 C7.78273213,36.5 -0.5,28.2172679 -0.5,18 Z" stroke="#586CB4" fill-opacity="0.1" />
+                  <path id="形状结合" d="M18.4846366,18.2850328 L18.4846366,4 C22.4753073,4 25.710385,7.19781351 25.710385,11.1425164 C25.710385,15.0872193 22.4753073,18.2850328 18.4846366,18.2850328 Z M18.4846366,18.2850328 L5.96927325,25.4275492 C3.97393792,22.0113363 5.15805856,17.6430418 8.61408073,15.6706903 C12.0701029,13.6983389 16.4893013,14.8688199 18.4846366,18.2850328 Z M18.4846366,18.2850328 L31,25.4275492 C29.0046647,28.8437621 24.5854663,30.0142431 21.1294441,28.0418916 C17.6734219,26.0695402 16.4893013,21.7012457 18.4846366,18.2850328 Z" />
+                </g>
+              </g>
               <text id="1#" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="18.2" font-weight="normal" letter-spacing="-0.113749979" fill="#586CB4">
                 <tspan x="37.7924564" y="25.2312">1#</tspan>
               </text>
@@ -572,108 +719,131 @@
               </text>
             </g>
           </g>
-          <g id="冷却塔" transform="translate(46.000000, 83.000000)">
-            <text id="风式冷却塔" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="11.52" fill="#2C4794">
-              <tspan x="20" y="137">风式冷却塔</tspan>
+          <text id="风式冷却塔" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="11.52" fill="#2C4794">
+            <tspan x="360" y="78">风式冷却塔</tspan>
+          </text>
+          <g id="2#冷却塔" transform="translate(310.000000, 239.000000)">
+            <rect
+              id="Rectangle-4-Copy-7复制-30"
+              stroke-opacity="0.289881993"
+              stroke="#8A9FF4"
+              stroke-width="0.96"
+              fill-opacity="0.0795454545"
+              fill="#8A9FF4"
+              x="63.48"
+              y="33.48"
+              width="72"
+              height="22.08"
+              rx="1.92"
+            />
+            <rect
+              id="Rectangle-4-Copy-7复制-33"
+              stroke-opacity="0.289881993"
+              stroke="#8A9FF4"
+              stroke-width="0.96"
+              fill-opacity="0.0795454545"
+              fill="#8A9FF4"
+              x="63.48"
+              y="0.48"
+              width="72"
+              height="22.08"
+              rx="1.92"
+            />
+            <text id="出水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="51">出水温度</tspan>
             </text>
-            <text id="风式冷却塔" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="11.52" fill="#2C4794">
-              <tspan x="314" y="135">风式冷却塔</tspan>
+            <text id="进水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="18">进水温度</tspan>
             </text>
-            <g id="2#冷却塔" transform="translate(264.000000, 145.000000)">
-              <rect
-                id="Rectangle-4-Copy-7复制-30"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="63.48"
-                y="33.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
-              />
-              <rect
-                id="Rectangle-4-Copy-7复制-33"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="63.48"
-                y="0.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
-              />
-              <text id="出水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="51">出水温度</tspan>
-              </text>
-              <text id="进水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="18">进水温度</tspan>
-              </text>
-              <text id="43℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="84.8723557" y="51">43℃</tspan>
-              </text>
-              <text id="12℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="84.8723557" y="18">12℃</tspan>
-              </text>
-            </g>
-            <g id="2#冷却塔" transform="translate(295.000000, 0.000000)">
-              <path id="矩形" d="M27.8396291,-4.4408921e-16 L81.8493852,-4.4408921e-16 C86.2676632,-5.17993288e-15 89.8493852,3.581722 89.8493852,8 L89.8493852,13.6247367 L19.8396291,13.6247367 L19.8396291,8 C19.8396291,3.581722 23.4213511,3.67535291e-16 27.8396291,-4.4408921e-16 Z" stroke="#586CB4" fill-opacity="0.2" fill="#586CB4" />
-              <path id="矩形复制-48" d="M4.0301887,13.5154604 L105.658826,13.5154604 C107.885638,13.5154604 109.690826,15.3206483 109.690826,17.5474604 C109.690826,17.660351 109.686084,17.7731917 109.676615,17.8856844 L102.277406,105.781453 C102.101609,107.86976 100.35531,109.475229 98.2596174,109.475229 L11.4293969,109.475229 C9.33370382,109.475229 7.58740493,107.86976 7.41160789,105.781453 L0.0123996905,17.8856844 C-0.174396259,15.6667208 1.47300112,13.7164674 3.69196471,13.5296714 C3.80445738,13.5202016 3.91729814,13.5154604 4.0301887,13.5154604 Z" stroke="#586CB4" fill="#FFFFFF" />
-              <path id="路径" d="M19.8396291,62.1711179 C19.8396291,81.5785129 35.5118468,97.311315 54.8445072,97.311315 C74.1771675,97.311315 89.8493852,81.5785129 89.8493852,62.1711179 C89.8493852,42.763723 74.1771675,27.0309208 54.8445072,27.0309208 C35.5118468,27.0309208 19.8396291,42.763723 19.8396291,62.1711179 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="fslqt2" d="M55.3063301,64.3531587 C56.2143347,71.6985265 51.9544081,78.667737 45.0571589,80.5229936 C37.9854406,82.4251799 30.6370993,78.2800844 27.9176779,71.1410229 L54.6343251,63.9546453 C47.7595801,61.1100158 43.8131008,53.8723809 45.6735018,46.9024299 C47.568363,39.8033743 54.8184681,35.4874709 62.3369792,36.6928096 L55.155524,63.5979727 C61.0461523,59.0523386 69.2561376,59.2431448 74.3356709,64.3423142 C79.512528,69.5391836 79.6107643,78.0001824 74.8116745,83.9339053 L55.3063301,64.3531587 L55.3063301,64.3531587 Z" fill="#586CB4" />
-            </g>
-            <g id="1#冷却塔数据" transform="translate(0.000000, 145.000000)">
-              <rect
-                id="Rectangle-4-Copy-7复制-30"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="63.48"
-                y="33.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
-              />
-              <rect
-                id="Rectangle-4-Copy-7复制-33"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="63.48"
-                y="0.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
-              />
-              <text id="出水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="51">出水温度</tspan>
-              </text>
-              <text id="进水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="16">进水温度</tspan>
-              </text>
-              <text id="43℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="84.8723557" y="51">43℃</tspan>
-              </text>
-              <text id="12℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="84.8723557" y="18">12℃</tspan>
-              </text>
-            </g>
-            <g id="1#冷却塔">
-              <path id="矩形" d="M27.8396291,-4.4408921e-16 L81.8493852,-4.4408921e-16 C86.2676632,-5.17993288e-15 89.8493852,3.581722 89.8493852,8 L89.8493852,13.6247367 L19.8396291,13.6247367 L19.8396291,8 C19.8396291,3.581722 23.4213511,3.67535291e-16 27.8396291,-4.4408921e-16 Z" stroke="#586CB4" fill-opacity="0.2" fill="#586CB4" />
-              <path id="矩形复制-48" d="M4.0301887,13.5154604 L105.658826,13.5154604 C107.885638,13.5154604 109.690826,15.3206483 109.690826,17.5474604 C109.690826,17.660351 109.686084,17.7731917 109.676615,17.8856844 L102.277406,105.781453 C102.101609,107.86976 100.35531,109.475229 98.2596174,109.475229 L11.4293969,109.475229 C9.33370382,109.475229 7.58740493,107.86976 7.41160789,105.781453 L0.0123996905,17.8856844 C-0.174396259,15.6667208 1.47300112,13.7164674 3.69196471,13.5296714 C3.80445738,13.5202016 3.91729814,13.5154604 4.0301887,13.5154604 Z" stroke="#586CB4" fill="#FFFFFF" />
-              <path id="路径" d="M19.8396291,62.1711179 C19.8396291,81.5785129 35.5118468,97.311315 54.8445072,97.311315 C74.1771675,97.311315 89.8493852,81.5785129 89.8493852,62.1711179 C89.8493852,42.763723 74.1771675,27.0309208 54.8445072,27.0309208 C35.5118468,27.0309208 19.8396291,42.763723 19.8396291,62.1711179 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="fslqt1" d="M55.3063301,64.3531587 C56.2143347,71.6985265 51.9544081,78.667737 45.0571589,80.5229936 C37.9854406,82.4251799 30.6370993,78.2800844 27.9176779,71.1410229 L54.6343251,63.9546453 C47.7595801,61.1100158 43.8131008,53.8723809 45.6735018,46.9024299 C47.568363,39.8033743 54.8184681,35.4874709 62.3369792,36.6928096 L55.155524,63.5979727 C61.0461523,59.0523386 69.2561376,59.2431448 74.3356709,64.3423142 C79.512528,69.5391836 79.6107643,78.0001824 74.8116745,83.9339053 L55.3063301,64.3531587 L55.3063301,64.3531587 Z" fill="#586CB4" />
+            <text id="43℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="84.8723557" y="51">{{ datas.ky_nyzx_dlzf1_kyjq1_cswd010ltz1_cswd }}℃</tspan>
+            </text>
+            <text id="212℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="81.0719951" y="18">{{ datas.ky_nyzx_dlzf1_kyjq1_jswd010ltz1_jswd }}℃</tspan>
+            </text>
+          </g>
+          <text id="on2" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+            <tspan x="393.872356" y="222">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lt2_yxzt) }}</tspan>
+          </text>
+          <g id="2#冷却塔" transform="translate(341.000000, 83.000000)">
+            <path id="矩形" d="M27.8396291,-4.4408921e-16 L81.8493852,-4.4408921e-16 C86.2676632,-5.17993288e-15 89.8493852,3.581722 89.8493852,8 L89.8493852,13.6247367 L19.8396291,13.6247367 L19.8396291,8 C19.8396291,3.581722 23.4213511,3.67535291e-16 27.8396291,-4.4408921e-16 Z" stroke="#586CB4" fill-opacity="0.2" fill="#586CB4" />
+            <path id="矩形复制-48" d="M4.0301887,13.5154604 L105.658826,13.5154604 C107.885638,13.5154604 109.690826,15.3206483 109.690826,17.5474604 C109.690826,17.660351 109.686084,17.7731917 109.676615,17.8856844 L102.277406,105.781453 C102.101609,107.86976 100.35531,109.475229 98.2596174,109.475229 L11.4293969,109.475229 C9.33370382,109.475229 7.58740493,107.86976 7.41160789,105.781453 L0.0123996905,17.8856844 C-0.174396259,15.6667208 1.47300112,13.7164674 3.69196471,13.5296714 C3.80445738,13.5202016 3.91729814,13.5154604 4.0301887,13.5154604 Z" stroke="#586CB4" fill="#FFFFFF" />
+            <g id="ky_nyzx_dlzf1_kyjq1_lt2_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(54.000000, 60.000000) rotate(-360.000000) translate(-54.000000, -60.000000) translate(7.000000, 13.000000)" fill="#586CB4">
+              <g :class="datas.ky_nyzx_dlzf1_kyjq1_lt2_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_lt2_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_lt2_yxzt'):''">
+                <path id="1#圆" d="M13,47 C13,65.7776815 28.2223185,81 47,81 C65.7776815,81 81,65.7776815 81,47 C81,28.2223185 65.7776815,13 47,13 C28.2223185,13 13,28.2223185 13,47 Z" stroke="#586CB4" fill-opacity="0.1" transform="translate(47.000000, 47.000000) rotate(-330.000000) translate(-47.000000, -47.000000) " />
+                <path id="1#" d="M48.8752165,46.999259 L48.8752165,18.999259 C56.607203,18.999259 62.8752165,25.2672725 62.8752165,32.999259 C62.8752165,40.7312455 56.607203,46.999259 48.8752165,46.999259 Z M48.8752165,46.999259 L24.6265052,60.999259 C20.760512,54.3031623 23.0547641,45.7408966 29.7508609,41.8749033 C36.4469576,38.0089101 45.0092233,40.3031623 48.8752165,46.999259 Z M48.8752165,46.999259 L73.1239278,60.999259 C69.2579346,67.6953557 60.6956689,69.9896079 53.9995722,66.1236146 C47.3034755,62.2576214 45.0092233,53.6953557 48.8752165,46.999259 Z" transform="translate(47.936226, 43.500428) rotate(-330.000000) translate(-47.936226, -43.500428) " />
+              </g>
             </g>
           </g>
-          <g id="冷干机" transform="translate(518.000000, 433.000000)">
-            <g id="冷干机数据1" transform="translate(104.000000, 0.000000)">
+          <rect
+            id="Rectangle-4-Copy-7复制-30"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="109.48"
+            y="272.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-33"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="109.48"
+            y="239.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-34"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="109.48"
+            y="205.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <text id="出水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="46" y="290">出水温度</tspan>
+          </text>
+          <text id="进水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="46" y="255">进水温度</tspan>
+          </text>
+          <text id="342℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="127.071995" y="290">{{ datas.ky_nyzx_dlzf1_kyjq1_cswd010ltz1_cswd }}℃</tspan>
+          </text>
+          <text id="123℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="127.071995" y="257">{{ datas.ky_nyzx_dlzf1_kyjq1_jswd010ltz1_jswd }}℃</tspan>
+          </text>
+          <text id="on1" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+            <tspan x="130.94218" y="222">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lt1_yxzt) }}</tspan>
+          </text>
+          <g id="1#冷却塔" transform="translate(46.000000, 83.000000)">
+            <path id="矩形" d="M27.8396291,-4.4408921e-16 L81.8493852,-4.4408921e-16 C86.2676632,-5.17993288e-15 89.8493852,3.581722 89.8493852,8 L89.8493852,13.6247367 L19.8396291,13.6247367 L19.8396291,8 C19.8396291,3.581722 23.4213511,3.67535291e-16 27.8396291,-4.4408921e-16 Z" stroke="#586CB4" fill-opacity="0.2" fill="#586CB4" />
+            <path id="矩形复制-48" d="M4.0301887,13.5154604 L105.658826,13.5154604 C107.885638,13.5154604 109.690826,15.3206483 109.690826,17.5474604 C109.690826,17.660351 109.686084,17.7731917 109.676615,17.8856844 L102.277406,105.781453 C102.101609,107.86976 100.35531,109.475229 98.2596174,109.475229 L11.4293969,109.475229 C9.33370382,109.475229 7.58740493,107.86976 7.41160789,105.781453 L0.0123996905,17.8856844 C-0.174396259,15.6667208 1.47300112,13.7164674 3.69196471,13.5296714 C3.80445738,13.5202016 3.91729814,13.5154604 4.0301887,13.5154604 Z" stroke="#586CB4" fill="#FFFFFF" />
+            <g id="ky_nyzx_dlzf1_kyjq1_lt1_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(54.000000, 60.000000) rotate(-360.000000) translate(-54.000000, -60.000000) translate(7.000000, 13.000000)" fill="#586CB4">
+              <g :class="datas.ky_nyzx_dlzf1_kyjq1_lt1_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_lt1_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_lt1_yxzt'):''">
+                <path id="1#圆" d="M13,47 C13,65.7776815 28.2223185,81 47,81 C65.7776815,81 81,65.7776815 81,47 C81,28.2223185 65.7776815,13 47,13 C28.2223185,13 13,28.2223185 13,47 Z" stroke="#586CB4" fill-opacity="0.1" transform="translate(47.000000, 47.000000) rotate(-330.000000) translate(-47.000000, -47.000000) " />
+                <path id="1#" d="M48.8752165,46.999259 L48.8752165,18.999259 C56.607203,18.999259 62.8752165,25.2672725 62.8752165,32.999259 C62.8752165,40.7312455 56.607203,46.999259 48.8752165,46.999259 Z M48.8752165,46.999259 L24.6265052,60.999259 C20.760512,54.3031623 23.0547641,45.7408966 29.7508609,41.8749033 C36.4469576,38.0089101 45.0092233,40.3031623 48.8752165,46.999259 Z M48.8752165,46.999259 L73.1239278,60.999259 C69.2579346,67.6953557 60.6956689,69.9896079 53.9995722,66.1236146 C47.3034755,62.2576214 45.0092233,53.6953557 48.8752165,46.999259 Z" transform="translate(47.936226, 43.500428) rotate(-330.000000) translate(-47.936226, -43.500428) " />
+              </g>
+            </g>
+          </g>
+          <text id="风式冷却塔" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="11.52" fill="#2C4794">
+            <tspan x="66" y="78">风式冷却塔</tspan>
+          </text>
+          <g id="冷干机" transform="translate(518.000000, 434.000000)">
+            <g id="冷干机数据1" transform="translate(104.000000, 38.000000)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="30.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
               <text id="运行时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -683,20 +853,13 @@
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
               <text id="3450-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="80.3658051" y="48">3450 h</tspan>
+                <tspan x="80.3658051" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_lgj1_yxsj }}h</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="90.2855093" y="17">ON</tspan>
-              </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="60.48" width="71.04" height="23.04" />
-              <text id="故障状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">故障状态</tspan>
-              </text>
-              <text id="正常" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="87.4461538" y="78">正常</tspan>
+              <text id="on11" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="84.5988506" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lgj1_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="冷干机1" transform="translate(0.000000, 1.800000)">
+            <g id="冷干机1" transform="translate(0.000000, 0.800000)">
               <g id="分组-9" transform="translate(0.000000, 11.700000)">
                 <g id="分组-7" transform="translate(3.998700, 108.900000)">
                   <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -729,7 +892,7 @@
               <rect id="矩形" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" x="33.9" y="104.9" width="24" height="4.4" rx="0.9" />
               <path id="路径" d="M71.1,5.4 L20.7,5.4 C20.2029437,5.4 19.8,5.80294373 19.8,6.3 L19.8,12.6 L14.4,12.6 L14.4,1.8 C14.4,0.80588745 15.2058875,6.26704723e-16 16.2,4.4408921e-16 L75.6,2.22044605e-16 C76.5941125,-3.49236816e-15 77.4,0.80588745 77.4,1.8 L77.4,12.6 L72,12.6 L72,6.3 C72,5.80294373 71.5970563,5.4 71.1,5.4 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
             </g>
-            <g id="冷干机数据2" transform="translate(386.000000, 0.000000)">
+            <g id="冷干机数据2" transform="translate(386.000000, 38.000000)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="30.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
               <text id="运行时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -739,20 +902,13 @@
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
               <text id="3450-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="80.3658051" y="48">3450 h</tspan>
+                <tspan x="80.3658051" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_lgj2_yxsj }}h</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="90.2855093" y="17">ON</tspan>
-              </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="60.48" width="71.04" height="23.04" />
-              <text id="故障状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">故障状态</tspan>
-              </text>
-              <text id="正常" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="87.4461538" y="78">正常</tspan>
+              <text id="on12" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="83.5290263" y="17">{{ datas.ky_nyzx_dlzf1_kyjq1_lgj2_yxzt==="1"?"ON":"OFF" }}</tspan>
               </text>
             </g>
-            <g id="冷干机2" transform="translate(282.000000, 1.800000)">
+            <g id="冷干机2" transform="translate(282.000000, 0.800000)">
               <g id="分组-9" transform="translate(0.000000, 11.700000)">
                 <g id="分组-7" transform="translate(3.998700, 108.900000)">
                   <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -785,7 +941,7 @@
               <rect id="矩形" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" x="33.9" y="104.9" width="24" height="4.4" />
               <path id="路径" d="M71.1,5.14285714 L20.7,5.14285714 C20.2029437,5.14285714 19.8,5.54580087 19.8,6.04285714 L19.8,12 L14.4,12 L14.4,1.8 C14.4,0.80588745 15.2058875,1.07079393e-15 16.2,8.8817842e-16 L75.6,0 C76.5941125,-1.82615513e-16 77.4,0.80588745 77.4,1.8 L77.4,12 L72,12 L72,6.04285714 C72,5.54580087 71.5970563,5.14285714 71.1,5.14285714 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
             </g>
-            <g id="冷干机数据3" transform="translate(667.000000, 0.000000)">
+            <g id="冷干机数据3" transform="translate(667.000000, 38.000000)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="30.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
               <text id="运行时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -795,20 +951,13 @@
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
               <text id="3450-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="80.3658051" y="48">3450 h</tspan>
+                <tspan x="80.3658051" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_lgj3_yxsj }}h</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="90.2855093" y="17">ON</tspan>
-              </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="60.48" width="71.04" height="23.04" />
-              <text id="故障状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">故障状态</tspan>
-              </text>
-              <text id="正常" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="87.4461538" y="78">正常</tspan>
+              <text id="on13" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="83.5290263" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lgj3_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="冷干机3" transform="translate(563.000000, 1.800000)">
+            <g id="冷干机3" transform="translate(563.000000, 0.800000)">
               <g id="分组-9" transform="translate(0.000000, 11.700000)">
                 <g id="分组-7" transform="translate(3.998700, 108.900000)">
                   <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -841,7 +990,7 @@
               <rect id="矩形" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" x="33.9" y="104.9" width="24" height="4.4" />
               <path id="路径" d="M71.1,5.14285714 L20.7,5.14285714 C20.2029437,5.14285714 19.8,5.54580087 19.8,6.04285714 L19.8,12 L14.4,12 L14.4,1.8 C14.4,0.80588745 15.2058875,1.07079393e-15 16.2,8.8817842e-16 L75.6,0 C76.5941125,-1.82615513e-16 77.4,0.80588745 77.4,1.8 L77.4,12 L72,12 L72,6.04285714 C72,5.54580087 71.5970563,5.14285714 71.1,5.14285714 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
             </g>
-            <g id="冷干机数据4" transform="translate(949.000000, 0.000000)">
+            <g id="冷干机数据4" transform="translate(949.000000, 38.000000)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="30.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
               <text id="运行时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -851,20 +1000,13 @@
                 <tspan x="0" y="19">运行状态</tspan>
               </text>
               <text id="3450-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="80.3658051" y="48">3450 h</tspan>
+                <tspan x="80.3658051" y="48">{{ datas.ky_nyzx_dlzf1_kyjq1_lgj4_yxsj }}h</tspan>
               </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="500" letter-spacing="0.0538462" fill="#28AA91">
-                <tspan x="90.2855093" y="17">ON</tspan>
-              </text>
-              <rect id="Rectangle-4-Copy-7复制-31" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="60.48" width="71.04" height="23.04" />
-              <text id="故障状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="79">故障状态</tspan>
-              </text>
-              <text id="正常" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="87.4461538" y="78">正常</tspan>
+              <text id="on14" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="83.3820537" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lgj4_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="冷干机4" transform="translate(845.000000, 1.800000)">
+            <g id="冷干机4" transform="translate(845.000000, 0.800000)">
               <g id="分组-9" transform="translate(0.000000, 11.700000)">
                 <g id="分组-7" transform="translate(3.998700, 108.900000)">
                   <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -954,8 +1096,8 @@
               <text id="温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="0" y="19">温度</tspan>
               </text>
-              <text id="41℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="53.8723557" y="18">41℃</tspan>
+              <text id="941℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="56.0719951" y="18">{{ datas.ky_nyzx_dlzf1_kylwg_cyldwd1_ldwd }}℃</tspan>
               </text>
             </g>
             <g id="温度表1" transform="translate(231.000000, -0.000000)">
@@ -970,8 +1112,8 @@
               <text id="温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="0" y="19">温度</tspan>
               </text>
-              <text id="43℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="53.8723557" y="18">43℃</tspan>
+              <text id="543℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="55.0719951" y="18">{{ datas.ky_nyzx_dlzf1_kylwg_gyldwd1_ldwd }}℃</tspan>
               </text>
             </g>
             <g id="温度表2" transform="translate(0.000000, 59.000000)">
@@ -982,216 +1124,426 @@
               <polygon id="矩形" fill="#586CB4" transform="translate(7.397114, 9.116025) rotate(-60.000000) translate(-7.397114, -9.116025) " points="7.39711432 4.6160254 8.39711432 12.9731683 7.39711432 13.6160254 6.39711432 12.9731683" />
             </g>
           </g>
-          <g id="压力传感器" transform="translate(108.000000, 28.000000)">
-            <g id="压力传感器参数2" transform="translate(21.000000, 797.000000)">
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="38.48" y="0.48" width="71.04" height="23.04" />
-              <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="19">压力</tspan>
-              </text>
-              <text id="0.43kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="47.8173977" y="18">0.43kpa</tspan>
-              </text>
-            </g>
-            <g id="压力传感器2" transform="translate(0.000000, 803.000000)" stroke="#586CB4">
-              <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
-              <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
-              <rect id="矩形-copy-9" fill-opacity="0.128469187" fill="#E0E7FF" x="3" y="9" width="6" height="13" />
-              <rect id="矩形" fill-opacity="0.3" fill="#586CB4" x="0" y="5" width="12" height="4" rx="1" />
-            </g>
-            <g id="压力传感器参数1" transform="translate(21.000000, 739.000000)">
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="38.48" y="0.48" width="71.04" height="23.04" />
-              <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="19">压力</tspan>
-              </text>
-              <text id="0.43kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="47.8173977" y="18">0.43kpa</tspan>
-              </text>
-            </g>
-            <g id="压力传感器1" transform="translate(0.000000, 744.000000)" stroke="#586CB4">
-              <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
-              <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
-              <rect id="矩形-copy-9" fill-opacity="0.128469187" fill="#E0E7FF" x="3" y="9" width="6" height="13" />
-              <rect id="矩形" fill-opacity="0.3" fill="#586CB4" x="0" y="5" width="12" height="4" rx="1" />
-            </g>
-            <g id="补水压力传感器参数" transform="translate(245.000000, 0.000000)">
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="38.48" y="0.48" width="71.04" height="23.04" />
-              <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="19">压力</tspan>
-              </text>
-              <text id="0.43kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="47.8173977" y="18">0.43kpa</tspan>
-              </text>
-            </g>
-            <g id="补水压力传感器" transform="translate(224.000000, 5.000000)" stroke="#586CB4">
-              <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
-              <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
-              <rect id="矩形-copy-9" fill-opacity="0.128469187" fill="#E0E7FF" x="3" y="9" width="6" height="13" />
-              <rect id="矩形" fill-opacity="0.3" fill="#586CB4" x="0" y="5" width="12" height="4" rx="1" />
+          <g id="压力传感器参数2" transform="translate(129.000000, 820.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="38.48" y="0.48" width="71.04" height="23.04" />
+            <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">压力</tspan>
+            </text>
+            <text id="0.51kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="48.2514797" y="18">{{ datas.ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl }}kPa</tspan>
+            </text>
+          </g>
+          <g id="压力传感器2" transform="translate(108.000000, 831.000000)" stroke="#586CB4">
+            <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
+            <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
+            <rect id="矩形-copy-9" fill-opacity="0.128469187" fill="#E0E7FF" x="3" y="9" width="6" height="13" />
+            <rect id="矩形" fill-opacity="0.3" fill="#586CB4" x="0" y="5" width="12" height="4" rx="1" />
+          </g>
+          <g id="压力传感器参数1" transform="translate(129.000000, 762.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="38.48" y="0.48" width="71.04" height="23.04" />
+            <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">压力</tspan>
+            </text>
+            <text id="0.31kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="48.2514797" y="18">{{ datas.ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl }}kPa</tspan>
+            </text>
+          </g>
+          <g id="压力传感器1" transform="translate(108.000000, 772.000000)" stroke="#586CB4">
+            <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
+            <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
+            <rect id="矩形-copy-9" fill-opacity="0.128469187" fill="#E0E7FF" x="3" y="9" width="6" height="13" />
+            <rect id="矩形" fill-opacity="0.3" fill="#586CB4" x="0" y="5" width="12" height="4" rx="1" />
+          </g>
+          <g id="补水压力传感器参数" transform="translate(333.000000, 22.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="38.48" y="0.48" width="71.04" height="23.04" />
+            <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">压力</tspan>
+            </text>
+            <text id="0.43kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="48.2514797" y="18">{{ datas.ky_nyzx_dlzf1_kyjq1_yl010ltz1_bsyl }} kPa</tspan>
+            </text>
+          </g>
+          <g id="补水压力传感器" transform="translate(312.000000, 30.000000)" stroke="#586CB4">
+            <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
+            <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
+            <rect id="矩形-copy-9" fill-opacity="0.128469187" fill="#E0E7FF" x="3" y="9" width="6" height="13" />
+            <rect id="矩形" fill-opacity="0.3" fill="#586CB4" x="0" y="5" width="12" height="4" rx="1" />
+          </g>
+          <g id="流量计小" transform="translate(134.000000, 23.000000)">
+            <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+              <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+              <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+              <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+              <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
+              <rect
+                id="矩形-copy-27"
+                stroke="#586CB4"
+                stroke-width="0.5"
+                fill-opacity="0.3"
+                fill="#586CB4"
+                transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                x="5"
+                y="8"
+                width="10"
+                height="4"
+                rx="0.5"
+              />
             </g>
           </g>
-          <g id="冷却泵" transform="translate(89.000000, 346.000000)">
-            <g id="冷却泵参数1" transform="translate(15.000000, 0.000000)">
+          <g id="流量计小" transform="translate(578.000000, 232.000000) rotate(-270.000000) translate(-578.000000, -232.000000) translate(567.000000, 217.000000)">
+            <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+              <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+              <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+              <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+              <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
               <rect
-                id="Rectangle-4-Copy-7复制-30"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="38.48"
-                y="33.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
+                id="矩形-copy-27"
+                stroke="#586CB4"
+                stroke-width="0.5"
+                fill-opacity="0.3"
+                fill="#586CB4"
+                transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                x="5"
+                y="8"
+                width="10"
+                height="4"
+                rx="0.5"
               />
+            </g>
+          </g>
+          <g id="流量计小" transform="translate(308.000000, 777.000000) rotate(-360.000000) translate(-308.000000, -777.000000) translate(297.000000, 762.000000)">
+            <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+              <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+              <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+              <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+              <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
               <rect
-                id="Rectangle-4-Copy-7复制-33"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="38.48"
-                y="0.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
+                id="矩形-copy-27"
+                stroke="#586CB4"
+                stroke-width="0.5"
+                fill-opacity="0.3"
+                fill="#586CB4"
+                transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                x="5"
+                y="8"
+                width="10"
+                height="4"
+                rx="0.5"
               />
-              <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="51">压力</tspan>
-              </text>
-              <text id="状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="18">状态</tspan>
-              </text>
-              <text id="36kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="55.6622595" y="51">36kpa</tspan>
-              </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="12" font-weight="500" letter-spacing="0.04615388" fill="#28AA91">
-                <tspan x="62.8561508" y="16">ON</tspan>
-              </text>
             </g>
-            <g id="冷却泵参数2" transform="translate(153.000000, 0.000000)">
+          </g>
+          <g id="流量计小" transform="translate(308.000000, 837.000000) rotate(-360.000000) translate(-308.000000, -837.000000) translate(297.000000, 822.000000)">
+            <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+              <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+              <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+              <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+              <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
               <rect
-                id="Rectangle-4-Copy-7复制-30"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="38.48"
-                y="33.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
+                id="矩形-copy-27"
+                stroke="#586CB4"
+                stroke-width="0.5"
+                fill-opacity="0.3"
+                fill="#586CB4"
+                transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                x="5"
+                y="8"
+                width="10"
+                height="4"
+                rx="0.5"
               />
+            </g>
+          </g>
+          <g id="流量计小" transform="translate(860.000000, 232.000000) rotate(-270.000000) translate(-860.000000, -232.000000) translate(849.000000, 217.000000)">
+            <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+              <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+              <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+              <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+              <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
               <rect
-                id="Rectangle-4-Copy-7复制-33"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="38.48"
-                y="0.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
+                id="矩形-copy-27"
+                stroke="#586CB4"
+                stroke-width="0.5"
+                fill-opacity="0.3"
+                fill="#586CB4"
+                transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                x="5"
+                y="8"
+                width="10"
+                height="4"
+                rx="0.5"
               />
-              <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="51">压力</tspan>
-              </text>
-              <text id="状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="18">状态</tspan>
-              </text>
-              <text id="36kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="55.6622595" y="51">36kpa</tspan>
-              </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="12" font-weight="500" letter-spacing="0.04615388" fill="#28AA91">
-                <tspan x="62.8561508" y="16">ON</tspan>
-              </text>
             </g>
-            <g id="冷却泵参数3" transform="translate(292.000000, 0.000000)">
+          </g>
+          <g id="流量计小" transform="translate(1141.000000, 232.000000) rotate(-270.000000) translate(-1141.000000, -232.000000) translate(1130.000000, 217.000000)">
+            <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+              <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+              <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+              <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+              <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
               <rect
-                id="Rectangle-4-Copy-7复制-30"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="38.48"
-                y="33.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
+                id="矩形-copy-27"
+                stroke="#586CB4"
+                stroke-width="0.5"
+                fill-opacity="0.3"
+                fill="#586CB4"
+                transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                x="5"
+                y="8"
+                width="10"
+                height="4"
+                rx="0.5"
               />
+            </g>
+          </g>
+          <g id="流量计小" transform="translate(1423.000000, 232.000000) rotate(-270.000000) translate(-1423.000000, -232.000000) translate(1412.000000, 217.000000)">
+            <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+              <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+              <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+              <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+              <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
               <rect
-                id="Rectangle-4-Copy-7复制-33"
-                stroke-opacity="0.289881993"
-                stroke="#8A9FF4"
-                stroke-width="0.96"
-                fill-opacity="0.0795454545"
-                fill="#8A9FF4"
-                x="38.48"
-                y="0.48"
-                width="72"
-                height="22.08"
-                rx="1.92"
+                id="矩形-copy-27"
+                stroke="#586CB4"
+                stroke-width="0.5"
+                fill-opacity="0.3"
+                fill="#586CB4"
+                transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                x="5"
+                y="8"
+                width="10"
+                height="4"
+                rx="0.5"
               />
-              <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="51">压力</tspan>
-              </text>
-              <text id="状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="18">状态</tspan>
-              </text>
-              <text id="36kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="55.6622595" y="51">36kpa</tspan>
-              </text>
-              <text id="on" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="12" font-weight="500" letter-spacing="0.04615388" fill="#28AA91">
-                <tspan x="62.8561508" y="16">ON</tspan>
-              </text>
             </g>
-            <g id="冷却泵1" transform="translate(0.000000, 82.000000)">
-              <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
-              <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
-              <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
-              <rect id="矩形-copy-7" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="0" y="12" width="8" height="20" rx="2" />
-              <rect id="矩形-copy-8" fill="#576BB3" x="8" y="20" width="8" height="4" />
-              <path id="矩形-copy-2" d="M100,0 L102,0 L102,46 L100,46 C95.581722,46 92,42.418278 92,38 L92,8 C92,3.581722 95.581722,8.11624501e-16 100,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" transform="translate(97.000000, 23.000000) scale(-1, 1) translate(-97.000000, -23.000000) " />
-              <rect id="矩形" fill="url(#linearGradient-69)" x="40" y="8" width="48" height="8" rx="4" />
-              <rect id="矩形-copy-3" fill="url(#linearGradient-69)" x="40" y="20" width="48" height="8" rx="4" />
-              <rect id="矩形-copy-5" fill="url(#linearGradient-69)" x="40" y="32" width="48" height="8" rx="4" />
-              <path id="路径-copy" d="M-0.5,50 C-0.5,43.0964406 5.09644063,37.5 12,37.5 C18.9035594,37.5 24.5,43.0964406 24.5,50 C24.5,56.9035594 18.9035594,62.5 12,62.5 C5.09644063,62.5 -0.5,56.9035594 -0.5,50 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="lqb1" d="M11.6947974,51.3963392 C11.9830524,53.8735848 10.6306968,56.2239702 8.44109706,56.8496606 C6.19611043,57.4911782 3.8633071,56.0932333 3,53.6855651 L11.4814628,51.2619395 C9.2990073,50.3025803 8.04615857,47.861668 8.63676118,45.5110328 C9.23830353,43.1168567 11.5399208,41.6613064 13.9267462,42.0678102 L11.6469225,51.1416507 C13.5169605,49.608623 16.1233012,49.6729729 17.7358491,51.3926819 C19.3792934,53.1453404 19.4104794,55.9988356 17.8869611,58 L11.6947974,51.3963392 L11.6947974,51.3963392 Z" fill="#586CB4" />
-              <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
+          </g>
+          <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="164" y="41">瞬时流量</tspan>
+          </text>
+          <rect id="矩形" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="223.48" y="22.48" width="71.04" height="23.04" />
+          <rect
+            id="Rectangle-4-Copy-7复制-30"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="142.48"
+            y="395.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-33"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="142.48"
+            y="362.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-35"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="142.48"
+            y="329.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="104" y="413">压力</tspan>
+          </text>
+          <text id="时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="104" y="380">时间</tspan>
+          </text>
+          <text id="状态复制" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="104" y="347">状态</tspan>
+          </text>
+          <text id="26kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="160.096342" y="413">{{ datas.ky_nyzx_dlzf1_kyjq1_csylz010lqb1_csyl }}kPa</tspan>
+          </text>
+          <text id="342-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="161.166166" y="380">{{ datas.ky_nyzx_dlzf1_kyjq1_lqb1_yxsj }}h</tspan>
+          </text>
+          <text id="on4" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+            <tspan x="161.265383" y="346">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lqb1_yxzt) }}</tspan>
+          </text>
+          <rect
+            id="Rectangle-4-Copy-7复制-30"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="280.48"
+            y="395.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-33"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="280.48"
+            y="362.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-36"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="280.48"
+            y="329.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="242" y="413">压力</tspan>
+          </text>
+          <text id="时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="242" y="380">时间</tspan>
+          </text>
+          <text id="状态复制-2" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="242" y="347">状态</tspan>
+          </text>
+          <text id="46kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="298.096342" y="413">{{ datas.ky_nyzx_dlzf1_kyjq1_csylz010lqb1_csyl }}kPa</tspan>
+          </text>
+          <text id="120-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="299.166166" y="380">{{ datas.ky_nyzx_dlzf1_kyjq1_lqb2_yxsj }}h</tspan>
+          </text>
+          <text id="on5" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+            <tspan x="299.412356" y="346">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lqb2_yxzt) }}</tspan>
+          </text>
+          <rect
+            id="Rectangle-4-Copy-7复制-30"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="419.48"
+            y="395.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-33"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="419.48"
+            y="362.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <rect
+            id="Rectangle-4-Copy-7复制-37"
+            stroke-opacity="0.289881993"
+            stroke="#8A9FF4"
+            stroke-width="0.96"
+            fill-opacity="0.0795454545"
+            fill="#8A9FF4"
+            x="419.48"
+            y="329.48"
+            width="72"
+            height="22.08"
+            rx="1.92"
+          />
+          <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="381" y="413">压力</tspan>
+          </text>
+          <text id="时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="381" y="380">时间</tspan>
+          </text>
+          <text id="状态复制-3" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="381" y="347">状态</tspan>
+          </text>
+          <text id="16kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="437.096342" y="413">{{ datas.ky_nyzx_dlzf1_kyjq1_csylz010lqb1_csyl }}kPa</tspan>
+          </text>
+          <text id="67-h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="441.966526" y="380">{{ datas.ky_nyzx_dlzf1_kyjq1_lqb3_yxsj }}h</tspan>
+          </text>
+          <text id="on6" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+            <tspan x="438.391848" y="346">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lqb3_yxzt) }}</tspan>
+          </text>
+          <g id="冷却泵1" transform="translate(89.000000, 428.000000)">
+            <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
+            <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
+            <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
+            <rect id="矩形-copy-7" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="0" y="12" width="8" height="20" rx="2" />
+            <rect id="矩形-copy-8" fill="#576BB3" x="8" y="20" width="8" height="4" />
+            <path id="矩形-copy-2" d="M100,0 L102,0 L102,46 L100,46 C95.581722,46 92,42.418278 92,38 L92,8 C92,3.581722 95.581722,8.11624501e-16 100,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" transform="translate(97.000000, 23.000000) scale(-1, 1) translate(-97.000000, -23.000000) " />
+            <rect id="矩形" fill="url(#linearGradient-69)" x="40" y="8" width="48" height="8" rx="4" />
+            <rect id="矩形-copy-3" fill="url(#linearGradient-69)" x="40" y="20" width="48" height="8" rx="4" />
+            <rect id="矩形-copy-5" fill="url(#linearGradient-69)" x="40" y="32" width="48" height="8" rx="4" />
+            <g id="ky_nyzx_dlzf1_kyjq1_lqb1_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(0.000000, 38.000000)" fill="#586CB4">
+              <g :class="datas.ky_nyzx_dlzf1_kyjq1_lqb1_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_lqb1_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_lqb1_yxzt'):''">
+                <path id="路径-copy" d="M-0.5,12 C-0.5,5.09644063 5.09644063,-0.5 12,-0.5 C18.9035594,-0.5 24.5,5.09644063 24.5,12 C24.5,18.9035594 18.9035594,24.5 12,24.5 C5.09644063,24.5 -0.5,18.9035594 -0.5,12 Z" stroke="#586CB4" fill-opacity="0.1" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " />
+                <path id="形状结合" d="M11.8168778,11.7138223 L11.8168778,2 C14.4261625,2 16.5414056,4.17451319 16.5414056,6.85691115 C16.5414056,9.53930911 14.4261625,11.7138223 11.8168778,11.7138223 Z M11.8168778,11.7138223 L3.63375558,16.5707334 C2.32911326,14.2477087 3.10334598,11.2772684 5.36305278,9.93606943 C7.62275958,8.59487045 10.5122355,9.39079752 11.8168778,11.7138223 Z M11.8168778,11.7138223 L20,16.5707334 C18.6953577,18.8937582 15.8058818,19.6896853 13.546175,18.3484863 C11.2864682,17.0072873 10.5122355,14.0368471 11.8168778,11.7138223 Z" />
+              </g>
             </g>
-            <g id="冷却泵2" transform="translate(138.000000, 82.000000)">
-              <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
-              <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
-              <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
-              <rect id="矩形-copy-7" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="0" y="12" width="8" height="20" rx="2" />
-              <rect id="矩形-copy-8" fill="#576BB3" x="8" y="20" width="8" height="4" />
-              <path id="矩形-copy-2" d="M100,0 L102,0 L102,46 L100,46 C95.581722,46 92,42.418278 92,38 L92,8 C92,3.581722 95.581722,8.11624501e-16 100,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" transform="translate(97.000000, 23.000000) scale(-1, 1) translate(-97.000000, -23.000000) " />
-              <rect id="矩形" fill="url(#linearGradient-69)" x="40" y="8" width="48" height="8" rx="4" />
-              <rect id="矩形-copy-3" fill="url(#linearGradient-69)" x="40" y="20" width="48" height="8" rx="4" />
-              <rect id="矩形-copy-5" fill="url(#linearGradient-69)" x="40" y="32" width="48" height="8" rx="4" />
-              <path id="路径-copy" d="M-0.5,50 C-0.5,43.0964406 5.09644063,37.5 12,37.5 C18.9035594,37.5 24.5,43.0964406 24.5,50 C24.5,56.9035594 18.9035594,62.5 12,62.5 C5.09644063,62.5 -0.5,56.9035594 -0.5,50 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="lqb2" d="M11.6947974,51.3963392 C11.9830524,53.8735848 10.6306968,56.2239702 8.44109706,56.8496606 C6.19611043,57.4911782 3.8633071,56.0932333 3,53.6855651 L11.4814628,51.2619395 C9.2990073,50.3025803 8.04615857,47.861668 8.63676118,45.5110328 C9.23830353,43.1168567 11.5399208,41.6613064 13.9267462,42.0678102 L11.6469225,51.1416507 C13.5169605,49.608623 16.1233012,49.6729729 17.7358491,51.3926819 C19.3792934,53.1453404 19.4104794,55.9988356 17.8869611,58 L11.6947974,51.3963392 L11.6947974,51.3963392 Z" fill="#586CB4" />
-              <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
+            <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
+          </g>
+          <g id="冷却泵2" transform="translate(227.000000, 428.000000)">
+            <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
+            <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
+            <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
+            <rect id="矩形-copy-7" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="0" y="12" width="8" height="20" rx="2" />
+            <rect id="矩形-copy-8" fill="#576BB3" x="8" y="20" width="8" height="4" />
+            <path id="矩形-copy-2" d="M100,0 L102,0 L102,46 L100,46 C95.581722,46 92,42.418278 92,38 L92,8 C92,3.581722 95.581722,8.11624501e-16 100,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" transform="translate(97.000000, 23.000000) scale(-1, 1) translate(-97.000000, -23.000000) " />
+            <rect id="矩形" fill="url(#linearGradient-69)" x="40" y="8" width="48" height="8" rx="4" />
+            <rect id="矩形-copy-3" fill="url(#linearGradient-69)" x="40" y="20" width="48" height="8" rx="4" />
+            <rect id="矩形-copy-5" fill="url(#linearGradient-69)" x="40" y="32" width="48" height="8" rx="4" />
+            <g id="ky_nyzx_dlzf1_kyjq1_lqb2_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(0.000000, 38.000000)" fill="#586CB4">
+              <g :class="datas.ky_nyzx_dlzf1_kyjq1_lqb2_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_lqb2_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_lqb2_yxzt'):''">
+                <path id="路径-copy" d="M-0.5,12 C-0.5,5.09644063 5.09644063,-0.5 12,-0.5 C18.9035594,-0.5 24.5,5.09644063 24.5,12 C24.5,18.9035594 18.9035594,24.5 12,24.5 C5.09644063,24.5 -0.5,18.9035594 -0.5,12 Z" stroke="#586CB4" fill-opacity="0.1" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " />
+                <path id="形状结合" d="M11.8168778,11.7138223 L11.8168778,2 C14.4261625,2 16.5414056,4.17451319 16.5414056,6.85691115 C16.5414056,9.53930911 14.4261625,11.7138223 11.8168778,11.7138223 Z M11.8168778,11.7138223 L3.63375558,16.5707334 C2.32911326,14.2477087 3.10334598,11.2772684 5.36305278,9.93606943 C7.62275958,8.59487045 10.5122355,9.39079752 11.8168778,11.7138223 Z M11.8168778,11.7138223 L20,16.5707334 C18.6953577,18.8937582 15.8058818,19.6896853 13.546175,18.3484863 C11.2864682,17.0072873 10.5122355,14.0368471 11.8168778,11.7138223 Z" />
+              </g>
             </g>
-            <g id="冷却泵3" transform="translate(276.000000, 82.000000)">
-              <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
-              <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
-              <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
-              <rect id="矩形-copy-7" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="0" y="12" width="8" height="20" rx="2" />
-              <rect id="矩形-copy-8" fill="#576BB3" x="8" y="20" width="8" height="4" />
-              <path id="矩形-copy-2" d="M100,0 L102,0 L102,46 L100,46 C95.581722,46 92,42.418278 92,38 L92,8 C92,3.581722 95.581722,8.11624501e-16 100,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" transform="translate(97.000000, 23.000000) scale(-1, 1) translate(-97.000000, -23.000000) " />
-              <rect id="矩形" fill="url(#linearGradient-69)" x="40" y="8" width="48" height="8" rx="4" />
-              <rect id="矩形-copy-3" fill="url(#linearGradient-69)" x="40" y="20" width="48" height="8" rx="4" />
-              <rect id="矩形-copy-5" fill="url(#linearGradient-69)" x="40" y="32" width="48" height="8" rx="4" />
-              <path id="路径-copy" d="M-0.5,50 C-0.5,43.0964406 5.09644063,37.5 12,37.5 C18.9035594,37.5 24.5,43.0964406 24.5,50 C24.5,56.9035594 18.9035594,62.5 12,62.5 C5.09644063,62.5 -0.5,56.9035594 -0.5,50 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
-              <path id="lqb3" d="M11.6947974,50.3963392 C11.9830524,52.8735848 10.6306968,55.2239702 8.44109706,55.8496606 C6.19611043,56.4911782 3.8633071,55.0932333 3,52.6855651 L11.4814628,50.2619395 C9.2990073,49.3025803 8.04615857,46.861668 8.63676118,44.5110328 C9.23830353,42.1168567 11.5399208,40.6613064 13.9267462,41.0678102 L11.6469225,50.1416507 C13.5169605,48.608623 16.1233012,48.6729729 17.7358491,50.3926819 C19.3792934,52.1453404 19.4104794,54.9988356 17.8869611,57 L11.6947974,50.3963392 L11.6947974,50.3963392 Z" fill="#586CB4" />
-              <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
+            <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
+          </g>
+          <g id="冷却泵3" transform="translate(365.000000, 428.000000)">
+            <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
+            <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
+            <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
+            <rect id="矩形-copy-7" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="0" y="12" width="8" height="20" rx="2" />
+            <rect id="矩形-copy-8" fill="#576BB3" x="8" y="20" width="8" height="4" />
+            <path id="矩形-copy-2" d="M100,0 L102,0 L102,46 L100,46 C95.581722,46 92,42.418278 92,38 L92,8 C92,3.581722 95.581722,8.11624501e-16 100,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" transform="translate(97.000000, 23.000000) scale(-1, 1) translate(-97.000000, -23.000000) " />
+            <rect id="矩形" fill="url(#linearGradient-69)" x="40" y="8" width="48" height="8" rx="4" />
+            <rect id="矩形-copy-3" fill="url(#linearGradient-69)" x="40" y="20" width="48" height="8" rx="4" />
+            <rect id="矩形-copy-5" fill="url(#linearGradient-69)" x="40" y="32" width="48" height="8" rx="4" />
+            <g id="ky_nyzx_dlzf1_kyjq1_lqb3_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(0.000000, 38.000000)" fill="#586CB4">
+              <g :class="datas.ky_nyzx_dlzf1_kyjq1_lqb3_yxzt?getClass():''" :style="datas.ky_nyzx_dlzf1_kyjq1_lqb3_yxzt?getOrigin('ky_nyzx_dlzf1_kyjq1_lqb3_yxzt'):''">
+                <path id="路径-copy" d="M-0.5,12 C-0.5,5.09644063 5.09644063,-0.5 12,-0.5 C18.9035594,-0.5 24.5,5.09644063 24.5,12 C24.5,18.9035594 18.9035594,24.5 12,24.5 C5.09644063,24.5 -0.5,18.9035594 -0.5,12 Z" stroke="#586CB4" fill-opacity="0.1" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) " />
+                <path id="形状结合" d="M11.8168778,11.7138223 L11.8168778,2 C14.4261625,2 16.5414056,4.17451319 16.5414056,6.85691115 C16.5414056,9.53930911 14.4261625,11.7138223 11.8168778,11.7138223 Z M11.8168778,11.7138223 L3.63375558,16.5707334 C2.32911326,14.2477087 3.10334598,11.2772684 5.36305278,9.93606943 C7.62275958,8.59487045 10.5122355,9.39079752 11.8168778,11.7138223 Z M11.8168778,11.7138223 L20,16.5707334 C18.6953577,18.8937582 15.8058818,19.6896853 13.546175,18.3484863 C11.2864682,17.0072873 10.5122355,14.0368471 11.8168778,11.7138223 Z" />
+              </g>
             </g>
+            <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
           </g>
           <g id="箭头蓝色" transform="translate(441.000000, 850.466028)" fill="#092692" fill-rule="nonzero">
             <path d="M6,2 L10,0 L10,6 L6,4 L6,6 L0,3 L6,0 L6,2 Z" />
@@ -1288,75 +1640,236 @@
               <path id="热回收机组" d="M5.71200064,111.98534 L4.17979915,111.55288 C4.71138192,110.546243 5.15696667,109.554281 5.51656678,108.576963 L7.04876826,108.870157 C6.66311018,109.901227 6.21752543,110.939611 5.71200064,111.98534 Z M8.97965483,111.750785 C8.72428664,110.822334 8.44286469,109.884123 8.13538054,108.936126 L9.62849526,108.73089 C9.77963153,109.16091 9.98548648,109.771724 10.2460663,110.563351 C10.3815678,110.964051 10.4857981,111.271901 10.5587604,111.486911 L8.97965483,111.750785 Z M16.7422879,111.692147 C16.2836674,110.695283 15.7937848,109.698434 15.2726252,108.701571 L16.7735573,108.349738 C17.2269661,109.141365 17.7298776,110.096679 18.2823067,111.215707 L16.7422879,111.692147 Z M12.7241676,111.596859 C12.6981097,111.528446 12.661629,111.428273 12.6147247,111.296335 C12.2603362,110.270152 11.9554624,109.446774 11.7000942,108.826178 L13.2088436,108.576963 C13.2765944,108.743107 13.3730074,108.975217 13.4980857,109.273298 C13.8472627,110.113791 14.1208673,110.785687 14.318908,111.289005 L12.7241676,111.596859 Z M9.59722584,108.25445 C9.41481999,108.063873 9.11515773,107.780456 8.69823007,107.404188 C8.59399815,107.311343 8.51582539,107.240489 8.46370943,107.191623 C9.07346613,106.761603 9.57637758,106.336477 9.97245885,105.91623 C10.3841749,105.481324 10.7151063,105.019549 10.9652629,104.53089 L9.47214817,103.556021 L10.2304316,102.463874 C10.3867794,102.556719 10.6134804,102.686212 10.9105414,102.852356 C11.160698,102.994067 11.3483126,103.10157 11.4733909,103.174869 C11.5984692,102.681324 11.6792477,102.043634 11.7157289,101.26178 L9.97245885,101.26178 L9.97245885,99.9057592 L11.7469983,99.9057592 C11.7574215,99.44642 11.762633,98.8209464 11.762633,98.0293194 L13.240113,98.0293194 C13.240113,98.5033183 13.22969,99.1287919 13.2088436,99.9057592 L16.3670549,99.9057592 C16.3357853,102.72532 16.3722659,104.645719 16.4764978,105.667016 C16.5077674,105.911345 16.5676998,106.104362 16.656297,106.246073 C16.7396825,106.373125 16.8334898,106.436649 16.9377217,106.436649 C17.0940696,106.436649 17.2113288,106.236302 17.2895027,105.835602 C17.3780998,105.33717 17.4432438,104.726356 17.4849365,104.003141 C17.7819975,104.115533 18.1363807,104.227923 18.5480968,104.340314 C18.4490764,105.200353 18.3448461,105.926001 18.2354026,106.517277 C18.1468055,106.981503 17.9748254,107.335775 17.7194572,107.580105 C17.4693006,107.824434 17.1592153,107.946597 16.789192,107.946597 C16.3097252,107.946597 15.9162556,107.768239 15.6087715,107.411518 C15.2804409,107.035251 15.0876148,106.505065 15.0302872,105.820942 C14.9469017,104.848512 14.9052096,103.328806 14.9052096,101.26178 L13.1619395,101.26178 C13.1098235,102.331943 12.9743241,103.221288 12.7554371,103.929843 L14.5299765,105.02199 L13.701337,106.37801 C13.6440094,106.338918 13.5606251,106.282723 13.4511816,106.209424 C12.8831177,105.813611 12.4609848,105.525306 12.1847702,105.344503 C11.6636106,106.316933 10.8011045,107.286906 9.59722584,108.25445 Z M4.64102307,107.961257 C4.5993303,107.721814 4.5237633,107.323563 4.41431979,106.766492 C4.398685,106.68342 4.38565621,106.619896 4.37523302,106.575916 C4.75046791,106.605236 5.13612021,106.619895 5.53220149,106.619895 C5.79799287,106.619895 5.98951614,106.5637 6.10677704,106.451309 C6.22403795,106.338917 6.28266752,106.155673 6.28266752,105.901571 L6.28266752,104.589529 L4.25015534,105.02199 L4,103.526702 C4.50031319,103.463176 5.26119476,103.341013 6.28266752,103.160209 L6.28266752,101.27644 L4.32832889,101.27644 L4.32832889,99.9350785 L6.28266752,99.9350785 L6.28266752,98.0293194 L7.7132434,98.0293194 L7.7132434,99.9350785 L9.23762753,99.9350785 L9.23762753,101.27644 L7.7132434,101.27644 L7.7132434,102.910995 C7.81747531,102.891448 7.97121508,102.864573 8.17446731,102.830366 C8.65914572,102.747295 9.01352891,102.681327 9.23762753,102.632461 C9.23762753,103.248171 9.24544481,103.70506 9.26107959,104.003141 L7.7132434,104.281675 L7.7132434,106.114136 C7.7132434,106.724959 7.59077274,107.174519 7.34582774,107.462827 C7.10088274,107.751136 6.70741316,107.907504 6.1654072,107.931937 C5.85271146,107.951484 5.3445885,107.961257 4.64102307,107.961257 Z M20.5430857,111.934031 L20.5430857,98.7989529 L33.582433,98.7989529 L33.582433,111.934031 L31.9564233,111.934031 L31.9564233,111.025131 L22.1534607,111.025131 L22.1534607,111.934031 L20.5430857,111.934031 Z M22.1534607,109.639791 L31.9564233,109.639791 L31.9564233,100.169634 L22.1534607,100.169634 L22.1534607,109.639791 Z M23.9358175,107.653403 L23.9358175,102.082723 L30.1662491,102.082723 L30.1662491,107.653403 L23.9358175,107.653403 Z M25.4054802,106.326702 L28.7044038,106.326702 L28.7044038,103.402094 L25.4054802,103.402094 L25.4054802,106.326702 Z M42.0970956,112 C41.7218607,111.467362 41.3805063,111.020246 41.0730221,110.658639 C42.5739617,109.823032 43.7387359,108.975222 44.5673796,108.115183 C43.8064866,107.020588 43.2358254,105.593726 42.8553789,103.834555 C42.4436629,104.450265 42.1205488,104.91204 41.886027,105.219895 C41.8443342,105.166143 41.7791902,105.080629 41.6905931,104.963351 C41.3518394,104.489352 41.1016866,104.159512 40.9401271,103.973822 L40.9401271,111.934031 L39.3922909,111.934031 L39.3922909,107.873298 C38.9336705,108.102968 38.344769,108.423035 37.6255688,108.833508 C37.5942992,108.848168 37.5708474,108.860384 37.5552126,108.870157 C37.2737864,109.031414 36.9871529,109.231761 36.6953036,109.471204 L35.9135681,108.041885 C36.095974,107.856195 36.2262619,107.665621 36.3044359,107.470157 C36.3773982,107.27958 36.4138788,107.047471 36.4138788,106.773822 L36.4138788,99.7664921 L37.8991762,99.7664921 L37.8991762,107.081675 C38.2170835,106.920418 38.7147834,106.649217 39.3922909,106.268063 L39.3922909,98.0879581 L40.9401271,98.0879581 L40.9401271,103.944503 C41.6489041,102.996505 42.2430171,102.046078 42.7224839,101.093194 C43.2019507,100.140309 43.6058433,99.1141416 43.9341739,98.0146597 L45.5445489,98.2418848 C45.195372,99.1801094 44.9009212,99.9204161 44.6611878,100.462827 L50.0473451,100.462827 L50.0473451,101.958115 L48.7183948,101.958115 C48.5412006,103.306813 48.2910477,104.46003 47.9679288,105.417801 C47.6291751,106.424438 47.1731673,107.323556 46.5998918,108.115183 C47.4493819,108.95079 48.6480309,109.710642 50.1958748,110.394764 C49.9092371,110.780805 49.5730942,111.274343 49.1874361,111.875393 C47.6500154,111.054446 46.4513663,110.206636 45.591453,109.331937 C44.7419629,110.196863 43.5771887,111.086208 42.0970956,112 Z M45.5758183,106.898429 C46.0135924,106.23874 46.362764,105.500877 46.6233438,104.684817 C46.8735004,103.90785 47.0663266,102.998958 47.2018281,101.958115 L43.9498086,101.958115 C43.9498086,101.967888 43.9445971,101.977661 43.9341739,101.987435 C44.0800985,103.042937 44.2833477,103.964045 44.5439275,104.750785 C44.8149305,105.561959 45.1588907,106.277833 45.5758183,106.898429 Z M57.1079797,112 C56.7014753,111.628619 56.2637078,111.252358 55.7946642,110.871204 C56.4148441,110.172422 56.8682461,109.546949 57.1548838,108.994764 C57.4675796,108.398601 57.6812518,107.702273 57.7959069,106.905759 C57.9001388,106.177658 57.952254,105.149047 57.952254,103.819895 L57.952254,98.7989529 L63.5338451,98.7989529 L63.5338451,109.537173 C63.5338451,109.737523 63.5651142,109.876788 63.6276534,109.954974 C63.6901925,110.033159 63.7996344,110.072251 63.9559823,110.072251 L64.1514161,110.072251 C64.3233988,110.072251 64.4536867,110.025829 64.5422839,109.932984 C64.6413042,109.825479 64.7012366,109.647122 64.722083,109.397906 C64.7794106,108.958113 64.839343,108.105416 64.9018822,106.839791 C65.3240214,106.961955 65.7305198,107.069459 66.1213895,107.162304 C66.0484271,108.286219 65.9676486,109.219543 65.8790515,109.962304 C65.7487616,110.978714 65.2067638,111.486911 64.2530418,111.486911 L63.5182104,111.486911 C62.5123724,111.486911 62.009461,110.917632 62.009461,109.779058 L62.009461,100.228272 L59.5000902,100.228272 L59.5000902,103.915183 C59.5000902,105.283427 59.437552,106.392666 59.3124737,107.242932 C59.1717606,108.166497 58.9320308,108.994761 58.5932771,109.727749 C58.259735,110.44119 57.7646408,111.1986 57.1079797,112 Z M53.7074305,111.934031 L53.7074305,105.205236 C53.2592333,106.451315 52.6911779,107.545894 52.0032472,108.489005 C51.9719776,108.347294 51.9276797,108.124958 51.8703522,107.82199 C51.7609087,107.211166 51.6697071,106.77138 51.5967448,106.502618 C52.0605768,105.872248 52.4540464,105.219899 52.7771653,104.54555 C53.115919,103.836995 53.4207928,103.016061 53.6917958,102.082723 L51.9016216,102.082723 L51.9016216,100.726702 L53.7074305,100.726702 L53.7074305,98.0293194 L55.1927279,98.0293194 L55.1927279,100.726702 L56.9438153,100.726702 L56.9438153,102.082723 L55.1927279,102.082723 L55.1927279,103.959162 L55.5679609,103.570681 C56.3444886,104.254803 56.9828995,104.841184 57.4832127,105.329843 L56.5060434,106.37801 C56.0578462,105.869805 55.6200787,105.412917 55.1927279,105.00733 L55.1927279,111.934031 L53.7074305,111.934031 Z M72.2673936,111.413613 L72.2673936,110.306806 C70.9957643,110.45829 69.5104818,110.678184 67.8115015,110.966492 L67.5691636,109.456545 C69.3880105,109.236648 71.0973882,109.016755 72.6973481,108.796859 C72.6504438,109.163353 72.6269919,109.564047 72.6269919,109.998953 L73.619796,109.998953 L73.619796,98.7403141 L80.8586662,98.7403141 L80.8586662,109.998953 L82,109.998953 L82,111.413613 L72.2673936,111.413613 Z M75.2145363,109.998953 L79.2951953,109.998953 L79.2951953,107.580105 L75.2145363,107.580105 L75.2145363,109.998953 Z M68.1710999,107.851309 L67.7176933,106.480628 C68.0460238,106.275392 68.3925897,105.947995 68.7574014,105.498429 C69.1639059,105.019544 69.6199137,104.418503 70.1254385,103.695288 C69.255102,103.739267 68.5228838,103.800349 67.9287619,103.878534 L67.5378941,102.544503 C67.746358,102.383245 68.0173569,102.043633 68.350899,101.525654 C69.0544644,100.494585 69.7163272,99.3193783 70.3365071,98 L71.9468821,98.5204188 C70.9723137,100.069467 70.0785384,101.374166 69.2655295,102.434555 C69.3072223,102.434555 69.374972,102.432112 69.4687807,102.427225 C70.1723461,102.407679 70.6830748,102.383246 71.0009822,102.353927 C71.2511388,101.992319 71.5325607,101.547647 71.8452565,101.019895 L73.2601976,101.613613 C72.1813973,103.20664 71.0218347,104.767881 69.7814749,106.297382 C69.9847271,106.277836 70.3026297,106.248517 70.7351921,106.209424 C71.5690475,106.126352 72.1944296,106.057941 72.6113572,106.004188 C72.5644529,106.468414 72.5331838,106.91553 72.517549,107.34555 C70.4850266,107.51658 69.0362247,107.685165 68.1710999,107.851309 Z M75.2145363,106.238743 L79.2951953,106.238743 L79.2951953,103.834555 L75.2145363,103.834555 L75.2145363,106.238743 Z M75.2145363,102.507853 L79.2951953,102.507853 L79.2951953,100.089005 L75.2145363,100.089005 L75.2145363,102.507853 Z" fill="#586CB4" fill-rule="nonzero" />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(251.000000, 4.000000) rotate(-270.000000) translate(-251.000000, -4.000000) translate(248.000000, -1.000000)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(251.000000, 4.000000) scale(-1, 1) rotate(-270.000000) translate(-251.000000, -4.000000) translate(248.000000, -1.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(675.000000, 4.000000) rotate(-270.000000) translate(-675.000000, -4.000000) translate(672.000000, -1.000000)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(675.000000, 4.000000) scale(-1, 1) rotate(-270.000000) translate(-675.000000, -4.000000) translate(672.000000, -1.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(951.000000, 4.000000) rotate(-270.000000) translate(-951.000000, -4.000000) translate(948.000000, -1.000000)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(951.000000, 4.000000) scale(-1, 1) rotate(-270.000000) translate(-951.000000, -4.000000) translate(948.000000, -1.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(1228.000000, 4.000000) rotate(-270.000000) translate(-1228.000000, -4.000000) translate(1225.000000, -1.000000)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(1228.000000, 4.000000) scale(-1, 1) rotate(-270.000000) translate(-1228.000000, -4.000000) translate(1225.000000, -1.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(1362.000000, 69.000000) rotate(-180.000000) translate(-1362.000000, -69.000000) translate(1359.000000, 64.000000)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(1362.000000, 64.000000) scale(1, -1) rotate(-180.000000) translate(-1362.000000, -64.000000) translate(1359.000000, 59.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(1080.000000, 69.000000) rotate(-180.000000) translate(-1080.000000, -69.000000) translate(1077.000000, 64.000000)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(1080.000000, 64.000000) scale(1, -1) rotate(-180.000000) translate(-1080.000000, -64.000000) translate(1077.000000, 59.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(799.000000, 69.000000) rotate(-180.000000) translate(-799.000000, -69.000000) translate(796.000000, 64.000000)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(799.000000, 64.000000) scale(1, -1) rotate(-180.000000) translate(-799.000000, -64.000000) translate(796.000000, 59.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头红色" transform="translate(516.794721, 68.994264) rotate(-180.000000) translate(-516.794721, -68.994264) translate(513.794721, 63.994264)" fill="#CB1414">
+          <g id="箭头红色" transform="translate(517.000000, 64.000000) scale(1, -1) rotate(-180.000000) translate(-517.000000, -64.000000) translate(514.000000, 59.000000)" fill="#CB1414">
             <g id="箭头" transform="translate(3.000000, 5.000000) scale(1, -1) translate(-3.000000, -5.000000) ">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" fill-rule="nonzero" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
           </g>
-          <g id="箭头" transform="translate(93.447703, 367.028689) scale(1, -1) translate(-93.447703, -367.028689) translate(90.447703, 362.028689)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(90.447703, 362.028689)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(166.000000, 563.000000) scale(1, -1) rotate(-270.000000) translate(-166.000000, -563.000000) translate(163.000000, 558.000000)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(166.000000, 563.000000) scale(-1, -1) rotate(-270.000000) translate(-166.000000, -563.000000) translate(163.000000, 558.000000)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(308.000000, 563.000000) scale(1, -1) rotate(-270.000000) translate(-308.000000, -563.000000) translate(305.000000, 558.000000)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(308.000000, 563.000000) scale(-1, -1) rotate(-270.000000) translate(-308.000000, -563.000000) translate(305.000000, 558.000000)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(450.000000, 563.000000) scale(1, -1) rotate(-270.000000) translate(-450.000000, -563.000000) translate(447.000000, 558.000000)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(450.000000, 563.000000) scale(-1, -1) rotate(-270.000000) translate(-450.000000, -563.000000) translate(447.000000, 558.000000)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(230.404808, 366.983982) scale(1, -1) translate(-230.404808, -366.983982) translate(227.404808, 361.983982)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(227.404808, 361.983982)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(369.599069, 367.009691) scale(1, -1) translate(-369.599069, -367.009691) translate(366.599069, 362.009691)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(366.599069, 362.009691)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(593.503393, 58.006750) scale(1, -1) translate(-593.503393, -58.006750) translate(590.503393, 53.006750)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(594.000000, 64.000000) scale(1, -1) translate(-594.000000, -64.000000) translate(591.000000, 59.000000)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(875.552190, 58.096580) scale(1, -1) translate(-875.552190, -58.096580) translate(872.552190, 53.096580)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(876.000000, 64.000000) scale(1, -1) translate(-876.000000, -64.000000) translate(873.000000, 59.000000)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(1156.503051, 58.096324) scale(1, -1) translate(-1156.503051, -58.096324) translate(1153.503051, 53.096324)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(1157.000000, 64.000000) scale(1, -1) translate(-1157.000000, -64.000000) translate(1154.000000, 59.000000)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
           </g>
-          <g id="箭头" transform="translate(1423.000000, 58.096324) scale(1, -1) translate(-1423.000000, -58.096324) translate(1420.000000, 53.096324)" fill="#B13701" fill-rule="nonzero">
+          <g id="箭头" transform="translate(1423.000000, 64.000000) scale(1, -1) translate(-1423.000000, -64.000000) translate(1420.000000, 59.000000)" fill="#B13701" fill-rule="nonzero">
             <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
+          </g>
+          <text id="0.43m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+            <tspan x="228.164986" y="40">{{ datas.ky_nyzx_dlzf1_kyjq1_llj010ltz1_ssll }} m³/h</tspan>
+          </text>
+          <g id="流量计参数1" transform="translate(622.000000, 220.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="66.48" y="0.48" width="71.04" height="23.04" />
+            <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">瞬时流量</tspan>
+            </text>
+            <text id="0.67m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="72.6649863" y="18">{{ datas.ky_nyzx_dlzf1_kyjq1_llj010kylg1_ssll }}m³/h</tspan>
+            </text>
+          </g>
+          <g id="流量计参数1复制-4" transform="translate(325.000000, 762.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+            <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">瞬时流量</tspan>
+            </text>
+            <text id="0.52m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="71.6649863" y="18">{{ datas.ky_nyzx_dlzf1_kylwg_cyllj1_ssll }}m³/h</tspan>
+            </text>
+          </g>
+          <g id="流量计参数1复制-5" transform="translate(325.000000, 820.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+            <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">瞬时流量</tspan>
+            </text>
+            <text id="0.95m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="71.6649863" y="18">{{ datas.ky_nyzx_dlzf1_kylwg_gyllj1_ssll }}m³/h</tspan>
+            </text>
+          </g>
+          <g id="流量计参数1复制" transform="translate(904.000000, 220.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+            <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">瞬时流量</tspan>
+            </text>
+            <text id="0.29m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="71.6649863" y="18">{{ datas.ky_nyzx_dlzf1_kyjq1_llj010kylg2_ssll }}m³/h</tspan>
+            </text>
+          </g>
+          <g id="流量计参数1复制-2" transform="translate(1185.000000, 220.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+            <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">瞬时流量</tspan>
+            </text>
+            <text id="0.66m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="71.6649863" y="18">{{ datas.ky_nyzx_dlzf1_kyjq1_llj010kylg3_ssll }}m³/h</tspan>
+            </text>
+          </g>
+          <g id="流量计参数1复制-3" transform="translate(1467.000000, 220.000000)">
+            <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="65.48" y="0.48" width="71.04" height="23.04" />
+            <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="0" y="19">瞬时流量</tspan>
+            </text>
+            <text id="0.31m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+              <tspan x="71.6649863" y="18">{{ datas.ky_nyzx_dlzf1_kyjq1_llj010kylg4_ssll }}m³/h</tspan>
+            </text>
+          </g>
+          <g id="lgjgz1" :class="datas.ky_nyzx_dlzf1_kyjq1_lgj1_gz?'gzclass':'noclass'" transform="translate(542.000000, 481.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-71)" xlink:href="#path-70" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-70" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g id="4#lgkyjgz" :class="datas.ky_nyzx_dlzf1_kyjq1_kylg4_qggzzt?'gzclass':datas.ky_nyzx_dlzf1_kyjq1_kylg4_zgzzt?'ggzclass':'noclass'" transform="translate(540.000000, 104.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-73)" xlink:href="#path-72" />
+              <use :fill="datas.ky_nyzx_dlzf1_kyjq1_kylg4_qggzzt?'#ED9D25':datas.ky_nyzx_dlzf1_kyjq1_kylg4_zgzzt?'red':''" fill-rule="evenodd" xlink:href="#path-72" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g v-if="false" id="1#lqtgz" transform="translate(80.000000, 123.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-75)" xlink:href="#path-74" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-74" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g v-if="false" id="2#lqtgz" transform="translate(375.000000, 123.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-77)" xlink:href="#path-76" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-76" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g id="lgjgz2" :class="datas.ky_nyzx_dlzf1_kyjq1_lgj2_gz?'gzclass':'noclass'" transform="translate(824.000000, 481.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-79)" xlink:href="#path-78" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-78" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g id="3#lgkyjgz" :class="datas.ky_nyzx_dlzf1_kyjq1_kylg3_qggzzt?'gzclass':datas.ky_nyzx_dlzf1_kyjq1_kylg3_zgzzt?'ggzclass':'noclass'" transform="translate(822.000000, 101.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-81)" xlink:href="#path-80" />
+              <use :fill="datas.ky_nyzx_dlzf1_kyjq1_kylg3_qggzzt?'#ED9D25':datas.ky_nyzx_dlzf1_kyjq1_kylg3_zgzzt?'red':''" fill-rule="evenodd" xlink:href="#path-80" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g id="lgjgz3" :class="datas.ky_nyzx_dlzf1_kyjq1_lgj3_gz?'gzclass':'noclass'" transform="translate(1106.000000, 481.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-83)" xlink:href="#path-82" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-82" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g id="2#lgkyjgz" :class="datas.ky_nyzx_dlzf1_kyjq1_kylg2_qggzzt?'gzclass':datas.ky_nyzx_dlzf1_kyjq1_kylg2_zgzzt?'ggzclass':'noclass'" transform="translate(1103.000000, 101.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-85)" xlink:href="#path-84" />
+              <use :fill="datas.ky_nyzx_dlzf1_kyjq1_kylg2_qggzzt?'#ED9D25':datas.ky_nyzx_dlzf1_kyjq1_kylg2_zgzzt?'red':''" fill-rule="evenodd" xlink:href="#path-84" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g id="lgjgz4" :class="datas.ky_nyzx_dlzf1_kyjq1_lgj4_gz?'gzclass':'noclass'" transform="translate(1388.000000, 481.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-87)" xlink:href="#path-86" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-86" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g id="1#lgkyjgz" :class="datas.ky_nyzx_dlzf1_kyjq1_kylg1_qggzzt?'gzclass':datas.ky_nyzx_dlzf1_kyjq1_kylg1_zgzzt?'ggzclass':'noclass'" transform="translate(1384.000000, 101.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-89)" xlink:href="#path-88" />
+              <use :fill="datas.ky_nyzx_dlzf1_kyjq1_kylg1_qggzzt?'#ED9D25':datas.ky_nyzx_dlzf1_kyjq1_kylg1_zgzzt?'red':''" fill-rule="evenodd" xlink:href="#path-88" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
+          </g>
+          <g v-if="false" id="lqbgz1" transform="translate(139.000000, 439.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-91)" xlink:href="#path-90" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-90" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="11.9304355" y="4.6699966" width="3" height="11" rx="1.5" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="11.9304355" y="17.6699966" width="3" height="3" rx="1.5" />
+          </g>
+          <g v-if="false" id="lqbgz2" transform="translate(276.000000, 439.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-93)" xlink:href="#path-92" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-92" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="11.9304355" y="4.6699966" width="3" height="11" rx="1.5" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="11.9304355" y="17.6699966" width="3" height="3" rx="1.5" />
+          </g>
+          <g v-if="false" id="lqbgz3" transform="translate(416.000000, 439.000000)">
+            <g id="三角形">
+              <use fill="black" fill-opacity="1" filter="url(#filter-95)" xlink:href="#path-94" />
+              <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-94" />
+            </g>
+            <rect id="矩形" fill="#FFFFFF" x="11.9304355" y="4.6699966" width="3" height="11" rx="1.5" />
+            <rect id="矩形复制-2" fill="#FFFFFF" x="11.9304355" y="17.6699966" width="3" height="3" rx="1.5" />
           </g>
         </g>
       </g>
@@ -1389,9 +1902,45 @@ export default {
     }).catch(err => {
       console.log(err)
     })
+  },
+  methods: {
+    getGuZhang(type) {
+      return monitorapi.getGuZhang(type)
+    },
+    getGuZhangGif(type) {
+      return monitorapi.getGuZhangGif(type)
+    },
+    getGuZhangColor(type) {
+      return monitorapi.getGuZhangColor(type)
+    },
+    getOrigin(id) {
+      if (!id) return
+      const box = document.getElementById(id + '_1').getBBox()
+      const x = box.x + (box.width / 2)
+      const y = box.y + (box.height / 2)
+      const a = x + 'px' + ' ' + y + 'px'
+      return '-webkit-transform-origin:' + a
+    },
+    getClass() {
+      return 'zhuanquan'
+    }
   }
 }
 </script>
 <style scoped lang="scss">
+@keyframes svg-load {
+  from { transform:rotate(0)}
+  to { transform:rotate(360deg)}
+}
 
+  @keyframes svg-load-ops {
+  from { transform:rotate(360deg)}
+  to { transform:rotate(0)}
+}
+.zhuanquan{
+  animation:   svg-load 1s linear infinite;
+  -webkit-animation:   svg-load 1s linear infinite;
+  -moz-animation:   svg-load 1s linear infinite;
+  -o-animation:   svg-load 1s linear infinite;
+}
 </style>

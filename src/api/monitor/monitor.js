@@ -28,6 +28,27 @@ export default {
       params: query
     })
   },
+  getZhenKongSys(query) {
+    return request({
+      url: '/monitor/getZhenKongSys',
+      method: 'post',
+      params: query
+    })
+  },
+  getZhenKongSubSys(query) {
+    return request({
+      url: '/monitor/getZhenKongSubSys',
+      method: 'post',
+      params: query
+    })
+  },
+  getQingDanJiQun(query) {
+    return request({
+      url: '/monitor/getQingDanJiQun',
+      method: 'post',
+      params: query
+    })
+  },
   getKongYaJi(query) {
     return request({
       url: '/monitor/getKongYaJi',
@@ -76,5 +97,61 @@ export default {
       method: 'post',
       params: query
     })
+  },
+  getQingDanData(query) {
+    return request({
+      url: '/monitor/getQingDanData',
+      method: 'post',
+      params: query
+    })
+  },
+  getShopFloorData(query) {
+    return request({
+      url: '/monitor/getShopFloorData',
+      method: 'post',
+      params: query
+    })
+  },
+  getShopFloor(query) {
+    return request({
+      url: '/monitor/getShopFloor',
+      method: 'post',
+      params: query
+    })
+  },
+  getGuZhang(type) {
+    let name = ''
+    switch (type) {
+      case '1':
+      case 1:
+        name = '运行'
+        break
+      case '0':
+      case 0:
+        name = '停机'
+        break
+      default:
+        name = '暂无状态'
+        break
+    }
+    return name
+  },
+  getGuZhangGif(val1, val2) {
+    var className = ''
+    if (val1 === 1) {
+      className = 'gzclass'
+    } else if (val2 === 1) {
+      className = 'ggzclass'
+    }
+    return className
+  },
+  getGuZhangColor(val1, val2) {
+    var color = ''
+    if (val1 === 1) {
+      color = '#ED9D25'
+    } else if (val2 === 1) {
+      color = 'red'
+    }
+    return color
   }
 }

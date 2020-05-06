@@ -1,6 +1,6 @@
 <template>
   <div class="firstShopMain">
-    <div class="tools">
+    <div v-if="false" class="tools">
       <el-date-picker
         v-model="dateinput"
         type="daterange"
@@ -12,60 +12,84 @@
       <el-button type="primary" icon="el-icon-search">搜索</el-button>
       <el-button>运行回放</el-button>
     </div>
-    <div id="intools">
+    <div v-if="false" id="intools">
       <el-button icon="el-icon-arrow-left" style="float:left;margin-left:20px;">上一页</el-button>
       <el-button style="float:right;margin-right:20px;">下一页<i class="el-icon-arrow-right el-icon--right" /></el-button>
     </div>
-    <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
-      <el-tab-pane v-for="(item,index) in Floors" :key="index" :label="item.label" :name="item.name">
-        <div style="height: 95%;margin-top: 3%;">
-          <svg viewBox="-60 -20 1854 920" version="1.1" xmlns="http://www.w3.org/2000/svg" v-html="html" />
+    <div style="display:flex;justify-content: center;margin-top:10px">
+      <el-select v-model="floorselect">
+        <el-option
+          v-for="item in floors"
+          :key="item.CODE"
+          :label="item.LABEL"
+          :value="item.CODE"
+        />
+      </el-select>
+    </div>
+    <div>
+      <firstFloor v-if="floors.length>0 && floorselect===floors[0].CODE" />
+      <secFloor v-if="floors.length>1 && floorselect===floors[1].CODE" />
+      <thirdFloor v-if="floors.length>2 && floorselect===floors[2].CODE" />
+      <forthFloor v-if="floors.length>3 && floorselect===floors[3].CODE" />
+      <fifthFloor v-if="floors.length>4 && floorselect===floors[4].CODE" />
+    </div>
+    <!-- <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
+      <el-tab-pane v-for="(item,index) in floors" :key="index" :label="item.LABEL" :name="item.CODE">
+        <div>
+          <firstFloor />
         </div>
       </el-tab-pane>
-    </el-tabs>
+    </el-tabs> -->
   </div>
 </template>
 <script>
-import svg from '@/api/monitor/yiceng'
+import firstFloor from '@/views/project/monitor/yongneng/shopTwo/firstFloor'
+import secFloor from '@/views/project/monitor/yongneng/shopTwo/secFloor'
+import thirdFloor from '@/views/project/monitor/yongneng/shopTwo/thirdFloor'
+import forthFloor from '@/views/project/monitor/yongneng/shopTwo/forthFloor'
+import fifthFloor from '@/views/project/monitor/yongneng/shopTwo/fifthFloor'
+import monitorapi from '@/api/monitor/monitor'
 export default {
-  name: 'UserEnergy',
+  name: 'FirstShop',
+  components: {
+    firstFloor,
+    secFloor,
+    thirdFloor,
+    forthFloor,
+    fifthFloor
+  },
   data() {
     return {
-      html: svg,
       dateinput: '',
       typeinput: '',
-      activeName: 'first',
-      Floors: [
-        {
-          name: 'first',
-          label: '厂区一层'
-        },
-        {
-          name: 'second',
-          label: '厂区二层'
-        },
-        {
-          name: 'third',
-          label: '厂区三层'
-        },
-        {
-          name: 'fourth',
-          label: '厂区四层'
-        },
-        {
-          name: 'fifth',
-          label: '厂区五层'
-        },
-        {
-          name: 'sixth',
-          label: '厂区屋面'
-        },
-        {
-          name: 'seventh',
-          label: '角楼能源站'
-        }
+      // activeName: '',
+      floorselect: '',
+      floors: [
       ]
     }
+  },
+  mounted() {
+    const self = this
+    var paths = this.$router.currentRoute.path.split('/')
+    monitorapi.getShopFloor({
+      'shop': paths[paths.length - 1]
+    }).then(res => {
+      if (res.state === 1 && res.data.length > 0) {
+        self.floors = res.data
+        self.floorselect = res.data[0].CODE
+      } else {
+        self.floors = [{
+          LABEL: '默认楼层',
+          CODE: 'lc1'
+        }]
+        self.floorselect = 'lc1'
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+  destroyed() {
+    this.floors = []
   },
   methods: {
     handleClick(tab, event) {
@@ -85,12 +109,8 @@ export default {
 <style lang="scss">
   .firstShopMain{
     height:99%;
-    margin-left:50px;
-      .tabs{
+    .tabs{
       height: 99%;
-      .el-tabs__header{
-        width: 650px;
-      }
       .el-tab-pane{
         height: 99%;
       }
@@ -100,6 +120,14 @@ export default {
     }
     .el-input{
       width: 200px;
+    }
+    .el-tabs__item {
+      width: 210px;
+      padding: 0px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      border-right: 1px solid #F0F2F5;
     }
   }
 </style>
