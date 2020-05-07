@@ -4,7 +4,7 @@
       class="logo"
       src="@/assets/tittle/logo.png"
     >
-    <div>
+    <div style="width:10%;">
       <p class="tittle-cn">启慧AI+能源系统运管平台</p>
       <p class="tittle-en">QiHui AI+Energy System Management Platform</p>
     </div>
@@ -34,17 +34,27 @@
           <p class="count-txt">{{ 0 }}</p>
         </div>
       </div>
-      <div class="avatar"><img
-        src="../../assets/tittle/avatar.png"
-        alt=""
-      > <p class="login-txt">登录</p></div>
+      <div class="avatar">
+        <img
+          src="../../assets/tittle/avatar.png"
+          alt=""
+        >
+        <el-dropdown class="dropdown" trigger="hover">
+          <span :id="userInfor.userName" class="login-txt">
+            {{ userInfor.realName }}<i class="el-icon-arrow-down el-icon--right" />
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item @click.native="handleLogOut">退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
+import { getUserInfo } from '@/api/login/user'
 export default {
   components: {
   },
@@ -92,26 +102,41 @@ export default {
           type: '平台管理',
           view: 'PlatSetting'
         }
-      ]
+      ],
+      userInfor: {
+        realName: '',
+        userName: ''
+      }
     }
   },
 
   computed: {
-    ...mapGetters(['sidebar', 'avatar', 'device'])
+    ...mapGetters(['sidebar', 'avatar', 'device', 'userName', 'realName'])
   },
-
+  mounted() {
+    this.getUserInfo()
+  },
   methods: {
+    getUserInfo() {
+      getUserInfo().then((res) => {
+        this.userInfor.realName = res.data.realName
+        this.userInfor.userName = res.data.userName
+        this.$store.dispatch('settings/changeSetting', this.userInfor)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
-    },
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     },
     tabChange(i, v) {
       this.active = i
       this.currentView = v
       this.onUpdate(v)
+    },
+    async handleLogOut() {
+      await this.$store.dispatch('user/logout')
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
 }
@@ -141,11 +166,11 @@ export default {
 .tittle-right{
   display: flex;
   flex-direction:row;
-  width: 10%;;
+  width: 15%;;
 }
 .message{
   display: flex;
-  width: 50%;
+  width: 30%;
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -153,7 +178,7 @@ export default {
 }
 .avatar{
   display: flex;
-  width: 50%;
+  width: 70%;
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -186,7 +211,7 @@ export default {
   color: white;
 }
 .tab-ul {
-  width: 95%;
+  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -240,7 +240,7 @@ export default {
       },
       alterPasswordForm: {
         username: 'admin',
-        oldPassword: '',
+        oldPassword: '123456',
         newPassword: ''
       },
       alterPasswordRules: {

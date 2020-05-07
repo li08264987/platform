@@ -3,11 +3,12 @@ import { Message } from 'element-ui'
 // import store from '@/store'
 // import { getToken } from '@/utils/auth'
 
+axios.defaults.withCredentials = true
 // create an axios instance
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API_JAVA, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 30000 // request timeout
+  timeout: 50000 // request timeout
 })
 
 // request interceptor

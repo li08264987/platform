@@ -31,3 +31,10 @@ export function alterPassword(query) {
     params: query
   })
 }
+
+export function getUserInfo() {
+  return request({
+    url: '/login/getUserInfo',
+    method: 'post'
+  })
+}
