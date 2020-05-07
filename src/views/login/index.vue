@@ -49,7 +49,7 @@
             ref="password"
             v-model="loginForm.password"
             :type="passwordType"
-            placeholder="Password"
+            placeholder="请输入密码"
             name="password"
             tabindex="2"
             autocomplete="on"
@@ -103,22 +103,23 @@
     >
 
       <div class="title-container">
-        <h3 class="title">修改密码</h3>
+        <h3 class="title" style="color:#111934;">修改密码</h3>
       </div>
 
       <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
         <el-input
           ref="username"
-          v-model="loginForm.username"
-          placeholder="Username"
+          v-model="alterPasswordForm.username"
+          placeholder="请输入用户名"
           name="username"
           type="text"
           tabindex="1"
           autocomplete="on"
+          @blur="blurUserName"
         />
+        <span class="svg-container">
+          <svg-icon icon-class="user" />
+        </span>
       </el-form-item>
 
       <el-tooltip
@@ -127,28 +128,43 @@
         placement="right"
         manual
       >
-        <el-form-item prop="password">
-          <span class="svg-container">
-            <svg-icon icon-class="password" />
-          </span>
+        <el-form-item prop="oldPassword">
           <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
+            ref="oldPassword"
+            v-model="alterPasswordForm.oldPassword"
             :type="passwordType"
-            placeholder="Password"
-            name="password"
+            placeholder="请输入旧密码"
+            name="oldPassword"
             tabindex="2"
             autocomplete="on"
             @keyup.native="checkCapslock"
-            @blur="capsTooltip = false"
-            @keyup.enter.native="handleLogin"
+            @blur="blurOldPass"
           />
-          <span
-            class="show-pwd"
-            @click="showPwd"
-          >
-            <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          <span class="svg-container">
+            <svg-icon icon-class="password" />
+          </span>
+        </el-form-item>
+      </el-tooltip>
+
+      <el-tooltip
+        v-model="capsTooltip"
+        content="Caps lock is On"
+        placement="right"
+        manual
+      >
+        <el-form-item prop="newPassword">
+          <el-input
+            ref="newPassword"
+            v-model="alterPasswordForm.newPassword"
+            :type="passwordType"
+            placeholder="请输入新密码"
+            name="newPassword"
+            tabindex="3"
+            autocomplete="on"
+            @keyup.native="checkCapslock"
+          />
+          <span class="svg-container">
+            <svg-icon icon-class="password" />
           </span>
         </el-form-item>
       </el-tooltip>
@@ -157,28 +173,14 @@
         :loading="loading"
         type="primary"
         style="width:100%;margin-bottom:30px;heigh:50px;font-size: 20px;"
-        @click.native.prevent="handleLogin"
-      >登录</el-button>
+        @click.native="confirmAlterPass"
+      >确认</el-button>
 
-      <div style="position:relative;margin-top: 30px;">
-        <!-- <div class="tips">
-          <span style="margin-right:18px;">Username : editor</span>
-          <span>Password : any</span>
-        </div> -->
-        <p
-          class="thirdparty-button"
-          type="primary"
-          @click="alterPassword"
-        >
-          修改密码>
-        </p>
-      </div>
-      <div class="version">
-        <p class="version-txt">启慧AI+能源 V1.0.0</p>
-      </div>
-      <div class="copyright">
-        <img src="../../assets/login/copyright.png">
-      </div>
+      <el-button
+        type="primary"
+        style="width:100%;margin-bottom:30px;heigh:50px;font-size: 20px;margin-left:0;background-color:#fff;color:#1890FF;border:1px solid #1890FF;"
+        @click.native="cancleAlterPass"
+      >取消修改</el-button>
     </el-form>
 
     <!-- <el-dialog
@@ -197,6 +199,7 @@
 <script>
 // import { validUsername } from '@/utils/validate'
 // import SocialSign from './components/SocialSignin'
+import { isUserExist, isPasswordCorrect, alterPassword } from '@/api/login/user'
 export default {
   name: 'Login',
   // components: { SocialSign },
@@ -215,6 +218,17 @@ export default {
         callback()
       }
     }
+    /* const validateNewPassword = (rule, value, callback) => {
+      var oldPassword = this.alterPasswordForm.oldPassword
+      var newPassword = this.alterPasswordForm.newPassword
+      if (oldPassword !== newPassword) {
+        callback(new Error('新旧密码不一致'))
+      } else if (value.length < 6) {
+        callback(new Error('密码不能少于6位字符'))
+      } else {
+        callback()
+      }
+    } */
     return {
       loginForm: {
         username: 'admin',
@@ -226,11 +240,13 @@ export default {
       },
       alterPasswordForm: {
         username: 'admin',
-        password: '123456'
+        oldPassword: '',
+        newPassword: ''
       },
       alterPasswordRules: {
-        username: [{ required: true, trigger: 'blur' }],
-        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
+        username: [{ required: true, trigger: 'blur', message: '用户名必须' }],
+        oldPassword: [{ required: true, trigger: 'blur', validator: validatePassword }],
+        newPassword: [{ required: true, trigger: 'blur', validator: validatePassword }]
       },
       passwordType: 'password',
       capsTooltip: false,
@@ -262,12 +278,93 @@ export default {
     } else if (this.loginForm.password === '') {
       this.$refs.password.focus()
     }
+
+    if (this.alterPasswordForm.username === '') {
+      this.$refs.username.focus()
+    } else if (this.alterPasswordForm.oldPassword === '') {
+      this.$refs.oldPassword.focus()
+    }
   },
   destroyed() {
     // window.removeEventListener('storage', this.afterQRScan)
   },
   methods: {
+    blurUserName(event) {
+      var username = this.alterPasswordForm.username
+      var param = { value: username }
+      isUserExist(param).then((res) => {
+        switch (res.state) {
+          case 1:
+            break
+          case 0:
+            this.$notify({
+              title: '失败',
+              message: res.msg,
+              type: 'warning',
+              duration: 1000
+            })
+            break
+          default:
+            break
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    blurOldPass(event) {
+      var username = this.alterPasswordForm.username
+      var oldPassword = this.alterPasswordForm.oldPassword
+      var param = { password: oldPassword, username: username }
+      isPasswordCorrect(param).then((res) => {
+        switch (res.state) {
+          case 1:
+            break
+          case 0:
+            this.$notify({
+              title: '失败',
+              message: res.msg,
+              type: 'warning',
+              duration: 1000
+            })
+            break
+          case -2:
+            this.$notify({
+              title: '失败',
+              message: res.msg,
+              type: 'warning',
+              duration: 1000
+            })
+            break
+          default:
+            break
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    confirmAlterPass() {
+      var username = this.alterPasswordForm.username
+      var newPassword = this.alterPasswordForm.newPassword
+      var param = { username: username, newPassword: newPassword }
+      this.$confirm('确认修改密码？', '提示', {
+        type: 'warning'
+      }).then(() => {
+        alterPassword(param).then((res) => {
+          if (res.state === 1) {
+            this.$message({ message: '修改密码成功', type: 'success' })
+            this.isAlterPassword = !this.isAlterPassword
+          } else {
+            this.$message({ message: '修改密码失败', type: 'error' })
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+      }).catch(() => {})
+    },
     alterPassword(e) {
+      this.isAlterPassword = !this.isAlterPassword
+    },
+    cancleAlterPass() {
       this.isAlterPassword = !this.isAlterPassword
     },
     checkCapslock(e) {
