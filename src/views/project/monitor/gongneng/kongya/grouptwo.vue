@@ -2,8 +2,6 @@
   <div>
     <infoScan ref="infoScan" :code="code" />
     <lineScan
-      v-if="linecode && linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && linecode.indexOf('_yxzt') === -1 && linecode.indexOf('_kyjzt') === -1&&
-        linecode.indexOf('_yxsj') === -1"
       ref="lineScan"
       :code="linecode"
     />
@@ -1377,7 +1375,7 @@
                 <tspan x="0" y="17">压力</tspan>
               </text>
               <text id="ky_nyzx_dlzf1_kyjq2_yl010ltz2_bsyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="42.034772" y="17.0828445">{{ datas.ky_nyzx_dlzf1_kyjq2_yl010ltz2_bsyl }}kpa</tspan>
+                <tspan x="42.034772" y="17.0828445">{{ datas.ky_nyzx_dlzf1_kyjq2_yl010ltz2_bsyl }}kPa</tspan>
               </text>
             </g>
             <g id="箭头" transform="translate(1383.457900, 305.054568)" fill="#B13701" fill-rule="nonzero">
@@ -1879,22 +1877,22 @@
               <tspan x="1180" y="181">状态</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="154.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kpa</tspan>
+              <tspan x="154.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="367.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kpa</tspan>
+              <tspan x="367.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="577.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kpa</tspan>
+              <tspan x="577.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="793.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kpa</tspan>
+              <tspan x="793.266991" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="1005.26699" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kpa</tspan>
+              <tspan x="1005.26699" y="248">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb2_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="1218.26699" y="247">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb2_csyl }}kpa</tspan>
+              <tspan x="1218.26699" y="247">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb2_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_lqb4_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
               <tspan x="154.467442" y="215">{{ datas.ky_nyzx_dlzf1_kyjq2_lqb4_yxsj }}h</tspan>
@@ -1999,7 +1997,7 @@
               <tspan x="1393" y="181">状态</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb2_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="1431.26699" y="247">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb2_csyl }}kpa</tspan>
+              <tspan x="1431.26699" y="247">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb2_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_lqb10_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
               <tspan x="1431.16708" y="214">{{ datas.ky_nyzx_dlzf1_kyjq2_lqb10_yxsj }}h</tspan>
@@ -2074,7 +2072,7 @@
               <tspan x="1532" y="222">状态</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="1570.26699" y="274">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kpa</tspan>
+              <tspan x="1570.26699" y="274">{{ datas.ky_nyzx_dlzf1_kyjq2_csylz010lqb1_csyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_lqb11_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
               <tspan x="1570.16708" y="249">{{ datas.ky_nyzx_dlzf1_kyjq2_lqb11_yxsj }}h</tspan>
@@ -2363,16 +2361,16 @@
               <tspan x="1418" y="408">运行时间</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_kylx1_pqyl010xt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="300.311072" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylx1_pqyl010xt }}kpa</tspan>
+              <tspan x="300.311072" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylx1_pqyl010xt }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_kylx2_pqyl010xt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="695.311072" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylx2_pqyl010xt }}kpa</tspan>
+              <tspan x="695.311072" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylx2_pqyl010xt }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_kylx3_pqyl010xt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="1094.31107" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylx3_pqyl010xt }}kpa</tspan>
+              <tspan x="1094.31107" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylx3_pqyl010xt }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_kylg5_jzpqyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="1488.02758" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylg5_jzpqyl }}kpa</tspan>
+              <tspan x="1488.02758" y="380">{{ datas.ky_nyzx_dlzf1_kyjq2_kylg5_jzpqyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_kylx1_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
               <tspan x="300.098234" y="410">{{ datas.ky_nyzx_dlzf1_kyjq2_kylx1_yxsj }}h</tspan>
@@ -2652,8 +2650,13 @@ export default {
       console.log(err)
     })
     $('svg').click(function(e) {
-      self.linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
-      if (self.linecode && self.linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && self.linecode.indexOf('_yxzt') === -1 && self.linecode.indexOf('_kyjzt') === -1) {
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (linecode &&
+          linecode.indexOf('ky_nyzx_dlzf1_') !== -1 &&
+          linecode.indexOf('_yxzt') === -1 &&
+          linecode.indexOf('_kyjzt') === -1 &&
+          linecode.indexOf('_yxsj') === -1) {
         self.$refs.lineScan.dialogTableVisible = true
       }
     })

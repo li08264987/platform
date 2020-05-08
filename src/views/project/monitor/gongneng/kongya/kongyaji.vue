@@ -2,8 +2,6 @@
   <div>
     <infoScan ref="infoScan" :code="code" />
     <lineScan
-      v-if="linecode && linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && linecode.indexOf('_yxzt') === -1 && linecode.indexOf('_kyjzt') === -1&&
-        linecode.indexOf('_yxsj') === -1"
       ref="lineScan"
       :code="linecode"
     />
@@ -545,7 +543,7 @@
               <tspan x="1448" y="119.464393">出水温度</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_kylx1_pqyl010xt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="1178" y="34.4643932">{{ datas.pqyl010xt }}kpa</tspan>
+              <tspan x="1178" y="34.4643932">{{ datas.pqyl010xt }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_kylx1_bywd2" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
               <tspan x="1178" y="68.4643932">{{ datas.bywd2 }}℃</tspan>
@@ -554,10 +552,10 @@
               <tspan x="1048" y="421.464393">{{ datas.ylqqckwd010rhy }}℃</tspan>
             </text>
             <text id="ckyl011rhy" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="1048" y="388.464393">{{ datas.ckyl011rhy }}kpa</tspan>
+              <tspan x="1048" y="388.464393">{{ datas.ckyl011rhy }}kPa</tspan>
             </text>
             <text id="jkyl010rhy" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="1048" y="288.464393">{{ datas.jkyl010rhy }}kpa</tspan>
+              <tspan x="1048" y="288.464393">{{ datas.jkyl010rhy }}kPa</tspan>
             </text>
             <text id="cswd_jswd" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
               <tspan x="281" y="580.464393">{{ datas.cswd }}-{{ datas.jswd }}℃</tspan>
@@ -566,7 +564,7 @@
               <tspan x="717" y="506.464393">{{ datas.jqwd010zhyj }}℃</tspan>
             </text>
             <text id="jqwd010zhyj复制" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="616" y="306.464393">{{ datas.pqyl010ysjck }}kpa</tspan>
+              <tspan x="616" y="306.464393">{{ datas.pqyl010ysjck }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq2_jswd1010ltz2_jswd" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
               <tspan x="1517" y="187.464393">{{ datas.jswd }}℃</tspan>
@@ -666,8 +664,13 @@ export default {
     })
     $('svg').svgPanZoom()
     $('svg').click(function(e) {
-      self.linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
-      if (self.linecode && self.linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && self.linecode.indexOf('_yxzt') === -1 && self.linecode.indexOf('_kyjzt') === -1) {
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (linecode &&
+          linecode.indexOf('ky_nyzx_dlzf1_') !== -1 &&
+          linecode.indexOf('_yxzt') === -1 &&
+          linecode.indexOf('_kyjzt') === -1 &&
+          linecode.indexOf('_yxsj') === -1) {
         self.$refs.lineScan.dialogTableVisible = true
       }
     })

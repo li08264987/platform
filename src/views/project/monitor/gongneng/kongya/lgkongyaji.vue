@@ -2,8 +2,6 @@
   <div>
     <infoScan ref="infoScan" :code="code" />
     <lineScan
-      v-if="linecode && linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && linecode.indexOf('_yxzt') === -1 && linecode.indexOf('_kyjzt') === -1&&
-        linecode.indexOf('_yxsj') === -1"
       ref="lineScan"
       :code="linecode"
     />
@@ -487,7 +485,7 @@
                 <tspan x="0" y="16">加载压差</tspan>
               </text>
               <text id="ky_nyzx_dlzf1_kyjq1_kylg1_jzyc" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-                <tspan x="70" y="18">{{ datas.jzyc }}kpa</tspan>
+                <tspan x="70" y="18">{{ datas.jzyc }}kPa</tspan>
               </text>
             </g>
             <rect
@@ -606,16 +604,16 @@
               <tspan x="861" y="253">{{ datas.jtpywd }}℃</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq1_kylg1_jtpqyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="861" y="521">{{ datas.jtpqyl }}kpa</tspan>
+              <tspan x="861" y="521">{{ datas.jtpqyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq1_kylg1_jzpqyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="1125" y="579">{{ datas.jzpqyl }}kpa</tspan>
+              <tspan x="1125" y="579">{{ datas.jzpqyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq1_kylg1_jtpyyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="861" y="287">{{ datas.jtpyyl }}kpa</tspan>
+              <tspan x="861" y="287">{{ datas.jtpyyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq1_kylg1_ylqyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
-              <tspan x="1274" y="396">{{ datas.ylqyl }}kpa</tspan>
+              <tspan x="1274" y="396">{{ datas.ylqyl }}kPa</tspan>
             </text>
             <text id="ky_nyzx_dlzf1_kyjq1_kylg1_gcpqwd" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#27282B">
               <tspan x="861" y="555">{{ datas.gcpqwd }}℃</tspan>
@@ -749,8 +747,13 @@ export default {
     })
     $('svg').svgPanZoom()
     $('svg').click(function(e) {
-      self.linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
-      if (self.linecode && self.linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && self.linecode.indexOf('_yxzt') === -1 && self.linecode.indexOf('_kyjzt') === -1) {
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (linecode &&
+          linecode.indexOf('ky_nyzx_dlzf1_') !== -1 &&
+          linecode.indexOf('_yxzt') === -1 &&
+          linecode.indexOf('_kyjzt') === -1 &&
+          linecode.indexOf('_yxsj') === -1) {
         self.$refs.lineScan.dialogTableVisible = true
       }
     })

@@ -2,8 +2,6 @@
   <div>
     <infoScan ref="infoScan" :code="code" />
     <lineScan
-      v-if="linecode && linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && linecode.indexOf('_yxzt') === -1 && linecode.indexOf('_kyjzt') === -1&&
-        linecode.indexOf('_yxsj') === -1"
       ref="lineScan"
       :code="linecode"
     />
@@ -656,8 +654,13 @@ export default {
       console.log(err)
     })
     $('svg').click(function(e) {
-      self.linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
-      if (self.linecode && self.linecode.indexOf('ky_nyzx_dlzf1_') !== -1 && self.linecode.indexOf('_yxzt') === -1 && self.linecode.indexOf('_kyjzt') === -1) {
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (linecode &&
+          linecode.indexOf('qd_nyzx_dlzf1_') !== -1 &&
+          linecode.indexOf('_yxzt') === -1 &&
+          linecode.indexOf('_kyjzt') === -1 &&
+          linecode.indexOf('_yxsj') === -1) {
         self.$refs.lineScan.dialogTableVisible = true
       }
     })

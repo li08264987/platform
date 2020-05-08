@@ -42,6 +42,13 @@ export default {
       params: query
     })
   },
+  getZhenKongData(query) {
+    return request({
+      url: '/monitor/getZhenKongData',
+      method: 'post',
+      params: query
+    })
+  },
   getQingDanJiQun(query) {
     return request({
       url: '/monitor/getQingDanJiQun',

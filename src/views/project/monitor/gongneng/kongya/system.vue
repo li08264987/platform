@@ -3803,8 +3803,8 @@
               <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="113" y="22">压力</tspan>
               </text>
-              <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl" @click="showLine">
-                <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl }}kpa</tspan>
+              <text id="0.0kPa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl" @click="showLine">
+                <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl }}kPa</tspan>
               </text>
             </g>
             <g id="分组-4-copy-2" transform="translate(1454.000000, 690.405369)">
@@ -3826,8 +3826,8 @@
               <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="113" y="22">压力</tspan>
               </text>
-              <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl" @click="showLine">
-                <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl }}kpa</tspan>
+              <text id="0.0kPa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl" @click="showLine">
+                <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl }}kPa</tspan>
               </text>
             </g>
             <g id="分组-4-copy" transform="translate(274.000000, 786.405369)">
@@ -3849,8 +3849,8 @@
               <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="113" y="22">压力</tspan>
               </text>
-              <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl" @click="showLine">
-                <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl }}kpa</tspan>
+              <text id="0.0kPa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl" @click="showLine">
+                <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl }}kPa</tspan>
               </text>
             </g>
             <g id="分组-4-copy-3" transform="translate(1227.000000, 854.405369)">
@@ -3872,8 +3872,8 @@
               <text id="压力" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="231" y="22">压力</tspan>
               </text>
-              <text id="0.0kpa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl" @click="showLine">
-                <tspan x="280.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl }}kpa</tspan>
+              <text id="0.0kPa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl" @click="showLine">
+                <tspan x="280.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl }}kPa</tspan>
               </text>
             </g>
             <g id="箭头" transform="translate(242.706866, 263.374637) scale(1, -1) translate(-242.706866, -263.374637) translate(239.706866, 258.374637)" fill="#B13701" fill-rule="nonzero">

@@ -64,9 +64,17 @@
               </el-button>
             </div>
             <div v-if="showNeibu && mainTabName==='first'" style="height:100%;position:relative;border: 1px dashed #ccc;width: 99%;margin-top:1%">
+              <el-select v-model="selectSys">
+                <el-option
+                  v-for="item in zksys"
+                  :key="item.CODE"
+                  :label="item.NAME"
+                  :value="item.CODE"
+                />
+              </el-select>
               <systemOne v-if="selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
-              <systemTwo v-if="selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
-              <systemFive v-if="selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
+              <systemTwo v-if="selectSys===zksys[1].CODE" style="height:96%;width:100%;margin-top:40px;" />
+              <systemFive v-if="selectSys===zksys[2].CODE" style="height:96%;width:100%;margin-top:40px;" />
               <i :class="rightbtn" @click="showHideRight" />
             </div>
             <div v-if="showParam" class="rightparam">
@@ -238,10 +246,14 @@
             />
           </el-select>
           <div v-if="showNeibu && mainTabName==='second'" style="height:92%">
-            <groupone v-if="zksubsyssel===zksubsys[0].CODE" style="height:92%;width:100%" />
-            <grouptwo v-if="zksubsyssel===zksubsys[1].CODE" style="height:92%;width:100%" />
-            <groupthree v-if="zksubsyssel===zksubsys[2].CODE" style="height:92%;width:100%" />
-            <groupfour v-if="zksubsyssel===zksubsys[3].CODE" style="height:92%;width:100%" />
+            <fgroupone v-if="selectSys===zksys[0].CODE && zksubsyssel===zksubsys[0].CODE" style="height:92%;width:100%" />
+            <fgrouptwo v-if="selectSys===zksys[0].CODE && zksubsyssel===zksubsys[1].CODE" style="height:92%;width:100%" />
+            <fgroupthree v-if="selectSys===zksys[0].CODE && zksubsyssel===zksubsys[2].CODE" style="height:92%;width:100%" />
+            <fgroupfour v-if="selectSys===zksys[0].CODE && zksubsyssel===zksubsys[3].CODE" style="height:92%;width:100%" />
+            <sgroupone v-if="selectSys===zksys[1].CODE && zksubsyssel===zksubsys[0].CODE" style="height:92%;width:100%" />
+            <sgrouptwo v-if="selectSys===zksys[1].CODE && zksubsyssel===zksubsys[1].CODE" style="height:92%;width:100%" />
+            <figroupone v-if="selectSys===zksys[2].CODE && zksubsyssel===zksubsys[0].CODE" style="height:92%;width:100%" />
+            <figrouptwo v-if="selectSys===zksys[2].CODE && zksubsyssel===zksubsys[1].CODE" style="height:92%;width:100%" />
           </div>
         </el-tab-pane>
       </el-tabs>
@@ -486,23 +498,31 @@ import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
 import pieChart from '@/views/project/monitor/pieChart'
 import monitorapi from '@/api/monitor/monitor'
-import systemOne from '@/views/project/monitor/gongneng/zhenkong/system'
-import systemTwo from '@/views/project/monitor/gongneng/zhenkong/system'
-import systemFive from '@/views/project/monitor/gongneng/zhenkong/system'
-import groupone from '@/views/project/monitor/gongneng/kongya/groupone'
-import grouptwo from '@/views/project/monitor/gongneng/kongya/grouptwo'
-import groupthree from '@/views/project/monitor/gongneng/kongya/groupthree'
-import groupfour from '@/views/project/monitor/gongneng/kongya/groupfour'
+import systemOne from '@/views/project/monitor/gongneng/zhenkong/systemone'
+import systemTwo from '@/views/project/monitor/gongneng/zhenkong/systemtwo'
+import systemFive from '@/views/project/monitor/gongneng/zhenkong/systemfive'
+import fgroupone from '@/views/project/monitor/gongneng/zhenkong/fgroupone'
+import fgrouptwo from '@/views/project/monitor/gongneng/zhenkong/fgrouptwo'
+import fgroupthree from '@/views/project/monitor/gongneng/zhenkong/fgroupthree'
+import fgroupfour from '@/views/project/monitor/gongneng/zhenkong/fgroupfour'
+import sgroupone from '@/views/project/monitor/gongneng/zhenkong/sgroupone'
+import sgrouptwo from '@/views/project/monitor/gongneng/zhenkong/sgrouptwo'
+import figroupone from '@/views/project/monitor/gongneng/zhenkong/figroupone'
+import figrouptwo from '@/views/project/monitor/gongneng/zhenkong/figrouptwo'
 export default {
   name: 'MonitorView',
   components: {
     runInfo,
     infoScan,
     pieChart,
-    groupone,
-    grouptwo,
-    groupthree,
-    groupfour,
+    fgroupone,
+    fgrouptwo,
+    fgroupthree,
+    fgroupfour,
+    sgroupone,
+    sgrouptwo,
+    figroupone,
+    figrouptwo,
     systemOne,
     systemTwo,
     systemFive
@@ -521,7 +541,12 @@ export default {
       showright: true,
       rightbtn: 'el-icon-caret-right',
       duties: [],
-      zksys: [],
+      zksys: [
+        {
+          NAME: '1栋车间',
+          CODE: 'cj1'
+        }
+      ],
       dianli: 0,
       qihao: 0,
       danhao: 0,
@@ -745,17 +770,16 @@ export default {
         this.wh = '0 0 1266 773'
       }
     },
-    selectvalue2(val) {
-      this.getKongYaJi()
+    selectSys(val) {
+      this.getZhenKongSubSys(val)
     }
   },
   mounted() {
     this.getNengHaoGaiLan()
-    this.getKongYaJiQun()
+    this.getZhenKongSys()
     this.getDuty()
     this.getDianLi('kyjq', '')
     this.getDianHaoZhanBi()
-    // this.getZQiHao()
   },
   methods: {
     handleClick(tab, event) {
@@ -782,15 +806,28 @@ export default {
         console.log(err)
       })
     },
-    getZhenKongSubSys() {
-      monitorapi.getZhenKongSubSys().then(res => {
+    getZhenKongSys() {
+      monitorapi.getZhenKongSys().then(res => {
         if (res.state === 1) {
-          this.zksubsys = res.data
-          this.selectvalue2 = this.zksubsys[0].CODE
+          this.zksys = res.data
+          this.selectSys = this.zksys[0].CODE
         }
       }).catch(err => {
         console.log(err)
-        this.selectvalue2 = this.zksubsys[0].CODE
+        this.zksys = this.zksys[0].CODE
+      })
+    },
+    getZhenKongSubSys(regional) {
+      monitorapi.getZhenKongSubSys({
+        'regional': regional
+      }).then(res => {
+        if (res.state === 1) {
+          this.zksubsys = res.data
+          this.zksubsyssel = this.zksubsys[0].CODE
+        }
+      }).catch(err => {
+        console.log(err)
+        this.zksubsyssel = this.zksubsys[0].CODE
       })
     },
     getDuty() {

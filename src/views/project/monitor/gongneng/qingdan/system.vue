@@ -1,7 +1,10 @@
 <template>
   <div>
     <infoScan ref="infoScan" :code="code" />
-    <lineScan ref="lineScan" :code="linecode" />
+    <lineScan
+      ref="lineScan"
+      :code="linecode"
+    />
     <svg viewBox="0 0 1698 851" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>氢氮系统</title>
       <desc>Created with Sketch.</desc>
@@ -1276,8 +1279,8 @@
               <text id="温度T1" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="13" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="0" y="16">温度T1</tspan>
               </text>
-              <text id="qd_nyzx_dlzf1_qdjq2_zd2_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="68" y="18">{{ datas.qd_nyzx_dlzf1_qdjq2_zd2_yxsj }}℃</tspan>
+              <text id="qd_nyzx_dlzf1_qdjq2_zd2_sbwd1" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="68" y="18">{{ datas.qd_nyzx_dlzf1_qdjq2_zd2_sbwd1 }}℃</tspan>
               </text>
             </g>
             <g id="b1制氮机数据" transform="translate(1091.000000, 602.000000)">
@@ -1994,7 +1997,7 @@
                 <tspan x="0" y="16">压力</tspan>
               </text>
               <text id="qd_nyzx_dlzf1_qdgg_yl1_yxyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="38" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_yl1_yxyl }}kpa</tspan>
+                <tspan x="38" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_yl1_yxyl }}kPa</tspan>
               </text>
             </g>
             <g id="2#压力传感器" transform="translate(1310.000000, 0.000000)">
@@ -2015,7 +2018,7 @@
                 <tspan x="0" y="16">压力</tspan>
               </text>
               <text id="qd_nyzx_dlzf1_qdgg_yl2_yxyl" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="38" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_yl2_yxyl }}kpa</tspan>
+                <tspan x="38" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_yl2_yxyl }}kPa</tspan>
               </text>
             </g>
             <g id="a1zqgz" :class="datas.qd_nyzx_dlzf1_qdjq1_zd1_gz?'gzclass':'noclass'" transform="translate(31.000000, 549.000000)">
@@ -2140,8 +2143,21 @@ export default {
     }
   },
   mounted() {
+    const self = this
     $('svg').svgPanZoom()
     this.getQingDan()
+    $('svg').click(function(e) {
+      debugger
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (linecode &&
+          linecode.indexOf('qd_nyzx_') !== -1 &&
+          linecode.indexOf('_yxzt') === -1 &&
+          linecode.indexOf('_kyjzt') === -1 &&
+          linecode.indexOf('_yxsj') === -1) {
+        self.$refs.lineScan.dialogTableVisible = true
+      }
+    })
   },
   methods: {
     showInfo(e) {
@@ -2155,9 +2171,19 @@ export default {
     getGuZhang(type) {
       return monitorapi.getGuZhang(type)
     },
+    getOrigin(id) {
+      if (!id) return
+      const box = document.getElementById(id + '_1').getBBox()
+      const x = box.x + (box.width / 2)
+      const y = box.y + (box.height / 2)
+      const a = x + 'px' + ' ' + y + 'px'
+      return '-webkit-transform-origin:' + a
+    },
+    getClass() {
+      return 'zhuanquan'
+    },
     getQingDan() {
       monitorapi.getQingDanData().then(res => {
-        debugger
         if (res.state === 1) {
           this.datas = res.data
         }
