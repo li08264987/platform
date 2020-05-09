@@ -403,7 +403,7 @@
                 <tspan x="51" y="17">{{ datas.zk_nyzx_cj2_zkjq5_zkj2_zkd }}kPa</tspan>
               </text>
             </g>
-            <g id="真空泵1" transform="translate(53.000000, 124.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb1" transform="translate(53.000000, 124.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -422,7 +422,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵2" transform="translate(315.000000, 124.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb2" transform="translate(315.000000, 124.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -441,7 +441,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵3" transform="translate(577.000000, 124.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb3" transform="translate(577.000000, 124.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -460,7 +460,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵4" transform="translate(839.000000, 124.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb4" transform="translate(839.000000, 124.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -479,7 +479,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵5" transform="translate(53.000000, 290.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb5" transform="translate(53.000000, 290.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -498,7 +498,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵6" transform="translate(315.000000, 290.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb6" transform="translate(315.000000, 290.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -517,7 +517,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵7" transform="translate(577.000000, 290.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb7" transform="translate(577.000000, 290.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -536,7 +536,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵8" transform="translate(839.000000, 290.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb8" transform="translate(839.000000, 290.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -555,7 +555,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵9" transform="translate(1101.000000, 290.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb9" transform="translate(1101.000000, 290.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -574,7 +574,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵10" transform="translate(53.000000, 456.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb10" transform="translate(53.000000, 456.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -593,7 +593,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵11" transform="translate(315.000000, 456.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb11" transform="translate(315.000000, 456.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -612,7 +612,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵12" transform="translate(577.000000, 456.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb12" transform="translate(577.000000, 456.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -631,7 +631,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵13" transform="translate(53.000000, 620.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb13" transform="translate(53.000000, 620.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -650,7 +650,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵14" transform="translate(315.000000, 620.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb14" transform="translate(315.000000, 620.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -669,7 +669,7 @@
                 </g>
               </g>
             </g>
-            <g id="真空泵15" transform="translate(577.000000, 620.500000)">
+            <g id="zk_nyzx_cj2_zkjq5_zkb010ppb15" transform="translate(577.000000, 620.500000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="42" y="4" width="38" height="23" rx="4" />
               <path id="矩形-copy" d="M46,4 L47,4 L47,27 L46,27 C43.790861,27 42,25.209139 42,23 L42,8 C42,5.790861 43.790861,4 46,4 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M39,10 L42,10 L42,20 L39,20 C37.8954305,20 37,19.1045695 37,18 L37,12 C37,10.8954305 37.8954305,10 39,10 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -1459,7 +1459,7 @@ export default {
   },
   methods: {
     showInfo(e) {
-      this.code = e.currentTarget.attributes.code.value
+      this.code = e.currentTarget.attributes.id.value
       this.$refs.infoScan.dialogTableVisible = true
     },
     showLine(e) {
