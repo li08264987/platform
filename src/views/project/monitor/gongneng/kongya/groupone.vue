@@ -458,7 +458,7 @@
                   <tspan x="92.7668869" y="108">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg1_ljyxsj }}h</tspan>
                 </text>
               </g>
-              <g id="4#螺杆空压机">
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg4" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.78" fill-opacity="0.128469187" fill="#E0E7FF" x="0.39" y="0.39" width="104.890656" height="81.4717539" rx="1.57248" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="105.3" height="82.2517539" rx="1.57248" />
                 <path id="矩形-copy-19" d="M1.57248,0 L31.98,0 L31.98,82 L1.57248,82 C0.704023277,82 9.81820192e-15,81.2959767 1.99840144e-15,80.42752 L0,1.57248 C-1.06355275e-16,0.704023277 0.704023277,-1.17273472e-15 1.57248,-1.33226763e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -569,7 +569,7 @@
                   <tspan x="77.7514797" y="78">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg3_jzpqyl }}kPa</tspan>
                 </text>
               </g>
-              <g id="2#螺杆空压机" transform="translate(563.000000, 0.000000)">
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg2" transform="translate(563.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.78" fill-opacity="0.128469187" fill="#E0E7FF" x="0.39" y="0.39" width="104.890656" height="81.4717539" rx="1.57248" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="105.3" height="82.2517539" rx="1.57248" />
                 <path id="矩形-copy-19" d="M1.57248,0 L31.98,0 L31.98,82.2517539 L1.57248,82.2517539 C0.704023277,82.2517539 2.32680132e-15,81.5477306 2.22044605e-15,80.6792739 L-2.22044605e-16,1.57248 C-3.2839988e-16,0.704023277 0.704023277,-9.50690113e-16 1.57248,-1.11022302e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -636,7 +636,7 @@
                   <tspan x="81.5518403" y="78">{{ datas.ky_nyzx_dlzf1_kyjq1_kylg4_jzpqyl }}kPa</tspan>
                 </text>
               </g>
-              <g id="3#螺杆空压机" transform="translate(282.000000, 0.000000)">
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg3" transform="translate(282.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.78" fill-opacity="0.128469187" fill="#E0E7FF" x="0.39" y="0.39" width="104.890656" height="81.4717539" rx="1.57248" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="105.3" height="82.2517539" rx="1.57248" />
                 <path id="矩形-copy-19" d="M1.57248,0 L31.98,0 L31.98,82.2517539 L1.57248,82.2517539 C0.704023277,82.2517539 2.32680132e-15,81.5477306 2.22044605e-15,80.6792739 L-2.22044605e-16,1.57248 C-3.2839988e-16,0.704023277 0.704023277,-9.50690113e-16 1.57248,-1.11022302e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -680,7 +680,7 @@
                   <tspan x="69.41142" y="23.01744">螺杆</tspan>
                 </text>
               </g>
-              <g id="1#螺杆空压机" transform="translate(845.000000, 0.000000)">
+              <g id="ky_nyzx_dlzf1_kyjq1_kylg1" transform="translate(845.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.78" fill-opacity="0.128469187" fill="#E0E7FF" x="0.39" y="0.39" width="104.890656" height="81.4717539" rx="1.57248" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="105.3" height="82.2517539" rx="1.57248" />
                 <path id="矩形-copy-19" d="M1.57248,0 L31.98,0 L31.98,82.2517539 L1.57248,82.2517539 C0.704023277,82.2517539 2.32680132e-15,81.5477306 2.22044605e-15,80.6792739 L-2.22044605e-16,1.57248 C-3.2839988e-16,0.704023277 0.704023277,-9.50690113e-16 1.57248,-1.11022302e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -771,7 +771,7 @@
             <text id="on2" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
               <tspan x="393.872356" y="222">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lt2_yxzt) }}</tspan>
             </text>
-            <g id="2#冷却塔" transform="translate(341.000000, 83.000000)">
+            <g id="ky_nyzx_dlzf1_kyjq1_lt2" transform="translate(341.000000, 83.000000)" @click="showInfo">
               <path id="矩形" d="M27.8396291,-4.4408921e-16 L81.8493852,-4.4408921e-16 C86.2676632,-5.17993288e-15 89.8493852,3.581722 89.8493852,8 L89.8493852,13.6247367 L19.8396291,13.6247367 L19.8396291,8 C19.8396291,3.581722 23.4213511,3.67535291e-16 27.8396291,-4.4408921e-16 Z" stroke="#586CB4" fill-opacity="0.2" fill="#586CB4" />
               <path id="矩形复制-48" d="M4.0301887,13.5154604 L105.658826,13.5154604 C107.885638,13.5154604 109.690826,15.3206483 109.690826,17.5474604 C109.690826,17.660351 109.686084,17.7731917 109.676615,17.8856844 L102.277406,105.781453 C102.101609,107.86976 100.35531,109.475229 98.2596174,109.475229 L11.4293969,109.475229 C9.33370382,109.475229 7.58740493,107.86976 7.41160789,105.781453 L0.0123996905,17.8856844 C-0.174396259,15.6667208 1.47300112,13.7164674 3.69196471,13.5296714 C3.80445738,13.5202016 3.91729814,13.5154604 4.0301887,13.5154604 Z" stroke="#586CB4" fill="#FFFFFF" />
               <g id="ky_nyzx_dlzf1_kyjq1_lt2_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(54.000000, 60.000000) rotate(-360.000000) translate(-54.000000, -60.000000) translate(7.000000, 13.000000)" fill="#586CB4">
@@ -835,7 +835,7 @@
             <text id="on1" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
               <tspan x="130.94218" y="222">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lt1_yxzt) }}</tspan>
             </text>
-            <g id="1#冷却塔" transform="translate(46.000000, 83.000000)">
+            <g id="ky_nyzx_dlzf1_kyjq1_lt1" transform="translate(46.000000, 83.000000)" @click="showInfo">
               <path id="矩形" d="M27.8396291,-4.4408921e-16 L81.8493852,-4.4408921e-16 C86.2676632,-5.17993288e-15 89.8493852,3.581722 89.8493852,8 L89.8493852,13.6247367 L19.8396291,13.6247367 L19.8396291,8 C19.8396291,3.581722 23.4213511,3.67535291e-16 27.8396291,-4.4408921e-16 Z" stroke="#586CB4" fill-opacity="0.2" fill="#586CB4" />
               <path id="矩形复制-48" d="M4.0301887,13.5154604 L105.658826,13.5154604 C107.885638,13.5154604 109.690826,15.3206483 109.690826,17.5474604 C109.690826,17.660351 109.686084,17.7731917 109.676615,17.8856844 L102.277406,105.781453 C102.101609,107.86976 100.35531,109.475229 98.2596174,109.475229 L11.4293969,109.475229 C9.33370382,109.475229 7.58740493,107.86976 7.41160789,105.781453 L0.0123996905,17.8856844 C-0.174396259,15.6667208 1.47300112,13.7164674 3.69196471,13.5296714 C3.80445738,13.5202016 3.91729814,13.5154604 4.0301887,13.5154604 Z" stroke="#586CB4" fill="#FFFFFF" />
               <g id="ky_nyzx_dlzf1_kyjq1_lt1_yxzt_1" xmlns="http://www.w3.org/2000/svg" transform="translate(54.000000, 60.000000) rotate(-360.000000) translate(-54.000000, -60.000000) translate(7.000000, 13.000000)" fill="#586CB4">
@@ -865,7 +865,7 @@
                   <tspan x="84.5988506" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lgj1_yxzt) }}</tspan>
                 </text>
               </g>
-              <g id="冷干机1" transform="translate(0.000000, 0.800000)">
+              <g id="ky_nyzx_dlzf1_kyjq1_lgj1" transform="translate(0.000000, 0.800000)" @click="showInfo">
                 <g id="分组-9" transform="translate(0.000000, 11.700000)">
                   <g id="分组-7" transform="translate(3.998700, 108.900000)">
                     <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -914,7 +914,7 @@
                   <tspan x="83.5290263" y="17">{{ datas.ky_nyzx_dlzf1_kyjq1_lgj2_yxzt==="1"?"ON":"OFF" }}</tspan>
                 </text>
               </g>
-              <g id="冷干机2" transform="translate(282.000000, 0.800000)">
+              <g id="ky_nyzx_dlzf1_kyjq1_lgj2" transform="translate(282.000000, 0.800000)" @click="showInfo">
                 <g id="分组-9" transform="translate(0.000000, 11.700000)">
                   <g id="分组-7" transform="translate(3.998700, 108.900000)">
                     <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -963,7 +963,7 @@
                   <tspan x="83.5290263" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lgj3_yxzt) }}</tspan>
                 </text>
               </g>
-              <g id="冷干机3" transform="translate(563.000000, 0.800000)">
+              <g id="ky_nyzx_dlzf1_kyjq1_lgj3" transform="translate(563.000000, 0.800000)" @click="showInfo">
                 <g id="分组-9" transform="translate(0.000000, 11.700000)">
                   <g id="分组-7" transform="translate(3.998700, 108.900000)">
                     <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -1012,7 +1012,7 @@
                   <tspan x="83.3820537" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lgj4_yxzt) }}</tspan>
                 </text>
               </g>
-              <g id="冷干机4" transform="translate(845.000000, 0.800000)">
+              <g id="ky_nyzx_dlzf1_kyjq1_lgj4" transform="translate(845.000000, 0.800000)" @click="showInfo">
                 <g id="分组-9" transform="translate(0.000000, 11.700000)">
                   <g id="分组-7" transform="translate(3.998700, 108.900000)">
                     <path id="矩形" d="M6.97979934,0.5 L2.925,0.5 C2.75826218,0.5 2.60901389,0.603429133 2.55046833,0.759550623 L0.525468329,6.15955062 C0.50862677,6.20446145 0.5,6.25203522 0.5,6.3 C0.5,6.5209139 0.6790861,6.7 0.9,6.7 L4.37759916,6.7 C4.54433698,6.7 4.69358527,6.59657087 4.75213083,6.44044938 L6.97979934,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -1497,7 +1497,7 @@
             <text id="on6" font-family="MicrosoftYaHeiUISemibold, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
               <tspan x="438.391848" y="346">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq1_lqb3_yxzt) }}</tspan>
             </text>
-            <g id="冷却泵1" transform="translate(89.000000, 428.000000)">
+            <g id="ky_nyzx_dlzf1_kyjq1_lqb1" transform="translate(89.000000, 428.000000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
               <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -1515,7 +1515,7 @@
               </g>
               <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
             </g>
-            <g id="冷却泵2" transform="translate(227.000000, 428.000000)">
+            <g id="ky_nyzx_dlzf1_kyjq1_lqb2" transform="translate(227.000000, 428.000000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
               <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -1533,7 +1533,7 @@
               </g>
               <polyline id="路径-206" stroke="#586CB4" points="24.0160251 52.72 93.0160251 52.72 93.0160251 46" />
             </g>
-            <g id="冷却泵3" transform="translate(365.000000, 428.000000)">
+            <g id="ky_nyzx_dlzf1_kyjq1_lqb3" transform="translate(365.000000, 428.000000)" @click="showInfo">
               <rect id="矩形" stroke="#586CB4" fill="#FFFFFF" x="26" y="0" width="76" height="46" rx="8" />
               <path id="矩形-copy" d="M34,0 L36,0 L36,46 L34,46 C29.581722,46 26,42.418278 26,38 L26,8 C26,3.581722 29.581722,8.11624501e-16 34,0 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
               <path id="矩形-copy-6" d="M20,12 L26,12 L26,32 L20,32 C17.790861,32 16,30.209139 16,28 L16,16 C16,13.790861 17.790861,12 20,12 Z" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" />
@@ -1929,6 +1929,10 @@ export default {
     })
   },
   methods: {
+    showInfo(e) {
+      this.code = e.currentTarget.attributes.id.value
+      this.$refs.infoScan.dialogTableVisible = true
+    },
     getGuZhang(type) {
       return monitorapi.getGuZhang(type)
     },

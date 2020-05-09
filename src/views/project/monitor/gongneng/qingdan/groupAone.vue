@@ -116,7 +116,7 @@
       <g id="工艺图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="氢氮系统_a1系统" transform="translate(-911.000000, -175.000000)">
           <g transform="translate(910.983485, 172.000000)">
-            <g id="氢气发生器" transform="translate(17.016515, 516.000000)">
+            <g id="qd_nyzx_dlzf1_qdjq1_zq1" transform="translate(17.016515, 516.000000)" @click="showInfo">
               <g>
                 <path id="矩形" d="M0.5,18.5 L0.5,80.5 L69.5,80.5 L69.5,18.5 L0.5,18.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
                 <path id="矩形-copy-8" d="M0.5,18.5 L0.5,80.5 L22.5,80.5 L22.5,18.5 L0.5,18.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
@@ -344,7 +344,7 @@
                 </g>
               </g>
             </g>
-            <g id="氮气发生器" transform="translate(180.016515, 599.000000)">
+            <g id="qd_nyzx_dlzf1_qdjq1_zd1" transform="translate(180.016515, 599.000000)" @click="showInfo">
               <g>
                 <path id="矩形-copy-28" d="M19.5,0.5 L19.5,80.5 L70.5,80.5 L70.5,0.5 L19.5,0.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
                 <polygon id="矩形-copy-31" fill="#5B72C3" opacity="0.195954244" points="66.6838884 77.0535129 66.6838884 0 71 0 71 81 19 81 19 77.0535129" />
@@ -650,7 +650,6 @@ export default {
       console.log(err)
     })
     $('svg').click(function(e) {
-      debugger
       var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
       self.linecode = linecode
       if (linecode &&
@@ -663,6 +662,10 @@ export default {
     })
   },
   methods: {
+    showInfo(e) {
+      this.code = e.currentTarget.attributes.id.value
+      this.$refs.infoScan.dialogTableVisible = true
+    },
     getGuZhang(type) {
       return monitorapi.getGuZhang(type)
     },
