@@ -52,9 +52,11 @@ export default {
   },
   watch: {
     code: function(newVal, oldVal) {
-      debugger
       const self = this
       self.devcode = newVal
+      if (/[\u4E00-\u9FA5]/g.test(newVal)) {
+        return
+      }
       monitorapi.getKYJLineChart({
         'code': newVal,
         'startDate': '',
@@ -80,6 +82,9 @@ export default {
           } else if (newVal.indexOf('_zkd') !== -1) {
             self.linedata.unit = 'kPa'
             self.linedata.legendName = '真空度'
+          } else if (newVal.indexOf('_ssgl') !== -1) {
+            self.linedata.unit = 'kw'
+            self.linedata.legendName = '功率'
           } else {
             self.linedata.unit = '℃'
             self.linedata.legendName = '温度'
@@ -92,14 +97,15 @@ export default {
   },
   mounted() {
     if (this.devcode !== '') {
-      debugger
       this.getKYJLineChart()
     }
   },
   methods: {
     getKYJLineChart() {
-      debugger
       var self = this
+      if (/[\u4E00-\u9FA5]/g.test(this.devcode)) {
+        return
+      }
       monitorapi.getKYJLineChart({
         'code': this.devcode,
         'startDate': this.dateValue[0],
@@ -124,6 +130,9 @@ export default {
           } else if (this.devcode.indexOf('_zkd') !== -1) {
             self.linedata.unit = 'kPa'
             self.linedata.legendName = '真空度'
+          } else if (this.devcode.indexOf('_ssgl') !== -1) {
+            self.linedata.unit = 'kw'
+            self.linedata.legendName = '功率'
           } else {
             self.linedata.unit = '℃'
             self.linedata.legendName = '温度'

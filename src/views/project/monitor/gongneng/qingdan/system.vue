@@ -1889,7 +1889,7 @@
               <g id="分组-10" transform="translate(0.000000, 6.698095)" />
               <path id="HN" d="M19.0140249,38 L17.3802358,38 L17.3802358,33.7480469 L12.765978,33.7480469 L12.765978,38 L11.1390249,38 L11.1390249,28.1972656 L12.765978,28.1972656 L12.765978,32.3193359 L17.3802358,32.3193359 L17.3802358,28.1972656 L19.0140249,28.1972656 L19.0140249,38 Z M29.800293,38 L28.0229492,38 L23.340332,30.7949219 C23.2218419,30.6126293 23.1238611,30.4235036 23.0463867,30.2275391 L23.0053711,30.2275391 C23.0418296,30.4371755 23.0600586,30.8860643 23.0600586,31.5742188 L23.0600586,38 L21.487793,38 L21.487793,28.1972656 L23.3813477,28.1972656 L27.9067383,35.2314453 C28.0981455,35.5231134 28.2211911,35.7236323 28.2758789,35.8330078 L28.3032227,35.8330078 C28.2576495,35.5732409 28.2348633,35.1334666 28.2348633,34.5136719 L28.2348633,28.1972656 L29.800293,28.1972656 L29.800293,38 Z" fill="#586CB4" fill-rule="nonzero" />
             </g>
-            <g id="氢气发生器" transform="translate(17.000000, 519.000000)">
+            <g id="qd_nyzx_dlzf1_qdjq1_zq1" transform="translate(17.000000, 519.000000)" @click="showInfo">
               <g>
                 <path id="矩形" d="M0.5,18.5 L0.5,80.5 L69.5,80.5 L69.5,18.5 L0.5,18.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
                 <path id="矩形-copy-8" d="M0.5,18.5 L0.5,80.5 L22.5,80.5 L22.5,18.5 L0.5,18.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
@@ -2147,7 +2147,6 @@ export default {
     $('svg').svgPanZoom()
     this.getQingDan()
     $('svg').click(function(e) {
-      debugger
       var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
       self.linecode = linecode
       if (linecode &&
@@ -2161,7 +2160,7 @@ export default {
   },
   methods: {
     showInfo(e) {
-      this.code = e.currentTarget.attributes.code.value
+      this.code = e.currentTarget.attributes.id.value
       this.$refs.infoScan.dialogTableVisible = true
     },
     showLine(e) {

@@ -823,7 +823,7 @@ export default {
       }
     },
     selectvalue2(val) {
-      this.getKongYaJi()
+      // this.getKongYaJi()
     }
   },
   mounted() {
