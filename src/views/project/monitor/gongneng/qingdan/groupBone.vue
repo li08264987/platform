@@ -117,7 +117,7 @@
         <g id="氢氮系统_b1系统" transform="translate(-911.000000, -175.000000)">
           <g transform="translate(910.983485, 172.000000)">
             <g id="分组-2" transform="translate(0.016515, 29.000000)">
-              <g id="氢气发生器" transform="translate(17.000000, 487.000000)">
+              <g id="qd_nyzx_dlzf1_qdjq3_zq3" transform="translate(17.000000, 487.000000)" @click="showInfo">
                 <g>
                   <path id="矩形" d="M0.5,18.5 L0.5,80.5 L69.5,80.5 L69.5,18.5 L0.5,18.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
                   <path id="矩形-copy-8" d="M0.5,18.5 L0.5,80.5 L22.5,80.5 L22.5,18.5 L0.5,18.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
@@ -345,7 +345,7 @@
                   </g>
                 </g>
               </g>
-              <g id="氮气发生器" transform="translate(180.000000, 570.000000)">
+              <g id="qd_nyzx_dlzf1_qdjq3_zd3" transform="translate(180.000000, 570.000000)" @click="showInfo">
                 <g>
                   <path id="矩形-copy-28" d="M19.5,0.5 L19.5,80.5 L70.5,80.5 L70.5,0.5 L19.5,0.5 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
                   <polygon id="矩形-copy-31" fill="#5B72C3" opacity="0.195954244" points="66.6838884 77.0535129 66.6838884 0 71 0 71 81 19 81 19 77.0535129" />
@@ -665,7 +665,7 @@ export default {
   },
   methods: {
     showInfo(e) {
-      this.code = e.currentTarget.attributes.code.value
+      this.code = e.currentTarget.attributes.id.value
       this.$refs.infoScan.dialogTableVisible = true
     },
     showLine(e) {

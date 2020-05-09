@@ -242,7 +242,7 @@
             <g id="箭头" transform="translate(361.000000, 202.000000) rotate(-180.000000) translate(-361.000000, -202.000000) translate(358.000000, 197.000000)" fill="#B13701" fill-rule="nonzero">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
-            <g id="冷干机-copy-17" transform="translate(588.000000, 486.000000)">
+            <g id="ky_nyzx_dlzf1_kyjq3_lgj9" transform="translate(588.000000, 486.000000)" @click="showInfo">
               <g id="分组-9" transform="translate(0.000000, 10.201389)">
                 <g id="分组-7" transform="translate(3.484706, 94.951389)">
                   <path id="矩形" d="M5.99000382,0.5 L2.3520534,0.5 L0.373917017,5.77777778 L4.01186743,5.77777778 L5.99000382,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -275,7 +275,7 @@
               <rect id="矩形" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" x="29.5" y="91.5277778" width="21" height="3.70833333" />
               <path id="路径" d="M62.245098,4.70833333 L17.754902,4.70833333 C17.4787596,4.70833333 17.254902,4.93219096 17.254902,5.20833333 L17.254902,10.9861111 L12.5490196,10.9861111 L12.5490196,1 C12.5490196,0.44771525 12.9967349,1.01453063e-16 13.5490196,0 L66.4509804,0 C67.0032651,-1.01453063e-16 67.4509804,0.44771525 67.4509804,1 L67.4509804,10.9861111 L62.745098,10.9861111 L62.745098,5.20833333 C62.745098,4.93219096 62.5212404,4.70833333 62.245098,4.70833333 Z" stroke="#586CB4" fill-opacity="0.128469187" fill="#E0E7FF" />
             </g>
-            <g id="冷干机-copy-17" transform="translate(842.000000, 487.569444)">
+            <g id="ky_nyzx_dlzf1_kyjq3_lgj10" transform="translate(842.000000, 487.569444)" @click="showInfo">
               <g id="分组-9" transform="translate(0.000000, 10.201389)">
                 <g id="分组-7" transform="translate(3.484706, 94.951389)">
                   <path id="矩形" d="M5.99000382,0.5 L2.3520534,0.5 L0.373917017,5.77777778 L4.01186743,5.77777778 L5.99000382,0.5 Z" stroke="#586DB7" fill="#FFFFFF" />
@@ -338,7 +338,7 @@
                 <tspan x="70.3614173" y="17">{{ getGuZhang(datas.ky_nyzx_dlzf1_kyjq3_kylg6_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="6#螺杆" transform="translate(640.000000, 0.000000)">
+            <g id="ky_nyzx_dlzf1_kyjq3_kylg6" transform="translate(640.000000, 0.000000)" @click="showInfo">
               <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="98.5281951" height="76.4250538" rx="1.2096" />
               <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="98.7804878" height="77.0250538" rx="1.2096" />
               <path id="矩形-copy-19" d="M1.2096,0 L30,0 L30,77.0250538 L1.2096,77.0250538 C0.541556367,77.0250538 1.85816859e-15,76.4834974 1.77635684e-15,75.8154538 L-2.22044605e-16,1.2096 C-3.03856355e-16,0.541556367 0.541556367,1.89907446e-15 1.2096,1.77635684e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -545,7 +545,7 @@ export default {
   },
   methods: {
     showInfo(e) {
-      this.code = e.currentTarget.attributes.code.value
+      this.code = e.currentTarget.attributes.id.value
       this.$refs.infoScan.dialogTableVisible = true
     },
     showLine(e) {
