@@ -32,8 +32,8 @@
           </div>
           <div style="margin-top:10px;display:flex">
             <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">查看说明书></span>
-            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">设备详情></span>
             <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">查看图纸></span>
+            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">设备详情></span>
           </div>
         </div>
       </div>

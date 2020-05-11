@@ -259,46 +259,6 @@
       </el-tabs>
     </div>
     <div v-if=" mainTabName==='first' && showright" class="rightparam" style="flex:1">
-      <div class="rblock">
-        <div class="rtitle">今日值班</div>
-        <div style="text-align:left;background:#EFEFFF;padding:5px 0px;">
-          <div v-if="duties.length>0">
-            <span v-for="(item,index) in duties" :key="index">
-              {{ item.REAL_NAME }}({{ item.DUTY_TYPE===0?'早班':item.DUTY_TYPE===1?'午班':'晚班' }}) <span v-if="index!=(duties.length-1)">、</span>
-            </span>
-
-          </div>
-          <div v-else>今日暂无值班</div>
-        </div>
-      </div>
-      <div class="rblock">
-        <div class="rtitle">能效总览</div>
-        <div style="display:flex;justify-content: space-between">
-          <div class="xhdiv" style="color:#192EB6">
-            <div>气体产量</div>
-            <div style="padding-top: 5px;"><span class="number">{{ qihao }}</span><span>m³/h</span></div>
-          </div>
-          <div class="xhdiv" style="color:#005AFF">
-
-            <div>电力消耗</div>
-            <div style="padding-top: 5px;"><span class="number">{{ dianli }}</span><span>kWh</span></div>
-          </div>
-          <div class="xhdiv" style="color:#F56B35">
-            <div>单耗</div>
-            <div style="padding-top: 5px;"><span class="number">{{ danhao }}</span><span>kWh/m³/h</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="rblock">
-        <div class="rtitle">能效评分</div>
-        <el-rate
-          v-model="pjvalue"
-          show-text
-          disabled
-          :texts="pjtexts"
-          style="text-align: left;"
-        />
-      </div>
       <div v-if="mainTabName!=='third'" class="rblock">
         <div class="rtitle">供能概览</div>
         <el-tabs v-model="gyActiveName">
@@ -404,6 +364,75 @@
           </el-tab-pane>
         </el-tabs>
       </div>
+      <div v-if="mainTabName!=='third'" class="rblock">
+        <div class="rtitle">电耗占比</div>
+        <div style="display:flex">
+          <div style="flex:2;height:135px;position:relative">
+            <pie-chart :chart-data="piedata" />
+            <div style="position:absolute;left:50%;width:86px;height:42px;top:50%;margin-left:-43px;margin-top:-21px;margin-top:-10px;">
+              <div style="font-size:18px;"><span class="number">{{ sumdianhao }}</span>kWh</div>
+              <div style="font-size:13px;">总电耗</div>
+            </div>
+          </div>
+          <div style="flex:4;height:135px">
+            <div class="rtitle2" style="border-left-color:#2853FF">
+              <span>空压机组</span><span><label>{{ piedata.data[0].value }}</label>kWh</span>同比<label>{{ tbky }}</label>%
+            </div>
+            <div class="rtitle2" style="border-left-color:#BDF6B4">
+              <span>冷却塔组</span><span><label>{{ piedata.data[1].value }}</label>kWh</span>同比<label>{{ tblt }}</label>%
+            </div>
+            <div class="rtitle2" style="border-left-color:#B860F3">
+              <span>冷却泵组</span><span><label>{{ piedata.data[2].value }}</label>kWh</span>同比<label>{{ tblqb }}</label>%
+            </div>
+            <div class="rtitle2" style="border-left-color:#F588E3">
+              <span>冷干机组</span><span><label>{{ piedata.data[3].value }}</label>kWh</span>同比<label>{{ tblgj }}</label>%
+            </div>
+            <div class="rtitle2" style="border-left-color:#5CF0F2">
+              <span>其他</span><span><label>{{ piedata.data[4].value }}</label>kWh</span>同比<label>{{ tbqt }}</label>%
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rblock">
+        <div class="rtitle">能效总览</div>
+        <div style="display:flex;justify-content: space-between">
+          <div class="xhdiv" style="color:#192EB6">
+            <div>气体产量</div>
+            <div style="padding-top: 5px;"><span class="number">{{ qihao }}</span><span>m³/h</span></div>
+          </div>
+          <div class="xhdiv" style="color:#005AFF">
+
+            <div>电力消耗</div>
+            <div style="padding-top: 5px;"><span class="number">{{ dianli }}</span><span>kWh</span></div>
+          </div>
+          <div class="xhdiv" style="color:#F56B35">
+            <div>单耗</div>
+            <div style="padding-top: 5px;"><span class="number">{{ danhao }}</span><span>kWh/m³/h</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="rblock">
+        <div class="rtitle">能效评分</div>
+        <el-rate
+          v-model="pjvalue"
+          show-text
+          disabled
+          :texts="pjtexts"
+          style="text-align: left;"
+        />
+      </div>
+      <div class="rblock">
+        <div class="rtitle">今日值班</div>
+        <div style="text-align:left;background:#EFEFFF;padding:5px 0px;">
+          <div v-if="duties.length>0">
+            <span v-for="(item,index) in duties" :key="index">
+              {{ item.REAL_NAME }}({{ item.DUTY_TYPE===0?'早班':item.DUTY_TYPE===1?'午班':'晚班' }}) <span v-if="index!=(duties.length-1)">、</span>
+            </span>
+
+          </div>
+          <div v-else>今日暂无值班</div>
+        </div>
+      </div>
       <div v-if="mainTabName==='third'" class="rblock">
         <div class="rtitle">空压机面板数据</div>
         <div class="rightzl">
@@ -454,35 +483,6 @@
           <div class="itemdiv">
             <div class="namediv">运行状态</div>
             <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;" /></div>
-          </div>
-        </div>
-      </div>
-      <div v-if="mainTabName!=='third'" class="rblock">
-        <div class="rtitle">电耗占比</div>
-        <div style="display:flex">
-          <div style="flex:2;height:135px;position:relative">
-            <pie-chart :chart-data="piedata" />
-            <div style="position:absolute;left:50%;width:86px;height:42px;top:50%;margin-left:-43px;margin-top:-21px;margin-top:-10px;">
-              <div style="font-size:18px;"><span class="number">{{ sumdianhao }}</span>kWh</div>
-              <div style="font-size:13px;">总电耗</div>
-            </div>
-          </div>
-          <div style="flex:4;height:135px">
-            <div class="rtitle2" style="border-left-color:#2853FF">
-              <span>空压机组</span><span><label>{{ piedata.data[0].value }}</label>kWh</span>同比<label>{{ tbky }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#BDF6B4">
-              <span>冷却塔组</span><span><label>{{ piedata.data[1].value }}</label>kWh</span>同比<label>{{ tblt }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#B860F3">
-              <span>冷却泵组</span><span><label>{{ piedata.data[2].value }}</label>kWh</span>同比<label>{{ tblqb }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#F588E3">
-              <span>冷干机组</span><span><label>{{ piedata.data[3].value }}</label>kWh</span>同比<label>{{ tblgj }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#5CF0F2">
-              <span>其他</span><span><label>{{ piedata.data[4].value }}</label>kWh</span>同比<label>{{ tbqt }}</label>%
-            </div>
           </div>
         </div>
       </div>
