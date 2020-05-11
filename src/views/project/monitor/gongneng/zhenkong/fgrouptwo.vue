@@ -1292,6 +1292,7 @@ export default {
       var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
       self.linecode = linecode
       if (linecode &&
+          linecode.split('_').length === 6 &&
           linecode.indexOf('zk_nyzx') !== -1 &&
           linecode.indexOf('_yxzt') === -1 &&
           linecode.indexOf('_kyjzt') === -1 &&

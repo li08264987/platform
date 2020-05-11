@@ -836,7 +836,7 @@
                 stroke-width="0.96"
                 fill-opacity="0.0795454545"
                 fill="#8A9FF4"
-                x="63.48"
+                x="83.48"
                 y="90.48"
                 width="71.04"
                 height="23.04"
@@ -849,23 +849,23 @@
                 stroke-width="0.96"
                 fill-opacity="0.0795454545"
                 fill="#8A9FF4"
-                x="63.48"
+                x="83.48"
                 y="60.48"
                 width="71.04"
                 height="23.04"
                 rx="2"
               />
               <text id="运行时间" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="13" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="106">运行时间</tspan>
+                <tspan x="20" y="106">运行时间</tspan>
               </text>
               <text id="运行状态" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="13" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="76">运行状态</tspan>
+                <tspan x="20" y="76">运行状态</tspan>
               </text>
               <text id="zk_nyzx_cj1_zkjq1_lt2_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="68" y="107">{{ datas.zk_nyzx_cj1_zkjq3_lt2_yxsj }}h</tspan>
+                <tspan x="88" y="107">{{ datas.zk_nyzx_cj1_zkjq3_lt2_yxsj }}h</tspan>
               </text>
               <text id="zk_nyzx_cj1_zkjq3_lt2_yxzt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="68" y="77">{{ getGuZhang(datas.zk_nyzx_cj1_zkjq3_lt2_yxzt) }}</tspan>
+                <tspan x="88" y="77">{{ getGuZhang(datas.zk_nyzx_cj1_zkjq3_lt2_yxzt) }}</tspan>
               </text>
               <rect
                 id="Rectangle-4-Copy-7复制-33"
@@ -874,17 +874,17 @@
                 stroke-width="0.96"
                 fill-opacity="0.0795454545"
                 fill="#8A9FF4"
-                x="63.48"
+                x="83.48"
                 y="30.48"
                 width="71.04"
                 height="23.04"
                 rx="2"
               />
               <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="13" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="46">出水温度</tspan>
+                <tspan x="20" y="46">出水温度</tspan>
               </text>
               <text id="zk_nyzx_cj1_zkjq3_cswd010ltz1_cswd" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="68" y="47">{{ datas.zk_nyzx_cj1_zkjq3_cswd010ltz1_cswd }}℃</tspan>
+                <tspan x="88" y="47">{{ datas.zk_nyzx_cj1_zkjq3_cswd010ltz1_cswd }}℃</tspan>
               </text>
               <rect
                 id="Rectangle-4-Copy-7复制-34"
@@ -893,17 +893,17 @@
                 stroke-width="0.96"
                 fill-opacity="0.0795454545"
                 fill="#8A9FF4"
-                x="63.48"
+                x="83.48"
                 y="0.48"
                 width="71.04"
                 height="23.04"
                 rx="2"
               />
               <text id="进水温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="13" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="16">进水温度</tspan>
+                <tspan x="20" y="16">进水温度</tspan>
               </text>
               <text id="zk_nyzx_cj1_zkjq3_jswd010ltz1_jswd" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="68" y="18">{{ datas.zk_nyzx_cj1_zkjq3_jswd010ltz1_jswd }}℃</tspan>
+                <tspan x="88" y="18">{{ datas.zk_nyzx_cj1_zkjq3_jswd010ltz1_jswd }}℃</tspan>
               </text>
             </g>
             <g id="zk_nyzx_cj1_zkjq3_lqb1" transform="translate(943.000000, 443.000000)" @click="showInfo">
@@ -1174,7 +1174,9 @@ export default {
     $('svg').click(function(e) {
       var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
       self.linecode = linecode
+      debugger
       if (linecode &&
+          linecode.split('_').length === 6 &&
           linecode.indexOf('zk_nyzx_') !== -1 &&
           linecode.indexOf('_yxzt') === -1 &&
           linecode.indexOf('_kyjzt') === -1 &&
