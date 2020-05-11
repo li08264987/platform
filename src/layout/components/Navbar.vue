@@ -130,9 +130,18 @@ export default {
       this.$store.dispatch('app/toggleSideBar')
     },
     tabChange(i, v) {
-      this.active = i
-      this.currentView = v
-      this.onUpdate(v)
+      if (v === 'Device' || v === 'Smart') {
+        this.$notify({
+          title: '提示',
+          message: '该模块上线中',
+          type: 'warning',
+          duration: 1000
+        })
+      } else {
+        this.active = i
+        this.currentView = v
+        this.onUpdate(v)
+      }
     },
     async handleLogOut() {
       await this.$store.dispatch('user/logout')
