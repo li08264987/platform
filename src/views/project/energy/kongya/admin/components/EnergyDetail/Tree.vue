@@ -36,7 +36,7 @@
 
 <script>
 import OrganizationChart from 'vue-organization-chart'
-import 'vue-organization-chart/dist/orgchart.css'
+
 import { getEnergyTreeData } from '@/api/energy/statis'
 export default {
   components: {
@@ -134,68 +134,6 @@ export default {
 </script>
 
 <style lang="scss">
-  .org-chart-container {
-    width: 100%;
-    height: 100%;
-  }
-  .orgchart-container {
-    height: unset;
-    width: unset;
-    border: none;
-  }
-  .orgchart {
-    background-image: none;
-  }
-  .orgchart .node{
-    width: unset;
-  }
-  .orgchart .node .title {
-    font-size: 16px;
-    height: unset;
-    line-height: unset;
-    background-color: rgba(138, 159, 244, 0.08);
-    border: 1px solid rgba(138,159,244,0.29);
-    color: rgba(65, 72, 93, 1);
-    border-radius: 4px 4px 4px 4px;
-    word-wrap: break-word;
-    word-break: break-all;
-    width: 24px;
-    white-space: normal;
-    padding: 6px 0;
-    cursor: pointer;
-  }
-  .orgchart .node .content {
-    display: none;
-  }
-  .orgchart .lines .downLine {
-    background-color: #C5CAD5;
-  }
-  .orgchart .lines .leftLine {
-    border-left: 1px solid #C5CAD5;
-  }
-  .orgchart .lines .topLine {
-    border-top: 2px solid #C5CAD5;
-  }
-  .orgchart .lines .rightLine {
-    border-right: 1px solid #C5CAD5;
-  }
-  .orgchart .node {
-    cursor: default;
-  }
-  .orgchart .node.focused,
-  .orgchart .node:hover {
-    background-color: rgba(0,0,0,0) !important;
-    cursor: pointer;
-  }
-  .orgchart .node .title.active,
-  .orgchart .node .title:hover,
-  .orgchart .node .title:active,
-  .orgchart .node .title:focus {
-    color: rgba(17, 26, 52, 1);
-    border-color: #2857FF;
-    background-color: rgba(138, 159, 244, 0.3);
-  }
-
   .org-chart-node-detail {
     position: absolute;
     min-width: 200px;

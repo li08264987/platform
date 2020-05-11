@@ -12,14 +12,12 @@
 <script>
 import energyStatis from './components/EnergyStatis'
 import energyDetail from './components/EnergyDetail'
-import energyMain from './components/EnergyMain'
 
 export default {
   name: 'EnergyKY',
   components: {
     energyStatis,
-    energyDetail,
-    energyMain
+    energyDetail
   },
   data() {
     return {
@@ -29,9 +27,6 @@ export default {
       }, {
         name: 'energyDetail',
         title: '能耗详情'
-      }, {
-        name: 'energyMain',
-        title: '运行主机数据'
       }],
       tabIndex: 0,
       currentView: 'energyStatis'
