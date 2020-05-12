@@ -63,7 +63,7 @@ export default {
       this.setOptions(this.chartData)
     },
     setOptions(chartData) {
-      if (chartData) {
+      if (this.chart && chartData && chartData.length > 0) {
         var series = []; var legendData = []; var xAxisData = []
         for (var ii = 0; ii < chartData.length; ii++) {
           var sData = []

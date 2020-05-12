@@ -55,3 +55,11 @@ export function getEnergyTreeTableData(query) {
     params: query
   })
 }
+
+export function getEffectOrderData(query) {
+  return request({
+    url: '/energy/statis/getEffectOrderData',
+    method: 'post',
+    params: query
+  })
+}

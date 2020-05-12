@@ -23,25 +23,39 @@ export default {
       orgData: {},
       detailData: [{
         name: '耗电量',
-        value: '3983.2 kW·h'
+        code: 'elec',
+        value: 0,
+        unit: 'kW·h'
       }, {
         name: '起始读数',
-        value: '186125.5 kW·h'
+        code: 'zeroElec',
+        value: 0,
+        unit: 'kW·h'
       }, {
         name: '截止读数',
-        value: '190108.7 kW·h'
+        code: 'currElec',
+        value: 0,
+        unit: 'kW·h'
       }, {
         name: '产气量',
-        value: '324 m³'
+        code: 'gas',
+        value: 0,
+        unit: 'm³'
       }, {
         name: '起始读数',
-        value: '21452 m³'
+        code: 'zeroGas',
+        value: 0,
+        unit: 'm³'
       }, {
         name: '截止读数',
-        value: '21776 m³'
+        code: 'currGas',
+        value: 0,
+        unit: 'm³'
       }, {
         name: '能效',
-        value: '1.9 kW·h/m³▪min'
+        code: 'affcity',
+        value: 0,
+        unit: 'kW·h/m³▪min'
       }]
     }
   },
@@ -79,7 +93,7 @@ export default {
               $(this).addClass('active')
               $(this).siblings('.org-chart-node-detail').show()
               $(this).siblings('.org-chart-node-detail').html('<div class="el-loading-mask" style=""><div class="el-loading-spinner"><svg viewBox="25 25 50 50" class="circular"><circle cx="50" cy="50" r="20" fill="none" class="path"></circle></svg><!----></div></div>')
-              $this.createNodeDetail($(this).siblings('.org-chart-node-detail'), data)
+              $this.createNodeDetail($(this).siblings('.org-chart-node-detail'), data.name, data.nodeData, data.level)
             } else {
               $(this).siblings('.org-chart-node-detail').hide()
               $(this).removeClass('active')
@@ -110,38 +124,48 @@ export default {
       var offsetX = $('#chart-container').width() / 2 - $('.orgchart.energy-detail-tree').width() / 2
       $('.orgchart.energy-detail-tree').css('transform', 'matrix(1, 0, 0, 1, ' + offsetX + ', 0)')
     },
-    createNodeDetail($dom, data) {
-      var $this = this
-      var title = '<div class="org-chart-node-detail-title">' + data.name + '<i class="el-icon-close"></i></div>'
-      var items = ''
-      for (var i = 0; i < this.detailData.length; i++) {
-        items += ('<div class="org-chart-node-detail-item"><span class="org-chart-node-detail-name">' + this.detailData[i].name + '</span><span class="org-chart-node-detail-value">' + this.detailData[i].value + '</span></div>')
-      }
-      $dom.html(title + items)
-      $dom.find('.el-icon-close').click(function(evt) {
+    createNodeDetail($dom, name, data, level) {
+      if (level < 6) {
+        var $this = this
+        data.affcity = 0
+        if (data.gas !== 0) data.affcity = data.elec / data.gas
+        for (var i = 0; i < this.detailData.length; i++) {
+          this.detailData[i].value = Math.round(data[this.detailData[i].code] * 1000) / 1000.0
+        }
+        var title = '<div class="org-chart-node-detail-title">' + name + '<i class="el-icon-close"></i></div>'
+        var items = ''
+        for (i = 0; i < this.detailData.length; i++) {
+          items += ('<div class="org-chart-node-detail-item"><span class="org-chart-node-detail-name">' + this.detailData[i].name + '</span><span class="org-chart-node-detail-value">' + this.detailData[i].value + ' ' + this.detailData[i].unit + '</span></div>')
+        }
+        $dom.html(title + items)
+        $dom.find('.el-icon-close').click(function(evt) {
+          $dom.siblings('.title').removeClass('active')
+          $dom.hide()
+        })
+        $dom.find('.org-chart-node-detail-title').on('mousedown', function(evt) {
+          $this.detailDragging = true
+        })
+        $dom.find('.org-chart-node-detail-title').on('mouseup', function(evt) {
+          $this.detailDragging = false
+        })
+        $dom.find('.org-chart-node-detail-title').on('mouseout', function(evt) {
+          $this.detailDragging = false
+        })
+        $dom.find('.org-chart-node-detail-title').on('mousemove', function(evt) {
+          var evt1 = evt.originalEvent
+          var nowDeg = $dom.parents('.orgchart.energy-detail-tree').css('transform')
+          var values = nowDeg.split('(')[1].split(')')[0].split(',')
+          var a = Math.round(parseFloat(values[0]) * 10) / 10.0
+          if ($this.detailDragging && (evt1.movementX !== 0 || evt1.movementY !== 0)) {
+            $dom.css('top', (parseInt($dom.css('top')) + evt1.movementY * 1.0 / (a * 1.0)) + 'px')
+            $dom.css('left', (parseInt($dom.css('left')) + evt1.movementX * 1.0 / (a * 1.0)) + 'px')
+          }
+          return false
+        })
+      } else {
         $dom.siblings('.title').removeClass('active')
         $dom.hide()
-      })
-      $dom.find('.org-chart-node-detail-title').on('mousedown', function(evt) {
-        $this.detailDragging = true
-      })
-      $dom.find('.org-chart-node-detail-title').on('mouseup', function(evt) {
-        $this.detailDragging = false
-      })
-      $dom.find('.org-chart-node-detail-title').on('mouseout', function(evt) {
-        $this.detailDragging = false
-      })
-      $dom.find('.org-chart-node-detail-title').on('mousemove', function(evt) {
-        var evt1 = evt.originalEvent
-        var nowDeg = $dom.parents('.orgchart.energy-detail-tree').css('transform')
-        var values = nowDeg.split('(')[1].split(')')[0].split(',')
-        var a = Math.round(parseFloat(values[0]) * 10) / 10.0
-        if ($this.detailDragging && (evt1.movementX !== 0 || evt1.movementY !== 0)) {
-          $dom.css('top', (parseInt($dom.css('top')) + evt1.movementY * 1.0 / (a * 1.0)) + 'px')
-          $dom.css('left', (parseInt($dom.css('left')) + evt1.movementX * 1.0 / (a * 1.0)) + 'px')
-        }
-        return false
-      })
+      }
     }
   }
 }
