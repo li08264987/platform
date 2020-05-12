@@ -14,7 +14,7 @@
               <div class="text">B组压力(bar):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -33,7 +33,7 @@
               <div class="text">2#压力(bar):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -52,7 +52,7 @@
               <div class="text">2#压力(bar):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -73,7 +73,7 @@
               <div class="text">2#压力(bar):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -91,7 +91,7 @@
               <div class="text">2#压力(bar):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />

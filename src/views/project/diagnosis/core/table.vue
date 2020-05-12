@@ -215,6 +215,7 @@ export default {
     refreshPageRequest: function(pageNum) {
       this.pageRequest.pageNum = pageNum
       this.findPage()
+      this.findDealingPage()
     },
     findPage: function() {
       this.loading = true
@@ -222,6 +223,13 @@ export default {
         this.loading = false
       }
       this.$emit('findPage', { pageRequest: this.pageRequest, callback: callback })
+    },
+    findDealingPage: function() {
+      this.loading = true
+      const callback = res => {
+        this.loading = false
+      }
+      this.$emit('findDealingPage', { pageRequest: this.pageRequest, callback: callback })
     },
     selectionChange: function(selections) {
       this.selections = selections

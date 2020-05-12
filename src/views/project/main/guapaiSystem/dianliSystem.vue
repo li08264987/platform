@@ -10,7 +10,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -25,7 +25,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -40,7 +40,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -57,7 +57,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -71,7 +71,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -85,7 +85,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
