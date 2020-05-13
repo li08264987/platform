@@ -3770,7 +3770,7 @@
               <tspan x="925" y="691.405369">至A2制氧</tspan>
             </text>
             <text id="至b1/b2制氧" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="13" font-weight="normal" letter-spacing="0.05000004" fill="#3D5278">
-              <tspan x="930" y="749.405369">至B1/B2制氧</tspan>
+              <tspan x="905" y="749.405369">至B1/B2制氧</tspan>
             </text>
             <text id="至3/4栋常压" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="13" font-weight="normal" letter-spacing="0.05000004" fill="#3D5278">
               <tspan x="1564" y="762.405369">至3/4栋常压</tspan>
@@ -3874,22 +3874,6 @@
               </text>
               <text id="0.0kPa" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278" code="ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl" @click="showLine">
                 <tspan x="280.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl }}kPa</tspan>
-              </text>
-            </g>
-            <g id="分组-4-copy-3复制" transform="translate(701.000000, 720.000000)">
-              <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="0.48" width="71.04" height="23.04" />
-              <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="152.48" y="0.48" width="71.04" height="23.04" />
-              <text id="温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="0" y="22">温度</tspan>
-              </text>
-              <text id="流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="118" y="22">流量</tspan>
-              </text>
-              <text id="36℃" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="55.8723557" y="18">36℃</tspan>
-              </text>
-              <text id="0.43m³/h" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="159.664986" y="17">0.43m³/h</tspan>
               </text>
             </g>
             <g id="箭头" transform="translate(242.706866, 263.374637) scale(1, -1) translate(-242.706866, -263.374637) translate(239.706866, 258.374637)" fill="#B13701" fill-rule="nonzero">
@@ -4272,8 +4256,8 @@
   </div>
 </template>
 <script>
-import infoScan from '@/views/project/monitor/infoScan'
-import lineScan from '@/views/project/monitor/lineScan'
+import infoScan from '@/views/project/dataentry/dataInput'
+import lineScan from '@/views/project/dataentry/lineScan'
 import $ from 'jquery'
 import '@/api/monitor/svgtool'
 export default {
@@ -4325,6 +4309,7 @@ export default {
   },
   methods: {
     showInfo(e) {
+      debugger
       this.code = e.currentTarget.attributes.code.value
       this.$refs.infoScan.dialogTableVisible = true
     },

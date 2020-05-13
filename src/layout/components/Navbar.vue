@@ -84,7 +84,7 @@ export default {
         },
         {
           type: '数据录入',
-          view: 'Maintenance'
+          view: 'DataEntry'
         },
         {
           type: '设备管理',
@@ -249,7 +249,7 @@ export default {
 .PlatSetting{
   background-image: url("../../assets/tittle/setting.png");
 }
-.Maintenance{
+.DataEntry{
   background-image: url("../../assets/tittle/maintenance.png");
 }
 .tab-ul .tab-li {
