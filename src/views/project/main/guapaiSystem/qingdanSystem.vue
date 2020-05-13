@@ -194,8 +194,8 @@ export default {
         width: 27vw;
        .donglizhan{
            position: relative;
-          top: 2vw;
-          left: 5.7vw;
+          top: 5vw;
+          left: 8.05vw;
        }
        .yidong{
            position: relative;

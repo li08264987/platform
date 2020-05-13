@@ -191,8 +191,8 @@ export default {
         width: 0;
        .jiaoshuichang{
            position: relative;
-           top: 6vw;
-           left: 8vw;
+           top: 5vw;
+           left: 18vw;
        }
        .sidong{
            position: relative;
