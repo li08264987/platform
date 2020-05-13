@@ -22,7 +22,7 @@
               <div class="text">1-4真空度(kPa):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -41,7 +41,7 @@
               <div class="text">2-1真空度(bar):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -62,7 +62,7 @@
               <div class="text">2真空度(bar):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -191,8 +191,8 @@ export default {
         width: 0;
        .jiaoshuichang{
            position: relative;
-           top: 6vw;
-           left: 8vw;
+           top: 5vw;
+           left: 18vw;
        }
        .sidong{
            position: relative;

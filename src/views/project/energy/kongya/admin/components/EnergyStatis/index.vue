@@ -1,7 +1,7 @@
 <template>
   <el-container style="height: 100%;">
     <el-main style="height: 100%; padding: 0; background-color: white;">
-      <el-row :gutter="0" :type="'flex'" style="height: 100%;">
+      <el-row :gutter="0" :type="'flex'" style="height: calc(100% - 50px);">
         <el-col :span="16" class="right-dash-boeder-el-col">
           <div class="left-container">
             <div class="left-container-top">
@@ -10,13 +10,13 @@
                   <div class="progress-chart-title"><span> {{ progressData[key].title }} </span></div>
                   <div class="progress-chart-bar nenghaojindu">
                     <div class="progress-label">
-                      <span class="progress-label-value">{{ progressData[key].used }}</span>
+                      <span class="progress-label-value">{{ Math.round(progressData[key].used*100)/100.0 }}</span>
                       <span class="progress-label-text">/</span>
-                      <span class="progress-label-total">{{ progressData[key].total }}</span>
+                      <span class="progress-label-total">{{ Math.round(progressData[key].total*100.0)/100.0 }}</span>
                       <span class="progress-label-text">({{ progressData[key].unit }})</span>
                     </div>
                     <el-progress
-                      :percentage="(progressData[key].total && progressData[key].total!==0)?Math.round(progressData[key].used/progressData[key].total*100):0"
+                      :percentage="((progressData[key].total && progressData[key].total!==0)?Math.round(progressData[key].used/progressData[key].total*100):0)>100?100:((progressData[key].total && progressData[key].total!==0)?Math.round(progressData[key].used/progressData[key].total*100):0)"
                       :stroke-width="15"
                       :show-text="false"
                       :class="['energy-statis-nenghao-pragress', key]"
@@ -25,31 +25,21 @@
                 </div>
               </div>
               <div class="percent-chart-container">
-                <div class="chart-container">
-                  <div class="chart-title"><span>机组电耗统计图</span></div>
-                  <div class="chart-main">
-                    <div v-loading="compareDataLoading" class="chart-main-container">
-                      <pie-chart :chart-data="compareData" />
-                    </div>
-                    <div class="chart-main-lengend">
-                      <div style="width: 100%; overflow: auto;">
-                        <div v-for="(item,index) in compareData.data" :key="index" class="chart-main-lengend-item">
-                          <span class="chart-main-lengend-item-color" :style="{backgroundColor:compareData.colors[index]}" />
-                          <span class="chart-main-lengend-item-label">{{ item.name }}</span>
-                        </div>
-                      </div>
-                    </div>
+                <div class="dong-li-zhan-chart">
+                  <div class="chart-title"><span>设备能耗占比</span></div>
+                  <div v-loading="dongliStationDataLoading" class="chart-main">
+                    <full-pie-chart :chart-data="dongliStationData" />
                   </div>
                 </div>
               </div>
             </div>
             <div class="left-container-bottom">
-              <div class="chart-container">
+              <div class="chart-container left-container">
                 <div class="chart-title"><span>电耗曲线图</span></div>
                 <div class="chart-main" style="flex-direction: column; position: relative; width: 100%;">
                   <div class="title-bar">
-                    <el-form ref="form" :model="lineChartSearchForm" label-width="120px" class="search-form">
-                      <el-form-item label="选择时间段">
+                    <el-form ref="form" :model="lineChartSearchForm" label-width="0px" class="search-form">
+                      <el-form-item label="">
                         <el-date-picker
                           v-model="lineChartSearchForm.value"
                           type="datetimerange"
@@ -68,15 +58,65 @@
                   </div>
                 </div>
               </div>
+              <div class="chart-container right-container">
+                <div class="chart-title"><span>机组能耗排名</span></div>
+                <div class="chart-main">
+                  <el-table
+                    v-loading="effectOrderDataLoading"
+                    :data="effectOrderData"
+                    header-row-class-name="table-header"
+                    style="width: 100%; overflow-y: auto;"
+                  >
+                    <el-table-column
+                      prop="name"
+                      label="名称"
+                    />
+                    <el-table-column
+                      prop="effect"
+                      label="能效值 "
+                    />
+                    <el-table-column
+                      prop="effectOrder"
+                      label="能效排名"
+                    />
+                    <el-table-column
+                      prop="elec"
+                      label="电耗"
+                    />
+                    <el-table-column
+                      prop="elecOrder"
+                      label="电耗排名"
+                    />
+                    <el-table-column
+                      prop="gas"
+                      label="产气量"
+                    />
+                    <el-table-column
+                      prop="gasOrder"
+                      label="产气排名"
+                    />
+                  </el-table>
+                </div>
+              </div>
             </div>
           </div>
         </el-col>
         <el-col :span="8">
           <div class="right-container">
-            <div class="dong-li-zhan-chart">
-              <div class="chart-title"><span>机组能耗占比</span></div>
-              <div v-loading="dongliStationDataLoading" class="chart-main">
-                <full-pie-chart :chart-data="dongliStationData" />
+            <div class="chart-container ji-zu-energy">
+              <div class="chart-title"><span>机组电耗统计图</span></div>
+              <div class="chart-main">
+                <div v-loading="compareDataLoading" class="chart-main-container">
+                  <pie-chart :chart-data="compareData" />
+                </div>
+                <div class="chart-main-lengend">
+                  <div style="width: 100%; overflow: auto;">
+                    <div v-for="(item,index) in compareData.data" :key="index" class="chart-main-lengend-item">
+                      <span class="chart-main-lengend-item-color" :style="{backgroundColor:compareData.colors[index]}" />
+                      <span class="chart-main-lengend-item-label">{{ item.name }}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="neng-hao-charts">
@@ -86,7 +126,7 @@
                 <div class="chart-footer">
                   <span :class="['chart-footer-image', item.increase?'up':'down']" />
                   <span class="chart-footer-text">较昨日</span>
-                  <span class="chart-footer-text">{{ (item.increase?'+':'-')+item.change }}</span>
+                  <span class="chart-footer-text">{{ (item.increase?'+':'-')+Math.round(item.change*100)/100.0 }}</span>
                   <span class="chart-footer-text">{{ item.unit }}</span>
                 </div>
               </div>
@@ -94,6 +134,19 @@
           </div>
         </el-col>
       </el-row>
+      <div class="footer-tooltip">
+        <div v-if="progressData.nengfei.used>=progressData.nengfei.total">当前电费已超出限定电费，
+          预计今日累计电费将超出限额电费
+          <span class="red-text">
+            {{ Math.round((progressData.nengfei.used-progressData.nengfei.total)/(new Date().getHours()==0?1:new Date().getHours())*24*10)/10.0 }}元</span>，
+          超标<span class="red-text">{{ Math.round(((progressData.nengfei.used-progressData.nengfei.total)/(new Date().getHours()==0?1:new Date().getHours())*24)/(progressData.nengfei.total==0?1:progressData.nengfei.total)*100) }}%</span>。
+        </div>
+        <div v-else>
+          今日限额电费已消耗<span class="blue-text">{{ (progressData.nengfei.total && progressData.nengfei.total!==0)?Math.round(progressData.nengfei.used/progressData.nengfei.total*100):0 }}%</span>，
+          后续最高小时耗费<span class="blue-text">{{ Math.round((progressData.nengfei.total-progressData.nengfei.used)/(24-new Date().getHours())*10)/10.0 }}元</span>，
+          可限额管理要求。
+        </div>
+      </div>
     </el-main>
   </el-container>
 </template>
@@ -103,7 +156,7 @@ import PieChart from './PieChart'
 import LineChart from './LineChart'
 import radialIndicator from './RadialIndicator'
 import FullPieChart from './FullPieChart'
-import { getProcessData, getCompareData, getEnergyCircleData, getEffectCompareData, getElecLineChartDataData } from '@/api/energy/statis'
+import { getProcessData, getCompareData, getEnergyCircleData, getEffectCompareData, getElecLineChartDataData, getEffectOrderData } from '@/api/energy/statis'
 export default {
   components: {
     PieChart,
@@ -187,6 +240,8 @@ export default {
         data: [],
         colors: ['#A26DFD', '#FAC400', '#10D178', '#F0725E', '#2853FF']
       },
+      effectOrderDataLoading: true,
+      effectOrderData: [],
       lineChartDataLoading: true,
       lineChartData: [{
         name: '时间段',
@@ -204,6 +259,7 @@ export default {
       startTime: this.lineChartSearchForm.value[0],
       endTime: this.lineChartSearchForm.value[1]
     })
+    this.setEffectOrderData({ sys: this.$router.currentRoute.name })
   },
   methods: {
     setProgressData(params) {
@@ -249,6 +305,19 @@ export default {
         })
       })
     },
+    setEffectOrderData(params) {
+      getEffectOrderData(params).then(response => {
+        var data = response.data
+        this.effectOrderData = data
+        this.effectOrderDataLoading = false
+      }).catch(err => {
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
     setElecLineChartDataData(params) {
       this.lineChartDataLoading = true
       getElecLineChartDataData(params).then(response => {
@@ -274,7 +343,7 @@ export default {
           barBgColor: '#E4E9F0',
           hasStartPoint: true,
           displayNumber: true,
-          displayTitle: item.value,
+          displayTitle: Math.round(item.value * 100) / 100.0,
           displayNumberLineText: item.unit,
           displayLetter: true,
           displayNumberLine: true,
@@ -355,10 +424,12 @@ export default {
     flex-direction: row;
   }
   .left-container-bottom {
+    display: flex;
     height: 55%;
     width: 100%;
     flex-grow: 0;
     flex-shrink: 0;
+    border-bottom: solid 2px #E4E9F0;
   }
   .progress-charts-container {
     width: 55%;
@@ -383,6 +454,17 @@ export default {
     width: 100%;
     height: 100%;
     justify-content: flex-start;
+  }
+  .chart-container.ji-zu-energy{
+    height: 45%;
+  }
+  .chart-container.left-container{
+    width: 55%;
+  }
+  .chart-container.right-container{
+    width: 45%;
+    border-left: solid 1px #E4E9F0;
+    border-bottom: solid 1px #E4E9F0;
   }
   .progress-chart-container:last-child,
   .chart-container:last-child {
@@ -498,11 +580,11 @@ export default {
 
   .dong-li-zhan-chart {
     width: 100%;
-    height: 45%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     padding: 15px 30px;
-    border-bottom: solid 1px #E4E9F0;
+    border-bottom: solid 0px #E4E9F0;
   }
 
   .neng-hao-chart {
@@ -545,6 +627,23 @@ export default {
   }
   .search-form {
     float: right;
+  }
+  .footer-tooltip{
+    height: 50px;
+    padding: 5px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: solid 1px #E4E9F0;
+    font-size: 18px;
+    text-shadow: 0 0 0;
+    color: #333;
+  }
+  .red-text {
+    color: red;
+  }
+  .blue-text {
+    color: blue;
   }
 </style>
 <style lang="scss">

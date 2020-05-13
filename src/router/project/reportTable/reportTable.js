@@ -2,85 +2,49 @@ import Layout from '@/layout'
 
 const reportTableRouters = [{
   path: '/reportTable',
-  redirect: '/reportTable/kongYa', // 重定向地址，在面包屑中点击会重定向去的地址
-
+  redirect: '/reportTable/reportTablekongYa', // 重定向地址，在面包屑中点击会重定向去的地址
   component: Layout,
   name: 'reportTable',
   meta: {
-    title: '功能系统',
+    title: '用能系统',
     icon: 'example',
     roles: ['admin', 'editor']
   },
   children: [
     {
-      path: 'kongYa',
-      component: () => import('@/views/project/reportTable/kongYa'),
-      name: 'reportTablekongYa',
-
+      path: 'reportTablekongYa',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'ky',
       meta: {
         title: '空压系统',
         roles: ['admin'],
         icon: 'documentation',
         affix: true
       }
-    },
-    {
-      path: 'lengShui',
-      component: () => import('@/views/project/reportTable/kongYa'),
-      name: 'reportTablekongYa',
-
+    }, {
+      path: 'reportTableQingdan',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'qd',
       meta: {
-        title: '冷水系统',
-        roles: ['admin'],
-        icon: 'documentation',
-        affix: true
-      }
-    },
-    {
-      path: 'danQi',
-
-      component: () => import('@/views/project/reportTable/kongYa'),
-      name: 'reportTableQingdan',
-      meta: {
-        title: '氮气系统',
+        title: '氢氮系统',
         roles: ['admin'],
         icon: 'documentation'
       }
     }, {
-      path: 'qingQi',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableZhenkong',
+      path: 'reportTableZhenkong',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'zk',
       meta: {
-        title: '氢气系统',
+        title: '真空系统',
         roles: ['admin'],
         icon: 'documentation'
       }
     }, {
-      path: 'dianli',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableDianli',
+      path: 'reportTableDianli',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'dl',
       meta: {
         title: '电力系统',
-        icon: 'documentation'
-      }
-    }, {
-      path: 'lengshui',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableLengshui',
-      meta: {
-        title: '供电系统',
-        icon: 'documentation'
-      }
-    }, {
-      path: 'reshui',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableReshui',
-      meta: {
-        title: '热水系统',
         icon: 'documentation'
       }
     }
@@ -97,27 +61,24 @@ const reportTableRouters = [{
   children: [
     {
       path: 'first',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableFirst',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'cj1',
       meta: {
         title: '一号车间',
         icon: 'documentation'
       }
     }, {
       path: 'second',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableSecond',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'cj2',
       meta: {
         title: '二号车间',
         icon: 'documentation'
       }
     }, {
       path: 'third',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableThird',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'cj3',
       meta: {
         title: '三号车间',
         icon: 'documentation'
@@ -125,28 +86,24 @@ const reportTableRouters = [{
     }, {
 
       path: 'fouth',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableFouth',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'cj4',
       meta: {
         title: '四号车间',
         icon: 'documentation'
       }
     }, {
       path: 'jiaoshui',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableJiaoshui',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'cj5',
       meta: {
         title: '胶水厂区',
         icon: 'documentation'
       }
     }, {
-
       path: 'dongli',
-      component: () => import('@/views/project/reportTable/kongYa'),
-
-      name: 'reportTableDongli',
+      component: () => import('@/views/project/reportTable/index'),
+      name: 'dlzf1',
       meta: {
         title: '动力车间',
         icon: 'documentation'

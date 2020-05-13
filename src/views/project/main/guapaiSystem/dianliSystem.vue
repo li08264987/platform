@@ -10,7 +10,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -25,7 +25,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -40,7 +40,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -57,7 +57,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -71,7 +71,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -85,7 +85,7 @@
               <div class="text">瞬时功率(kWh):</div>
               <span class="value">378</span>
             </div>
-            <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div>
+            <!-- <div class="data-detail">数据详情<i class="el-icon-caret-right" /></div> -->
           </div>
         </div>
         <div class="line" />
@@ -184,8 +184,8 @@ export default {
         width: 27vw;
        .donglizhan{
            position: relative;
-          top: 2vw;
-          left: 5.7vw;
+          top: 5vw;
+          left: 8.05vw;
        }
        .yidong{
            position: relative;
@@ -207,8 +207,8 @@ export default {
         width: 0;
        .jiaoshuichang{
            position: relative;
-           top: 6vw;
-           left: 8vw;
+           top: 5vw;
+           left: 18vw;
        }
        .sidong{
            position: relative;

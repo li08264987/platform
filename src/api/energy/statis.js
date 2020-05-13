@@ -40,17 +40,17 @@ export function getEnergyCircleData(query) {
   })
 }
 
-export function getEnergyTreeData(query) {
+export function getEnergyTreeTableData(query) {
   return request({
-    url: '/energy/statis/getEnergyTreeData',
+    url: '/energy/statis/getEnergyTreeTableData',
     method: 'post',
     params: query
   })
 }
 
-export function getEnergyTreeTableData(query) {
+export function getEffectOrderData(query) {
   return request({
-    url: '/energy/statis/getEnergyTreeTableData',
+    url: '/energy/statis/getEffectOrderData',
     method: 'post',
     params: query
   })

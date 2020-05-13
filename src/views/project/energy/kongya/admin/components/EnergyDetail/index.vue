@@ -9,7 +9,7 @@
 
 <script>
 import Tree from './Tree2'
-import Table from './Table'
+import Table from './Table2'
 export default {
   name: 'Energy',
   components: { Tree, Table },
@@ -24,9 +24,6 @@ export default {
       if (this.currentView === 'Tree') {
         this.currentView = 'Table'
         this.currentText = '路由视图'
-        this.transformData.translateX = 0
-        this.transformData.translateY = 0
-        this.transformData.scale = 1
       } else {
         this.currentView = 'Tree'
         this.currentText = '数据视图'

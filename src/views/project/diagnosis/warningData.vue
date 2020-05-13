@@ -2,6 +2,10 @@
 <template>
   <div class="warningData-container">
     <div class="search-container">
+      <div class="tabs-container">
+        <div :class="{'active':dealedActive}" class="tab tab-dealed" data-id="dealed" @click="handleTabClick">已处理</div>
+        <div :class="{'active':dealingActive}" class="tab tab-dealing" data-id="dealing" @click="handleTabClick">未处理</div>
+      </div>
       <div class="search-condition">
         <el-date-picker v-model="searchForm.date" :type="searchForm.dateType" range-separator="至" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" start-placeholder="开始日期" end-placeholder="结束日期" style="display: inline-block;" placeholder="选择时间" suffix-icon="el-icon-search" />
         <el-button class="btn-query" type="primary" style="margin-right:10px" @click="dateSearch">查询</el-button>
@@ -12,13 +16,26 @@
     </div>
     <div class="table-container">
       <Table
-        ref="warningDataTable"
+        v-show="dealedTable"
+        ref="dealedWarningDataTable"
         :height="750"
         :border="border"
         :show-operation="showOperation"
         :data="pageResult"
         :columns="columns"
         @findPage="findPage"
+        @handleEdit="handleEdit"
+        @handleDelete="handleDelete"
+      />
+      <Table
+        v-show="dealingTable"
+        ref="dealingWarningDataTable"
+        :height="750"
+        :border="border"
+        :show-operation="showOperation"
+        :data="dealingPageResult"
+        :columns="columns"
+        @findPage="findDealingPage"
         @handleEdit="handleEdit"
         @handleDelete="handleDelete"
       />
@@ -43,11 +60,17 @@ export default {
       showOperation: true,
       border: true,
       columns: [],
-      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageRequest: { pageNum: 1, pageSize: 15 },
       pageResult: {},
+      dealingPageRequest: { pageNum: 1, pageSize: 15 },
+      dealingPageResult: {},
       dataForm: {},
       downloadLoading: false,
-      allPagesData: null
+      allPagesData: null,
+      dealedActive: true,
+      dealingActive: false,
+      dealedTable: true,
+      dealingTable: false
     }
   },
 
@@ -65,15 +88,35 @@ export default {
       this.pageRequest['filterUserName'] = this.searchForm.searchText
       this.pageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
       this.pageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
+      this.pageRequest['type'] = 1
       getWarningDataList(this.pageRequest).then(res => {
         this.pageResult.content = res.warningDataList
         this.pageResult.totalSize = res.warningDataListNumber
       }).then(data != null ? data.callback : '')
     },
+    findDealingPage: function(data) {
+      if (data !== null) {
+        this.dealingPageRequest = data.pageRequest
+      }
+      this.dealingPageRequest['filterUserName'] = this.searchForm.searchText
+      this.dealingPageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
+      this.dealingPageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
+      this.dealingPageRequest['type'] = 0
+      getWarningDataList(this.dealingPageRequest).then(res => {
+        this.dealingPageResult.content = res.warningDataList
+        this.dealingPageResult.totalSize = res.warningDataListNumber
+        // this.$refs.dealingWarningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+      }).then(data != null ? data.callback : '')
+    },
     handleDelete: function(params) {
       deleteWarningData(params.row).then((res) => {
-        this.pageResult.content.splice(params.index, 1)
-        this.pageResult.totalSize -= 1
+        if (this.dealedTable === true) {
+          this.pageResult.content.splice(params.index, 1)
+          this.pageResult.totalSize -= 1
+        } else {
+          this.dealingPageResult.content.splice(params.index, 1)
+          this.dealingPageResult.totalSize -= 1
+        }
         params.callback(res)
       }).catch(err => {
         console.log(err)
@@ -82,10 +125,14 @@ export default {
     handleEdit: function(params) {
       this.dataForm = params.row
       updateWarningState(params.row).then((res) => {
-        const index = this.pageResult.content.findIndex(v => v.code === this.dataForm.code)
-        this.dataForm.state = '已处理'
-        this.dataForm.stateCode = 1
-        this.pageResult.content.splice(index, 1, this.dataForm)
+        if (this.dealedTable === true) {
+          const index = this.pageResult.content.findIndex(v => v.code === this.dataForm.code)
+          this.pageResult.content.splice(index, 1)
+        } else {
+          const index = this.dealingPageResult.content.findIndex(v => v.code === this.dataForm.code)
+          this.dealingPageResult.content.splice(index, 1)
+          this.$refs.dealedWarningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+        }
         this.$notify({
           title: '成功',
           message: res.msg,
@@ -97,19 +144,35 @@ export default {
       })
     },
     dateSearch: function() {
-      this.$refs.warningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+      if (this.dealedTable === true) {
+        this.$refs.dealedWarningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+      } else {
+        this.$refs.dealingWarningDataTable.refreshPageRequest(this.dealingPageRequest.pageNum)
+      }
     },
     nameSearch: function() {
-      this.$refs.warningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+      if (this.dealedTable === true) {
+        this.$refs.dealedWarningDataTable.refreshPageRequest(this.pageRequest.pageNum)
+      } else {
+        this.$refs.dealingWarningDataTable.refreshPageRequest(this.dealingPageRequest.pageNum)
+      }
     },
     onExport: function() {
+      // eslint-disable-next-line no-unused-vars
+      let type = 0
+      if (this.dealedTable === true) {
+        type = 1
+      } else {
+        type = 0
+      }
       const param = {
         filterUserName: this.searchForm.searchText,
         startTime: this.searchForm.date === null ? null : this.searchForm.date[0],
-        endTime: this.searchForm.date === null ? null : this.searchForm.date[1]
+        endTime: this.searchForm.date === null ? null : this.searchForm.date[1],
+        type: type
       }
+      this.downloadLoading = true
       fetchAllData(param).then((res) => {
-        this.downloadLoading = true
         this.allPagesData = res.warningDataList
         import('@/vendor/Export2Excel').then(excel => {
           const tHeader = [
@@ -126,7 +189,7 @@ export default {
           excel.export_json_to_excel({
             header: tHeader,
             data,
-            filename: '报警数据表'
+            filename: type === 0 ? '未处理报警数据表' : '已处理报警数据表'
           })
           this.downloadLoading = false
         })
@@ -138,6 +201,24 @@ export default {
       return this.allPagesData.map(v => filterVal.map(j => {
         return v[j]
       }))
+    },
+    handleTabClick(e) {
+      var currentId = e.currentTarget.dataset.id
+      switch (currentId) {
+        case 'dealed':
+          this.dealedActive = true
+          this.dealingActive = false
+          this.dealedTable = true
+          this.dealingTable = false
+          break
+        case 'dealing':
+          this.dealedActive = false
+          this.dealingActive = true
+          this.dealedTable = false
+          this.dealingTable = true
+          break
+        default:
+      }
     }
   }
 }
@@ -151,7 +232,7 @@ export default {
   .search-container{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     height: 6vh;
     padding: 8px 30px 8px 15px;
     box-shadow: 0 2px 2px #e4e4e4;
@@ -187,12 +268,33 @@ export default {
             height: 36px;
         }
     }
+
+    .tabs-container{
+      display: flex;
+      flex-direction: row;
+      margin-left: 16px;
+      .tab{
+        width: 100px;
+        line-height: 38px;
+        text-align: center;
+        cursor: pointer;
+        color: #666F83;
+      }
+      .tab.active{
+        color:#1890ff ;
+        border-bottom: 2px solid #1890ff;
+        background-color: #E2E4EA;
+      }
+    }
   }
   .table-container{
       width: 100%;
       height: 100%;
       padding: 20px 29px;
       background: rgba(244,245,248,1);
+      .el-table__body-wrapper.is-scrolling-none{
+        height: 702px !important;
+      }
     }
 }
 </style>
