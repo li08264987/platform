@@ -11,13 +11,12 @@
       </el-form>
     </div>
     <div class="table-container">
-      <div class="table-title">空压系统分级统计概览</div>
       <el-table
         v-loading="loading"
         :data="tableData"
         row-key="id"
         :default-expand-all="true"
-        height="calc(100% - 75px)"
+        height="calc(100% - 10px)"
         header-row-class-name="table-header"
         style="width: 100%; overflow-y: auto;"
       >

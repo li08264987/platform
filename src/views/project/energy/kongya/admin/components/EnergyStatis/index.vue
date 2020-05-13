@@ -10,9 +10,9 @@
                   <div class="progress-chart-title"><span> {{ progressData[key].title }} </span></div>
                   <div class="progress-chart-bar nenghaojindu">
                     <div class="progress-label">
-                      <span class="progress-label-value">{{ Math.round(progressData[key].used*1000)/1000.0 }}</span>
+                      <span class="progress-label-value">{{ Math.round(progressData[key].used*100)/100.0 }}</span>
                       <span class="progress-label-text">/</span>
-                      <span class="progress-label-total">{{ Math.round(progressData[key].total*1000.0)/1000.0 }}</span>
+                      <span class="progress-label-total">{{ Math.round(progressData[key].total*100.0)/100.0 }}</span>
                       <span class="progress-label-text">({{ progressData[key].unit }})</span>
                     </div>
                     <el-progress
@@ -126,7 +126,7 @@
                 <div class="chart-footer">
                   <span :class="['chart-footer-image', item.increase?'up':'down']" />
                   <span class="chart-footer-text">较昨日</span>
-                  <span class="chart-footer-text">{{ (item.increase?'+':'-')+Math.round(item.change*1000)/1000.0 }}</span>
+                  <span class="chart-footer-text">{{ (item.increase?'+':'-')+Math.round(item.change*100)/100.0 }}</span>
                   <span class="chart-footer-text">{{ item.unit }}</span>
                 </div>
               </div>
@@ -343,7 +343,7 @@ export default {
           barBgColor: '#E4E9F0',
           hasStartPoint: true,
           displayNumber: true,
-          displayTitle: Math.round(item.value * 1000) / 1000.0,
+          displayTitle: Math.round(item.value * 100) / 100.0,
           displayNumberLineText: item.unit,
           displayLetter: true,
           displayNumberLine: true,

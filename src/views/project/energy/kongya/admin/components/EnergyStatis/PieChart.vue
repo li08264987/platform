@@ -80,7 +80,7 @@ export default {
           data: data,
           hoverAnimation: false,
           center: ['50%', '50%'],
-          radius: ['20%', '70%'],
+          radius: ['40%', '70%'],
           label: {
             show: false
           }

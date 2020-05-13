@@ -99,86 +99,89 @@ function formatter(pattern) {
 
 // circle bar class
 function Indicator(container, indOption) {
-  var self = this
+  if (container) {
+    var self = this
 
-  indOption = indOption || {}
-  indOption = merge({}, radialIndicator.defaults, indOption)
+    indOption = indOption || {}
+    indOption = merge({}, radialIndicator.defaults, indOption)
 
-  this.indOption = indOption
+    this.indOption = indOption
 
-  // create a queryselector if a selector string is passed in container
-  if (typeof container === 'string') { container = document.querySelector(container) }
+    // create a queryselector if a selector string is passed in container
+    if (typeof container === 'string') { container = document.querySelector(container) }
 
-  // get the first element if container is a node list
-  if (container.length) { container = container[0] }
+    // get the first element if container is a node list
+    if (container) {
+      if (container.length) { container = container[0] }
 
-  container.style.display = 'flex'
-  container.style.justifyContent = 'center'
-  container.style.alignItems = 'center'
-  container.innerHTML = ''
+      container.style.display = 'flex'
+      container.style.justifyContent = 'center'
+      container.style.alignItems = 'center'
+      container.innerHTML = ''
 
-  this.container = container
+      this.container = container
 
-  if (this.indOption.autoRadius) {
-    var cWidth = container.clientWidth
-    var cHeight = container.clientHeight
-    var cSize = cWidth
-    if (cWidth > cHeight) cSize = cHeight
-    this.indOption.radius = (cSize - this.indOption.barWidth * 2) / 2.0 * 0.85
-  }
+      if (this.indOption.autoRadius) {
+        var cWidth = container.clientWidth
+        var cHeight = container.clientHeight
+        var cSize = cWidth
+        if (cWidth > cHeight) cSize = cHeight
+        this.indOption.radius = (cSize - this.indOption.barWidth * 2) / 2.0 * 0.85
+      }
 
-  // create a canvas element
-  var canElm = document.createElement('canvas')
-  container.appendChild(canElm)
+      // create a canvas element
+      var canElm = document.createElement('canvas')
+      container.appendChild(canElm)
 
-  this.canElm = canElm // dom object where drawing will happen
+      this.canElm = canElm // dom object where drawing will happen
 
-  this.ctx = canElm.getContext('2d') // get 2d canvas context
+      this.ctx = canElm.getContext('2d') // get 2d canvas context
 
-  // add intial value
-  this.current_value = indOption.initValue || indOption.minValue || 0
+      // add intial value
+      this.current_value = indOption.initValue || indOption.minValue || 0
 
-  // handeling user interaction
-  var startListener = function(e) {
-    if (!indOption.interaction) return
+      // handeling user interaction
+      var startListener = function(e) {
+        if (!indOption.interaction) return
 
-    var touchMove = e.type === 'touchstart' ? 'touchmove' : 'mousemove'
-    var touchEnd = e.type === 'touchstart' ? 'touchend' : 'mouseup'
-    var position = canElm.getBoundingClientRect()
-    var cy = position.top + canElm.offsetHeight / 2
-    var cx = position.left + canElm.offsetWidth / 2
+        var touchMove = e.type === 'touchstart' ? 'touchmove' : 'mousemove'
+        var touchEnd = e.type === 'touchstart' ? 'touchend' : 'mouseup'
+        var position = canElm.getBoundingClientRect()
+        var cy = position.top + canElm.offsetHeight / 2
+        var cx = position.left + canElm.offsetWidth / 2
 
-    var moveListener = function(e) {
-      e.preventDefault()
+        var moveListener = function(e) {
+          e.preventDefault()
 
-      // get the cordinates
-      var mx = e.clientX || e.touches[0].clientX
-      var my = e.clientY || e.touches[0].clientY
-      var radian = (circ + quart + Math.atan2((my - cy), (mx - cx))) % (circ + 0.0175)
-      var radius = (indOption.radius - 1 + indOption.barWidth / 2)
-      var circum = circ * radius
-      var precision = indOption.precision !== null ? indOption.precision : 0
-      var precisionNo = Math.pow(10, precision)
-      var val = Math.round(precisionNo * radian * radius * (indOption.maxValue - indOption.minValue) / circum) / precisionNo
+          // get the cordinates
+          var mx = e.clientX || e.touches[0].clientX
+          var my = e.clientY || e.touches[0].clientY
+          var radian = (circ + quart + Math.atan2((my - cy), (mx - cx))) % (circ + 0.0175)
+          var radius = (indOption.radius - 1 + indOption.barWidth / 2)
+          var circum = circ * radius
+          var precision = indOption.precision !== null ? indOption.precision : 0
+          var precisionNo = Math.pow(10, precision)
+          var val = Math.round(precisionNo * radian * radius * (indOption.maxValue - indOption.minValue) / circum) / precisionNo
 
-      self.value(val)
+          self.value(val)
+        }
+
+        var endListener = function() {
+          document.removeEventListener(touchMove, moveListener, false)
+          document.removeEventListener(touchEnd, endListener, false)
+        }
+
+        document.addEventListener(touchMove, moveListener, false)
+        document.addEventListener(touchEnd, endListener, false)
+      }
+
+      canElm.addEventListener('touchstart', startListener, false)
+      canElm.addEventListener('mousedown', startListener, false)
+
+      canElm.addEventListener('mousewheel', MouseWheelHandler, false)
+      canElm.addEventListener('DOMMouseScroll', MouseWheelHandler, false)
     }
-
-    var endListener = function() {
-      document.removeEventListener(touchMove, moveListener, false)
-      document.removeEventListener(touchEnd, endListener, false)
-    }
-
-    document.addEventListener(touchMove, moveListener, false)
-    document.addEventListener(touchEnd, endListener, false)
   }
-
-  canElm.addEventListener('touchstart', startListener, false)
-  canElm.addEventListener('mousedown', startListener, false)
-
-  canElm.addEventListener('mousewheel', MouseWheelHandler, false)
-  canElm.addEventListener('DOMMouseScroll', MouseWheelHandler, false)
-
   function MouseWheelHandler(e) {
     if (!indOption.interaction) return
     e.preventDefault()
@@ -232,12 +235,14 @@ Indicator.prototype = {
     var center = dim / 2 // center point in both x and y axis
 
     // draw nackground circle
-    ctx.strokeStyle = indOption.barBgColor // background circle color
-    ctx.lineWidth = indOption.barWidth
-    if (indOption.barBgColor !== 'transparent') {
-      ctx.beginPath()
-      ctx.arc(center, center, indOption.radius - 1 + indOption.barWidth / 2, 0, 2 * Math.PI)
-      ctx.stroke()
+    if (ctx) {
+      ctx.strokeStyle = indOption.barBgColor // background circle color
+      ctx.lineWidth = indOption.barWidth
+      if (indOption.barBgColor !== 'transparent') {
+        ctx.beginPath()
+        ctx.arc(center, center, indOption.radius - 1 + indOption.barWidth / 2, 0, 2 * Math.PI)
+        ctx.stroke()
+      }
     }
   },
   // update the value of indicator without animation
