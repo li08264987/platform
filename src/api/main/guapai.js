@@ -14,3 +14,10 @@ export function fetchSafeDays() {
     method: 'post'
   })
 }
+
+export function fetchGuaPaiDataKY() {
+  return request({
+    url: '/main/guapai/fetchGuaPaiDataKY',
+    method: 'post'
+  })
+}
