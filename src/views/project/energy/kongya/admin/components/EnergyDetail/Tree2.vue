@@ -10,7 +10,7 @@ import $ from 'jquery'
 import html2canvas from 'html2canvas'
 import 'orgchart'
 import 'orgchart/dist/css/jquery.orgchart.css'
-import { getEnergyTreeData } from '@/api/energy/statis'
+import { getEnergyTreeData } from '@/api/common'
 
 window.html2canvas = html2canvas
 window.$ = $
@@ -73,7 +73,7 @@ export default {
         'zoom': true,
         'direction': 't2b',
         'verticalLevel': 8,
-        'visibleLevel': 4,
+        'visibleLevel': 5,
         'parentNodeSymbol': 'none',
         'toggleSiblingsResp': true,
         'exportButton': false,

@@ -40,14 +40,6 @@ export function getEnergyCircleData(query) {
   })
 }
 
-export function getEnergyTreeData(query) {
-  return request({
-    url: '/energy/statis/getEnergyTreeData',
-    method: 'post',
-    params: query
-  })
-}
-
 export function getEnergyTreeTableData(query) {
   return request({
     url: '/energy/statis/getEnergyTreeTableData',

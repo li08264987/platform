@@ -16,6 +16,7 @@
         v-loading="loading"
         :data="tableData"
         row-key="id"
+        :default-expand-all="true"
         height="calc(100% - 75px)"
         header-row-class-name="table-header"
         style="width: 100%; overflow-y: auto;"
@@ -54,7 +55,7 @@
 </template>
 
 <script>
-import { getEnergyTreeData } from '@/api/energy/statis'
+import { getEnergyTreeData } from '@/api/common'
 export default {
   data() {
     return {
@@ -180,5 +181,8 @@ export default {
   }
   .noMargin .el-form-item__content {
     margin: 0 !important;
+  }
+  .el-table .cell {
+    white-space: nowrap;
   }
 </style>

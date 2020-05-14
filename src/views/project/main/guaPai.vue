@@ -102,7 +102,7 @@ export default {
     },
     showDongLiZhan() {
       const view = this.currentView
-      if (view === 'ky' || view === 'zk') {
+      if (view === 'zk') {
         return false
       } else {
         return true
@@ -149,8 +149,8 @@ img {
 }
 .pic{
     &-donglizhan{
-        top: 12vw;
-        left: 15vw;
+        top: 15vw;
+        left: 17vw;
     }
     &-yidong{
         top: 38vw;
@@ -161,8 +161,8 @@ img {
         left: 15vw;
     }
     &-jiaoshuichang{
-        top: 17vw;
-        left: 44vw;
+        top: 15vw;
+        left: 40vw;
     }
     &-sandong{
         top: 30vw;

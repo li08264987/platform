@@ -19,6 +19,7 @@ import {
   Monitor,
   Energy,
   ReportTable,
+  DataEntry,
   Diagnosis,
   Device,
   Smart,
@@ -34,6 +35,7 @@ export default {
     TagsView,
     Main,
     Monitor,
+    DataEntry,
     Energy,
     ReportTable,
     Diagnosis,
@@ -103,6 +105,11 @@ export default {
           break
         case 'Smart':
           this.currentView = 'Smart'
+          this.needTagsView = true
+          this.sidebarHide = false
+          break
+        case 'DataEntry':
+          this.currentView = 'DataEntry'
           this.needTagsView = true
           this.sidebarHide = false
           break

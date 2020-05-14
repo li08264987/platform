@@ -84,7 +84,7 @@ export default {
         },
         {
           type: '数据录入',
-          view: 'Maintenance'
+          view: 'DataEntry'
         },
         {
           type: '设备管理',
@@ -131,11 +131,11 @@ export default {
     },
     tabChange(i, v) {
       if (v === 'Device' || v === 'Smart') {
-        this.$notify({
-          title: '提示',
+        this.$message({
           message: '该模块上线中',
           type: 'warning',
-          duration: 1000
+          duration: 1500,
+          offset: 420
         })
       } else {
         this.active = i
@@ -249,7 +249,7 @@ export default {
 .PlatSetting{
   background-image: url("../../assets/tittle/setting.png");
 }
-.Maintenance{
+.DataEntry{
   background-image: url("../../assets/tittle/maintenance.png");
 }
 .tab-ul .tab-li {
