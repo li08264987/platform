@@ -258,234 +258,8 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div v-if=" mainTabName==='first' && showright" class="rightparam" style="flex:1">
-      <div v-if="mainTabName!=='third'" class="rblock">
-        <div class="rtitle">供能概览</div>
-        <el-tabs v-model="gyActiveName">
-          <el-tab-pane label="1、2栋车间" name="first">
-            <div class="rightzl">
-              <!-- <div
-                v-for="(element, index) in paramss"
-                :key="index"
-                class="itemdiv"
-              >
-                <div class="namediv">{{ element.name }}</div>
-                <div class="valuediv">{{ element.value }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
-              </div> -->
-              <div class="itemdiv">
-                <div class="namediv">常压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyllj1_ssll }}<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">常压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl }}<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">常压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyldwd1_ldwd }}<span style="font-weight:normal;font-size:14px;">℃</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyllj1_ssll }}<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl }}<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyldwd1_ldwd }}<span style="font-weight:normal;font-size:14px;">℃</span></div>
-              </div>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label="3、4栋车间" name="second">
-            <div class="rightzl">
-              <!-- <div
-                v-for="(element, index) in paramss"
-                :key="index"
-                class="itemdiv"
-              >
-                <div class="valuediv">{{ element.value }}</div>
-                <div class="namediv">{{ element.name }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
-              </div> -->
-              <div class="itemdiv">
-                <div class="namediv">常压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyllj2_ssll }}<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">常压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl }}<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">常压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyldwd2_ldwd }}<span style="font-weight:normal;font-size:14px;">℃</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyllj2_ssll }}<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl }}<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyldwd2_ldwd }}<span style="font-weight:normal;font-size:14px;">℃</span></div>
-              </div>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label="氢氮系统" name="third">
-            <div class="rightzl">
-              <!-- <div
-                v-for="(element, index) in paramss"
-                :key="index"
-                class="itemdiv"
-              >
-                <div class="valuediv">{{ element.value }}</div>
-                <div class="namediv">{{ element.name }}<span style="font-weight:normal;font-size:14px;">{{ element.unit }}</span></div>
-              </div> -->
-              <div class="itemdiv">
-                <div class="namediv">常压流量</div>
-                <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">常压压力</div>
-                <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压流量</div>
-                <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">m³/h</span></div>
-              </div>
-              <div class="itemdiv">
-                <div class="namediv">高压压力</div>
-                <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-              </div>
-            </div>
-          </el-tab-pane>
-        </el-tabs>
-      </div>
-      <div v-if="mainTabName!=='third'" class="rblock">
-        <div class="rtitle">电耗占比</div>
-        <div style="display:flex">
-          <div style="flex:2;height:135px;position:relative">
-            <pie-chart :chart-data="piedata" />
-            <div style="position:absolute;left:50%;width:86px;height:42px;top:50%;margin-left:-43px;margin-top:-21px;margin-top:-10px;">
-              <div style="font-size:18px;"><span class="number">{{ sumdianhao }}</span>kWh</div>
-              <div style="font-size:13px;">总电耗</div>
-            </div>
-          </div>
-          <div style="flex:4;height:135px">
-            <div class="rtitle2" style="border-left-color:#2853FF">
-              <span>空压机组</span><span><label>{{ piedata.data[0].value }}</label>kWh</span>同比<label>{{ tbky }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#BDF6B4">
-              <span>冷却塔组</span><span><label>{{ piedata.data[1].value }}</label>kWh</span>同比<label>{{ tblt }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#B860F3">
-              <span>冷却泵组</span><span><label>{{ piedata.data[2].value }}</label>kWh</span>同比<label>{{ tblqb }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#F588E3">
-              <span>冷干机组</span><span><label>{{ piedata.data[3].value }}</label>kWh</span>同比<label>{{ tblgj }}</label>%
-            </div>
-            <div class="rtitle2" style="border-left-color:#5CF0F2">
-              <span>其他</span><span><label>{{ piedata.data[4].value }}</label>kWh</span>同比<label>{{ tbqt }}</label>%
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="rblock">
-        <div class="rtitle">能效总览</div>
-        <div style="display:flex;justify-content: space-between">
-          <div class="xhdiv" style="color:#192EB6">
-            <div>气体产量</div>
-            <div style="padding-top: 5px;"><span class="number">{{ qihao }}</span><span>m³/h</span></div>
-          </div>
-          <div class="xhdiv" style="color:#005AFF">
-
-            <div>电力消耗</div>
-            <div style="padding-top: 5px;"><span class="number">{{ dianli }}</span><span>kWh</span></div>
-          </div>
-          <div class="xhdiv" style="color:#F56B35">
-            <div>单耗</div>
-            <div style="padding-top: 5px;"><span class="number">{{ danhao }}</span><span>kWh/m³/h</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="rblock">
-        <div class="rtitle">能效评分</div>
-        <el-rate
-          v-model="pjvalue"
-          show-text
-          disabled
-          :texts="pjtexts"
-          style="text-align: left;"
-        />
-      </div>
-      <div class="rblock">
-        <div class="rtitle">今日值班</div>
-        <div style="text-align:left;background:#EFEFFF;padding:5px 0px;">
-          <div v-if="duties.length>0">
-            <span v-for="(item,index) in duties" :key="index">
-              {{ item.REAL_NAME }}({{ item.DUTY_TYPE===0?'早班':item.DUTY_TYPE===1?'午班':'晚班' }}) <span v-if="index!=(duties.length-1)">、</span>
-            </span>
-
-          </div>
-          <div v-else>今日暂无值班</div>
-        </div>
-      </div>
-      <div v-if="mainTabName==='third'" class="rblock">
-        <div class="rtitle">空压机面板数据</div>
-        <div class="rightzl">
-          <div class="itemdiv">
-            <div class="namediv">累加载行时间</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">h</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">累计运行时间</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">h</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">级间温度T4</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">℃</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">空气过滤器压差</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">加载压差</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">空载压力</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">最高管线压力</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">最低管线压力</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">最低压力</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">挂起</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;" /></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">遥控</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;" /></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">运行状态</div>
-            <div class="valuediv number">0<span style="font-weight:normal;font-size:14px;" /></div>
-          </div>
-        </div>
-      </div>
+    <div v-if="showright" class="rightparam" style="flex:1">
+      <rightpanel :gngldata="gngldata" :maintabname="mainTabName" :params="kyjparam" />
     </div>
   </div>
 </template>
@@ -496,7 +270,6 @@ import lxkongyaji from '@/api/monitor/lxkongyaji'
 import kongyajizu from '@/api/monitor/kongyajizu'
 import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
-import pieChart from '@/views/project/monitor/pieChart'
 import monitorapi from '@/api/monitor/monitor'
 import systemOne from '@/views/project/monitor/gongneng/zhenkong/systemone'
 import systemTwo from '@/views/project/monitor/gongneng/zhenkong/systemtwo'
@@ -509,12 +282,12 @@ import sgroupone from '@/views/project/monitor/gongneng/zhenkong/sgroupone'
 import sgrouptwo from '@/views/project/monitor/gongneng/zhenkong/sgrouptwo'
 import figroupone from '@/views/project/monitor/gongneng/zhenkong/figroupone'
 import figrouptwo from '@/views/project/monitor/gongneng/zhenkong/figrouptwo'
+import rightpanel from '@/views/project/monitor/rightPanel'
 export default {
   name: 'MonitorView',
   components: {
     runInfo,
     infoScan,
-    pieChart,
     fgroupone,
     fgrouptwo,
     fgroupthree,
@@ -525,7 +298,8 @@ export default {
     figrouptwo,
     systemOne,
     systemTwo,
-    systemFive
+    systemFive,
+    rightpanel
   },
   data() {
     return {
@@ -757,7 +531,7 @@ export default {
   },
   computed: {
     kyjparam() {
-      return [this.selectvalue2, this.selectvalue3]
+      return ['zk', '', this.selectvalue2, this.selectvalue3, this.mainTabName]
     }
   },
   watch: {

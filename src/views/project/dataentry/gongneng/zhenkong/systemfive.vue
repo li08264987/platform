@@ -1183,7 +1183,7 @@
                 <path id="形状结合" d="M44.5314433,42.8564812 L44.5314433,17.8564812 C51.4350027,17.8564812 57.0314433,23.4529219 57.0314433,30.3564812 C57.0314433,37.2600406 51.4350027,42.8564812 44.5314433,42.8564812 Z M44.5314433,42.8564812 L22.8808082,55.3564812 C19.4290285,49.3778235 21.477468,41.7329434 27.4561258,38.2811637 C33.4347836,34.829384 41.0796636,36.8778235 44.5314433,42.8564812 Z M44.5314433,42.8564812 L66.1820784,55.3564812 C62.7302987,61.335139 55.0854187,63.3835785 49.1067609,59.9317988 C43.1281031,56.4800191 41.0796636,48.835139 44.5314433,42.8564812 Z" transform="translate(43.693059, 39.732525) rotate(-330.000000) translate(-43.693059, -39.732525) " />
               </g>
             </g>
-            <g id="1#真空计" transform="translate(1572.000000, 344.000000)">
+            <g v-if="false" id="1#真空计" transform="translate(1572.000000, 344.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-31"
                 stroke-opacity="0.289881993"
@@ -1204,7 +1204,7 @@
                 <tspan x="4" y="36">{{ datas.zk_nyzx_cj5_zkjq8_zkj1_zkd }}kPa</tspan>
               </text>
             </g>
-            <g id="2#真空计" transform="translate(1572.000000, 781.000000)">
+            <g v-if="false" id="2#真空计" transform="translate(1572.000000, 781.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-31"
                 stroke-opacity="0.289881993"
@@ -1644,7 +1644,7 @@
                 </text>
               </g>
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa1_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa1_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa1_zgzzt?'ggzclass':'noclass'" transform="translate(142.000000, 255.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa1_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa1_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa1_zgzzt?'ggzclass1':'noclass'" transform="translate(142.000000, 255.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-21)" xlink:href="#path-20" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-20" />
@@ -1652,7 +1652,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa2_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa2_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa2_zgzzt?'ggzclass':'noclass'" transform="translate(262.000000, 255.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa2_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa2_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa2_zgzzt?'ggzclass1':'noclass'" transform="translate(262.000000, 255.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-23)" xlink:href="#path-22" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-22" />
@@ -1660,7 +1660,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa3_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa3_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa3_zgzzt?'ggzclass':'noclass'" transform="translate(382.000000, 255.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa3_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa3_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa3_zgzzt?'ggzclass1':'noclass'" transform="translate(382.000000, 255.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-25)" xlink:href="#path-24" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-24" />
@@ -1668,7 +1668,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa4_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa4_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa4_zgzzt?'ggzclass':'noclass'" transform="translate(502.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa4_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa4_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa4_zgzzt?'ggzclass1':'noclass'" transform="translate(502.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-27)" xlink:href="#path-26" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-26" />
@@ -1676,7 +1676,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa5_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa5_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa5_zgzzt?'ggzclass':'noclass'" transform="translate(623.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa5_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa5_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa5_zgzzt?'ggzclass1':'noclass'" transform="translate(623.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-29)" xlink:href="#path-28" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-28" />
@@ -1684,7 +1684,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa6_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa6_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa6_zgzzt?'ggzclass':'noclass'" transform="translate(743.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa6_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa6_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa6_zgzzt?'ggzclass1':'noclass'" transform="translate(743.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-31)" xlink:href="#path-30" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-30" />
@@ -1692,7 +1692,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa7_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa7_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa7_zgzzt?'ggzclass':'noclass'" transform="translate(904.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa7_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa7_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa7_zgzzt?'ggzclass1':'noclass'" transform="translate(904.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-33)" xlink:href="#path-32" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-32" />
@@ -1700,7 +1700,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa8_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa8_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa8_zgzzt?'ggzclass':'noclass'" transform="translate(1023.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa8_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa8_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa8_zgzzt?'ggzclass1':'noclass'" transform="translate(1023.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-35)" xlink:href="#path-34" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-34" />
@@ -1708,7 +1708,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa9_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa9_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa9_zgzzt?'ggzclass':'noclass'" transform="translate(1142.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa9_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa9_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa9_zgzzt?'ggzclass1':'noclass'" transform="translate(1142.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-37)" xlink:href="#path-36" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-36" />
@@ -1716,7 +1716,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa10_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa10_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa10_zgzzt?'ggzclass':'noclass'" transform="translate(1261.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa10_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa10_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa10_zgzzt?'ggzclass1':'noclass'" transform="translate(1261.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-39)" xlink:href="#path-38" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-38" />
@@ -1724,7 +1724,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa11_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa11_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa11_zgzzt?'ggzclass':'noclass'" transform="translate(1379.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa11_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa11_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa11_zgzzt?'ggzclass1':'noclass'" transform="translate(1379.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-41)" xlink:href="#path-40" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-40" />
@@ -1732,7 +1732,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa12_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa12_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq7_zkb010ppa12_zgzzt?'ggzclass':'noclass'" transform="translate(1499.000000, 254.000000)">
+            <g id="zk_nyzx_cj5_zkjq7_zkb010ppa12_qgzzt" :class="datas.zk_nyzx_cj5_zkjq7_zkb010ppa12_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq7_zkb010ppa12_zgzzt?'ggzclass1':'noclass'" transform="translate(1499.000000, 254.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-43)" xlink:href="#path-42" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-42" />
@@ -1740,7 +1740,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa1_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa1_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa1_zgzzt?'ggzclass':'noclass'" transform="translate(138.000000, 696.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa1_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa1_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa1_zgzzt?'ggzclass1':'noclass'" transform="translate(138.000000, 696.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-45)" xlink:href="#path-44" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-44" />
@@ -1748,7 +1748,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa2_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa2_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa2_zgzzt?'ggzclass':'noclass'" transform="translate(258.000000, 696.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa2_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa2_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa2_zgzzt?'ggzclass1':'noclass'" transform="translate(258.000000, 696.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-47)" xlink:href="#path-46" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-46" />
@@ -1756,7 +1756,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa3_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa3_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa3_zgzzt?'ggzclass':'noclass'" transform="translate(378.000000, 696.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa3_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa3_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa3_zgzzt?'ggzclass1':'noclass'" transform="translate(378.000000, 696.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-49)" xlink:href="#path-48" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-48" />
@@ -1764,7 +1764,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa4_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa4_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa4_zgzzt?'ggzclass':'noclass'" transform="translate(498.000000, 697.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa4_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa4_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa4_zgzzt?'ggzclass1':'noclass'" transform="translate(498.000000, 697.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-51)" xlink:href="#path-50" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-50" />
@@ -1772,7 +1772,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa5_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa5_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa5_zgzzt?'ggzclass':'noclass'" transform="translate(618.000000, 696.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa5_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa5_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa5_zgzzt?'ggzclass1':'noclass'" transform="translate(618.000000, 696.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-53)" xlink:href="#path-52" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-52" />
@@ -1780,7 +1780,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa6_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa6_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa6_zgzzt?'ggzclass':'noclass'" transform="translate(738.000000, 697.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa6_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa6_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa6_zgzzt?'ggzclass1':'noclass'" transform="translate(738.000000, 697.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-55)" xlink:href="#path-54" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-54" />
@@ -1788,7 +1788,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa7_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa7_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa7_zgzzt?'ggzclass':'noclass'" transform="translate(898.000000, 697.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa7_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa7_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa7_zgzzt?'ggzclass1':'noclass'" transform="translate(898.000000, 697.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-57)" xlink:href="#path-56" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-56" />
@@ -1796,7 +1796,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa8_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa8_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa8_zgzzt?'ggzclass':'noclass'" transform="translate(1018.000000, 697.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa8_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa8_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa8_zgzzt?'ggzclass1':'noclass'" transform="translate(1018.000000, 697.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-59)" xlink:href="#path-58" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-58" />
@@ -1804,7 +1804,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa9_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa9_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa9_zgzzt?'ggzclass':'noclass'" transform="translate(1138.000000, 697.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa9_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa9_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa9_zgzzt?'ggzclass1':'noclass'" transform="translate(1138.000000, 697.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-61)" xlink:href="#path-60" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-60" />
@@ -1812,7 +1812,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa10_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa10_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa10_zgzzt?'ggzclass':'noclass'" transform="translate(1256.000000, 696.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa10_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa10_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa10_zgzzt?'ggzclass1':'noclass'" transform="translate(1256.000000, 696.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-63)" xlink:href="#path-62" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-62" />
@@ -1820,7 +1820,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa11_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa11_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa11_zgzzt?'ggzclass':'noclass'" transform="translate(1376.000000, 696.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa11_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa11_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa11_zgzzt?'ggzclass1':'noclass'" transform="translate(1376.000000, 696.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-65)" xlink:href="#path-64" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-64" />
@@ -1828,7 +1828,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa12_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa12_qgzzt?'gzclass':datas.zk_nyzx_cj5_zkjq8_zkb010ppa12_zgzzt?'ggzclass':'noclass'" transform="translate(1494.000000, 696.000000)">
+            <g id="zk_nyzx_cj5_zkjq8_zkb010ppa12_qgzzt" :class="datas.zk_nyzx_cj5_zkjq8_zkb010ppa12_qgzzt?'gzclass1':datas.zk_nyzx_cj5_zkjq8_zkb010ppa12_zgzzt?'ggzclass1':'noclass'" transform="translate(1494.000000, 696.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-67)" xlink:href="#path-66" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-66" />
@@ -1997,15 +1997,30 @@ export default {
     //     self.$refs.lineScan.dialogTableVisible = true
     //   }
     // })
+    $('svg').click(function(e) {
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (!linecode || (linecode &&
+          linecode.split('_').length === 5)) {
+        return
+      } else {
+        self.$alert('暂不支持该设备录入!', '提示信息', {
+          confirmButtonText: '确定',
+          callback: action => {
+          }
+        })
+      }
+    })
   },
   methods: {
     showInfo(e) {
       this.code = e.currentTarget.attributes.code.value
       this.$refs.infoScan.dialogTableVisible = true
+      e.stopPropagation()
     },
     showLine(e) {
-      this.linecode = e.currentTarget.attributes.code.value
-      this.$refs.lineScan.dialogTableVisible = true
+      // this.linecode = e.currentTarget.attributes.code.value
+      // this.$refs.lineScan.dialogTableVisible = true
     },
     getGuZhang(type) {
       return monitorapi.getGuZhang(type)
@@ -2017,15 +2032,15 @@ export default {
       return monitorapi.getGuZhangColor(type)
     },
     getOrigin(id) {
-      if (!id) return
-      const box = document.getElementById(id + '_1').getBBox()
-      const x = box.x + (box.width / 2)
-      const y = box.y + (box.height / 2)
-      const a = x + 'px' + ' ' + y + 'px'
-      return '-webkit-transform-origin:' + a
+      // if (!id) return
+      // const box = document.getElementById(id + '_1').getBBox()
+      // const x = box.x + (box.width / 2)
+      // const y = box.y + (box.height / 2)
+      // const a = x + 'px' + ' ' + y + 'px'
+      // return '-webkit-transform-origin:' + a
     },
     getClass() {
-      return 'zhuanquan'
+      // return 'zhuanquan'
     }
   }
 }
@@ -2036,8 +2051,9 @@ svg{
     cursor: pointer;
   }
 }
-.gzclass{
-    -webkit-animation: twinkling 1s infinite ease-in-out
+.gzclass1{
+   // -webkit-animation: twinkling 1s infinite ease-in-out
+   display: none;
 }
 // .animated{
 //     -webkit-animation-duration: 1s;
@@ -2061,8 +2077,9 @@ svg{
         opacity: 1;
     }
 }
-.ggzclass{
-    -webkit-animation: twinkling 0.3s infinite ease-in-out
+.ggzclass1{
+    //-webkit-animation: twinkling 0.3s infinite ease-in-out
+    display: none;
 }
 .noclass{
     display: none;

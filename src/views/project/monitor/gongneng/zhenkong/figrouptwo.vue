@@ -5,7 +5,7 @@
       ref="lineScan"
       :code="linecode"
     />
-    <svg width="1686px" height="811px" viewBox="0 0 1686 811" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg viewBox="0 0 1686 811" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
       <title>胶水厂j-2</title>
       <desc>Created with Sketch.</desc>

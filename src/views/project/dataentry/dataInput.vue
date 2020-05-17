@@ -200,7 +200,11 @@ export default {
     tZSuccess() {
       this.count++
       if (this.count === this.tzfileList.length) {
-        alert('上传成功!')
+        this.$alert('上传成功!', '提示信息', {
+          confirmButtonText: '确定',
+          callback: action => {
+          }
+        })
         this.count = 0
         this.basis.name = ''
         this.basis.type = ''
@@ -213,16 +217,25 @@ export default {
       }
     },
     subAlarm() {
+      var self = this
       api.subAlarm(this.alarm).then(res => {
         if (res.state === 1) {
-          alert('提交成功!')
+          self.$alert('上传成功!', '提示信息', {
+            confirmButtonText: '确定',
+            callback: action => {
+            }
+          })
           this.alarmname = ''
           this.alarmparam = ''
           this.alarmlevel = ''
           this.alarmtop = ''
           this.alarmunit = ''
         } else {
-          alert('提交失败!')
+          self.$alert('上传成功!', '提示信息', {
+            confirmButtonText: '确定',
+            callback: action => {
+            }
+          })
         }
       }).catch(err => {
         console.log(err)

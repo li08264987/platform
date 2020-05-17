@@ -1005,7 +1005,7 @@
                 <path id="2" d="M29.9935246,44 L24.7200871,44 L24.7200871,43.3496094 C24.7200871,43.083983 24.7571961,42.8349621 24.8314152,42.6025391 C24.9056344,42.370116 25.0052427,42.1513682 25.1302434,41.9462891 C25.255244,41.7412099 25.4017269,41.5478525 25.5696965,41.3662109 C25.7376661,41.1845694 25.9173518,41.0087899 26.108759,40.8388672 C26.3001662,40.6689445 26.4954767,40.5048836 26.6946965,40.3466797 C26.8939162,40.1884758 27.0892268,40.0292977 27.280634,39.8691406 C27.4603224,39.7167961 27.6243833,39.5673835 27.7728215,39.4208984 C27.9212597,39.2744133 28.0482116,39.1230477 28.1536809,38.9667969 C28.2591501,38.8105461 28.3411806,38.6455087 28.3997746,38.4716797 C28.4583687,38.2978507 28.4876652,38.109376 28.4876652,37.90625 C28.4876652,37.6835926 28.4534859,37.4892586 28.3851262,37.3232422 C28.3167665,37.1572257 28.2210643,37.0185552 28.0980168,36.9072266 C27.9749693,36.7958979 27.829463,36.7119143 27.6614934,36.6552734 C27.4935238,36.5986325 27.3099319,36.5703125 27.1107121,36.5703125 C26.7669604,36.5703125 26.4173545,36.6503898 26.061884,36.8105469 C25.7064135,36.9707039 25.36462,37.2109359 25.0364934,37.53125 L25.0364934,36.2246094 C25.2083692,36.0957025 25.3821956,35.9833989 25.5579777,35.8876953 C25.7337599,35.7919917 25.9153987,35.7119144 26.1028996,35.6474609 C26.2904006,35.5830075 26.4876642,35.5351564 26.6946965,35.5039062 C26.9017288,35.4726561 27.1224297,35.4570312 27.3568059,35.4570312 C27.735714,35.4570312 28.0794606,35.5068354 28.3880559,35.6064453 C28.6966512,35.7060552 28.9603204,35.8525381 29.1790715,36.0458984 C29.3978226,36.2392588 29.5667662,36.4804673 29.6859074,36.7695312 C29.8050487,37.0585952 29.8646184,37.3906231 29.8646184,37.765625 C29.8646184,38.1054704 29.8226266,38.4111315 29.7386418,38.6826172 C29.654657,38.9541029 29.5355176,39.2070301 29.3812199,39.4414062 C29.2269223,39.6757824 29.0404007,39.8984364 28.8216496,40.109375 C28.6028985,40.3203136 28.3587603,40.5371083 28.0892277,40.7597656 C27.8626641,40.9433603 27.6370804,41.1220694 27.4124699,41.2958984 C27.1878594,41.4697274 26.985713,41.6396476 26.8060246,41.8056641 C26.6263362,41.9716805 26.4808299,42.1376945 26.3695012,42.3037109 C26.2581725,42.4697274 26.202509,42.6367179 26.202509,42.8046875 L26.202509,42.8339844 L29.9935246,42.8339844 L29.9935246,44 Z" fill="#586CB4" fill-rule="nonzero" />
               </g>
             </g>
-            <g id="A1制氢机数据" transform="translate(41.000000, 602.000000)">
+            <g v-if="false" id="A1制氢机数据" transform="translate(41.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1045,7 +1045,7 @@
                 <tspan x="69" y="17">{{ getGuZhang(datas.qd_nyzx_dlzf1_qdjq1_zq1_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="A2制氢机数据" transform="translate(455.000000, 602.000000)">
+            <g v-if="false" id="A2制氢机数据" transform="translate(455.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1085,7 +1085,7 @@
                 <tspan x="69" y="17">{{ getGuZhang(datas.qd_nyzx_dlzf1_qdjq2_zq2_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="b1制氢机数据" transform="translate(869.000000, 602.000000)">
+            <g v-if="false" id="b1制氢机数据" transform="translate(869.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1125,7 +1125,7 @@
                 <tspan x="69" y="17">{{ getGuZhang(datas.qd_nyzx_dlzf1_qdjq3_zq3_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="b2制氢机数据" transform="translate(1285.000000, 602.000000)">
+            <g v-if="false" id="b2制氢机数据" transform="translate(1285.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1165,7 +1165,7 @@
                 <tspan x="69" y="17">{{ getGuZhang(datas.qd_nyzx_dlzf1_qdjq4_zq4_yxzt) }}</tspan>
               </text>
             </g>
-            <g id="A1制氮机数据" transform="translate(261.000000, 602.000000)">
+            <g v-if="false" id="A1制氮机数据" transform="translate(261.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1224,7 +1224,7 @@
                 <tspan x="68" y="18">{{ datas.qd_nyzx_dlzf1_qdjq1_zd1_sbwd1 }}℃</tspan>
               </text>
             </g>
-            <g id="A2制氮机数据" transform="translate(675.000000, 602.000000)">
+            <g v-if="false" id="A2制氮机数据" transform="translate(675.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1283,7 +1283,7 @@
                 <tspan x="68" y="18">{{ datas.qd_nyzx_dlzf1_qdjq2_zd2_sbwd1 }}℃</tspan>
               </text>
             </g>
-            <g id="b1制氮机数据" transform="translate(1091.000000, 602.000000)">
+            <g v-if="false" id="b1制氮机数据" transform="translate(1091.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1342,7 +1342,7 @@
                 <tspan x="68" y="18">{{ datas.qd_nyzx_dlzf1_qdjq3_zd3_sbwd1 }}℃</tspan>
               </text>
             </g>
-            <g id="b2制氮机数据" transform="translate(1505.000000, 602.000000)">
+            <g v-if="false" id="b2制氮机数据" transform="translate(1505.000000, 602.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-30"
                 stroke-opacity="0.289881993"
@@ -1767,7 +1767,7 @@
                 <path id="2" d="M29.9935246,44 L24.7200871,44 L24.7200871,43.3496094 C24.7200871,43.083983 24.7571961,42.8349621 24.8314152,42.6025391 C24.9056344,42.370116 25.0052427,42.1513682 25.1302434,41.9462891 C25.255244,41.7412099 25.4017269,41.5478525 25.5696965,41.3662109 C25.7376661,41.1845694 25.9173518,41.0087899 26.108759,40.8388672 C26.3001662,40.6689445 26.4954767,40.5048836 26.6946965,40.3466797 C26.8939162,40.1884758 27.0892268,40.0292977 27.280634,39.8691406 C27.4603224,39.7167961 27.6243833,39.5673835 27.7728215,39.4208984 C27.9212597,39.2744133 28.0482116,39.1230477 28.1536809,38.9667969 C28.2591501,38.8105461 28.3411806,38.6455087 28.3997746,38.4716797 C28.4583687,38.2978507 28.4876652,38.109376 28.4876652,37.90625 C28.4876652,37.6835926 28.4534859,37.4892586 28.3851262,37.3232422 C28.3167665,37.1572257 28.2210643,37.0185552 28.0980168,36.9072266 C27.9749693,36.7958979 27.829463,36.7119143 27.6614934,36.6552734 C27.4935238,36.5986325 27.3099319,36.5703125 27.1107121,36.5703125 C26.7669604,36.5703125 26.4173545,36.6503898 26.061884,36.8105469 C25.7064135,36.9707039 25.36462,37.2109359 25.0364934,37.53125 L25.0364934,36.2246094 C25.2083692,36.0957025 25.3821956,35.9833989 25.5579777,35.8876953 C25.7337599,35.7919917 25.9153987,35.7119144 26.1028996,35.6474609 C26.2904006,35.5830075 26.4876642,35.5351564 26.6946965,35.5039062 C26.9017288,35.4726561 27.1224297,35.4570312 27.3568059,35.4570312 C27.735714,35.4570312 28.0794606,35.5068354 28.3880559,35.6064453 C28.6966512,35.7060552 28.9603204,35.8525381 29.1790715,36.0458984 C29.3978226,36.2392588 29.5667662,36.4804673 29.6859074,36.7695312 C29.8050487,37.0585952 29.8646184,37.3906231 29.8646184,37.765625 C29.8646184,38.1054704 29.8226266,38.4111315 29.7386418,38.6826172 C29.654657,38.9541029 29.5355176,39.2070301 29.3812199,39.4414062 C29.2269223,39.6757824 29.0404007,39.8984364 28.8216496,40.109375 C28.6028985,40.3203136 28.3587603,40.5371083 28.0892277,40.7597656 C27.8626641,40.9433603 27.6370804,41.1220694 27.4124699,41.2958984 C27.1878594,41.4697274 26.985713,41.6396476 26.8060246,41.8056641 C26.6263362,41.9716805 26.4808299,42.1376945 26.3695012,42.3037109 C26.2581725,42.4697274 26.202509,42.6367179 26.202509,42.8046875 L26.202509,42.8339844 L29.9935246,42.8339844 L29.9935246,44 Z" fill="#586CB4" fill-rule="nonzero" />
               </g>
             </g>
-            <g id="压力传感器" transform="translate(153.000000, 6.000000)" stroke="#586CB4">
+            <g v-if="false" id="压力传感器" transform="translate(153.000000, 6.000000)" stroke="#586CB4">
               <g id="分组-3" transform="translate(1.000000, 1.000000)">
                 <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
                 <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
@@ -1775,7 +1775,7 @@
                 <rect id="矩形" fill-opacity="0.3" fill="#586CB4" x="0" y="5" width="12" height="4" rx="1" />
               </g>
             </g>
-            <g id="压力传感器" transform="translate(1287.000000, 6.000000)" stroke="#586CB4">
+            <g v-if="false" id="压力传感器" transform="translate(1287.000000, 6.000000)" stroke="#586CB4">
               <g id="分组-3" transform="translate(1.000000, 1.000000)">
                 <rect id="矩形-copy-10" fill-opacity="0.128469187" fill="#E0E7FF" x="10" y="1" width="3" height="2" />
                 <rect id="矩形-copy-4" fill-opacity="0.128469187" fill="#E0E7FF" x="2" y="0" width="8" height="5" />
@@ -1979,7 +1979,7 @@
             <g id="箭头" transform="translate(763.000000, 32.000000) rotate(-90.000000) translate(-763.000000, -32.000000) translate(760.000000, 27.000000)" fill="#B13701" fill-rule="nonzero">
               <path d="M4,4 L8,2 L8,8 L4,6 L4,8 L-2,5 L4,2 L4,4 Z" transform="translate(3.000000, 5.000000) rotate(-270.000000) translate(-3.000000, -5.000000) " />
             </g>
-            <g id="1#压力传感器" transform="translate(174.000000, 0.000000)">
+            <g v-if="false" id="1#压力传感器" transform="translate(174.000000, 0.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-31"
                 stroke-opacity="0.289881993"
@@ -2000,7 +2000,7 @@
                 <tspan x="38" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_yl1_yxyl }}kPa</tspan>
               </text>
             </g>
-            <g id="2#压力传感器" transform="translate(1310.000000, 0.000000)">
+            <g v-if="false" id="2#压力传感器" transform="translate(1310.000000, 0.000000)">
               <rect
                 id="Rectangle-4-Copy-7复制-31"
                 stroke-opacity="0.289881993"
@@ -2021,7 +2021,7 @@
                 <tspan x="38" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_yl2_yxyl }}kPa</tspan>
               </text>
             </g>
-            <g id="a1zqgz" :class="datas.qd_nyzx_dlzf1_qdjq1_zd1_gz?'gzclass':'noclass'" transform="translate(31.000000, 549.000000)">
+            <g id="a1zqgz" :class="datas.qd_nyzx_dlzf1_qdjq1_zd1_gz?'gzclass1':'noclass'" transform="translate(31.000000, 549.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-90)" xlink:href="#path-89" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-89" />
@@ -2029,7 +2029,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="a1zdgz" :class="datas.qd_nyzx_dlzf1_qdjq1_zd1_gz?'gzclass':'noclass'" transform="translate(203.000000, 616.000000)">
+            <g id="a1zdgz" :class="datas.qd_nyzx_dlzf1_qdjq1_zd1_gz?'gzclass1':'noclass'" transform="translate(203.000000, 616.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-92)" xlink:href="#path-91" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-91" />
@@ -2037,7 +2037,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="a2zdgz" :class="datas.qd_nyzx_dlzf1_qdjq2_zd2_gz?'gzclass':'noclass'" transform="translate(618.000000, 616.000000)">
+            <g id="a2zdgz" :class="datas.qd_nyzx_dlzf1_qdjq2_zd2_gz?'gzclass1':'noclass'" transform="translate(618.000000, 616.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-94)" xlink:href="#path-93" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-93" />
@@ -2045,7 +2045,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="b1zdgz" :class="datas.qd_nyzx_dlzf1_qdjq3_zd3_gz?'gzclass':'noclass'" transform="translate(1033.000000, 616.000000)">
+            <g id="b1zdgz" :class="datas.qd_nyzx_dlzf1_qdjq3_zd3_gz?'gzclass1':'noclass'" transform="translate(1033.000000, 616.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-96)" xlink:href="#path-95" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-95" />
@@ -2053,7 +2053,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="b2zdgz" :class="datas.qd_nyzx_dlzf1_qdjq4_zd4_gz?'gzclass':'noclass'" transform="translate(1447.000000, 616.000000)">
+            <g id="b2zdgz" :class="datas.qd_nyzx_dlzf1_qdjq4_zd4_gz?'gzclass1':'noclass'" transform="translate(1447.000000, 616.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-98)" xlink:href="#path-97" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-97" />
@@ -2061,7 +2061,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="a2zqgz" :class="datas.qd_nyzx_dlzf1_qdjq2_zd2_gz?'gzclass':'noclass'" transform="translate(448.000000, 549.000000)">
+            <g id="a2zqgz" :class="datas.qd_nyzx_dlzf1_qdjq2_zd2_gz?'gzclass1':'noclass'" transform="translate(448.000000, 549.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-100)" xlink:href="#path-99" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-99" />
@@ -2069,7 +2069,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="b1zqgz" :class="datas.qd_nyzx_dlzf1_qdjq3_zd3_gz?'gzclass':'noclass'" transform="translate(861.000000, 549.000000)">
+            <g id="b1zqgz" :class="datas.qd_nyzx_dlzf1_qdjq3_zd3_gz?'gzclass1':'noclass'" transform="translate(861.000000, 549.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-102)" xlink:href="#path-101" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-101" />
@@ -2077,7 +2077,7 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
-            <g id="b2zqgz" :class="datas.qd_nyzx_dlzf1_qdjq4_zd4_gz?'gzclass':'noclass'" transform="translate(1278.000000, 549.000000)">
+            <g id="b2zqgz" :class="datas.qd_nyzx_dlzf1_qdjq4_zd4_gz?'gzclass1':'noclass'" transform="translate(1278.000000, 549.000000)">
               <g id="三角形">
                 <use fill="black" fill-opacity="1" filter="url(#filter-104)" xlink:href="#path-103" />
                 <use fill="#FF2A2A" fill-rule="evenodd" xlink:href="#path-103" />
@@ -2157,16 +2157,31 @@ export default {
     //     self.$refs.lineScan.dialogTableVisible = true
     //   }
     // })
+    var self = this
+    $('svg').click(function(e) {
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (!linecode || (linecode &&
+          linecode.split('_').length === 5)) {
+        return
+      } else {
+        self.$alert('暂不支持该设备录入!', '提示信息', {
+          confirmButtonText: '确定',
+          callback: action => {
+          }
+        })
+      }
+    })
   },
   methods: {
     showInfo(e) {
-      debugger
       this.code = e.currentTarget.attributes.id.value
       this.$refs.infoScan.dialogTableVisible = true
+      e.stopPropagation()
     },
     showLine(e) {
-      this.linecode = e.currentTarget.attributes.code.value
-      this.$refs.lineScan.dialogTableVisible = true
+      // this.linecode = e.currentTarget.attributes.code.value
+      // this.$refs.lineScan.dialogTableVisible = true
     },
     getGuZhang(type) {
       return monitorapi.getGuZhang(type)
@@ -2200,8 +2215,8 @@ svg{
     cursor: pointer;
   }
 }
-.gzclass{
-    -webkit-animation: twinkling 1s infinite ease-in-out
+.gzclass1{
+    //-webkit-animation: twinkling 1s infinite ease-in-out
 }
 // .animated{
 //     -webkit-animation-duration: 1s;
@@ -2225,8 +2240,8 @@ svg{
         opacity: 1;
     }
 }
-.ggzclass{
-    -webkit-animation: twinkling 0.3s infinite ease-in-out
+.ggzclass1{
+   // -webkit-animation: twinkling 0.3s infinite ease-in-out
 }
 .noclass{
     display: none;

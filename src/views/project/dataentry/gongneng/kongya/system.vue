@@ -1215,7 +1215,7 @@
               </g>
             </g>
             <g id="空压机" transform="translate(23.000000, 284.405369)">
-              <g id="4#螺杆空压机" code="kylg4" @click="showInfo">
+              <g id="4#螺杆空压机" code="ky_nyzx_dlzf1_kyjq1_kylg4" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1255,7 +1255,7 @@
                   <tspan x="53.3934" y="17.6288">螺杆</tspan>
                 </text>
               </g>
-              <g id="3#螺杆空压机" code="kylg3" transform="translate(92.000000, 0.000000)" @click="showInfo">
+              <g id="3#螺杆空压机" code="ky_nyzx_dlzf1_kyjq1_kylg3" transform="translate(92.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1295,7 +1295,7 @@
                   <tspan x="53.3934" y="17.6288">螺杆</tspan>
                 </text>
               </g>
-              <g id="2#螺杆空压机" code="kylg2" transform="translate(184.000000, 0.000000)" @click="showInfo">
+              <g id="2#螺杆空压机" code="ky_nyzx_dlzf1_kyjq1_kylg2" transform="translate(184.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1335,7 +1335,7 @@
                   <tspan x="53.3934" y="17.6288">螺杆</tspan>
                 </text>
               </g>
-              <g id="1#螺杆空压机" code="kylg1" transform="translate(276.000000, 0.000000)" @click="showInfo">
+              <g id="1#螺杆空压机" code="ky_nyzx_dlzf1_kyjq1_kylg1" transform="translate(276.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1375,7 +1375,7 @@
                   <tspan x="53.3934" y="17.6288">螺杆</tspan>
                 </text>
               </g>
-              <g id="1#离心空压机" code="kylx1" transform="translate(378.000000, 0.000000)" @click="showInfo">
+              <g id="1#离心空压机" code="ky_nyzx_dlzf1_kyjq2_kylx1" transform="translate(378.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1415,7 +1415,7 @@
                   <tspan x="53.3934" y="17.6288">离心</tspan>
                 </text>
               </g>
-              <g id="4#离心空压机" code="kylx4" transform="translate(971.000000, 0.000000)" @click="showInfo">
+              <g id="4#离心空压机" code="ky_nyzx_dlzf1_kyjq4_kylx4" transform="translate(971.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1455,7 +1455,7 @@
                   <tspan x="53.3934" y="17.6288">离心</tspan>
                 </text>
               </g>
-              <g id="2#离心空压机" code="kylx2" transform="translate(468.000000, 0.000000)" @click="showInfo">
+              <g id="2#离心空压机" code="ky_nyzx_dlzf1_kyjq2_kylx2" transform="translate(468.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1495,7 +1495,7 @@
                   <tspan x="53.3934" y="17.6288">离心</tspan>
                 </text>
               </g>
-              <g id="5#离心空压机" code="kylx5" transform="translate(1061.000000, 0.000000)" @click="showInfo">
+              <g id="5#离心空压机" code="ky_nyzx_dlzf1_kyjq4_kylx5" transform="translate(1061.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1535,7 +1535,7 @@
                   <tspan x="53.3934" y="17.6288">离心</tspan>
                 </text>
               </g>
-              <g id="3#离心空压机" code="kylx3" transform="translate(560.000000, 0.000000)" @click="showInfo">
+              <g id="3#离心空压机" code="ky_nyzx_dlzf1_kyjq2_kylx3" transform="translate(560.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1575,7 +1575,7 @@
                   <tspan x="53.3934" y="17.6288">离心</tspan>
                 </text>
               </g>
-              <g id="6#离心空压机" code="kylx6" transform="translate(1153.000000, 0.000000)" @click="showInfo">
+              <g id="6#离心空压机" code="ky_nyzx_dlzf1_kyjq4_kylx6" transform="translate(1153.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1615,7 +1615,7 @@
                   <tspan x="53.3934" y="17.6288">离心</tspan>
                 </text>
               </g>
-              <g id="5#螺杆空压机" code="kylg5" transform="translate(652.000000, 0.000000)" @click="showInfo">
+              <g id="5#螺杆空压机" code="ky_nyzx_dlzf1_kyjq2_kylg5" transform="translate(652.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1655,7 +1655,7 @@
                   <tspan x="53.3934" y="17.6288">螺杆</tspan>
                 </text>
               </g>
-              <g id="7#离心空压机" code="kylx7" transform="translate(1245.000000, 0.000000)" @click="showInfo">
+              <g id="7#离心空压机" code="ky_nyzx_dlzf1_kyjq4_kylx7" transform="translate(1245.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1695,7 +1695,7 @@
                   <tspan x="53.3934" y="17.6288">离心</tspan>
                 </text>
               </g>
-              <g id="6#螺杆空压机" code="kylxg6" transform="translate(744.000000, 0.000000)" @click="showInfo">
+              <g id="6#螺杆空压机" code="ky_nyzx_dlzf1_kyjq3_kylg6" transform="translate(744.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -1735,7 +1735,7 @@
                   <tspan x="53.3934" y="17.6288">螺杆</tspan>
                 </text>
               </g>
-              <g id="8#离心空压机" code="kylx8" transform="translate(1337.000000, 0.000000)" @click="showInfo">
+              <g id="8#离心空压机" code="ky_nyzx_dlzf1_kyjq4_kylx8" transform="translate(1337.000000, 0.000000)" @click="showInfo">
                 <rect id="矩形-copy-9" stroke="#586CB4" stroke-width="0.6" fill-opacity="0.128469187" fill="#E0E7FF" x="0.3" y="0.3" width="80.68512" height="62.6705799" rx="1.2096" />
                 <rect id="矩形-copy-16" stroke="#586CB4" fill="#FFFFFF" x="0" y="0" width="81" height="63.2705799" rx="1.2096" />
                 <path id="矩形-copy-19" d="M1.2096,0 L24.6,0 L24.6,63.2705799 L1.2096,63.2705799 C0.541556367,63.2705799 1.85816859e-15,62.7290235 1.77635684e-15,62.0609799 L0,1.2096 C-8.18117497e-17,0.541556367 0.541556367,2.12111907e-15 1.2096,1.99840144e-15 Z" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" />
@@ -3784,7 +3784,7 @@
             <text id="至1/2栋高压" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="13" font-weight="normal" letter-spacing="0.05000004" fill="#3D5278">
               <tspan x="7" y="831.405369">至1/2栋高压</tspan>
             </text>
-            <g id="分组-4" transform="translate(274.000000, 720.405369)">
+            <g v-if="false" id="分组-4" transform="translate(274.000000, 720.405369)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="30.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="0.48" width="71.04" height="23.04" />
               <text id="温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -3807,7 +3807,7 @@
                 <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl }}kPa</tspan>
               </text>
             </g>
-            <g id="分组-4-copy-2" transform="translate(1454.000000, 690.405369)">
+            <g v-if="false" id="分组-4-copy-2" transform="translate(1454.000000, 690.405369)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="30.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="0.48" width="71.04" height="23.04" />
               <text id="温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -3830,7 +3830,7 @@
                 <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl }}kPa</tspan>
               </text>
             </g>
-            <g id="分组-4-copy" transform="translate(274.000000, 786.405369)">
+            <g v-if="false" id="分组-4-copy" transform="translate(274.000000, 786.405369)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="30.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="0.48" width="71.04" height="23.04" />
               <text id="温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -3853,7 +3853,7 @@
                 <tspan x="162.117758" y="18">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl }}kPa</tspan>
               </text>
             </g>
-            <g id="分组-4-copy-3" transform="translate(1227.000000, 854.405369)">
+            <g v-if="false" id="分组-4-copy-3" transform="translate(1227.000000, 854.405369)">
               <rect id="Rectangle-4-Copy-7复制-30" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="34.48" y="0.48" width="71.04" height="23.04" />
               <rect id="Rectangle-4-Copy-7复制-32" stroke-opacity="0.289881993" stroke="#8A9FF4" stroke-width="0.96" fill-opacity="0.0795454545" fill="#8A9FF4" x="152.48" y="0.48" width="71.04" height="23.04" />
               <text id="温度" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="10.56" letter-spacing="0.0538462" fill="#3D5278">
@@ -4306,16 +4306,31 @@ export default {
   },
   mounted() {
     $('svg').svgPanZoom()
+    var self = this
+    $('svg').click(function(e) {
+      var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
+      self.linecode = linecode
+      if (!linecode || (linecode &&
+          linecode.split('_').length === 5)) {
+        return
+      } else {
+        self.$alert('暂不支持该设备录入!', '提示信息', {
+          confirmButtonText: '确定',
+          callback: action => {
+          }
+        })
+      }
+    })
   },
   methods: {
     showInfo(e) {
-      debugger
       this.code = e.currentTarget.attributes.code.value
       this.$refs.infoScan.dialogTableVisible = true
+      e.stopPropagation()
     },
     showLine(e) {
-      this.linecode = e.currentTarget.attributes.code.value
-      this.$refs.lineScan.dialogTableVisible = true
+      // this.linecode = e.currentTarget.attributes.code.value
+      // this.$refs.lineScan.dialogTableVisible = true
     }
   }
 }
@@ -4327,7 +4342,7 @@ svg{
   }
 }
 .gzclass{
-    -webkit-animation: twinkling 1s infinite ease-in-out
+    //-webkit-animation: twinkling 1s infinite ease-in-out
 }
 // .animated{
 //     -webkit-animation-duration: 1s;
@@ -4352,7 +4367,7 @@ svg{
     }
 }
 .ggzclass{
-    -webkit-animation: twinkling 0.3s infinite ease-in-out
+   // -webkit-animation: twinkling 0.3s infinite ease-in-out
 }
 .noclass{
     display: none;

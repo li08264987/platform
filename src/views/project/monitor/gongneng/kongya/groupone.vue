@@ -5,7 +5,7 @@
       ref="lineScan"
       :code="linecode"
     />
-    <svg width="1607px" height="857px" viewBox="0 0 1607 857" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg viewBox="0 0 1607 857" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
       <title>1#空压机组</title>
       <desc>Created with Sketch.</desc>
@@ -1907,6 +1907,8 @@ export default {
     $('svg').svgPanZoom()
     const self = this
     monitorapi.getKongYaJiData({
+      'type': 'ky',
+      'sys': '',
       'kyjq': 'kyjq1',
       'kyj': ''
     }).then(res => {

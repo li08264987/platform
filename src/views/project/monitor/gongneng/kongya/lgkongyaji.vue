@@ -5,8 +5,7 @@
       ref="lineScan"
       :code="linecode"
     />
-    <svg width="1386px" height="773px" viewBox="0 0 1386 773" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <svg viewBox="0 0 1386 773" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <title>1#螺杆空压机</title>
       <desc>Created with Sketch.</desc>
       <defs>
@@ -720,8 +719,10 @@ export default {
     params() {
       const self = this
       monitorapi.getKongYaJiData({
-        'kyjq': self.params[0],
-        'kyj': self.params[1]
+        'type': self.params[0],
+        'sys': self.params[1],
+        'kyjq': self.params[2],
+        'kyj': self.params[3]
       }).then(res => {
         if (res.state === 1) {
           self.datas = res.sbdata
@@ -735,11 +736,13 @@ export default {
   mounted() {
     const self = this
     monitorapi.getKongYaJiData({
-      'kyjq': self.params[0],
-      'kyj': self.params[1]
+      'type': self.params[0],
+      'sys': self.params[1],
+      'kyjq': self.params[2],
+      'kyj': self.params[3]
     }).then(res => {
       if (res.state === 1) {
-        self.datas = res.data
+        self.datas = res.sbdata
         self.dicdatas = res.dicdata
       }
     }).catch(err => {

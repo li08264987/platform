@@ -5,7 +5,7 @@
       ref="lineScan"
       :code="linecode"
     />
-    <svg width="1623px" height="798px" viewBox="0 0 1623 798" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg viewBox="0 0 1623 798" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <path id="path-1" d="M579,543.464393 L579,468.464393 L585,468.464393 L585,547.464393 C585,549.673532 583.209139,551.464393 581,551.464393 L210,551.464393 L210,545.464393 L577,545.464393 C578.104569,545.464393 579,544.568963 579,543.464393 Z" />
         <filter id="filter-2" x="-0.7%" y="-3.0%" width="101.3%" height="106.0%" filterUnits="objectBoundingBox">
@@ -637,8 +637,10 @@ export default {
     params() {
       const self = this
       monitorapi.getKongYaJiData({
-        'kyjq': self.params[0],
-        'kyj': self.params[1]
+        'type': self.params[0],
+        'sys': self.params[1],
+        'kyjq': self.params[2],
+        'kyj': self.params[3]
       }).then(res => {
         if (res.state === 1) {
           self.datas = res.sbdata
@@ -652,8 +654,10 @@ export default {
   mounted() {
     const self = this
     monitorapi.getKongYaJiData({
-      'kyjq': self.params[0],
-      'kyj': self.params[1]
+      'type': self.params[0],
+      'sys': self.params[1],
+      'kyjq': self.params[2],
+      'kyj': self.params[3]
     }).then(res => {
       if (res.state === 1) {
         self.datas = res.data

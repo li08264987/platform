@@ -72,9 +72,9 @@
               :value="item.CODE"
             />
           </el-select>
-          <systemOne v-if="selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
-          <systemTwo v-if="selectSys===zksys[1].CODE" style="height:96%;width:100%;margin-top:40px;" />
-          <systemFive v-if="selectSys===zksys[2].CODE" style="height:96%;width:100%;margin-top:40px;" />
+          <systemOne v-if="zksys[0] && selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
+          <systemTwo v-if="zksys[1] && selectSys===zksys[1].CODE" style="height:96%;width:100%;margin-top:40px;" />
+          <systemFive v-if="zksys[2] && selectSys===zksys[2].CODE" style="height:96%;width:100%;margin-top:40px;" />
           <i :class="rightbtn" @click="showHideRight" />
         </div>
         <div v-if="showParam" class="rightparam">
@@ -493,7 +493,7 @@
 <script>
 import kongYsSys from '@/api/monitor/kongYaSys'
 import kongyaji from '@/api/monitor/kongyaji'
-import lxkongyaji from '@/api/monitor/lxkongyaji'
+// import lxkongyaji from '@/api/monitor/lxkongyaji'
 import kongyajizu from '@/api/monitor/kongyajizu'
 import runInfo from '@/views/project/dataentry/runInfo'
 import infoScan from '@/views/project/dataentry/infoScan'
@@ -763,13 +763,13 @@ export default {
   },
   watch: {
     selectvalue3(val) {
-      if (val === 'one') {
-        this.kongyaji = kongyaji
-        this.wh = '0 0 1600 850'
-      } else {
-        this.kongyaji = lxkongyaji
-        this.wh = '0 0 1266 773'
-      }
+      // if (val === 'one') {
+      //   this.kongyaji = kongyaji
+      //   this.wh = '0 0 1600 850'
+      // } else {
+      //   this.kongyaji = lxkongyaji
+      //   this.wh = '0 0 1266 773'
+      // }
     },
     selectSys(val) {
       this.getZhenKongSubSys(val)

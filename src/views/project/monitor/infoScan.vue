@@ -11,13 +11,13 @@
           </div>
         </div>
         <div style="width:50%;">
-          <div style="font-size: 18px;font-weight: bold;">{{ title }}</div>
+          <div style="font-size: 18px;font-weight: bold;">{{ lrinfo.DEVICE_NAME?lrinfo.DEVICE_NAME: title }}</div>
           <div style="border-left:2px solid black;font-weight:bold;margin:10px 0px;padding-left:10px;">基本参数</div>
           <div class="table">
-            <div><span>设备品牌</span><span>暂无</span></div>
-            <div><span>设备型号</span><span>暂无</span></div>
-            <div><span>设备参数</span><span>暂无</span></div>
-            <div><span>安装位置</span><span>{{ loc }}</span></div>
+            <div><span>设备品牌</span><span>{{ lrinfo.DEVICE_BRAND?lrinfo.DEVICE_BRAND:'暂无' }}</span></div>
+            <div><span>设备型号</span><span>{{ lrinfo.DEVICE_TYPE?lrinfo.DEVICE_TYPE:'暂无' }}</span></div>
+            <div><span>设备参数</span><span>{{ lrinfo.DEVICE_PARAMETER?lrinfo.DEVICE_PARAMETER:'暂无' }}</span></div>
+            <div><span>安装位置</span><span>{{ lrinfo.DEVICE_ADDRESS?lrinfo.DEVICE_ADDRESS:loc }}</span></div>
           </div>
           <div style="border-left:2px solid black;font-weight:bold;margin:10px 0px;;padding-left:10px;">运行数据</div>
           <div>
@@ -30,10 +30,10 @@
               <div style="width:50%"><div>距离下次维保</div><div>暂无</div></div>
             </div>
           </div>
-          <div style="margin-top:10px;display:flex">
-            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">查看说明书></span>
-            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">查看图纸></span>
-            <span style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2">设备详情></span>
+          <div class="btntool">
+            <span :id="lrinfo.DEVICE_INSTRUCTION?lrinfo.DEVICE_INSTRUCTION:''" style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">查看说明书></span>
+            <span :id="lrinfo.DEVICE_DRAWING?lrinfo.DEVICE_DRAWING:''" style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">查看图纸></span>
+            <span :id="lrinfo.DEVICE_INSTRUCTION?lrinfo.DEVICE_INSTRUCTION:''" style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">设备详情></span>
           </div>
         </div>
       </div>
@@ -59,7 +59,8 @@ export default {
       title: '',
       time: '',
       loc: '',
-      dh: 0.0
+      dh: 0.0,
+      lrinfo: {}
     }
   },
   watch: {
@@ -73,13 +74,14 @@ export default {
             self.title = res.data.ljyxsj.DEVICE_ATTRIBUTES
             self.time = res.data.ljyxsj.VARIABLE_VALUE
             self.loc = res.data.ljyxsj.REGIONAL
-            self.dh = res.data.dh.toFixed(2)
+            self.dh = res.data.dh ? res.data.dh.toFixed(2) : 0
           } else {
             self.title = res.data.yxsj.DEVICE_ATTRIBUTES
             self.time = res.data.yxsj.VARIABLE_VALUE
             self.loc = res.data.yxsj.REGIONAL
-            self.dh = res.data.dh.toFixed(2)
+            self.dh = res.data.dh ? res.data.dh.toFixed(2) : 0
           }
+          self.lrinfo = res.data.lrinfo ? res.data.lrinfo : {}
         }
       }).catch(err => {
         console.log(err)
@@ -91,6 +93,13 @@ export default {
   methods: {
     addNewRules() {
       this.addRules = true
+    },
+    showInfo() {
+      this.$alert('暂不支持查看!', '提示信息', {
+        confirmButtonText: '确定',
+        callback: action => {
+        }
+      })
     }
   }
 }
@@ -124,6 +133,15 @@ export default {
             padding-top: 10px;
             padding-left: 0px;
           }
+        }
+      }
+    }
+    .btntool{
+      margin-top:10px;
+      display:flex;
+      span{
+        &:hover{
+          cursor: pointer;
         }
       }
     }
