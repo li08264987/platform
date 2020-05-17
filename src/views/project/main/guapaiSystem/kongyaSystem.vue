@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import { fetchGuaPaiDataKY } from '@/api/main/guapai'
 export default {
   name: 'KongYaSystem',
   data() {
@@ -247,8 +248,25 @@ export default {
 
     }
   },
+  created() {
+    setInterval(this.getGuaPaiDataKY, 60000)
+  },
+  mounted() {
+    this.getGuaPaiDataKY()
+  },
   methods: {
-
+    getGuaPaiDataKY() {
+      fetchGuaPaiDataKY().then((res) => {
+        this.yidong = res.data.yidong
+        this.erdong = res.data.erdong
+        this.sandong = res.data.sandong
+        this.sidong = res.data.sidong
+        this.jiaoshuichang = res.data.jiaoshuichang
+        this.donglizhan = res.data.donglizhan
+      }).catch(err => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>
@@ -301,6 +319,8 @@ export default {
               font-size: 0.6vw;
               color: #D9DEFF;
               letter-spacing: 0;
+              width: 2.5vw;
+              text-align: center;
             }
             .text{
                 width: 5vw;
@@ -308,7 +328,8 @@ export default {
             .unit{
               color: #D9DEFF;
               font-size: 0.6vw;
-              margin-left: 1.5vw;
+              width: 2vw;
+              text-align: center;
             }
         }
         .data-detail{

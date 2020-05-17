@@ -115,6 +115,10 @@ export default {
   },
   mounted() {
     this.getUserInfo()
+    this.active = window.sessionStorage.getItem('currentViewIndex')
+    if (this.active === null) {
+      this.active = 0
+    }
   },
   methods: {
     getUserInfo() {
@@ -142,6 +146,7 @@ export default {
         this.currentView = v
         this.onUpdate(v)
       }
+      window.sessionStorage.setItem('currentViewIndex', this.active)
     },
     async handleLogOut() {
       await this.$store.dispatch('user/logout')

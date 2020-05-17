@@ -6,7 +6,9 @@
     </div>
     <div :class="{hasTagsView:needTagsView,'sidebar-hide':sidebarHide}" class="main-container">
       <!--:is实现多个组件实现同一个挂载点-->
-      <component :is="currentView" />
+      <keep-alive>
+        <component :is="currentView" />
+      </keep-alive>
     </div>
   </div>
 </template>
@@ -67,6 +69,12 @@ export default {
       }
     }
   },
+  mounted() {
+    this.currentView = window.sessionStorage.getItem('currentView')
+    if (this.currentView === null) {
+      this.currentView = 'Main'
+    }
+  },
   methods: {
     handleClickOutside() {
       this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
@@ -124,6 +132,7 @@ export default {
           this.sidebarHide = true
           break
       }
+      window.sessionStorage.setItem('currentView', this.currentView)
     }
   }
 }

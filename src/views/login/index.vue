@@ -491,7 +491,6 @@ $light_gray:#eee;
 .version{
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
   justify-content: center;
   align-items: center;
 }
