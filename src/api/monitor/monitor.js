@@ -160,5 +160,19 @@ export default {
       color = 'red'
     }
     return color
+  },
+  getFuJianList(query) {
+    return request({
+      url: '/monitor/getFuJianList',
+      method: 'post',
+      params: query
+    })
+  },
+  download(query) {
+    return request({
+      url: '/monitor/download',
+      method: 'post',
+      params: query
+    })
   }
 }

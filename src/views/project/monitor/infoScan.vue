@@ -1,5 +1,6 @@
 <template>
   <div class="rules">
+    <tableList ref="tableList" :code="fjcode" />
     <el-dialog v-dialogDrag :title="title" :visible.sync="dialogTableVisible">
       <div style="display:flex;">
         <div style="width:50%;padding:10px;">
@@ -31,9 +32,9 @@
             </div>
           </div>
           <div class="btntool">
-            <span :id="lrinfo.DEVICE_INSTRUCTION?lrinfo.DEVICE_INSTRUCTION:''" style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">查看说明书></span>
-            <span :id="lrinfo.DEVICE_DRAWING?lrinfo.DEVICE_DRAWING:''" style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">查看图纸></span>
-            <span :id="lrinfo.DEVICE_INSTRUCTION?lrinfo.DEVICE_INSTRUCTION:''" style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">设备详情></span>
+            <span :id="lrinfo.DEVICE_INSTRUCTION?lrinfo.DEVICE_INSTRUCTION:''" style="width:50%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">查看说明书></span>
+            <span :id="lrinfo.DEVICE_DRAWING?lrinfo.DEVICE_DRAWING:''" style="width:50%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">查看图纸></span>
+            <!-- <span :id="lrinfo.DEVICE_INSTRUCTION?lrinfo.DEVICE_INSTRUCTION:''" style="width:33%;display:inline-block;text-decoration:underline;color:#23AAF2" @click="showInfo">设备详情></span> -->
           </div>
         </div>
       </div>
@@ -42,8 +43,12 @@
 </template>
 <script>
 import monitorapi from '@/api/monitor/monitor'
+import tableList from '@/views/project/monitor/tableList'
 export default {
   name: 'RunInfo',
+  components: {
+    tableList
+  },
   props: {
     code: {
       type: String,
@@ -60,7 +65,8 @@ export default {
       time: '',
       loc: '',
       dh: 0.0,
-      lrinfo: {}
+      lrinfo: {},
+      fjcode: ''
     }
   },
   watch: {
@@ -94,12 +100,18 @@ export default {
     addNewRules() {
       this.addRules = true
     },
-    showInfo() {
-      this.$alert('暂不支持查看!', '提示信息', {
-        confirmButtonText: '确定',
-        callback: action => {
-        }
-      })
+    showInfo(e) {
+      debugger
+      this.fjcode = e.currentTarget.attributes.id.value
+      if (this.fjcode !== '' && this.fjcode !== null) {
+        this.$refs.tableList.dialogTableVisible = true
+      } else {
+        this.$alert('暂无附件上传!', '提示信息', {
+          confirmButtonText: '确定',
+          callback: action => {
+          }
+        })
+      }
     }
   }
 }

@@ -67,15 +67,11 @@ export default {
           trigger: 'item',
           formatter: '{b}: {c} ({d}%)'
         },
-        // legend: {
-        //   orient: 'vertical',
-        //   left: 10,
-        //   data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
-        // },
         series: [
           {
             type: 'pie',
             radius: ['70%', '90%'],
+            color: ['#A26DFD', '#10D178', '#2853FF', '#F0725E', '#FAC400'],
             avoidLabelOverlap: false,
             label: {
               show: false,
