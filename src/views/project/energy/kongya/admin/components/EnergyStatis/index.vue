@@ -58,44 +58,16 @@
                   </div>
                 </div>
               </div>
-              <div class="chart-container right-container">
-                <div class="chart-title"><span>机组能耗排名</span></div>
-                <div class="chart-main">
-                  <el-table
-                    v-loading="effectOrderDataLoading"
-                    :data="effectOrderData"
-                    header-row-class-name="table-header"
-                    style="width: 100%; overflow-y: auto;"
-                  >
-                    <el-table-column
-                      prop="name"
-                      label="名称"
-                    />
-                    <el-table-column
-                      prop="effect"
-                      label="能效值 "
-                    />
-                    <el-table-column
-                      prop="effectOrder"
-                      label="能效排名"
-                    />
-                    <el-table-column
-                      prop="elec"
-                      label="电耗"
-                    />
-                    <el-table-column
-                      prop="elecOrder"
-                      label="电耗排名"
-                    />
-                    <el-table-column
-                      prop="gas"
-                      label="产气量"
-                    />
-                    <el-table-column
-                      prop="gasOrder"
-                      label="产气排名"
-                    />
-                  </el-table>
+              <div class="neng-hao-charts">
+                <div v-for="(item, index) in energyCircleData" :key="index" class="neng-hao-chart">
+                  <div class="chart-title"><span>{{ item.title }}</span></div>
+                  <div :id="item.elemId" v-loading="energyCircleDataLoading" class="chart-main" />
+                  <div class="chart-footer">
+                    <span :class="['chart-footer-image', item.increase?'up':'down']" />
+                    <span class="chart-footer-text">较昨日</span>
+                    <span class="chart-footer-text">{{ (item.increase?'+':'-')+Math.round(item.change*100)/100.0 }}</span>
+                    <span class="chart-footer-text">{{ item.unit }}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,32 +91,96 @@
                 </div>
               </div>
             </div>
-            <div class="neng-hao-charts">
-              <div v-for="(item, index) in energyCircleData" :key="index" class="neng-hao-chart">
-                <div class="chart-title"><span>{{ item.title }}</span></div>
-                <div :id="item.elemId" v-loading="energyCircleDataLoading" class="chart-main" />
-                <div class="chart-footer">
-                  <span :class="['chart-footer-image', item.increase?'up':'down']" />
-                  <span class="chart-footer-text">较昨日</span>
-                  <span class="chart-footer-text">{{ (item.increase?'+':'-')+Math.round(item.change*100)/100.0 }}</span>
-                  <span class="chart-footer-text">{{ item.unit }}</span>
-                </div>
+            <div class="chart-container right-container">
+              <div class="chart-title"><span>机组能耗排名</span></div>
+              <div class="chart-main">
+                <el-table
+                  v-loading="effectOrderDataLoading"
+                  :data="effectOrderData"
+                  :fit="true"
+                  size="medium"
+                  class="sort-table"
+                  header-row-class-name="sort-table-header-row"
+                  row-class-name="sort-table-row"
+                  cell-class-name="sort-table-cell"
+                  header-cell-class-name="sort-table-header-cell"
+                  style="display: flex; flex-direction: column; justify-content: center;"
+                >
+                  <el-table-column
+                    prop="name"
+                    label="名称"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="effect"
+                    label="能效值 kW·h/m³"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="effectOrder"
+                    label="能效排名"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="elec"
+                    label="电耗 kW·h"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="elecOrder"
+                    label="电耗排名"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="gas"
+                    label="产气量 m³"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="gasOrder"
+                    label="产气排名"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                </el-table>
               </div>
             </div>
           </div>
         </el-col>
       </el-row>
       <div class="footer-tooltip">
-        <div v-if="progressData.nengfei.used>=progressData.nengfei.total">当前电费已超出限定电费，
-          预计今日累计电费将超出限额电费
-          <span class="red-text">
-            {{ Math.round((progressData.nengfei.used-progressData.nengfei.total)/(new Date().getHours()==0?1:new Date().getHours())*24*10)/10.0 }}元</span>，
-          超标<span class="red-text">{{ Math.round(((progressData.nengfei.used-progressData.nengfei.total)/(new Date().getHours()==0?1:new Date().getHours())*24)/(progressData.nengfei.total==0?1:progressData.nengfei.total)*100) }}%</span>。
-        </div>
-        <div v-else>
-          今日限额电费已消耗<span class="blue-text">{{ (progressData.nengfei.total && progressData.nengfei.total!==0)?Math.round(progressData.nengfei.used/progressData.nengfei.total*100):0 }}%</span>，
-          后续最高小时耗费<span class="blue-text">{{ Math.round((progressData.nengfei.total-progressData.nengfei.used)/(24-new Date().getHours())*10)/10.0 }}元</span>，
-          可限额管理要求。
+        <div v-for="count in 3" :key="count">
+          <div v-if="progressData.nengfei.used>=progressData.nengfei.total">当前电费已超出限定电费，
+            预计今日累计电费将超出限额电费
+            <span class="red-text">
+              {{ Math.round((progressData.nengfei.used-progressData.nengfei.total)/(new Date().getHours()==0?1:new Date().getHours())*24*10)/10.0 }}元</span>，
+            超标<span class="red-text">{{ Math.round(((progressData.nengfei.used-progressData.nengfei.total)/(new Date().getHours()==0?1:new Date().getHours())*24)/(progressData.nengfei.total==0?1:progressData.nengfei.total)*100) }}%</span>。
+          </div>
+          <div v-else>
+            今日限额电费已消耗<span class="blue-text">{{ (progressData.nengfei.total && progressData.nengfei.total!==0)?Math.round(progressData.nengfei.used/progressData.nengfei.total*100):0 }}%</span>，
+            后续最高小时耗费<span class="blue-text">{{ Math.round((progressData.nengfei.total-progressData.nengfei.used)/(24-new Date().getHours())*10)/10.0 }}元</span>，
+            可限额管理要求。
+          </div>
         </div>
       </div>
     </el-main>
@@ -179,7 +215,7 @@ export default {
           title: '电耗能耗',
           used: 0,
           total: 0,
-          unit: 'kW·h/m³▪min'
+          unit: 'kW·h/m³'
         },
         nengfei: {
           title: '电耗收费',
@@ -220,7 +256,7 @@ export default {
         value: 0,
         percent: 80,
         change: 0,
-        unit: 'kW·h/m³▪min',
+        unit: 'kW·h/m³',
         increase: true,
         startColor: '#A26DFD',
         endColor: '#BE98FF'
@@ -350,7 +386,7 @@ export default {
           fontColor: '#40474d',
           fontFamily: 'Bebas',
           fontWeight: 'bold',
-          fontSize: 28,
+          fontSize: 24,
           autoRadius: true,
           barWidth: 10,
           initValue: item.percent,
@@ -404,7 +440,7 @@ export default {
     border-left: none;
   }
   .right-dash-boeder-el-col {
-    border-right: dashed 1px #888;
+    border-right: none;
   }
   .left-container,
   .right-container {
@@ -417,7 +453,7 @@ export default {
   .left-container-top {
     height: 45%;
     width: 100%;
-    border-bottom: solid 1px #E4E9F0;
+    border-bottom: none;
     flex-grow: 0;
     flex-shrink: 0;
     display: flex;
@@ -429,7 +465,7 @@ export default {
     width: 100%;
     flex-grow: 0;
     flex-shrink: 0;
-    border-bottom: solid 2px #E4E9F0;
+    border-bottom: none;
   }
   .progress-charts-container {
     width: 55%;
@@ -444,7 +480,6 @@ export default {
   .chart-container {
     width: 100%;
     height: calc(100% / 3);
-    border-bottom: solid 1px #E4E9F0;
     display: flex;
     flex-direction: column;
     padding: 15px 30px;
@@ -460,11 +495,16 @@ export default {
   }
   .chart-container.left-container{
     width: 55%;
+    border-right: solid 1px #E4E9F0;
+    border-top: solid 1px #E4E9F0;
+    border-bottom: none;
   }
   .chart-container.right-container{
-    width: 45%;
-    border-left: solid 1px #E4E9F0;
+    width: 100%;
+    height: 55% !important;
+    border-left: none;
     border-bottom: solid 1px #E4E9F0;
+    border-top: solid 1px #E4E9F0;
   }
   .progress-chart-container:last-child,
   .chart-container:last-child {
@@ -571,11 +611,11 @@ export default {
     height: calc(100% - 28px);
   }
   .neng-hao-charts {
-    width: 100%;
-    height: 55%;
+    width: 45%;
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
-    border-bottom: solid 1px #E4E9F0;
+    border-bottom: none;
   }
 
   .dong-li-zhan-chart {
@@ -584,7 +624,7 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 15px 30px;
-    border-bottom: solid 0px #E4E9F0;
+    border-right: solid 1px #E4E9F0;
   }
 
   .neng-hao-chart {
@@ -592,7 +632,8 @@ export default {
     height: 50%;
     display: inline-block;
     padding: 15px 30px;
-    border: solid 1px #E4E9F0;
+    border-top: solid 1px #E4E9F0;
+    border-right: solid 1px #E4E9F0;
     display: flex;
     flex-direction: column;
   }
@@ -628,14 +669,14 @@ export default {
   .search-form {
     float: right;
   }
-  .footer-tooltip{
+  .footer-tooltip {
     height: 50px;
-    padding: 5px 30px;
+    padding: 5px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-top: solid 1px #E4E9F0;
-    font-size: 18px;
+    font-size: 14px;
     text-shadow: 0 0 0;
     color: #333;
   }
@@ -644,6 +685,50 @@ export default {
   }
   .blue-text {
     color: blue;
+  }
+  .footer-tooltip>div {
+    width: 30%;
+    padding: 5px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid 1px #E4E9F0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .footer-tooltip>div:first-child {
+    width: 36.67%;
+  }
+
+  .footer-tooltip>div:last-child {
+    width: 33.33%;
+  }
+
+  .footer-tooltip>div>div {
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+  }
+  .footer-tooltip>div>div::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    background-color: #333;
+  }
+
+  .footer-tooltip>div>div::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    background-color: rgba(60, 60, 60, 0.05);
+  }
+  .footer-tooltip>div>div::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(60, 60, 60, 0.3);
+  }
+  .footer-tooltip>div>div::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: rgba(60, 60, 60, 0.15);
   }
 </style>
 <style lang="scss">
@@ -684,5 +769,47 @@ export default {
   }
   .energy-statis-dianping-table-cell:last-child {
     border-right: 1px solid rgba(228,233,240,1);
+  }
+  .sort-table-header-row {
+    border: none;
+  }
+  .sort-table-row {
+
+  }
+  .sort-table-cell {
+    border-bottom:1px solid rgba(228,233,240,1);
+    border-right:1px solid rgba(228,233,240,1);
+    border-left:1px solid rgba(228,233,240,1);
+    color: rgba(51,51,51,1);
+    line-height: 18px;
+    font-size: 14px;
+  }
+  .sort-table-cell .cell{
+    padding: 0 5px !important;
+  }
+  .sort-table-cell+.sort-table-cell{
+    border-left:none;
+  }
+  .sort-table-header-cell {
+    background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(244,246,252,1) 100%);
+    border:1px solid rgba(228,233,240,1);
+    color: rgba(51,51,51,1);
+    line-height: 18px;
+    font-size: 14px;
+    text-shadow: 0 0 0;
+  }
+  .sort-table-header-cell+.sort-table-header-cell {
+    border-left:none;
+  }
+  .sort-table-header-cell .cell{
+    padding: 0 5px !important;
+    white-space: normal !important;
+    word-break: break-word;
+  }
+  .el-table.sort-table::before {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0px;
   }
 </style>

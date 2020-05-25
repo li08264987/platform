@@ -49,7 +49,7 @@ export default {
   data() {
     return {
       currentView: 'Main',
-      sidebarHide: true,
+      sidebarHide: false,
       needTagsView: false
     }
   },
