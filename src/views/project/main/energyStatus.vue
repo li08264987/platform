@@ -72,25 +72,27 @@
           </div>
         </div>
         <div class="right">
-          <div class="number">
-            <div class="left-number">{{ energy.leng.xiaohao }}</div>
-            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
-              <div class="right-number">
-                <div :class="energy.leng.numberLogo" />
-                <div class="percent">{{ energy.leng.changeNumber }}</div>
-              </div>
-            </el-tooltip>
-          </div>
-          <div class="text">
-            <div class="left-text" style="margin-right:2.7vw">冷量(万GJ)</div>
-            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">{{ energy.leng.changeText }}</div>
-            </el-tooltip>
+          <div class="left">
+            <div class="number">
+              <div class="left-number">{{ energy.qingdan.xiaohao }}</div>
+              <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+                <div class="right-number">
+                  <div :class="energy.qingdan.numberLogo" />
+                  <div class="percent">{{ energy.qingdan.changeNumber }}</div>
+                </div>
+              </el-tooltip>
+            </div>
+            <div class="text">
+              <div class="left-text" style="margin-right:1.5vw">氢氮气量(万m³)</div>
+              <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+                <div class="right-text">{{ energy.qingdan.changeText }}</div>
+              </el-tooltip>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="row row-3">
+      <!-- <div class="row row-3">
         <div class="left">
           <div class="number">
             <div class="left-number">{{ energy.qingdan.xiaohao }}</div>
@@ -125,7 +127,7 @@
             </el-tooltip>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -249,8 +251,7 @@ export default {
 </script>
 
 <style lang='scss'>
-
-#left-container .energy-select{
+.energy-state .energy-select{
   .el-input{
       width: 5vw;
     }
@@ -284,7 +285,6 @@ export default {
 
 .energy-state{
     position: relative;
-    margin-top: 1vw;
     background: rgba(52,24,171,0.20);
     border: 1px solid #3418AB;
     box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
@@ -292,7 +292,7 @@ export default {
     width: 100%;
     flex-grow: 0;
     flex-shrink: 0;
-    height: 19vw;
+    height: 16vw;
     display: flex;
     flex-direction: column;
     font-family: Bebas;

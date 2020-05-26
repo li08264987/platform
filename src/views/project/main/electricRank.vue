@@ -3,7 +3,7 @@
     <div class="first-rows" style="display:flex;flex-direction:row;">
       <div class="title">
         <div class="logo" />
-        <span>电力消耗排名</span>
+        <span>累计氢氮耗量排名</span>
       </div>
       <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
@@ -255,7 +255,7 @@ export default {
 </script>
 
 <style lang='scss'>
-#right-container {
+.dianli-consumer {
   .first-rows{
     .energy-select{
       margin-top: 0.3vw;
@@ -292,7 +292,7 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: auto;
+    height: 80%;
     padding: 0 0.8vw;
     margin-top: 1vw;
     .dianli-group{
@@ -333,7 +333,7 @@ export default {
       }
       .el-table td,.el-table th{
           padding: 0.3vw 0;
-          height: 2.2vw;
+          /* height: 2.2vw; */
           border-color: #243B9E;
 
       }
@@ -366,7 +366,7 @@ export default {
         color: #fff;
       }
       .el-table__body-wrapper{
-        height: 100%;
+        height: 11.5vw;
         overflow-y: auto;
         .el-table__body{
           height: 100%;
@@ -397,9 +397,9 @@ export default {
 .dianli-consumer{
   position: relative;
   width: 100%;
-  height: 0;
-  flex-shrink: 1;
-  flex-grow: 1;
+  height: 19vw;
+  flex-shrink: 0;
+  flex-grow: 0;
   margin-top: 1vw;
   background: rgba(52,24,171,0.20);
   border: 1px solid #3418AB;

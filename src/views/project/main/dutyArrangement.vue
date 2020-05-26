@@ -161,7 +161,7 @@ export default {
 </script>
 
 <style lang='scss'>
-#left-container .duty-select{
+.duty-arrange .duty-select{
     .el-input{
       width: vw;
     }
@@ -194,14 +194,14 @@ export default {
 <style lang='scss' scoped>
 .duty-arrange {
   position: relative;
-  height: 15vw;
+  height: 0;
   background: rgba(52,24,171,0.20);
   border: 1px solid #3418AB;
   box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
   border-radius: 4px;
   width: 100%;
-  flex-grow: 0;
-  flex-shrink: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
   display: flex;
   flex-direction: column;
   .first-rows{

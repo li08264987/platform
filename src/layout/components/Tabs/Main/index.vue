@@ -4,7 +4,7 @@
       <div class="top-pic" />
       <div id="left-container">
         <duty-arrangement />
-        <energy-status />
+        <electric-rank />
         <operation-watch />
       </div>
 
@@ -20,8 +20,9 @@
       </div>
 
       <div id="right-container">
+        <energy-status />
         <fault-warning ref="faultWarning" :cursor="cursor" />
-        <electric-rank />
+        <duty-arrangement />
       </div>
     </div>
   </div>
@@ -232,6 +233,7 @@ export default {
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
   }
 }

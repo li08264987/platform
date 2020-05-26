@@ -24,23 +24,18 @@
             </div>
           </div>
         </div>
-        <div id="warningBar" :style="{width: '21vw', height: '16vw'}">
-          <bar-chart id="warningBar-System" :chart-data="barChartData" :cursor="cursor" />
-        </div>
       </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 
 <script>
-import BarChart from './echart/BarChart'
 import PieChart from './echart/PieChart'
 import { getFaultWarningData } from '@/api/main/faultWarning'
 export default {
   name: 'FaultWarning',
   components: {
-    PieChart,
-    BarChart
+    PieChart
   },
   props: {
     cursor: {
@@ -187,8 +182,9 @@ export default {
   border-radius: 4px;
   flex-shrink: 0;
   flex-grow: 0;
-  height: 32vw;
+  height: 19vw;
   font-family: Bebas;
+  margin: 1vw 0;
   .first-rows{
     flex-shrink: 0;
     flex-grow: 0;
@@ -225,7 +221,7 @@ export default {
     width:4vw;
     position: absolute;
     top: 4.5vw;
-    left: 17.2vw;
+    left: 16vw;
     .dealing{
       margin-bottom: 1.7vw;
       .text{
