@@ -18,17 +18,70 @@
     >
       <el-table-column
         v-if="true"
-        prop="sheBeiVaribleName"
-        label="设备变量名称"
+        prop="faultSystem"
+        label="故障系统"
         min-width="50"
         header-align="center"
         align="center"
       />
       <el-table-column
         v-if="true"
-        prop="alarmValue"
-        label="设定报警值"
+        prop="sheBeiName"
+        label="设备名称"
+        min-width="90"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="pointAttribute"
+        label="参数点位"
         min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmLevel"
+        label="报警级别"
+        min-width="50"
+        header-align="center"
+        align="center"
+        :sortable="true"
+        :sort-method="sortByLevel"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmValue"
+        label="报警设定值"
+        min-width="50"
+        header-align="center"
+        align="center"
+        :sortable="true"
+      />
+      <el-table-column
+        v-if="true"
+        prop="currentValue"
+        label="报警触发值"
+        min-width="50"
+        header-align="center"
+        align="center"
+        :sortable="true"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmUnit"
+        label="数据单位"
+        min-width="50"
+        header-align="center"
+        align="center"
+      />
+      <el-table-column
+        v-if="true"
+        prop="alarmTime"
+        label="报警时间"
+        min-width="60"
+        :sortable="true"
         header-align="center"
         align="center"
       />
@@ -53,47 +106,6 @@
         align="center"
       />
       <el-table-column
-        v-if="true"
-        prop="alarmTime"
-        label="报警时间"
-        min-width="50"
-        :sortable="true"
-        header-align="center"
-        align="center"
-      />
-      <el-table-column
-        v-if="true"
-        prop="sheBeiName"
-        label="设备名称"
-        min-width="50"
-        header-align="center"
-        align="center"
-      />
-      <el-table-column
-        v-if="true"
-        prop="alarmLevel"
-        label="报警级别"
-        min-width="50"
-        header-align="center"
-        align="center"
-      />
-      <el-table-column
-        v-if="true"
-        prop="currentValue"
-        label="实际值"
-        min-width="50"
-        header-align="center"
-        align="center"
-      />
-      <el-table-column
-        v-if="true"
-        prop="alarmUnit"
-        label="数据单位"
-        min-width="50"
-        header-align="center"
-        align="center"
-      />
-      <el-table-column
         v-if="false"
         prop="code"
         label="唯一标识码"
@@ -103,13 +115,13 @@
       />
       <el-table-column
         v-if="showOperation"
-        label="操作"
+        label="报警操作"
         header-align="center"
         align="center"
       >
         <template slot-scope="scope">
           <Button
-            label="已处理"
+            :label="scope.row.stateCode === 1?'已处理':'消除'"
             :size="size"
             :type="buttonType.success"
             :disabled="scope.row.stateCode === 1?true:false"
@@ -198,7 +210,7 @@ export default {
     return {
       pageRequest: {
         pageNum: 1,
-        pageSize: 15
+        pageSize: 17
       },
       loading: false,
       selections: [],
@@ -212,6 +224,12 @@ export default {
     this.refreshPageRequest(1)
   },
   methods: {
+    sortByLevel(obj1, obj2) {
+      var level1 = obj1.alarmLevelCode
+      var level2 = obj2.alarmLevelCode
+
+      return level1 - level2
+    },
     refreshPageRequest: function(pageNum) {
       this.pageRequest.pageNum = pageNum
       this.findPage()
