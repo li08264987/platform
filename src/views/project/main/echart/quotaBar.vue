@@ -26,10 +26,10 @@ export default {
       type: Boolean,
       default: true
     },
-    chartData: {
+    /* chartData: {
       type: Object,
       required: true
-    },
+    }, */
     cursor: {
       type: Number,
       default: 1
@@ -41,7 +41,7 @@ export default {
     }
   },
   watch: {
-    chartData: {
+    /* chartData: {
       deep: true,
       handler(val) {
         var xAxis = []
@@ -51,7 +51,7 @@ export default {
         const param = { dealedData: val.dealedList, dealingData: val.dealingList, xAxis: xAxis }
         this.setOptions(param)
       }
-    }
+    } */
   },
   mounted() {
     this.$nextTick(() => {
@@ -68,72 +68,70 @@ export default {
   methods: {
     initChart() {
       this.chart = echarts.init(this.$el, 'roma')
-      var xAxis = []
-      if (this.chartData.systems !== undefined) {
-        for (let i = 0; i < this.chartData.systems.length; i++) {
-          xAxis.push(this.chartData.systems[i].systemName)
-        }
-        const param = { dealedData: this.chartData.dealedList, dealingData: this.chartData.dealingList, xAxis: xAxis }
-        this.setOptions(param)
-      }
+      this.setOptions()
     },
-    setOptions({ dealedData, dealingData, xAxis } = {}) {
+    setOptions() {
       var option = {
-        grid: {
-          top: '15%',
-          bottom: '7%',
-          left: '15%',
-          right: '2%'
-        },
-        legend: {
-
-        },
         tooltip: {
           trigger: 'axis',
-          padding: [5, 10]
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          top: '7%',
+          left: '3%',
+          right: '7%',
+          bottom: '1%',
+          containLabel: true
         },
         xAxis: {
-          type: 'category',
-          data: xAxis,
+          show: false,
+          type: 'value',
+          boundaryGap: [0, 0.01],
+          axisLabel: {
+            color: '#fff',
+            fontSize: 16
+          },
           splitLine: {
             show: false
           },
           axisLine: {
             lineStyle: {
-              type: 'solid',
-              color: '#2642BB'
-            }
-          },
-          axisLabel: {
-            textStyle: {
-              color: ' #9FA8DA',
-              fontSize: this.cursor * 16
+              color: '#fff'
             }
           }
         },
         yAxis: {
-          type: 'value',
-          name: '(件)',
-          splitLine: {
-            show: false
-          },
-          nameTextStyle: {
-            color: '#9FA8DA'
-          },
+          type: 'category',
+          data: ['系统能效', '产气量', '耗电量', '运行电费'],
           axisLine: {
+            show: false,
             lineStyle: {
-              type: 'solid',
-              color: '#2642BB'
+              color: '#fff'
             }
           },
+          axisTick: {
+            show: false
+          },
           axisLabel: {
+            show: true,
+            color: '#fff',
             textStyle: {
-              color: ' #9FA8DA'
+              fontSize: 16
             }
           }
         },
         series: [{
-          name: '已处理故障',
+          type: 'bar',
+          data: [18203, 23489, 29034, 104970],
+          barWidth: 30,
+          label: {
+            show: true,
+            position: 'right',
+            color: '#fff',
+            fontSize: 16
+          },
           itemStyle: {
             normal: {
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -146,30 +144,12 @@ export default {
               }
               ])
             }
-          },
-          type: 'bar',
-          data: dealedData
-        }, {
-          name: '未处理故障',
-          itemStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0.18,
-                color: '#EB2E95'
-              },
-              {
-                offset: 1.0,
-                color: 'rgba(235,46,149,0.00)'
-              }
-              ])
-            }
-          },
-          type: 'bar',
-          data: dealingData
+          }
         }]
       }
       this.chart.setOption(option)
     }
   }
 }
+
 </script>

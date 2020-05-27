@@ -3,9 +3,9 @@
     <div class="dp-bottom-container">
       <div class="top-pic" />
       <div id="left-container">
-        <duty-arrangement />
+        <PertimeOutput />
         <electric-rank />
-        <operation-watch />
+        <QuotaManage />
       </div>
 
       <div id="middle-container">
@@ -31,8 +31,10 @@
 <script>
 import { fetchSafeDays } from '@/api/main/guapai'
 import DutyArrangement from '@/views/project/main/dutyArrangement'
+import PertimeOutput from '@/views/project/main/perTimeOutput'
 import EnergyStatus from '@/views/project/main/energyStatus'
-import OperationWatch from '@/views/project/main/operationWatch'
+// import OperationWatch from '@/views/project/main/operationWatch'
+import QuotaManage from '@/views/project/main/quotaManage'
 import FaultWarning from '@/views/project/main/faultWarning'
 import ElectricRank from '@/views/project/main/electricRank'
 import GuaPai from '@/views/project/main/guaPai'
@@ -40,8 +42,9 @@ export default {
   name: 'Main',
   components: {
     DutyArrangement,
+    PertimeOutput,
     EnergyStatus,
-    OperationWatch,
+    QuotaManage,
     FaultWarning,
     ElectricRank,
     GuaPai

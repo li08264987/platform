@@ -3,7 +3,7 @@
     <div class="first-rows">
       <div class="title">
         <div class="logo" />
-        <span>值班安排</span>
+        <span>{{ title }}值班信息</span>
       </div>
       <el-select v-model="dutySelect.systemName" :popper-append-to-body="false" placeholder="请选择" class="duty-select" @change="changeMethod">
         <el-option
@@ -97,7 +97,27 @@ export default {
   computed: {
     ...mapGetters([
       'currentView'
-    ])
+    ]),
+    title() {
+      var title = ''
+      var currentView = this.$store.state.settings.currentView.value
+      switch (currentView) {
+        case 'ky':
+          title = '空压'
+          break
+        case 'qd':
+          title = '氢氮'
+          break
+        case 'zk':
+          title = '真空'
+          break
+        case 'dl':
+          title = '电力'
+          break
+        default:
+      }
+      return title
+    }
   },
   watch: {
     currentView: function(values) {

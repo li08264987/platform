@@ -3,7 +3,7 @@
     <div class="first-rows" style="display:flex;flex-direction:row;">
       <div class="title">
         <div class="logo" />
-        <span>累计氢氮耗量排名</span>
+        <span>累计{{ title }}排名</span>
       </div>
       <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
@@ -16,7 +16,7 @@
     </div>
 
     <div class="second-row">
-      <div class="radio-container">
+      <!-- <div class="radio-container">
         <el-radio-group v-model="radio.system.defaultSystemCode" class="dianli-group" :disabled="radioDisabled" @change="systemRadioChange">
           <el-radio-button
             v-for="item in radio.system.data"
@@ -26,7 +26,7 @@
             {{ item.systemName }}
           </el-radio-button>
         </el-radio-group>
-      </div>
+      </div> -->
 
       <!-- <div class="sum-row">
         <span><label>总能耗(kwh)：</label><strong>{{ radio.system.sumEnergy }}</strong></span>
@@ -46,11 +46,10 @@
         >
           <el-table-column prop="rank" label="排名" min-width="20" align="center" />
           <el-table-column prop="cheJianName" label="车间名称" min-width="30" align="center" />
-          <el-table-column prop="consumer" label="消耗量" min-width="30" align="center" />
-          <el-table-column prop="level" label="总能效值" min-width="30" align="center">
+          <el-table-column prop="consumer" :label="thirdColumnName" min-width="30" align="center" />
+          <el-table-column prop="level" :label="forthColumnName" min-width="30" align="center">
             <template slot-scope="scope">
               <div v-html="scope.row.levelValue" />
-              <div v-html="scope.row.levelName" />
             </template>
           </el-table-column>
         </el-table>
@@ -138,7 +137,70 @@ export default {
   computed: {
     ...mapGetters([
       'currentView'
-    ])
+    ]),
+    title() {
+      var title = ''
+      var currentView = this.$store.state.settings.currentView.value
+      switch (currentView) {
+        case 'ky':
+          title = '空压耗量'
+          break
+        case 'qd':
+          title = '氢氮耗量'
+          break
+        case 'zk':
+          title = '电耗'
+          break
+        case 'dl':
+        case 'dianli':
+          title = '真空耗电量'
+          break
+        default:
+      }
+      return title
+    },
+    thirdColumnName() {
+      var title = ''
+      var currentView = this.$store.state.settings.currentView.value
+      switch (currentView) {
+        case 'ky':
+          title = '耗气量'
+          break
+        case 'qd':
+          title = '耗气量'
+          break
+        case 'zk':
+          title = '耗电量'
+          break
+        case 'dl':
+        case 'dianli':
+          title = '耗电量'
+          break
+        default:
+      }
+      return title
+    },
+    forthColumnName() {
+      var title = ''
+      var currentView = this.$store.state.settings.currentView.value
+      switch (currentView) {
+        case 'ky':
+          title = '总耗气量'
+          break
+        case 'qd':
+          title = '总耗气量'
+          break
+        case 'zk':
+          title = '总耗电量'
+          break
+        case 'dl':
+        case 'dianli':
+          title = '总耗电量'
+          break
+        default:
+      }
+      return title
+    }
   },
   watch: {
     currentView: function(params) {
@@ -366,10 +428,10 @@ export default {
         color: #fff;
       }
       .el-table__body-wrapper{
-        height: 11.5vw;
+        height: 100%;
         overflow-y: auto;
         .el-table__body{
-          height: 100%;
+          height: 13.4vw;
           .el-table__empty-block{
             border-right: 1px solid #243B9E;
           }

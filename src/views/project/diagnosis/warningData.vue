@@ -54,7 +54,7 @@ export default {
         dateType: 'datetimerange',
         searchText: ''
       },
-      showOperation: true,
+      showOperation: false,
       border: true,
       pageRequest: { pageNum: 1, pageSize: 20 },
       pageResult: {},

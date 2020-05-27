@@ -102,21 +102,31 @@ export default {
     },
     showDongLiZhan() {
       const view = this.currentView
-      if (view === 'zk') {
+      if (view === 'zk' || view === 'dl' || view === 'dianli') {
         return false
       } else {
         return true
       }
     },
     showYiDong() {
-      return true
+      const view = this.currentView
+      if (view === 'zk' || view === 'dl' || view === 'dianli') {
+        return false
+      } else {
+        return true
+      }
     },
     showErDong() {
-      return true
+      const view = this.currentView
+      if (view === 'zk' || view === 'dl' || view === 'dianli') {
+        return false
+      } else {
+        return true
+      }
     },
     showSanDong() {
       const view = this.currentView
-      if (view === 'zk') {
+      if (view === 'zk' || view === 'dl' || view === 'dianli') {
         return false
       } else {
         return true
@@ -124,7 +134,7 @@ export default {
     },
     showSiDong() {
       const view = this.currentView
-      if (view === 'zk') {
+      if (view === 'zk' || view === 'dl' || view === 'dianli') {
         return false
       } else {
         return true
@@ -132,7 +142,7 @@ export default {
     },
     showJiaoShuiChang() {
       const view = this.currentView
-      if (view === 'qd') {
+      if (view === 'qd' || view === 'zk' || view === 'dl' || view === 'dianli') {
         return false
       } else {
         return true
@@ -169,7 +179,7 @@ img {
         left: 37vw;
     }
     &-sidong{
-        top: 23.2vw;
+        top: 22vw;
         left: 34vw;
     }
   }

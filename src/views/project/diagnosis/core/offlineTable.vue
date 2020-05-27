@@ -40,7 +40,7 @@
         header-align="center"
         align="center"
       />
-      <el-table-column
+      <!-- <el-table-column
         v-if="true"
         prop="alarmLevel"
         label="报警级别"
@@ -48,7 +48,7 @@
         header-align="center"
         align="center"
       />
-      <!-- <el-table-column
+      <el-table-column
         v-if="true"
         prop="alarmValue"
         label="报警设定值"

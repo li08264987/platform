@@ -245,7 +245,6 @@ export default {
         value: 378,
         unit: '℃'
       }]
-
     }
   },
   created() {
@@ -388,12 +387,12 @@ export default {
        }
        .sidong{
            position: relative;
-           top: 17.7vw;
+           top: 16vw;
           left: 15vw;
        }
        .sandong{
-           position: relative;
-           top: 18vw;
+          position: relative;
+          top: 16.5vw;
           left: 12.5vw;
        }
     }

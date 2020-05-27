@@ -3,7 +3,7 @@
     <div class="first-row">
       <div class="title">
         <div class="logo" />
-        <span>能耗概况</span>
+        <span>平台信息总览</span>
       </div>
       <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="row row-2">
+      <div class="row row-2" style="margin-bottom:unset;">
         <div class="left">
           <div class="number">
             <div class="left-number">{{ energy.yasuokongqi.xiaohao }}</div>
@@ -90,6 +90,16 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="row row-3" style="margin-bottom: unset;color:#D6E4FF;padding: 1vw 4vw;">
+        <span style="margin-right: 2vw;">运行评级</span>
+        <el-rate
+          v-model="rateValue"
+          :colors="rateColors"
+          disabled
+          score-template="{value}"
+        />
       </div>
 
       <!-- <div class="row row-3">
@@ -139,6 +149,8 @@ export default {
   components: {},
   data() {
     return {
+      rateValue: '5',
+      rateColors: ['#f00', '#0f0', '#00f', '#ff0', '#0ff'],
       energySelect: {
         energyTimeTypes: [{
           value: 'day',
