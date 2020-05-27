@@ -23,3 +23,11 @@ export function getQingDan(query) {
     params: query
   })
 }
+
+export function getZhenKong(query) {
+  return request({
+    url: '/main/energyStatus/getZhenKong',
+    method: 'post',
+    params: query
+  })
+}

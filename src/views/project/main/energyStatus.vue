@@ -98,7 +98,6 @@
           v-model="rateValue"
           :colors="rateColors"
           disabled
-          score-template="{value}"
         />
       </div>
 
@@ -143,13 +142,13 @@
 </template>
 
 <script>
-import { getDianHao, getYaSuoKongQi, getQingDan } from '@/api/main/energyStatus'
+import { getDianHao, getYaSuoKongQi, getQingDan, getZhenKong } from '@/api/main/energyStatus'
 export default {
   name: 'EnerguStatus',
   components: {},
   data() {
     return {
-      rateValue: '5',
+      rateValue: 5,
       rateColors: ['#f00', '#0f0', '#00f', '#ff0', '#0ff'],
       energySelect: {
         energyTimeTypes: [{
@@ -245,6 +244,13 @@ export default {
     getQingDan: function() {
       getQingDan(this.energySelect.selectedTime).then((res) => {
         this.energy.qingdan = res.data
+      }).catch(errr => {
+        console.log(errr)
+      })
+    },
+    getZhenKong: function() {
+      getZhenKong(this.energySelect.selectedTime).then((res) => {
+        this.energy.zhenkong = res.data
       }).catch(errr => {
         console.log(errr)
       })

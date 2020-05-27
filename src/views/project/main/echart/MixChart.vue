@@ -61,7 +61,6 @@ export default {
         this.option.title.text = titleText
         this.chart.setOption(this.option)
       },
-      immediate: true,
       deep: true
     }
   },

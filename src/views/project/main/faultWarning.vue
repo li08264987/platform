@@ -70,11 +70,21 @@ export default {
           title = '真空'
           break
         case 'dl':
+        case 'dianli':
           title = '电力'
           break
         default:
       }
       return title
+    },
+    currentSystem() {
+      return this.$store.state.settings.currentView
+    }
+  },
+  watch: {
+    currentSystem: function(values) {
+      var param = { value: values.value, label: values.name }
+      this.getFaultWarningDataSystem(param)
     }
   },
   mounted() {
@@ -112,12 +122,13 @@ export default {
   },
   methods: {
     initFaultWarningData() {
-      this.getFaultWarningDataSystem()
+      var param = { value: 'ky', label: '空压系统' }
+      this.getFaultWarningDataSystem(param)
     },
-    getFaultWarningDataSystem() {
-      getFaultWarningData().then((res) => {
+    getFaultWarningDataSystem(params) {
+      getFaultWarningData(params).then((res) => {
         this.pieChartData.data = res.data.pieChartData
-        this.barChartData = res.data.barChartData
+        /* this.barChartData = res.data.barChartData */
         this.dealStatus = res.data.dealStatus
       }).catch(err => {
         console.log(err)
