@@ -199,6 +199,12 @@ export default {
     LineChart,
     FullPieChart
   },
+  props: {
+    searchData: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       lineChartSearchForm: {
@@ -283,6 +289,14 @@ export default {
         name: '时间段',
         data: []
       }]
+    }
+  },
+  watch: {
+    searchData: {
+      deep: true,
+      handler(val) {
+        console.log(val)
+      }
     }
   },
   mounted() {

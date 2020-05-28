@@ -36,9 +36,9 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.report-contaiter {
+.platSetting-contaiter {
   widows: 100%;
-  height: 100%;
+  height: calc(100% - 70px);
   display: flex;
   flex-direction: row;
 }
