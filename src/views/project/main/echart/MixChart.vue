@@ -4,6 +4,7 @@
 
 <script>
 import echarts from 'echarts'
+require('echarts/theme/roma')
 import resize from '../mixins/resize'
 
 export default {
@@ -24,6 +25,10 @@ export default {
     height: {
       type: String,
       default: '200px'
+    },
+    chartData: {
+      type: Object,
+      required: true
     }
   },
   data() {
@@ -76,7 +81,7 @@ export default {
   },
   methods: {
     initChart() {
-      this.chart = echarts.init(document.getElementById(this.id))
+      this.chart = echarts.init(this.$el, 'roma')
       this.option = {
         backgroundColor: 'transparent',
         title: {
@@ -93,7 +98,11 @@ export default {
           top: '5%'
         },
         tooltip: {
-          trigger: 'axis'
+          trigger: 'item',
+          formatter: function(param) {
+            var html = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#2F54EB;"></span>' + param.name + '：' + param.value
+            return html
+          }
           /* axisPointer: {
             label: {
               show: true

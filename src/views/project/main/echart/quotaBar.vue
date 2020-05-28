@@ -73,9 +73,13 @@ export default {
     setOptions() {
       var option = {
         tooltip: {
-          trigger: 'axis',
+          trigger: 'item',
           axisPointer: {
             type: 'shadow'
+          },
+          formatter: function(param) {
+            var html = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#2F54EB;"></span>' + param.name + '：' + param.value
+            return html
           }
         },
         grid: {
@@ -104,7 +108,7 @@ export default {
         },
         yAxis: {
           type: 'category',
-          data: ['系统能效', '产气量', '耗电量', '运行电费'],
+          data: ['运行能费', '耗电量', '产气量', '系统能效'],
           axisLine: {
             show: false,
             lineStyle: {
@@ -124,25 +128,38 @@ export default {
         },
         series: [{
           type: 'bar',
-          data: [18203, 23489, 29034, 104970],
+          data: [30, 40, 50, 60],
           barWidth: 30,
           label: {
             show: true,
             position: 'right',
             color: '#fff',
-            fontSize: 16
+            fontSize: 16,
+            formatter: function(value) {
+              return value.data + '%'
+            }
           },
           itemStyle: {
             normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0.18,
-                color: '#2F54EB'
-              },
-              {
-                offset: 1.0,
-                color: 'rgba(61,59,234,0.00)'
+              color: function(params) {
+                var colorList = [
+                  ['#2F54EB', 'rgba(61,59,234,0.00)']
+                ]
+                /* var index = params.dataIndex
+                if (params.dataIndex >= colorList.length) {
+                  index = params.dataIndex - colorList.length
+                } */
+                return new echarts.graphic.LinearGradient(0, 0, 1, 0,
+                  [{
+                    offset: 1,
+                    color: colorList[0][0]
+                  },
+                  {
+                    offset: 0,
+                    color: colorList[0][1]
+                  }
+                  ])
               }
-              ])
             }
           }
         }]

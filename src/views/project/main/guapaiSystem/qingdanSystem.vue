@@ -358,7 +358,7 @@ export default {
         width: 27vw;
        .donglizhan{
            position: relative;
-          top: -3vw;
+          top: -5vw;
           left: 5vw;
        }
        .yidong{
@@ -368,8 +368,8 @@ export default {
        }
        .erdong{
            position: relative;
-           top: 17vw;
-            left: 4vw;
+           top: 16vw;
+           left: 4vw;
        }
     }
     .guapai-right{
@@ -391,7 +391,7 @@ export default {
        }
        .sandong{
           position: relative;
-          top: 28vw;
+          top: 27vw;
           left: 12.5vw;
        }
     }

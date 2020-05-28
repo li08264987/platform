@@ -246,12 +246,6 @@ export default {
     },
     getTableDataBySystem(param) {
       getTableDataBySystem(param).then((res) => {
-        /* var data = []
-        for (var item in res.data) {
-          const type = item
-          const value = res.data[item]
-          data.push({ type: type, value: value })
-        }*/
         this.tableData = res.data
         this.loading = false
         this.radioDisabled = false

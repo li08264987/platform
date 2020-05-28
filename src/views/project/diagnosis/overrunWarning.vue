@@ -9,7 +9,7 @@
       <div class="search-condition">
         <el-date-picker v-model="searchForm.date" :type="searchForm.dateType" range-separator="至" format="yyyy-MM-dd HH:mm:ss" value-format="yyyy-MM-dd HH:mm:ss" start-placeholder="开始日期" end-placeholder="结束日期" style="display: inline-block;" placeholder="选择时间" suffix-icon="el-icon-search" />
         <el-button class="btn-query" type="primary" style="margin-right:10px" @click="dateSearch">查询</el-button>
-        <el-input v-model="searchForm.searchText" placeholder="请输入系统名称搜索" style="width:212px;" suffix-icon="el-icon-search" />
+        <el-input v-model="searchForm.searchText" placeholder="请输入搜索内容" style="width:212px;" suffix-icon="el-icon-search" />
         <el-button class="btn-search" type="primary" @click="nameSearch">搜索</el-button>
         <el-button :loading="downloadLoading" class="btn-export" @click="onExport">导出</el-button>
       </div>
@@ -178,20 +178,21 @@ export default {
         this.allPagesData = res.warningDataList
         import('@/vendor/Export2Excel').then(excel => {
           const tHeader = [
-            '设备变量名称',
-            '设定报警值',
-            '处理状态',
-            '报警时间',
+            '故障系统',
             '设备名称',
+            '参数点位',
             '报警级别',
-            '实际值',
-            '数据单位']
-          const filterVal = ['sheBeiVaribleName', 'alarmValue', 'state', 'alarmTime', 'sheBeiName', 'alarmLevel', 'currentValue', 'alarmUnit']
+            '报警设定值',
+            '报警触发值',
+            '数据单位',
+            '报警时间',
+            '处理状态']
+          const filterVal = ['faultSystem', 'sheBeiName', 'pointAttribute', 'alarmLevel', 'alarmValue', 'currentValue', 'alarmUnit', 'alarmTime', 'state']
           const data = this.formatJson(filterVal)
           excel.export_json_to_excel({
             header: tHeader,
             data,
-            filename: type === 0 ? '未处理报警数据表' : '已处理报警数据表'
+            filename: type === 0 ? '超限报警未处理报警数据表' : '超限报警已处理报警数据表'
           })
           this.downloadLoading = false
         })

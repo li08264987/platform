@@ -9,14 +9,14 @@
 
     <div id="warningPie" :style="{width: '100%', height: '88%'}">
       <!-- <MixChart id="warningPie-System" :chart-data="pieChartData" :cursor="cursor" :sum="dealStatus.sum" /> -->
-      <MixChart height="100%" width="100%" />
+      <MixChart id="mixChart-container" class="mixChart-container" height="100%" width="100%" :chart-data="mixChartData" />
     </div>
   </div>
 </template>
 
 <script>
 import MixChart from './echart/MixChart'
-import { getFaultWarningData } from '@/api/main/faultWarning'
+import { getPertimeOutputData } from '@/api/main/pertimeOutput'
 export default {
   name: 'PertimeOutput',
   components: {
@@ -39,7 +39,10 @@ export default {
         dealed: null,
         sum: null
       },
-      activeName: 'system'
+      activeName: 'system',
+      mixChartData: {
+        data: null
+      }
     }
   },
   computed: {
@@ -57,6 +60,7 @@ export default {
           title = '电耗'
           break
         case 'dl':
+        case 'dianli':
           title = '真空耗电量'
           break
         default:
@@ -64,70 +68,27 @@ export default {
       return title
     }
   },
-  mounted() {
-    /* this.optionPie.title.left = this.cursor * 43 + '%'
-    this.optionPie.title.top = this.cursor * 37 + '%'
-    this.optionPie.title.textStyle.fontSize = this.cursor * 36
-    this.optionPie.series.radius = [this.cursor * 55 + '%', this.cursor * 70 + '%']
-    this.optionPie.series.center = [this.cursor * 45 + '%', this.cursor * 50 + '%']
-    this.optionPie.series.right = this.cursor * 11 + '%'
-    this.optionPie.series.top = this.cursor * 15 + '%'
-    this.drawPie('warning-pie', this.optionPie)
-
-    this.optionBar.grid = {
-      left: this.cursor * 15 + '%',
-      right: this.cursor * 5 + '%',
-      top: this.cursor * 2 + '%',
-      bottom: this.cursor * 12 + '%'
+  watch: {
+    currentView: function(values) {
+      var param = { sysCode: values.value, label: values.name, timeType: 'day' }
+      this.getPertimeOutputData(param)
     }
-    this.optionBar.legend.right = this.cursor * 10
-    this.optionBar.legend.itemWidth = this.cursor * 10
-    this.optionBar.legend.itemHeight = this.cursor * 15
-    this.drawBar('warning-bar', this.optionBar) */
-
-    /* window.onresize = () => {
-      var chartsPie = echarts.getInstanceByDom(document.getElementById('warningPie-System'))
-      if (chartsPie) {
-        chartsPie.resize()
-      }
-      var chartsBar = echarts.getInstanceByDom(document.getElementById('warningBar-System'))
-      if (chartsBar) {
-        chartsBar.resize()
-      }
-    } */
-    this.initFaultWarningData()
+  },
+  mounted() {
+    this.initPertimeOutputData()
   },
   methods: {
-    initFaultWarningData() {
-      this.getFaultWarningDataSystem()
+    initPertimeOutputData() {
+      var param = { sysCode: 'ky', label: '空压系统', timeType: 'day' }
+      this.getPertimeOutputData(param)
     },
-    getFaultWarningDataSystem() {
-      getFaultWarningData().then((res) => {
-        this.pieChartData.data = res.data.pieChartData
-        this.barChartData = res.data.barChartData
-        this.dealStatus = res.data.dealStatus
+    getPertimeOutputData(param) {
+      getPertimeOutputData(param).then((res) => {
+        this.mixChartData.data = res.data.pieChartData
       }).catch(err => {
         console.log(err)
       })
     },
-    /* drawPie(id, optionPie) {
-      const chartmainline = echarts.init(document.getElementById(id))
-      chartmainline.setOption(optionPie)
-    },
-    drawBar(id, optionBar) {
-      const chartmainline = echarts.init(document.getElementById(id))
-      chartmainline.setOption(optionBar)
-    },*/
-    /* resizeCharts() {
-      var chartsPie = echarts.getInstanceByDom(document.getElementById('warningPie-System'))
-      if (chartsPie) {
-        chartsPie.resize()
-      }
-      var chartsBar = echarts.getInstanceByDom(document.getElementById('warningBar-System'))
-      if (chartsBar) {
-        chartsBar.resize()
-      }
-    }, */
     tabClick(tab, event) {
     }
   }

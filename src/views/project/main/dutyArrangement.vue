@@ -5,14 +5,14 @@
         <div class="logo" />
         <span>{{ title }}值班信息</span>
       </div>
-      <el-select v-model="dutySelect.systemName" :popper-append-to-body="false" placeholder="请选择" class="duty-select" @change="changeMethod">
+      <!-- <el-select v-model="dutySelect.systemName" :popper-append-to-body="false" placeholder="请选择" class="duty-select" @change="changeMethod">
         <el-option
           v-for="item in dutySelect.systems"
           :key="item.systemCode"
           :label="item.systemName"
           :value="{value: item.systemCode, label: item.systemName}"
         />
-      </el-select>
+      </el-select> -->
     </div>
 
     <div class="time-container">
@@ -112,6 +112,7 @@ export default {
           title = '真空'
           break
         case 'dl':
+        case 'dianli':
           title = '电力'
           break
         default:
@@ -151,6 +152,12 @@ export default {
       })
     },
     getDutyMembers: function(param) {
+      this.dutyMember.morningLeader = ''
+      this.dutyMember.morningMember = ''
+      this.dutyMember.noonLeader = ''
+      this.dutyMember.noonMember = ''
+      this.dutyMember.eveningLeader = ''
+      this.dutyMember.eveningMember = ''
       fetchDutyMembers(param).then((res) => {
         if (res.data.length > 0) {
           res.data.forEach(element => {
@@ -159,15 +166,19 @@ export default {
               case 0:
                 this.dutyMember.morningLeader = element.leaders
                 this.dutyMember.morningMember = element.members
+
                 break
               case 1:
                 this.dutyMember.noonLeader = element.leaders
                 this.dutyMember.noonMember = element.members
+
                 break
               case 2:
                 this.dutyMember.eveningLeader = element.leaders
                 this.dutyMember.eveningMember = element.members
+
                 break
+              default:
             }
           })
         }
