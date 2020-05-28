@@ -21,3 +21,10 @@ export function fetchGuaPaiDataKY() {
     method: 'post'
   })
 }
+
+export function fetchGuaPaiDataQD() {
+  return request({
+    url: '/main/guapai/fetchGuaPaiDataQD',
+    method: 'post'
+  })
+}

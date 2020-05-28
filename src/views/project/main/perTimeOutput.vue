@@ -1,39 +1,26 @@
 <template>
-  <div class="failure-warning">
+  <div class="pertime-output">
     <div class="first-rows" style="display:flex;flex-direction:row;">
       <div class="title">
         <div class="logo" />
-        <span>{{ title }}报警信息</span>
+        <span>逐时{{ title }}趋势</span>
       </div>
     </div>
 
-    <div class="second-rows">
-      <div id="warningPie" :style="{width: '16vw', height: '15vw', paddingLeft: '2.5vw'}">
-        <pie-chart id="warningPie-System" :chart-data="pieChartData" :cursor="cursor" :sum="dealStatus.sum" />
-      </div>
-      <div class="legend-container">
-        <div class="dealing">
-          <div class="text">待处理故障</div>
-          <div class="number">{{ dealStatus.dealing }}</div>
-        </div>
-        <div class="dealed">
-          <div class="dealing">
-            <div class="text">已处理故障</div>
-            <div class="number">{{ dealStatus.dealed }}</div>
-          </div>
-        </div>
-      </div>
+    <div id="warningPie" :style="{width: '100%', height: '88%'}">
+      <!-- <MixChart id="warningPie-System" :chart-data="pieChartData" :cursor="cursor" :sum="dealStatus.sum" /> -->
+      <MixChart height="100%" width="100%" />
     </div>
   </div>
 </template>
 
 <script>
-import PieChart from './echart/PieChart'
+import MixChart from './echart/MixChart'
 import { getFaultWarningData } from '@/api/main/faultWarning'
 export default {
-  name: 'FaultWarning',
+  name: 'PertimeOutput',
   components: {
-    PieChart
+    MixChart
   },
   props: {
     cursor: {
@@ -61,30 +48,20 @@ export default {
       var currentView = this.$store.state.settings.currentView.value
       switch (currentView) {
         case 'ky':
-          title = '空压'
+          title = '空压产量'
           break
         case 'qd':
-          title = '氢氮'
+          title = '氢氮产量'
           break
         case 'zk':
-          title = '真空'
+          title = '电耗'
           break
         case 'dl':
-        case 'dianli':
-          title = '电力'
+          title = '真空耗电量'
           break
         default:
       }
       return title
-    },
-    currentSystem() {
-      return this.$store.state.settings.currentView
-    }
-  },
-  watch: {
-    currentSystem: function(values) {
-      var param = { value: values.value, label: values.name }
-      this.getFaultWarningDataSystem(param)
     }
   },
   mounted() {
@@ -122,13 +99,12 @@ export default {
   },
   methods: {
     initFaultWarningData() {
-      var param = { value: 'ky', label: '空压系统' }
-      this.getFaultWarningDataSystem(param)
+      this.getFaultWarningDataSystem()
     },
-    getFaultWarningDataSystem(params) {
-      getFaultWarningData(params).then((res) => {
+    getFaultWarningDataSystem() {
+      getFaultWarningData().then((res) => {
         this.pieChartData.data = res.data.pieChartData
-        /* this.barChartData = res.data.barChartData */
+        this.barChartData = res.data.barChartData
         this.dealStatus = res.data.dealStatus
       }).catch(err => {
         console.log(err)
@@ -159,7 +135,7 @@ export default {
 </script>
 
 <style lang="scss">
-.failure-warning{
+.pertime-output{
   .el-tabs{
     flex-shrink: 1;
     flex-grow: 1;
@@ -202,7 +178,7 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
-.failure-warning{
+.pertime-output{
   display: flex;
   flex-direction: column;
   position: relative;
@@ -212,9 +188,8 @@ export default {
   border-radius: 4px;
   flex-shrink: 0;
   flex-grow: 0;
-  height: 19vw;
+  height: 16vw;
   font-family: Bebas;
-  margin: 1vw 0;
   .first-rows{
     flex-shrink: 0;
     flex-grow: 0;
