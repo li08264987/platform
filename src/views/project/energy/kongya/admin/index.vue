@@ -3,8 +3,16 @@
     <el-tabs v-model="currentView" type="card" class="tabBar" @tab-click="handleClick">
       <el-tab-pane v-for="(item, index) in tabItems" :key="index" :label="item.title" :name="item.name" />
     </el-tabs>
+    <el-form ref="form" :model="searchingData" label-width="120px" class="energy-search-form">
+      <el-form-item label="">
+        <el-date-picker v-model="searchingData.date" type="datetimerange" value-format="yyyy-MM-dd HH:00:00" placeholder="选择时间" />
+        <el-input v-show="currentView==='energyDetail'" v-model="searchingData.text" placeholder="输入搜索内容" style="width: 280px;margin-left:5px;" />
+        <el-button class="blue-btn" type="primary" @click="onSearch()">查询</el-button>
+        <el-button class="white-btn" @click="onExport()">导出</el-button>
+      </el-form-item>
+    </el-form>
     <div class="tabCon">
-      <component :is="currentView" />
+      <component :is="currentView" :search-data="searchData" />
     </div>
   </div>
 </template>
@@ -29,7 +37,15 @@ export default {
         title: '能耗详情'
       }],
       tabIndex: 0,
-      currentView: 'energyStatis'
+      currentView: 'energyStatis',
+      searchingData: {
+        date: ['', ''],
+        text: ''
+      },
+      searchData: {
+        date: ['', ''],
+        text: ''
+      }
     }
   },
   methods: {
@@ -37,9 +53,27 @@ export default {
       if (this.tabIndex !== index) {
         this.tabIndex = index
         this.currentView = this.tabItems[index].name
+        this.searchingData = {
+          date: ['', ''],
+          text: ''
+        }
+        this.searchData = {
+          date: ['', ''],
+          text: ''
+        }
       }
     },
     handleClick(tab, event) {
+    },
+    onSearch() {
+      if (this.currentView !== 'energyDetail') {
+        this.searchingData.text = ''
+      }
+      if (!this.searchingData.date) this.searchingData.date = ['', '']
+      this.searchData.date = JSON.parse(JSON.stringify(this.searchingData.date))
+    },
+    onExport() {
+
     }
   }
 }
@@ -69,6 +103,19 @@ export default {
     width: 100%;
     height:0;
 }
+.blue-btn {
+  color: white;
+  height: 32px;
+  padding: 0 20px;
+  background:rgba(40,87,255,1);
+  border-radius:4px;
+  margin-left: 5px;
+}
+.white-btn {
+  height: 32px;
+  padding: 0 20px;
+  margin-left: 5px;
+}
 </style>
 
 <style lang="scss">
@@ -89,5 +136,18 @@ export default {
   .tabBar .el-tabs__item.is-active {
     color: #2D49FF;
     text-shadow: 0 0 0;
+  }
+  .energy-search-form {
+    position: absolute;
+    z-index: 99999;
+    right: 15px;
+    top: 8px;
+  }
+  .energy-search-form .el-form-item__content {
+    display: flex;
+    align-items: center;
+  }
+  .energy-search-form .el-form-item {
+    margin-bottom: 0;
   }
 </style>

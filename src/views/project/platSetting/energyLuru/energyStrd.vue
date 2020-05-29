@@ -24,12 +24,12 @@
         </el-table-column>
         <el-table-column
           prop="type"
-          label="标准类型"
+          label="周信息"
           header-align="center"
           align="center"
         >
           <template slot-scope="{row}">
-            <el-select v-if="row.edit" v-model="row.type" class="edit-cell" placeholder="请选择标准类型">
+            <el-select v-if="row.edit" v-model="row.weekday" class="edit-cell" placeholder="请选择周信息">
               <el-option
                 v-for="item in strdTypes"
                 :key="item.code"
@@ -37,7 +37,7 @@
                 :value="item.code"
               />
             </el-select>
-            <span v-if="!row.edit">{{ getTypeName(row.type) }}</span>
+            <span v-if="!row.edit">{{ getTypeName(row.weekday) }}</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -77,26 +77,19 @@
           </template>
         </el-table-column>
         <el-table-column
-          prop="time"
-          label="能耗时间"
+          prop="pGas"
+          label="产气量指标"
           header-align="center"
           align="center"
         >
           <template slot-scope="{row}">
-            <el-date-picker
-              v-if="row.edit"
-              v-model="row.time"
-              value-format="yyyy-MM-dd"
-              type="date"
-              class="edit-cell"
-              placeholder="选择能耗时间"
-            />
-            <span v-if="!row.edit">{{ row.time }}</span>
+            <el-input v-if="row.edit" v-model="row.pGas" :disabled="!checkIsSys(row.sysName)" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.pGas }}</span>
           </template>
         </el-table-column>
         <el-table-column
           prop="value"
-          label="能耗值"
+          label="电耗指标"
           header-align="center"
           align="center"
         >
@@ -123,19 +116,41 @@
           align="center"
         >
           <template slot-scope="{row}">
-            <el-input v-if="row.edit" v-model="row.efficiency" class="edit-cell" type="number" />
+            <el-input v-if="row.edit" v-model="row.efficiency" :disabled="!checkIsSys(row.sysName)" class="edit-cell" type="number" />
             <span v-if="!row.edit">{{ row.efficiency }}</span>
           </template>
         </el-table-column>
         <el-table-column
-          prop="area"
-          label="加权面积"
+          prop="gas"
+          label="压缩空气限额"
           header-align="center"
           align="center"
         >
           <template slot-scope="{row}">
-            <el-input v-if="row.edit" v-model="row.area" class="edit-cell" type="number" />
-            <span v-if="!row.edit">{{ row.area }}</span>
+            <el-input v-if="row.edit" v-model="row.gas" :disabled="checkIsSys(row.sysName)" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.gas }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="sky"
+          label="真空限额"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-input v-if="row.edit" v-model="row.sky" :disabled="checkIsSys(row.sysName)" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.sky }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="hn"
+          label="氢氮气体限额"
+          header-align="center"
+          align="center"
+        >
+          <template slot-scope="{row}">
+            <el-input v-if="row.edit" v-model="row.hn" :disabled="checkIsSys(row.sysName)" class="edit-cell" type="number" />
+            <span v-if="!row.edit">{{ row.hn }}</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -216,8 +231,8 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="标准类型">
-          <el-select v-model="addData.type" placeholder="请选择标准类型">
+        <el-form-item label="周信息">
+          <el-select v-model="addData.weekday" placeholder="请选择周信息">
             <el-option
               v-for="item in strdTypes"
               :key="item.code"
@@ -236,25 +251,26 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="能耗时间">
-          <el-date-picker
-            v-model="addData.time"
-            value-format="yyyy-MM-dd"
-            type="date"
-            placeholder="选择能耗时间"
-          />
+        <el-form-item v-show="addData.sysName && checkIsSys(addData.sysName)" label="产气量指标">
+          <el-input v-model="addData.pGas" type="number" placeholder="请输入产气量指标" />
         </el-form-item>
-        <el-form-item label="能耗值">
-          <el-input v-model="addData.value" type="number" placeholder="请输入能耗值" />
+        <el-form-item v-show="addData.sysName" label="电耗指标">
+          <el-input v-model="addData.value" type="number" placeholder="请输入电耗指标" />
         </el-form-item>
-        <el-form-item label="收费标准">
+        <el-form-item v-show="addData.sysName" label="收费标准">
           <el-input v-model="addData.charge" type="number" placeholder="请输入收费标准" />
         </el-form-item>
-        <el-form-item label="能效标准">
+        <el-form-item v-show="addData.sysName && checkIsSys(addData.sysName)" label="能效标准">
           <el-input v-model="addData.efficiency" type="number" placeholder="请输入能效标准" />
         </el-form-item>
-        <el-form-item label="加权面积">
-          <el-input v-model="addData.area" type="number" placeholder="请输入加权面积" />
+        <el-form-item v-show="addData.sysName && !checkIsSys(addData.sysName)" label="压缩空气限额">
+          <el-input v-model="addData.gas" type="number" placeholder="请输入压缩空气限额" />
+        </el-form-item>
+        <el-form-item v-show="addData.sysName && !checkIsSys(addData.sysName)" label="真空限额">
+          <el-input v-model="addData.sky" type="number" placeholder="请输入真空限额" />
+        </el-form-item>
+        <el-form-item v-show="addData.sysName && !checkIsSys(addData.sysName)" label="氢氮气体限额">
+          <el-input v-model="addData.hn" type="number" placeholder="请输入氢氮气体限额" />
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -290,12 +306,14 @@ export default {
         code: '',
         company: '',
         sysName: '',
-        time: '',
+        pGas: '',
         value: '',
-        area: '',
+        weekday: '',
         efficiency: '',
         charge: '',
-        type: '',
+        gas: '',
+        sky: '',
+        hn: '',
         edit: false,
         editData: {}
       },
@@ -332,9 +350,14 @@ export default {
         code: '',
         company: '',
         sysName: '',
-        time: '',
+        pGas: '',
         value: '',
-        area: '',
+        weekday: '',
+        efficiency: '',
+        charge: '',
+        gas: '',
+        sky: '',
+        hn: '',
         edit: false,
         editData: {}
       }
@@ -344,21 +367,55 @@ export default {
       var flag = true
       var msg = '数据未更改'
       if (data.editData) {
-        if (data.company !== data.editData.company) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.sysName !== data.editData.sysName) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.time !== data.editData.time) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.value !== data.editData.value) {
-          flag = false
-          msg = '数据已更改'
-        } else if (data.area !== data.editData.area) {
-          flag = false
-          msg = '数据已更改'
+        if (this.checkIsSys(data.sysName)) {
+          if (data.company !== data.editData.company) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.sysName !== data.editData.sysName) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.weekday !== data.editData.weekday) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.value !== data.editData.value) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.pGas !== data.editData.pGas) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.efficiency !== data.editData.efficiency) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.charge !== data.editData.charge) {
+            flag = false
+            msg = '数据已更改'
+          }
+        } else {
+          if (data.company !== data.editData.company) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.sysName !== data.editData.sysName) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.weekday !== data.editData.weekday) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.value !== data.editData.value) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.gas !== data.editData.gas) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.sky !== data.editData.sky) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.hn !== data.editData.hn) {
+            flag = false
+            msg = '数据已更改'
+          } else if (data.charge !== data.editData.charge) {
+            flag = false
+            msg = '数据已更改'
+          }
         }
       }
       return { flag: flag, msg: msg }
@@ -366,22 +423,57 @@ export default {
     checkAddData(data) {
       var flag = true
       var msg = '验证成功'
-      if (data.company === '') {
-        flag = false
-        msg = '请选择所属公司'
-      } else if (data.sysName === '') {
-        flag = false
-        msg = '请选择系统名称'
-      } else if (data.time === '') {
-        flag = false
-        msg = '请选择能耗时间'
-      } else if (data.value === '') {
-        flag = false
-        msg = '请输入能耗值'
-      } else if (data.area === '') {
-        flag = false
-        msg = '请输入加权面积'
+      if (this.checkIsSys(data.sysName)) {
+        if (data.company === '') {
+          flag = false
+          msg = '请选择所属公司'
+        } else if (data.sysName === '') {
+          flag = false
+          msg = '请选择系统名称'
+        } else if (data.weekday === '') {
+          flag = false
+          msg = '请选择周信息'
+        } else if (data.value === '') {
+          flag = false
+          msg = '请输入能耗值'
+        } else if (data.efficiency === '') {
+          flag = false
+          msg = '请输入能效指标'
+        } else if (data.charge === '') {
+          flag = false
+          msg = '请输入能费指标'
+        } else if (data.pGas === '') {
+          flag = false
+          msg = '请输入产气量指标'
+        }
+      } else {
+        if (data.company === '') {
+          flag = false
+          msg = '请选择所属公司'
+        } else if (data.sysName === '') {
+          flag = false
+          msg = '请选择系统名称'
+        } else if (data.weekday === '') {
+          flag = false
+          msg = '请选择周信息'
+        } else if (data.value === '') {
+          flag = false
+          msg = '请输入能耗值'
+        } else if (data.charge === '') {
+          flag = false
+          msg = '请输入能费指标'
+        } else if (data.gas === '') {
+          flag = false
+          msg = '请输入压缩空气限额'
+        } else if (data.sky === '') {
+          flag = false
+          msg = '请输入真空限额'
+        } else if (data.hn === '') {
+          flag = false
+          msg = '请输入氢氮气体限额'
+        }
       }
+
       return { flag: flag, msg: msg }
     },
     handleAdd() {
@@ -479,6 +571,16 @@ export default {
         }
       }
       return name
+    },
+    checkIsSys(code) {
+      var flag = false
+      for (var i = 0; i < this.systems.length; i++) {
+        if (this.systems[i].code + '' === code + '') {
+          if (this.systems[i].isSys) flag = this.systems[i].isSys
+          break
+        }
+      }
+      return flag
     },
     getCompanyName(code) {
       var name = ''

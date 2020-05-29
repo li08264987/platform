@@ -17,7 +17,27 @@ const smartDiagnoseRouter = [{
       component: () => import('@/views/project/diagnosis/warningData'),
       name: 'warningData',
       meta: {
-        title: '报警数据',
+        title: '设备报警',
+        roles: ['admin'],
+        icon: 'alarm',
+        affix: true
+      }
+    }, {
+      path: 'overrunWarning',
+      component: () => import('@/views/project/diagnosis/overrunWarning'),
+      name: 'overrunWarning',
+      meta: {
+        title: '超限报警',
+        roles: ['admin'],
+        icon: 'alarm',
+        affix: true
+      }
+    }, {
+      path: 'offLineDiagnose',
+      component: () => import('@/views/project/diagnosis/offLineDiagnose'),
+      name: 'offLineDiagnose',
+      meta: {
+        title: '离线诊断',
         roles: ['admin'],
         icon: 'alarm',
         affix: true

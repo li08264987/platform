@@ -1,3 +1,4 @@
+<!--  -->
 <template>
   <div class="warningData-container">
     <div class="search-container">
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-import Table from '@/views/project/diagnosis/core/shebeiTable'
+import Table from '@/views/project/diagnosis/core/offlineTable'
 import { getWarningDataList, updateWarningState, deleteWarningData, fetchAllData } from '@/api/diagnose/warningData'
 export default {
   components: {
@@ -85,7 +86,7 @@ export default {
       this.pageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
       this.pageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
       this.pageRequest['type'] = 1
-      this.pageRequest['tableType'] = 1
+      this.pageRequest['tableType'] = 2
       getWarningDataList(this.pageRequest).then(res => {
         this.pageResult.content = res.warningDataList
         this.pageResult.totalSize = res.warningDataListNumber
@@ -99,7 +100,7 @@ export default {
       this.dealingPageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
       this.dealingPageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
       this.dealingPageRequest['type'] = 0
-      this.dealingPageRequest['tableType'] = 1
+      this.dealingPageRequest['tableType'] = 2
       getWarningDataList(this.dealingPageRequest).then(res => {
         this.dealingPageResult.content = res.warningDataList
         this.dealingPageResult.totalSize = res.warningDataListNumber
@@ -107,7 +108,7 @@ export default {
       }).then(data != null ? data.callback : '')
     },
     handleDelete: function(params) {
-      params.row['tableType'] = 1
+      params.row['tableType'] = 2
       deleteWarningData(params.row).then((res) => {
         if (this.dealedTable === true) {
           this.pageResult.content.splice(params.index, 1)
@@ -123,7 +124,7 @@ export default {
     },
     handleEdit: function(params) {
       this.dataForm = params.row
-      params.row['tableType'] = 1
+      params.row['tableType'] = 2
       updateWarningState(params.row).then((res) => {
         if (this.dealedTable === true) {
           const index = this.pageResult.content.findIndex(v => v.code === this.dataForm.code)
@@ -170,7 +171,7 @@ export default {
         startTime: this.searchForm.date === null ? null : this.searchForm.date[0],
         endTime: this.searchForm.date === null ? null : this.searchForm.date[1],
         type: type,
-        tableType: 1
+        tableType: 2
       }
       this.downloadLoading = true
       fetchAllData(param).then((res) => {
@@ -180,15 +181,14 @@ export default {
             '故障系统',
             '设备名称',
             '参数点位',
-            '报警级别',
             '报警时间',
             '处理状态']
-          const filterVal = ['faultSystem', 'sheBeiName', 'pointAttribute', 'alarmLevel', 'alarmTime', 'state']
+          const filterVal = ['faultSystem', 'sheBeiName', 'pointAttribute', 'alarmTime', 'state']
           const data = this.formatJson(filterVal)
           excel.export_json_to_excel({
             header: tHeader,
             data,
-            filename: type === 0 ? '设备报警未处理报警数据表' : '设备报警已处理报警数据表'
+            filename: type === 0 ? '离线报警未处理报警数据表' : '离线报警已处理报警数据表'
           })
           this.downloadLoading = false
         })

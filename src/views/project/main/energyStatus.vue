@@ -3,7 +3,7 @@
     <div class="first-row">
       <div class="title">
         <div class="logo" />
-        <span>能耗概况</span>
+        <span>平台信息总览</span>
       </div>
       <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="row row-2">
+      <div class="row row-2" style="margin-bottom:unset;">
         <div class="left">
           <div class="number">
             <div class="left-number">{{ energy.yasuokongqi.xiaohao }}</div>
@@ -72,25 +72,36 @@
           </div>
         </div>
         <div class="right">
-          <div class="number">
-            <div class="left-number">{{ energy.leng.xiaohao }}</div>
-            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
-              <div class="right-number">
-                <div :class="energy.leng.numberLogo" />
-                <div class="percent">{{ energy.leng.changeNumber }}</div>
-              </div>
-            </el-tooltip>
-          </div>
-          <div class="text">
-            <div class="left-text" style="margin-right:2.7vw">冷量(万GJ)</div>
-            <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
-              <div class="right-text">{{ energy.leng.changeText }}</div>
-            </el-tooltip>
+          <div class="left">
+            <div class="number">
+              <div class="left-number">{{ energy.qingdan.xiaohao }}</div>
+              <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="top-start" popper-class="test">
+                <div class="right-number">
+                  <div :class="energy.qingdan.numberLogo" />
+                  <div class="percent">{{ energy.qingdan.changeNumber }}</div>
+                </div>
+              </el-tooltip>
+            </div>
+            <div class="text">
+              <div class="left-text" style="margin-right:1.5vw">氢氮气量(万m³)</div>
+              <el-tooltip class="item" content="注：与历史同期能耗对比情况" placement="bottom-start" popper-class="test">
+                <div class="right-text">{{ energy.qingdan.changeText }}</div>
+              </el-tooltip>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="row row-3">
+      <div class="row row-3" style="margin-bottom: unset;color:#D6E4FF;padding: 1vw 4vw;">
+        <span style="margin-right: 2vw;">运行评级</span>
+        <el-rate
+          v-model="rateValue"
+          :colors="rateColors"
+          disabled
+        />
+      </div>
+
+      <!-- <div class="row row-3">
         <div class="left">
           <div class="number">
             <div class="left-number">{{ energy.qingdan.xiaohao }}</div>
@@ -125,18 +136,20 @@
             </el-tooltip>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import { getDianHao, getYaSuoKongQi, getQingDan } from '@/api/main/energyStatus'
+import { getDianHao, getYaSuoKongQi, getQingDan, getZhenKong } from '@/api/main/energyStatus'
 export default {
   name: 'EnerguStatus',
   components: {},
   data() {
     return {
+      rateValue: 5,
+      rateColors: ['#f00', '#0f0', '#00f', '#ff0', '#0ff'],
       energySelect: {
         energyTimeTypes: [{
           value: 'day',
@@ -235,6 +248,13 @@ export default {
         console.log(errr)
       })
     },
+    getZhenKong: function() {
+      getZhenKong(this.energySelect.selectedTime).then((res) => {
+        this.energy.zhenkong = res.data
+      }).catch(errr => {
+        console.log(errr)
+      })
+    },
     changeMethod: function(params) {
       const { value, label } = params
       this.energySelect.selectedTime.label = label
@@ -249,8 +269,7 @@ export default {
 </script>
 
 <style lang='scss'>
-
-#left-container .energy-select{
+.energy-state .energy-select{
   .el-input{
       width: 5vw;
     }
@@ -284,7 +303,6 @@ export default {
 
 .energy-state{
     position: relative;
-    margin-top: 1vw;
     background: rgba(52,24,171,0.20);
     border: 1px solid #3418AB;
     box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
@@ -292,7 +310,7 @@ export default {
     width: 100%;
     flex-grow: 0;
     flex-shrink: 0;
-    height: 19vw;
+    height: 16vw;
     display: flex;
     flex-direction: column;
     font-family: Bebas;

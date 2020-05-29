@@ -86,13 +86,7 @@ export default {
           right: '2%'
         },
         legend: {
-          right: '1%',
-          top: '5%',
-          textStyle: {
-            color: '#9FA8DA'
-          },
-          itemWidth: 10,
-          itemHeight: 15
+
         },
         tooltip: {
           trigger: 'axis',

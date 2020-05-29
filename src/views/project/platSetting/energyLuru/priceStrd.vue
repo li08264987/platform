@@ -11,6 +11,7 @@
     </div>
     <div class="table-container">
       <el-table
+        v-loading="tableLoading"
         :data="tableData"
         height="calc(100% - 35px)"
         header-row-class-name="table-header"
@@ -83,19 +84,41 @@
           align="center"
         >
           <template slot-scope="{row}">
-            <el-time-picker
+            <el-time-select
               v-if="row.edit"
-              v-model="row.times"
-              is-range
-              arrow-control
-              value-format="HH:mm:ss"
-              range-separator="至"
-              start-placeholder="开始时间"
-              end-placeholder="结束时间"
-              placeholder="选择时间范围"
+              v-model="row.startTime"
+              size="mini"
+              placeholder="起始时间"
+              class="priceStrd-time-select"
+              :value-format="'HH:mm:ss'"
               :disabled="row.type===0"
+              :picker-options="{
+                format: 'HH:mm:ss',
+                start: '00:00:00',
+                step: '01:00:00',
+                end: '23:00:00'
+              }"
+              @change="handleTimeChange(row.startTime,row,'startTime')"
             />
-            <span v-if="!row.edit">{{ row.times.length===2 ? (row.times[0]+' - '+row.times[1]) : '' }}</span>
+            <span v-if="row.edit">-</span>
+            <el-time-select
+              v-if="row.edit"
+              v-model="row.endTime"
+              size="mini"
+              class="priceStrd-time-select"
+              placeholder="结束时间"
+              :value-format="'HH:mm:ss'"
+              :disabled="row.type===0"
+              :picker-options="{
+                format: 'HH:mm:ss',
+                start: '00:00:00',
+                step: '01:00:00',
+                end: '24:00:00',
+                minTime: row.startTime
+              }"
+              @change="handleTimeChange(row.endTime,row,'endTime')"
+            />
+            <span v-if="!row.edit">{{ (row.startTime!==''&&row.endTime!=='') ? (row.startTime+' - '+row.endTime) : '' }}</span>
           </template>
         </el-table-column>
         <el-table-column
@@ -216,16 +239,28 @@
           </el-select>
         </el-form-item>
         <el-form-item label="时间片段">
-          <el-time-picker
-            v-model="addData.times"
-            is-range
-            arrow-control
-            value-format="HH:mm:ss"
-            range-separator="至"
-            start-placeholder="开始时间"
-            end-placeholder="结束时间"
-            placeholder="选择时间范围"
+          <el-time-select
+            v-model="addData.startTime"
+            size="mini"
+            class="priceStrd-time-select"
+            placeholder="起始时间"
             :disabled="addData.type===0"
+            :picker-options="{format: 'HH:mm:ss', start: '00:00:00',step: '01:00:00',end: '23:00:00'}"
+          />
+          <span>-</span>
+          <el-time-select
+            v-model="addData.endTime"
+            size="mini"
+            class="priceStrd-time-select"
+            placeholder="结束时间"
+            :disabled="addData.type===0"
+            :picker-options="{
+              format: 'HH:mm:ss',
+              start: '00:00:00',
+              step: '01:00:00',
+              end: '24:00:00',
+              minTime: addData.startTime
+            }"
           />
         </el-form-item>
         <el-form-item label="临界最大值">
@@ -254,6 +289,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      tableLoading: true,
       searchForm: {
         searchText: '',
         searchFormText: ''
@@ -290,6 +326,17 @@ export default {
         this.addData.level = ''
         this.addData.max = ''
       }
+    },
+    'addData.startTime': function(newVal, oldValue) {
+      if (newVal && newVal.split(':').length === 2) {
+        this.addData.startTime += ':00'
+      }
+    },
+    'addData.endTime': function(newVal, oldValue) {
+      if (newVal && newVal.split(':').length === 2) {
+        this.addData.endTime += ':00'
+        if (this.addData.endTime === '24:00:00') this.addData.endTime = '23:59:59'
+      }
     }
   },
   mounted() {
@@ -304,6 +351,13 @@ export default {
     handleCurrentChange(val) {
       this.currentPage = val
       this.initPriceTable()
+    },
+    handleTimeChange(time, row, key) {
+      if (time && time.split(':').length === 2) {
+        time += ':00'
+        if (time === '24:00:00') time = '23:59:59'
+        row[key] = time
+      }
     },
     onStrdAdd() {
       this.dialogVisible = true
@@ -354,7 +408,7 @@ export default {
           if (data.price === '') {
             flag = false
             msg = '请输入价格'
-          } else if (data.times.length !== 2) {
+          } else if (data.startTime === '' || data.endTime === '') {
             flag = false
             msg = '请选择时间段'
           } else if (data.facType === '') {
@@ -391,10 +445,10 @@ export default {
           } else if (data.type !== data.editData.type) {
             flag = false
             msg = '数据已更改'
-          } else if (data.times[0] !== data.editData.times[0]) {
+          } else if (data.startTime !== data.editData.startTime) {
             flag = false
             msg = '数据已更改'
-          } else if (data.times[1] !== data.editData.times[1]) {
+          } else if (data.endTime !== data.editData.endTime) {
             flag = false
             msg = '数据已更改'
           }
@@ -406,8 +460,6 @@ export default {
       if (this.checkAddData(this.addData).flag) {
         this.$confirm('确认添加？')
           .then(_ => {
-            this.addData.startTime = this.addData.times[0] || ''
-            this.addData.endTime = this.addData.times[1] || ''
             this.addPriceStrdData(this.addData)
             this.exitAddDialog()
           })
@@ -445,8 +497,6 @@ export default {
       row.edit = false
     },
     handleUpdate(row) {
-      row.startTime = row.times[0] || ''
-      row.endTime = row.times[1] || ''
       if (this.checkAddData(row).flag) {
         if (this.checkUpdateData(row).flag) {
           this.$message({
@@ -514,6 +564,7 @@ export default {
       return name
     },
     setPriceStrdData(params) {
+      this.tableLoading = true
       getPriceStrdList(params).then(response => {
         var data = response.data
         for (var i = 0; i < data.data.length; i++) {
@@ -525,7 +576,9 @@ export default {
         this.tableData = data.data
         this.facs = data.facList
         this.strdTypes = data.strdTypes
+        this.tableLoading = false
       }).catch(err => {
+        this.tableLoading = false
         this.$message({
           type: 'error',
           duration: 2000,
@@ -585,6 +638,7 @@ export default {
       }).catch(err => {
         params.editData = {}
         params.edit = false
+        this.initPriceTable()
         this.$message({
           type: 'error',
           duration: 2000,
@@ -665,6 +719,12 @@ export default {
   .energy-price-strd-add-dialog .el-input,
   .energy-price-strd-add-dialog .el-select{
     width: 350px;
+  }
+  .priceStrd-time-select {
+    width: 120px;
+  }
+  .energy-price-strd-add-dialog .el-input.priceStrd-time-select {
+    width: 168px;
   }
 </style>
 <style lang="scss">

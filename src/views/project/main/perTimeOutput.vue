@@ -1,39 +1,26 @@
 <template>
-  <div class="failure-warning">
+  <div class="pertime-output">
     <div class="first-rows" style="display:flex;flex-direction:row;">
       <div class="title">
         <div class="logo" />
-        <span>{{ title }}报警信息</span>
+        <span>逐时{{ title }}趋势</span>
       </div>
     </div>
 
-    <div class="second-rows">
-      <div id="warningPie" :style="{width: '16vw', height: '15vw', paddingLeft: '2.5vw'}">
-        <pie-chart id="warningPie-System" :chart-data="pieChartData" :cursor="cursor" :sum="dealStatus.sum" />
-      </div>
-      <div class="legend-container">
-        <div class="dealing">
-          <div class="text">待处理故障</div>
-          <div class="number">{{ dealStatus.dealing }}</div>
-        </div>
-        <div class="dealed">
-          <div class="dealing">
-            <div class="text">已处理故障</div>
-            <div class="number">{{ dealStatus.dealed }}</div>
-          </div>
-        </div>
-      </div>
+    <div id="warningPie" :style="{width: '100%', height: '88%'}">
+      <!-- <MixChart id="warningPie-System" :chart-data="pieChartData" :cursor="cursor" :sum="dealStatus.sum" /> -->
+      <MixChart id="mixChart-container" class="mixChart-container" height="100%" width="100%" :chart-data="mixChartData" />
     </div>
   </div>
 </template>
 
 <script>
-import PieChart from './echart/PieChart'
-import { getFaultWarningData } from '@/api/main/faultWarning'
+import MixChart from './echart/MixChart'
+import { getPertimeOutputData } from '@/api/main/pertimeOutput'
 export default {
-  name: 'FaultWarning',
+  name: 'PertimeOutput',
   components: {
-    PieChart
+    MixChart
   },
   props: {
     cursor: {
@@ -52,7 +39,10 @@ export default {
         dealed: null,
         sum: null
       },
-      activeName: 'system'
+      activeName: 'system',
+      mixChartData: {
+        data: null
+      }
     }
   },
   computed: {
@@ -61,97 +51,44 @@ export default {
       var currentView = this.$store.state.settings.currentView.value
       switch (currentView) {
         case 'ky':
-          title = '空压'
+          title = '空压产量'
           break
         case 'qd':
-          title = '氢氮'
+          title = '氢氮产量'
           break
         case 'zk':
-          title = '真空'
+          title = '电耗'
           break
         case 'dl':
         case 'dianli':
-          title = '电力'
+          title = '真空耗电量'
           break
         default:
       }
       return title
-    },
-    currentSystem() {
-      return this.$store.state.settings.currentView
     }
   },
   watch: {
-    currentSystem: function(values) {
-      var param = { value: values.value, label: values.name }
-      this.getFaultWarningDataSystem(param)
+    currentView: function(values) {
+      var param = { sysCode: values.value, label: values.name, timeType: 'day' }
+      this.getPertimeOutputData(param)
     }
   },
   mounted() {
-    /* this.optionPie.title.left = this.cursor * 43 + '%'
-    this.optionPie.title.top = this.cursor * 37 + '%'
-    this.optionPie.title.textStyle.fontSize = this.cursor * 36
-    this.optionPie.series.radius = [this.cursor * 55 + '%', this.cursor * 70 + '%']
-    this.optionPie.series.center = [this.cursor * 45 + '%', this.cursor * 50 + '%']
-    this.optionPie.series.right = this.cursor * 11 + '%'
-    this.optionPie.series.top = this.cursor * 15 + '%'
-    this.drawPie('warning-pie', this.optionPie)
-
-    this.optionBar.grid = {
-      left: this.cursor * 15 + '%',
-      right: this.cursor * 5 + '%',
-      top: this.cursor * 2 + '%',
-      bottom: this.cursor * 12 + '%'
-    }
-    this.optionBar.legend.right = this.cursor * 10
-    this.optionBar.legend.itemWidth = this.cursor * 10
-    this.optionBar.legend.itemHeight = this.cursor * 15
-    this.drawBar('warning-bar', this.optionBar) */
-
-    /* window.onresize = () => {
-      var chartsPie = echarts.getInstanceByDom(document.getElementById('warningPie-System'))
-      if (chartsPie) {
-        chartsPie.resize()
-      }
-      var chartsBar = echarts.getInstanceByDom(document.getElementById('warningBar-System'))
-      if (chartsBar) {
-        chartsBar.resize()
-      }
-    } */
-    this.initFaultWarningData()
+    this.initPertimeOutputData()
   },
   methods: {
-    initFaultWarningData() {
-      var param = { value: 'ky', label: '空压系统' }
-      this.getFaultWarningDataSystem(param)
+    initPertimeOutputData() {
+      var param = { sysCode: 'ky', label: '空压系统', timeType: 'day' }
+      this.getPertimeOutputData(param)
     },
-    getFaultWarningDataSystem(params) {
-      getFaultWarningData(params).then((res) => {
-        this.pieChartData.data = res.data.pieChartData
-        /* this.barChartData = res.data.barChartData */
-        this.dealStatus = res.data.dealStatus
+    getPertimeOutputData(param) {
+      getPertimeOutputData(param).then((res) => {
+        this.mixChartData.data = res.data.pieChartData
       }).catch(err => {
         console.log(err)
       })
     },
-    /* drawPie(id, optionPie) {
-      const chartmainline = echarts.init(document.getElementById(id))
-      chartmainline.setOption(optionPie)
-    },
-    drawBar(id, optionBar) {
-      const chartmainline = echarts.init(document.getElementById(id))
-      chartmainline.setOption(optionBar)
-    },*/
-    /* resizeCharts() {
-      var chartsPie = echarts.getInstanceByDom(document.getElementById('warningPie-System'))
-      if (chartsPie) {
-        chartsPie.resize()
-      }
-      var chartsBar = echarts.getInstanceByDom(document.getElementById('warningBar-System'))
-      if (chartsBar) {
-        chartsBar.resize()
-      }
-    }, */
     tabClick(tab, event) {
     }
   }
@@ -159,7 +96,7 @@ export default {
 </script>
 
 <style lang="scss">
-.failure-warning{
+.pertime-output{
   .el-tabs{
     flex-shrink: 1;
     flex-grow: 1;
@@ -202,7 +139,7 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
-.failure-warning{
+.pertime-output{
   display: flex;
   flex-direction: column;
   position: relative;
@@ -212,9 +149,8 @@ export default {
   border-radius: 4px;
   flex-shrink: 0;
   flex-grow: 0;
-  height: 19vw;
+  height: 16vw;
   font-family: Bebas;
-  margin: 1vw 0;
   .first-rows{
     flex-shrink: 0;
     flex-grow: 0;

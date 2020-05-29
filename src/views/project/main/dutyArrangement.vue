@@ -3,16 +3,16 @@
     <div class="first-rows">
       <div class="title">
         <div class="logo" />
-        <span>值班安排</span>
+        <span>{{ title }}值班信息</span>
       </div>
-      <el-select v-model="dutySelect.systemName" :popper-append-to-body="false" placeholder="请选择" class="duty-select" @change="changeMethod">
+      <!-- <el-select v-model="dutySelect.systemName" :popper-append-to-body="false" placeholder="请选择" class="duty-select" @change="changeMethod">
         <el-option
           v-for="item in dutySelect.systems"
           :key="item.systemCode"
           :label="item.systemName"
           :value="{value: item.systemCode, label: item.systemName}"
         />
-      </el-select>
+      </el-select> -->
     </div>
 
     <div class="time-container">
@@ -97,7 +97,28 @@ export default {
   computed: {
     ...mapGetters([
       'currentView'
-    ])
+    ]),
+    title() {
+      var title = ''
+      var currentView = this.$store.state.settings.currentView.value
+      switch (currentView) {
+        case 'ky':
+          title = '空压'
+          break
+        case 'qd':
+          title = '氢氮'
+          break
+        case 'zk':
+          title = '真空'
+          break
+        case 'dl':
+        case 'dianli':
+          title = '电力'
+          break
+        default:
+      }
+      return title
+    }
   },
   watch: {
     currentView: function(values) {
@@ -131,6 +152,12 @@ export default {
       })
     },
     getDutyMembers: function(param) {
+      this.dutyMember.morningLeader = ''
+      this.dutyMember.morningMember = ''
+      this.dutyMember.noonLeader = ''
+      this.dutyMember.noonMember = ''
+      this.dutyMember.eveningLeader = ''
+      this.dutyMember.eveningMember = ''
       fetchDutyMembers(param).then((res) => {
         if (res.data.length > 0) {
           res.data.forEach(element => {
@@ -139,15 +166,19 @@ export default {
               case 0:
                 this.dutyMember.morningLeader = element.leaders
                 this.dutyMember.morningMember = element.members
+
                 break
               case 1:
                 this.dutyMember.noonLeader = element.leaders
                 this.dutyMember.noonMember = element.members
+
                 break
               case 2:
                 this.dutyMember.eveningLeader = element.leaders
                 this.dutyMember.eveningMember = element.members
+
                 break
+              default:
             }
           })
         }
@@ -161,7 +192,7 @@ export default {
 </script>
 
 <style lang='scss'>
-#left-container .duty-select{
+.duty-arrange .duty-select{
     .el-input{
       width: vw;
     }
@@ -194,14 +225,14 @@ export default {
 <style lang='scss' scoped>
 .duty-arrange {
   position: relative;
-  height: 15vw;
+  height: 0;
   background: rgba(52,24,171,0.20);
   border: 1px solid #3418AB;
   box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
   border-radius: 4px;
   width: 100%;
-  flex-grow: 0;
-  flex-shrink: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
   display: flex;
   flex-direction: column;
   .first-rows{

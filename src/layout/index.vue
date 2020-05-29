@@ -73,6 +73,14 @@ export default {
     this.currentView = window.sessionStorage.getItem('currentView')
     if (this.currentView === null) {
       this.currentView = 'Main'
+      this.needTagsView = false
+      this.sidebarHide = true
+    } else if (this.currentView === 'Main') {
+      this.needTagsView = false
+      this.sidebarHide = true
+    } else {
+      this.needTagsView = true
+      this.sidebarHide = false
     }
   },
   methods: {
