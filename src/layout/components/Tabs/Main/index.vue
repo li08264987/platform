@@ -2,6 +2,28 @@
   <div id="main" ref="main" :style="{transform: transforChange()}">
     <div class="dp-bottom-container">
       <div class="top-pic" />
+      <div class="settings-container">
+        <div v-show="electricSelectShow" class="electricSelect-container">
+          <el-select v-model="electricTypes.selectedElectric.label" :popper-append-to-body="false" placeholder="请选择" class="electric-select" @change="electricChangeMethod">
+            <el-option
+              v-for="item in electricTypes.data"
+              :key="item.value"
+              :label="item.label"
+              :value="{value: item.value, label: item.label}"
+            />
+          </el-select>
+        </div>
+        <div class="timeSelect-container">
+          <el-select v-model="timeTypes.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="time-select" @change="timeChangeMethod">
+            <el-option
+              v-for="item in timeTypes.data"
+              :key="item.value"
+              :label="item.label"
+              :value="{value: item.value, label: item.label}"
+            />
+          </el-select>
+        </div>
+      </div>
       <div id="left-container">
         <PertimeOutput />
         <electric-rank />
@@ -52,11 +74,41 @@ export default {
   data() {
     return {
       cursor: this.getFontSizeCursor(),
-      safeDays: 0
+      safeDays: 0,
+      timeTypes: {
+        selectedTime: { value: 'day', label: '按天' },
+        data: [{
+          value: 'day',
+          label: '按天'
+        }, {
+          value: 'week',
+          label: '按周'
+        }, {
+          value: 'month',
+          label: '按月'
+        }]
+      },
+      electricTypes: {
+        selectedElectric: { value: 'voltage', label: '电压' },
+        data: [{
+          value: 'voltage',
+          label: '电压'
+        }, {
+          value: 'dianliu',
+          label: '电流'
+        }]
+      }
     }
   },
   computed: {
-
+    electricSelectShow() {
+      var currentView = this.$store.state.settings.currentView.value
+      if (currentView === 'dianli' || currentView === 'dl') {
+        return true
+      } else {
+        return false
+      }
+    }
   },
   mounted() {
     this.getSafeDays()
@@ -66,6 +118,24 @@ export default {
     }
   },
   methods: {
+    timeChangeMethod: function(params) {
+      const { value, label } = params
+      this.timeTypes.selectedTime.label = label
+      this.timeTypes.selectedTime.value = value
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'mainTimeType',
+        value: value
+      })
+    },
+    electricChangeMethod: function(params) {
+      const { value, label } = params
+      this.electricTypes.selectedElectric.label = label
+      this.electricTypes.selectedElectric.value = value
+      this.$store.dispatch('settings/changeSetting', {
+        key: 'mainElectricType',
+        value: value
+      })
+    },
     transforChange: function() {
       var totalWidth = document.documentElement.clientWidth
       var totalHeight = document.documentElement.clientHeight
@@ -143,6 +213,83 @@ export default {
 }
 </script>
 
+<style lang='scss'>
+#main{
+  .settings-container{
+    .timeSelect-container{
+      margin-right: 1vw;
+      .time-select{
+        margin: unset;
+        .el-input{
+            width: 4vw;
+          }
+          .el-input--suffix .el-input__inner {
+          padding-right: 1vw;
+          background-color: #3418AB;
+          border: none;
+          color: #C8D6FE;
+          font-size: 0.85vw;
+          height: 1.7vw;
+          line-height: 2vw;
+          border: 1px solid #3418AB;
+          }
+          .el-select-dropdown{
+            border: unset;
+            left:0.5vw !important;
+          }
+          .el-select-dropdown__item{
+            height: 1.5vw;
+            color: #fff;
+            font-size: 0.8vw;
+          }
+          .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+            background-color: #5F3BFF;
+          }
+          .el-scrollbar{
+            background-color: #1A1272;
+          }
+      }
+    }
+
+    .electricSelect-container{
+      margin-right: 1vw;
+      .electric-select{
+        margin: unset;
+        .el-input{
+            width: 4vw;
+          }
+          .el-input--suffix .el-input__inner {
+          padding-right: 1vw;
+          background-color: #3418AB;
+          border: none;
+          color: #C8D6FE;
+          font-size: 0.85vw;
+          height: 1.7vw;
+          line-height: 2vw;
+          border: 1px solid #3418AB;
+          }
+          .el-select-dropdown{
+            border: unset;
+            left:0.5vw !important;
+          }
+          .el-select-dropdown__item{
+            height: 1.5vw;
+            color: #fff;
+            font-size: 0.8vw;
+          }
+          .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+            background-color: #5F3BFF;
+          }
+          .el-scrollbar{
+            background-color: #1A1272;
+          }
+      }
+    }
+  }
+
+}
+</style>
+
 <style lang='scss' scoped>
 #main{
   min-width: 1024px;
@@ -171,6 +318,12 @@ export default {
       background-size: contain;
       background-repeat: no-repeat;
       z-index: -1;
+    }
+    .settings-container{
+      position: absolute;
+      color: #fff;
+      display: flex;
+      right: 0px;
     }
     #left-container{
       width: 23vw;

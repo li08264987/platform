@@ -5,7 +5,7 @@
         <div class="logo" />
         <span>累计{{ title }}排名</span>
       </div>
-      <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
+      <el-select v-show="false" v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
           v-for="item in energySelect.energyTimeTypes"
           :key="item.value"
@@ -200,6 +200,9 @@ export default {
         default:
       }
       return title
+    },
+    mainTimeType() {
+      return this.$store.state.settings.mainTimeType
     }
   },
   watch: {
@@ -210,6 +213,11 @@ export default {
       this.radio.system.defaultSystemCode = params.value
       this.radio.system.defaultSystemName = params.name
       this.systemRadioChange(params.value)
+    },
+    mainTimeType: function(val) {
+      var system = this.$store.state.settings.currentView.value
+      var param = { systemCode: system, timeType: val }
+      this.getTableDataBySystem(param)
     }
   },
   mounted() {

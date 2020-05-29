@@ -5,7 +5,7 @@
         <div class="logo" />
         <span>平台信息总览</span>
       </div>
-      <el-select v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
+      <el-select v-show="false" v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
           v-for="item in energySelect.energyTimeTypes"
           :key="item.value"
@@ -92,7 +92,7 @@
         </div>
       </div>
 
-      <div class="row row-3" style="margin-bottom: unset;color:#D6E4FF;padding: 1vw 4vw;">
+      <div class="row row-3" style="margin-bottom: unset;color:#D6E4FF;padding: 1vw 0vw;padding-right:1vw;display:flex;justify-content: space-between;">
         <span style="margin-right: 2vw;">运行评级</span>
         <el-rate
           v-model="rateValue"
@@ -215,8 +215,17 @@ export default {
     }
   },
 
-  computed: {},
-
+  computed: {
+    mainTimeType() {
+      return this.$store.state.settings.mainTimeType
+    }
+  },
+  watch: {
+    mainTimeType: function(params) {
+      this.energySelect.selectedTime.value = params
+      this.initEnergyStatusData()
+    }
+  },
   mounted() {
     this.initEnergyStatusData()
   },

@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { formatTimeToStr } from '@/utils/index'
 import echarts from 'echarts'
 require('echarts/theme/roma')
 import resize from '../mixins/resize'
@@ -34,16 +35,17 @@ export default {
   data() {
     return {
       chart: null,
-      option: null
+      option: null,
+      timeType: 'day'
     }
   },
   computed: {
-    currentSystem() {
-      return this.$store.state.settings.currentView.value
+    mainTimeType() {
+      return this.$store.state.settings.mainTimeType
     }
   },
   watch: {
-    currentSystem: {
+    /* currentSystem: {
       handler(param) {
         var currentView = this.$store.state.settings.currentView.value
         var titleText = '实时'
@@ -67,6 +69,18 @@ export default {
         this.chart.setOption(this.option)
       },
       deep: true
+    }, */
+    chartData: {
+      deep: true,
+      handler(val) {
+        this.setOptions()
+      }
+    },
+    mainTimeType: {
+      handler(val) {
+        this.timeType = val
+        this.setOptions()
+      }
     }
   },
   mounted() {
@@ -82,10 +96,36 @@ export default {
   methods: {
     initChart() {
       this.chart = echarts.init(this.$el, 'roma')
+      this.setOptions()
+    },
+    setOptions() {
+      var timeList = []
+      var dataList = []
+      if (this.chartData.data !== null) {
+        for (let i = 0; i < this.chartData.data.length; i++) {
+          timeList.push(this.chartData.data[i].TIME)
+          dataList.push(this.chartData.data[i].VALUE)
+        }
+      }
+      var currentView = this.$store.state.settings.currentView.value
+      var unit = ''
+      switch (currentView) {
+        case 'ky':
+        case 'qd':
+          unit = 'm³/h'
+          break
+        case 'zk':
+        case 'dianli':
+        case 'dl':
+          unit = 'kWh'
+          break
+        default:
+      }
+      var realTimeData = dataList[dataList.length - 1]
       this.option = {
         backgroundColor: 'transparent',
         title: {
-          text: '实时产量：',
+          text: '实时产量：' + realTimeData + unit,
           textStyle: {
             color: '#9FA8DA',
             fontSize: '18'
@@ -94,7 +134,7 @@ export default {
             color: '#90979c',
             fontSize: '16'
           },
-          left: 'center',
+          right: '5%',
           top: '5%'
         },
         tooltip: {
@@ -130,7 +170,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+            data: timeList,
             axisPointer: {
               type: 'shadow'
             },
@@ -138,6 +178,13 @@ export default {
               textStyle: {
                 color: '#9FA8DA',
                 fontSize: 14
+              },
+              formatter: (value) => {
+                if (this.timeType === 'day') {
+                  return formatTimeToStr(value, 'h:mm')
+                } else {
+                  return formatTimeToStr(value, 'yyyy-MM-dd')
+                }
               }
             },
             splitLine: {
@@ -154,7 +201,7 @@ export default {
         yAxis: [
           {
             type: 'value',
-            name: '实时产量:m³/h',
+            name: unit,
             min: 0,
             max: 250,
             interval: 50,
@@ -183,7 +230,7 @@ export default {
         series: [
           {
             type: 'bar',
-            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+            data: dataList,
             itemStyle: {
               normal: {
                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -196,13 +243,19 @@ export default {
                 }
                 ])
               }
+            },
+            label: {
+              show: true,
+              position: 'top',
+              color: '#B7B6FF',
+              fontSize: 14
             }
           },
           {
             type: 'line',
-            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+            data: dataList,
             lineStyle: {
-              color: '#fff'
+              color: '#EB2E95'
             },
             itemStyle: {
               normal: {

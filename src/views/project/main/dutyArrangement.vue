@@ -67,6 +67,11 @@
       </div>
 
     </div>
+
+    <div class="forth-row" style="">
+      <span style="margin-right: 2vw;">平台运维管理员</span>
+      <span style="margin-right: 2vw;">{{ manager }}</span>
+    </div>
   </div>
 </template>
 
@@ -90,7 +95,8 @@ export default {
         morningMember: null,
         noonMember: null,
         eveningMember: null
-      }
+      },
+      manager: '平台管理员'
     }
   },
 
@@ -363,9 +369,9 @@ export default {
     position: relative;
     padding-left: 1vw;
     font-family: MicrosoftYaHeiUI;
-    flex-shrink: 1;
-    flex-grow: 1;
-    height: 0;
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: 3vw;
     .worker-group{
       display: flex;
       flex-direction: column;
@@ -388,6 +394,13 @@ export default {
       letter-spacing: 0;
       line-height: 1vh;
     }
+  }
+
+  .forth-row{
+    flex-shrink: 1;
+    flex-grow: 1;
+    color: rgb(214, 228, 255);
+    padding: 1vw 1vw;
   }
 
 }

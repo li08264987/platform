@@ -1,7 +1,7 @@
 <template>
   <div id="cloud">
     <svg :width="width" :height="height" @mousemove="listener($event)" @mouseout="mouseOut" @mouseover="mouseOver">
-      <a v-for="(tag,index) in tags" :id="index" :key="index" :href="tag.href" @click="itemClick(index,tag.type,tag.text)">
+      <a v-for="(tag,index) in tags" :id="index" :key="index" :href="tag.href" style="cursor:pointer" @click="itemClick(index,tag.type,tag.text)">
         <text :x="tag.x" :y="tag.y" :fill="tag.color" :font-size="17 * (300/(300-tag.z))" :fill-opacity="((200+tag.z)/300)">{{ tag.text }}</text>
       </a>
     </svg>

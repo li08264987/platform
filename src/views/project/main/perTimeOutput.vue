@@ -66,11 +66,23 @@ export default {
         default:
       }
       return title
+    },
+    currentView() {
+      return this.$store.state.settings.currentView.value
+    },
+    mainTimeType() {
+      return this.$store.state.settings.mainTimeType
     }
   },
   watch: {
     currentView: function(values) {
-      var param = { sysCode: values.value, label: values.name, timeType: 'day' }
+      var timetype = this.$store.state.settings.mainTimeType
+      var param = { sysCode: values, timeType: timetype }
+      this.getPertimeOutputData(param)
+    },
+    mainTimeType: function(params) {
+      var system = this.$store.state.settings.currentView.value
+      var param = { sysCode: system, timeType: params }
       this.getPertimeOutputData(param)
     }
   },
@@ -84,7 +96,7 @@ export default {
     },
     getPertimeOutputData(param) {
       getPertimeOutputData(param).then((res) => {
-        this.mixChartData.data = res.data.pieChartData
+        this.mixChartData.data = res.data
       }).catch(err => {
         console.log(err)
       })
