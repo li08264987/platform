@@ -2,7 +2,7 @@
   <div id="cloud">
     <svg :width="width" :height="height" @mousemove="listener($event)" @mouseout="mouseOut" @mouseover="mouseOver">
       <a v-for="(tag,index) in tags" :id="index" :key="index" :href="tag.href" style="cursor:pointer" @click="itemClick(index,tag.type,tag.text)">
-        <text :x="tag.x" :y="tag.y" :fill="tag.color" :font-size="17 * (300/(300-tag.z))" :fill-opacity="((200+tag.z)/300)">{{ tag.text }}</text>
+        <text :x="tag.x" :y="tag.y" :fill="tag.color" :font-size="15 * (300/(300-tag.z))" :fill-opacity="((200+tag.z)/300)">{{ tag.text }}</text>
       </a>
     </svg>
   </div>
@@ -15,9 +15,9 @@ export default {
   data() {
     return {
       width: 300,
-      height: 300,
+      height: 150,
       tagsNum: null,
-      RADIUS: 85,
+      RADIUS: 65,
       speedX: Math.PI / 360,
       speedY: 0,
       active: false,
@@ -144,7 +144,7 @@ export default {
 <style lang='scss' scoped>
 #cloud{
   position: absolute;
-  left: 35vw;
-  top: -0.1vw;
+  left: 38vw;
+  top: 2vw;
 }
 </style>

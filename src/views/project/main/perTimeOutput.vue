@@ -57,11 +57,11 @@ export default {
           title = '氢氮产量'
           break
         case 'zk':
-          title = '电耗'
+          title = '真空耗电量'
           break
         case 'dl':
         case 'dianli':
-          title = '真空耗电量'
+          title = '电耗'
           break
         default:
       }
