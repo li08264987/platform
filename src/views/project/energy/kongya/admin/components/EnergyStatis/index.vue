@@ -5,8 +5,8 @@
         <el-col :span="16" class="right-dash-boeder-el-col">
           <div class="left-container">
             <div class="left-container-top">
-              <div class="progress-charts-container">
-                <div v-for="(item, key) in progressData" :key="key" class="progress-chart-container">
+              <div v-loading="progressDataLoading" class="progress-charts-container">
+                <div v-for="(item, key) in progressData" :key="key" :class="{'progress-chart-container':true,'chejian':isCheJian}">
                   <div class="progress-chart-title"><span> {{ progressData[key].title }} </span></div>
                   <div class="progress-chart-bar nenghaojindu">
                     <div class="progress-label">
@@ -26,7 +26,7 @@
               </div>
               <div class="percent-chart-container">
                 <div class="dong-li-zhan-chart">
-                  <div class="chart-title"><span>设备能耗占比</span></div>
+                  <div class="chart-title"><span>{{ facCompareTitle }}</span></div>
                   <div v-loading="dongliStationDataLoading" class="chart-main">
                     <full-pie-chart :chart-data="dongliStationData" />
                   </div>
@@ -76,7 +76,7 @@
         <el-col :span="8">
           <div class="right-container">
             <div class="chart-container ji-zu-energy">
-              <div class="chart-title"><span>机组电耗统计图</span></div>
+              <div class="chart-title"><span>{{ jiqunCompareTitle }}</span></div>
               <div class="chart-main">
                 <div v-loading="compareDataLoading" class="chart-main-container">
                   <pie-chart :chart-data="compareData" />
@@ -92,9 +92,96 @@
               </div>
             </div>
             <div class="chart-container right-container">
-              <div class="chart-title"><span>机组能耗排名</span></div>
+              <div class="chart-title"><span>{{ orderTitle }}</span></div>
               <div class="chart-main">
                 <el-table
+                  v-if="isCheJian"
+                  v-loading="effectOrderDataLoading"
+                  :data="effectOrderData"
+                  :fit="true"
+                  size="medium"
+                  class="sort-table"
+                  header-row-class-name="sort-table-header-row"
+                  row-class-name="sort-table-row"
+                  cell-class-name="sort-table-cell"
+                  header-cell-class-name="sort-table-header-cell"
+                  style="display: flex; flex-direction: column; justify-content: center;"
+                >
+                  <el-table-column
+                    prop="name"
+                    label="名称"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="elec"
+                    label="电耗 kW·h"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="elecOrder"
+                    label="电耗排名"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="zk"
+                    label="真空量 kW·h"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="zkOrder"
+                    label="真空排名"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="qd"
+                    label="氢氮量 m³"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="qdOrder"
+                    label="氢氮排名"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="ky"
+                    label="空压量 m³"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                  <el-table-column
+                    prop="kyOrder"
+                    label="空压排名"
+                    min-width="50"
+                    header-align="center"
+                    align="center"
+                    :show-overflow-tooltip="true"
+                  />
+                </el-table>
+                <el-table
+                  v-else
                   v-loading="effectOrderDataLoading"
                   :data="effectOrderData"
                   :fit="true"
@@ -210,6 +297,8 @@ export default {
       lineChartSearchForm: {
         value: ['', '']
       },
+      isCheJian: false,
+      progressDataLoading: true,
       progressData: {
         nenghao: {
           title: '电耗进度',
@@ -218,16 +307,80 @@ export default {
           unit: 'kW·h'
         },
         nengxiao: {
-          title: '电耗能耗',
+          title: '能效进度',
           used: 0,
           total: 0,
           unit: 'kW·h/m³'
         },
+        chanqi: {
+          title: '产量进度',
+          used: 0,
+          total: 0,
+          unit: 'm³'
+        },
         nengfei: {
-          title: '电耗收费',
+          title: '能费进度',
           used: 0,
           total: 0,
           unit: '元'
+        }
+      },
+      sysProgressData: {
+        nenghao: {
+          title: '电耗进度',
+          used: 0,
+          total: 0,
+          unit: 'kW·h'
+        },
+        nengxiao: {
+          title: '能效进度',
+          used: 0,
+          total: 0,
+          unit: 'kW·h/m³'
+        },
+        chanqi: {
+          title: '产量进度',
+          used: 0,
+          total: 0,
+          unit: 'm³'
+        },
+        nengfei: {
+          title: '能费进度',
+          used: 0,
+          total: 0,
+          unit: '元'
+        }
+      },
+      cjProgressData: {
+        nenghao: {
+          title: '电力消耗限额进度',
+          used: 0,
+          total: 0,
+          unit: 'kW·h'
+        },
+        yasuo: {
+          title: '压缩空气限额进度',
+          used: 0,
+          total: 0,
+          unit: 'm³'
+        },
+        zhenkong: {
+          title: '真空电力限额进度',
+          used: 0,
+          total: 0,
+          unit: 'kW·h'
+        },
+        nengfei: {
+          title: '电力费用限额进度',
+          used: 0,
+          total: 0,
+          unit: '元'
+        },
+        qingdan: {
+          title: '氢氮气体限额进度',
+          used: 0,
+          total: 0,
+          unit: 'm³'
         }
       },
       compareDataLoading: true,
@@ -237,42 +390,42 @@ export default {
       },
       energyCircleDataLoading: true,
       energyCircleData: [{
-        title: '今日耗电量',
+        title: '耗电量',
         elemId: 'elecGradChart',
         value: 0,
-        percent: 80,
+        percent: 100,
         change: 0,
         unit: 'kW·h',
         increase: true,
         startColor: '#5779FF',
         endColor: '#90A7FF'
       }, {
-        title: '今日产气量',
+        title: '产气量',
         elemId: 'gasGradChart',
         value: 0,
-        percent: 80,
+        percent: 100,
         change: 0,
         unit: 'm³',
         increase: true,
         startColor: '#4CC5FF',
         endColor: '#8FDBFF'
       }, {
-        title: '今日能效值',
+        title: '能效值',
         elemId: 'nengxiaoGradChart',
         value: 0,
-        percent: 80,
+        percent: 100,
         change: 0,
         unit: 'kW·h/m³',
         increase: true,
         startColor: '#A26DFD',
         endColor: '#BE98FF'
       }, {
-        title: '今日电力计费',
+        title: '电力计费',
         elemId: 'feeGradChart',
         value: 0,
-        percent: 80,
+        percent: 100,
         change: 0,
-        unit: '万元',
+        unit: '元',
         increase: false,
         startColor: '#FFA733',
         endColor: '#FFC373'
@@ -291,45 +444,142 @@ export default {
       }]
     }
   },
+  computed: {
+    facCompareTitle: function() {
+      var title = '设备能耗占比'
+      if (this.$router.currentRoute.name === 'dl') {
+        title = '区域能耗占比'
+      } else if (
+        this.$router.currentRoute.name === 'cj1' ||
+        this.$router.currentRoute.name === 'cj2' ||
+        this.$router.currentRoute.name === 'cj3' ||
+        this.$router.currentRoute.name === 'cj4' ||
+        this.$router.currentRoute.name === 'cj5'
+      ) {
+        title = '能源种类耗量占比'
+      }
+      return title
+    },
+    jiqunCompareTitle: function() {
+      var title = '机群能耗占比'
+      if (this.$router.currentRoute.name === 'dl') {
+        title = '系统能耗占比'
+      } else if (
+        this.$router.currentRoute.name === 'cj1' ||
+        this.$router.currentRoute.name === 'cj2' ||
+        this.$router.currentRoute.name === 'cj3' ||
+        this.$router.currentRoute.name === 'cj4'
+      ) {
+        title = '楼层电耗占比'
+      } else if (
+        this.$router.currentRoute.name === 'cj5'
+      ) {
+        title = '区域电耗占比'
+      }
+      return title
+    },
+    orderTitle: function() {
+      var title = '机群能效排序'
+      if (this.$router.currentRoute.name === 'dl') {
+        title = '区域能耗排序'
+      } else if (
+        this.$router.currentRoute.name === 'cj1' ||
+        this.$router.currentRoute.name === 'cj2' ||
+        this.$router.currentRoute.name === 'cj3' ||
+        this.$router.currentRoute.name === 'cj4' ||
+        this.$router.currentRoute.name === 'cj5'
+      ) {
+        title = '楼层能耗排名'
+      }
+      return title
+    }
+  },
   watch: {
     searchData: {
       deep: true,
       handler(val) {
-        console.log(val)
+        if (this.progressDataLoading ||
+          this.dongliStationDataLoading ||
+          this.effectOrderDataLoading ||
+          this.lineChartDataLoading ||
+          this.energyCircleDataLoading ||
+          this.compareDataLoading) {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: '正在查询数据，请等待查询结束后再次查询！'
+          })
+        } else {
+          this.reloadData()
+        }
       }
     }
   },
   mounted() {
-    this.setProgressData({ sys: this.$router.currentRoute.name })
-    this.setCompareData({ sys: this.$router.currentRoute.name })
-    this.setEffectCompareData({ sys: this.$router.currentRoute.name })
-    this.setEnergyCircleData({ sys: this.$router.currentRoute.name })
-    this.setElecLineChartDataData({
-      sys: this.$router.currentRoute.name,
-      startTime: this.lineChartSearchForm.value[0],
-      endTime: this.lineChartSearchForm.value[1]
-    })
-    this.setEffectOrderData({ sys: this.$router.currentRoute.name })
+    this.reloadData()
   },
   methods: {
+    reloadData: function() {
+      this.setProgressData({
+        sys: this.$router.currentRoute.name,
+        startTime: this.searchData.date[0],
+        endTime: this.searchData.date[1]
+      })
+      this.setCompareData({
+        sys: this.$router.currentRoute.name,
+        startTime: this.searchData.date[0],
+        endTime: this.searchData.date[1]
+      })
+      this.setEffectCompareData({
+        sys: this.$router.currentRoute.name,
+        startTime: this.searchData.date[0],
+        endTime: this.searchData.date[1]
+      })
+      this.setEnergyCircleData({
+        sys: this.$router.currentRoute.name,
+        startTime: this.searchData.date[0],
+        endTime: this.searchData.date[1]
+      })
+      this.setElecLineChartDataData({
+        sys: this.$router.currentRoute.name,
+        startTime: this.searchData.date[0],
+        endTime: this.searchData.date[1]
+      })
+      this.setEffectOrderData({
+        sys: this.$router.currentRoute.name,
+        startTime: this.searchData.date[0],
+        endTime: this.searchData.date[1]
+      })
+    },
     setProgressData(params) {
+      this.progressDataLoading = true
       getProcessData(params).then(response => {
         var data = response.data
+        if (data.nengxiao) {
+          this.progressData = JSON.parse(JSON.stringify(this.sysProgressData))
+          this.isCheJian = false
+        } else {
+          this.progressData = JSON.parse(JSON.stringify(this.cjProgressData))
+          this.isCheJian = true
+        }
         for (var key in this.progressData) {
           if (data[key]) {
             this.progressData[key].used = data[key].used
             this.progressData[key].total = data[key].total
           }
         }
+        this.progressDataLoading = false
       }).catch(err => {
         this.$message({
           type: 'warning',
           duration: 2000,
           message: err
         })
+        this.progressDataLoading = false
       })
     },
     setCompareData(params) {
+      this.compareDataLoading = true
       getCompareData(params).then(response => {
         var data = response.data
         this.compareData.data = data
@@ -340,9 +590,11 @@ export default {
           duration: 2000,
           message: err
         })
+        this.compareDataLoading = false
       })
     },
     setEffectCompareData(params) {
+      this.dongliStationDataLoading = true
       getEffectCompareData(params).then(response => {
         var data = response.data
         this.dongliStationData.data = data
@@ -353,9 +605,11 @@ export default {
           duration: 2000,
           message: err
         })
+        this.dongliStationDataLoading = false
       })
     },
     setEffectOrderData(params) {
+      this.effectOrderDataLoading = true
       getEffectOrderData(params).then(response => {
         var data = response.data
         this.effectOrderData = data
@@ -366,6 +620,7 @@ export default {
           duration: 2000,
           message: err
         })
+        this.effectOrderDataLoading = false
       })
     },
     setElecLineChartDataData(params) {
@@ -380,6 +635,7 @@ export default {
           duration: 2000,
           message: err
         })
+        this.lineChartDataLoading = false
       })
     },
     initEnergyCircle() {
@@ -409,6 +665,7 @@ export default {
       }
     },
     setEnergyCircleData(params) {
+      this.energyCircleDataLoading = true
       getEnergyCircleData(params).then(response => {
         var data = response.data
         for (var i = 0; i < this.energyCircleData.length; i++) {
@@ -431,6 +688,7 @@ export default {
           message: err
         })
         this.initEnergyCircle()
+        this.energyCircleDataLoading = false
       })
     },
     onSearch() {
@@ -493,11 +751,14 @@ export default {
   .progress-chart-container,
   .chart-container {
     width: 100%;
-    height: calc(100% / 3);
+    height: calc(100% / 4);
     display: flex;
     flex-direction: column;
     padding: 15px 30px;
     justify-content: center;
+  }
+  .progress-chart-container.chejian {
+    height: calc(100% / 5);
   }
   .chart-container {
     width: 100%;
@@ -535,7 +796,7 @@ export default {
     font-size: 16px;
     color: rgba(51,51,51,1);
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     padding: 0px 10px;
     display: flex;
     border-left: solid 2px rgba(74,98,245,1);
@@ -757,6 +1018,9 @@ export default {
   }
   .energy-statis-nenghao-pragress.nengfei .el-progress-bar__inner {
     background-image: linear-gradient(90deg,rgba(255,195,115,1) 0%,rgba(255,167,51,1) 100%);
+  }
+  .energy-statis-nenghao-pragress.chanqi .el-progress-bar__inner {
+    background-image: linear-gradient(90deg,#8FDBFF 0%,#2CB6F8 100%);
   }
   .energy-statis-nenghao-pragress .el-progress-bar__outer {
     background-color: rgba(234,234,234,1);
