@@ -20,7 +20,7 @@
     </div> -->
 
     <div class="operation-table">
-      <QuotaBar height="100%" width="100%" />
+      <QuotaBar id="quotaChart-container" class="quotaChart-container" height="100%" width="100%" :chart-data="quotaChartData" />
     </div>
 
   </div>
@@ -28,55 +28,24 @@
 
 <script>
 import QuotaBar from './echart/quotaBar'
-import { mapGetters } from 'vuex'
-import { fetchSystem, getTableDataBySystem } from '@/api/main/operationWatch'
+import { getQuotaManageData } from '@/api/main/quotaManage'
 export default {
   name: 'OperationWatch',
   components: { QuotaBar },
   data() {
     return {
-      operation: {
-        tableData: [{
-          type: '总流量',
-          value: '39m³/h'
-        },
-        {
-          type: '总压力',
-          value: '3.4bar'
-        },
-        {
-          type: '平均温度',
-          value: '36℃'
-        },
-        {
-          type: '冷却水温度',
-          value: '39℃'
-        }]
-      },
-      systems: {
-        systemsRadio: [{
-          systemCode: 'ky',
-          systemName: '空压系统'
-        }, {
-          systemCode: 'qd',
-          systemName: '氢氮系统'
-        }, {
-          systemCode: 'zk',
-          systemName: '真空系统'
-        }, {
-          systemCode: 'dl',
-          systemName: '电力系统'
-        }],
-        defaultSystemCode: 'ky',
-        defaultSystemName: '空压系统'
+      quotaChartData: {
+        data: null
       }
     }
   },
-
   computed: {
-    ...mapGetters([
-      'currentView'
-    ]),
+    currentView() {
+      return this.$store.state.settings.currentView.value
+    },
+    mainTimeType() {
+      return this.$store.state.settings.mainTimeType
+    },
     title() {
       var title = ''
       var currentView = this.$store.state.settings.currentView.value
@@ -99,50 +68,29 @@ export default {
     }
   },
   watch: {
-    currentView: function(params) {
-      if (params.value === 'dianli') {
-        params.value = 'dl'
-      }
-      this.systems.defaultSystemCode = params.value
-      this.systems.defaultSystemName = params.name
-      this.radioChange(params.value)
+    currentView: function(values) {
+      var timetype = this.$store.state.settings.mainTimeType
+      var param = { sysCode: values, timeType: timetype }
+      this.getQuotaManageData(param)
+    },
+    mainTimeType: function(params) {
+      var system = this.$store.state.settings.currentView.value
+      var param = { sysCode: system, timeType: params }
+      this.getQuotaManageData(param)
     }
   },
   mounted() {
-    this.initOperationWatchData()
+    this.initQuotaManageData()
   },
 
   methods: {
-    initOperationWatchData: function() {
-      this.getSystem()
-    },
-    getSystem: function() {
-      fetchSystem().then((res) => {
-        this.systems.systemsRadio = res.data
-        if (res.data.length > 0) {
-          this.systems.defaultSystemCode = res.data[0].systemCode
-          this.systems.defaultSystemName = res.data[0].systemName
-          // this.getTableDataBySystem({ code: this.systems.defaultSystemCode })
-        }
+    initQuotaManageData: function() {
+      var param = { sysCode: 'ky', label: '空压系统', timeType: 'day' }
+      getQuotaManageData(param).then((res) => {
+        this.quotaChartData.data = res.data
       }).catch(err => {
         console.log(err)
       })
-    },
-    getTableDataBySystem(param) {
-      getTableDataBySystem(param).then((res) => {
-        var data = []
-        for (var item in res.data) {
-          const type = item
-          const value = res.data[item]
-          data.push({ type: type, value: value })
-        }
-        this.operation.tableData = data
-      }).catch(err => {
-        console.log(err)
-      })
-    },
-    radioChange: function(value) {
-      this.getTableDataBySystem({ code: value })
     }
   }
 }
