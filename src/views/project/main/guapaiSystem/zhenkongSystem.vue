@@ -133,6 +133,7 @@
 </template>
 
 <script>
+import { fetchGuaPaiDataZK } from '@/api/main/guapai'
 export default {
   name: 'ZhenKongSystem',
   data() {
@@ -267,8 +268,42 @@ export default {
       }]
     }
   },
+  computed: {
+    mainTimeType() {
+      return this.$store.state.settings.mainTimeType
+    }
+  },
+  watch: {
+    mainTimeType: function(val) {
+      var param = { timeType: val }
+      this.getGuaPaiDataZK(param)
+    }
+  },
+  created() {
+    var param = { timeType: this.$store.state.settings.mainTimeType }
+    setInterval(() => {
+      this.getGuaPaiDataZK(param)
+    }, 300000)
+  },
+  mounted() {
+    var param = { timeType: 'day' }
+    this.getGuaPaiDataZK(param)
+  },
   methods: {
-
+    getGuaPaiDataZK(param) {
+      fetchGuaPaiDataZK(param).then((res) => {
+        this.yidonyipei = res.data.yidonyipei
+        this.yidongerpei = res.data.yidongerpei
+        this.yidongsanpei = res.data.yidongsanpei
+        this.yidongsipei = res.data.yidongsipei
+        this.erdongyipei = res.data.erdongyipei
+        this.erdongerpei = res.data.erdongerpei
+        this.wudongyipei = res.data.wudongyipei
+        this.wudongerpei = res.data.wudongerpei
+      }).catch(err => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>

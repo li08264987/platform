@@ -57,7 +57,7 @@ export default {
   computed: {
   },
   created() {
-    setInterval(this.guapaiChange, 3000000)
+    setInterval(this.guapaiChange, 300000)
   },
 
   mounted() {

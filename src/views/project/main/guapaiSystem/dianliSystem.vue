@@ -19,7 +19,13 @@
       <div class="pai-yidongerpei">
         <div class="title">一栋2配</div>
         <div class="type">
-          <div v-for="(item, index) in yidongerpei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in yidongerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in yidongerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -35,7 +41,13 @@
       <div class="pai-yidongsanpei">
         <div class="title">一栋3配</div>
         <div class="type">
-          <div v-for="(item, index) in yidongsanpei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in yidongsanpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in yidongsanpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -50,7 +62,13 @@
       <div class="pai-yidongsipei">
         <div class="title">一栋4配</div>
         <div class="type">
-          <div v-for="(item, index) in yidongsipei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in yidongsipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in yidongsipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -65,7 +83,13 @@
       <div class="pai-erdongyipei">
         <div class="title">二栋1配</div>
         <div class="type">
-          <div v-for="(item, index) in erdongyipei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in erdongyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in erdongyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -80,7 +104,13 @@
       <div class="pai-erdongerpei">
         <div class="title">二栋2配</div>
         <div class="type">
-          <div v-for="(item, index) in erdongerpei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in erdongerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in erdongerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -95,7 +125,13 @@
       <div class="pai-sandongyipei">
         <div class="title">三栋1配</div>
         <div class="type">
-          <div v-for="(item, index) in sandongyipei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in sandongyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in sandongyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -110,7 +146,13 @@
       <div class="pai-sandongsanpei">
         <div class="title">三栋3配</div>
         <div class="type">
-          <div v-for="(item, index) in sandongsanpei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in sandongsanpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in sandongsanpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -125,7 +167,13 @@
       <div class="pai-sandongsipei">
         <div class="title">三栋4配</div>
         <div class="type">
-          <div v-for="(item, index) in sandongsipei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in sandongsipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in sandongsipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -140,7 +188,13 @@
       <div class="pai-sidongyipei">
         <div class="title">四栋1配</div>
         <div class="type">
-          <div v-for="(item, index) in sidongyipei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in sidongyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in sidongyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -155,7 +209,13 @@
       <div class="pai-sidongerpei">
         <div class="title">四栋2配</div>
         <div class="type">
-          <div v-for="(item, index) in sidongerpei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in sidongerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in sidongerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -170,7 +230,13 @@
       <div class="pai-sidongsipei">
         <div class="title">四栋4配</div>
         <div class="type">
-          <div v-for="(item, index) in sidongsipei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in sidongsipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in sidongsipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -185,7 +251,13 @@
       <div class="pai-donglizhanyipei">
         <div class="title">动力站房1配</div>
         <div class="type">
-          <div v-for="(item, index) in donglizhanyipei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in donglizhanyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in donglizhanyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -200,7 +272,13 @@
       <div class="pai-donglizhanerpei">
         <div class="title">动力站房2配</div>
         <div class="type">
-          <div v-for="(item, index) in donglizhanerpei" v-show="item.unit === 'V' ? true : false || showDianLiu" :key="index" class="text-value">
+          <div v-for="(item, index) in donglizhanerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
+            <div class="text">{{ item.name }}:</div>
+            <span class="value">{{ item.value }}</span>
+            <span class="unit">{{ item.unit }}</span>
+          </div>
+
+          <div v-for="(item, index) in donglizhanerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
             <div class="text">{{ item.name }}:</div>
             <span class="value">{{ item.value }}</span>
             <span class="unit">{{ item.unit }}</span>
@@ -218,7 +296,6 @@ export default {
   name: 'DianLiSystem',
   data() {
     return {
-      showDianLiu: false,
       yidongerpei: [{
         name: 'A相电压',
         value: 500,
@@ -621,7 +698,9 @@ export default {
         value: 500,
         unit: 'A',
         show: false
-      }]
+      }],
+      showDianLiu: false,
+      showDianYa: true
     }
   },
   computed: {
@@ -633,13 +712,15 @@ export default {
     mainElectricType: function(param) {
       if (param === 'voltage') {
         this.showDianLiu = false
+        this.showDianYa = true
       } else {
         this.showDianLiu = true
+        this.showDianYa = false
       }
     }
   },
   created() {
-    setInterval(this.getGuaPaiDataDL, 5000)
+    setInterval(this.getGuaPaiDataDL, 300000)
   },
   mounted() {
     this.getGuaPaiDataDL()

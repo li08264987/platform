@@ -35,3 +35,11 @@ export function fetchGuaPaiDataDL() {
     method: 'post'
   })
 }
+
+export function fetchGuaPaiDataZK(query) {
+  return request({
+    url: '/main/guapai/fetchGuaPaiDataZK',
+    method: 'post',
+    params: query
+  })
+}
