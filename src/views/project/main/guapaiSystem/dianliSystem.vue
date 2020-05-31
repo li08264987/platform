@@ -4,11 +4,11 @@
     <img src="@/assets/main/dianliSystem/电力1栋3配.png" class="pic-yidongsanpei">
     <img src="@/assets/main/dianliSystem/电力1栋4配.png" class="pic-yidongsipei">
     <img src="@/assets/main/dianliSystem/电力2栋1配.png" class="pic-erdongyipei">
-    <!-- <img src="@/assets/main/dianliSystem/电力2栋2配.png" class="pic-erdongerpei"> -->
+    <img src="@/assets/main/dianliSystem/电力2栋2配.png" class="pic-erdongerpei">
     <img src="@/assets/main/dianliSystem/电力3栋1配.png" class="pic-sandongyipei">
     <img src="@/assets/main/dianliSystem/电力3栋3配.png" class="pic-sandongsanpei">
     <img src="@/assets/main/dianliSystem/电力3栋4配.png" class="pic-sandongsipei">
-    <!-- <img src="@/assets/main/dianliSystem/电力4栋1配.png" class="pic-sidongyipei"> -->
+    <img src="@/assets/main/dianliSystem/电力4栋1配.png" class="pic-sidongyipei">
     <img src="@/assets/main/dianliSystem/电力4栋2配.png" class="pic-sidongerpei">
     <img src="@/assets/main/dianliSystem/电力4栋4配.png" class="pic-sidongsipei">
     <img src="@/assets/main/dianliSystem/电力动力站1配.png" class="pic-donglizhanyipei">
@@ -780,7 +780,8 @@ export default {
         left: 5vw;
       }
       &-erdongerpei{
-
+        top: 34vw;
+        left: 5vw;
       }
       &-sandongyipei{
         bottom: 10.5vw;
@@ -795,7 +796,8 @@ export default {
         right: 7.8vw;
       }
       &-sidongyipei{
-
+        top: 15vw;
+        left: 30vw;
       }
       &-sidongerpei{
         bottom: 32vw;
@@ -887,7 +889,8 @@ export default {
       left: 2vw;
     }
     .erdongerpei{
-
+      top: 43.4vw;
+      left: 3vw;
     }
     .sandongyipei{
       bottom: 5vw;
@@ -902,7 +905,8 @@ export default {
       right: 0.8vw;
     }
     .sidongyipei{
-
+      top: 10vw;
+      left: 23vw;
     }
     .sidongerpei{
       bottom: 38vw;
