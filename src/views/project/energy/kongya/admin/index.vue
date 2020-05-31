@@ -20,6 +20,7 @@
 <script>
 import $ from 'jquery'
 import html2canvas from 'html2canvas'
+import JsPDF from 'jspdf'
 import energyStatis from './components/EnergyStatis'
 import energyDetail from './components/EnergyDetail'
 
@@ -89,7 +90,7 @@ export default {
         width: width
       }).then(canvas => {
         var filename = this.$route.meta.title + '能耗总览(' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ')'
-        that.exportPNG(canvas, filename)
+        that.exportPDF(canvas, filename)
       })
     },
     exportPNG: function(canvas, exportFilename) {
@@ -109,6 +110,27 @@ export default {
 
         $chartContainer.find(selector).attr('href', canvas.toDataURL())[0].click()
       }
+    },
+    exportPDF: function(canvas, exportFilename) {
+      var doc = {}
+      var docWidth = Math.floor(canvas.width)
+      var docHeight = Math.floor(canvas.height)
+
+      if (docWidth > docHeight) {
+        doc = new JsPDF({
+          orientation: 'landscape',
+          unit: 'px',
+          format: [docWidth, docHeight]
+        })
+      } else {
+        doc = new JsPDF({
+          orientation: 'portrait',
+          unit: 'px',
+          format: [docHeight, docWidth]
+        })
+      }
+      doc.addImage(canvas.toDataURL(), 'png', 0, 0)
+      doc.save(exportFilename + '.pdf')
     }
   }
 }
