@@ -99,14 +99,6 @@ const energyRouter = [{
         title: '胶水厂区',
         icon: 'documentation'
       }
-    }, {
-      path: 'dongli',
-      component: () => import('@/views/project/energy/kongya/index'),
-      name: 'dlzf1',
-      meta: {
-        title: '动力车间',
-        icon: 'documentation'
-      }
     }
   ]
 }]

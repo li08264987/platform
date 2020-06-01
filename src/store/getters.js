@@ -19,6 +19,8 @@ const getters = {
   platSetting_routes: state => state.permission.platformSettingRoutes,
   smartDiagnose_routes: state => state.permission.smartDiagnoseRoutes,
   errorLogs: state => state.errorLog.logs,
-  currentView: state => state.settings.currentView
+  currentView: state => state.settings.currentView,
+  mainTimeType: state => state.settings.mainTimeType,
+  mainElectricType: state => state.settings.mainElectricType
 }
 export default getters

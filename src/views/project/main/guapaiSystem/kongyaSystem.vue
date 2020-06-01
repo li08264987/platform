@@ -248,7 +248,7 @@ export default {
     }
   },
   created() {
-    setInterval(this.getGuaPaiDataKY, 60000)
+    setInterval(this.getGuaPaiDataKY, 300000)
   },
   mounted() {
     this.getGuaPaiDataKY()

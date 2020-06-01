@@ -79,50 +79,27 @@ export default {
     },
     currentSystem() {
       return this.$store.state.settings.currentView
+    },
+    mainTimeType() {
+      return this.$store.state.settings.mainTimeType
     }
   },
   watch: {
     currentSystem: function(values) {
-      var param = { value: values.value, label: values.name }
+      var param = { value: values.value, timeType: this.$store.state.settings.mainTimeType }
+      this.getFaultWarningDataSystem(param)
+    },
+    mainTimeType: function(params) {
+      var param = { value: this.$store.state.settings.currentView.value, timeType: params }
       this.getFaultWarningDataSystem(param)
     }
   },
   mounted() {
-    /* this.optionPie.title.left = this.cursor * 43 + '%'
-    this.optionPie.title.top = this.cursor * 37 + '%'
-    this.optionPie.title.textStyle.fontSize = this.cursor * 36
-    this.optionPie.series.radius = [this.cursor * 55 + '%', this.cursor * 70 + '%']
-    this.optionPie.series.center = [this.cursor * 45 + '%', this.cursor * 50 + '%']
-    this.optionPie.series.right = this.cursor * 11 + '%'
-    this.optionPie.series.top = this.cursor * 15 + '%'
-    this.drawPie('warning-pie', this.optionPie)
-
-    this.optionBar.grid = {
-      left: this.cursor * 15 + '%',
-      right: this.cursor * 5 + '%',
-      top: this.cursor * 2 + '%',
-      bottom: this.cursor * 12 + '%'
-    }
-    this.optionBar.legend.right = this.cursor * 10
-    this.optionBar.legend.itemWidth = this.cursor * 10
-    this.optionBar.legend.itemHeight = this.cursor * 15
-    this.drawBar('warning-bar', this.optionBar) */
-
-    /* window.onresize = () => {
-      var chartsPie = echarts.getInstanceByDom(document.getElementById('warningPie-System'))
-      if (chartsPie) {
-        chartsPie.resize()
-      }
-      var chartsBar = echarts.getInstanceByDom(document.getElementById('warningBar-System'))
-      if (chartsBar) {
-        chartsBar.resize()
-      }
-    } */
     this.initFaultWarningData()
   },
   methods: {
     initFaultWarningData() {
-      var param = { value: 'ky', label: '空压系统' }
+      var param = { value: 'ky', timeType: 'day' }
       this.getFaultWarningDataSystem(param)
     },
     getFaultWarningDataSystem(params) {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" :cursor="cursor" :style="{height:height,width:width}" />
+  <div :id="id" :class="className" :cursor="cursor" :style="{height:height,width:width}" />
 </template>
 
 <script>
@@ -26,10 +26,14 @@ export default {
       type: Boolean,
       default: true
     },
-    /* chartData: {
+    id: {
+      type: String,
+      default: 'chart'
+    },
+    chartData: {
       type: Object,
       required: true
-    }, */
+    },
     cursor: {
       type: Number,
       default: 1
@@ -37,21 +41,23 @@ export default {
   },
   data() {
     return {
-      chart: null
+      chart: null,
+      option: null
     }
   },
   watch: {
-    /* chartData: {
+    chartData: {
       deep: true,
       handler(val) {
-        var xAxis = []
-        for (let i = 0; i < val.systems.length; i++) {
-          xAxis.push(val.systems[i].systemName)
-        }
-        const param = { dealedData: val.dealedList, dealingData: val.dealingList, xAxis: xAxis }
-        this.setOptions(param)
+        this.setOptions()
       }
-    } */
+    },
+    mainTimeType: {
+      handler(val) {
+        this.timeType = val
+        this.setOptions()
+      }
+    }
   },
   mounted() {
     this.$nextTick(() => {

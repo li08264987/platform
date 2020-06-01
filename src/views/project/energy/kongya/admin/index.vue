@@ -18,6 +18,9 @@
 </template>
 
 <script>
+import $ from 'jquery'
+import html2canvas from 'html2canvas'
+import JsPDF from 'jspdf'
 import energyStatis from './components/EnergyStatis'
 import energyDetail from './components/EnergyDetail'
 
@@ -73,7 +76,61 @@ export default {
       this.searchData.date = JSON.parse(JSON.stringify(this.searchingData.date))
     },
     onExport() {
+      this.getDocCanvas()
+    },
+    getDocCanvas() {
+      var that = this
+      var doc = document.getElementsByClassName('el-container')[0]
+      var width = doc.scrollWidth
+      var height = doc.scrollHeight
+      html2canvas(doc, {
+        allowTaint: false,
+        useCORS: true,
+        height: height,
+        width: width
+      }).then(canvas => {
+        var filename = this.$route.meta.title + '能耗总览(' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ')'
+        that.exportPDF(canvas, filename)
+      })
+    },
+    exportPNG: function(canvas, exportFilename) {
+      var isWebkit = 'WebkitAppearance' in document.documentElement.style
+      var isFf = !!window.sidebar
+      var isEdge = navigator.appName === 'Microsoft Internet Explorer' || (navigator.appName === 'Netscape' && navigator.appVersion.indexOf('Edge') > -1)
+      var $chartContainer = $(document.body)
 
+      if ((!isWebkit && !isFf) || isEdge) {
+        window.navigator.msSaveBlob(canvas.msToBlob(), exportFilename + '.png')
+      } else {
+        var selector = '.oci-download-btn'
+
+        if (!$chartContainer.find(selector).length) {
+          $chartContainer.append('<a class="oci-download-btn"' + ' download="' + exportFilename + '.png"></a>')
+        }
+
+        $chartContainer.find(selector).attr('href', canvas.toDataURL())[0].click()
+      }
+    },
+    exportPDF: function(canvas, exportFilename) {
+      var doc = {}
+      var docWidth = Math.floor(canvas.width)
+      var docHeight = Math.floor(canvas.height)
+
+      if (docWidth > docHeight) {
+        doc = new JsPDF({
+          orientation: 'landscape',
+          unit: 'px',
+          format: [docWidth, docHeight]
+        })
+      } else {
+        doc = new JsPDF({
+          orientation: 'portrait',
+          unit: 'px',
+          format: [docHeight, docWidth]
+        })
+      }
+      doc.addImage(canvas.toDataURL(), 'png', 0, 0)
+      doc.save(exportFilename + '.pdf')
     }
   }
 }

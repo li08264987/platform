@@ -248,7 +248,7 @@ export default {
     }
   },
   created() {
-    setInterval(this.getGuaPaiDataQD, 60000)
+    setInterval(this.getGuaPaiDataQD, 300000)
   },
   mounted() {
     this.getGuaPaiDataQD()

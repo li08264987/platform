@@ -9,7 +9,9 @@ const state = {
   tagsView: tagsView,
   fixedHeader: fixedHeader,
   sidebarLogo: sidebarLogo,
-  currentView: { value: 'ky', name: '空压系统' }
+  currentView: { value: 'ky', name: '空压系统' },
+  mainTimeType: 'day',
+  mainElectricType: 'voltage'
 }
 
 const mutations = {
