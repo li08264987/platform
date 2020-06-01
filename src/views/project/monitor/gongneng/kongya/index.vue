@@ -64,7 +64,7 @@
               </el-button>
             </div>
             <div v-if="showNeibu && mainTabName==='first'" style="height:100%;position:relative;border: 1px dashed #ccc;width: 99%;margin-top:1%">
-              <system style="height:96%;width:100%;margin-top:40px;" :gngldata="gngldata" />
+              <system style="height:96%;width:100%;margin-top:40px;" />
               <i :class="rightbtn" @click="showHideRight" />
             </div>
             <div v-if="showParam" class="rightparam">

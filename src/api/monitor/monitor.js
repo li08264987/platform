@@ -49,6 +49,13 @@ export default {
       params: query
     })
   },
+  getDianLiData(query) {
+    return request({
+      url: '/monitor/getDianLiData',
+      method: 'post',
+      params: query
+    })
+  },
   getQingDanJiQun(query) {
     return request({
       url: '/monitor/getQingDanJiQun',
@@ -171,6 +178,13 @@ export default {
   download(query) {
     return request({
       url: '/monitor/download',
+      method: 'post',
+      params: query
+    })
+  },
+  getEffectOrderData(query) {
+    return request({
+      url: '/energy/statis/getEffectOrderData',
       method: 'post',
       params: query
     })

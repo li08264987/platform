@@ -15,7 +15,7 @@ import monitorapi from '@/api/monitor/monitor'
 const kongya = import('@/views/project/monitor/gongneng/kongya/index')
 const qingdan = import('@/views/project/monitor/gongneng/qingdan/index')
 const zhenkong = import('@/views/project/monitor/gongneng/zhenkong/index')
-const dianli = import('@/views/project/monitor/gongneng/kongya/index')
+const dianli = import('@/views/project/monitor/gongneng/dianli/index')
 // import axios from 'axios'
 export default {
   name: 'Monitor',

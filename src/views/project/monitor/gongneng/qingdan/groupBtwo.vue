@@ -437,8 +437,8 @@
               <text id="qd_nyzx_dlzf1_qdjq4_zq4_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
                 <tspan x="69" y="47">{{ datas.qd_nyzx_dlzf1_qdjq4_zq1_yxsj }}h</tspan>
               </text>
-              <text id="qd_nyzx_dlzf1_qdjq4_zq4_yxzt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-                <tspan x="69" y="17">{{ datas.qd_nyzx_dlzf1_qdjq4_zq1_yxzt }}</tspan>
+              <text id="qd_nyzx_dlzf1_qdjq4_zq4_yxzt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+                <tspan x="69" y="17">{{ getGuZhang(datas.qd_nyzx_dlzf1_qdjq4_zq1_yxzt) }}</tspan>
               </text>
             </g>
             <g id="b2zdgz" transform="translate(252.000000, 616.000000)" :class="datas.qd_nyzx_dlzf1_qdjq4_zd4_gz?'gzclass':'noclass'">
@@ -492,8 +492,8 @@
             <text id="qd_nyzx_dlzf1_qdjq4_zd4_yxsj" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
               <tspan x="378" y="647">{{ datas.qd_nyzx_dlzf1_qdjq4_zd1_yxsj }}h</tspan>
             </text>
-            <text id="qd_nyzx_dlzf1_qdjq4_zd4_yxzt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
-              <tspan x="378" y="617">{{ datas.qd_nyzx_dlzf1_qdjq4_zd1_yxzt }}</tspan>
+            <text id="qd_nyzx_dlzf1_qdjq4_zd4_yxzt" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="700" letter-spacing="0.0538462" fill="#28AA91">
+              <tspan x="378" y="617">{{ getGuZhang(datas.qd_nyzx_dlzf1_qdjq4_zd1_yxzt) }}</tspan>
             </text>
             <rect
               id="Rectangle-4-Copy-7复制-31"

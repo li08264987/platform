@@ -2085,6 +2085,90 @@
               <rect id="矩形" fill="#FFFFFF" x="19.0003232" y="7.51260322" width="4.77777778" height="17.6956522" rx="2.38888889" />
               <rect id="矩形复制-2" fill="#FFFFFF" x="19.0003232" y="28.4256467" width="4.77777778" height="4.82608696" rx="2.38888889" />
             </g>
+            <g id="流量计小" transform="translate(299.000000, 0.000000)">
+              <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+                <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+                <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+                <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+                <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
+                <rect
+                  id="矩形-copy-27"
+                  stroke="#586CB4"
+                  stroke-width="0.5"
+                  fill-opacity="0.3"
+                  fill="#586CB4"
+                  transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                  x="5"
+                  y="8"
+                  width="10"
+                  height="4"
+                  rx="0.5"
+                />
+              </g>
+            </g>
+            <g id="流量计小" transform="translate(1063.000000, 0.000000)">
+              <g id="流量计" transform="translate(11.000000, 15.500000) rotate(-360.000000) translate(-11.000000, -15.500000) translate(1.000000, 1.000000)">
+                <rect id="矩形" stroke="#586CB4" fill-opacity="0.3" fill="#586CB4" x="7" y="19" width="6" height="5" rx="1" />
+                <rect id="矩形-copy-28" fill="#586CB4" x="9" y="24" width="2" height="5" />
+                <circle id="椭圆形-copy-4" stroke="#586CB4" fill="#FFFFFF" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="10" />
+                <circle id="椭圆形-copy-3" stroke="#586CB4" fill-opacity="0.1" fill="#586CB4" transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) " cx="10" cy="10" r="8" />
+                <rect
+                  id="矩形-copy-27"
+                  stroke="#586CB4"
+                  stroke-width="0.5"
+                  fill-opacity="0.3"
+                  fill="#586CB4"
+                  transform="translate(10.000000, 10.000000) scale(-1, 1) translate(-10.000000, -10.000000) "
+                  x="5"
+                  y="8"
+                  width="10"
+                  height="4"
+                  rx="0.5"
+                />
+              </g>
+            </g>
+            <g id="1#流量计" transform="translate(326.000000, 1.000000)">
+              <rect
+                id="Rectangle-4-Copy-7复制-31"
+                stroke-opacity="0.289881993"
+                stroke="#8A9FF4"
+                stroke-width="0.96"
+                fill-opacity="0.0795454545"
+                fill="#8A9FF4"
+                x="65.48"
+                y="0.48"
+                width="71.04"
+                height="23.04"
+                rx="2"
+              />
+              <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="13" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="16">瞬时流量</tspan>
+              </text>
+              <text id="qd_nyzx_dlzf1_qdgg_llj1_ssll" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="69" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_llj1_ssll }}m³/h</tspan>
+              </text>
+            </g>
+            <g id="2#流量计" transform="translate(1096.000000, 1.000000)">
+              <rect
+                id="Rectangle-4-Copy-7复制-31"
+                stroke-opacity="0.289881993"
+                stroke="#8A9FF4"
+                stroke-width="0.96"
+                fill-opacity="0.0795454545"
+                fill="#8A9FF4"
+                x="65.48"
+                y="0.48"
+                width="71.04"
+                height="23.04"
+                rx="2"
+              />
+              <text id="瞬时流量" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" line-spacing="13" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="0" y="16">瞬时流量</tspan>
+              </text>
+              <text id="qd_nyzx_dlzf1_qdgg_llj2_ssll" font-family="MicrosoftYaHeiUI, Microsoft YaHei UI" font-size="14" font-weight="normal" letter-spacing="0.0538462" fill="#3D5278">
+                <tspan x="69" y="17">{{ datas.qd_nyzx_dlzf1_qdgg_llj2_ssll }}m³/h</tspan>
+              </text>
+            </g>
           </g>
         </g>
       </g>
