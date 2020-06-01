@@ -97,63 +97,63 @@
           </el-tab-pane>
         </el-tabs>
         <div v-if="params[0]==='zk' && params[1]==='cj1'" class="rightzl">
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq1')" class="itemdiv">
             <div class="namediv">1-1系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq1_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq1')" class="itemdiv">
             <div class="namediv">1-1系统2#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq1_zkj2_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq2')" class="itemdiv">
             <div class="namediv">1-2系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq2_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq2')" class="itemdiv">
             <div class="namediv">1-2系统2#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq2_zkj2_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq3')" class="itemdiv">
             <div class="namediv">1-3系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq3_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq3')" class="itemdiv">
             <div class="namediv">1-3系统2#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq3_zkj2_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq4')" class="itemdiv">
             <div class="namediv">1-4系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq4_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq4')" class="itemdiv">
             <div class="namediv">1-4系统2#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq4_zkj2_zkd }}<span class="unit">kPa</span></div>
           </div>
         </div>
         <div v-if="params[0]==='zk' && params[1]==='cj2'" class="rightzl">
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq5')" class="itemdiv">
             <div class="namediv">2-1系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq5_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq5')" class="itemdiv">
             <div class="namediv">2-1系统2#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq5_zkj2_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq6')" class="itemdiv">
             <div class="namediv">2-2系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq6_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq6')" class="itemdiv">
             <div class="namediv">2-2系统2#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq6_zkj2_zkd }}<span class="unit">kPa</span></div>
           </div>
         </div>
         <div v-if="params[0]==='zk' && params[1]==='cj5'" class="rightzl">
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq7')" class="itemdiv">
             <div class="namediv">J-1系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj5_zkjq7_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
-          <div class="itemdiv">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq8')" class="itemdiv">
             <div class="namediv">J-2系统1#真空度</div>
             <div class="valuediv number">{{ datas.zk_nyzx_cj5_zkjq8_zkj1_zkd }}<span class="unit">kPa</span></div>
           </div>
@@ -314,6 +314,7 @@ export default {
   },
   watch: {
     params() {
+      debugger
       const self = this
       monitorapi.getKongYaJiData({
         'type': self.params[0],
@@ -397,6 +398,7 @@ export default {
       var self = this
       var sys = ''
       var jq = ''
+      debugger
       if (self.maintabname === 'first') {
         sys = self.params[0]
         if (sys === 'ky') {

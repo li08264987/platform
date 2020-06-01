@@ -531,7 +531,7 @@ export default {
   },
   computed: {
     kyjparam() {
-      return ['zk', this.selectSys, '', this.selectvalue3, this.mainTabName]
+      return ['zk', this.selectSys, this.zksubsyssel, this.selectvalue3, this.mainTabName]
     }
   },
   watch: {
