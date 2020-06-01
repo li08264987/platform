@@ -125,7 +125,7 @@ export default {
       getUserInfo().then((res) => {
         this.userInfor.realName = res.data.realName
         this.userInfor.userName = res.data.userName
-        this.$store.dispatch('settings/changeSetting', this.userInfor)
+        this.$store.dispatch('user/setUserInfor', this.userInfor)
       }).catch(err => {
         console.log(err)
       })
