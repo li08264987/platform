@@ -19,16 +19,20 @@
       <div class="pai-yidongerpei">
         <div class="title">一栋2配</div>
         <div class="type">
-          <div v-for="(item, index) in yidongerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in yidongerpei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in yidongerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in yidongerpei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
         </div>
@@ -41,16 +45,20 @@
       <div class="pai-yidongsanpei">
         <div class="title">一栋3配</div>
         <div class="type">
-          <div v-for="(item, index) in yidongsanpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in yidongsanpei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in yidongsanpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in yidongsanpei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -62,16 +70,20 @@
       <div class="pai-yidongsipei">
         <div class="title">一栋4配</div>
         <div class="type">
-          <div v-for="(item, index) in yidongsipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in yidongsipei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in yidongsipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in yidongsipei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -83,16 +95,20 @@
       <div class="pai-erdongyipei">
         <div class="title">二栋1配</div>
         <div class="type">
-          <div v-for="(item, index) in erdongyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in erdongyipei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in erdongyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in erdongyipei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -104,16 +120,20 @@
       <div class="pai-erdongerpei">
         <div class="title">二栋2配</div>
         <div class="type">
-          <div v-for="(item, index) in erdongerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in erdongerpei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in erdongerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in erdongerpei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -125,16 +145,20 @@
       <div class="pai-sandongyipei">
         <div class="title">三栋1配</div>
         <div class="type">
-          <div v-for="(item, index) in sandongyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in sandongyipei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in sandongyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in sandongyipei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -146,16 +170,20 @@
       <div class="pai-sandongsanpei">
         <div class="title">三栋3配</div>
         <div class="type">
-          <div v-for="(item, index) in sandongsanpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in sandongsanpei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in sandongsanpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in sandongsanpei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -167,16 +195,20 @@
       <div class="pai-sandongsipei">
         <div class="title">三栋4配</div>
         <div class="type">
-          <div v-for="(item, index) in sandongsipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in sandongsipei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in sandongsipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in sandongsipei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -188,16 +220,20 @@
       <div class="pai-sidongyipei">
         <div class="title">四栋1配</div>
         <div class="type">
-          <div v-for="(item, index) in sidongyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in sidongyipei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in sidongyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in sidongyipei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -209,16 +245,20 @@
       <div class="pai-sidongerpei">
         <div class="title">四栋2配</div>
         <div class="type">
-          <div v-for="(item, index) in sidongerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in sidongerpei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in sidongerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in sidongerpei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -230,16 +270,20 @@
       <div class="pai-sidongsipei">
         <div class="title">四栋4配</div>
         <div class="type">
-          <div v-for="(item, index) in sidongsipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in sidongsipei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in sidongsipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in sidongsipei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -251,16 +295,20 @@
       <div class="pai-donglizhanyipei">
         <div class="title">动力站房1配</div>
         <div class="type">
-          <div v-for="(item, index) in donglizhanyipei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in donglizhanyipei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in donglizhanyipei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in donglizhanyipei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -272,16 +320,20 @@
       <div class="pai-donglizhanerpei">
         <div class="title">动力站房2配</div>
         <div class="type">
-          <div v-for="(item, index) in donglizhanerpei" v-show="(item.unit === 'V' ? true : false) && showDianYa" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianYa">
+            <div v-for="(item, index) in donglizhanerpei.dianya" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
 
-          <div v-for="(item, index) in donglizhanerpei" v-show="(item.unit === 'A' ? true : false) && showDianLiu" :key="index" class="text-value">
-            <div class="text">{{ item.name }}:</div>
-            <span class="value">{{ item.value }}</span>
-            <span class="unit">{{ item.unit }}</span>
+          <div v-show="showDianLiu">
+            <div v-for="(item, index) in donglizhanerpei.dianliu" :key="index" class="text-value">
+              <div class="text">{{ item.name }}:</div>
+              <span class="value">{{ item.value }}</span>
+              <span class="unit">{{ item.unit }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -296,409 +348,448 @@ export default {
   name: 'DianLiSystem',
   data() {
     return {
-      yidongerpei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      yidongsanpei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      yidongsipei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      erdongyipei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      erdongerpei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      sandongyipei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      sandongsanpei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      sandongsipei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      sidongyipei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      sidongerpei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      sidongsipei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      donglizhanyipei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
-      donglizhanerpei: [{
-        name: 'A相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'B相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'C相电压',
-        value: 500,
-        unit: 'V',
-        show: true
-      }, {
-        name: 'A相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'B相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }, {
-        name: 'C相电流',
-        value: 500,
-        unit: 'A',
-        show: false
-      }],
+      yidongerpei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      yidongsanpei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      yidongsipei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      erdongyipei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      erdongerpei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      sandongyipei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      sandongsanpei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      sandongsipei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      sidongyipei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      sidongerpei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      sidongsipei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      donglizhanyipei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
+      donglizhanerpei: {
+        dianya: [{
+          name: 'A相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'B相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }, {
+          name: 'C相电压',
+          value: 500,
+          unit: 'V',
+          show: true
+        }],
+        dianliu: [{
+          name: 'A相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'B相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }, {
+          name: 'C相电流',
+          value: 500,
+          unit: 'A',
+          show: false
+        }]
+      },
       showDianLiu: false,
       showDianYa: true
     }
@@ -728,20 +819,44 @@ export default {
   methods: {
     getGuaPaiDataDL() {
       fetchGuaPaiDataDL().then((res) => {
-        this.yidongerpei = res.data.yidongerpei
-        this.yidongsanpei = res.data.yidongsanpei
-        this.yidongsipei = res.data.yidongsipei
-        this.erdongyipei = res.data.erdongyipei
-        this.erdongerpei = res.data.erdongerpei
-        this.sandongyipei = res.data.sandongyipei
+        this.yidongerpei.dianya = res.data.yidongerpei.filter((item) => { return item.unit === 'V' })
+        this.yidongerpei.dianliu = res.data.yidongerpei.filter((item) => { return item.unit === 'A' })
 
-        this.sandongsanpei = res.data.sandongsanpei
-        this.sandongsipei = res.data.sandongsipei
-        this.sidongyipei = res.data.sidongyipei
-        this.sidongerpei = res.data.sidongerpei
-        this.sidongsipei = res.data.sidongsipei
-        this.donglizhanyipei = res.data.donglizhanyipei
-        this.donglizhanerpei = res.data.donglizhanerpei
+        this.yidongsanpei.dianya = res.data.yidongsanpei.filter((item) => { return item.unit === 'V' })
+        this.yidongsanpei.dianliu = res.data.yidongsanpei.filter((item) => { return item.unit === 'A' })
+
+        this.yidongsipei.dianya = res.data.yidongsipei.filter((item) => { return item.unit === 'V' })
+        this.yidongsipei.dianliu = res.data.yidongsipei.filter((item) => { return item.unit === 'A' })
+
+        this.erdongyipei.dianya = res.data.erdongyipei.filter((item) => { return item.unit === 'V' })
+        this.erdongyipei.dianli = res.data.erdongyipei.filter((item) => { return item.unit === 'A' })
+
+        this.erdongerpei.dianya = res.data.erdongerpei.filter((item) => { return item.unit === 'V' })
+        this.erdongerpei.dianli = res.data.erdongerpei.filter((item) => { return item.unit === 'A' })
+
+        this.sandongyipei.dianya = res.data.sandongyipei.filter((item) => { return item.unit === 'V' })
+        this.sandongyipei.dianliu = res.data.sandongyipei.filter((item) => { return item.unit === 'A' })
+
+        this.sandongsanpei.dianya = res.data.sandongsanpei.filter((item) => { return item.unit === 'V' })
+        this.sandongsanpei.dianliu = res.data.sandongsanpei.filter((item) => { return item.unit === 'A' })
+
+        this.sandongsipei.dianya = res.data.sandongsipei.filter((item) => { return item.unit === 'V' })
+        this.sandongsipei.dianliu = res.data.sandongsipei.filter((item) => { return item.unit === 'A' })
+
+        this.sidongyipei.dianya = res.data.sidongyipei.filter((item) => { return item.unit === 'V' })
+        this.sidongyipei.dianliu = res.data.sidongyipei.filter((item) => { return item.unit === 'A' })
+
+        this.sidongerpei.dianya = res.data.sidongerpei.filter((item) => { return item.unit === 'V' })
+        this.sidongerpei.dianliu = res.data.sidongerpei.filter((item) => { return item.unit === 'A' })
+
+        this.sidongsipei.dianya = res.data.sidongsipei.filter((item) => { return item.unit === 'V' })
+        this.sidongsipei.dianliu = res.data.sidongsipei.filter((item) => { return item.unit === 'A' })
+
+        this.donglizhanyipei.dianya = res.data.donglizhanyipei.filter((item) => { return item.unit === 'V' })
+        this.donglizhanyipei.dianliu = res.data.donglizhanyipei.filter((item) => { return item.unit === 'A' })
+
+        this.donglizhanerpei.dianya = res.data.donglizhanerpei.filter((item) => { return item.unit === 'V' })
+        this.donglizhanerpei.dianliu = res.data.donglizhanerpei.filter((item) => { return item.unit === 'A' })
       }).catch(err => {
         console.log(err)
       })
@@ -873,15 +988,15 @@ export default {
         }
     }
     .yidongerpei{
-      bottom: 5vw;
+      bottom: 6vw;
       left: 12.8vw;
     }
     .yidongsanpei{
-      bottom: 5vw;
+      bottom: 6vw;
       left: 24.6vw;
     }
     .yidongsipei{
-      bottom: 5vw;
+      bottom: 6vw;
       left: 36vw;
     }
     .erdongyipei{
@@ -893,7 +1008,7 @@ export default {
       left: 3vw;
     }
     .sandongyipei{
-      bottom: 5vw;
+      bottom: 6vw;
       right: 0vw;
     }
     .sandongsanpei{
@@ -901,7 +1016,7 @@ export default {
       right: 0.8vw;
     }
     .sandongsipei{
-      bottom: 22vw;
+      bottom: 23vw;
       right: 0.8vw;
     }
     .sidongyipei{

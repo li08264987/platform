@@ -84,14 +84,23 @@ export default {
             type: 'shadow'
           },
           formatter: function(param) {
-            var html = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#2F54EB;"></span>' + param.name + '：' + param.value
+            var back = ''
+            var value = param.data
+            if (Number(value) < Number('85')) {
+              back = 'rgba(47,84,234,1)'
+            } else if (Number(value) >= Number('85') && Number(value) <= Number('100')) {
+              back = 'rgba(255,195,115,1)'
+            } else {
+              back = 'rgba(235,46,149,1)'
+            }
+            var html = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:' + back + ';"></span>' + param.name + '：' + param.value + '%'
             return html
           }
         },
         grid: {
           top: '7%',
           left: '3%',
-          right: '7%',
+          right: '10%',
           bottom: '1%',
           containLabel: true
         },
@@ -108,7 +117,7 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#fff'
+              color: '#C8D6FE'
             }
           }
         },
@@ -118,7 +127,7 @@ export default {
           axisLine: {
             show: false,
             lineStyle: {
-              color: '#fff'
+              color: '#C8D6FE'
             }
           },
           axisTick: {
@@ -126,7 +135,7 @@ export default {
           },
           axisLabel: {
             show: true,
-            color: '#fff',
+            color: '#C8D6FE',
             textStyle: {
               fontSize: 16
             }
@@ -134,12 +143,16 @@ export default {
         },
         series: [{
           type: 'bar',
-          data: [30, 40, 50, 60],
-          barWidth: 30,
+          data: this.chartData.data,
+          barWidth: 20,
+          showBackground: true,
+          backgroundStyle: {
+            color: '#C8D6FE'
+          },
           label: {
-            show: true,
+            show: false,
             position: 'right',
-            color: '#fff',
+            color: '#C8D6FE',
             fontSize: 16,
             formatter: function(value) {
               return value.data + '%'
@@ -147,14 +160,15 @@ export default {
           },
           itemStyle: {
             normal: {
+              barBorderRadius: [5, 5, 5, 5],
               color: function(params) {
-                var colorList = [
+                /* var colorList = [
                   ['#2F54EB', 'rgba(61,59,234,0.00)']
                 ]
-                /* var index = params.dataIndex
+                var index = params.dataIndex
                 if (params.dataIndex >= colorList.length) {
                   index = params.dataIndex - colorList.length
-                } */
+                }
                 return new echarts.graphic.LinearGradient(0, 0, 1, 0,
                   [{
                     offset: 1,
@@ -164,7 +178,39 @@ export default {
                     offset: 0,
                     color: colorList[0][1]
                   }
-                  ])
+                  ]) */
+                var value = params.data
+                if (Number(value) < Number('85')) {
+                  return new echarts.graphic.LinearGradient(0, 0, 1, 0,
+                    [{
+                      offset: 1,
+                      color: 'rgba(47,84,234,1)'
+                    }, {
+                      offset: 0,
+                      color: 'rgba(49,90,255,1)'
+                    }
+                    ])
+                } else if (Number(value) >= Number('85') && Number(value) <= Number('100')) {
+                  return new echarts.graphic.LinearGradient(0, 0, 1, 0,
+                    [{
+                      offset: 1,
+                      color: 'rgba(255,195,115,1)'
+                    }, {
+                      offset: 0,
+                      color: 'rgba(255,167,51,1)'
+                    }
+                    ])
+                } else {
+                  return new echarts.graphic.LinearGradient(0, 0, 1, 0,
+                    [{
+                      offset: 1,
+                      color: 'rgba(235,46,149,1)'
+                    }, {
+                      offset: 0,
+                      color: 'rgba(255,75,173,1)'
+                    }
+                    ])
+                }
               }
             }
           }
