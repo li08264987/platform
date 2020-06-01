@@ -343,7 +343,7 @@ export default {
     this.getZhenKongSys()
     this.getDuty()
     this.getDianLi('kyjq', '')
-    this.getDianHaoZhanBi()
+    // this.getDianHaoZhanBi()
   },
   methods: {
     handleClick(tab, event) {

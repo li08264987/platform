@@ -579,7 +579,7 @@ export default {
     this.getQingDanJiQun()
     this.getDuty()
     this.getDianLi('kyjq', '')
-    this.getDianHaoZhanBi()
+    // this.getDianHaoZhanBi()
   },
   methods: {
     handleClick(tab, event) {

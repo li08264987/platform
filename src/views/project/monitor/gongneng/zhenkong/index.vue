@@ -72,9 +72,9 @@
                   :value="item.CODE"
                 />
               </el-select>
-              <systemOne v-if="zksys[0].CODE && selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
-              <systemTwo v-if="zksys[1].CODE && selectSys===zksys[1].CODE" style="height:96%;width:100%;margin-top:40px;" />
-              <systemFive v-if="zksys[2].CODE && selectSys===zksys[2].CODE" style="height:96%;width:100%;margin-top:40px;" />
+              <systemOne v-if="zksys[0] && selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
+              <systemTwo v-if="zksys[1] && selectSys===zksys[1].CODE" style="height:96%;width:100%;margin-top:40px;" />
+              <systemFive v-if="zksys[2] && selectSys===zksys[2].CODE" style="height:96%;width:100%;margin-top:40px;" />
               <i :class="rightbtn" @click="showHideRight" />
             </div>
             <div v-if="showParam" class="rightparam">
@@ -531,7 +531,7 @@ export default {
   },
   computed: {
     kyjparam() {
-      return ['zk', this.selectSys, this.selectvalue2, this.selectvalue3, this.mainTabName]
+      return ['zk', this.selectSys, '', this.selectvalue3, this.mainTabName]
     }
   },
   watch: {
@@ -553,7 +553,7 @@ export default {
     this.getZhenKongSys()
     this.getDuty()
     this.getDianLi('kyjq', '')
-    this.getDianHaoZhanBi()
+    // this.getDianHaoZhanBi()
   },
   methods: {
     handleClick(tab, event) {

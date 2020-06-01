@@ -211,26 +211,9 @@
             <div style="font-size:12px;padding-top:4px;">总电耗kWh</div>
           </div>
         </div>
-        <div style="flex:1;height:135px">
-          <div class="rtitle2" style="border-left-color:#2853FF">
-            <span class="rt">空压机组</span><span><label>{{ piedata.data[0].value }}</label>kWh</span>
-            <!-- 同比<label>{{ tbky }}</label>% -->
-          </div>
-          <div class="rtitle2" style="border-left-color:#10D178">
-            <span class="rt">冷却塔组</span><span><label>{{ piedata.data[1].value }}</label>kWh</span>
-            <!-- 同比<label>{{ tblt }}</label>% -->
-          </div>
-          <div class="rtitle2" style="border-left-color:#2853FF">
-            <span class="rt">冷却泵组</span><span><label>{{ piedata.data[2].value }}</label>kWh</span>
-            <!-- 同比<label>{{ tblqb }}</label>% -->
-          </div>
-          <div class="rtitle2" style="border-left-color:#F0725E">
-            <span class="rt">冷干机组</span><span><label>{{ piedata.data[3].value }}</label>kWh</span>
-            <!-- 同比<label>{{ tblgj }}</label>% -->
-          </div>
-          <div class="rtitle2" style="border-left-color:#FAC400">
-            <span class="rt">其他</span><span><label>{{ piedata.data[4].value }}</label>kWh</span>
-            <!-- 同比<label>{{ tbqt }}</label>% -->
+        <div style="flex:1.2;height:135px;display: flex;flex-direction: column;justify-content: center;">
+          <div v-for="(item,index) in piedata.data" :key="index" class="rtitle2" :style="getcolor(index)">
+            <span class="rt">{{ item.name }}</span><span><label>{{ item.value }}</label>kWh</span>
           </div>
         </div>
       </div>
@@ -322,7 +305,8 @@ export default {
           { value: 0, name: '冷却泵组' },
           { value: 0, name: '冷干机组' },
           { value: 0, name: '其他' }
-        ]
+        ],
+        color: ['#A26DFD', '#10D178', '#2853FF', '#F0725E', '#FAC400']
       },
       kyjdata: {},
       datas: {}
@@ -331,7 +315,6 @@ export default {
   watch: {
     params() {
       const self = this
-      debugger
       monitorapi.getKongYaJiData({
         'type': self.params[0],
         'sys': self.params[1],
@@ -355,7 +338,6 @@ export default {
     self.getDuty()
     self.getDianLi()
     var type = self.params[0]
-    debugger
     switch (type) {
       case 'ky':
         self.getKongYa()
@@ -371,31 +353,36 @@ export default {
   methods: {
     getDianHaoZhanBi() {
       var self = this
-      var type = ''
+      var sys = ''
+      var jq = ''
       if (self.maintabname === 'first') {
-        type = 'kyjq'
+        sys = self.params[0]
+        if (sys === 'ky') {
+          jq = 'kyjq%'
+        } else if (sys === 'zk') {
+          jq = self.params[1]
+        }
       } else {
-        type = self.params[2]
+        sys = self.params[0]
+        jq = self.params[2]
       }
       monitorapi.getDianHaoZhanBi({
-        'type': type
+        'sys': sys,
+        'jq': jq
       }).then(res => {
         if (res.state === 1) {
-          this.piedata.data[0].value = res.kyvalue
-          this.piedata.data[1].value = res.ltvalue
-          this.piedata.data[2].value = res.lqbvalue
-          this.piedata.data[3].value = res.lgjvalue
-          this.piedata.data[4].value = res.qtvalue
-          this.sumdianhao = res.sumvalue
-          this.tbky = res.tbky.toFixed(0)
-          this.tblgj = res.tblgj.toFixed(0)
-          this.tblqb = res.tblqb.toFixed(0)
-          this.tblt = res.tblt.toFixed(0)
-          this.tbqt = res.tbqt.toFixed(0)
+          self.piedata.data = res.data
+          self.sumdianhao = 0
+          for (var i = 0; i < res.data.length; i++) {
+            self.sumdianhao += (res.data[i].value)
+          }
         }
       }).catch(err => {
         console.log(err)
       })
+    },
+    getcolor(index) {
+      return 'border-left-color:' + this.piedata.color[index]
     },
     getDuty() {
       monitorapi.getDuty().then(res => {
@@ -407,31 +394,32 @@ export default {
       })
     },
     getDianLi() {
-      // debugger
-      // monitorapi.getEffectOrderData({
-      //   'sys': 'energyKongya'
-      // }).then(res => {
-      //   if (res.state === 1) {
-      //     console.log('aaa')
-      //   }
-      // }).catch(err => {
-      //   console.log(err)
-      // })
-      var type = ''
       var self = this
+      var sys = ''
+      var jq = ''
       if (self.maintabname === 'first') {
-        type = 'kyjq'
+        sys = self.params[0]
+        if (sys === 'ky') {
+          jq = 'kyjq%'
+        } else if (sys === 'qd') {
+          jq = 'qdjq%'
+        } else if (sys === 'dl') {
+          jq = 'dljq%'
+        } else if (sys === 'zk') {
+          jq = self.params[1]
+        }
       } else {
-        type = self.params[2]
+        sys = self.params[0]
+        jq = self.params[2]
       }
-      monitorapi.getDianLi({
-        'kyjq': type,
-        'device': ''
+      monitorapi.getEnengyZongLan({
+        'sys': sys,
+        'jq': jq
       }).then(res => {
         if (res.state === 1) {
-          this.dianli = res.data.toFixed(0)
-          this.qihao = res.qhdata.toFixed(0)
-          this.danhao = res.qhdata === 0 ? 0 : (res.data / res.qhdata).toFixed(2)
+          this.dianli = res.ele.toFixed(0)
+          this.qihao = res.gas.toFixed(0)
+          this.danhao = res.effi
           this.pjvalue = res.pingfen
         }
       }).catch(err => {
@@ -572,6 +560,7 @@ export default {
       font-size: 15px;
       background-color: rgba(249,249,251,1);
       padding: 4px 4px;
+      height:26px;
       span{
         width: 80px;
         display: inline-block;
@@ -580,7 +569,7 @@ export default {
         }
       }
       .rt{
-        width: 70px;
+        width: 110px;
       }
       label{
         font-family: Babes;

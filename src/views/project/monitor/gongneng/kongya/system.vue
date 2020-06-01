@@ -5783,7 +5783,6 @@ export default {
   mounted() {
     $('svg').svgPanZoom()
     monitorapi.getNHGaiLan().then(res => {
-      debugger
       if (res.state === 1) {
         this.datas = res.data
       }

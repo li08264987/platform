@@ -2399,7 +2399,6 @@ export default {
     const self = this
     monitorapi.getDianLiData({
     }).then(res => {
-      debugger
       if (res.state === 1) {
         self.datas = res.data
       }

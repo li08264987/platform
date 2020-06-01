@@ -86,7 +86,24 @@ export default {
   },
   getDianHaoZhanBi(query) {
     return request({
+      // url: '/monitor/getDianHaoZhanBi',
+      // url: '/energy/statis/getEffectCompareData',
+      url: '/monitor/getEffectCompareData',
+      method: 'post',
+      params: query
+    })
+  },
+  getDianHaoZhanBiSys(query) {
+    return request({
       url: '/monitor/getDianHaoZhanBi',
+      method: 'post',
+      params: query
+    })
+  },
+  getEnengyZongLan(query) {
+    return request({
+      // url: '/monitor/getDianHaoZhanBi',
+      url: '/monitor/getEnengyZongLan',
       method: 'post',
       params: query
     })

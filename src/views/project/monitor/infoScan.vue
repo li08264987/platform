@@ -101,7 +101,6 @@ export default {
       this.addRules = true
     },
     showInfo(e) {
-      debugger
       this.fjcode = e.currentTarget.attributes.id.value
       if (this.fjcode !== '' && this.fjcode !== null) {
         this.$refs.tableList.dialogTableVisible = true
