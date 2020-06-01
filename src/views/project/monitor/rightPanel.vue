@@ -314,7 +314,6 @@ export default {
   },
   watch: {
     params() {
-      debugger
       const self = this
       monitorapi.getKongYaJiData({
         'type': self.params[0],
@@ -398,7 +397,6 @@ export default {
       var self = this
       var sys = ''
       var jq = ''
-      debugger
       if (self.maintabname === 'first') {
         sys = self.params[0]
         if (sys === 'ky') {
