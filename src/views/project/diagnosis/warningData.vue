@@ -82,8 +82,8 @@ export default {
         this.pageRequest = data.pageRequest
       }
       this.pageRequest['filterUserName'] = this.searchForm.searchText
-      this.pageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
-      this.pageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
+      this.pageRequest['startTime'] = this.searchForm.date === '' ? null : this.searchForm.date[0]
+      this.pageRequest['endTime'] = this.searchForm.date === '' ? null : this.searchForm.date[1]
       this.pageRequest['type'] = 1
       this.pageRequest['tableType'] = 1
       getWarningDataList(this.pageRequest).then(res => {
@@ -96,8 +96,8 @@ export default {
         this.dealingPageRequest = data.pageRequest
       }
       this.dealingPageRequest['filterUserName'] = this.searchForm.searchText
-      this.dealingPageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
-      this.dealingPageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
+      this.dealingPageRequest['startTime'] = this.searchForm.date === '' ? null : this.searchForm.date[0]
+      this.dealingPageRequest['endTime'] = this.searchForm.date === '' ? null : this.searchForm.date[1]
       this.dealingPageRequest['type'] = 0
       this.dealingPageRequest['tableType'] = 1
       getWarningDataList(this.dealingPageRequest).then(res => {
