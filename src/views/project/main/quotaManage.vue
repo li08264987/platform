@@ -179,7 +179,8 @@ export default {
         endTime: endTime
       }
       this.loading = true
-      getProcessData(param).then((res) => {
+      var axios = getProcessData(param)
+      axios.axiosObj.then((res) => {
         var dataArray = new Array(4)
         var data = res.data
         if (data !== null) {

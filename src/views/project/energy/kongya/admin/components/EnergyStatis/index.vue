@@ -618,7 +618,9 @@ export default {
       lineChartData: [{
         name: '时间段',
         data: []
-      }]
+      }],
+      cancelPrecessAxios: {},
+      cancelEnergyCircleAxios: {}
     }
   },
   computed: {
@@ -781,7 +783,11 @@ export default {
       })
     },
     setProgressData(params) {
-      getProcessData(params).then(response => {
+      var type = params.type
+      this.cancelPrecessAxios[type] && this.cancelPrecessAxios[type].cancel()
+      this.progressData[type].loading = true
+      var axios = getProcessData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         for (var key in this.progressData) {
           if (data[key]) {
@@ -793,72 +799,118 @@ export default {
           }
         }
       }).catch(err => {
-        this.$message({
-          type: 'warning',
-          duration: 2000,
-          message: err
-        })
+        if (err !== 'cancel') {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: err
+          })
+        } else {
+          console.log('cancel')
+        }
       })
+      if (!this.cancelPrecessAxios[type]) this.cancelPrecessAxios[type] = {}
+      this.cancelPrecessAxios[type].cancel = axios.cancel
     },
     setCompareData(params) {
       this.compareDataLoading = true
-      getCompareData(params).then(response => {
+      this.cancelCompareAxios()
+      var axios = getCompareData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         this.compareData.data = data
         this.compareDataLoading = false
       }).catch(err => {
-        this.$message({
-          type: 'warning',
-          duration: 2000,
-          message: err
-        })
+        if (err !== 'cancel') {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: err
+          })
+        } else {
+          console.log('cancel')
+        }
         this.compareDataLoading = false
       })
+      this.cancelCompareAxios = axios.cancel
+    },
+    cancelCompareAxios() {
+
     },
     setEffectCompareData(params) {
       this.dongliStationDataLoading = true
-      getEffectCompareData(params).then(response => {
+      this.cancelEffectCompareAxios()
+      var axios = getEffectCompareData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         this.dongliStationData.data = data
         this.dongliStationDataLoading = false
       }).catch(err => {
-        this.$message({
-          type: 'warning',
-          duration: 2000,
-          message: err
-        })
+        if (err !== 'cancel') {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: err
+          })
+        } else {
+          console.log('cancel')
+        }
         this.dongliStationDataLoading = false
       })
+      this.cancelEffectCompareAxios = axios.cancel
+    },
+    cancelEffectCompareAxios() {
+
     },
     setEffectOrderData(params) {
       this.effectOrderDataLoading = true
-      getEffectOrderData(params).then(response => {
+      this.cancelEffectOrderAxios()
+      var axios = getEffectOrderData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         this.effectOrderData = data
         this.effectOrderDataLoading = false
       }).catch(err => {
-        this.$message({
-          type: 'warning',
-          duration: 2000,
-          message: err
-        })
+        if (err !== 'cancel') {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: err
+          })
+        } else {
+          console.log('cancel')
+        }
         this.effectOrderDataLoading = false
       })
+      this.cancelEffectOrderAxios = axios.cancel
+    },
+    cancelEffectOrderAxios() {
+
     },
     setElecLineChartDataData(params) {
       this.lineChartDataLoading = true
-      getElecLineChartDataData(params).then(response => {
+      this.cancelElecLineChartAxios()
+      var axios = getElecLineChartDataData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         this.lineChartData[0].data = data
         this.lineChartDataLoading = false
       }).catch(err => {
-        this.$message({
-          type: 'warning',
-          duration: 2000,
-          message: err
-        })
+        if (err !== 'cancel') {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: err
+          })
+        } else {
+          console.log('cancel')
+        }
         this.lineChartDataLoading = false
       })
+      this.cancelElecLineChartAxios = axios.cancel
+    },
+    cancelElecLineChartAxios() {
+
     },
     initEnergyCircle() {
       for (var i = 0; i < this.energyCircleData.length; i++) {
@@ -889,7 +941,16 @@ export default {
       }
     },
     setEnergyCircleData(params) {
-      getEnergyCircleData(params).then(response => {
+      var type = params.type
+      this.cancelEnergyCircleAxios[type] && this.cancelEnergyCircleAxios[type].cancel()
+      for (var i = 0; i < this.energyCircleData.length; i++) {
+        if (this.energyCircleData[i].elemId === type) {
+          this.energyCircleData[i].loading = true
+          break
+        }
+      }
+      var axios = getEnergyCircleData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         for (var i = 0; i < this.energyCircleData.length; i++) {
           for (var j = 0; j < data.length; j++) {
@@ -907,13 +968,19 @@ export default {
         }
         setTimeout(this.initEnergyCircle, 200)
       }).catch(err => {
-        this.$message({
-          type: 'warning',
-          duration: 2000,
-          message: err
-        })
+        if (err !== 'cancel') {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: err
+          })
+        } else {
+          console.log('cancel')
+        }
         setTimeout(this.initEnergyCircle, 200)
       })
+      if (!this.cancelEnergyCircleAxios[type]) this.cancelEnergyCircleAxios[type] = {}
+      this.cancelEnergyCircleAxios[type].cancel = axios.cancel
     },
     onSearch() {
       if (!this.lineChartDataLoading) {
@@ -1004,6 +1071,18 @@ export default {
       datas.push(lineChartData_excel)
 
       return datas
+    },
+    cancelAxios: function() {
+      for (var key in this.cancelPrecessAxios) {
+        this.cancelPrecessAxios[key].cancel()
+      }
+      this.cancelCompareAxios()
+      this.cancelEffectCompareAxios()
+      this.cancelEffectOrderAxios()
+      this.cancelElecLineChartAxios()
+      for (var k in this.cancelEnergyCircleAxios) {
+        this.cancelEnergyCircleAxios[k].cancel()
+      }
     }
   }
 }

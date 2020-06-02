@@ -87,7 +87,11 @@ service.interceptors.response.use(
     //   type: 'error',
     //   duration: 5 * 1000
     // })
-    return Promise.reject(error)
+    if (!axios.isCancel(error)) {
+      return Promise.reject(error)
+    } else {
+      return Promise.reject('cancel')
+    }
   }
 )
 

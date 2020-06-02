@@ -52,19 +52,28 @@ export default {
       }
     }
   },
+  watch: {
+    currentView: function(newValue, oldValue) {
+      this.searchingData = {
+        date: ['', ''],
+        text: ''
+      }
+      this.searchData = {
+        date: ['', ''],
+        text: ''
+      }
+      this.tabChange()
+    }
+  },
+  mounted() {
+
+  },
   methods: {
-    tabChange(index) {
-      if (this.tabIndex !== index) {
-        this.tabIndex = index
-        this.currentView = this.tabItems[index].name
-        this.searchingData = {
-          date: ['', ''],
-          text: ''
-        }
-        this.searchData = {
-          date: ['', ''],
-          text: ''
-        }
+    tabChange() {
+      if (this.currentView === 'energyDetail') {
+        this.$refs.energyStatis.cancelAxios()
+      } else {
+        this.$refs.energyDetail.cancelAxios()
       }
     },
     handleClick(tab, event) {
@@ -183,6 +192,13 @@ export default {
         filename: exportFilename
       }))
       // doc.save(exportFilename + '.pdf')
+    },
+    cancelAxios: function() {
+      if (this.currentView === 'energyDetail') {
+        this.$refs.energyDetail.cancelAxios()
+      } else {
+        this.$refs.energyStatis.cancelAxios()
+      }
     }
   }
 }

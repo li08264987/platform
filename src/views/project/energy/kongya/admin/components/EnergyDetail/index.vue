@@ -66,6 +66,9 @@ export default {
           }
         }
       }
+    },
+    cancelAxios: function() {
+      this.$refs[this.currentView].cancel()
     }
   }
 }

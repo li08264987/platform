@@ -94,7 +94,9 @@ export default {
   methods: {
     setEnergyTreeTableData(params) {
       this.loading = true
-      getEnergyTreeData(params).then(response => {
+      this.cancel()
+      var axios = getEnergyTreeData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         this.tableData = [data]
         this.loading = false
@@ -106,6 +108,10 @@ export default {
         })
         this.loading = false
       })
+      this.cancel = axios.cancel
+    },
+    cancel() {
+
     },
     export: function() {
       return this.tableData[0]
