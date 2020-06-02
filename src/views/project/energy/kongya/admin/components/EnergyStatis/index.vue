@@ -8,7 +8,7 @@
               <div class="neng-hao-charts">
                 <div v-for="(item, index) in energyCircleData" :key="index" class="neng-hao-chart">
                   <div class="chart-title"><span>{{ item.title }}</span></div>
-                  <div :id="item.elemId" v-loading="energyCircleDataLoading" class="chart-main" />
+                  <div :id="item.elemId" v-loading="item.loading" class="chart-main" />
                   <div class="chart-footer">
                     <span :class="['chart-footer-image', item.increase?'up':'down']" />
                     <span class="chart-footer-text">同比</span>
@@ -17,10 +17,10 @@
                   </div>
                 </div>
               </div>
-              <div v-loading="progressDataLoading" class="progress-charts-container">
+              <div class="progress-charts-container">
                 <div v-for="(item, key) in progressData" :key="key" :class="{'progress-chart-container':true,'chejian':isCheJian}">
                   <div class="progress-chart-title"><span> {{ progressData[key].title }} </span></div>
-                  <div class="progress-chart-bar nenghaojindu">
+                  <div v-loading="progressData[key].loading" class="progress-chart-bar nenghaojindu">
                     <div class="progress-label">
                       <span class="progress-label-value">{{ Math.round(progressData[key].used*100)/100.0 }}</span>
                       <span class="progress-label-text">/</span>
@@ -359,31 +359,34 @@ export default {
         value: ['', '']
       },
       isCheJian: false,
-      progressDataLoading: true,
       progressData: {
         nenghao: {
           title: '电耗进度',
           used: 0,
           total: 0,
-          unit: 'kW·h'
+          unit: 'kW·h',
+          loading: true
         },
         nengxiao: {
           title: '能效进度',
           used: 0,
           total: 0,
-          unit: 'kW·h/m³'
+          unit: 'kW·h/m³',
+          loading: true
         },
         chanqi: {
           title: '产量进度',
           used: 0,
           total: 0,
-          unit: 'm³'
+          unit: 'm³',
+          loading: true
         },
         nengfei: {
           title: '能费进度',
           used: 0,
           total: 0,
-          unit: '元'
+          unit: '元',
+          loading: true
         }
       },
       sysProgressData: {
@@ -391,25 +394,29 @@ export default {
           title: '电耗进度',
           used: 0,
           total: 0,
-          unit: 'kW·h'
+          unit: 'kW·h',
+          loading: true
         },
         nengxiao: {
           title: '能效进度',
           used: 0,
           total: 0,
-          unit: 'kW·h/m³'
+          unit: 'kW·h/m³',
+          loading: true
         },
         chanqi: {
           title: '产量进度',
           used: 0,
           total: 0,
-          unit: 'm³'
+          unit: 'm³',
+          loading: true
         },
         nengfei: {
           title: '能费进度',
           used: 0,
           total: 0,
-          unit: '元'
+          unit: '元',
+          loading: true
         }
       },
       cjProgressData: {
@@ -417,31 +424,36 @@ export default {
           title: '电力消耗限额进度',
           used: 0,
           total: 0,
-          unit: 'kW·h'
+          unit: 'kW·h',
+          loading: true
         },
         yasuo: {
           title: '压缩空气限额进度',
           used: 0,
           total: 0,
-          unit: 'm³'
+          unit: 'm³',
+          loading: true
         },
         zhenkong: {
           title: '真空电力限额进度',
           used: 0,
           total: 0,
-          unit: 'kW·h'
+          unit: 'kW·h',
+          loading: true
         },
         nengfei: {
           title: '电力费用限额进度',
           used: 0,
           total: 0,
-          unit: '元'
+          unit: '元',
+          loading: true
         },
         qingdan: {
           title: '氢氮气体限额进度',
           used: 0,
           total: 0,
-          unit: 'm³'
+          unit: 'm³',
+          loading: true
         }
       },
       compareDataLoading: true,
@@ -449,7 +461,6 @@ export default {
         data: [],
         colors: ['#A26DFD', '#FAC400', '#10D178', '#F0725E', '#2853FF']
       },
-      energyCircleDataLoading: true,
       energyCircleData: [{
         title: '耗电量',
         elemId: 'elecGradChart',
@@ -459,7 +470,8 @@ export default {
         unit: 'kW·h',
         increase: true,
         startColor: '#5779FF',
-        endColor: '#90A7FF'
+        endColor: '#90A7FF',
+        loading: true
       }, {
         title: '产气量',
         elemId: 'gasGradChart',
@@ -469,7 +481,8 @@ export default {
         unit: 'm³',
         increase: true,
         startColor: '#4CC5FF',
-        endColor: '#8FDBFF'
+        endColor: '#8FDBFF',
+        loading: true
       }, {
         title: '能效值',
         elemId: 'nengxiaoGradChart',
@@ -479,7 +492,8 @@ export default {
         unit: 'kW·h/m³',
         increase: true,
         startColor: '#A26DFD',
-        endColor: '#BE98FF'
+        endColor: '#BE98FF',
+        loading: true
       }, {
         title: '电力计费',
         elemId: 'feeGradChart',
@@ -489,7 +503,8 @@ export default {
         unit: '元',
         increase: false,
         startColor: '#FFA733',
-        endColor: '#FFC373'
+        endColor: '#FFC373',
+        loading: true
       }],
       sysEnergyCircleData: [{
         title: '耗电量',
@@ -500,7 +515,8 @@ export default {
         unit: 'kW·h',
         increase: true,
         startColor: '#5779FF',
-        endColor: '#90A7FF'
+        endColor: '#90A7FF',
+        loading: true
       }, {
         title: '产气量',
         elemId: 'gasGradChart',
@@ -510,7 +526,8 @@ export default {
         unit: 'm³',
         increase: true,
         startColor: '#4CC5FF',
-        endColor: '#8FDBFF'
+        endColor: '#8FDBFF',
+        loading: true
       }, {
         title: '能效值',
         elemId: 'nengxiaoGradChart',
@@ -520,7 +537,8 @@ export default {
         unit: 'kW·h/m³',
         increase: true,
         startColor: '#A26DFD',
-        endColor: '#BE98FF'
+        endColor: '#BE98FF',
+        loading: true
       }, {
         title: '电力计费',
         elemId: 'feeGradChart',
@@ -530,7 +548,8 @@ export default {
         unit: '元',
         increase: false,
         startColor: '#FFA733',
-        endColor: '#FFC373'
+        endColor: '#FFC373',
+        loading: true
       }],
       cjEnergyCircleData: [{
         title: '耗电量',
@@ -541,17 +560,19 @@ export default {
         unit: 'kW·h',
         increase: true,
         startColor: '#5779FF',
-        endColor: '#90A7FF'
+        endColor: '#90A7FF',
+        loading: true
       }, {
         title: '压缩空气',
-        elemId: 'gasGradChart',
+        elemId: 'yasuogasGradChart',
         value: 0,
         percent: 100,
         change: 0,
         unit: 'm³',
         increase: true,
         startColor: '#4CC5FF',
-        endColor: '#8FDBFF'
+        endColor: '#8FDBFF',
+        loading: true
       }, {
         title: '真空电力',
         elemId: 'skyGradChart',
@@ -561,7 +582,8 @@ export default {
         unit: 'kW·h',
         increase: true,
         startColor: '#A26DFD',
-        endColor: '#BE98FF'
+        endColor: '#BE98FF',
+        loading: true
       }, {
         title: '电力计费',
         elemId: 'feeGradChart',
@@ -571,7 +593,8 @@ export default {
         unit: '元',
         increase: false,
         startColor: '#FFA733',
-        endColor: '#FFC373'
+        endColor: '#FFC373',
+        loading: true
       }, {
         title: '氢氮气体',
         elemId: 'qdGradChart',
@@ -581,7 +604,8 @@ export default {
         unit: 'm³',
         increase: false,
         startColor: '#FFA733',
-        endColor: '#FFC373'
+        endColor: '#FFC373',
+        loading: true
       }],
       dongliStationDataLoading: true,
       dongliStationData: {
@@ -612,6 +636,26 @@ export default {
         title = '能源种类耗量占比'
       }
       return title
+    },
+    energyCircleDataLoading: function() {
+      var flag = false
+      for (var i = 0; i < this.energyCircleData.length; i++) {
+        if (this.energyCircleData[i].loading) {
+          flag = true
+          break
+        }
+      }
+      return flag
+    },
+    progressDataLoading: function() {
+      var flag = false
+      for (var key in this.progressData) {
+        if (this.progressData[key].loading) {
+          flag = true
+          break
+        }
+      }
+      return flag
     },
     jiqunCompareTitle: function() {
       var title = '机群能耗占比'
@@ -680,11 +724,33 @@ export default {
   },
   methods: {
     reloadData: function() {
-      this.setProgressData({
-        sys: this.$router.currentRoute.name,
-        startTime: this.searchData.date[0],
-        endTime: this.searchData.date[1]
-      })
+      if (
+        this.$router.currentRoute.name === 'cj1' ||
+        this.$router.currentRoute.name === 'cj2' ||
+        this.$router.currentRoute.name === 'cj3' ||
+        this.$router.currentRoute.name === 'cj4' ||
+        this.$router.currentRoute.name === 'cj5'
+      ) {
+        if (this.energyCircleData.length === 4) {
+          this.energyCircleData = JSON.parse(JSON.stringify(this.cjEnergyCircleData))
+          this.progressData = JSON.parse(JSON.stringify(this.cjProgressData))
+        }
+        this.isCheJian = true
+      } else {
+        if (this.energyCircleData.length === 5) {
+          this.energyCircleData = JSON.parse(JSON.stringify(this.sysEnergyCircleData))
+          this.progressData = JSON.parse(JSON.stringify(this.sysProgressData))
+        }
+        this.isCheJian = false
+      }
+      for (var key in this.progressData) {
+        this.setProgressData({
+          type: key,
+          sys: this.$router.currentRoute.name,
+          startTime: this.searchData.date[0],
+          endTime: this.searchData.date[1]
+        })
+      }
       this.setCompareData({
         sys: this.$router.currentRoute.name,
         startTime: this.searchData.date[0],
@@ -695,11 +761,14 @@ export default {
         startTime: this.searchData.date[0],
         endTime: this.searchData.date[1]
       })
-      this.setEnergyCircleData({
-        sys: this.$router.currentRoute.name,
-        startTime: this.searchData.date[0],
-        endTime: this.searchData.date[1]
-      })
+      for (var i = 0; i < this.energyCircleData.length; i++) {
+        this.setEnergyCircleData({
+          type: this.energyCircleData[i].elemId,
+          sys: this.$router.currentRoute.name,
+          startTime: this.searchData.date[0],
+          endTime: this.searchData.date[1]
+        })
+      }
       this.setElecLineChartDataData({
         sys: this.$router.currentRoute.name,
         startTime: this.searchData.date[0],
@@ -712,30 +781,23 @@ export default {
       })
     },
     setProgressData(params) {
-      this.progressDataLoading = true
       getProcessData(params).then(response => {
         var data = response.data
-        if (data.nengxiao) {
-          this.progressData = JSON.parse(JSON.stringify(this.sysProgressData))
-          this.isCheJian = false
-        } else {
-          this.progressData = JSON.parse(JSON.stringify(this.cjProgressData))
-          this.isCheJian = true
-        }
         for (var key in this.progressData) {
           if (data[key]) {
-            this.progressData[key].used = data[key].used
-            this.progressData[key].total = data[key].total
+            if (!data[key].loading) {
+              this.progressData[key].used = data[key].used
+              this.progressData[key].total = data[key].total
+              this.progressData[key].loading = data[key].loading
+            }
           }
         }
-        this.progressDataLoading = false
       }).catch(err => {
         this.$message({
           type: 'warning',
           duration: 2000,
           message: err
         })
-        this.progressDataLoading = false
       })
     },
     setCompareData(params) {
@@ -801,57 +863,49 @@ export default {
     initEnergyCircle() {
       for (var i = 0; i < this.energyCircleData.length; i++) {
         var item = this.energyCircleData[i]
-        radialIndicator('#' + item.elemId, {
-          gradBarColor: {
-            0: item.startColor,
-            1: item.endColor
-          },
-          barBgColor: '#E4E9F0',
-          hasStartPoint: true,
-          displayNumber: true,
-          displayTitle: Math.round(item.value * 100) / 100.0,
-          displayNumberLineText: item.unit,
-          displayLetter: true,
-          displayNumberLine: true,
-          fontColor: '#40474d',
-          fontFamily: 'Bebas',
-          fontWeight: 'bold',
-          fontSize: 24,
-          autoRadius: true,
-          barWidth: 10,
-          initValue: item.percent,
-          roundCorner: true
-        })
+        if (!item.loading) {
+          radialIndicator('#' + item.elemId, {
+            gradBarColor: {
+              0: item.startColor,
+              1: item.endColor
+            },
+            barBgColor: '#E4E9F0',
+            hasStartPoint: true,
+            displayNumber: true,
+            displayTitle: Math.round(item.value * 100) / 100.0,
+            displayNumberLineText: item.unit,
+            displayLetter: true,
+            displayNumberLine: true,
+            fontColor: '#40474d',
+            fontFamily: 'Bebas',
+            fontWeight: 'bold',
+            fontSize: 24,
+            autoRadius: true,
+            barWidth: 10,
+            initValue: item.percent,
+            roundCorner: true
+          })
+        }
       }
     },
     setEnergyCircleData(params) {
-      this.energyCircleDataLoading = true
       getEnergyCircleData(params).then(response => {
         var data = response.data
-        if (
-          this.$router.currentRoute.name === 'cj1' ||
-          this.$router.currentRoute.name === 'cj2' ||
-          this.$router.currentRoute.name === 'cj3' ||
-          this.$router.currentRoute.name === 'cj4' ||
-          this.$router.currentRoute.name === 'cj5'
-        ) {
-          this.energyCircleData = JSON.parse(JSON.stringify(this.cjEnergyCircleData))
-        } else {
-          this.energyCircleData = JSON.parse(JSON.stringify(this.sysEnergyCircleData))
-        }
         for (var i = 0; i < this.energyCircleData.length; i++) {
           for (var j = 0; j < data.length; j++) {
             if (this.energyCircleData[i].elemId === data[j].elemId) {
-              this.energyCircleData[i].value = data[j].value
-              this.energyCircleData[i].change = data[j].change
-              this.energyCircleData[i].percent = data[j].percent
-              this.energyCircleData[i].increase = data[j].increase
+              if (!data[j].loading) {
+                this.energyCircleData[i].value = data[j].value
+                this.energyCircleData[i].change = data[j].change
+                this.energyCircleData[i].percent = data[j].percent
+                this.energyCircleData[i].increase = data[j].increase
+                this.energyCircleData[i].loading = data[j].loading
+              }
               break
             }
           }
         }
         setTimeout(this.initEnergyCircle, 200)
-        this.energyCircleDataLoading = false
       }).catch(err => {
         this.$message({
           type: 'warning',
@@ -859,7 +913,6 @@ export default {
           message: err
         })
         setTimeout(this.initEnergyCircle, 200)
-        this.energyCircleDataLoading = false
       })
     },
     onSearch() {

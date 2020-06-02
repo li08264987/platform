@@ -22,6 +22,14 @@ service.interceptors.request.use(
     // please modify it according to the actual situation
     // config.headers['X-Token'] = getToken()
     // }
+    if (typeof config.params === 'object' && config.params !== null) {
+      var data = new FormData()
+      for (var key in config.params) {
+        data.append(key, config.params[key])
+      }
+      config.data = data
+      config.params = null
+    }
     return config
   },
   error => {
@@ -73,12 +81,12 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) // for debug
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    })
+    // console.log('err' + error) // for debug
+    // Message({
+    //   message: error.message,
+    //   type: 'error',
+    //   duration: 5 * 1000
+    // })
     return Promise.reject(error)
   }
 )
