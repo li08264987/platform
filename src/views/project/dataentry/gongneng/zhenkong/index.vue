@@ -776,11 +776,11 @@ export default {
     }
   },
   mounted() {
-    this.getNengHaoGaiLan()
-    this.getZhenKongSys()
-    this.getDuty()
-    this.getDianLi('kyjq', '')
-    this.getDianHaoZhanBi()
+    // this.getNengHaoGaiLan()
+    // this.getZhenKongSys()
+    // this.getDuty()
+    // this.getDianLi('kyjq', '')
+    // this.getDianHaoZhanBi()
   },
   methods: {
     handleClick(tab, event) {

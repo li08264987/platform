@@ -2,7 +2,7 @@ import { userlogin } from '@/api/login/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import router, { resetRouter } from '@/router'
 import { isPC } from '@/utils/index'
-
+import md5 from 'js-md5'
 const state = {
   token: getToken(),
   name: '',
@@ -47,7 +47,7 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       var isPCflag = isPC()
-      userlogin({ username: username.trim(), password: password, USER_TYPE: isPCflag }).then(response => {
+      userlogin({ username: username.trim(), password: md5(password), USER_TYPE: isPCflag }).then(response => {
         commit('SET_TOKEN', 'admin-token')
         commit('SET_USERNAME', username.trim())
         setToken('admin-token')

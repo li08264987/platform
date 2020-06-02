@@ -5801,7 +5801,6 @@ export default {
     },
     getOrigin(id) {
       if (!id) return
-      console.log(id)
       const box = document.getElementById(id + '_1').getBBox()
       const x = box.x + (box.width / 2)
       const y = box.y + (box.height / 2)
