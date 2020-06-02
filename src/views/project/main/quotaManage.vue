@@ -166,10 +166,10 @@ export default {
           endTime = ''
           break
         case 'week':
-          startTime = this.getBeforeDate(7) + ' 00:00:00'
+          startTime = this.getBeforeDate(2) + ' 00:00:00'
           break
         case 'month':
-          startTime = this.getBeforeDate(30) + ' 00:00:00'
+          startTime = this.getBeforeDate(3) + ' 00:00:00'
           break
         default:
       }
