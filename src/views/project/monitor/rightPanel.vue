@@ -3,164 +3,217 @@
     <div class="rblock">
       <div v-if="maintabname!=='third'">
         <div class="rtitle">供能概览</div>
-        <el-tabs v-model="gyActiveName">
+        <el-tabs v-if="params[0]!=='zk'" v-model="gyActiveName">
           <el-tab-pane label="1、2栋车间" name="first">
-            <div class="rightzl">
+            <div v-if="params[0]!=='qd'" class="rightzl">
               <div class="itemdiv">
                 <div class="namediv">常压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyllj1_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyllj1_ssll }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv">常压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl }}<span class="unit">kPa</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl }}<span class="unit">kPa</span></div>
               </div>
               <div class="itemdiv itemdivnr">
                 <div class="namediv">常压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyldwd1_ldwd }}<span class="unit">℃</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyldwd1_ldwd }}<span class="unit">℃</span></div>
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyllj1_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyllj1_ssll }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl }}<span class="unit">kPa</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl }}<span class="unit">kPa</span></div>
               </div>
               <div class="itemdiv itemdivnr itemdivnb">
                 <div class="namediv">高压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyldwd1_ldwd }}<span class="unit">℃</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyldwd1_ldwd }}<span class="unit">℃</span></div>
+              </div>
+            </div>
+            <div v-if="params[0]==='qd'" class="rightzl">
+              <div class="itemdiv">
+                <div class="namediv">氢氮流量</div>
+                <div class="valuediv number">{{ datas.qd_nyzx_dlzf1_qdgg_llj1_ssll }}<span class="unit">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">氢氮压力</div>
+                <div class="valuediv number">{{ datas.qd_nyzx_dlzf1_qdgg_yl1_yxyl }}<span class="unit">kPa</span></div>
               </div>
             </div>
           </el-tab-pane>
           <el-tab-pane label="3、4栋车间" name="second">
-            <div class="rightzl">
+            <div v-if="params[0]!=='qd'" class="rightzl">
               <div class="itemdiv">
                 <div class="namediv">常压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyllj2_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyllj2_ssll }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv">常压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl }}<span class="unit">kPa</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl }}<span class="unit">kPa</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv itemdivnr">常压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_cyldwd2_ldwd }}<span class="unit">℃</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyldwd2_ldwd }}<span class="unit">℃</span></div>
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压流量</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyllj2_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyllj2_ssll }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压压力</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl }}<span class="unit">kPa</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl }}<span class="unit">kPa</span></div>
               </div>
               <div class="itemdiv itemdivnb itemdivnr">
                 <div class="namediv">高压露点温度</div>
-                <div class="valuediv number">{{ gngldata.ky_nyzx_dlzf1_kylwg_gyldwd2_ldwd }}<span class="unit">℃</span></div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyldwd2_ldwd }}<span class="unit">℃</span></div>
+              </div>
+            </div>
+            <div v-if="params[0]==='qd'" class="rightzl">
+              <div class="itemdiv">
+                <div class="namediv">氢氮流量</div>
+                <div class="valuediv number">{{ datas.qd_nyzx_dlzf1_qdgg_llj2_ssll }}<span class="unit">m³/h</span></div>
+              </div>
+              <div class="itemdiv">
+                <div class="namediv">氢氮压力</div>
+                <div class="valuediv number">{{ datas.qd_nyzx_dlzf1_qdgg_yl2_yxyl }}<span class="unit">kPa</span></div>
               </div>
             </div>
           </el-tab-pane>
-          <el-tab-pane label="氢氮系统" name="third">
+          <el-tab-pane v-if="params[0]!=='qd'" label="氢氮系统" name="third">
             <div class="rightzl">
               <div class="itemdiv">
-                <div class="namediv">常压流量</div>
-                <div class="valuediv number">0<span class="unit">m³/h</span></div>
+                <div class="namediv">流量</div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_qdllj_ssll }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
-                <div class="namediv">常压压力</div>
-                <div class="valuediv number">0<span class="unit">kPa</span></div>
-              </div>
-              <div class="itemdiv itemdivnr">
-                <div class="namediv">高压流量</div>
-                <div class="valuediv number">0<span class="unit">m³/h</span></div>
-              </div>
-              <div class="itemdiv itemdivnb">
-                <div class="namediv">高压压力</div>
-                <div class="valuediv number">0<span class="unit">kPa</span></div>
+                <div class="namediv">压力</div>
+                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_yl0101_yxyl }}<span class="unit">kPa</span></div>
               </div>
             </div>
           </el-tab-pane>
+          <el-tab-pane v-if="params[0]==='qd'" label="" name="third">
+            <div class="rightzl" />
+          </el-tab-pane>
         </el-tabs>
+        <div v-if="params[0]==='zk' && params[1]==='cj1'" class="rightzl">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq1')" class="itemdiv">
+            <div class="namediv">1-1系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq1_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq1')" class="itemdiv">
+            <div class="namediv">1-1系统2#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq1_zkj2_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq2')" class="itemdiv">
+            <div class="namediv">1-2系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq2_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq2')" class="itemdiv">
+            <div class="namediv">1-2系统2#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq2_zkj2_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq3')" class="itemdiv">
+            <div class="namediv">1-3系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq3_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq3')" class="itemdiv">
+            <div class="namediv">1-3系统2#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq3_zkj2_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq4')" class="itemdiv">
+            <div class="namediv">1-4系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq4_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq4')" class="itemdiv">
+            <div class="namediv">1-4系统2#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj1_zkjq4_zkj2_zkd }}<span class="unit">kPa</span></div>
+          </div>
+        </div>
+        <div v-if="params[0]==='zk' && params[1]==='cj2'" class="rightzl">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq5')" class="itemdiv">
+            <div class="namediv">2-1系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq5_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq5')" class="itemdiv">
+            <div class="namediv">2-1系统2#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq5_zkj2_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq6')" class="itemdiv">
+            <div class="namediv">2-2系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq6_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq6')" class="itemdiv">
+            <div class="namediv">2-2系统2#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj2_zkjq6_zkj2_zkd }}<span class="unit">kPa</span></div>
+          </div>
+        </div>
+        <div v-if="params[0]==='zk' && params[1]==='cj5'" class="rightzl">
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq7')" class="itemdiv">
+            <div class="namediv">J-1系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj5_zkjq7_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+          <div v-if="params[4]==='first' || (params[4]!=='first' && params[2]==='zkjq8')" class="itemdiv">
+            <div class="namediv">J-2系统1#真空度</div>
+            <div class="valuediv number">{{ datas.zk_nyzx_cj5_zkjq8_zkj1_zkd }}<span class="unit">kPa</span></div>
+          </div>
+        </div>
       </div>
       <div v-if="maintabname==='third'">
         <div class="rtitle">空压机面板数据</div>
         <div class="rightzl">
           <div class="itemdiv">
-            <div class="namediv">累加载行时间</div>
-            <div class="valuediv number">{{ kyjdata.ljjzsj }}<span class="unit">h</span></div>
+            <div class="namediv">远程</div>
+            <div class="valuediv number">{{ kyjdata.yc===1?'远程':'非远程' }}<span class="unit" /></div>
           </div>
           <div class="itemdiv">
-            <div class="namediv">累计运行时间</div>
-            <div class="valuediv number">{{ kyjdata.ljyxsj }}<span class="unit">h</span></div>
+            <div class="namediv">就地</div>
+            <div class="valuediv number">{{ kyjdata.jd===1?'就地':'非就地' }}<span class="unit" /></div>
           </div>
           <div class="itemdiv">
-            <div class="namediv">级间温度T4</div>
-            <div class="valuediv number">{{ kyjdata.jjwd }}<span class="unit">℃</span></div>
+            <div class="namediv">手动</div>
+            <div class="valuediv number">{{ kyjdata.sd===1?'手动':'非手动' }}<span class="unit" /></div>
           </div>
           <div class="itemdiv">
-            <div class="namediv">空气过滤器压差</div>
-            <div class="valuediv number">{{ kyjdata.klyc }}<span class="unit">kPa</span></div>
+            <div class="namediv">自动</div>
+            <div class="valuediv number">{{ kyjdata.zd===1?'自动':'非自动' }}<span class="unit" /></div>
           </div>
           <div class="itemdiv">
-            <div class="namediv">加载压差</div>
-            <div class="valuediv number">{{ kyjdata.jzyc }}<span class="unit">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">空载压力</div>
-            <div class="valuediv number">{{ kyjdata.kzyl }}<span class="unit">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">最高管线压力</div>
-            <div class="valuediv number">{{ kyjdata.zggxyl }}<span class="unit">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">最低管线压力</div>
-            <div class="valuediv number">{{ kyjdata.zdgxyl }}<span class="unit">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">最低压力</div>
-            <div class="valuediv number">{{ kyjdata.zdzyl }}<span class="unit">kPa</span></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">挂起</div>
-            <div class="valuediv number">{{ kyjdata.gq===1?'是':'否' }}<span class="unit" /></div>
-          </div>
-          <div class="itemdiv">
-            <div class="namediv">遥控</div>
-            <div class="valuediv number">{{ kyjdata.yk===1?'是':'否' }}<span class="unit" /></div>
+            <div class="namediv">启动状态</div>
+            <div class="valuediv number">{{ kyjdata.qdzt===1?'启动':'未启动' }}<span class="unit" /></div>
           </div>
           <div class="itemdiv">
             <div class="namediv">运行状态</div>
-            <div class="valuediv number">{{ kyjdata.yxzt===1?'开启':'关闭' }}<span class="unit" /></div>
+            <div class="valuediv number">{{ kyjdata.yxzt===1?'运行':'未运行' }}<span class="unit" /></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">通讯状态</div>
+            <div class="valuediv number">{{ kyjdata.txzt===1?'正常':'中断' }}<span class="unit" /></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">轻故障状态</div>
+            <div class="valuediv number">{{ kyjdata.qgzzt===1?'轻故障':'无故障' }}<span class="unit" /></div>
+          </div>
+          <div class="itemdiv">
+            <div class="namediv">重故障状态</div>
+            <div class="valuediv number">{{ kyjdata.zgzzt===1?'重故障':'无故障' }}<span class="unit" /></div>
           </div>
         </div>
       </div>
     </div>
     <div v-if="maintabname!=='third'" class="rblock">
-      <div class="rtitle">电耗占比</div>
+      <div class="rtitle">设备能耗分项</div>
       <div style="display:flex">
-        <div style="flex:2;height:135px;position:relative">
+        <div style="flex:1;height:135px;position:relative">
           <pie-chart :chart-data="piedata" />
           <div style="position:absolute;left:50%;width:86px;height:42px;top:50%;margin-left:-43px;margin-top:-21px;margin-top:-20px;">
             <div style="font-size:18px;"><span class="number" style="font-weight:normal">{{ sumdianhao }}</span></div>
             <div style="font-size:12px;padding-top:4px;">总电耗kWh</div>
           </div>
         </div>
-        <div style="flex:4;height:135px">
-          <div class="rtitle2" style="border-left-color:#2853FF">
-            <span class="rt">空压机组</span><span><label>{{ piedata.data[0].value }}</label>kWh</span>同比<label>{{ tbky }}</label>%
-          </div>
-          <div class="rtitle2" style="border-left-color:#10D178">
-            <span class="rt">冷却塔组</span><span><label>{{ piedata.data[1].value }}</label>kWh</span>同比<label>{{ tblt }}</label>%
-          </div>
-          <div class="rtitle2" style="border-left-color:#2853FF">
-            <span class="rt">冷却泵组</span><span><label>{{ piedata.data[2].value }}</label>kWh</span>同比<label>{{ tblqb }}</label>%
-          </div>
-          <div class="rtitle2" style="border-left-color:#F0725E">
-            <span class="rt">冷干机组</span><span><label>{{ piedata.data[3].value }}</label>kWh</span>同比<label>{{ tblgj }}</label>%
-          </div>
-          <div class="rtitle2" style="border-left-color:#FAC400">
-            <span class="rt">其他</span><span><label>{{ piedata.data[4].value }}</label>kWh</span>同比<label>{{ tbqt }}</label>%
+        <div style="flex:1.2;height:135px;display: flex;flex-direction: column;justify-content: center;">
+          <div v-for="(item,index) in piedata.data" :key="index" class="rtitle2" :style="getcolor(index)">
+            <span class="rt">{{ item.name }}</span><span><label>{{ item.value }}</label>kWh</span>
           </div>
         </div>
       </div>
@@ -217,10 +270,6 @@ export default {
     pieChart
   },
   props: {
-    gngldata: {
-      type: Object,
-      required: true
-    },
     maintabname: {
       type: String,
       required: true
@@ -256,9 +305,11 @@ export default {
           { value: 0, name: '冷却泵组' },
           { value: 0, name: '冷干机组' },
           { value: 0, name: '其他' }
-        ]
+        ],
+        color: ['#A26DFD', '#10D178', '#2853FF', '#F0725E', '#FAC400']
       },
-      kyjdata: {}
+      kyjdata: {},
+      datas: {}
     }
   },
   watch: {
@@ -286,35 +337,52 @@ export default {
     self.getDianHaoZhanBi()
     self.getDuty()
     self.getDianLi()
+    var type = self.params[0]
+    switch (type) {
+      case 'ky':
+        self.getKongYa()
+        break
+      case 'qd':
+        self.getQingDan()
+        break
+      case 'zk':
+        self.getZhenKong()
+        break
+    }
   },
   methods: {
     getDianHaoZhanBi() {
       var self = this
-      var type = ''
+      var sys = ''
+      var jq = ''
       if (self.maintabname === 'first') {
-        type = 'kyjq'
+        sys = self.params[0]
+        if (sys === 'ky') {
+          jq = 'kyjq%'
+        } else if (sys === 'zk') {
+          jq = self.params[1]
+        }
       } else {
-        type = self.params[2]
+        sys = self.params[0]
+        jq = self.params[2]
       }
       monitorapi.getDianHaoZhanBi({
-        'type': type
+        'sys': sys,
+        'jq': jq
       }).then(res => {
         if (res.state === 1) {
-          this.piedata.data[0].value = res.kyvalue
-          this.piedata.data[1].value = res.ltvalue
-          this.piedata.data[2].value = res.lqbvalue
-          this.piedata.data[3].value = res.lgjvalue
-          this.piedata.data[4].value = res.qtvalue
-          this.sumdianhao = res.sumvalue
-          this.tbky = res.tbky.toFixed(0)
-          this.tblgj = res.tblgj.toFixed(0)
-          this.tblqb = res.tblqb.toFixed(0)
-          this.tblt = res.tblt.toFixed(0)
-          this.tbqt = res.tbqt.toFixed(0)
+          self.piedata.data = res.data
+          self.sumdianhao = 0
+          for (var i = 0; i < res.data.length; i++) {
+            self.sumdianhao += (res.data[i].value)
+          }
         }
       }).catch(err => {
         console.log(err)
       })
+    },
+    getcolor(index) {
+      return 'border-left-color:' + this.piedata.color[index]
     },
     getDuty() {
       monitorapi.getDuty().then(res => {
@@ -326,21 +394,32 @@ export default {
       })
     },
     getDianLi() {
-      var type = ''
       var self = this
+      var sys = ''
+      var jq = ''
       if (self.maintabname === 'first') {
-        type = 'kyjq'
+        sys = self.params[0]
+        if (sys === 'ky') {
+          jq = 'kyjq%'
+        } else if (sys === 'qd') {
+          jq = 'qdjq%'
+        } else if (sys === 'dl') {
+          jq = 'dljq%'
+        } else if (sys === 'zk') {
+          jq = self.params[1]
+        }
       } else {
-        type = self.params[2]
+        sys = self.params[0]
+        jq = self.params[2]
       }
-      monitorapi.getDianLi({
-        'kyjq': type,
-        'device': ''
+      monitorapi.getEnengyZongLan({
+        'sys': sys,
+        'jq': jq
       }).then(res => {
         if (res.state === 1) {
-          this.dianli = res.data.toFixed(0)
-          this.qihao = res.qhdata.toFixed(0)
-          this.danhao = res.qhdata === 0 ? 0 : (res.data / res.qhdata).toFixed(2)
+          this.dianli = res.ele.toFixed(0)
+          this.qihao = res.gas.toFixed(0)
+          this.danhao = res.effi
           this.pjvalue = res.pingfen
         }
       }).catch(err => {
@@ -351,6 +430,35 @@ export default {
       monitorapi.getZQiHao().then(res => {
         if (res.state === 1) {
           this.qihao = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getQingDan() {
+      monitorapi.getQingDanData().then(res => {
+        if (res.state === 1) {
+          this.datas = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getKongYa() {
+      monitorapi.getNHGaiLan().then(res => {
+        if (res.state === 1) {
+          this.datas = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getZhenKong() {
+      monitorapi.getZhenKongData({
+        'regional': ''
+      }).then(res => {
+        if (res.state === 1) {
+          this.datas = res.data
         }
       }).catch(err => {
         console.log(err)
@@ -452,6 +560,7 @@ export default {
       font-size: 15px;
       background-color: rgba(249,249,251,1);
       padding: 4px 4px;
+      height:26px;
       span{
         width: 80px;
         display: inline-block;
@@ -460,7 +569,7 @@ export default {
         }
       }
       .rt{
-        width: 70px;
+        width: 110px;
       }
       label{
         font-family: Babes;

@@ -278,7 +278,6 @@ export default {
       console.log(err)
     })
     $('svg').click(function(e) {
-      debugger
       var linecode = (e.target.parentElement.attributes.id && e.target.parentElement.attributes.id.value) || (e.target.attributes.id && e.target.attributes.id.value)
       self.linecode = linecode
       if (linecode &&

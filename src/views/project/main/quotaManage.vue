@@ -19,8 +19,26 @@
       </el-radio-group>
     </div> -->
 
-    <div class="operation-table">
-      <QuotaBar id="quotaChart-container" class="quotaChart-container" height="100%" width="100%" :chart-data="quotaChartData" />
+    <div
+      v-loading="loading"
+      class="operation-table"
+      element-loading-text="拼命加载中"
+      element-loading-spinner="el-icon-loading"
+      element-loading-background="rgba(0, 0, 0, 0.5)"
+    >
+      <QuotaBar
+        id="quotaChart-container"
+        class="quotaChart-container"
+        height="100%"
+        width="80%"
+        :chart-data="quotaChartData"
+      />
+      <div class="value-container">
+        <div>{{ quotaType.nengxiao }}</div>
+        <div>{{ quotaType.chanqi }}</div>
+        <div>{{ quotaType.dianhao }}</div>
+        <div>{{ quotaType.nengfei }}</div>
+      </div>
     </div>
 
   </div>
@@ -28,7 +46,8 @@
 
 <script>
 import QuotaBar from './echart/quotaBar'
-import { getQuotaManageData } from '@/api/main/quotaManage'
+/* import { getQuotaManageData } from '@/api/main/quotaManage' */
+import { getProcessData } from '@/api/energy/statis'
 export default {
   name: 'OperationWatch',
   components: { QuotaBar },
@@ -36,6 +55,13 @@ export default {
     return {
       quotaChartData: {
         data: null
+      },
+      loading: false,
+      quotaType: {
+        nengxiao: '0%',
+        chanqi: '0%',
+        dianhao: '0%',
+        nengfei: '0%'
       }
     }
   },
@@ -69,14 +95,16 @@ export default {
   },
   watch: {
     currentView: function(values) {
-      var timetype = this.$store.state.settings.mainTimeType
+      /* var timetype = this.$store.state.settings.mainTimeType
       var param = { sysCode: values, timeType: timetype }
-      this.getQuotaManageData(param)
+      this.getQuotaManageData(param) */
+      this.initQuotaManageData()
     },
     mainTimeType: function(params) {
-      var system = this.$store.state.settings.currentView.value
+      /* var system = this.$store.state.settings.currentView.value
       var param = { sysCode: system, timeType: params }
-      this.getQuotaManageData(param)
+      this.getQuotaManageData(param) */
+      this.initQuotaManageData()
     }
   },
   mounted() {
@@ -84,12 +112,104 @@ export default {
   },
 
   methods: {
+    getBeforeDate: function(days) {
+      var n = days
+      var d = new Date()
+      var year = d.getFullYear()
+      var mon = d.getMonth() + 1
+      var day = d.getDate()
+      if (day <= n) {
+        if (mon > 1) {
+          mon = mon - 1
+        } else {
+          year = year - 1
+          mon = 12
+        }
+      }
+      d.setDate(d.getDate() - n)
+      year = d.getFullYear()
+      mon = d.getMonth() + 1
+      day = d.getDate()
+      var s = year + '-' + (mon < 10 ? ('0' + mon) : mon) + '-' + (day < 10 ? ('0' + day) : day)
+      return s
+    },
+    getCurrentDate: function(format) {
+      var now = new Date()
+      var year = now.getFullYear()
+      var month = now.getMonth()
+      var date = now.getDate()
+      var hour = now.getHours()
+      var minu = now.getMinutes()
+      var sec = now.getSeconds()
+      month = month + 1
+      if (month < 10) month = '0' + month
+      if (date < 10) date = '0' + date
+      if (hour < 10) hour = '0' + hour
+      if (minu < 10) minu = '0' + minu
+      if (sec < 10) sec = '0' + sec
+      var time = ''
+
+      if (format === 1) {
+        time = year + '-' + month + '-' + date
+      } else if (format === 2) {
+        time = year + '-' + month + '-' + date + ' ' + hour + ':' + minu + ':' + sec
+      }
+      return time
+    },
     initQuotaManageData: function() {
-      var param = { sysCode: 'ky', label: '空压系统', timeType: 'day' }
-      getQuotaManageData(param).then((res) => {
-        this.quotaChartData.data = res.data
+      var timeType = this.$store.state.settings.mainTimeType
+      var startTime = ''
+      var endTime = this.getCurrentDate(2)
+      switch (timeType) {
+        case 'day':
+          /* startTime = this.getCurrentDate(1) + ' 00:00:00' */
+          endTime = ''
+          break
+        case 'week':
+          startTime = this.getBeforeDate(7) + ' 00:00:00'
+          break
+        case 'month':
+          startTime = this.getBeforeDate(30) + ' 00:00:00'
+          break
+        default:
+      }
+      var param = {
+        sys: this.$store.state.settings.currentView.value,
+        startTime: startTime,
+        endTime: endTime
+      }
+      this.loading = true
+      getProcessData(param).then((res) => {
+        var dataArray = new Array(4)
+        var data = res.data
+        if (data !== null) {
+          for (var item in data) {
+            switch (item) {
+              case 'chanqi':
+                dataArray[2] = data[item].total === 0 ? 0 : (data[item].used / data[item].total * 100).toFixed(2)
+                this.quotaType.chanqi = dataArray[2] + '%'
+                break
+              case 'nengfei':
+                dataArray[0] = data[item].total === 0 ? 0 : (data[item].used / data[item].total * 100).toFixed(2)
+                this.quotaType.nengfei = dataArray[0] + '%'
+                break
+              case 'nenghao':
+                dataArray[1] = data[item].total === 0 ? 0 : (data[item].used / data[item].total * 100).toFixed(2)
+                this.quotaType.dianhao = dataArray[1] + '%'
+                break
+              case 'nengxiao':
+                dataArray[3] = data[item].total === 0 ? 0 : (data[item].used / data[item].total * 100).toFixed(2)
+                this.quotaType.nengxiao = dataArray[3] + '%'
+                break
+              default:
+            }
+          }
+        }
+        this.quotaChartData.data = dataArray
+        this.loading = false
       }).catch(err => {
         console.log(err)
+        this.loading = false
       })
     }
   }
@@ -161,12 +281,19 @@ export default {
   }
 
   .operation-table{
-    margin-left: 0.8vw;
     flex-shrink: 1;
     flex-grow: 1;
     width: 100%;
     height: 0;
-    padding-right: 1.63vw;
+    padding: 0 1vw;
+    display: flex;
+    flex-direction: row;
+    .value-container{
+      color: #C8D6FE;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
     .el-table{
         background-color:transparent;
         width: 100%;

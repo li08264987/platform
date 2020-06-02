@@ -64,201 +64,13 @@
               </el-button>
             </div>
             <div v-if="showNeibu && mainTabName==='first'" style="height:100%;position:relative;border: 1px dashed #ccc;width: 99%;margin-top:1%">
-              <el-select v-model="selectSys">
-                <el-option
-                  v-for="item in zksys"
-                  :key="item.CODE"
-                  :label="item.NAME"
-                  :value="item.CODE"
-                />
-              </el-select>
-              <systemOne v-if="zksys[0] && selectSys===zksys[0].CODE" style="height:96%;width:100%;margin-top:40px;" />
-              <systemTwo v-if="zksys[1] && selectSys===zksys[1].CODE" style="height:96%;width:100%;margin-top:40px;" />
-              <systemFive v-if="zksys[2] && selectSys===zksys[2].CODE" style="height:96%;width:100%;margin-top:40px;" />
-              <i :class="rightbtn" @click="showHideRight" />
+              <system style="height:96%;width:100%;margin-top:40px;" />
             </div>
-            <div v-if="showParam" class="rightparam">
-              <div
-                style="height:6%;display:flex;align-items:center;justify-content:center;font-weight:bold"
-              >
-                ZH-10000+离心机通讯参数
-              </div>
-              <div class="righttop">
-                <div
-                  v-for="(element, index) in params"
-                  :key="index"
-                  class="itemdiv"
-                >
-                  <div class="valuediv">{{ element.value }}</div>
-                  <div class="namediv">{{ element.name }}</div>
-                </div>
-              </div>
-              <div class="rightbott">
-                <div
-                  v-for="(element, index) in params2"
-                  :key="index"
-                  class="itemdiv"
-                >
-                  <div class="valuediv">{{ element.value }}</div>
-                  <div class="namediv">{{ element.name }}</div>
-                </div>
-              </div>
-            </div>
-            <div v-if="showDuty" class="leftduty">
-              <div class="dutytitle"><i class="el-icon-s-tools" />运行值班</div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-              <div class="dutytitle"><i class="el-icon-s-open" />维修值班</div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-              <div class="dutytitle"><i class="el-icon-s-custom" />值班领导</div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-            </div>
-            <div v-if="showVideo" class="content">
-              <div>
-                <div class="condiv Video_1" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_2" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_3" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_4" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_5" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_6" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-            </div>
-            <div v-if="showHis" style="display:flex;height:92%">
-              <div class="videoPlay" />
-              <div style="flex:2;height:100%;overflow:auto;height:100%;">
-                <div
-                  class="Video_1"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_2"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_3"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_4"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_5"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_6"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-              </div>
-            </div>
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="分系统" name="second" style="text-align:center">
-          <el-select v-model="zksubsyssel">
-            <el-option
-              v-for="item in zksubsys"
-              :key="item.CODE"
-              :label="item.NAME"
-              :value="item.CODE"
-            />
-          </el-select>
-          <div v-if="showNeibu && mainTabName==='second'" style="height:92%">
-            <fgroupone v-if="zksys[0].CODE && selectSys===zksys[0].CODE && zksubsyssel===zksubsys[0].CODE" style="height:92%;width:100%" />
-            <fgrouptwo v-if="zksys[0].CODE && selectSys===zksys[0].CODE && zksubsyssel===zksubsys[1].CODE" style="height:92%;width:100%" />
-            <fgroupthree v-if="zksys[0].CODE && selectSys===zksys[0].CODE && zksubsyssel===zksubsys[2].CODE" style="height:92%;width:100%" />
-            <fgroupfour v-if="zksys[0].CODE && selectSys===zksys[0].CODE && zksubsyssel===zksubsys[3].CODE" style="height:92%;width:100%" />
-            <sgroupone v-if="zksys[1].CODE && selectSys===zksys[1].CODE && zksubsyssel===zksubsys[0].CODE" style="height:92%;width:100%" />
-            <sgrouptwo v-if="zksys[1].CODE && selectSys===zksys[1].CODE && zksubsyssel===zksubsys[1].CODE" style="height:92%;width:100%" />
-            <figroupone v-if="zksys[2].CODE && selectSys===zksys[2].CODE && zksubsyssel===zksubsys[0].CODE" style="height:92%;width:100%" />
-            <figrouptwo v-if="zksys[2].CODE && selectSys===zksys[2].CODE && zksubsyssel===zksubsys[1].CODE" style="height:92%;width:100%" />
           </div>
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div v-if="showright" class="rightparam" style="flex:1">
+    <div v-if="false" class="rightparam" style="flex:1">
       <rightpanel :gngldata="gngldata" :maintabname="mainTabName" :params="kyjparam" />
     </div>
   </div>
@@ -271,35 +83,13 @@ import kongyajizu from '@/api/monitor/kongyajizu'
 import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
 import monitorapi from '@/api/monitor/monitor'
-import systemOne from '@/views/project/monitor/gongneng/zhenkong/systemone'
-import systemTwo from '@/views/project/monitor/gongneng/zhenkong/systemtwo'
-import systemFive from '@/views/project/monitor/gongneng/zhenkong/systemfive'
-import fgroupone from '@/views/project/monitor/gongneng/zhenkong/fgroupone'
-import fgrouptwo from '@/views/project/monitor/gongneng/zhenkong/fgrouptwo'
-import fgroupthree from '@/views/project/monitor/gongneng/zhenkong/fgroupthree'
-import fgroupfour from '@/views/project/monitor/gongneng/zhenkong/fgroupfour'
-import sgroupone from '@/views/project/monitor/gongneng/zhenkong/sgroupone'
-import sgrouptwo from '@/views/project/monitor/gongneng/zhenkong/sgrouptwo'
-import figroupone from '@/views/project/monitor/gongneng/zhenkong/figroupone'
-import figrouptwo from '@/views/project/monitor/gongneng/zhenkong/figrouptwo'
-import rightpanel from '@/views/project/monitor/rightPanel'
+import system from '@/views/project/monitor/gongneng/dianli/system'
 export default {
   name: 'MonitorView',
   components: {
     runInfo,
     infoScan,
-    fgroupone,
-    fgrouptwo,
-    fgroupthree,
-    fgroupfour,
-    sgroupone,
-    sgrouptwo,
-    figroupone,
-    figrouptwo,
-    systemOne,
-    systemTwo,
-    systemFive,
-    rightpanel
+    system
   },
   data() {
     return {
@@ -531,7 +321,7 @@ export default {
   },
   computed: {
     kyjparam() {
-      return ['zk', this.selectSys, this.zksubsyssel, this.selectvalue3, this.mainTabName]
+      return ['zk', '', this.selectvalue2, this.selectvalue3, this.mainTabName]
     }
   },
   watch: {

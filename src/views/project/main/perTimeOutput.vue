@@ -9,7 +9,17 @@
 
     <div id="warningPie" :style="{width: '100%', height: '88%'}">
       <!-- <MixChart id="warningPie-System" :chart-data="pieChartData" :cursor="cursor" :sum="dealStatus.sum" /> -->
-      <MixChart id="mixChart-container" class="mixChart-container" height="100%" width="100%" :chart-data="mixChartData" />
+      <MixChart
+        id="mixChart-container"
+        v-loading="loading"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.5)"
+        class="mixChart-container"
+        height="100%"
+        width="100%"
+        :chart-data="mixChartData"
+      />
     </div>
   </div>
 </template>
@@ -42,7 +52,8 @@ export default {
       activeName: 'system',
       mixChartData: {
         data: null
-      }
+      },
+      loading: false
     }
   },
   computed: {
@@ -95,10 +106,13 @@ export default {
       this.getPertimeOutputData(param)
     },
     getPertimeOutputData(param) {
+      this.loading = true
       getPertimeOutputData(param).then((res) => {
         this.mixChartData.data = res.data
+        this.loading = false
       }).catch(err => {
         console.log(err)
+        this.loading = false
       })
     },
     tabClick(tab, event) {

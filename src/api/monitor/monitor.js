@@ -49,6 +49,13 @@ export default {
       params: query
     })
   },
+  getDianLiData(query) {
+    return request({
+      url: '/monitor/getDianLiData',
+      method: 'post',
+      params: query
+    })
+  },
   getQingDanJiQun(query) {
     return request({
       url: '/monitor/getQingDanJiQun',
@@ -79,7 +86,24 @@ export default {
   },
   getDianHaoZhanBi(query) {
     return request({
+      // url: '/monitor/getDianHaoZhanBi',
+      // url: '/energy/statis/getEffectCompareData',
+      url: '/monitor/getEffectCompareData',
+      method: 'post',
+      params: query
+    })
+  },
+  getDianHaoZhanBiSys(query) {
+    return request({
       url: '/monitor/getDianHaoZhanBi',
+      method: 'post',
+      params: query
+    })
+  },
+  getEnengyZongLan(query) {
+    return request({
+      // url: '/monitor/getDianHaoZhanBi',
+      url: '/monitor/getEnengyZongLan',
       method: 'post',
       params: query
     })
@@ -171,6 +195,13 @@ export default {
   download(query) {
     return request({
       url: '/monitor/download',
+      method: 'post',
+      params: query
+    })
+  },
+  getEffectOrderData(query) {
+    return request({
+      url: '/energy/statis/getEffectOrderData',
       method: 'post',
       params: query
     })
