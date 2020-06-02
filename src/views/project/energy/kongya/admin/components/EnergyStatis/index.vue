@@ -785,6 +785,7 @@ export default {
     setProgressData(params) {
       var type = params.type
       this.cancelPrecessAxios[type] && this.cancelPrecessAxios[type].cancel()
+      this.progressData[type].loading = true
       var axios = getProcessData(params)
       axios.axiosObj.then(response => {
         var data = response.data
@@ -942,6 +943,12 @@ export default {
     setEnergyCircleData(params) {
       var type = params.type
       this.cancelEnergyCircleAxios[type] && this.cancelEnergyCircleAxios[type].cancel()
+      for (var i = 0; i < this.energyCircleData.length; i++) {
+        if (this.energyCircleData[i].elemId === type) {
+          this.energyCircleData[i].loading = true
+          break
+        }
+      }
       var axios = getEnergyCircleData(params)
       axios.axiosObj.then(response => {
         var data = response.data
