@@ -90,7 +90,8 @@ export default {
     },
     setEnergyTreeTableData(params) {
       this.loading = true
-      getEnergyTreeData(params).then(response => {
+      var axios = getEnergyTreeData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         this.tableData = [data]
         this.loading = false

@@ -2,7 +2,7 @@
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
-        <router-view :key="key" />
+        <router-view :key="key" ref="routerView" />
       </keep-alive>
     </transition>
   </section>
@@ -22,6 +22,13 @@ export default {
       return this.$route.path
     },
     ...mapGetters(['sidebar', 'energySidebar'])
+  },
+  methods: {
+    cancelAxios: function() {
+      if (typeof this.$refs.routerView.$children[0].cancelAxios === 'function') {
+        this.$refs.routerView.$children[0].cancelAxios()
+      }
+    }
   }
 }
 </script>

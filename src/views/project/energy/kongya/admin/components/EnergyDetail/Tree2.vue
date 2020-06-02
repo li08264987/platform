@@ -140,7 +140,9 @@ export default {
       })
     },
     setEnergyTreeData(params) {
-      getEnergyTreeData(params).then(response => {
+      this.cancel()
+      var axios = getEnergyTreeData(params)
+      axios.axiosObj.then(response => {
         var data = response.data
         this.orgData = data
         this.loading = false
@@ -153,6 +155,7 @@ export default {
         })
         this.loading = false
       })
+      this.cancel = axios.cancel
     },
     dataViewReflesh() {
       var offsetX = $('#chart-container').width() / 2 - $('.orgchart.energy-detail-tree').width() / 2
@@ -203,6 +206,9 @@ export default {
     },
     export: function() {
       return this.orgData
+    },
+    cancel() {
+
     }
   }
 }

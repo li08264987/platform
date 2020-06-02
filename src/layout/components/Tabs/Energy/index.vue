@@ -2,7 +2,7 @@
 <template>
   <div>
     <sidebar class="sidebar-container" />
-    <app-main />
+    <app-main :key="key" ref="appMain" />
   </div>
 </template>
 
@@ -17,6 +17,7 @@ export default {
   },
   data() {
     return {
+      key: '1'
     }
   },
   computed: {
@@ -32,12 +33,14 @@ export default {
 
   },
   destroyed() {
+
   },
   activated() {
     this.$router.push({ path: '/energySystem' })
+    this.key = Math.random()
   },
   deactivated() {
-
+    this.$refs.appMain.cancelAxios()
   },
   methods: {
     toggleSideBar() {
