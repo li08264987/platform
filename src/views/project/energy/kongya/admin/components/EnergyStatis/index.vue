@@ -645,18 +645,25 @@ export default {
         title = '楼层能耗排名'
       }
       return title
+    },
+    isLoading: function() {
+      if (this.progressDataLoading ||
+          this.dongliStationDataLoading ||
+          this.effectOrderDataLoading ||
+          this.lineChartDataLoading ||
+          this.energyCircleDataLoading ||
+          this.compareDataLoading) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   watch: {
     searchData: {
       deep: true,
       handler(val) {
-        if (this.progressDataLoading ||
-          this.dongliStationDataLoading ||
-          this.effectOrderDataLoading ||
-          this.lineChartDataLoading ||
-          this.energyCircleDataLoading ||
-          this.compareDataLoading) {
+        if (this.isLoading) {
           this.$message({
             type: 'warning',
             duration: 2000,
@@ -863,6 +870,87 @@ export default {
           endTime: this.lineChartSearchForm.value[1]
         })
       }
+    },
+    buildExcelData() {
+      var datas = []
+
+      var energyCircleData_excel = {}
+      energyCircleData_excel.sheetName = '能耗数据'
+      energyCircleData_excel.header = ['名称', '值', '同比']
+      energyCircleData_excel.data = []
+      for (var i = 0; i < this.energyCircleData.length; i++) {
+        energyCircleData_excel.data.push([this.energyCircleData[i].title, this.energyCircleData[i].value + this.energyCircleData[i].unit, this.energyCircleData[i].change * (this.energyCircleData[i].increase ? 1 : -1) + this.energyCircleData[i].unit])
+      }
+      datas.push(energyCircleData_excel)
+
+      var progressData_excel = {}
+      progressData_excel.sheetName = '进度数据'
+      progressData_excel.header = ['名称', '消耗/产量', '限额', '进度']
+      progressData_excel.data = []
+      for (var key in this.progressData) {
+        progressData_excel.data.push([this.progressData[key].title, this.progressData[key].used + this.progressData[key].unit, this.progressData[key].total + this.progressData[key].unit, (this.progressData[key].total === 0 ? 0 : Math.round(this.progressData[key].used / this.progressData[key].total * 100)) + '%'])
+      }
+      datas.push(progressData_excel)
+
+      var dongliStationData_excel = {}
+      dongliStationData_excel.sheetName = this.facCompareTitle
+      dongliStationData_excel.header = ['名称', '值', '占比']
+      dongliStationData_excel.data = []
+      var dongliStationData_total = 0
+      for (i = 0; i < this.dongliStationData.data.length; i++) {
+        dongliStationData_total += this.dongliStationData.data[i].value
+      }
+      for (i = 0; i < this.dongliStationData.data.length; i++) {
+        dongliStationData_excel.data.push([this.dongliStationData.data[i].name, this.dongliStationData.data[i].value + ' kW·h', (dongliStationData_total === 0 ? '/' : Math.round(this.dongliStationData.data[i].value / dongliStationData_total * 100) + '%')])
+      }
+      datas.push(dongliStationData_excel)
+
+      var compareData_excel = {}
+      compareData_excel.sheetName = this.jiqunCompareTitle
+      compareData_excel.header = ['名称', '值', '占比']
+      compareData_excel.data = []
+      var compareData_total = 0
+      for (i = 0; i < this.compareData.data.length; i++) {
+        compareData_total += this.compareData.data[i].value
+      }
+      for (i = 0; i < this.compareData.data.length; i++) {
+        compareData_excel.data.push([this.compareData.data[i].name, this.compareData.data[i].value + ' kW·h', (compareData_total === 0 ? '/' : Math.round(this.compareData.data[i].value / compareData_total * 100) + '%')])
+      }
+      datas.push(compareData_excel)
+
+      var effectOrderData_excel = {}
+      var effectOrderData_excel_field = []
+      var effectOrderData_excel_unit = []
+      effectOrderData_excel.sheetName = this.orderTitle
+      if (this.isCheJian) {
+        effectOrderData_excel.header = ['名称', '电耗', '电耗排名', '真空量', '真空排名', '氢氮量', '氢氮排名', '空压量', '空压排名']
+        effectOrderData_excel_field = ['name', 'elec', 'elecOrder', 'zk', 'zkOrder', 'qd', 'qdOrder', 'ky', 'kyOrder']
+        effectOrderData_excel_unit = ['', 'kW·h', '', 'kW·h', '', 'm³', '', 'm³', '']
+      } else {
+        effectOrderData_excel.header = ['名称', '能效值', '能效排名', '电耗', '电耗排名', '产量', '产量排名']
+        effectOrderData_excel_field = ['name', 'effect', 'effectOrder', 'elec', 'elecOrder', 'gas', 'gasOrder']
+        effectOrderData_excel_unit = ['', 'kW·h/m³', '', 'kW·h', '', 'm³', '']
+      }
+      effectOrderData_excel.data = []
+      for (i = 0; i < this.effectOrderData.length; i++) {
+        var dataItem = []
+        for (var j = 0; j < effectOrderData_excel.header.length; j++) {
+          dataItem.push(this.effectOrderData[i][effectOrderData_excel_field[j]] + ' ' + effectOrderData_excel_unit[j])
+        }
+        effectOrderData_excel.data.push(dataItem)
+      }
+      datas.push(effectOrderData_excel)
+
+      var lineChartData_excel = {}
+      lineChartData_excel.sheetName = '电耗曲线图'
+      lineChartData_excel.header = ['时间', '功率']
+      lineChartData_excel.data = []
+      for (i = 0; i < this.lineChartData[0].data.length; i++) {
+        lineChartData_excel.data.push([this.lineChartData[0].data[i].name, this.lineChartData[0].data[i].value + ' W'])
+      }
+      datas.push(lineChartData_excel)
+
+      return datas
     }
   }
 }

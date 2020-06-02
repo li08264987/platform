@@ -218,3 +218,74 @@ export function export_json_to_excel({
     type: "application/octet-stream"
   }), `${filename}.${bookType}`);
 }
+
+export function export_json_to_excel_multi_sheets({
+  datas = [],
+  filename,
+  callback
+} = {}) {
+  var bookType = 'xlsx',
+      autoWidth = true
+  var wb = new Workbook()
+
+  filename = filename || 'excel-list'
+
+  for(var i=0;i<datas.length;i++){
+    var data = datas[i].data,
+    header = datas[i].header,
+    ws_name = datas[i].sheetName
+
+    data = [...data]
+    data.unshift(header);
+
+    var ws = sheet_from_array_of_arrays(data);
+
+    if (autoWidth) {
+      /*设置worksheet每列的最大宽度*/
+      const colWidth = data.map(row => row.map(val => {
+        /*先判断是否为null/undefined*/
+        if (val == null) {
+          return {
+            'wch': 10
+          };
+        }
+        /*再判断是否为中文*/
+        else if (val.toString().charCodeAt(0) > 255) {
+          return {
+            'wch': val.toString().length * 2 + 4
+          };
+        } else {
+          return {
+            'wch': val.toString().length + 4
+          };
+        }
+      }))
+      /*以第一行为初始值*/
+      let result = colWidth[0];
+      for (let i = 1; i < colWidth.length; i++) {
+        for (let j = 0; j < colWidth[i].length; j++) {
+          if (result[j]['wch'] < colWidth[i][j]['wch']) {
+            result[j]['wch'] = colWidth[i][j]['wch'];
+          }
+        }
+      }
+      ws['!cols'] = result;
+    }
+
+    /* add worksheet to workbook */
+    wb.SheetNames.push(ws_name);
+    wb.Sheets[ws_name] = ws;
+  }
+
+  var wbout = XLSX.write(wb, {
+    bookType: bookType,
+    bookSST: false,
+    type: 'binary'
+  });
+  callback(new Blob([s2ab(wbout)], {
+    type: "application/octet-stream"
+  }))
+  /*saveAs(new Blob([s2ab(wbout)], {
+    type: "application/octet-stream"
+  }), `${filename}.${bookType}`)*/
+}

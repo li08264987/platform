@@ -22,3 +22,19 @@ export function export_txt_to_zip(th, jsonData, txtName, zipName) {
     alert('导出失败')
   })
 }
+
+export function export_files_to_zip(files, filesName, zipName) {
+  const zip = new JSZip()
+  const zip_name = zipName || 'file'
+  
+  for(var i=0;i<files.length;i++){
+    zip.file(filesName[i], files[i])
+  }
+  zip.generateAsync({
+    type: "blob"
+  }).then((blob) => {
+    saveAs(blob, `${zip_name}.zip`)
+  }, (err) => {
+    alert('导出失败')
+  })
+}

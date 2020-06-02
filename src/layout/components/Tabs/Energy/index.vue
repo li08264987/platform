@@ -33,6 +33,12 @@ export default {
   },
   destroyed() {
   },
+  activated() {
+    this.$router.push({ path: '/energySystem' })
+  },
+  deactivated() {
+
+  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
