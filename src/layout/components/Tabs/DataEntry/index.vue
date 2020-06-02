@@ -15,7 +15,7 @@ import monitorapi from '@/api/monitor/monitor'
 const kongya = import('@/views/project/dataentry/gongneng/kongya/index')
 const qingdan = import('@/views/project/dataentry/gongneng/qingdan/index')
 const zhenkong = import('@/views/project/dataentry/gongneng/zhenkong/index')
-const dianli = import('@/views/project/dataentry/gongneng/kongya/index')
+const dianli = import('@/views/project/dataentry/gongneng/dianli/index')
 // import axios from 'axios'
 export default {
   name: 'DataEntry',
@@ -64,6 +64,11 @@ export default {
         return
       }
     })
+    this.$router.options.routes.push(this.dataRouter[0])
+    // this.$router.options.routes.push(this.monitorRouter[1])
+    this.$router.addRoutes(this.$router.options.routes)
+    this.$router.push({ path: '/dataSystem/kongya' })
+    this.showBar = true
     monitorapi.getSideBar().then(res => {
       // axios.post('/common/getSideBar').then(res => {
       if (res.state === 1) {

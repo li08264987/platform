@@ -777,7 +777,7 @@ export default {
   },
   mounted() {
     // this.getNengHaoGaiLan()
-    // this.getZhenKongSys()
+    this.getZhenKongSys()
     // this.getDuty()
     // this.getDianLi('kyjq', '')
     // this.getDianHaoZhanBi()
