@@ -200,6 +200,7 @@
 // import { validUsername } from '@/utils/validate'
 // import SocialSign from './components/SocialSignin'
 import { isUserExist, isPasswordCorrect, alterPassword } from '@/api/login/user'
+import md5 from 'js-md5'
 export default {
   name: 'Login',
   // components: { SocialSign },
@@ -314,7 +315,7 @@ export default {
     blurOldPass(event) {
       var username = this.alterPasswordForm.username
       var oldPassword = this.alterPasswordForm.oldPassword
-      var param = { password: oldPassword, username: username }
+      var param = { password: md5(oldPassword), username: username }
       isPasswordCorrect(param).then((res) => {
         switch (res.state) {
           case 1:

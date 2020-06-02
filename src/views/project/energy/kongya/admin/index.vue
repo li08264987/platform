@@ -12,7 +12,7 @@
       </el-form-item>
     </el-form>
     <div class="tabCon">
-      <component :is="currentView" :search-data="searchData" />
+      <component :is="currentView" :ref="currentView" :search-data="searchData" />
     </div>
   </div>
 </template>
@@ -21,6 +21,7 @@
 import $ from 'jquery'
 import html2canvas from 'html2canvas'
 import JsPDF from 'jspdf'
+import { saveAs } from 'file-saver'
 import energyStatis from './components/EnergyStatis'
 import energyDetail from './components/EnergyDetail'
 
@@ -76,7 +77,36 @@ export default {
       this.searchData.date = JSON.parse(JSON.stringify(this.searchingData.date))
     },
     onExport() {
-      this.getDocCanvas()
+      if (this.currentView === 'energyStatis') {
+        if (!this.$refs.energyStatis.isLoading) {
+          this.getDocCanvas()
+        } else {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: '正在查询数据，请等待查询结束后再导出！'
+          })
+        }
+      } else {
+        var tableData = this.$refs[this.currentView].exportData()
+        var filename = this.$route.meta.title + ' - 能耗详情'
+        if (this.searchData.date[0] === '' || this.searchData.date[1] === '') {
+          filename += ('(' + new Date().Format('yyyy-MM-dd 00:00:00') + ' - ' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ')')
+        } else {
+          filename += ('(' + this.searchData.date[0] + ' - ' + this.searchData.date[1] + ')')
+        }
+        import('@/vendor/Export2Excel').then(excel => {
+          excel.export_json_to_excel_multi_sheets({
+            datas: [tableData],
+            filename: filename,
+            callback: function(excel) {
+              saveAs(excel, filename + '.xlsx')
+            }
+          })
+        }).catch(err => {
+          console.log(err)
+        })
+      }
     },
     getDocCanvas() {
       var that = this
@@ -89,8 +119,27 @@ export default {
         height: height,
         width: width
       }).then(canvas => {
-        var filename = this.$route.meta.title + '能耗总览(' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ')'
-        that.exportPDF(canvas, filename)
+        var filename = this.$route.meta.title + ' - 能耗总览'
+        if (that.searchData.date[0] === '' || that.searchData.date[1] === '') {
+          filename += ('(' + new Date().Format('yyyy-MM-dd 00:00:00') + ' - ' + new Date().Format('yyyy-MM-dd hh:mm:ss') + ')')
+        } else {
+          filename += ('(' + that.searchData.date[0] + ' - ' + that.searchData.date[1] + ')')
+        }
+        that.exportPDF(canvas, filename, function(pdf) {
+          import('@/vendor/Export2Excel').then(excel => {
+            excel.export_json_to_excel_multi_sheets({
+              datas: that.$refs.energyStatis.buildExcelData(),
+              filename: filename,
+              callback: function(excel) {
+                import('@/vendor/Export2Zip').then(zip => {
+                  zip.export_files_to_zip([pdf, excel], [filename + '.pdf', filename + '.xlsx'], filename)
+                })
+              }
+            })
+          }).catch(err => {
+            console.log(err)
+          })
+        })
       })
     },
     exportPNG: function(canvas, exportFilename) {
@@ -111,7 +160,7 @@ export default {
         $chartContainer.find(selector).attr('href', canvas.toDataURL())[0].click()
       }
     },
-    exportPDF: function(canvas, exportFilename) {
+    exportPDF: function(canvas, exportFilename, callback) {
       var doc = {}
       var docWidth = Math.floor(canvas.width)
       var docHeight = Math.floor(canvas.height)
@@ -130,7 +179,10 @@ export default {
         })
       }
       doc.addImage(canvas.toDataURL(), 'png', 0, 0)
-      doc.save(exportFilename + '.pdf')
+      callback(doc.output('blob', {
+        filename: exportFilename
+      }))
+      // doc.save(exportFilename + '.pdf')
     }
   }
 }

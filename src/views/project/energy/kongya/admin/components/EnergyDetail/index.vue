@@ -3,20 +3,28 @@
     class="detail-container"
   >
     <el-button class="toggle-btn" @click="dataViewToggle">{{ currentText }}</el-button>
-    <component :is="currentView" />
+    <component :is="currentView" :ref="currentView" :search-data="searchData" />
   </div>
 </template>
 
 <script>
 import Tree from './Tree2'
 import Table from './Table2'
+
 export default {
   name: 'Energy',
   components: { Tree, Table },
+  props: {
+    searchData: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       currentView: 'Tree',
-      currentText: '数据视图'
+      currentText: '数据视图',
+      treeTableData: []
     }
   },
   methods: {
@@ -27,6 +35,36 @@ export default {
       } else {
         this.currentView = 'Tree'
         this.currentText = '数据视图'
+      }
+    },
+    exportData: function() {
+      var treeData = this.$refs[this.currentView].export()
+      this.treeTableData = []
+      if (treeData) {
+        this.getTreeData(treeData)
+      }
+      return {
+        data: this.treeTableData,
+        sheetName: '能耗详情',
+        header: ['名称', '电耗', '电表起始读数', '电表截止读数', '产气量', '气表起始读数', '气表截止读数']
+      }
+    },
+    getTreeData: function(treeData) {
+      var data = []
+      if (treeData && treeData.nodeData) {
+        data.push(treeData.name)
+        data.push(treeData.nodeData.elec)
+        data.push(treeData.nodeData.zeroElec)
+        data.push(treeData.nodeData.currElec)
+        data.push(treeData.nodeData.gas)
+        data.push(treeData.nodeData.zeroGas)
+        data.push(treeData.nodeData.currGas)
+        this.treeTableData.push(data)
+        if (treeData.children && treeData.children.length > 0) {
+          for (var i = 0; i < treeData.children.length; i++) {
+            this.getTreeData(treeData.children[i])
+          }
+        }
       }
     }
   }

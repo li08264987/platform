@@ -1,15 +1,5 @@
 <template>
   <div class="table-page">
-    <div class="table-toobar">
-      <el-form ref="form" :model="searchForm" label-width="120px">
-        <el-form-item label="" :class="'noMargin'">
-          <el-date-picker v-model="searchForm.date" :type="searchForm.dateType" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择时间" />
-          <el-input v-model="searchForm.searchText" placeholder="输入搜索内容" />
-          <el-button class="blue-btn" type="primary" @click="onSearch()">查询</el-button>
-          <el-button class="white-btn" @click="onExport">导出</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
     <div class="table-container">
       <div class="table-title">空压系统分级统计概览</div>
       <el-table
@@ -17,7 +7,7 @@
         :data="tableData"
         row-key="id"
         :default-expand-all="true"
-        height="calc(100% - 75px)"
+        height="calc(100% - 25px)"
         header-row-class-name="table-header"
         style="width: 100%; overflow-y: auto;"
       >
@@ -57,38 +47,51 @@
 <script>
 import { getEnergyTreeData } from '@/api/common'
 export default {
+  props: {
+    searchData: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       type: 'table',
-      searchForm: {
-        type: 'daterange',
-        date: '',
-        dateType: 'daterange',
-        searchText: ''
-      },
       tableData: [],
       loading: true
+    }
+  },
+  watch: {
+    searchData: {
+      deep: true,
+      handler(val) {
+        if (this.loading) {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: '正在查询数据，请等待查询结束后再次查询！'
+          })
+        } else {
+          this.setEnergyTreeTableData({
+            sys: this.$router.currentRoute.name,
+            type: this.type,
+            search: this.searchData.text,
+            startTime: this.searchData.date[0],
+            endTime: this.searchData.date[1]
+          })
+        }
+      }
     }
   },
   mounted() {
     this.setEnergyTreeTableData({
       sys: this.$router.currentRoute.name,
-      type: this.type
+      type: this.type,
+      search: this.searchData.text,
+      startTime: this.searchData.date[0],
+      endTime: this.searchData.date[1]
     })
   },
   methods: {
-    onSearch() {
-      this.setEnergyTreeTableData({
-        sys: this.$router.currentRoute.name,
-        type: this.type,
-        search: this.searchForm.searchText,
-        startTime: this.searchForm.date && this.searchForm.date[0],
-        endTime: this.searchForm.date && this.searchForm.date[1]
-      })
-    },
-    onExport() {
-      console.log(this.searchForm)
-    },
     setEnergyTreeTableData(params) {
       this.loading = true
       getEnergyTreeData(params).then(response => {
@@ -103,6 +106,9 @@ export default {
         })
         this.loading = false
       })
+    },
+    export: function() {
+      return this.tableData[0]
     }
   }
 }

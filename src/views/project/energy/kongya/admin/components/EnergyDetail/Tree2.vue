@@ -15,6 +15,12 @@ import { getEnergyTreeData } from '@/api/common'
 window.html2canvas = html2canvas
 window.$ = $
 export default {
+  props: {
+    searchData: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       loading: true,
@@ -59,8 +65,36 @@ export default {
       }]
     }
   },
+  watch: {
+    searchData: {
+      deep: true,
+      handler(val) {
+        if (this.loading) {
+          this.$message({
+            type: 'warning',
+            duration: 2000,
+            message: '正在查询数据，请等待查询结束后再次查询！'
+          })
+        } else {
+          this.setEnergyTreeData({
+            sys: this.$router.currentRoute.name,
+            type: this.type,
+            search: this.searchData.text,
+            startTime: this.searchData.date[0],
+            endTime: this.searchData.date[1]
+          })
+        }
+      }
+    }
+  },
   mounted() {
-    this.setEnergyTreeData({ sys: this.$router.currentRoute.name })
+    this.setEnergyTreeData({
+      sys: this.$router.currentRoute.name,
+      type: this.type,
+      search: this.searchData.text,
+      startTime: this.searchData.date[0],
+      endTime: this.searchData.date[1]
+    })
   },
   methods: {
     creatChart() {
@@ -73,7 +107,7 @@ export default {
         'zoom': true,
         'direction': 't2b',
         'verticalLevel': 8,
-        'visibleLevel': 5,
+        'visibleLevel': 4,
         'parentNodeSymbol': 'none',
         'toggleSiblingsResp': true,
         'exportButton': false,
@@ -166,6 +200,9 @@ export default {
         $dom.siblings('.title').removeClass('active')
         $dom.hide()
       }
+    },
+    export: function() {
+      return this.orgData
     }
   }
 }
