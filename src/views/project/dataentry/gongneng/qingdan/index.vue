@@ -808,11 +808,11 @@ export default {
     }
   },
   mounted() {
-    this.getNengHaoGaiLan()
-    this.getQingDanJiQun()
-    this.getDuty()
-    this.getDianLi('kyjq', '')
-    this.getDianHaoZhanBi()
+    // this.getNengHaoGaiLan()
+    // this.getQingDanJiQun()
+    // this.getDuty()
+    // this.getDianLi('kyjq', '')
+    // this.getDianHaoZhanBi()
   },
   methods: {
     handleClick(tab, event) {

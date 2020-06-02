@@ -821,11 +821,11 @@ export default {
     }
   },
   mounted() {
-    this.getNengHaoGaiLan()
-    this.getKongYaJiQun()
-    this.getDuty()
-    this.getDianLi('kyjq', '')
-    this.getDianHaoZhanBi()
+    // this.getNengHaoGaiLan()
+    // this.getKongYaJiQun()
+    // this.getDuty()
+    // this.getDianLi('kyjq', '')
+    // this.getDianHaoZhanBi()
     // this.getZQiHao()
   },
   methods: {
