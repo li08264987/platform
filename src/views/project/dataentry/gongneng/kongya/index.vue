@@ -828,6 +828,9 @@ export default {
     // this.getDianHaoZhanBi()
     // this.getZQiHao()
   },
+  activated() {
+    this.$router.replace({ path: '/dataSystem/kongya' })
+  },
   methods: {
     handleClick(tab, event) {
       this.mainTabName = tab.name

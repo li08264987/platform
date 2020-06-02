@@ -553,6 +553,9 @@ export default {
     this.getNengHaoGaiLan()
     this.getKongYaJiQun()
   },
+  activated() {
+    this.$router.replace({ path: '/monitorSystem/kongya' })
+  },
   methods: {
     handleClick(tab, event) {
       this.mainTabName = tab.name
