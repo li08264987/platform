@@ -68,7 +68,9 @@ export default {
       }
     },
     cancelAxios: function() {
-      this.$refs[this.currentView].cancel()
+      if (this.$refs[this.currentView]) {
+        this.$refs[this.currentView].cancel()
+      }
     }
   }
 }

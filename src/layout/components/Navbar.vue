@@ -1,12 +1,14 @@
 <template>
   <div class="navbar">
-    <img
-      class="logo"
-      src="@/assets/tittle/logo.png"
-    >
-    <div style="width:10%;">
-      <p class="tittle-cn">启慧AI+能源系统运管平台</p>
-      <p class="tittle-en">QiHui AI+Energy System Management Platform</p>
+    <div class="sys-title">
+      <img
+        class="logo"
+        src="@/assets/tittle/logo.png"
+      >
+      <div class="word">
+        <p class="tittle-cn">启慧 AI<sup>+</sup> 能源系统运管平台</p>
+        <p class="tittle-en">QiHui AI+Energy System Management Platform</p>
+      </div>
     </div>
     <ul class="tab-ul">
       <li
@@ -25,6 +27,10 @@
     </ul>
     <!-- <div class="right-menu" /> -->
     <div class="tittle-right">
+      <div class="weather">
+        <img :src="weather.icon" :title="weather.detail" alt="暂无图片">
+        <span class="low-temp">{{ weather.lowTemp }}℃</span> ~ <span class="high-temp">{{ weather.highTemp }}℃</span>
+      </div>
       <div class="message">
         <img
           src="../../assets/tittle/message.png"
@@ -55,6 +61,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { getUserInfo } from '@/api/login/user'
+import { getTodayWeather } from '@/api/common'
 export default {
   components: {
   },
@@ -106,6 +113,12 @@ export default {
       userInfor: {
         realName: '',
         userName: ''
+      },
+      weather: {
+        highTemp: '',
+        lowTemp: '',
+        detail: '',
+        icon: ''
       }
     }
   },
@@ -115,6 +128,7 @@ export default {
   },
   mounted() {
     this.getUserInfo()
+    this.getWeather()
     this.active = window.sessionStorage.getItem('currentViewIndex')
     if (this.active === null) {
       this.active = 0
@@ -148,6 +162,18 @@ export default {
       }
       window.sessionStorage.setItem('currentViewIndex', this.active)
     },
+    getWeather() {
+      getTodayWeather({ a: 1 }).then(response => {
+        var data = response.data
+        this.weather = data
+      }).catch(err => {
+        this.$message({
+          type: 'warning',
+          duration: 2000,
+          message: err
+        })
+      })
+    },
     async handleLogOut() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
@@ -157,78 +183,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login-txt{
-  color: whitesmoke;
-  font-weight: bold;
-  margin-left: 0.3em;
-}
-.count-txt{
-  color: white;
-}
-.msg-count{
-  display: flex;
-  flex-direction: column;
-  width: 1.2rem;
-  height: 1.2rem;
-  justify-content: center;
-  align-items: center;
-  background: red;
-  border-radius: 1rem;
-  margin-left: -0.8rem;
-  margin-top: -1.2rem;
-}
-.tittle-right{
-  display: flex;
-  flex-direction:row;
-  width: 15%;;
-}
-.message{
-  display: flex;
-  width: 30%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.avatar{
-  display: flex;
-  width: 70%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-   cursor: pointer;
-}
-.logo {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-}
-.tittle-cn {
-  font-size: 2.4ex;
-  font-weight: bold;
-  width: 300px;
-  left: 75px;
-  position: absolute;
-  top: -5px;
-  color: white;
-}
 .titleicon{
   width: 30px;
   height: 30px;
-}
-.tittle-en {
-  font-size: 0.4ex;
-  width: 300px;
-  left: 75px;
-  position: absolute;
-  top: 40px;
-  color: white;
-}
-.tab-ul {
-  width: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .Main{
   background-image: url("../../assets/tittle/home.png");
@@ -257,35 +214,171 @@ export default {
 .DataEntry{
   background-image: url("../../assets/tittle/maintenance.png");
 }
-.tab-ul .tab-li {
-  width: 100px;
-  height: 70px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: #fff;
-}
-.tab-li {
-  flex-wrap: wrap;
-  div{
-    padding: 0px 10px;
-  }
-}
-.tab-ul .tab-li.active {
-  background: #05189E;
-  border-bottom:3px solid white;
-}
 
 .navbar {
   display: flex;
+  align-items: center;
   height: 70px;
+  min-width: 1280px;
   overflow: hidden;
   position: relative;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   background-image: url("../../assets/tittle/back.png");
   background-size: cover;
+
+  .sys-title {
+    margin-left: 20px;
+    width: 320px;
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    .logo {
+      height: 40px;
+    }
+
+    .word {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 5px;
+
+      .tittle-cn {
+        font-size: 20px;
+        font-weight: bold;
+        width: 260px;
+        white-space: nowrap;
+        color: white;
+        line-height: 18px;
+        padding-bottom: 4px;
+        margin: 0;
+
+        sup {
+          font-size: 14px;
+          top: -0.35em;
+          padding: 0 0 0 1px;
+        }
+      }
+
+      .tittle-en {
+        font-size: 18px;
+        width: 200px;
+        line-height: 10px;
+        white-space: nowrap;
+        color: white;
+        transform: scale(0.63) translateX(-60px);
+        margin: 0;
+      }
+    }
+  }
+
+  .tab-ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 1;
+    flex-grow: 1;
+
+    .tab-li {
+      width: 100px;
+      height: 70px;
+      flex-shrink: 0;
+      flex-grow: 0;
+      flex-wrap: wrap;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: #fff;
+
+      div{
+        padding: 0px 10px;
+      }
+    }
+
+    .tab-li.active {
+      background: #05189E;
+      border-bottom:3px solid white;
+    }
+  }
+
+  .tittle-right{
+    display: flex;
+    width: 320px;
+    flex-direction:row;
+    margin-right: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    .weather {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: white;
+      text-shadow: 0 0 0;
+      margin-right: 20px;
+
+      img {
+        height: 32px;
+        font-size: 14px;
+        color: gray;
+      }
+
+      span.low-temp {
+        margin-left: 8px;
+        margin-right: 3px;
+      }
+
+      span.high-temp {
+        margin-left: 3px;
+      }
+    }
+
+    .message{
+      display: none;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .msg-count{
+        display: flex;
+        flex-direction: column;
+        width: 1.2rem;
+        height: 1.2rem;
+        justify-content: center;
+        align-items: center;
+        background: red;
+        border-radius: 1rem;
+        margin-left: -0.8rem;
+        margin-top: -1.2rem;
+
+        .count-txt{
+          color: white;
+        }
+      }
+    }
+    .avatar{
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      .login-txt{
+        color: whitesmoke;
+        font-weight: bold;
+        margin-left: 0.3em;
+      }
+    }
+  }
 
   .hamburger-container {
     line-height: 46px;

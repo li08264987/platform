@@ -212,7 +212,7 @@ export default {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 70px);
-  min-width: 1630px;
+  min-width: 1280px;
   overflow: auto;
 }
 .tabBar {
@@ -264,7 +264,7 @@ export default {
   }
   .energy-search-form {
     position: absolute;
-    z-index: 99999;
+    z-index: 2000;
     right: 15px;
     top: 8px;
   }

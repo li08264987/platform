@@ -15,3 +15,19 @@ export function getEnergyTreeData(query) {
   })
   return { axiosObj: axiosObj, cancel: cancel }
 }
+
+export function runWeatherUpdate(query) {
+  return request({
+    url: '/weather/test',
+    method: 'post',
+    params: query
+  })
+}
+
+export function getTodayWeather(query) {
+  return request({
+    url: '/weather/getTodayWeather',
+    method: 'post',
+    params: query
+  })
+}
