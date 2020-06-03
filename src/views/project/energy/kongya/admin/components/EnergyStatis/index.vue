@@ -722,7 +722,9 @@ export default {
     }
   },
   mounted() {
-    this.reloadData()
+    if (this.isCurrentView() && sessionStorage.currentView === 'Energy') {
+      this.reloadData()
+    }
   },
   methods: {
     reloadData: function() {
@@ -951,6 +953,7 @@ export default {
       }
       var axios = getEnergyCircleData(params)
       axios.axiosObj.then(response => {
+        console.log('done')
         var data = response.data
         for (var i = 0; i < this.energyCircleData.length; i++) {
           for (var j = 0; j < data.length; j++) {
@@ -1083,6 +1086,28 @@ export default {
       for (var k in this.cancelEnergyCircleAxios) {
         this.cancelEnergyCircleAxios[k].cancel()
       }
+    },
+    isCurrentView: function() {
+      var divs = document.getElementsByClassName(this.$el.className)
+      var result = true
+      if (divs.length > 0) {
+        for (var i = 0; i < divs.length; i++) {
+          var flag = true
+          for (var key in this.$el.dataset) {
+            if (divs[i].dataset[key] === undefined) {
+              flag = false
+              break
+            }
+          }
+          if (!flag) {
+            result = false
+            break
+          }
+        }
+      } else {
+        result = false
+      }
+      return result
     }
   }
 }

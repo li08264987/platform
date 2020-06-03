@@ -18,8 +18,7 @@ const energyRouter = [{
       meta: {
         title: '空压系统',
         roles: ['admin'],
-        icon: 'documentation',
-        affix: true
+        icon: 'documentation'
       }
     }, {
       path: 'qingdan',

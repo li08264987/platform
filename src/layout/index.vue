@@ -79,7 +79,7 @@ export default {
       this.needTagsView = false
       this.sidebarHide = true
     } else {
-      this.needTagsView = true
+      this.needTagsView = false
       this.sidebarHide = false
     }
   },
@@ -96,47 +96,47 @@ export default {
           break
         case 'Monitor':
           this.currentView = 'Monitor'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Energy':
           this.currentView = 'Energy'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'ReportTable':
           this.currentView = 'ReportTable'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Diagnosis':
           this.currentView = 'Diagnosis'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Device':
           this.currentView = 'Device'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Smart':
           this.currentView = 'Smart'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'DataEntry':
           this.currentView = 'DataEntry'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'PlatSetting':
           this.currentView = 'PlatSetting'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = false
           break
         default:
           this.currentView = 'Main'
-          this.needTagsView = true
+          this.needTagsView = false
           this.sidebarHide = true
           break
       }
