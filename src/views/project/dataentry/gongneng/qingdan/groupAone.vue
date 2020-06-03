@@ -677,12 +677,12 @@ export default {
       return monitorapi.getGuZhangColor(type)
     },
     getOrigin(id) {
-      if (!id) return
-      const box = document.getElementById(id + '_1').getBBox()
-      const x = box.x + (box.width / 2)
-      const y = box.y + (box.height / 2)
-      const a = x + 'px' + ' ' + y + 'px'
-      return '-webkit-transform-origin:' + a
+      // if (!id) return
+      // const box = document.getElementById(id + '_1').getBBox()
+      // const x = box.x + (box.width / 2)
+      // const y = box.y + (box.height / 2)
+      // const a = x + 'px' + ' ' + y + 'px'
+      // return '-webkit-transform-origin:' + a
     },
     getClass() {
       return 'zhuanquan'

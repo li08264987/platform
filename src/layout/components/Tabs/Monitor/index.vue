@@ -62,6 +62,12 @@ export default {
         return
       }
     })
+    this.$router.options.routes.push(this.monitorRouter[0])
+    this.$router.options.routes.push(this.monitorRouter[1])
+    this.$router.addRoutes(this.$router.options.routes)
+    this.$router.push({ path: '/monitorSystem/kongya' })
+    this.showBar = true
+
     monitorapi.getSideBar().then(res => {
       // axios.post('/common/getSideBar').then(res => {
       if (res.state === 1) {

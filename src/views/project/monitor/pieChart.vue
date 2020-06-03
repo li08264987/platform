@@ -14,6 +14,10 @@ export default {
       type: String,
       default: 'chart'
     },
+    resize: {
+      type: Number,
+      default: 1
+    },
     width: {
       type: String,
       default: '100%'
@@ -43,6 +47,9 @@ export default {
         this.setOptions(val)
       }
     }
+  },
+  activated() {
+    this.chart.resize()
   },
   mounted() {
     this.$nextTick(() => {

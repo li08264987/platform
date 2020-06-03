@@ -28,7 +28,7 @@
         <el-button>运行回放</el-button>
       </div>
       <el-tabs v-model="activeName" class="tabs" @tab-click="handleClick">
-        <el-tab-pane label="系统" name="first">
+        <el-tab-pane label="全系统" name="first">
           <div style="height:99%;text-align:center">
             <div v-if="false" id="intools">
               <el-button
@@ -65,198 +65,12 @@
             </div>
             <div v-if="showNeibu && mainTabName==='first'" style="height:100%;position:relative;border: 1px dashed #ccc;width: 99%;margin-top:1%">
               <system style="height:96%;width:100%;margin-top:40px;" />
-              <i :class="rightbtn" @click="showHideRight" />
-            </div>
-            <div v-if="showParam" class="rightparam">
-              <div
-                style="height:6%;display:flex;align-items:center;justify-content:center;font-weight:bold"
-              >
-                ZH-10000+离心机通讯参数
-              </div>
-              <div class="righttop">
-                <div
-                  v-for="(element, index) in params"
-                  :key="index"
-                  class="itemdiv"
-                >
-                  <div class="valuediv">{{ element.value }}</div>
-                  <div class="namediv">{{ element.name }}</div>
-                </div>
-              </div>
-              <div class="rightbott">
-                <div
-                  v-for="(element, index) in params2"
-                  :key="index"
-                  class="itemdiv"
-                >
-                  <div class="valuediv">{{ element.value }}</div>
-                  <div class="namediv">{{ element.name }}</div>
-                </div>
-              </div>
-            </div>
-            <div v-if="showDuty" class="leftduty">
-              <div class="dutytitle"><i class="el-icon-s-tools" />运行值班</div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-              <div class="dutytitle"><i class="el-icon-s-open" />维修值班</div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-              <div class="dutytitle"><i class="el-icon-s-custom" />值班领导</div>
-              <div class="dutycontain">
-                <div>程志远</div>
-                <div>010-52886945</div>
-              </div>
-            </div>
-            <div v-if="showVideo" class="content">
-              <div>
-                <div class="condiv Video_1" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_2" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_3" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_4" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_5" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-              <div>
-                <div class="condiv Video_6" />
-                <div class="conbott">
-                  <div class="leftdiv">
-                    <span>一号摄像头</span>
-                    <label>2019/10/01至2020/20/29</label>
-                  </div>
-                  <el-button
-                    type="primary"
-                    @click="showHisVideo"
-                  >查看回放</el-button>
-                </div>
-              </div>
-            </div>
-            <div v-if="showHis" style="display:flex;height:92%">
-              <div class="videoPlay" />
-              <div style="flex:2;height:100%;overflow:auto;height:100%;">
-                <div
-                  class="Video_1"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_2"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_3"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_4"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_5"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-                <div
-                  class="Video_6"
-                  style="width:90%;height:25%;margin-left:5%;margin-bottom:20px;"
-                />
-              </div>
             </div>
           </div>
-        </el-tab-pane>
-        <el-tab-pane label="机组" name="second" style="text-align:center">
-          <el-select v-model="selectvalue2">
-            <el-option
-              v-for="item in deviceoptions"
-              :key="item.CODE"
-              :label="item.NAME"
-              :value="item.CODE"
-            />
-          </el-select>
-          <div v-if="showNeibu && mainTabName==='second'" style="height:92%">
-            <groupone v-if="selectvalue2===deviceoptions[0].CODE" style="height:92%;width:100%" />
-            <grouptwo v-if="selectvalue2===deviceoptions[1].CODE" style="height:92%;width:100%" />
-            <groupthree v-if="selectvalue2===deviceoptions[2].CODE" style="height:92%;width:100%" />
-            <groupfour v-if="selectvalue2===deviceoptions[3].CODE" style="height:92%;width:100%" />
-          </div>
-        </el-tab-pane>
-        <el-tab-pane label="设备" name="third" style="text-align:center">
-          <el-select v-model="selectvalue3">
-            <el-option
-              v-for="item in kyjoptions"
-              :key="item.CODE"
-              :label="item.NAME"
-              :value="item.CODE"
-            />
-          </el-select>
-          <kyj v-if="showNeibu && mainTabName==='third' && selectvalue3.indexOf('kylx')!==-1" style="height:92%;width:100%" :params="kyjparam" />
-          <lgkyj v-if="showNeibu && mainTabName==='third' && selectvalue3.indexOf('kylg')!==-1" style="height:92%;width:100%" :params="kyjparam" />
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div v-if="showright" class="rightparam" style="flex:1">
+    <div v-if="false" class="rightparam" style="flex:1">
       <rightpanel :gngldata="gngldata" :maintabname="mainTabName" :params="kyjparam" />
     </div>
   </div>
@@ -264,32 +78,18 @@
 <script>
 import kongYsSys from '@/api/monitor/kongYaSys'
 import kongyaji from '@/api/monitor/kongyaji'
-// import lxkongyaji from '@/api/monitor/lxkongyaji'
+import lxkongyaji from '@/api/monitor/lxkongyaji'
 import kongyajizu from '@/api/monitor/kongyajizu'
 import runInfo from '@/views/project/monitor/runInfo'
 import infoScan from '@/views/project/monitor/infoScan'
 import monitorapi from '@/api/monitor/monitor'
-import kyj from '@/views/project/monitor/gongneng/kongya/kongyaji'
-import lgkyj from '@/views/project/monitor/gongneng/kongya/lgkongyaji'
-import system from '@/views/project/monitor/gongneng/kongya/system'
-import groupone from '@/views/project/monitor/gongneng/kongya/groupone'
-import grouptwo from '@/views/project/monitor/gongneng/kongya/grouptwo'
-import groupthree from '@/views/project/monitor/gongneng/kongya/groupthree'
-import groupfour from '@/views/project/monitor/gongneng/kongya/groupfour'
-import rightpanel from '@/views/project/monitor/rightPanel'
+import system from '@/views/project/dataentry/gongneng/dianli/system'
 export default {
   name: 'MonitorView',
   components: {
     runInfo,
     infoScan,
-    kyj,
-    lgkyj,
-    groupone,
-    grouptwo,
-    groupthree,
-    groupfour,
-    system,
-    rightpanel
+    system
   },
   data() {
     return {
@@ -298,32 +98,23 @@ export default {
       kongyajizu: kongyajizu,
       activeName: 'first',
       gyActiveName: 'first',
+      pjvalue: 3,
+      pjtexts: ['极差', '略差', '一般', '良好', '优秀'],
+      wh: '0 0 1600 850',
       mainTabName: 'first',
       showright: true,
       rightbtn: 'el-icon-caret-right',
-      gngldata: {
-        'ky_nyzx_dlzf1_kylwg_cyldwd1_ldwd': 0,
-        'ky_nyzx_dlzf1_kylwg_cyldwd2_ldwd': 0,
-        'ky_nyzx_dlzf1_kylwg_cyllj1_ljlldw': 0,
-        'ky_nyzx_dlzf1_kylwg_cyllj1_ljllgw': 0,
-        'ky_nyzx_dlzf1_kylwg_cyllj1_ssll': 0,
-        'ky_nyzx_dlzf1_kylwg_cyllj2_ljlldw': 0,
-        'ky_nyzx_dlzf1_kylwg_cyllj2_ljllgw': 0,
-        'ky_nyzx_dlzf1_kylwg_cyllj2_ssll': 0,
-        'ky_nyzx_dlzf1_kylwg_cyyl0101_yxyl': 0,
-        'ky_nyzx_dlzf1_kylwg_cyyl0102_yxyl': 0,
-        'ky_nyzx_dlzf1_kylwg_gyldwd1_ldwd': 0,
-        'ky_nyzx_dlzf1_kylwg_gyldwd2_ldwd': 0,
-        'ky_nyzx_dlzf1_kylwg_gyllj1_ljlldw': 0,
-        'ky_nyzx_dlzf1_kylwg_gyllj1_ljllgw': 0,
-        'ky_nyzx_dlzf1_kylwg_gyllj1_ssll': 0,
-        'ky_nyzx_dlzf1_kylwg_gyllj2_ljlldw': 0,
-        'ky_nyzx_dlzf1_kylwg_gyllj2_ljllgw': 0,
-        'ky_nyzx_dlzf1_kylwg_gyllj2_ssll': 0,
-        'ky_nyzx_dlzf1_kylwg_gyyl0101_yxyl': 0,
-        'ky_nyzx_dlzf1_kylwg_gyyl0102_yxyl': 0,
-        'ky_nyzx_dlzf1_kylwg_yl0101_yxyl': 0
-      },
+      duties: [],
+      zksys: [
+        {
+          NAME: '1栋车间',
+          CODE: 'cj1'
+        }
+      ],
+      dianli: 0,
+      qihao: 0,
+      danhao: 0,
+      gngldata: {},
       options: [
         {
           value: 'year',
@@ -338,34 +129,7 @@ export default {
           label: '日'
         }
       ],
-      deviceoptions: [
-        {
-          CODE: 'one',
-          NAME: '1#空压机组流程图'
-        },
-        {
-          CODE: 'two',
-          NAME: '2#空压机组流程图'
-        },
-        {
-          CODE: 'three',
-          NAME: '3#空压机组流程图'
-        },
-        {
-          CODE: 'four',
-          NAME: '4#空压机组流程图'
-        }
-      ],
-      kyjoptions: [
-        {
-          CODE: 'kylx',
-          NAME: '离心空压机'
-        },
-        {
-          CODE: 'kylg',
-          NAME: '螺杆空压机'
-        }
-      ],
+      zksubsys: [],
       paramOptions: [
         {
           value: 'temp',
@@ -388,7 +152,8 @@ export default {
       dateinput: '',
       typeinput: '',
       selectvalue: 'one',
-      selectvalue2: '',
+      zksubsyssel: '',
+      selectSys: '',
       selectvalue3: 'kylx',
       showNeibu: true,
       showVideo: false,
@@ -397,6 +162,21 @@ export default {
       showHis: false,
       showParamName: '显示数据',
       showDutyName: '值班显示',
+      piedata: {
+        data: [
+          { value: 0, name: '空压机组' },
+          { value: 0, name: '冷却塔组' },
+          { value: 0, name: '冷却泵组' },
+          { value: 0, name: '冷干机组' },
+          { value: 0, name: '其他' }
+        ]
+      },
+      sumdianhao: 0,
+      tbky: 0,
+      tblgj: 0,
+      tblqb: 0,
+      tblt: 0,
+      tbqt: 0,
       paramss: [
         {
           name: '常压流量',
@@ -541,20 +321,29 @@ export default {
   },
   computed: {
     kyjparam() {
-      return ['ky', '', this.selectvalue2, this.selectvalue3, this.mainTabName]
+      return ['zk', '', this.selectvalue2, this.selectvalue3, this.mainTabName]
     }
   },
   watch: {
-    selectvalue2(val) {
-      this.getKongYaJi()
+    selectvalue3(val) {
+      if (val === 'one') {
+        this.kongyaji = kongyaji
+        this.wh = '0 0 1600 850'
+      } else {
+        this.kongyaji = lxkongyaji
+        this.wh = '0 0 1266 773'
+      }
+    },
+    selectSys(val) {
+      this.getZhenKongSubSys(val)
     }
   },
   mounted() {
     this.getNengHaoGaiLan()
-    this.getKongYaJiQun()
-  },
-  activated() {
-    this.$router.replace({ path: '/monitorSystem/kongya' })
+    this.getZhenKongSys()
+    this.getDuty()
+    this.getDianLi('kyjq', '')
+    // this.getDianHaoZhanBi()
   },
   methods: {
     handleClick(tab, event) {
@@ -581,29 +370,80 @@ export default {
         console.log(err)
       })
     },
-    getKongYaJiQun() {
-      monitorapi.getKongYaJiQun().then(res => {
+    getZhenKongSys() {
+      monitorapi.getZhenKongSys().then(res => {
         if (res.state === 1) {
-          this.deviceoptions = res.data
-          this.selectvalue2 = this.deviceoptions[0].CODE
+          this.zksys = res.data
+          this.selectSys = this.zksys[0].CODE
         }
       }).catch(err => {
         console.log(err)
-        this.selectvalue2 = this.deviceoptions[0].CODE
+        this.zksys = this.zksys[0].CODE
       })
     },
-    getKongYaJi() {
-      const self = this
-      monitorapi.getKongYaJi({
-        'kyjq': self.selectvalue2
+    getZhenKongSubSys(regional) {
+      monitorapi.getZhenKongSubSys({
+        'regional': regional
       }).then(res => {
         if (res.state === 1) {
-          this.kyjoptions = res.data
-          this.selectvalue3 = this.kyjoptions[0].CODE
+          this.zksubsys = res.data
+          this.zksubsyssel = this.zksubsys[0].CODE
         }
       }).catch(err => {
         console.log(err)
-        this.selectvalue3 = this.kyjoptions[0].CODE
+        this.zksubsyssel = this.zksubsys[0].CODE
+      })
+    },
+    getDuty() {
+      monitorapi.getDuty().then(res => {
+        if (res.state === 1) {
+          this.duties = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getDianLi(kyjq, device) {
+      monitorapi.getDianLi({
+        'kyjq': kyjq,
+        'device': device
+      }).then(res => {
+        if (res.state === 1) {
+          this.dianli = res.data.toFixed(0)
+          this.qihao = res.qhdata.toFixed(0)
+          this.danhao = res.qhdata === 0 ? 0 : (res.data / res.qhdata).toFixed(2)
+          this.pjvalue = res.pingfen
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getZQiHao() {
+      monitorapi.getZQiHao().then(res => {
+        if (res.state === 1) {
+          this.qihao = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    getDianHaoZhanBi() {
+      monitorapi.getDianHaoZhanBi().then(res => {
+        if (res.state === 1) {
+          this.piedata.data[0].value = res.kyvalue
+          this.piedata.data[1].value = res.ltvalue
+          this.piedata.data[2].value = res.lqbvalue
+          this.piedata.data[3].value = res.lgjvalue
+          this.piedata.data[4].value = res.qtvalue
+          this.sumdianhao = res.sumvalue
+          this.tbky = res.tbky.toFixed(0)
+          this.tblgj = res.tblgj.toFixed(0)
+          this.tblqb = res.tblqb.toFixed(0)
+          this.tblt = res.tblt.toFixed(0)
+          this.tbqt = res.tbqt.toFixed(0)
+        }
+      }).catch(err => {
+        console.log(err)
       })
     },
     showHideRight() {
