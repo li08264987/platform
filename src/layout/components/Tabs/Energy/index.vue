@@ -24,7 +24,6 @@ export default {
     ...mapGetters(['sidebar', 'energySidebar'])
   },
   beforeCreate() {
-    this.$router.push({ path: '/energySystem' })
   },
   created() {
     if (!this.sidebar.opened) this.$store.dispatch('app/toggleSideBar')
@@ -33,10 +32,10 @@ export default {
 
   },
   destroyed() {
-
+    this.$refs.appMain.cancelAxios()
   },
   activated() {
-    this.$router.push({ path: '/energySystem' })
+    this.$router.replace({ path: '/energySystem' })
     this.key = Math.random()
   },
   deactivated() {

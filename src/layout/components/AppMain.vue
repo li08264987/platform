@@ -1,7 +1,7 @@
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
-      <keep-alive :include="cachedViews">
+      <keep-alive>
         <router-view :key="key" ref="routerView" />
       </keep-alive>
     </transition>
@@ -14,10 +14,20 @@ export default {
   name: 'AppMain',
   components: {
   },
+  mounted() {
+
+  },
+  destroyed() {
+    if (!this.$refs.routerView &&
+      this.$children.length > 0 &&
+      this.$children[0].$children.length > 0 &&
+      this.$children[0].$children[0].$children.length > 2 &&
+      typeof this.$children[0].$children[0].$children[2].cancelAxios === 'function'
+    ) {
+      this.$children[0].$children[0].$children[2].cancelAxios()
+    }
+  },
   computed: {
-    cachedViews() {
-      return this.$store.state.tagsView.cachedViews
-    },
     key() {
       return this.$route.path
     },
