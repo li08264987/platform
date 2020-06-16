@@ -248,8 +248,8 @@ export default {
         this.pageRequest = data.pageRequest
       }
       this.pageRequest['filterUserName'] = this.searchForm.searchText
-      this.pageRequest['startTime'] = this.searchForm.date === null ? null : this.searchForm.date[0]
-      this.pageRequest['endTime'] = this.searchForm.date === null ? null : this.searchForm.date[1]
+      this.pageRequest['startTime'] = (this.searchForm.date === null || this.searchForm.date === '') ? null : this.searchForm.date[0]
+      this.pageRequest['endTime'] = (this.searchForm.date === null || this.searchForm.date === '') ? null : this.searchForm.date[1]
       getDutyList(this.pageRequest).then(res => {
         this.pageResult.content = res.dutyList
         this.pageResult.totalSize = res.dutyListNumber
@@ -285,8 +285,8 @@ export default {
     onExport: function() {
       const param = {
         filterUserName: this.searchForm.searchText,
-        startTime: this.searchForm.date === null ? null : this.searchForm.date[0],
-        endTime: this.searchForm.date === null ? null : this.searchForm.date[1]
+        startTime: (this.searchForm.date === null || this.searchForm.date === '') ? null : this.searchForm.date[0],
+        endTime: (this.searchForm.date === null || this.searchForm.date === '') ? null : this.searchForm.date[1]
       }
       fetchAllData(param).then((res) => {
         this.downloadLoading = true
