@@ -244,14 +244,22 @@ export default {
         name: '常压露点平均温度',
         value: 378,
         unit: '℃'
-      }]
+      }],
+      interval: null
     }
   },
   created() {
-    setInterval(this.getGuaPaiDataKY, 300000)
+    this.interval = setInterval(this.getGuaPaiDataKY, 5000)
   },
   mounted() {
     this.getGuaPaiDataKY()
+  },
+  beforeDestroy() {
+    console.log('beforeDestroy')
+    clearInterval(this.interval)
+  },
+  destroyed() {
+    console.log('destroyed')
   },
   methods: {
     getGuaPaiDataKY() {

@@ -183,8 +183,8 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  background: rgba(52,24,171,0.20);
-  border: 1px solid #3418AB;
+  background: rgba(24,28,171,0.5);
+  border: 1px solid rgba(24,25,171,1);
   box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
   border-radius: 4px;
   flex-shrink: 0;
@@ -207,7 +207,8 @@ export default {
     .logo{
         width: 0.2vw;
         height: 1vw;
-        background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
+        //background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
+        background-color: #FFFFFF;
         margin-left: 1vw;
         margin-top: 0.8vw;
         margin-right: 0.5vw;
@@ -216,7 +217,7 @@ export default {
       margin-top: 0.9vw;
       font-family: MicrosoftYaHeiUISemibold;
       font-size: 0.98vw;
-      color: #C8D6FE;
+      color: #FFF;
       letter-spacing: 0;
       line-height:0.8vw;
     }
@@ -234,7 +235,7 @@ export default {
       .text{
         font-family: MicrosoftYaHeiUI;
         font-size: 0.75vw;
-        color: #D6E4FF;
+        color: #fff;
         letter-spacing: 0;
         line-height: 0.7vw;
         margin-bottom: 0.7vw;
@@ -252,7 +253,7 @@ export default {
       .text{
         font-family: MicrosoftYaHeiUI;
         font-size: 0.75vw;
-        color: #D6E4FF;
+        color: #fff;
         letter-spacing: 0;
         line-height: 0.7vw;
         margin-bottom: 0.7vw;

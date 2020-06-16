@@ -59,6 +59,9 @@ export default {
       }
     }
   },
+  activated() {
+    this.chart.resize()
+  },
   mounted() {
     this.$nextTick(() => {
       this.initChart()
@@ -117,7 +120,7 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#C8D6FE'
+              color: '#fff'
             }
           }
         },
@@ -127,7 +130,7 @@ export default {
           axisLine: {
             show: false,
             lineStyle: {
-              color: '#C8D6FE'
+              color: '#fff'
             }
           },
           axisTick: {
@@ -135,7 +138,7 @@ export default {
           },
           axisLabel: {
             show: true,
-            color: '#C8D6FE',
+            color: '#fff',
             textStyle: {
               fontSize: 16
             }
@@ -152,7 +155,7 @@ export default {
           label: {
             show: false,
             position: 'right',
-            color: '#C8D6FE',
+            color: '#fff',
             fontSize: 16,
             formatter: function(value) {
               return value.data + '%'

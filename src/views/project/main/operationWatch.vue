@@ -262,8 +262,8 @@ export default {
     display: flex;
     flex-direction: column;
     position: relative;
-    background: rgba(52,24,171,0.20);
-    border: 1px solid #3418AB;
+    background: rgba(24,28,171,0.5);
+    border: 1px solid rgba(24,25,171,1);
     box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
     border-radius: 4px;
     width: 100%;

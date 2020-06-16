@@ -129,11 +129,11 @@ export default {
         title: {
           text: '实时产量：' + realTimeData + unit,
           textStyle: {
-            color: '#9FA8DA',
+            color: '#FFF',
             fontSize: '18'
           },
           subtextStyle: {
-            color: '#90979c',
+            color: '#FFF',
             fontSize: '16'
           },
           right: '5%',
@@ -144,16 +144,16 @@ export default {
           formatter: function(param) {
             var html = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#2F54EB;"></span>' + param.name + '：' + param.value
             return html
-          }
-          /* axisPointer: {
+          },
+          axisPointer: {
             label: {
-              show: true
+              show: false
             },
             type: 'cross',
             crossStyle: {
               color: '#999'
             }
-          } */
+          }
         },
         grid: {
           left: '13%',
@@ -178,7 +178,7 @@ export default {
             },
             axisLabel: {
               textStyle: {
-                color: '#9FA8DA',
+                color: '#FFF',
                 fontSize: 14
               },
               formatter: (value) => {
@@ -195,7 +195,7 @@ export default {
             axisLine: {
               lineStyle: {
                 type: 'solid',
-                color: '#2642BB'
+                color: '#FFF'
               }
             }
           }
@@ -209,13 +209,13 @@ export default {
             interval: 50,
             axisLabel: {
               textStyle: {
-                color: '#9FA8DA',
+                color: '#FFF',
                 fontSize: 14,
                 fontFamily: 'Bebas'
               }
             },
             nameTextStyle: {
-              color: '#9FA8DA',
+              color: '#FFF',
               fontSize: 14
             },
             splitLine: {
@@ -235,7 +235,7 @@ export default {
             data: dataList,
             itemStyle: {
               normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                /* color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                   offset: 0.18,
                   color: '#2F54EB'
                 },
@@ -243,13 +243,14 @@ export default {
                   offset: 1.0,
                   color: 'rgba(61,59,234,0.00)'
                 }
-                ])
+                ]) */
+                color: '#7675FF'
               }
             },
             label: {
               show: true,
               position: 'top',
-              color: '#B7B6FF',
+              color: '#FFF',
               fontSize: 14
             }
           },

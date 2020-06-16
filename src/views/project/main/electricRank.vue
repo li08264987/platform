@@ -330,7 +330,7 @@ export default {
       padding-right: 1vw;
       background-color: transparent;
       border: none;
-      color: #C8D6FE;
+      color: #FFF;
       font-size: 0.85vw;
       height: 2vw;
         line-height: 2vw;
@@ -364,7 +364,7 @@ export default {
       border: unset;
       width: 100%;
       .el-radio-button__inner{
-        color: #B5BFF6;
+        color: #FFF;
         background-color: rgba(0,0,0,0);
         border-top: 1px solid #243B9E;
         border-bottom: 1px solid #243B9E;
@@ -389,8 +389,11 @@ export default {
       border-bottom: 1px solid #243B9E;
       .el-table{
           background-color:transparent;
-          border-color: #243B9E;
+          border-color: #17257A;
           height: 100%;
+          .el-table__header{
+            background-color: rgba(24,28,171,0.5);
+          }
       }
       .el-table--border::after, .el-table--group::after, .el-table::before{
           background-color:unset;
@@ -398,7 +401,7 @@ export default {
       .el-table td,.el-table th{
           padding: 0.3vw 0;
           /* height: 2.2vw; */
-          border-color: #243B9E;
+          border-color: #17257A;
 
       }
       .el-table th{
@@ -409,9 +412,9 @@ export default {
       }
 
       .el-table tr{
-          border-color: #243B9E;
+          border-color: #17257A;
           background-color:transparent;
-          color:  #9FA8DA;
+          color:  #FFF;
           font-size: 0.8vw;
       }
 
@@ -465,8 +468,9 @@ export default {
   flex-shrink: 0;
   flex-grow: 0;
   margin-top: 1vw;
-  background: rgba(52,24,171,0.20);
-  border: 1px solid #3418AB;
+  background: rgba(24,28,171,0.5);
+  border: 1px solid rgba(24,25,171,1);
+  border-radius: 4px;
   box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
   .first-rows{
     display:flex;
@@ -486,7 +490,8 @@ export default {
     .logo{
         width: 0.2vw;
         height: 1vw;
-        background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
+        //background-image: linear-gradient(180deg, #4928D4 0%, #3418AB 100%);
+        background-color: #FFFFFF;
         margin-left: 1vw;
         margin-top: 0.8vw;
         margin-right: 0.5vw;
@@ -495,7 +500,7 @@ export default {
       margin-top: 0.9vw;
       font-family: MicrosoftYaHeiUISemibold;
       font-size: 0.98vw;
-      color: #C8D6FE;
+      color: #FFF;
       letter-spacing: 0;
       line-height:0.8vw;
     }

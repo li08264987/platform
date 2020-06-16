@@ -33,9 +33,7 @@
       <div id="middle-container">
         <div class="project-name">木林森建筑能源系统运管平台驾驶舱</div>
         <div class="safe-day">
-          <div class="line" />
           安全运行<span>{{ safeDays }}</span>天
-          <div class="line" />
         </div>
 
         <gua-pai />
@@ -229,7 +227,7 @@ export default {
           border: none;
           color: #C8D6FE;
           font-size: 0.85vw;
-          height: 1.7vw;
+          height: 1.5vw;
           line-height: 2vw;
           border: 1px solid #3418AB;
           }
@@ -264,7 +262,7 @@ export default {
           border: none;
           color: #C8D6FE;
           font-size: 0.85vw;
-          height: 1.7vw;
+          height: 1.5vw;
           line-height: 2vw;
           border: 1px solid #3418AB;
           }
@@ -335,6 +333,7 @@ export default {
       padding-left: 1vw;
       padding-top: 2.5vw;
       padding-bottom: 1vw;
+      z-index: 2;
     }
     #middle-container{
       width: 0;
@@ -347,6 +346,7 @@ export default {
       display: flex;
       flex-direction: column;
       position: relative;
+      z-index: 1;
       .line{
         height: 0.05vw;
         width: 22vw;
@@ -357,7 +357,7 @@ export default {
       }
       .project-name{
         font-size: 1.5vw;
-        color: #ADC6FF;
+        color: #FFF;
         letter-spacing: 0.1vw;
         text-align: center;
         line-height: 3vw;
@@ -368,7 +368,7 @@ export default {
       .safe-day{
         font-family: MicrosoftYaHeiUI;
         font-size: 1.3vw;
-        color: #7F7DFE;
+        color: #FFF;
         letter-spacing: 1.04px;
         text-align: center;
         line-height: 3vw;
@@ -377,6 +377,9 @@ export default {
         flex-shrink: 0;
         flex-grow: 0;
         height: 3vw;
+        width: 27vw;
+        margin-left: 13vw;
+        background: linear-gradient(270deg,rgba(52,24,171,0) 0%,rgba(52,24,171,1) 50%,rgba(52,24,171,0) 100%);
       }
     }
     #right-container{
@@ -390,6 +393,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      z-index: 2;
     }
   }
 }

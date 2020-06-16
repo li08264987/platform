@@ -78,13 +78,13 @@ export default {
           subtext: '故障报警总数\n（件）',
           textAlign: 'center',
           textStyle: {
-            color: '#D6E4FF',
+            color: '#fff',
             fontStyle: 'normal',
             fontSize: this.cursor * 36,
             fontFamily: 'Bebas'
           },
           subtextStyle: {
-            color: '#D6E4FF',
+            color: '#fff',
             fontStyle: 'normal',
             fontWeight: 'normal',
             fontSize: this.cursor * 14,

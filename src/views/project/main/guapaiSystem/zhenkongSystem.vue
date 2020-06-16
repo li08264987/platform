@@ -322,36 +322,36 @@ export default {
     }
     .pic{
       &-yidonyipei{
-        bottom: 11vw;
-        left: 10vw;
+        bottom: 4vw;
+        left: 3vw;
       }
       &-yidongerpei{
-        bottom: 17vw;
-        left: 9vw;
+        bottom: 9vw;
+        left: 1vw;
       }
       &-yidongsanpei{
-        bottom: 19vw;
-        left: 24vw;
+        bottom: 14vw;
+        left: 21vw;
       }
       &-yidongsipei{
-        bottom: 22vw;
-        left: 22vw;
+        bottom: 18vw;
+        left: 18vw;
       }
       &-erdongyipei{
-        bottom: 21vw;
-        left: 7vw;
+        bottom: 16vw;
+        left: -3vw;
       }
       &-erdongerpei{
-        bottom: 24vw;
-        left: 6vw;
+        bottom: 19vw;
+        left: -6vw;
       }
       &-wudongyipei{
-        bottom: 35vw;
-        right: 13vw;
+        bottom: 37vw;
+        right: 10vw;
       }
       &-wudongerpei{
-        bottom: 29vw;
-        right: 9vw;
+        bottom: 35vw;
+        right: 7vw;
       }
     }
     .line{
@@ -409,36 +409,36 @@ export default {
         }
     }
     .yidonyipei{
-      bottom: 5vw;
-      left: 20.9vw;
+      bottom: 2vw;
+      left: 9vw;
     }
     .yidongerpei{
-      bottom: 14vw;
-      left: 12.5vw;
+      bottom: 11vw;
+      left: 7vw;
     }
     .yidongsanpei{
-      bottom: 18vw;
-      left: 32vw;
+      bottom: 12vw;
+      left: 28.3vw;
     }
     .yidongsipei{
-      bottom: 28vw;
+      bottom: 21vw;
       left: 29.3vw;
     }
     .erdongyipei{
-      bottom: 24vw;
-      left: 13vw;
+      bottom: 19vw;
+      left: 4vw;
     }
     .erdongerpei{
-      bottom: 33vw;
-      left: 9vw;
+      bottom: 27vw;
+      left: 3.7vw;
     }
     .wudongyipei{
-      bottom: 40vw;
-      right: 17vw;
+      bottom: 37vw;
+      right: 19.5vw;
     }
     .wudongerpei{
-      bottom: 24vw;
-      right: 0vw;
+      bottom: 30vw;
+      right: 12vw;
     }
 }
 </style>

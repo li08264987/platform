@@ -1,10 +1,7 @@
 <template>
   <div class="energy-state">
     <div class="first-row">
-      <div class="title">
-        <div class="logo" />
-        <span>平台信息总览</span>
-      </div>
+      平台信息总览
       <el-select v-show="false" v-model="energySelect.selectedTime.label" :popper-append-to-body="false" placeholder="请选择" class="energy-select" @change="changeMethod">
         <el-option
           v-for="item in energySelect.energyTimeTypes"
@@ -93,7 +90,7 @@
       </div>
 
       <div class="row row-3" style="margin-bottom: unset;color:#D6E4FF;padding: 1vw 0vw;padding-right:1vw;display:flex;justify-content: space-between;">
-        <span style="margin-right: 2vw;">运行评级</span>
+        <span style="margin-right: 2vw;color:#fff;">运行评级</span>
         <el-rate
           v-model="rateValue"
           :colors="rateColors"
@@ -312,8 +309,8 @@ export default {
 
 .energy-state{
     position: relative;
-    background: rgba(52,24,171,0.20);
-    border: 1px solid #3418AB;
+    background: rgba(24,28,171,0.5);
+    border: 1px solid rgba(24,25,171,1);
     box-shadow: inset 0 1px 33px 0 rgba(52,24,171,0.50);
     border-radius: 4px;
     width: 100%;
@@ -330,6 +327,11 @@ export default {
       width: 100%;
       display:flex;
       flex-direction:row;
+      color: #fff;
+      font-family: MicrosoftYaHeiUISemibold;
+      font-size: 0.98vw;
+      background-color: rgba(24,28,171,0.5);
+      padding: 0.4vw 8vw;
     }
     .title{
       display: flex;
@@ -349,7 +351,7 @@ export default {
         margin-top: 0.9vw;
         font-family: MicrosoftYaHeiUISemibold;
         font-size: 0.98vw;
-        color: #C8D6FE;
+        color: #FFF;
         letter-spacing: 0;
         line-height:0.8vw;
       }
@@ -390,7 +392,7 @@ export default {
           .left-number{
             width: 5.7vw;
             font-size: 1.5vw;
-            color: #D6E4FF;
+            color: #fff;
             letter-spacing: 0;
             line-height: 0.8vw;
           }
@@ -411,7 +413,7 @@ export default {
             }
             .percent{
               font-size: 0.9vw;
-              color: #D6E4FF;
+              color: #fff;
               letter-spacing: 0;
               line-height: 1.2vw;
             }
@@ -423,7 +425,7 @@ export default {
           .left-text, .right-text{
             font-family: MicrosoftYaHeiUI;
             font-size: 0.5vw;
-            color: #9FA8DA;
+            color: #fff;
             letter-spacing: 0;
             line-height: 0.9vw;
           }
@@ -442,7 +444,7 @@ export default {
           .left-number{
             width: 5.7vw;
             font-size: 1.5vw;
-            color: #D6E4FF;
+            color: #fff;
             letter-spacing: 0;
             line-height: 0.8vw;
           }
@@ -463,7 +465,7 @@ export default {
             }
             .percent{
               font-size: 0.9vw;
-              color: #D6E4FF;
+              color: #fff;
               letter-spacing: 0;
               line-height: 1.2vw;
             }
@@ -475,7 +477,7 @@ export default {
           .left-text, .right-text{
             font-family: MicrosoftYaHeiUI;
             font-size: 0.5vw;
-            color: #9FA8DA;
+            color: #fff;
             letter-spacing: 0;
             line-height: 0.9vw;
           }
