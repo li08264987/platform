@@ -6,8 +6,8 @@
         src="@/assets/tittle/logo.png"
       >
       <div class="word">
-        <p class="tittle-cn">启慧 AI<sup>+</sup> 能源系统运管平台</p>
-        <p class="tittle-en">QiHui AI+Energy System Management Platform</p>
+        <p class="tittle-cn">木林森能源系统运管平台</p>
+        <p class="tittle-en">Mulinsen Smart Energy Platform</p>
       </div>
     </div>
     <ul class="tab-ul">
@@ -266,6 +266,7 @@ export default {
         font-size: 18px;
         width: 200px;
         line-height: 10px;
+        letter-spacing: 3px;
         white-space: nowrap;
         color: white;
         transform: scale(0.63) translateX(-60px);
