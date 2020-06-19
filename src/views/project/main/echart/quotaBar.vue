@@ -60,7 +60,9 @@ export default {
     }
   },
   activated() {
-    this.chart.resize()
+    if (this.chart !== null) {
+      this.chart.resize()
+    }
   },
   mounted() {
     this.$nextTick(() => {

@@ -16,6 +16,7 @@ import energyRouter from './project/energy/energy'
 import reportTableRouter from './project/reportTable/reportTable'
 import platformSettingRouter from './project/platSetting/platSetting'
 import smartDiagnoseRouter from './project/diagnosis/diagnose'
+import smartTableRouter from './project/smartTable/smartTable'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -141,6 +142,7 @@ export const energyRouters = energyRouter
 // export const monitorRouters = monitorRouter
 export const reportTableRouters = reportTableRouter
 export const platSettingRouters = platformSettingRouter
+export const smartTableRouters = smartTableRouter
 /**
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
@@ -407,7 +409,7 @@ export const asyncRoutes = [
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters, smartDiagnoseRouters)
+  routes: constantRoutes.concat(energyRouters, reportTableRouters, platSettingRouters, smartDiagnoseRouters, smartTableRouters)
 })
 
 const router = createRouter()

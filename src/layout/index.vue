@@ -25,6 +25,7 @@ import {
   Diagnosis,
   Device,
   Smart,
+  SmartTable,
   PlatSetting
 } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
@@ -43,6 +44,7 @@ export default {
     Diagnosis,
     Device,
     Smart,
+    SmartTable,
     PlatSetting
   },
   mixins: [ResizeMixin],
@@ -131,6 +133,11 @@ export default {
           break
         case 'PlatSetting':
           this.currentView = 'PlatSetting'
+          this.needTagsView = false
+          this.sidebarHide = false
+          break
+        case 'SmartTable':
+          this.currentView = 'SmartTable'
           this.needTagsView = false
           this.sidebarHide = false
           break

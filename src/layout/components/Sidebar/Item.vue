@@ -10,10 +10,14 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   render(h, context) {
-    const { icon, title } = context.props
+    const { icon, title, disabled } = context.props
     const vnodes = []
 
     if (icon) {
@@ -22,6 +26,10 @@ export default {
 
     if (title) {
       vnodes.push(<span slot='title'>{(title)}</span>)
+    }
+
+    if (disabled) {
+      vnodes.push(<svg-icon icon-class={'menuLock'}/>)
     }
     return vnodes
   }

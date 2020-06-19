@@ -106,6 +106,10 @@ export default {
           view: 'Smart'
         },
         {
+          type: '智能报表',
+          view: 'SmartTable'
+        },
+        {
           type: '平台管理',
           view: 'PlatSetting'
         }
@@ -213,6 +217,9 @@ export default {
 }
 .DataEntry{
   background-image: url("../../assets/tittle/maintenance.png");
+}
+.SmartTable{
+  background-image: url("../../assets/tittle/SmartTable.png");
 }
 
 .navbar {

@@ -18,6 +18,7 @@ const getters = {
   reportTable_routes: state => state.permission.reportTableRoutes,
   platSetting_routes: state => state.permission.platformSettingRoutes,
   smartDiagnose_routes: state => state.permission.smartDiagnoseRoutes,
+  smartTable_routes: state => state.permission.smartTableRoutes,
   errorLogs: state => state.errorLog.logs,
   currentView: state => state.settings.currentView,
   mainTimeType: state => state.settings.mainTimeType,

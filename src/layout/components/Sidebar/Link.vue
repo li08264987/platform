@@ -14,6 +14,10 @@ export default {
     to: {
       type: String,
       required: true
+    },
+    disabled: {
+      type: Boolean,
+      required: false
     }
   },
   methods: {
@@ -26,9 +30,21 @@ export default {
           rel: 'noopener'
         }
       }
-      return {
+
+      /* return {
         is: 'router-link',
         to: url
+      } */
+      if (this.disabled) {
+        return {
+          is: 'router-link',
+          to: ''
+        }
+      } else {
+        return {
+          is: 'router-link',
+          to: url
+        }
       }
     }
   }
