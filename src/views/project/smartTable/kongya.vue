@@ -35,6 +35,12 @@
       <div class="title">
         <div class="logo" />
         <span>数据列表</span>
+        <div class="title-right">
+          <el-select v-model="template.label" placeholder="请选择导出模板" @change="templateSelectChange">
+            <el-option v-for="item in templates" :key="item.value" :label="item.label" :value="{value:item.value, label:item.label}" />
+          </el-select>
+          <el-button type="info" plain>自定义导出</el-button>
+        </div>
       </div>
       <div class="table">
         <mainTable
@@ -42,7 +48,7 @@
           :height="555"
           :border="border"
           :data="pageResult"
-          :filterData="filterData"
+          :filter-data="filterData"
           @findPage="findPage"
           @handleEdit="handleEdit"
           @handleDelete="handleDelete"
@@ -54,7 +60,7 @@
 
 <script>
 import MainTable from '@/views/project/smartTable/kongya/mainTable'
-import { getKongYaRealData/* , getFilterData */ } from '@/api/smartTable/index.js'
+import { getKongYaRealData, getFilterData } from '@/api/smartTable/index.js'
 export default {
   name: 'KongYa',
   components: {
@@ -63,30 +69,31 @@ export default {
   data() {
     return {
       border: false,
+      template: {
+        label: '手动选择',
+        value: 0
+      },
+      templates: [{
+        label: '手动选择',
+        value: 0
+      }, {
+        label: '1#模板',
+        value: 1
+      }, {
+        label: '2#模板',
+        value: 2
+      }, {
+        label: '3#模板',
+        value: 3
+      }, {
+        label: '4#模板',
+        value: 4
+      }],
       filterData: {
-        /* region: [{
-          label: '4栋车间',
-          value: 'cj4'
-        }, {
-          label: '2栋车间',
-          value: 'cj2'
-        }, {
-          label: '1#动力站房',
-          value: 'dlzf1'
-        }, {
-          label: '3栋车间',
-          value: 'cj3'
-        }, {
-          label: '1栋车间',
-          value: 'cj1'
-        }, {
-          label: '胶水厂区',
-          value: 'cj5'
-        }], */
         region: ['4栋车间', '2栋车间', '1#动力站房', '3栋车间', '1栋车间', '胶水厂区'],
-        group: [],
-        device: [],
-        point: []
+        group: ['空压联网管', '2#空压机群', '4#空压机群', '1层', '1#空压机群', '4层', '户外', '5层', '3#空压机群', '2层', '3层'],
+        device: ['7#离心空压机', '7#螺杆空压机', '7#螺杆空压机', '1#螺杆空压机流量计', '1#冷却塔组出水温度计', '1#冷却塔组出水温度计'],
+        point: ['润滑油压（出口）', '运行时间', '机组排气压力P2', '机头喷油温度T3', '级间温度T4', '级间温度T4']
       },
       pageResult: {
       },
@@ -170,9 +177,17 @@ export default {
     }
   },
   mounted() {
-
+    this.getFilterData()
   },
   methods: {
+    getFilterData: function() {
+      const param = { system: 'ky' }
+      getFilterData(param).then((res) => {
+        this.filterData = res.data
+      }).catch(err => {
+        console.log(err)
+      })
+    },
     findPage: function(data) {
       if (data !== null) {
         this.pageRequest = data.pageRequest
@@ -193,6 +208,9 @@ export default {
     },
     timeSelectChange(params) {
       this.searchForm.interval = params
+    },
+    templateSelectChange(params) {
+      this.template = params
     },
     dateSearch: function() {
       this.$refs.kongyaMainTable.refreshPageRequest(this.pageRequest.pageNum)
@@ -330,6 +348,11 @@ export default {
         font-size: 16px;
         color: #111111;
         letter-spacing: 0;
+      }
+      .title-right{
+        position: absolute;
+        right: 20px;
+        margin-top: 10px;
       }
     }
     .table{

@@ -24,6 +24,7 @@
         header-align="center"
         align="center"
       />
+
       <el-table-column
         v-if="true"
         prop="REGIONAL"
@@ -33,31 +34,36 @@
       >
         <template slot="header" slot-scope="scope">
           <span>
-            区域
+            区域属性
             <el-popover
-              v-model="scope.column.visible"
+              ref="regionPopover"
               placement="bottom-start"
               width="280"
               trigger="click"
               popper-class="region-popover"
-              @hide="popoverHide"
+              @hide="() => { return popoverHide(scope) }"
             >
               <div class="filter-title">
                 <span>区域筛选</span>
-                <i class="el-icon-close filter-close" @click="closeFilter(scope)" />
+                <i class="el-icon-close filter-close" @click="closeFilter(scope.column)" />
               </div>
               <div class="filter-line" />
               <div class="filter-checkbox">
-                <el-checkbox v-model="checkAllObject.region.checkAll" :indeterminate="checkAllObject.region.isIndeterminate" @change="(value) => { return handleCheckAllChange(value, scope) }">全选</el-checkbox>
+                <el-checkbox v-model="checkAllObject.region.checkAll" :indeterminate="checkAllObject.region.isIndeterminate" style="margin-bottom:23px;" @change="(value) => { return handleCheckAllChange(value, scope) }">全选</el-checkbox>
                 <el-checkbox-group v-model="checkObject.regionCheckList" class="filter-checkbox-group">
                   <el-checkbox
                     v-for="(item, index) in filterData.region"
                     :key="index"
                     :label="item"
+                    class="region-check"
                   />
                 </el-checkbox-group>
               </div>
-              <i slot="reference" :class="iconfilter" @click="(e) => { return showFilterDialog(e, scope) }" />
+              <div class="filter-botton">
+                <el-button type="primary" @click="popoverOK(scope.column)">确定</el-button>
+                <el-button @click="popoverReset">重置</el-button>
+              </div>
+              <i slot="reference" :class="icon.region" @click="(e) => { return showFilterDialog(e, scope) }" />
             </el-popover>
           </span>
         </template>
@@ -70,14 +76,50 @@
         header-align="center"
         align="center"
       />
+
       <el-table-column
         v-if="true"
         prop="GROUP_ATTRIBUTES"
-        label="机群属性"
         min-width="50"
         header-align="center"
         align="center"
-      />
+      >
+        <template slot="header" slot-scope="scope">
+          <span>
+            机群属性
+            <el-popover
+              ref="groupPopover"
+              placement="bottom-start"
+              width="280"
+              trigger="click"
+              popper-class="group-popover"
+              @hide="() => { return popoverHide(scope) }"
+            >
+              <div class="filter-title">
+                <span>机群筛选</span>
+                <i class="el-icon-close filter-close" @click="closeFilter(scope.column)" />
+              </div>
+              <div class="filter-line" />
+              <div class="filter-checkbox">
+                <el-checkbox v-model="checkAllObject.group.checkAll" :indeterminate="checkAllObject.group.isIndeterminate" style="margin-bottom:23px;" @change="(value) => { return handleCheckAllChange(value, scope) }">全选</el-checkbox>
+                <el-checkbox-group v-model="checkObject.groupCheckList" class="filter-checkbox-group">
+                  <el-checkbox
+                    v-for="(item, index) in filterData.group"
+                    :key="index"
+                    :label="item"
+                    class="group-check"
+                  />
+                </el-checkbox-group>
+              </div>
+              <div class="filter-botton">
+                <el-button type="primary" @click="popoverOK(scope.column)">确定</el-button>
+                <el-button @click="popoverReset">重置</el-button>
+              </div>
+              <i slot="reference" :class="icon.group" @click="(e) => { return showFilterDialog(e, scope) }" />
+            </el-popover>
+          </span>
+        </template>
+      </el-table-column>
       <el-table-column
         v-if="false"
         prop="GROUP_ATTRIBUTES_CODE"
@@ -86,14 +128,50 @@
         header-align="center"
         align="center"
       />
+
       <el-table-column
         v-if="true"
         prop="DEVICE_ATTRIBUTES"
-        label="设备属性"
         min-width="50"
         header-align="center"
         align="center"
-      />
+      >
+        <template slot="header" slot-scope="scope">
+          <span>
+            设备属性
+            <el-popover
+              ref="devicePopover"
+              placement="bottom-start"
+              width="280"
+              trigger="click"
+              popper-class="device-popover"
+              @hide="() => { return popoverHide(scope) }"
+            >
+              <div class="filter-title">
+                <span>机群筛选</span>
+                <i class="el-icon-close filter-close" @click="closeFilter(scope.column)" />
+              </div>
+              <div class="filter-line" />
+              <div class="filter-checkbox">
+                <el-checkbox v-model="checkAllObject.device.checkAll" :indeterminate="checkAllObject.device.isIndeterminate" style="margin-bottom:23px;" @change="(value) => { return handleCheckAllChange(value, scope) }">全选</el-checkbox>
+                <el-checkbox-group v-model="checkObject.deviceCheckList" class="filter-checkbox-group">
+                  <el-checkbox
+                    v-for="(item, index) in filterData.device"
+                    :key="index"
+                    :label="item"
+                    class="device-check"
+                  />
+                </el-checkbox-group>
+              </div>
+              <div class="filter-botton">
+                <el-button type="primary" @click="popoverOK(scope.column)">确定</el-button>
+                <el-button @click="popoverReset">重置</el-button>
+              </div>
+              <i slot="reference" :class="icon.device" @click="(e) => { return showFilterDialog(e, scope) }" />
+            </el-popover>
+          </span>
+        </template>
+      </el-table-column>
       <el-table-column
         v-if="false"
         prop="DEVICE_ATTRIBUTES_CODE"
@@ -102,14 +180,50 @@
         header-align="center"
         align="center"
       />
+
       <el-table-column
         v-if="true"
         prop="POINT_ATTRIBUTE"
-        label="数据属性"
         min-width="50"
         header-align="center"
         align="center"
-      />
+      >
+        <template slot="header" slot-scope="scope">
+          <span>
+            数据属性
+            <el-popover
+              ref="pointPopover"
+              placement="bottom-start"
+              width="280"
+              trigger="click"
+              popper-class="point-popover"
+              @hide="() => { return popoverHide(scope) }"
+            >
+              <div class="filter-title">
+                <span>数据筛选</span>
+                <i class="el-icon-close filter-close" @click="closeFilter(scope.column)" />
+              </div>
+              <div class="filter-line" />
+              <div class="filter-checkbox">
+                <el-checkbox v-model="checkAllObject.point.checkAll" :indeterminate="checkAllObject.point.isIndeterminate" style="margin-bottom:23px;" @change="(value) => { return handleCheckAllChange(value, scope) }">全选</el-checkbox>
+                <el-checkbox-group v-model="checkObject.pointCheckList" class="filter-checkbox-group">
+                  <el-checkbox
+                    v-for="(item, index) in filterData.point"
+                    :key="index"
+                    :label="item"
+                    class="device-check"
+                  />
+                </el-checkbox-group>
+              </div>
+              <div class="filter-botton">
+                <el-button type="primary" @click="popoverOK(scope.column)">确定</el-button>
+                <el-button @click="popoverReset">重置</el-button>
+              </div>
+              <i slot="reference" :class="icon.point" @click="(e) => { return showFilterDialog(e, scope) }" />
+            </el-popover>
+          </span>
+        </template>
+      </el-table-column>
       <el-table-column
         v-if="false"
         prop="POINT_ATTRIBUTE_CODE"
@@ -118,6 +232,7 @@
         header-align="center"
         align="center"
       />
+
       <el-table-column
         v-if="true"
         prop="VARIABLE_VALUE"
@@ -240,15 +355,32 @@ export default {
       },
       loading: false,
       selections: [],
-      iconfilter: 'icon-filter',
-      visible: {
-        region: false
+      icon: {
+        region: 'icon-filter',
+        group: 'icon-filter',
+        device: 'icon-filter',
+        point: 'icon-filter'
       },
       checkObject: {
-        regionCheckList: []
+        regionCheckList: [],
+        groupCheckList: [],
+        deviceCheckList: [],
+        pointCheckList: []
       },
       checkAllObject: {
         region: {
+          checkAll: false,
+          isIndeterminate: true
+        },
+        group: {
+          checkAll: false,
+          isIndeterminate: true
+        },
+        device: {
+          checkAll: false,
+          isIndeterminate: true
+        },
+        point: {
           checkAll: false,
           isIndeterminate: true
         }
@@ -276,45 +408,62 @@ export default {
     handleDelete: function(index, row) {
       this.delete({ index, row })
     },
-    closeFilter: function(scope) {
-      scope.column.visible = false
-      console.log(scope)
-      /* const property = scope.column.property
+    closeFilter: function(column) {
+      const property = column.property
       switch (property) {
         case 'REGIONAL':
-          this.visible.region = false
+          this.$refs.regionPopover.doClose()
           break
         case 'GROUP_ATTRIBUTES':
+          this.$refs.groupPopover.doClose()
           break
         case 'DEVICE_ATTRIBUTES':
+          this.$refs.devicePopover.doClose()
           break
         case 'POINT_ATTRIBUTE':
+          this.$refs.pointPopover.doClose()
           break
         default:
-      } */
+      }
     },
     delete: function(params) {
-      this.$confirm('确认删除所选内容？', '提示', {
-        type: 'warning'
-      }).then(() => {
-        const callback = res => {
-          if (res.state === 1) {
-            this.$message({ message: '删除成功', type: 'success' })
-            this.findPage()
-          } else {
-            this.$message({ message: '删除失败', type: 'error' })
-          }
-          this.loading = false
-        }
-        this.$emit('handleDelete', { rowInfor: params, callback: callback })
-        this.loading = false
-      }).catch(() => {})
+
     },
     showFilterDialog(e, scope) {
-      this.iconfilter = 'icon-filter-click'
+      const property = scope.column.property
+      switch (property) {
+        case 'REGIONAL':
+          this.icon.region = 'icon-filter-click'
+          break
+        case 'GROUP_ATTRIBUTES':
+          this.icon.group = 'icon-filter-click'
+          break
+        case 'DEVICE_ATTRIBUTES':
+          this.icon.device = 'icon-filter-click'
+          break
+        case 'POINT_ATTRIBUTE':
+          this.icon.point = 'icon-filter-click'
+          break
+        default:
+      }
     },
-    popoverHide() {
-      this.iconfilter = 'icon-filter'
+    popoverHide(scope) {
+      const property = scope.column.property
+      switch (property) {
+        case 'REGIONAL':
+          this.icon.region = 'icon-filter'
+          break
+        case 'GROUP_ATTRIBUTES':
+          this.icon.group = 'icon-filter'
+          break
+        case 'DEVICE_ATTRIBUTES':
+          this.icon.device = 'icon-filter'
+          break
+        case 'POINT_ATTRIBUTE':
+          this.icon.point = 'icon-filter'
+          break
+        default:
+      }
     },
     handleCheckAllChange(val, scope) {
       const property = scope.column.property
@@ -324,13 +473,40 @@ export default {
           this.checkAllObject.region.isIndeterminate = false
           break
         case 'GROUP_ATTRIBUTES':
+          this.checkObject.groupCheckList = val ? this.filterData.group : []
+          this.checkAllObject.group.isIndeterminate = false
           break
         case 'DEVICE_ATTRIBUTES':
+          this.checkObject.deviceCheckList = val ? this.filterData.device : []
+          this.checkAllObject.device.isIndeterminate = false
           break
         case 'POINT_ATTRIBUTE':
+          this.checkObject.pointCheckList = val ? this.filterData.point : []
+          this.checkAllObject.point.isIndeterminate = false
           break
         default:
       }
+    },
+    popoverOK(column) {
+      const property = column.property
+      switch (property) {
+        case 'REGIONAL':
+          this.$refs.regionPopover.doClose()
+          break
+        case 'GROUP_ATTRIBUTES':
+          this.$refs.groupPopover.doClose()
+          break
+        case 'DEVICE_ATTRIBUTES':
+          this.$refs.devicePopover.doClose()
+          break
+        case 'POINT_ATTRIBUTE':
+          this.$refs.pointPopover.doClose()
+          break
+        default:
+      }
+    },
+    popoverReset() {
+
     }
   }
 }
@@ -338,12 +514,19 @@ export default {
 
 <style lang="scss">
 #main-table{
-  width: 100%;
-  height: 100%;
   .el-table{
     width: 100%;
     height: 100%;
-    .icon-filter{
+  }
+}
+
+</style>
+
+<style lang="scss" scope>
+#main-table{
+  width: 100%;
+  height: 100%;
+  .icon-filter{
         width: 16px;
         height: 16px;
         position: relative;
@@ -369,19 +552,19 @@ export default {
         border:unset;
         cursor: pointer;
     }
-  }
 }
-</style>
-
-<style lang="scss">
-#main-table{
-}
-.region-popover{
+.region-popover,
+.group-popover,
+.device-popover,
+.point-popover{
+  padding: unset;
     .filter-title{
         width: 100%;
         height: 30px;
         display: flex;
         justify-content: space-between;
+        padding: 12px 12px;
+        margin-bottom: 10px;
         .filter-close{
             cursor: pointer;
         }
@@ -393,10 +576,23 @@ export default {
     }
     .filter-checkbox{
         width: 100%;
+        padding: 24px 20px;
+        height: 300px;
+        overflow-y: auto;
         .filter-checkbox-group{
             display: flex;
             flex-direction: column;
         }
+    }
+    .filter-botton{
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .region-check,
+    .group-check,
+    .device-check,
+    .point-check{
+      margin-bottom: 10px;
     }
 }
 </style>

@@ -75,13 +75,10 @@ export default {
     this.currentView = window.sessionStorage.getItem('currentView')
     if (this.currentView === null) {
       this.currentView = 'Main'
-      this.needTagsView = false
       this.sidebarHide = true
     } else if (this.currentView === 'Main') {
-      this.needTagsView = false
       this.sidebarHide = true
     } else {
-      this.needTagsView = false
       this.sidebarHide = false
     }
   },
@@ -93,57 +90,46 @@ export default {
       switch (data) {
         case 'Main':
           this.currentView = 'Main'
-          this.needTagsView = false
           this.sidebarHide = true
           break
         case 'Monitor':
           this.currentView = 'Monitor'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Energy':
           this.currentView = 'Energy'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'ReportTable':
           this.currentView = 'ReportTable'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Diagnosis':
           this.currentView = 'Diagnosis'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Device':
           this.currentView = 'Device'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'Smart':
           this.currentView = 'Smart'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'DataEntry':
           this.currentView = 'DataEntry'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'PlatSetting':
           this.currentView = 'PlatSetting'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         case 'SmartTable':
           this.currentView = 'SmartTable'
-          this.needTagsView = false
           this.sidebarHide = false
           break
         default:
           this.currentView = 'Main'
-          this.needTagsView = false
           this.sidebarHide = true
           break
       }
