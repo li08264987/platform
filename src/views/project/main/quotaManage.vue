@@ -353,7 +353,7 @@ export default {
 }
 </style>
 <style lang="scss" scoped>
-#left-container .quota-manage{
+.quota-manage{
     display: flex;
     flex-direction: column;
     position: relative;

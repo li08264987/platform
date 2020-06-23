@@ -6,7 +6,7 @@
         <el-option v-for="item in intervals" :key="item.value" :label="item.label" :value="{value:item.value, label:item.label}" />
       </el-select>
       <el-button class="btn-query" type="primary" style="margin-right:10px" @click="dateSearch">查询</el-button>
-      <el-input v-model="searchForm.searchText" placeholder="请输入系统名称搜索" style="width:212px;" suffix-icon="el-icon-search" />
+      <el-input v-model="searchForm.searchText" placeholder="请输入搜索内容" style="width:212px;" suffix-icon="el-icon-search" />
       <el-button class="btn-search" type="primary" @click="nameSearch">搜索</el-button>
     </div>
     <div class="data-pandect">
@@ -36,39 +36,55 @@
         <div class="logo" />
         <span>数据列表</span>
         <div class="title-right">
-          <el-select v-model="template.label" placeholder="请选择导出模板" @change="templateSelectChange">
+          <!-- <el-select v-model="template.label" placeholder="请选择导出模板" @change="templateSelectChange">
             <el-option v-for="item in templates" :key="item.value" :label="item.label" :value="{value:item.value, label:item.label}" />
-          </el-select>
-          <el-button type="info" plain>自定义导出</el-button>
+          </el-select> -->
+          <el-button type="info" plain style="backgroud-color:#D7DBE0;color:rgb(51, 51, 51);width: 94px;padding: 10px;">自定义导出</el-button>
         </div>
       </div>
       <div class="table">
         <mainTable
-          ref="kongyaMainTable"
+          ref="mainTable"
           :height="555"
           :border="border"
           :data="pageResult"
           :filter-data="filterData"
           @findPage="findPage"
+          @handleFilter="handleFilter"
           @handleEdit="handleEdit"
           @handleDelete="handleDelete"
         />
       </div>
+    </div>
+
+    <div>
+      <history-dialog :show.sync="showHistory" :title="title" :variable="variable" :point-list="pointList" @historyDialogClose="historyDialogClose" />
+    </div>
+
+    <div>
+      <perTime-dialog :show.sync="showPertime" :title="title" :variable="variable" @pertimeDialogClose="pertimeDialogClose" />
     </div>
   </div>
 </template>
 
 <script>
 import MainTable from '@/views/project/smartTable/kongya/mainTable'
-import { getKongYaRealData, getFilterData } from '@/api/smartTable/index.js'
+import HistoryDialog from '@/views/project/smartTable/kongya/historyDialog'
+import PerTimeDialog from '@/views/project/smartTable/kongya/perTimeDialog'
+import { getKongYaRealData, getFilterData/* , getPandectData */ } from '@/api/smartTable/index.js'
 export default {
   name: 'KongYa',
   components: {
-    MainTable
+    MainTable,
+    HistoryDialog,
+    PerTimeDialog
   },
   data() {
     return {
       border: false,
+      title: '',
+      variable: '',
+      pointList: [],
       template: {
         label: '手动选择',
         value: 0
@@ -97,25 +113,25 @@ export default {
       },
       pageResult: {
       },
-      pageRequest: { pageNum: 1, pageSize: 10 },
+      pageRequest: { pageNum: 1, pageSize: 10, system: 'ky' },
       searchForm: {
-        date: '',
+        date: ['', ''],
         dateType: 'datetimerange',
         searchText: '',
         interval: {
-          value: 0,
-          label: '间隔10分钟'
+          value: 2,
+          label: '60分钟'
         }
       },
       intervals: [{
         value: 0,
-        label: '间隔10分钟'
+        label: '1分钟'
       }, {
         value: 1,
-        label: '间隔30分钟'
+        label: '10分钟'
       }, {
         value: 2,
-        label: '间隔60分钟'
+        label: '60分钟'
       }],
       pandectData: [{
         index: 0,
@@ -173,11 +189,14 @@ export default {
         logo: 'decrease',
         sign: 1,
         changeNumber: '-0.21℃'
-      }]
+      }],
+      showHistory: false,
+      showPertime: false
     }
   },
   mounted() {
     this.getFilterData()
+    this.getPandectData()
   },
   methods: {
     getFilterData: function() {
@@ -188,6 +207,13 @@ export default {
         console.log(err)
       })
     },
+    getPandectData() {
+      /* getPandectData(this.pageRequest).then((res) => {
+        this.pandectData = res.data
+      }).catch(err => {
+        console.log(err)
+      }) */
+    },
     findPage: function(data) {
       if (data !== null) {
         this.pageRequest = data.pageRequest
@@ -196,15 +222,29 @@ export default {
       this.pageRequest['startTime'] = (this.searchForm.date === null || this.searchForm.date === '') ? null : this.searchForm.date[0]
       this.pageRequest['endTime'] = (this.searchForm.date === null || this.searchForm.date === '') ? null : this.searchForm.date[1]
       getKongYaRealData(this.pageRequest).then(res => {
-        this.pageResult.content = res.dataList
-        this.pageResult.totalSize = res.dataListNumber
+        this.pageResult.content = res.data.dataList
+        this.pageResult.totalSize = res.data.dataListNumber
       }).then(data != null ? data.callback : '')
     },
+    handleFilter(param) {
+      this.pageRequest['filterList'] = param.checkList
+      this.pageRequest['filterType'] = param.filterType
+      getKongYaRealData(this.pageRequest).then(res => {
+        this.pageResult.content = res.data.dataList
+        this.pageResult.totalSize = res.data.dataListNumber
+      }).then(param != null ? param.callback : '')
+    },
     handleEdit: function(params) {
-
+      this.title = params.row.DEVICE_ATTRIBUTES + '运行数据'
+      this.pointList = params.pointList
+      this.variable = params.row.VARIABLE_NAME
+      this.$refs.mainTable.$refs.mainTable.toggleRowSelection(params.row, true)
+      this.showHistory = true
     },
     handleDelete: function(params) {
-
+      this.title = params.row.DEVICE_ATTRIBUTES + '逐时数据'
+      this.variable = params.row.VARIABLE_NAME
+      this.showPertime = true
     },
     timeSelectChange(params) {
       this.searchForm.interval = params
@@ -213,10 +253,16 @@ export default {
       this.template = params
     },
     dateSearch: function() {
-      this.$refs.kongyaMainTable.refreshPageRequest(this.pageRequest.pageNum)
+      this.$refs.mainTable.refreshPageRequest(this.pageRequest.pageNum)
     },
     nameSearch: function() {
-      this.$refs.kongyaMainTable.refreshPageRequest(this.pageRequest.pageNum)
+      this.$refs.mainTable.refreshPageRequest(this.pageRequest.pageNum)
+    },
+    historyDialogClose: function() {
+      this.showHistory = false
+    },
+    pertimeDialogClose: function() {
+      this.showPertime = false
     }
   }
 }

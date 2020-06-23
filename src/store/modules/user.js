@@ -39,8 +39,8 @@ const mutations = {
 
 const actions = {
   setUserInfor({ commit }, userInfo) {
-    commit('SET_USERNAME', userInfo.userName.trim())
-    commit('SET_REALNAME', userInfo.realName.trim())
+    commit('SET_USERNAME', userInfo.userName)
+    commit('SET_REALNAME', userInfo.realName)
   },
   // user login
   login({ commit }, userInfo) {
