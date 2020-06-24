@@ -364,7 +364,7 @@ export default {
       background: true,
       pageRequest: {
         pageNum: 1,
-        pageSize: 15,
+        pageSize: 12,
         system: 'ky'
       },
       loading: false,
@@ -421,7 +421,7 @@ export default {
       this.$emit('handleEdit', { index: index, row: row, pointList: this.multipleSelection })
     },
     handleDelete: function(index, row) {
-      this.$emit('handleDelete', { index: index, row: row })
+      this.$emit('handleDelete', { index: index, row: row, pointList: this.multipleSelection })
     },
     handleCheckedChange(newValue, scope) {
       const property = scope.column.property

@@ -33,6 +33,7 @@
             :height="700"
             :border="border"
             :data="pageResult"
+            :disabled="paginationDisabled"
             @findPage="findPage"
           />
         </div>
@@ -43,6 +44,7 @@
 
 <script>
 import HistoryTable from '@/views/project/smartTable/kongya/historyTable'
+import { getHistoryTableData } from '@/api/smartTable/index.js'
 export default {
   name: 'History',
   components: {
@@ -68,6 +70,7 @@ export default {
   },
   data() {
     return {
+      paginationDisabled: true,
       border: true,
       visible: this.show,
       searchForm: {
@@ -75,23 +78,24 @@ export default {
         dateType: 'datetimerange',
         searchText: '',
         interval: {
-          value: 2,
+          value: 60,
           label: '60分钟'
         }
       },
       intervals: [{
-        value: 0,
+        value: 1,
         label: '1分钟'
       }, {
-        value: 1,
+        value: 10,
         label: '10分钟'
       }, {
-        value: 2,
+        value: 60,
         label: '60分钟'
       }],
       pageResult: {
       },
-      pageRequest: { pageNum: 1, pageSize: 10 }
+      pageRequest: { pageNum: 1, pageSize: 10 },
+      list: []
     }
   },
   watch: {
@@ -100,7 +104,6 @@ export default {
     },
     pointList: {
       handler(newVal, oldVal) {
-
       },
       deep: true
     },
@@ -111,18 +114,28 @@ export default {
   },
   methods: {
     openDialog() {
-      var list = []
+      this.list = []
       this.pointList.forEach((v) => {
-        list.push(v.VARIABLE_NAME)
+        this.list.push(v.VARIABLE_NAME)
       })
-      list.push(this.variable)
-      this.getTableData([...new Set(list)])
-    },
-    getTableData: function(list) {
-      console.log(list)
+      this.list.push(this.variable)
+      this.list = [...new Set(this.list)]
+      this.$refs.historyTable.refreshPageRequest(1)
     },
     findPage: function(data) {
-      data.callback()
+      if (data !== null) {
+        this.pageRequest = data.pageRequest
+      }
+      const param = {
+        interval: this.searchForm.interval.value,
+        startTime: this.searchForm.date[0],
+        endTime: this.searchForm.date[1],
+        filter: this.searchForm.searchText,
+        list: this.list
+      }
+      getHistoryTableData(param).then((res) => {
+        this.pageResult.content = res.data
+      }).then(data != null ? data.callback : '')
     },
     handleFilter(param) {
 
@@ -142,6 +155,9 @@ export default {
     onExport: function() {
     },
     closeDialog: function() {
+      this.searchForm.date = ['', '']
+      this.searchForm.searchText = ''
+      this.searchForm.interval = this.intervals[2]
       this.$emit('historyDialogClose')
     }
   }

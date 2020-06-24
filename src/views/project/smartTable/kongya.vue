@@ -62,7 +62,7 @@
     </div>
 
     <div>
-      <perTime-dialog :show.sync="showPertime" :title="title" :variable="variable" @pertimeDialogClose="pertimeDialogClose" />
+      <perTime-dialog :show.sync="showPertime" :title="title" :variable="variable" :point-list="pointList" @pertimeDialogClose="pertimeDialogClose" />
     </div>
   </div>
 </template>
@@ -243,7 +243,9 @@ export default {
     },
     handleDelete: function(params) {
       this.title = params.row.DEVICE_ATTRIBUTES + '逐时数据'
+      this.pointList = params.pointList
       this.variable = params.row.VARIABLE_NAME
+      this.$refs.mainTable.$refs.mainTable.toggleRowSelection(params.row, true)
       this.showPertime = true
     },
     timeSelectChange(params) {
@@ -310,6 +312,7 @@ export default {
       display: flex;
       width: 100%;
       height: 100%;
+      justify-content: space-between;
       .each-data{
         display: flex;
         flex-direction: column;

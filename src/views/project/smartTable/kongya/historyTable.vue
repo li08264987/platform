@@ -96,7 +96,7 @@
 
       <el-table-column
         v-if="true"
-        prop="VARIABLE_VALUE"
+        prop="STARTTIME"
         label="历史起始时刻"
         min-width="50"
         header-align="center"
@@ -104,7 +104,7 @@
       />
       <el-table-column
         v-if="true"
-        prop="VARIABLE_VALUE"
+        prop="ENDTIME"
         label="历史截止时刻"
         min-width="50"
         header-align="center"
@@ -112,7 +112,7 @@
       />
       <el-table-column
         v-if="true"
-        prop="VARIABLE_VALUE"
+        prop="DIFF"
         label="计算差值"
         min-width="50"
         header-align="center"
@@ -120,7 +120,7 @@
       />
       <el-table-column
         v-if="true"
-        prop="VARIABLE_VALUE"
+        prop="AVG"
         label="计算平均值"
         min-width="50"
         header-align="center"
@@ -128,7 +128,7 @@
       />
       <el-table-column
         v-if="true"
-        prop="VARIABLE_VALUE"
+        prop="MAX"
         label="查询最大值"
         min-width="50"
         header-align="center"
@@ -136,7 +136,7 @@
       />
       <el-table-column
         v-if="true"
-        prop="VARIABLE_VALUE"
+        prop="MIN"
         label="查询最小值"
         min-width="50"
         header-align="center"
@@ -168,15 +168,16 @@
       </el-table-column>
     </el-table>
 
-    <div class="toolbar" style="text-align: center;">
+    <!-- <div class="toolbar" style="text-align: center;">
       <el-pagination
+        :disabled="disabled"
         layout="total, prev, pager, next, jumper"
         :current-page="pageRequest.pageNum"
         :page-size="pageRequest.pageSize"
         :total.sync="data.totalSize"
         @current-change="refreshPageRequest"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -239,13 +240,17 @@ export default {
     showBatchDelete: {
       type: Boolean,
       default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       pageRequest: {
         pageNum: 1,
-        pageSize: 15
+        pageSize: 10
       },
       loading: false
     }
@@ -270,162 +275,6 @@ export default {
     },
     handleDelete: function(index, row) {
       this.$emit('handleDelete', { index: index, row: row })
-    },
-    handleCheckedChange(newValue, scope) {
-      const property = scope.column.property
-      const checkedCount = newValue.length
-      switch (property) {
-        case 'REGIONAL':
-          this.checkAllObject.region.checkAll = checkedCount === this.filterData.region.length
-          this.checkAllObject.region.isIndeterminate = checkedCount > 0 && checkedCount < this.filterData.region.length
-          break
-        case 'GROUP_ATTRIBUTES':
-          this.checkAllObject.group.checkAll = checkedCount === this.filterData.group.length
-          this.checkAllObject.group.isIndeterminate = checkedCount > 0 && checkedCount < this.filterData.group.length
-          break
-        case 'DEVICE_ATTRIBUTES':
-          this.checkAllObject.device.checkAll = checkedCount === this.filterData.device.length
-          this.checkAllObject.device.isIndeterminate = checkedCount > 0 && checkedCount < this.filterData.device.length
-          break
-        case 'POINT_ATTRIBUTE':
-          this.checkAllObject.point.checkAll = checkedCount === this.filterData.point.length
-          this.checkAllObject.point.isIndeterminate = checkedCount > 0 && checkedCount < this.filterData.point.length
-          break
-        default:
-      }
-    },
-    closeFilter: function(column) {
-      const property = column.property
-      switch (property) {
-        case 'REGIONAL':
-          this.$refs.regionPopover.doClose()
-          break
-        case 'GROUP_ATTRIBUTES':
-          this.$refs.groupPopover.doClose()
-          break
-        case 'DEVICE_ATTRIBUTES':
-          this.$refs.devicePopover.doClose()
-          break
-        case 'POINT_ATTRIBUTE':
-          this.$refs.pointPopover.doClose()
-          break
-        default:
-      }
-    },
-    delete: function(params) {
-
-    },
-    showFilterDialog(e, scope) {
-      const property = scope.column.property
-      switch (property) {
-        case 'REGIONAL':
-          this.icon.region = 'icon-filter-click'
-          break
-        case 'GROUP_ATTRIBUTES':
-          this.icon.group = 'icon-filter-click'
-          break
-        case 'DEVICE_ATTRIBUTES':
-          this.icon.device = 'icon-filter-click'
-          break
-        case 'POINT_ATTRIBUTE':
-          this.icon.point = 'icon-filter-click'
-          break
-        default:
-      }
-    },
-    popoverHide(scope) {
-      const property = scope.column.property
-      switch (property) {
-        case 'REGIONAL':
-          this.icon.region = 'icon-filter'
-          break
-        case 'GROUP_ATTRIBUTES':
-          this.icon.group = 'icon-filter'
-          break
-        case 'DEVICE_ATTRIBUTES':
-          this.icon.device = 'icon-filter'
-          break
-        case 'POINT_ATTRIBUTE':
-          this.icon.point = 'icon-filter'
-          break
-        default:
-      }
-    },
-    handleCheckAllChange(val, scope) {
-      const property = scope.column.property
-      switch (property) {
-        case 'REGIONAL':
-          this.checkObject.regionCheckList = val ? this.filterData.region : []
-          this.checkAllObject.region.isIndeterminate = false
-          break
-        case 'GROUP_ATTRIBUTES':
-          this.checkObject.groupCheckList = val ? this.filterData.group : []
-          this.checkAllObject.group.isIndeterminate = false
-          break
-        case 'DEVICE_ATTRIBUTES':
-          this.checkObject.deviceCheckList = val ? this.filterData.device : []
-          this.checkAllObject.device.isIndeterminate = false
-          break
-        case 'POINT_ATTRIBUTE':
-          this.checkObject.pointCheckList = val ? this.filterData.point : []
-          this.checkAllObject.point.isIndeterminate = false
-          break
-        default:
-      }
-    },
-    popoverOK(column) {
-      const property = column.property
-      var checkList = []
-      this.loading = true
-      const callback = res => {
-        this.loading = false
-      }
-      switch (property) {
-        case 'REGIONAL':
-          checkList = this.checkObject.regionCheckList
-          this.$emit('handleFilter', { checkList: checkList, filterType: property, callback: callback })
-          this.$refs.regionPopover.doClose()
-          break
-        case 'GROUP_ATTRIBUTES':
-          checkList = this.checkObject.groupCheckList
-          this.$emit('handleFilter', { checkList: checkList, filterType: property, callback: callback })
-          this.$refs.groupPopover.doClose()
-          break
-        case 'DEVICE_ATTRIBUTES':
-          checkList = this.checkObject.deviceCheckList
-          this.$emit('handleFilter', { checkList: checkList, filterType: property, callback: callback })
-          this.$refs.devicePopover.doClose()
-          break
-        case 'POINT_ATTRIBUTE':
-          checkList = this.checkObject.pointCheckList
-          this.$emit('handleFilter', { checkList: checkList, filterType: property, callback: callback })
-          this.$refs.pointPopover.doClose()
-          break
-        default:
-      }
-    },
-    popoverReset(column) {
-      const property = column.property
-      switch (property) {
-        case 'REGIONAL':
-          this.checkObject.regionCheckList = []
-          this.checkAllObject.region.checkAll = false
-          this.checkAllObject.region.isIndeterminate = false
-          break
-        case 'GROUP_ATTRIBUTES':
-          this.checkObject.groupCheckList = []
-          this.checkAllObject.group.isIndeterminate = false
-          break
-        case 'DEVICE_ATTRIBUTES':
-          this.checkObject.deviceCheckList = []
-          this.checkAllObject.device.isIndeterminate = false
-          break
-        case 'POINT_ATTRIBUTE':
-          this.checkObject.pointCheckList = []
-          this.checkAllObject.point.isIndeterminate = false
-          break
-        default:
-      }
     }
   }
 }

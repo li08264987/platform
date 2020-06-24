@@ -9,6 +9,7 @@
       :visible.sync="visible"
       :show="show"
       custom-class="pertime-dialog"
+      @open="openDialog"
       @close="closeDialog"
     >
       <div class="search-container">
@@ -21,16 +22,16 @@
           <el-option v-for="item in intervals" :key="item.value" :label="item.label" :value="{value:item.value, label:item.label}" />
         </el-select>
         <el-button class="btn-query" type="primary" style="margin-right:10px" @click="dateSearch">查询</el-button>
-        <el-input v-show="table" v-model="searchForm.searchText" placeholder="请输入搜索内容" style="width:150px;" suffix-icon="el-icon-search" />
-        <el-button v-show="table" class="btn-search" type="primary" @click="nameSearch">搜索</el-button>
-        <el-button v-show="table" class="btn-export" @click="onExport">导出</el-button>
+        <el-input v-model="searchForm.searchText" placeholder="请输入搜索内容" style="width:150px;" suffix-icon="el-icon-search" />
+        <el-button class="btn-search" type="primary" @click="nameSearch">搜索</el-button>
+        <el-button class="btn-export" @click="onExport">导出</el-button>
       </div>
 
       <div class="graphic-container">
         <CurveChart
           v-show="curve"
           ref="curveChart"
-          :chart-data="lineChartData"
+          :chart-data="chartData"
         />
         <TableChart
           v-show="table"
@@ -48,6 +49,7 @@
 <script>
 import CurveChart from '@/views/project/smartTable/kongya/pertimeChart/curveChart'
 import TableChart from '@/views/project/smartTable/kongya/pertimeChart/tableChart'
+import { getCurveChartData } from '@/api/smartTable/index.js'
 const lineChartData = {
   newVisitis: {
     expectedData: [100, 120, 161, 134, 105, 160, 165],
@@ -85,6 +87,10 @@ export default {
     variable: {
       type: String,
       default: ''
+    },
+    pointList: {
+      type: Array,
+      default: null
     }
   },
   data() {
@@ -101,23 +107,25 @@ export default {
         dateType: 'datetimerange',
         searchText: '',
         interval: {
-          value: 2,
+          value: 60,
           label: '60分钟'
         }
       },
       intervals: [{
-        value: 0,
+        value: 1,
         label: '1分钟'
       }, {
-        value: 1,
+        value: 10,
         label: '10分钟'
       }, {
-        value: 2,
+        value: 60,
         label: '60分钟'
       }],
       pageResult: {
       },
-      pageRequest: { pageNum: 1, pageSize: 10 }
+      pageRequest: { pageNum: 1, pageSize: 10 },
+      list: [],
+      chartData: {}
     }
   },
   watch: {
@@ -125,11 +133,38 @@ export default {
       this.visible = this.show
     },
     variable() {
-      this.getTableData()
     }
   },
   methods: {
-    getTableData: function() {
+    openDialog() {
+      this.list = []
+      this.pointList.forEach((v) => {
+        this.list.push(v.VARIABLE_NAME)
+      })
+      this.list.push(this.variable)
+      this.list = [...new Set(this.list)]
+      this.getChartData()
+    },
+    getChartData: function() {
+      /* const param = {
+        interval: this.searchForm.interval.value,
+        startTime: this.searchForm.date[0],
+        endTime: this.searchForm.date[1],
+        filter: this.searchForm.searchText,
+        list: this.list
+      } */
+      const param = {
+        interval: this.searchForm.interval.value,
+        startTime: '2020-05-31 00:00:00',
+        endTime: '2020-06-02 00:00:00',
+        filter: this.searchForm.searchText,
+        list: this.list
+      }
+      getCurveChartData(param).then((res) => {
+        this.chartData = res.data
+      }).catch(err => {
+        console.log(err)
+      })
     },
     timeSelectChange(params) {
       this.searchForm.interval = params
@@ -146,6 +181,9 @@ export default {
     onExport: function() {
     },
     closeDialog: function() {
+      this.searchForm.date = ['', '']
+      this.searchForm.searchText = ''
+      this.searchForm.interval = this.intervals[2]
       this.$emit('pertimeDialogClose')
     },
     handleTabClick(e) {

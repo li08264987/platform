@@ -26,3 +26,20 @@ export function getPandectData(query) {
   })
 }
 
+export function getHistoryTableData(query) {
+  return request({
+    url: '/smartTable/getHistoryTableData',
+    method: 'post',
+    traditional: true,
+    params: query
+  })
+}
+
+export function getCurveChartData(query) {
+  return request({
+    url: '/smartTable/getCurveChartData',
+    method: 'post',
+    traditional: true,
+    params: query
+  })
+}
