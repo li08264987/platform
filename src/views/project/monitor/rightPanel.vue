@@ -8,7 +8,7 @@
             <div v-if="params[0]!=='qd'" class="rightzl">
               <div class="itemdiv">
                 <div class="namediv">常压流量</div>
-                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyllj1_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ (datas.ky_nyzx_dlzf1_kylwg_cyllj1_ssll>0)?(datas.ky_nyzx_dlzf1_kylwg_cyllj1_ssll).toFixed(0):0 }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv">常压压力</div>
@@ -20,7 +20,7 @@
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压流量</div>
-                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyllj1_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ (datas.ky_nyzx_dlzf1_kylwg_gyllj1_ssll>0)?(datas.ky_nyzx_dlzf1_kylwg_gyllj1_ssll).toFixed(0):0 }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压压力</div>
@@ -34,7 +34,7 @@
             <div v-if="params[0]==='qd'" class="rightzl">
               <div class="itemdiv">
                 <div class="namediv">氢氮流量</div>
-                <div class="valuediv number">{{ datas.qd_nyzx_dlzf1_qdgg_llj1_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ (datas.qd_nyzx_dlzf1_qdgg_llj1_ssll>0)?(datas.qd_nyzx_dlzf1_qdgg_llj1_ssll).toFixed(0):0 }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv">氢氮压力</div>
@@ -46,7 +46,7 @@
             <div v-if="params[0]!=='qd'" class="rightzl">
               <div class="itemdiv">
                 <div class="namediv">常压流量</div>
-                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_cyllj2_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ (datas.ky_nyzx_dlzf1_kylwg_cyllj2_ssll>0)?(datas.ky_nyzx_dlzf1_kylwg_cyllj2_ssll).toFixed(0):0 }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv">常压压力</div>
@@ -58,7 +58,7 @@
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压流量</div>
-                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_gyllj2_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ (datas.ky_nyzx_dlzf1_kylwg_gyllj2_ssll>0)?(datas.ky_nyzx_dlzf1_kylwg_gyllj2_ssll).toFixed(0):0 }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv itemdivnb">
                 <div class="namediv">高压压力</div>
@@ -72,7 +72,7 @@
             <div v-if="params[0]==='qd'" class="rightzl">
               <div class="itemdiv">
                 <div class="namediv">氢氮流量</div>
-                <div class="valuediv number">{{ datas.qd_nyzx_dlzf1_qdgg_llj2_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ datas.qd_nyzx_dlzf1_qdgg_llj2_ssll?(datas.qd_nyzx_dlzf1_qdgg_llj2_ssll).toFixed(0):0 }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv">氢氮压力</div>
@@ -84,7 +84,7 @@
             <div class="rightzl">
               <div class="itemdiv">
                 <div class="namediv">流量</div>
-                <div class="valuediv number">{{ datas.ky_nyzx_dlzf1_kylwg_qdllj_ssll }}<span class="unit">m³/h</span></div>
+                <div class="valuediv number">{{ (datas.ky_nyzx_dlzf1_kylwg_qdllj_ssll)?(datas.ky_nyzx_dlzf1_kylwg_qdllj_ssll).toFixed(0):0 }}<span class="unit">m³/h</span></div>
               </div>
               <div class="itemdiv">
                 <div class="namediv">压力</div>
