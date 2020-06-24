@@ -265,7 +265,8 @@ export default {
         name: '系统耗电量',
         value: 500,
         unit: 'kWh'
-      }]
+      }],
+      interval: null
     }
   },
   computed: {
@@ -281,13 +282,16 @@ export default {
   },
   created() {
     var param = { timeType: this.$store.state.settings.mainTimeType }
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.getGuaPaiDataZK(param)
     }, 300000)
   },
   mounted() {
     var param = { timeType: 'day' }
     this.getGuaPaiDataZK(param)
+  },
+  deactivated() {
+    clearInterval(this.interval)
   },
   methods: {
     getGuaPaiDataZK(param) {

@@ -791,7 +791,8 @@ export default {
         }]
       },
       showDianLiu: false,
-      showDianYa: true
+      showDianYa: true,
+      interval: null
     }
   },
   computed: {
@@ -811,7 +812,10 @@ export default {
     }
   },
   created() {
-    setInterval(this.getGuaPaiDataDL, 300000)
+    this.interval = setInterval(this.getGuaPaiDataDL, 5000)
+  },
+  deactivated() {
+    clearInterval(this.interval)
   },
   mounted() {
     this.getGuaPaiDataDL()

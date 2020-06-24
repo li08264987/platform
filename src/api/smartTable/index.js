@@ -12,6 +12,16 @@ export function getFilterData(query) {
   return request({
     url: '/smartTable/getFilterData',
     method: 'post',
+    traditional: true,
+    params: query
+  })
+}
+
+export function getPandectData(query) {
+  return request({
+    url: '/smartTable/getPandectData',
+    method: 'post',
+    traditional: true,
     params: query
   })
 }

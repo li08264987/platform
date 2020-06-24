@@ -255,6 +255,9 @@ export default {
     this.getGuaPaiDataKY()
   },
   beforeDestroy() {
+
+  },
+  deactivated() {
     console.log('beforeDestroy')
     clearInterval(this.interval)
   },

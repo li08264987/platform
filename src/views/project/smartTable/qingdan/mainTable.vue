@@ -1,7 +1,6 @@
 <template>
   <div id="main-table">
     <el-table
-      ref="mainTable"
       v-loading="loading"
       style="width:100%;font-size: 14px"
       :data="data.content"
@@ -16,21 +15,11 @@
       :header-cell-style="{background:'#F1F4FD'}"
       background="true"
       class="mainTable"
-      @selection-change="handleSelectionChange"
     >
       <el-table-column
         v-if="false"
         prop="VARIABLE_NAME"
         label="点变量名称"
-        min-width="50"
-        header-align="center"
-        align="center"
-      />
-
-      <el-table-column
-        v-if="true"
-        type="selection"
-        label="操作"
         min-width="50"
         header-align="center"
         align="center"
@@ -287,7 +276,7 @@
 
     <div class="toolbar" style="text-align: center;">
       <el-pagination
-        :background="background"
+        background="true"
         layout="total, prev, pager, next, jumper"
         :current-page="pageRequest.pageNum"
         :page-size="pageRequest.pageSize"
@@ -361,11 +350,10 @@ export default {
   },
   data() {
     return {
-      background: true,
       pageRequest: {
         pageNum: 1,
         pageSize: 15,
-        system: 'ky'
+        system: 'qd'
       },
       loading: false,
       selections: [],
@@ -398,8 +386,7 @@ export default {
           checkAll: false,
           isIndeterminate: true
         }
-      },
-      multipleSelection: []
+      }
     }
   },
   mounted() {
@@ -418,7 +405,7 @@ export default {
       this.$emit('findPage', { pageRequest: this.pageRequest, callback: callback })
     },
     handleEdit: function(index, row) {
-      this.$emit('handleEdit', { index: index, row: row, pointList: this.multipleSelection })
+      this.$emit('handleEdit', { index: index, row: row })
     },
     handleDelete: function(index, row) {
       this.$emit('handleDelete', { index: index, row: row })
@@ -463,6 +450,9 @@ export default {
           break
         default:
       }
+    },
+    delete: function(params) {
+
     },
     showFilterDialog(e, scope) {
       const property = scope.column.property
@@ -575,9 +565,6 @@ export default {
           break
         default:
       }
-    },
-    handleSelectionChange(val) {
-      this.multipleSelection = val
     }
   }
 }
@@ -593,7 +580,7 @@ export default {
 
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss" scope>
 #main-table{
   width: 100%;
   height: 100%;
